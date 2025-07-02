@@ -148,43 +148,122 @@
         </div>
     </nav>
 
-">Unbeatable Prices</span></h1>
-            <p class="hero-subtitle">Discover professional-grade barber tools from top brands like Wahl, Babyliss, JRL, and more. Quality that professionals trust, prices that everyone can afford.</p>
-            
-            <div class="hero-buttons">
-                <button class="btn btn-primary" data-action="shop">
-                    <span>Shop Now</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-                <button class="btn btn-secondary" data-action="catalog">
-                    <span>View Catalog</span>
-                    <i class="fas fa-book-open"></i>
-                </button>
-            </div>
-            
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-number">6+</span>
-                    <span class="stat-label">Premium Brands</span>
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <div class="hero-container">
+        <!-- Left Side - Product Showcase -->
+        <div class="hero-product-side">
+            <div class="product-showcase">
+                <div class="product-carousel">
+                    <div class="product-slide active" data-product="wahl">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=600&fit=crop&crop=center" 
+                                 alt="Wahl Magic Clip Cordless" class="hero-product-image">
+                            <div class="product-glow"></div>
+                        </div>
+                        <div class="product-badge">Best Seller</div>
+                    </div>
+                    
+                    <div class="product-slide" data-product="babyliss">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=600&fit=crop&crop=center" 
+                                 alt="Babyliss FX8700 GoldFX" class="hero-product-image">
+                            <div class="product-glow"></div>
+                        </div>
+                        <div class="product-badge">Professional</div>
+                    </div>
+                    
+                    <div class="product-slide" data-product="jrl">
+                        <div class="product-image-container">
+                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=600&fit=crop&crop=center" 
+                                 alt="JRL 2020C Professional" class="hero-product-image">
+                            <div class="product-glow"></div>
+                        </div>
+                        <div class="product-badge">Premium</div>
+                    </div>
                 </div>
-                <div class="stat">
-                    <span class="stat-number">98+</span>
-                    <span class="stat-label">Professional Tools</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number">50%</span>
-                    <span class="stat-label">Average Savings</span>
+                
+                <!-- Product Navigation Dots -->
+                <div class="product-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
                 </div>
             </div>
         </div>
         
-        <div class="scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
+        <!-- Right Side - Content & CTA -->
+        <div class="hero-content-side">
+            <div class="hero-content">
+                <div class="brand-logo">
+                    <span class="logo-bw">BW</span>
+                    <span class="logo-text">BARBER WORLD</span>
+                </div>
+                
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Professional Tools<br>
+                        <span class="highlight">Unbeatable Prices</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Get premium hair clippers from top brands at prices that can't be beat. 
+                        Professional quality, guaranteed results.
+                    </p>
+                </div>
+                
+                <!-- Dynamic Product Info -->
+                <div class="current-product-info">
+                    <div class="product-details">
+                        <div class="product-name">Wahl Magic Clip Cordless</div>
+                        <div class="product-rating">
+                            <div class="stars">★★★★★</div>
+                            <span class="rating-text">(324 reviews)</span>
+                        </div>
+                    </div>
+                    
+                    <div class="product-pricing">
+                        <div class="price-container">
+                            <span class="current-price">$89.99</span>
+                            <span class="original-price">$149.99</span>
+                        </div>
+                        <div class="savings-badge">Save 40%</div>
+                    </div>
+                </div>
+                
+                <!-- Single CTA -->
+                <div class="hero-cta">
+                    <button class="btn-primary-hero" id="hero-cta">
+                        <span class="btn-text">Shop Now</span>
+                        <span class="btn-price">Starting at $89.99</span>
+                        <i class="fas fa-arrow-right btn-icon"></i>
+                    </button>
+                    
+                    <div class="trust-indicators">
+                        <div class="trust-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>2-Year Warranty</span>
+                        </div>
+                        <div class="trust-item">
+                            <i class="fas fa-undo"></i>
+                            <span>30-Day Returns</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <span>Scroll to explore</span>
         </div>
-    </section>
+    </div>
+    
+    <!-- Minimal Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll to explore</span>
+    </div>
+</section>
 
     <!-- Featured Categories -->
     <section class="featured-categories">
