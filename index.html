@@ -11,15 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- CSS -->
-    <link rel="stylesheet" href="styles.css">
-    
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" id="navbar">
         <div class="nav-container">
             <div class="nav-logo">
                 <div class="logo-text">
@@ -31,16 +31,114 @@
             <div class="nav-menu" id="nav-menu">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#products" class="nav-link">Products</a>
-                <a href="#brands" class="nav-link">Brands</a>
+                <div class="nav-link brands-dropdown" id="brands-trigger">
+                    Brands
+                    <i class="fas fa-chevron-down brands-arrow"></i>
+                    
+                    <!-- Mega Menu -->
+                    <div class="mega-menu" id="mega-menu">
+                        <div class="mega-menu-container">
+                            <div class="mega-menu-header">
+                                <h3>Premium Brands</h3>
+                                <p>Professional tools trusted by barbers worldwide</p>
+                            </div>
+                            
+                            <div class="brands-grid">
+                                <div class="brand-card" data-brand="wahl">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=300&h=200&fit=crop&crop=center" alt="Wahl">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>Wahl</h4>
+                                        <p>Industry Standard</p>
+                                        <span class="product-count">24 Products</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="brand-card" data-brand="babyliss">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=300&h=200&fit=crop&crop=center" alt="Babyliss">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>Babyliss</h4>
+                                        <p>Professional Styling</p>
+                                        <span class="product-count">18 Products</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="brand-card" data-brand="jrl">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=300&h=200&fit=crop&crop=center" alt="JRL">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>JRL Professional</h4>
+                                        <p>Premium Tools</p>
+                                        <span class="product-count">15 Products</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="brand-card" data-brand="stylecraft">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1586244583413-17d0ad0b6a09?w=300&h=200&fit=crop&crop=center" alt="StyleCraft">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>StyleCraft Gamma</h4>
+                                        <p>Innovation</p>
+                                        <span class="product-count">21 Products</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="brand-card" data-brand="cocco">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=300&h=200&fit=crop&crop=center" alt="Cocco">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>Cocco</h4>
+                                        <p>Modern Solutions</p>
+                                        <span class="product-count">12 Products</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="brand-card featured" data-brand="our-brand">
+                                    <div class="brand-image">
+                                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop&crop=center" alt="Our Brand">
+                                    </div>
+                                    <div class="brand-info">
+                                        <h4>Barber World</h4>
+                                        <p>Our Exclusive Line</p>
+                                        <span class="product-count">8 Products</span>
+                                    </div>
+                                    <div class="featured-badge">FEATURED</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mega-menu-footer">
+                                <button class="view-all-brands">View All Brands</button>
+                                <div class="brand-stats">
+                                    <span>6 Premium Brands</span>
+                                    <span>98+ Professional Tools</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <a href="#about" class="nav-link">About</a>
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
             
             <div class="nav-icons">
-                <i class="fas fa-search nav-icon"></i>
-                <i class="fas fa-shopping-cart nav-icon">
-                    <span class="cart-badge">0</span>
-                </i>
+                <div class="search-container">
+                    <i class="fas fa-search nav-icon search-trigger"></i>
+                    <div class="search-dropdown">
+                        <input type="text" placeholder="Search products...">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                </div>
+                <div class="cart-container">
+                    <i class="fas fa-shopping-cart nav-icon">
+                        <span class="cart-badge">0</span>
+                    </i>
+                </div>
                 <div class="hamburger" id="hamburger">
                     <span></span>
                     <span></span>
@@ -52,7 +150,15 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-background"></div>
+        <div class="hero-background">
+            <div class="texture-overlay"></div>
+            <div class="geometric-elements">
+                <div class="floating-shape shape-1"></div>
+                <div class="floating-shape shape-2"></div>
+                <div class="floating-shape shape-3"></div>
+            </div>
+        </div>
+        
         <div class="hero-content">
             <div class="hero-logo">
                 <div class="hero-logo-main">
@@ -61,12 +167,33 @@
                 <div class="hero-logo-text">BARBER WORLD</div>
             </div>
             
-            <h1 class="hero-title">Premium Hair Clippers at Unbeatable Prices</h1>
+            <h1 class="hero-title">Premium Hair Clippers at <span class="highlight">Unbeatable Prices</span></h1>
             <p class="hero-subtitle">Discover professional-grade barber tools from top brands like Wahl, Babyliss, JRL, and more. Quality that professionals trust, prices that everyone can afford.</p>
             
             <div class="hero-buttons">
-                <button class="btn btn-primary">Shop Now</button>
-                <button class="btn btn-secondary">View Catalog</button>
+                <button class="btn btn-primary" data-action="shop">
+                    <span>Shop Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-secondary" data-action="catalog">
+                    <span>View Catalog</span>
+                    <i class="fas fa-book-open"></i>
+                </button>
+            </div>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-number">6+</span>
+                    <span class="stat-label">Premium Brands</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">98+</span>
+                    <span class="stat-label">Professional Tools</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">50%</span>
+                    <span class="stat-label">Average Savings</span>
+                </div>
             </div>
         </div>
         
@@ -78,126 +205,187 @@
         </div>
     </section>
 
+    <!-- Featured Categories -->
+    <section class="featured-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop by Category</h2>
+                <p class="section-subtitle">Find the perfect tools for your professional needs</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card" data-category="clippers">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center" alt="Hair Clippers">
+                        <div class="category-overlay">
+                            <h3>Hair Clippers</h3>
+                            <p>Professional cutting tools</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="trimmers">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop&crop=center" alt="Trimmers">
+                        <div class="category-overlay">
+                            <h3>Trimmers</h3>
+                            <p>Precision styling tools</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="combos">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=300&fit=crop&crop=center" alt="Professional Combos">
+                        <div class="category-overlay">
+                            <h3>Professional Combos</h3>
+                            <p>Complete barber sets</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-card" data-category="accessories">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop&crop=center" alt="Accessories">
+                        <div class="category-overlay">
+                            <h3>Accessories</h3>
+                            <p>Blades, guards & more</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Products Section -->
     <section id="products" class="products-section">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Shop Barber Essentials</h2>
-                <p class="section-subtitle">Professional tools for every barber and styling enthusiast</p>
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Hand-picked tools from our premium collection</p>
             </div>
             
             <div class="products-grid">
-                <!-- Our Brand -->
-                <div class="product-card" data-category="our-brand">
+                <div class="product-card" data-product="wahl-magic-clip">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center" alt="Our Brand Products" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Explore Collection</button>
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center" alt="Wahl Magic Clip">
+                        <div class="product-badges">
+                            <span class="badge best-seller">Best Seller</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn quick-view" data-action="quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-action="add-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button class="action-btn wishlist" data-action="wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3>Our Brand</h3>
-                        <p>Exclusive Barber World products</p>
+                        <div class="product-brand">Wahl</div>
+                        <h3 class="product-name">Magic Clip Cordless</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(324)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$89.99</span>
+                            <span class="original-price">$149.99</span>
+                            <span class="discount">40% OFF</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Build Your Own Combo -->
-                <div class="product-card" data-category="combo">
+                
+                <div class="product-card" data-product="babyliss-fx8700">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop&crop=center" alt="Build Your Own Combo" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Build Combo</button>
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop&crop=center" alt="Babyliss FX8700">
+                        <div class="product-badges">
+                            <span class="badge new">New</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn quick-view" data-action="quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-action="add-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button class="action-btn wishlist" data-action="wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3>Build Your Own Combo</h3>
-                        <p>Customize your perfect set</p>
+                        <div class="product-brand">Babyliss</div>
+                        <h3 class="product-name">FX8700 GoldFX</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="rating-count">(156)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$199.99</span>
+                            <span class="original-price">$279.99</span>
+                            <span class="discount">29% OFF</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Combos -->
-                <div class="product-card" data-category="combos">
+                
+                <div class="product-card" data-product="jrl-2020c">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=300&fit=crop&crop=center" alt="Professional Combos" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">View Combos</button>
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop&crop=center" alt="JRL 2020C">
+                        <div class="product-badges">
+                            <span class="badge premium">Premium</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="action-btn quick-view" data-action="quick-view">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                            <button class="action-btn add-to-cart" data-action="add-cart">
+                                <i class="fas fa-shopping-cart"></i>
+                            </button>
+                            <button class="action-btn wishlist" data-action="wishlist">
+                                <i class="fas fa-heart"></i>
+                            </button>
                         </div>
                     </div>
                     <div class="product-info">
-                        <h3>Combos</h3>
-                        <p>Pre-selected professional sets</p>
-                    </div>
-                </div>
-
-                <!-- Babyliss -->
-                <div class="product-card" data-category="babyliss">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop&crop=center" alt="Babyliss Clippers" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Shop Babyliss</button>
+                        <div class="product-brand">JRL</div>
+                        <h3 class="product-name">2020C Clipper</h3>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-count">(89)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="current-price">$299.99</span>
+                            <span class="original-price">$399.99</span>
+                            <span class="discount">25% OFF</span>
                         </div>
                     </div>
-                    <div class="product-info">
-                        <h3>Babyliss</h3>
-                        <p>Professional styling tools</p>
-                    </div>
                 </div>
-
-                <!-- StyleCraft Gamma -->
-                <div class="product-card" data-category="stylecraft">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1586244583413-17d0ad0b6a09?w=400&h=300&fit=crop&crop=center" alt="StyleCraft Gamma" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Shop StyleCraft</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>StyleCraft Gamma</h3>
-                        <p>Innovative cutting technology</p>
-                    </div>
-                </div>
-
-                <!-- JRL -->
-                <div class="product-card" data-category="jrl">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop&crop=center" alt="JRL Professional Tools" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Shop JRL</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>JRL</h3>
-                        <p>Premium professional tools</p>
-                    </div>
-                </div>
-
-                <!-- Wahl -->
-                <div class="product-card" data-category="wahl">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center" alt="Wahl Clippers" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Shop Wahl</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Wahl</h3>
-                        <p>Industry standard clippers</p>
-                    </div>
-                </div>
-
-                <!-- Cocco -->
-                <div class="product-card" data-category="cocco">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&h=300&fit=crop&crop=center" alt="Cocco Tools" loading="lazy">
-                        <div class="product-overlay">
-                            <button class="product-btn">Shop Cocco</button>
-                        </div>
-                    </div>
-                    <div class="product-info">
-                        <h3>Cocco</h3>
-                        <p>Modern barber solutions</p>
-                    </div>
-                </div>
+            </div>
+            
+            <div class="products-cta">
+                <button class="btn btn-outline">View All Products</button>
             </div>
         </div>
     </section>
@@ -210,32 +398,59 @@
                     <div class="feature-icon">
                         <i class="fas fa-shipping-fast"></i>
                     </div>
-                    <h3>Free Shipping</h3>
-                    <p>Free shipping on orders over $99</p>
+                    <div class="feature-content">
+                        <h3>Free Shipping</h3>
+                        <p>Free shipping on orders over $99</p>
+                    </div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-award"></i>
                     </div>
-                    <h3>Premium Quality</h3>
-                    <p>Professional-grade tools trusted by barbers</p>
+                    <div class="feature-content">
+                        <h3>Premium Quality</h3>
+                        <p>Professional-grade tools trusted by barbers</p>
+                    </div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-headset"></i>
                     </div>
-                    <h3>Expert Support</h3>
-                    <p>Get help from our barber specialists</p>
+                    <div class="feature-content">
+                        <h3>Expert Support</h3>
+                        <p>Get help from our barber specialists</p>
+                    </div>
                 </div>
                 
                 <div class="feature-card">
                     <div class="feature-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <h3>Warranty</h3>
-                    <p>Comprehensive warranty on all products</p>
+                    <div class="feature-content">
+                        <h3>Warranty</h3>
+                        <p>Comprehensive warranty on all products</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h2>Stay Updated</h2>
+                    <p>Get the latest deals, new arrivals, and barber tips delivered to your inbox</p>
+                </div>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" id="newsletter-email">
+                    <button type="submit" id="newsletter-submit">
+                        <span>Subscribe</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -254,10 +469,10 @@
                     </div>
                     <p>Your trusted source for premium barber tools and accessories at unbeatable prices.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -284,17 +499,27 @@
                 </div>
                 
                 <div class="footer-section">
-                    <h4>Newsletter</h4>
-                    <p>Stay updated with our latest offers and products</p>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit">Subscribe</button>
-                    </div>
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Hair Clippers</a></li>
+                        <li><a href="#">Trimmers</a></li>
+                        <li><a href="#">Professional Combos</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Replacement Parts</a></li>
+                    </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2025 Barber World. All rights reserved.</p>
+                <div class="footer-bottom-content">
+                    <p>&copy; 2025 Barber World. All rights reserved.</p>
+                    <div class="payment-methods">
+                        <i class="fab fa-cc-visa"></i>
+                        <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                        <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
