@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barber World - Premium Hair Clippers & Barber Essentials</title>
+    <meta name="description" content="Discover premium hair clippers and barber essentials at unbeatable prices. Shop Wahl, Babyliss, JRL, StyleCraft and more professional barber tools.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <div class="logo-text">
+                    <span class="logo-bw">BW</span>
+                    <span class="logo-full">BARBER WORLD</span>
+                </div>
+            </div>
+            
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#products" class="nav-link">Products</a>
+                <a href="#brands" class="nav-link">Brands</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            
+            <div class="nav-icons">
+                <i class="fas fa-search nav-icon"></i>
+                <i class="fas fa-shopping-cart nav-icon">
+                    <span class="cart-badge">0</span>
+                </i>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="hero-logo">
+                <div class="hero-logo-main">
+                    <span class="hero-bw">BW</span>
+                </div>
+                <div class="hero-logo-text">BARBER WORLD</div>
+            </div>
+            
+            <h1 class="hero-title">Premium Hair Clippers at Unbeatable Prices</h1>
+            <p class="hero-subtitle">Discover professional-grade barber tools from top brands like Wahl, Babyliss, JRL, and more. Quality that professionals trust, prices that everyone can afford.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary">Shop Now</button>
+                <button class="btn btn-secondary">View Catalog</button>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Shop Barber Essentials</h2>
+                <p class="section-subtitle">Professional tools for every barber and styling enthusiast</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Our Brand -->
+                <div class="product-card" data-category="our-brand">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center" alt="Our Brand Products" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Explore Collection</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Our Brand</h3>
+                        <p>Exclusive Barber World products</p>
+                    </div>
+                </div>
+
+                <!-- Build Your Own Combo -->
+                <div class="product-card" data-category="combo">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop&crop=center" alt="Build Your Own Combo" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Build Combo</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Build Your Own Combo</h3>
+                        <p>Customize your perfect set</p>
+                    </div>
+                </div>
+
+                <!-- Combos -->
+                <div class="product-card" data-category="combos">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=300&fit=crop&crop=center" alt="Professional Combos" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">View Combos</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Combos</h3>
+                        <p>Pre-selected professional sets</p>
+                    </div>
+                </div>
+
+                <!-- Babyliss -->
+                <div class="product-card" data-category="babyliss">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop&crop=center" alt="Babyliss Clippers" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Shop Babyliss</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Babyliss</h3>
+                        <p>Professional styling tools</p>
+                    </div>
+                </div>
+
+                <!-- StyleCraft Gamma -->
+                <div class="product-card" data-category="stylecraft">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1586244583413-17d0ad0b6a09?w=400&h=300&fit=crop&crop=center" alt="StyleCraft Gamma" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Shop StyleCraft</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>StyleCraft Gamma</h3>
+                        <p>Innovative cutting technology</p>
+                    </div>
+                </div>
+
+                <!-- JRL -->
+                <div class="product-card" data-category="jrl">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop&crop=center" alt="JRL Professional Tools" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Shop JRL</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>JRL</h3>
+                        <p>Premium professional tools</p>
+                    </div>
+                </div>
+
+                <!-- Wahl -->
+                <div class="product-card" data-category="wahl">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center" alt="Wahl Clippers" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Shop Wahl</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Wahl</h3>
+                        <p>Industry standard clippers</p>
+                    </div>
+                </div>
+
+                <!-- Cocco -->
+                <div class="product-card" data-category="cocco">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400&h=300&fit=crop&crop=center" alt="Cocco Tools" loading="lazy">
+                        <div class="product-overlay">
+                            <button class="product-btn">Shop Cocco</button>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cocco</h3>
+                        <p>Modern barber solutions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Free Shipping</h3>
+                    <p>Free shipping on orders over $99</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Professional-grade tools trusted by barbers</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Get help from our barber specialists</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Warranty</h3>
+                    <p>Comprehensive warranty on all products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <div class="logo-text">
+                            <span class="logo-bw">BW</span>
+                            <span class="logo-full">BARBER WORLD</span>
+                        </div>
+                    </div>
+                    <p>Your trusted source for premium barber tools and accessories at unbeatable prices.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#brands">Brands</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Stay updated with our latest offers and products</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Barber World. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
