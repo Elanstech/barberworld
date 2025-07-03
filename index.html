@@ -148,122 +148,223 @@
         </div>
     </nav>
 
-<!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-container">
-        <!-- Left Side - Product Showcase -->
-        <div class="hero-product-side">
-            <div class="product-showcase">
-                <div class="product-carousel">
-                    <div class="product-slide active" data-product="wahl">
-                        <div class="product-image-container">
-                            <img src="clippers/FXONE LO-PRO.jpeg" 
-                                 alt="Wahl Magic Clip Cordless" class="hero-product-image">
-                            <div class="product-glow"></div>
-                        </div>
-                        <div class="product-badge">Best Seller</div>
+    <!-- Hero Section with 3 Sliding Panels -->
+    <section id="home" class="hero-slider">
+        <div class="hero-slides-container">
+            <!-- Slide 1: Welcome -->
+            <div class="hero-slide active" data-slide="welcome">
+                <div class="hero-background">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop&crop=center" alt="Professional Barber Shop">
                     </div>
-                    
-                    <div class="product-slide" data-product="babyliss">
-                        <div class="product-image-container">
-                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=600&h=600&fit=crop&crop=center" 
-                                 alt="Babyliss FX8700 GoldFX" class="hero-product-image">
-                            <div class="product-glow"></div>
-                        </div>
-                        <div class="product-badge">Professional</div>
-                    </div>
-                    
-                    <div class="product-slide" data-product="jrl">
-                        <div class="product-image-container">
-                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=600&fit=crop&crop=center" 
-                                 alt="JRL 2020C Professional" class="hero-product-image">
-                            <div class="product-glow"></div>
-                        </div>
-                        <div class="product-badge">Premium</div>
-                    </div>
+                    <div class="hero-overlay"></div>
                 </div>
                 
-                <!-- Product Navigation Dots -->
-                <div class="product-dots">
-                    <span class="dot active" data-slide="0"></span>
-                    <span class="dot" data-slide="1"></span>
-                    <span class="dot" data-slide="2"></span>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Right Side - Content & CTA -->
-        <div class="hero-content-side">
-            <div class="hero-content">
-                <div class="brand-logo">
-                    <span class="logo-bw">BW</span>
-                    <span class="logo-text">BARBER WORLD</span>
-                </div>
-                
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Professional Tools<br>
-                        <span class="highlight">Unbeatable Prices</span>
-                    </h1>
-                    
-                    <p class="hero-subtitle">
-                        Get premium hair clippers from top brands at prices that can't be beat. 
-                        Professional quality, guaranteed results.
-                    </p>
-                </div>
-                
-                <!-- Dynamic Product Info -->
-                <div class="current-product-info">
-                    <div class="product-details">
-                        <div class="product-name">Wahl Magic Clip Cordless</div>
-                        <div class="product-rating">
-                            <div class="stars">★★★★★</div>
-                            <span class="rating-text">(324 reviews)</span>
+                <div class="hero-content-container">
+                    <div class="hero-content welcome-content">
+                        <div class="hero-badge">Welcome</div>
+                        <h1 class="hero-title">
+                            <span class="title-line">Welcome to</span>
+                            <span class="title-line highlight">Barber World</span>
+                            <span class="title-line">Professional Excellence</span>
+                        </h1>
+                        <p class="hero-subtitle">
+                            Your premier destination for professional barber tools and equipment. 
+                            Discover quality that defines excellence in every cut, style, and finish.
+                        </p>
+                        <div class="hero-actions">
+                            <button class="btn-hero primary">
+                                <span>Explore Collection</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <button class="btn-hero secondary">
+                                <span>Watch Story</span>
+                                <i class="fas fa-play"></i>
+                            </button>
                         </div>
-                    </div>
-                    
-                    <div class="product-pricing">
-                        <div class="price-container">
-                            <span class="current-price">$89.99</span>
-                            <span class="original-price">$149.99</span>
-                        </div>
-                        <div class="savings-badge">Save 40%</div>
-                    </div>
-                </div>
-                
-                <!-- Single CTA -->
-                <div class="hero-cta">
-                    <button class="btn-primary-hero" id="hero-cta">
-                        <span class="btn-text">Shop Now</span>
-                        <span class="btn-price">Starting at $89.99</span>
-                        <i class="fas fa-arrow-right btn-icon"></i>
-                    </button>
-                    
-                    <div class="trust-indicators">
-                        <div class="trust-item">
-                            <i class="fas fa-shipping-fast"></i>
-                            <span>Free Shipping</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <span>2-Year Warranty</span>
-                        </div>
-                        <div class="trust-item">
-                            <i class="fas fa-undo"></i>
-                            <span>30-Day Returns</span>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <span class="stat-number">500+</span>
+                                <span class="stat-label">Premium Tools</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">10K+</span>
+                                <span class="stat-label">Happy Barbers</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">Top Brands</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Slide 2: New Product Showcase -->
+            <div class="hero-slide" data-slide="product">
+                <div class="hero-background">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=1920&h=1080&fit=crop&crop=center" alt="Latest Professional Clippers">
+                    </div>
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content-container">
+                    <div class="hero-content product-content">
+                        <div class="product-showcase-card">
+                            <div class="product-image-hero">
+                                <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=400&fit=crop&crop=center" alt="Wahl Magic Clip Cordless">
+                                <div class="product-badge-hero">NEW ARRIVAL</div>
+                            </div>
+                            <div class="product-details-hero">
+                                <div class="product-brand-hero">Wahl Professional</div>
+                                <h2 class="product-name-hero">Magic Clip Cordless</h2>
+                                <div class="product-features">
+                                    <span class="feature-tag">90-Minute Runtime</span>
+                                    <span class="feature-tag">Zero-Gap Precision</span>
+                                    <span class="feature-tag">Professional Grade</span>
+                                </div>
+                                <div class="product-price-hero">
+                                    <span class="current-price-hero">$129.99</span>
+                                    <span class="original-price-hero">$179.99</span>
+                                    <span class="discount-badge">Save 28%</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-text-content">
+                            <div class="hero-badge">Latest Innovation</div>
+                            <h1 class="hero-title">
+                                <span class="title-line">Check Out This</span>
+                                <span class="title-line highlight">Game-Changing</span>
+                                <span class="title-line">New Product</span>
+                            </h1>
+                            <p class="hero-subtitle">
+                                Experience the future of professional barbering with the all-new Wahl Magic Clip Cordless. 
+                                Engineered for precision, built for professionals.
+                            </p>
+                            <div class="hero-actions">
+                                <button class="btn-hero primary">
+                                    <span>Add to Cart</span>
+                                    <i class="fas fa-shopping-cart"></i>
+                                </button>
+                                <button class="btn-hero secondary">
+                                    <span>Learn More</span>
+                                    <i class="fas fa-info-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3: Special Offer -->
+            <div class="hero-slide" data-slide="offer">
+                <div class="hero-background">
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=1920&h=1080&fit=crop&crop=center" alt="Professional Barber Tools Collection">
+                    </div>
+                    <div class="hero-overlay"></div>
+                </div>
+                
+                <div class="hero-content-container">
+                    <div class="hero-content offer-content">
+                        <div class="offer-card">
+                            <div class="offer-header">
+                                <div class="offer-badge">Limited Time</div>
+                                <div class="offer-countdown">
+                                    <div class="countdown-item">
+                                        <span class="countdown-number" id="days">23</span>
+                                        <span class="countdown-label">Days</span>
+                                    </div>
+                                    <div class="countdown-item">
+                                        <span class="countdown-number" id="hours">18</span>
+                                        <span class="countdown-label">Hours</span>
+                                    </div>
+                                    <div class="countdown-item">
+                                        <span class="countdown-number" id="minutes">42</span>
+                                        <span class="countdown-label">Min</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h1 class="hero-title">
+                                <span class="title-line">Unbeatable</span>
+                                <span class="title-line highlight">Black Friday</span>
+                                <span class="title-line">Deals</span>
+                            </h1>
+                            
+                            <div class="offer-details">
+                                <div class="discount-highlight">
+                                    <span class="discount-percent">UP TO 60%</span>
+                                    <span class="discount-text">OFF</span>
+                                </div>
+                                <p class="offer-description">
+                                    Professional barber tools at incredible prices. Complete your shop setup 
+                                    with premium equipment from top brands.
+                                </p>
+                            </div>
+                            
+                            <div class="offer-features">
+                                <div class="offer-feature">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Free Express Shipping</span>
+                                </div>
+                                <div class="offer-feature">
+                                    <i class="fas fa-gift"></i>
+                                    <span>Free Accessories Kit</span>
+                                </div>
+                                <div class="offer-feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Extended 3-Year Warranty</span>
+                                </div>
+                            </div>
+                            
+                            <div class="hero-actions">
+                                <button class="btn-hero primary pulse">
+                                    <span>Shop Now & Save</span>
+                                    <i class="fas fa-bolt"></i>
+                                </button>
+                                <button class="btn-hero secondary">
+                                    <span>View All Deals</span>
+                                    <i class="fas fa-tags"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-    
-    <!-- Minimal Scroll Indicator -->
-    <div class="scroll-indicator">
-        <div class="scroll-line"></div>
-        <span>Scroll to explore</span>
-    </div>
-</section>
+
+        <!-- Hero Navigation -->
+        <div class="hero-navigation">
+            <div class="hero-dots">
+                <button class="hero-dot active" data-slide="0" aria-label="Welcome slide">
+                    <span class="dot-label">Welcome</span>
+                </button>
+                <button class="hero-dot" data-slide="1" aria-label="Product showcase slide">
+                    <span class="dot-label">New Product</span>
+                </button>
+                <button class="hero-dot" data-slide="2" aria-label="Special offers slide">
+                    <span class="dot-label">Special Offers</span>
+                </button>
+            </div>
+            
+            <div class="hero-controls">
+                <button class="hero-control prev" aria-label="Previous slide">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="hero-control next" aria-label="Next slide">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Hero Progress Bar -->
+        <div class="hero-progress">
+            <div class="progress-bar" id="heroProgress"></div>
+        </div>
+    </section>
 
     <!-- Featured Categories -->
     <section class="featured-categories">
@@ -520,33 +621,6 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <div class="logo-text">
-                            <span class="logo-bw">BW</span>
-                            <span class="logo-full">BARBER WORLD</span>
-                        </div>
-                    </div>
-                    <p>Your trusted source for premium barber tools and accessories at unbeatable prices.</p>
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#brands">Brands</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
                 <div class="footer-section">
                     <h4>Customer Service</h4>
                     <ul>
