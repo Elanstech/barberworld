@@ -45,13 +45,20 @@ class BarberWorld {
     // ============================================================================
 
     setupHeaderEventListeners() {
-        // Mobile menu toggle
+        // Mobile menu toggle - Fixed functionality
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
         const navMenu = document.getElementById('nav-menu');
 
-        mobileMenuToggle?.addEventListener('click', () => {
-            this.toggleMobileMenu();
-        });
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                console.log('Mobile menu toggle clicked'); // Debug log
+                this.toggleMobileMenu();
+            });
+        } else {
+            console.warn('Mobile menu toggle not found');
+        }
 
         // Logo click - scroll to top
         const navLogo = document.getElementById('nav-logo');
@@ -133,11 +140,15 @@ class BarberWorld {
         });
     }
 
-    // Mobile Menu Management
+    // Mobile Menu Management - Fixed functionality
     toggleMobileMenu() {
+        console.log('toggleMobileMenu called, current state:', this.mobileMenuOpen); // Debug log
+        
         this.mobileMenuOpen = !this.mobileMenuOpen;
         const navMenu = document.getElementById('nav-menu');
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+
+        console.log('Menu elements found:', { navMenu: !!navMenu, toggle: !!mobileMenuToggle }); // Debug log
 
         if (this.mobileMenuOpen) {
             this.openMobileMenu(navMenu, mobileMenuToggle);
@@ -147,8 +158,18 @@ class BarberWorld {
     }
 
     openMobileMenu(navMenu, toggle) {
-        navMenu?.classList.add('active');
-        toggle?.classList.add('active');
+        console.log('Opening mobile menu'); // Debug log
+        
+        if (navMenu) {
+            navMenu.classList.add('active');
+            console.log('Added active class to nav menu'); // Debug log
+        }
+        
+        if (toggle) {
+            toggle.classList.add('active');
+            console.log('Added active class to toggle'); // Debug log
+        }
+        
         document.body.style.overflow = 'hidden';
         
         // Add backdrop
