@@ -145,8 +145,8 @@ main {
 }
 
 .logo-image {
-    width: 60px;
-    height: 60px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
     transition: all var(--transition-normal);
     border-radius: var(--radius-md);
