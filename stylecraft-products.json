@@ -1,0 +1,380 @@
+[
+  {
+    "id": 1,
+    "name": "StyleCraft Flex Shaver",
+    "price": 89.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-shaver"
+  },
+  {
+    "id": 2,
+    "name": "Gamma Boosted Shaver GP808M",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-shaver-gp808m"
+  },
+  {
+    "id": 3,
+    "name": "StyleCraft Nano Mister",
+    "price": 49.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-nano-mister"
+  },
+  {
+    "id": 4,
+    "name": "StyleCraft Silver Slick Replacement Prodigy Shaver Foil Head",
+    "price": 15.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-silver-slick-replacement-prodigy-shaver-foil-head"
+  },
+  {
+    "id": 5,
+    "name": "Gamma Magnetic Matt",
+    "price": 99.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-magnetic-matt"
+  },
+  {
+    "id": 6,
+    "name": "StyleCraft Cordless Heat Strok Beard & Styling Hot Brush SCHSWBB",
+    "price": 79.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-cordless-heat-strok-beard-styling-hot-brush-schswbb"
+  },
+  {
+    "id": 7,
+    "name": "StyleCraft Precision Saber Trimmer (SC403BP)",
+    "price": 184.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-precision-saber-trimmer-sc403bp"
+  },
+  {
+    "id": 8,
+    "name": "StyleCraft On-The-Go Barber/Stylist Tool Case w/ Mirror SC328B",
+    "price": 44.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-on-the-go-barberstylist-tool-case-w-mirror-sc328b"
+  },
+  {
+    "id": 9,
+    "name": "EVO NANO MISTER SPRAY SYSTEM - BLACK",
+    "price": 48.99,
+    "brand": "StyleCraft",
+    "slug": "evo-nano-mister-spray-system-black"
+  },
+  {
+    "id": 10,
+    "name": "Gamma+ Evo Trimmer",
+    "price": 129.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-evo-trimmer"
+  },
+  {
+    "id": 11,
+    "name": "StyleCraft Ergo & Prodigy Shaver",
+    "price": 300,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ergo-prodigy-shaver"
+  },
+  {
+    "id": 12,
+    "name": "Gamma+ Clipper Blade DLC Fixed Taper & Gold Titanium Cutter GPCRBTS",
+    "price": 30.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-clipper-blade-dlc-fixed-taper-gold-titanium-cutter-gpcrbts"
+  },
+  {
+    "id": 13,
+    "name": "Gamma+ Replacement Gold Titanium Single Foil Head",
+    "price": 11.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-replacement-gold-titanium-single-foil-head"
+  },
+  {
+    "id": 14,
+    "name": "Gamma+ Evo Trimmer HCGPX-EVOMS",
+    "price": 175,
+    "brand": "StyleCraft",
+    "slug": "gamma-evo-trimmer-hcgpx-evoms"
+  },
+  {
+    "id": 15,
+    "name": "Gamma+ Ergo Clipper HCGPMECS",
+    "price": 159,
+    "brand": "StyleCraft",
+    "slug": "gamma-ergo-clipper-hcgpmecs"
+  },
+  {
+    "id": 16,
+    "name": "StyleCraft Evo Linear Trimmer",
+    "price": 129.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-evo-linear-trimmer"
+  },
+  {
+    "id": 17,
+    "name": "StyleCraft Wireless Prodigy Shaver SCWPFS",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-wireless-prodigy-shaver-scwpfs"
+  },
+  {
+    "id": 18,
+    "name": "StyleCraft Gamma Hitter",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-gamma-hitter"
+  },
+  {
+    "id": 19,
+    "name": "Gamma+ Protege Clipper",
+    "price": 89.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-protege-clipper"
+  },
+  {
+    "id": 20,
+    "name": "Gamma+ Protege Trimmer",
+    "price": 80,
+    "brand": "StyleCraft",
+    "slug": "gamma-protege-trimmer"
+  },
+  {
+    "id": 21,
+    "name": "Gamma+ Prodigy Shaver",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-prodigy-shaver"
+  },
+  {
+    "id": 22,
+    "name": "StyleCraft Ace Shaver 2.0",
+    "price": 79.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ace-shaver-20"
+  },
+  {
+    "id": 23,
+    "name": "Gamma+ xcell Blow Dryer",
+    "price": 375,
+    "brand": "StyleCraft",
+    "slug": "gamma-xcell-blow-dryer"
+  },
+  {
+    "id": 24,
+    "name": "StyleCraft Rogue Clipper",
+    "price": 155,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rogue-clipper"
+  },
+  {
+    "id": 25,
+    "name": "StyleCraft Absolute Alpha Clipper SCAACS",
+    "price": 180,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-absolute-alpha-clipper-scaacs"
+  },
+  {
+    "id": 26,
+    "name": "Gamma+ Absolute Alpha Clipper",
+    "price": 129,
+    "brand": "StyleCraft",
+    "slug": "gamma-absolute-alpha-clipper"
+  },
+  {
+    "id": 27,
+    "name": "Style Craft Ace Trimmer (gamma) SC404B",
+    "price": 69.99,
+    "brand": "StyleCraft",
+    "slug": "style-craft-ace-trimmer-gamma-sc404b"
+  },
+  {
+    "id": 28,
+    "name": "StyleCraft Uno Shaver",
+    "price": 79.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-shaver"
+  },
+  {
+    "id": 29,
+    "name": "Style Craft Rebel Shaver SC802B",
+    "price": 129,
+    "brand": "StyleCraft",
+    "slug": "style-craft-rebel-shaver-sc802b"
+  },
+  {
+    "id": 30,
+    "name": "StyleCraft Flex Trimmer SC406M",
+    "price": 149.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-trimmer-sc406m"
+  },
+  {
+    "id": 31,
+    "name": "Gamma+ Faper Blade",
+    "price": 32,
+    "brand": "StyleCraft",
+    "slug": "gamma-faper-blade"
+  },
+  {
+    "id": 32,
+    "name": "StyleCraft Rebel Trimmer SC409M",
+    "price": 159.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-trimmer-sc409m"
+  },
+  {
+    "id": 33,
+    "name": "StyleCraft Instinct Trimmer SC407M",
+    "price": 219,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-trimmer-sc407m"
+  },
+  {
+    "id": 34,
+    "name": "Gamma+ Boosted Cordless Trimmer",
+    "price": 149,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-cordless-trimmer"
+  },
+  {
+    "id": 35,
+    "name": "StyleCraft Saber Trimmer",
+    "price": 229,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-trimmer"
+  },
+  {
+    "id": 36,
+    "name": "StyleCraft Uno 2.0 Single Foil Shaver SC803R",
+    "price": 59.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-20-single-foil-shaver-sc803r"
+  },
+  {
+    "id": 37,
+    "name": "StyleCraft Instinct-X Clipper SC608M",
+    "price": 289.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-x-clipper-sc608m"
+  },
+  {
+    "id": 38,
+    "name": "Gamma+ Boosted Clipper GP601M",
+    "price": 220,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-clipper-gp601m"
+  },
+  {
+    "id": 39,
+    "name": "Gamma+ Cyborg Trimmer GP401S",
+    "price": 189,
+    "brand": "StyleCraft",
+    "slug": "gamma-cyborg-trimmer-gp401s"
+  },
+  {
+    "id": 40,
+    "name": "StyleCraft Rebel Clipper SC601",
+    "price": 280,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-clipper-sc601"
+  },
+  {
+    "id": 41,
+    "name": "Gamma+ X-Ergo Clipper HCGPXER-GOMS",
+    "price": 275,
+    "brand": "StyleCraft",
+    "slug": "gamma-x-ergo-clipper-hcgpxer-goms"
+  },
+  {
+    "id": 42,
+    "name": "Gamma+ Cyborg Clipper",
+    "price": 199,
+    "brand": "StyleCraft",
+    "slug": "gamma-cyborg-clipper"
+  },
+  {
+    "id": 43,
+    "name": "StyleCraft Rebel Shaver Limited Edition SC809M",
+    "price": 99.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-shaver-limited-edition-sc809m"
+  },
+  {
+    "id": 44,
+    "name": "STYLECRAFT INSTINCT METAL CLIPPER SC611M",
+    "price": 289.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-metal-clipper-sc611m"
+  },
+  {
+    "id": 45,
+    "name": "StyleCraft x United By Short Hair Rogue Clipper | 333 Limited Edition",
+    "price": 149.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-x-united-by-short-hair-rogue-clipper-333-limited-edition"
+  },
+  {
+    "id": 46,
+    "name": "StyleCraft Ergo Clipper SCMECB",
+    "price": 200,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ergo-clipper-scmecb"
+  },
+  {
+    "id": 47,
+    "name": "STYLECRAFT INSTINCT METAL TRIMMER",
+    "price": 229,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-metal-trimmer"
+  },
+  {
+    "id": 48,
+    "name": "Instinct Metal Double Shaver SC807B",
+    "price": 189,
+    "brand": "StyleCraft",
+    "slug": "instinct-metal-double-shaver-sc807b"
+  },
+  {
+    "id": 49,
+    "name": "StyleCraft Rebel Super-Torque Modular Cordless Clipper Limited Edition",
+    "price": 199.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-super-torque-modular-cordless-clipper-limited-edition"
+  },
+  {
+    "id": 50,
+    "name": "Style Craft 360 Jeezy Clipper SC614B",
+    "price": 299.99,
+    "brand": "StyleCraft",
+    "slug": "style-craft-360-jeezy-clipper-sc614b"
+  },
+  {
+    "id": 51,
+    "name": "StyleCraft Saber II Clipper (SC617B)",
+    "price": 299.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-ii-clipper-sc617b"
+  },
+  {
+    "id": 52,
+    "name": "StyleCraft Instinct-X Metal Trimmer SC411M",
+    "price": 209,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-x-metal-trimmer-sc411m"
+  },
+  {
+    "id": 53,
+    "name": "Gamma Shorty Clipper GP605M",
+    "price": 249.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-shorty-clipper-gp605m"
+  },
+  {
+    "id": 54,
+    "name": "StyleCraft Instinct Clipper SC607M",
+    "price": 269,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-clipper-sc607m"
+  }
+]
