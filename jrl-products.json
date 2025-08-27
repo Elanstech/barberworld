@@ -22,86 +22,86 @@
   },
   {
     "id": 4,
-    "name": "JRL Fresh Fade 1010 Clipper",
-    "price": 225,
+    "name": "JRL Ghost Trimmer",
+    "price": 145,
     "brand": "JRL",
-    "slug": "jrl-fresh-fade-1010-clipper"
+    "slug": "jrl-ghost-trimmer"
   },
   {
     "id": 5,
-    "name": "JRL Fresh Fade 1020 Trimmer",
-    "price": 145,
+    "name": "JRL Barber Comb Set",
+    "price": 29.99,
     "brand": "JRL",
-    "slug": "jrl-fresh-fade-1020-trimmer"
+    "slug": "jrl-barber-comb-set"
   },
   {
     "id": 6,
-    "name": "JRL Professional 2020C Clipper",
-    "price": 225,
+    "name": "JRL Professional Cutting Cape",
+    "price": 15.99,
     "brand": "JRL",
-    "slug": "jrl-professional-2020c-clipper"
+    "slug": "jrl-professional-cutting-cape"
   },
   {
     "id": 7,
-    "name": "JRL Professional 2020T Trimmer",
-    "price": 145,
+    "name": "JRL Professional Hair Clips",
+    "price": 6.99,
     "brand": "JRL",
-    "slug": "jrl-professional-2020t-trimmer"
+    "slug": "jrl-professional-hair-clips"
   },
   {
     "id": 8,
-    "name": "JRL Clipper Grip (Silicone)",
-    "price": 12,
+    "name": "JRL Professional Onyx SF Pro Foil Shaver SH2301",
+    "price": 89.95,
     "brand": "JRL",
-    "slug": "jrl-clipper-grip-silicone"
+    "slug": "jrl-professional-onyx-sf-pro-foil-shaver-sh2301"
   },
   {
     "id": 9,
-    "name": "JRL Trimmer Grip (Silicone)",
-    "price": 10,
+    "name": "JRL Freshfade 2020C Cordless Clipper 2020C-G",
+    "price": 175,
     "brand": "JRL",
-    "slug": "jrl-trimmer-grip-silicone"
+    "slug": "jrl-freshfade-2020c-cordless-clipper-2020c-g"
   },
   {
     "id": 10,
-    "name": "JRL Blade Oil 100ml",
-    "price": 15,
+    "name": "JRL Freshfade 2020T Trimmers",
+    "price": 125,
     "brand": "JRL",
-    "slug": "jrl-blade-oil-100ml"
+    "slug": "jrl-freshfade-2020t-trimmers"
   },
   {
     "id": 11,
-    "name": "JRL Blade Wash 100ml",
-    "price": 18,
+    "name": "JRL Blow Dryer Forte Pro",
+    "price": 229.99,
     "brand": "JRL",
-    "slug": "jrl-blade-wash-100ml"
+    "slug": "jrl-blow-dryer-forte-pro"
   },
   {
     "id": 12,
     "name": "JRL Charging Dock",
-    "price": 45,
+    "price": 17.95,
     "brand": "JRL",
     "slug": "jrl-charging-dock"
   },
   {
     "id": 13,
-    "name": "JRL Travel Case",
-    "price": 35,
+    "name": "JRL BARBER MAGNETIC MAT",
+    "price": 63,
     "brand": "JRL",
-    "slug": "jrl-travel-case"
+    "slug": "jrl-barber-magnetic-mat"
   },
   {
     "id": 14,
-    "name": "JRL Replacement Blade Set",
-    "price": 85,
+    "name": "JRL Large Hand Held Mirror",
+    "price": 19.99,
     "brand": "JRL",
-    "slug": "jrl-replacement-blade-set"
+    "slug": "jrl-large-hand-held-mirror"
   },
   {
     "id": 15,
-    "name": "JRL USB Charging Cable",
-    "price": 25,
+    "name": "JRL Fine Mist Spray Bottle",
+    "price": 3.99,
     "brand": "JRL",
-    "slug": "jrl-usb-charging-cable"
+    "slug": "jrl-fine-mist-spray-bottle"
   }
 ]
