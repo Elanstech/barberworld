@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
-    <!-- Font -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS -->
@@ -79,7 +79,7 @@
                 </div>
                 
                 <div class="nav-actions">
-                    <button class="nav-btn search-btn" aria-label="Search">
+                    <button class="nav-btn search-btn" aria-label="Search" title="Search Products">
                         <i class="fas fa-search"></i>
                     </button>
                     <button class="nav-btn cart-btn" aria-label="Shopping Cart">
@@ -96,8 +96,128 @@
         </nav>
     </header>
 
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <h2 class="search-modal-title">Search Products</h2>
+                <button class="search-modal-close" onclick="closeSearchModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="search-input-container">
+                <div class="search-input-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <input 
+                    type="text" 
+                    class="search-input-main" 
+                    id="search-input-main"
+                    placeholder="Search for brands, products, or categories..."
+                    autocomplete="off"
+                >
+            </div>
+
+            <!-- Live Search Suggestions -->
+            <div class="search-suggestions" id="search-suggestions" style="display: none;"></div>
+
+            <!-- Popular Searches -->
+            <div class="popular-searches" id="popular-searches">
+                <div class="popular-searches-title">Popular searches:</div>
+                <div class="popular-search-tags">
+                    <button class="popular-search-tag" data-query="JRL">JRL Professional</button>
+                    <button class="popular-search-tag" data-query="Wahl Magic Clip">Wahl Magic Clip</button>
+                    <button class="popular-search-tag" data-query="StyleCraft Instinct">StyleCraft Instinct</button>
+                    <button class="popular-search-tag" data-query="Babyliss FXONE">Babyliss FXONE</button>
+                    <button class="popular-search-tag" data-query="clipper">Clippers</button>
+                    <button class="popular-search-tag" data-query="trimmer">Trimmers</button>
+                    <button class="popular-search-tag" data-query="cordless">Cordless</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
     <main>
+        <!-- Search Results Section (hidden by default) -->
+        <section class="search-results-section" id="search-results-section" style="display: none;">
+            <div class="search-container">
+                <!-- Search Header -->
+                <div class="search-header-inline">
+                    <div class="search-back-btn" onclick="closeSearchResults()">
+                        <i class="fas fa-arrow-left"></i>
+                        <span>Back to Browse</span>
+                    </div>
+                    <div class="search-info">
+                        <h2 id="search-results-title">Search Results</h2>
+                        <p id="search-results-count">0 products found</p>
+                    </div>
+                </div>
+
+                <!-- Enhanced Filters -->
+                <div class="search-filters">
+                    <div class="filter-row">
+                        <select id="brand-filter" class="filter-select">
+                            <option value="">All Brands</option>
+                            <option value="JRL">JRL Professional</option>
+                            <option value="StyleCraft">StyleCraft</option>
+                            <option value="Wahl">Wahl</option>
+                            <option value="Babyliss">Babyliss</option>
+                        </select>
+                        
+                        <select id="category-filter" class="filter-select">
+                            <option value="">All Categories</option>
+                            <option value="clipper">Clippers</option>
+                            <option value="trimmer">Trimmers</option>
+                            <option value="shaver">Shavers</option>
+                            <option value="accessory">Accessories</option>
+                            <option value="dryer">Hair Dryers</option>
+                        </select>
+                        
+                        <select id="price-filter" class="filter-select">
+                            <option value="">All Prices</option>
+                            <option value="0-50">Under $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-200">$100 - $200</option>
+                            <option value="200-999">$200+</option>
+                        </select>
+                        
+                        <select id="sort-filter" class="filter-select">
+                            <option value="relevance">Relevance</option>
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="price-asc">Price (Low to High)</option>
+                            <option value="price-desc">Price (High to Low)</option>
+                        </select>
+                        
+                        <button class="clear-filters-btn" onclick="clearAllSearchFilters()">Clear Filters</button>
+                    </div>
+                </div>
+
+                <!-- Search Loading -->
+                <div class="search-loading" id="search-loading" style="display: none;">
+                    <div class="search-loading-spinner"></div>
+                    <p>Searching products...</p>
+                </div>
+
+                <!-- Search Results Grid -->
+                <div class="search-products-grid" id="search-products-grid">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+
+                <!-- No Results Message -->
+                <div class="no-search-results" id="no-search-results" style="display: none;">
+                    <div class="no-results-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your search term or filters</p>
+                    <button class="btn-secondary" onclick="clearAllSearchFilters()">Clear All Filters</button>
+                </div>
+            </div>
+        </section>
+
         <!-- Brands Section -->
         <section class="brands" id="brands">
             <div class="brands-container">
@@ -195,6 +315,133 @@
             </div>
         </section>
 
+        <!-- Why Choose Us Section -->
+        <section class="why-choose-us" id="why-choose-us">
+            <div class="why-choose-container">
+                <div class="section-header">
+                    <h2 class="section-title">Why Choose Barber World?</h2>
+                    <p class="section-subtitle">We're committed to providing the best barber equipment and service in the industry</p>
+                </div>
+
+                <div class="why-choose-grid">
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Premium Quality</h3>
+                        <p>Only authentic products from trusted manufacturers with full warranty coverage and quality guarantees.</p>
+                    </div>
+
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <h3>Fast & Free Shipping</h3>
+                        <p>Free shipping on orders over $99. Express delivery available. Track your order every step of the way.</p>
+                    </div>
+
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Expert Support</h3>
+                        <p>Professional barber specialists available to help you choose the right tools for your needs.</p>
+                    </div>
+
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Secure Shopping</h3>
+                        <p>SSL encrypted checkout, secure payment processing, and buyer protection on all orders.</p>
+                    </div>
+
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-undo-alt"></i>
+                        </div>
+                        <h3>Easy Returns</h3>
+                        <p>30-day hassle-free returns. Not satisfied? We'll make it right with free return shipping.</p>
+                    </div>
+
+                    <div class="why-choose-card">
+                        <div class="why-choose-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Trusted by Pros</h3>
+                        <p>Over 10,000+ professional barbers and stylists trust us for their equipment needs worldwide.</p>
+                    </div>
+                </div>
+
+                <!-- Trust Indicators -->
+                <div class="trust-indicators">
+                    <div class="trust-badges">
+                        <div class="trust-badge">
+                            <i class="fas fa-lock"></i>
+                            <div class="trust-text">
+                                <strong>SSL Secured</strong>
+                                <span>256-bit encryption</span>
+                            </div>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-shield-check"></i>
+                            <div class="trust-text">
+                                <strong>Buyer Protection</strong>
+                                <span>100% secure payments</span>
+                            </div>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-truck"></i>
+                            <div class="trust-text">
+                                <strong>Fast Delivery</strong>
+                                <span>1-3 business days</span>
+                            </div>
+                        </div>
+                        <div class="trust-badge">
+                            <i class="fas fa-medal"></i>
+                            <div class="trust-text">
+                                <strong>A+ Rating</strong>
+                                <span>Better Business Bureau</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Methods -->
+                    <div class="payment-methods">
+                        <h4>Secure Payment Methods</h4>
+                        <div class="payment-icons">
+                            <div class="payment-icon visa">
+                                <img src="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.6.6/flags/4x3/us.svg" alt="Visa" style="display: none;">
+                                <span>VISA</span>
+                            </div>
+                            <div class="payment-icon mastercard">
+                                <span>Mastercard</span>
+                            </div>
+                            <div class="payment-icon amex">
+                                <span>AMEX</span>
+                            </div>
+                            <div class="payment-icon discover">
+                                <span>Discover</span>
+                            </div>
+                            <div class="payment-icon paypal">
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-icon stripe">
+                                <span>Stripe</span>
+                            </div>
+                            <div class="payment-icon apple-pay">
+                                <i class="fab fa-apple-pay"></i>
+                                <span>Apple Pay</span>
+                            </div>
+                            <div class="payment-icon google-pay">
+                                <span>Google Pay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- About Us Section -->
         <section class="about" id="about">
             <div class="about-container">
@@ -255,20 +502,20 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#">All Products</a></li>
-                        <li><a href="#">New Arrivals</a></li>
-                        <li><a href="#">Best Sellers</a></li>
-                        <li><a href="#">Specials</a></li>
+                        <li><a href="#" onclick="searchAllProducts()">All Products</a></li>
+                        <li><a href="#" onclick="searchByCategory('new')">New Arrivals</a></li>
+                        <li><a href="#" onclick="searchByCategory('bestsellers')">Best Sellers</a></li>
+                        <li><a href="#" onclick="searchByCategory('specials')">Specials</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-section">
                     <h4>Brands</h4>
                     <ul>
-                        <li><a href="#">Barber World</a></li>
-                        <li><a href="#">Wahl</a></li>
-                        <li><a href="#">Andis</a></li>
-                        <li><a href="#">StyleCraft</a></li>
+                        <li><a href="#" onclick="searchByBrand('Barber World')">Barber World</a></li>
+                        <li><a href="#" onclick="searchByBrand('Wahl')">Wahl</a></li>
+                        <li><a href="#" onclick="searchByBrand('Andis')">Andis</a></li>
+                        <li><a href="#" onclick="searchByBrand('StyleCraft')">StyleCraft</a></li>
                     </ul>
                 </div>
                 
