@@ -121,121 +121,202 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 80px;
+    height: 85px;
 }
 
-/* Logo */
+/* ============================================================================
+   ENHANCED LOGO INSPIRED BY THE BARBER PLUG
+   ============================================================================ */
+
 .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
     cursor: pointer;
-    transition: transform var(--transition-fast);
+    transition: all var(--transition-normal);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-lg);
 }
 
 .nav-logo:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
 }
 
-.logo-icon {
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-hover));
-    border-radius: 12px;
+.logo-container {
+    position: relative;
+    width: 280px;
+    height: 65px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-md);
-    transition: all var(--transition-fast);
-    overflow: hidden;
 }
 
-.logo-icon:hover {
-    transform: translateY(-1px);
-    box-shadow: var(--shadow-lg);
-}
-
-.barber-pole {
-    width: 16px;
-    height: 24px;
-    background: linear-gradient(90deg, #f0f0f0 0%, #ffffff 50%, #f0f0f0 100%);
-    border-radius: 8px;
+.logo-background {
     position: relative;
-    overflow: hidden;
-    box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
-}
-
-.barber-pole::before {
-    content: '';
-    position: absolute;
-    top: -100%;
-    left: 0;
     width: 100%;
-    height: 300%;
-    background: repeating-linear-gradient(
-        -45deg,
-        transparent 0px,
-        transparent 4px,
-        #dc2626 4px,
-        #dc2626 8px,
-        transparent 8px,
-        transparent 12px,
-        #2563eb 12px,
-        #2563eb 16px,
-        transparent 16px,
-        transparent 20px
-    );
-    animation: poleSpiral 2s linear infinite;
-    opacity: 0.9;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.barber-pole::after {
-    content: '';
+.logo-outline {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, 
-        rgba(0,0,0,0.1) 0%, 
-        transparent 30%, 
-        rgba(255,255,255,0.3) 50%, 
-        transparent 70%, 
-        rgba(0,0,0,0.1) 100%
-    );
-    border-radius: 8px;
+    z-index: 1;
+    opacity: 0;
+    transition: all var(--transition-slow);
 }
 
-@keyframes poleSpiral {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(20px); }
+.nav-logo:hover .logo-outline {
+    opacity: 1;
+    transform: scale(1.02);
 }
 
+/* Script Typography */
 .logo-text {
+    position: relative;
+    z-index: 3;
+    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: -8px;
 }
 
-.logo-main {
-    font-family: var(--font-accent);
-    font-size: 1.25rem;
+.logo-line-1 {
+    position: relative;
+}
+
+.logo-line-2 {
+    position: relative;
+    margin-top: -12px;
+    margin-left: 20px;
+}
+
+.script-text {
+    font-family: var(--font-script);
     font-weight: 700;
     color: var(--primary-black);
-    line-height: 1;
-    letter-spacing: 0.5px;
+    text-shadow: 
+        2px 2px 0 rgba(212, 175, 55, 0.3),
+        4px 4px 8px rgba(0, 0, 0, 0.1);
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 50%, #0a0a0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.logo-sub {
-    font-family: var(--font-accent);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--accent-gold);
-    line-height: 1;
-    letter-spacing: 2px;
-    margin-top: -2px;
+.script-text:first-child {
+    font-size: 2.2rem;
+    transform: rotate(-2deg);
 }
 
-/* Navigation Menu */
+.script-large {
+    font-size: 3.2rem !important;
+    font-weight: 800 !important;
+    transform: rotate(1deg) !important;
+    margin-left: -10px;
+}
+
+/* Hover Effects for Text */
+.nav-logo:hover .script-text {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 50%, var(--accent-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 
+        2px 2px 0 rgba(0, 0, 0, 0.2),
+        4px 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+/* Clipper Blade Element */
+.clipper-blade {
+    position: absolute;
+    bottom: 8px;
+    right: 25px;
+    z-index: 2;
+    transform: rotate(-15deg);
+    transition: all var(--transition-normal);
+}
+
+.blade-body {
+    width: 35px;
+    height: 8px;
+    background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #c0c0c0 100%);
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.blade-body::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, #888 0%, #bbb 50%, #888 100%);
+    border-radius: 1px;
+}
+
+.blade-teeth {
+    position: absolute;
+    bottom: -4px;
+    left: 3px;
+    display: flex;
+    gap: 3px;
+}
+
+.tooth {
+    width: 2px;
+    height: 4px;
+    background: linear-gradient(180deg, #a0a0a0 0%, #d0d0d0 100%);
+    border-radius: 0 0 1px 1px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.nav-logo:hover .clipper-blade {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+/* Decorative Flourishes */
+.logo-flourish {
+    position: absolute;
+    width: 40px;
+    height: 15px;
+    z-index: 1;
+    opacity: 0;
+    transition: all var(--transition-slow);
+}
+
+.logo-flourish-left {
+    top: 15px;
+    left: 10px;
+    transform: rotate(-10deg);
+}
+
+.logo-flourish-right {
+    bottom: 15px;
+    right: 10px;
+    transform: rotate(10deg);
+}
+
+.nav-logo:hover .logo-flourish {
+    opacity: 1;
+    transform: rotate(0deg) scale(1.1);
+}
+
+/* ============================================================================
+   NAVIGATION MENU
+   ============================================================================ */
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -252,6 +333,7 @@ main {
     display: flex;
     align-items: center;
     gap: var(--spacing-xs);
+    text-decoration: none;
 }
 
 .nav-link:hover,
@@ -389,6 +471,7 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-decoration: none;
 }
 
 .mega-menu-links a::before {
@@ -427,7 +510,10 @@ main {
     transform: translateX(0);
 }
 
-/* Navigation Actions */
+/* ============================================================================
+   NAVIGATION ACTIONS
+   ============================================================================ */
+
 .nav-actions {
     display: flex;
     align-items: center;
@@ -444,6 +530,9 @@ main {
     color: var(--primary-black);
     transition: all var(--transition-fast);
     position: relative;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
 .nav-btn:hover {
@@ -470,7 +559,7 @@ main {
     display: block;
 }
 
-/* Enhanced Mobile Menu Toggle */
+/* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
     flex-direction: column;
@@ -485,6 +574,7 @@ main {
     position: relative;
     background: rgba(212, 175, 55, 0.05);
     border: 1px solid rgba(212, 175, 55, 0.1);
+    cursor: pointer;
 }
 
 .mobile-menu-toggle:hover {
@@ -520,7 +610,10 @@ main {
     border-color: var(--accent-gold);
 }
 
-/* Responsive Design */
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+
 @media (max-width: 1024px) {
     .nav-container {
         padding: 0 var(--spacing-lg);
@@ -528,6 +621,19 @@ main {
     
     .mega-menu {
         width: 500px;
+    }
+    
+    .logo-container {
+        width: 240px;
+        height: 55px;
+    }
+    
+    .script-text:first-child {
+        font-size: 1.8rem;
+    }
+    
+    .script-large {
+        font-size: 2.6rem !important;
     }
 }
 
@@ -540,11 +646,28 @@ main {
         display: flex;
     }
     
+    .logo-container {
+        width: 200px;
+        height: 50px;
+    }
+    
+    .script-text:first-child {
+        font-size: 1.5rem;
+    }
+    
+    .script-large {
+        font-size: 2.2rem !important;
+    }
+    
+    .nav-container {
+        height: 75px;
+    }
+    
     /* Enhanced Mobile Menu */
     .nav-menu.active {
         display: flex;
         position: fixed;
-        top: 80px;
+        top: 75px;
         left: 0;
         right: 0;
         bottom: 0;
@@ -581,57 +704,17 @@ main {
         overflow: hidden;
     }
 
-    .nav-menu.active .nav-link::before {
-        content: '';
-        position: absolute;
-        left: -100%;
-        top: 0;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(90deg, 
-            transparent, 
-            rgba(212, 175, 55, 0.1), 
-            transparent);
-        transition: left 0.5s ease;
-        z-index: -1;
-    }
-
-    .nav-menu.active .nav-link:hover::before {
-        left: 0;
-    }
-
     .nav-menu.active .nav-link:hover {
         color: var(--accent-gold);
         background: rgba(212, 175, 55, 0.05);
         transform: translateX(10px);
     }
 
-    .nav-menu.active .nav-link::after {
-        width: 0;
-        height: 0;
-        bottom: auto;
-        top: 50%;
-        right: var(--spacing-xl);
-        left: auto;
-        transform: translateY(-50%);
-        width: 6px;
-        height: 6px;
-        background: var(--accent-gold);
-        border-radius: 50%;
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .nav-menu.active .nav-link:hover::after {
-        opacity: 1;
-        transform: translateY(-50%) scale(1.2);
-    }
-
     .nav-menu.active .nav-dropdown {
         width: 100%;
     }
 
-    /* Enhanced Mobile Mega Menu */
+    /* Mobile Mega Menu */
     .nav-menu.active .mega-menu {
         position: static;
         width: 100%;
@@ -663,20 +746,11 @@ main {
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .nav-menu.active .mega-menu-section:last-child {
-        border-bottom: none;
-    }
-
     .nav-menu.active .mega-menu-section h4 {
         color: var(--accent-gold);
         font-size: 0.9rem;
         margin-bottom: var(--spacing-md);
         letter-spacing: 1.5px;
-    }
-
-    .nav-menu.active .mega-menu-section h4::after {
-        background: linear-gradient(90deg, var(--accent-gold), rgba(212, 175, 55, 0.3));
-        width: 40px;
     }
 
     .nav-menu.active .mega-menu-links a {
@@ -689,40 +763,13 @@ main {
         padding-left: var(--spacing-lg);
     }
 
-    .nav-menu.active .mega-menu-links a::before {
-        width: 0;
-        background: linear-gradient(90deg, var(--accent-gold), rgba(212, 175, 55, 0.2));
-        left: var(--spacing-md);
-        top: 50%;
-        bottom: auto;
-        height: 2px;
-        transform: translateY(-50%);
-        border-radius: 1px;
-    }
-
-    .nav-menu.active .mega-menu-links a:hover::before {
-        width: 20px;
-    }
-
     .nav-menu.active .mega-menu-links a:hover {
         color: var(--white);
         background: rgba(212, 175, 55, 0.1);
         transform: translateX(5px);
     }
 
-    .nav-menu.active .mega-menu-links a::after {
-        content: '';
-        right: var(--spacing-md);
-        opacity: 0;
-        transform: translateX(-5px);
-    }
-
-    .nav-menu.active .mega-menu-links a:hover::after {
-        opacity: 0;
-        transform: translateX(0);
-    }
-
-    /* Mobile menu header enhancement */
+    /* Mobile menu header */
     .nav-menu.active::before {
         content: 'NAVIGATION';
         position: sticky;
@@ -757,17 +804,23 @@ main {
         gap: var(--spacing-sm);
     }
     
-    .logo-main {
-        font-size: 1.1rem;
+    .logo-container {
+        width: 180px;
+        height: 45px;
     }
     
-    .logo-sub {
-        font-size: 0.65rem;
-        letter-spacing: 1.5px;
+    .script-text:first-child {
+        font-size: 1.3rem;
     }
     
-    .nav-container {
-        padding: 0 var(--spacing-sm);
+    .script-large {
+        font-size: 2rem !important;
+    }
+    
+    .clipper-blade {
+        transform: rotate(-15deg) scale(0.8);
+        bottom: 5px;
+        right: 15px;
     }
 }
 
