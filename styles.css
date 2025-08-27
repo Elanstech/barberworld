@@ -145,8 +145,8 @@ main {
 }
 
 .logo-image {
-    width: 45px;
-    height: 45px;
+    width: 60px;
+    height: 60px;
     object-fit: contain;
     transition: all var(--transition-normal);
     border-radius: var(--radius-md);
@@ -494,8 +494,8 @@ main {
     }
     
     .logo-image {
-        width: 40px;
-        height: 40px;
+        width: 55px;
+        height: 55px;
     }
 }
 
@@ -509,8 +509,8 @@ main {
     }
     
     .logo-image {
-        width: 38px;
-        height: 38px;
+        width: 40px;
+        height: 40px;
     }
     
     .nav-container {
