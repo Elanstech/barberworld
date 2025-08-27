@@ -1,0 +1,1034 @@
+[
+  {
+    "id": 1,
+    "name": "JRL Onyx Clipper 2020C-B",
+    "price": 225,
+    "brand": "JRL",
+    "slug": "jrl-onyx-clipper-2020c-b",
+    "brandId": 1
+  },
+  {
+    "id": 2,
+    "name": "JRL Onyx Trimmer 2020T-B",
+    "price": 145,
+    "brand": "JRL",
+    "slug": "jrl-onyx-trimmer-2020t-b",
+    "brandId": 2
+  },
+  {
+    "id": 3,
+    "name": "JRL Ghost Clipper",
+    "price": 225.5,
+    "brand": "JRL",
+    "slug": "jrl-ghost-clipper",
+    "brandId": 3
+  },
+  {
+    "id": 4,
+    "name": "JRL Ghost Trimmer",
+    "price": 145,
+    "brand": "JRL",
+    "slug": "jrl-ghost-trimmer",
+    "brandId": 4
+  },
+  {
+    "id": 5,
+    "name": "JRL Barber Comb Set",
+    "price": 29.99,
+    "brand": "JRL",
+    "slug": "jrl-barber-comb-set",
+    "brandId": 5
+  },
+  {
+    "id": 6,
+    "name": "JRL Professional Cutting Cape",
+    "price": 15.99,
+    "brand": "JRL",
+    "slug": "jrl-professional-cutting-cape",
+    "brandId": 6
+  },
+  {
+    "id": 7,
+    "name": "JRL Professional Hair Clips",
+    "price": 6.99,
+    "brand": "JRL",
+    "slug": "jrl-professional-hair-clips",
+    "brandId": 7
+  },
+  {
+    "id": 8,
+    "name": "JRL Professional Onyx SF Pro Foil Shaver SH2301",
+    "price": 89.95,
+    "brand": "JRL",
+    "slug": "jrl-professional-onyx-sf-pro-foil-shaver-sh2301",
+    "brandId": 8
+  },
+  {
+    "id": 9,
+    "name": "JRL Freshfade 2020C Cordless Clipper 2020C-G",
+    "price": 175,
+    "brand": "JRL",
+    "slug": "jrl-freshfade-2020c-cordless-clipper-2020c-g",
+    "brandId": 9
+  },
+  {
+    "id": 10,
+    "name": "JRL Freshfade 2020T Trimmers",
+    "price": 125,
+    "brand": "JRL",
+    "slug": "jrl-freshfade-2020t-trimmers",
+    "brandId": 10
+  },
+  {
+    "id": 11,
+    "name": "JRL Blow Dryer Forte Pro",
+    "price": 229.99,
+    "brand": "JRL",
+    "slug": "jrl-blow-dryer-forte-pro",
+    "brandId": 11
+  },
+  {
+    "id": 12,
+    "name": "JRL Charging Dock",
+    "price": 17.95,
+    "brand": "JRL",
+    "slug": "jrl-charging-dock",
+    "brandId": 12
+  },
+  {
+    "id": 13,
+    "name": "JRL BARBER MAGNETIC MAT",
+    "price": 63,
+    "brand": "JRL",
+    "slug": "jrl-barber-magnetic-mat",
+    "brandId": 13
+  },
+  {
+    "id": 14,
+    "name": "JRL Large Hand Held Mirror",
+    "price": 19.99,
+    "brand": "JRL",
+    "slug": "jrl-large-hand-held-mirror",
+    "brandId": 14
+  },
+  {
+    "id": 15,
+    "name": "JRL Fine Mist Spray Bottle",
+    "price": 3.99,
+    "brand": "JRL",
+    "slug": "jrl-fine-mist-spray-bottle",
+    "brandId": 15
+  },
+  {
+    "id": 16,
+    "name": "StyleCraft Flex Shaver",
+    "price": 89.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-shaver",
+    "brandId": 1
+  },
+  {
+    "id": 17,
+    "name": "Gamma Boosted Shaver GP808M",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-shaver-gp808m",
+    "brandId": 2
+  },
+  {
+    "id": 18,
+    "name": "StyleCraft Nano Mister",
+    "price": 49.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-nano-mister",
+    "brandId": 3
+  },
+  {
+    "id": 19,
+    "name": "StyleCraft Silver Slick Replacement Prodigy Shaver Foil Head",
+    "price": 15.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-silver-slick-replacement-prodigy-shaver-foil-head",
+    "brandId": 4
+  },
+  {
+    "id": 20,
+    "name": "Gamma Magnetic Matt",
+    "price": 99.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-magnetic-matt",
+    "brandId": 5
+  },
+  {
+    "id": 21,
+    "name": "StyleCraft Cordless Heat Strok Beard & Styling Hot Brush SCHSWBB",
+    "price": 79.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-cordless-heat-strok-beard-styling-hot-brush-schswbb",
+    "brandId": 6
+  },
+  {
+    "id": 22,
+    "name": "StyleCraft Precision Saber Trimmer (SC403BP)",
+    "price": 184.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-precision-saber-trimmer-sc403bp",
+    "brandId": 7
+  },
+  {
+    "id": 23,
+    "name": "StyleCraft On-The-Go Barber/Stylist Tool Case w/ Mirror SC328B",
+    "price": 44.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-on-the-go-barberstylist-tool-case-w-mirror-sc328b",
+    "brandId": 8
+  },
+  {
+    "id": 24,
+    "name": "EVO NANO MISTER SPRAY SYSTEM - BLACK",
+    "price": 48.99,
+    "brand": "StyleCraft",
+    "slug": "evo-nano-mister-spray-system-black",
+    "brandId": 9
+  },
+  {
+    "id": 25,
+    "name": "Gamma+ Evo Trimmer",
+    "price": 129.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-evo-trimmer",
+    "brandId": 10
+  },
+  {
+    "id": 26,
+    "name": "StyleCraft Ergo & Prodigy Shaver",
+    "price": 300,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ergo-prodigy-shaver",
+    "brandId": 11
+  },
+  {
+    "id": 27,
+    "name": "Gamma+ Clipper Blade DLC Fixed Taper & Gold Titanium Cutter GPCRBTS",
+    "price": 30.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-clipper-blade-dlc-fixed-taper-gold-titanium-cutter-gpcrbts",
+    "brandId": 12
+  },
+  {
+    "id": 28,
+    "name": "Gamma+ Replacement Gold Titanium Single Foil Head",
+    "price": 11.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-replacement-gold-titanium-single-foil-head",
+    "brandId": 13
+  },
+  {
+    "id": 29,
+    "name": "Gamma+ Evo Trimmer HCGPX-EVOMS",
+    "price": 175,
+    "brand": "StyleCraft",
+    "slug": "gamma-evo-trimmer-hcgpx-evoms",
+    "brandId": 14
+  },
+  {
+    "id": 30,
+    "name": "Gamma+ Ergo Clipper HCGPMECS",
+    "price": 159,
+    "brand": "StyleCraft",
+    "slug": "gamma-ergo-clipper-hcgpmecs",
+    "brandId": 15
+  },
+  {
+    "id": 31,
+    "name": "StyleCraft Evo Linear Trimmer",
+    "price": 129.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-evo-linear-trimmer",
+    "brandId": 16
+  },
+  {
+    "id": 32,
+    "name": "StyleCraft Wireless Prodigy Shaver SCWPFS",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-wireless-prodigy-shaver-scwpfs",
+    "brandId": 17
+  },
+  {
+    "id": 33,
+    "name": "StyleCraft Gamma Hitter",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-gamma-hitter",
+    "brandId": 18
+  },
+  {
+    "id": 34,
+    "name": "Gamma+ Protege Clipper",
+    "price": 89.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-protege-clipper",
+    "brandId": 19
+  },
+  {
+    "id": 35,
+    "name": "Gamma+ Protege Trimmer",
+    "price": 80,
+    "brand": "StyleCraft",
+    "slug": "gamma-protege-trimmer",
+    "brandId": 20
+  },
+  {
+    "id": 36,
+    "name": "Gamma+ Prodigy Shaver",
+    "price": 99.95,
+    "brand": "StyleCraft",
+    "slug": "gamma-prodigy-shaver",
+    "brandId": 21
+  },
+  {
+    "id": 37,
+    "name": "StyleCraft Ace Shaver 2.0",
+    "price": 79.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ace-shaver-20",
+    "brandId": 22
+  },
+  {
+    "id": 38,
+    "name": "Gamma+ xcell Blow Dryer",
+    "price": 375,
+    "brand": "StyleCraft",
+    "slug": "gamma-xcell-blow-dryer",
+    "brandId": 23
+  },
+  {
+    "id": 39,
+    "name": "StyleCraft Rogue Clipper",
+    "price": 155,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rogue-clipper",
+    "brandId": 24
+  },
+  {
+    "id": 40,
+    "name": "StyleCraft Absolute Alpha Clipper SCAACS",
+    "price": 180,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-absolute-alpha-clipper-scaacs",
+    "brandId": 25
+  },
+  {
+    "id": 41,
+    "name": "Gamma+ Absolute Alpha Clipper",
+    "price": 129,
+    "brand": "StyleCraft",
+    "slug": "gamma-absolute-alpha-clipper",
+    "brandId": 26
+  },
+  {
+    "id": 42,
+    "name": "Style Craft Ace Trimmer (gamma) SC404B",
+    "price": 69.99,
+    "brand": "StyleCraft",
+    "slug": "style-craft-ace-trimmer-gamma-sc404b",
+    "brandId": 27
+  },
+  {
+    "id": 43,
+    "name": "StyleCraft Uno Shaver",
+    "price": 79.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-shaver",
+    "brandId": 28
+  },
+  {
+    "id": 44,
+    "name": "Style Craft Rebel Shaver SC802B",
+    "price": 129,
+    "brand": "StyleCraft",
+    "slug": "style-craft-rebel-shaver-sc802b",
+    "brandId": 29
+  },
+  {
+    "id": 45,
+    "name": "StyleCraft Flex Trimmer SC406M",
+    "price": 149.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-trimmer-sc406m",
+    "brandId": 30
+  },
+  {
+    "id": 46,
+    "name": "Gamma+ Faper Blade",
+    "price": 32,
+    "brand": "StyleCraft",
+    "slug": "gamma-faper-blade",
+    "brandId": 31
+  },
+  {
+    "id": 47,
+    "name": "StyleCraft Rebel Trimmer SC409M",
+    "price": 159.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-trimmer-sc409m",
+    "brandId": 32
+  },
+  {
+    "id": 48,
+    "name": "StyleCraft Instinct Trimmer SC407M",
+    "price": 219,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-trimmer-sc407m",
+    "brandId": 33
+  },
+  {
+    "id": 49,
+    "name": "Gamma+ Boosted Cordless Trimmer",
+    "price": 149,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-cordless-trimmer",
+    "brandId": 34
+  },
+  {
+    "id": 50,
+    "name": "StyleCraft Saber Trimmer",
+    "price": 229,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-trimmer",
+    "brandId": 35
+  },
+  {
+    "id": 51,
+    "name": "StyleCraft Uno 2.0 Single Foil Shaver SC803R",
+    "price": 59.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-20-single-foil-shaver-sc803r",
+    "brandId": 36
+  },
+  {
+    "id": 52,
+    "name": "StyleCraft Instinct-X Clipper SC608M",
+    "price": 289.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-x-clipper-sc608m",
+    "brandId": 37
+  },
+  {
+    "id": 53,
+    "name": "Gamma+ Boosted Clipper GP601M",
+    "price": 220,
+    "brand": "StyleCraft",
+    "slug": "gamma-boosted-clipper-gp601m",
+    "brandId": 38
+  },
+  {
+    "id": 54,
+    "name": "Gamma+ Cyborg Trimmer GP401S",
+    "price": 189,
+    "brand": "StyleCraft",
+    "slug": "gamma-cyborg-trimmer-gp401s",
+    "brandId": 39
+  },
+  {
+    "id": 55,
+    "name": "StyleCraft Rebel Clipper SC601",
+    "price": 280,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-clipper-sc601",
+    "brandId": 40
+  },
+  {
+    "id": 56,
+    "name": "Gamma+ X-Ergo Clipper HCGPXER-GOMS",
+    "price": 275,
+    "brand": "StyleCraft",
+    "slug": "gamma-x-ergo-clipper-hcgpxer-goms",
+    "brandId": 41
+  },
+  {
+    "id": 57,
+    "name": "Gamma+ Cyborg Clipper",
+    "price": 199,
+    "brand": "StyleCraft",
+    "slug": "gamma-cyborg-clipper",
+    "brandId": 42
+  },
+  {
+    "id": 58,
+    "name": "StyleCraft Rebel Shaver Limited Edition SC809M",
+    "price": 99.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-shaver-limited-edition-sc809m",
+    "brandId": 43
+  },
+  {
+    "id": 59,
+    "name": "STYLECRAFT INSTINCT METAL CLIPPER SC611M",
+    "price": 289.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-metal-clipper-sc611m",
+    "brandId": 44
+  },
+  {
+    "id": 60,
+    "name": "StyleCraft x United By Short Hair Rogue Clipper | 333 Limited Edition",
+    "price": 149.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-x-united-by-short-hair-rogue-clipper-333-limited-edition",
+    "brandId": 45
+  },
+  {
+    "id": 61,
+    "name": "StyleCraft Ergo Clipper SCMECB",
+    "price": 200,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-ergo-clipper-scmecb",
+    "brandId": 46
+  },
+  {
+    "id": 62,
+    "name": "STYLECRAFT INSTINCT METAL TRIMMER",
+    "price": 229,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-metal-trimmer",
+    "brandId": 47
+  },
+  {
+    "id": 63,
+    "name": "Instinct Metal Double Shaver SC807B",
+    "price": 189,
+    "brand": "StyleCraft",
+    "slug": "instinct-metal-double-shaver-sc807b",
+    "brandId": 48
+  },
+  {
+    "id": 64,
+    "name": "StyleCraft Rebel Super-Torque Modular Cordless Clipper Limited Edition",
+    "price": 199.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-super-torque-modular-cordless-clipper-limited-edition",
+    "brandId": 49
+  },
+  {
+    "id": 65,
+    "name": "Style Craft 360 Jeezy Clipper SC614B",
+    "price": 299.99,
+    "brand": "StyleCraft",
+    "slug": "style-craft-360-jeezy-clipper-sc614b",
+    "brandId": 50
+  },
+  {
+    "id": 66,
+    "name": "StyleCraft Saber II Clipper (SC617B)",
+    "price": 299.95,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-ii-clipper-sc617b",
+    "brandId": 51
+  },
+  {
+    "id": 67,
+    "name": "StyleCraft Instinct-X Metal Trimmer SC411M",
+    "price": 209,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-x-metal-trimmer-sc411m",
+    "brandId": 52
+  },
+  {
+    "id": 68,
+    "name": "Gamma Shorty Clipper GP605M",
+    "price": 249.99,
+    "brand": "StyleCraft",
+    "slug": "gamma-shorty-clipper-gp605m",
+    "brandId": 53
+  },
+  {
+    "id": 69,
+    "name": "StyleCraft Instinct Clipper SC607M",
+    "price": 269,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-instinct-clipper-sc607m",
+    "brandId": 54
+  },
+  {
+    "id": 70,
+    "name": "WAHL SHAVER REPLACEMENT GOLD FOIL SUPER CLOSE",
+    "price": 17.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver-replacement-gold-foil-super-close",
+    "brandId": 1
+  },
+  {
+    "id": 71,
+    "name": "WAHL SHAVER FINALE REPLACEMENT SUPER CLOSE GOLD FOIL",
+    "price": 17.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver-finale-replacement-super-close-gold-foil",
+    "brandId": 2
+  },
+  {
+    "id": 72,
+    "name": "WAHL BLADE 3-HOLE ADJUSTO-LOCK 1005",
+    "price": 24.99,
+    "brand": "Wahl",
+    "slug": "wahl-blade-3-hole-adjusto-lock-1005",
+    "brandId": 3
+  },
+  {
+    "id": 73,
+    "name": "Wahl Clipper Oil",
+    "price": 7.99,
+    "brand": "Wahl",
+    "slug": "wahl-clipper-oil",
+    "brandId": 4
+  },
+  {
+    "id": 74,
+    "name": "Wahl T-Wide Adjustable Trimmer Blade",
+    "price": 24.99,
+    "brand": "Wahl",
+    "slug": "wahl-t-wide-adjustable-trimmer-blade",
+    "brandId": 5
+  },
+  {
+    "id": 75,
+    "name": "Wahl Clini Clip Cleaner & Disinfectant",
+    "price": 12.99,
+    "brand": "Wahl",
+    "slug": "wahl-clini-clip-cleaner-disinfectant",
+    "brandId": 6
+  },
+  {
+    "id": 76,
+    "name": "Wahl Professional Vapor LE Cordless Clipper Limited Edition (3028320)",
+    "price": 250,
+    "brand": "Wahl",
+    "slug": "wahl-professional-vapor-le-cordless-clipper-limited-edition-3028320",
+    "brandId": 7
+  },
+  {
+    "id": 77,
+    "name": "WAHL CUTTING GUIDES 8 PC PACK (guards)",
+    "price": 17.99,
+    "brand": "Wahl",
+    "slug": "wahl-cutting-guides-8-pc-pack-guards",
+    "brandId": 8
+  },
+  {
+    "id": 78,
+    "name": "Wahl Designer Cordless 08591",
+    "price": 129.99,
+    "brand": "Wahl",
+    "slug": "wahl-designer-cordless-08591",
+    "brandId": 9
+  },
+  {
+    "id": 79,
+    "name": "Wahl Shaver",
+    "price": 84.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver",
+    "brandId": 10
+  },
+  {
+    "id": 80,
+    "name": "Wahl Detailer Corded 08171",
+    "price": 89.99,
+    "brand": "Wahl",
+    "slug": "wahl-detailer-corded-08171",
+    "brandId": 11
+  },
+  {
+    "id": 81,
+    "name": "Wahl Senior Corded Black 8545",
+    "price": 119.99,
+    "brand": "Wahl",
+    "slug": "wahl-senior-corded-black-8545",
+    "brandId": 12
+  },
+  {
+    "id": 82,
+    "name": "Wahl Barber Mat",
+    "price": 27.99,
+    "brand": "Wahl",
+    "slug": "wahl-barber-mat",
+    "brandId": 13
+  },
+  {
+    "id": 83,
+    "name": "WAHL BLADE SURGICAL 1026-001",
+    "price": 24.99,
+    "brand": "Wahl",
+    "slug": "wahl-blade-surgical-1026-001",
+    "brandId": 14
+  },
+  {
+    "id": 84,
+    "name": "Wahl 1/2 Premium Clipper Guard",
+    "price": 5.99,
+    "brand": "Wahl",
+    "slug": "wahl-12-premium-clipper-guard",
+    "brandId": 15
+  },
+  {
+    "id": 85,
+    "name": "Wahl Detailer Cordless Gold 08171-700",
+    "price": 149,
+    "brand": "Wahl",
+    "slug": "wahl-detailer-cordless-gold-08171-700",
+    "brandId": 16
+  },
+  {
+    "id": 86,
+    "name": "Wahl Power Station",
+    "price": 169.99,
+    "brand": "Wahl",
+    "slug": "wahl-power-station",
+    "brandId": 17
+  },
+  {
+    "id": 87,
+    "name": "Wahl Cordless Legend",
+    "price": 164.99,
+    "brand": "Wahl",
+    "slug": "wahl-cordless-legend",
+    "brandId": 18
+  },
+  {
+    "id": 88,
+    "name": "Wahl Detailer Cordless 08171",
+    "price": 139.99,
+    "brand": "Wahl",
+    "slug": "wahl-detailer-cordless-08171",
+    "brandId": 19
+  },
+  {
+    "id": 89,
+    "name": "Wahl Charging stand (accessories)",
+    "price": 42.99,
+    "brand": "Wahl",
+    "slug": "wahl-charging-stand-accessories",
+    "brandId": 20
+  },
+  {
+    "id": 90,
+    "name": "Wahl Shaver Finale",
+    "price": 99.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver-finale",
+    "brandId": 21
+  },
+  {
+    "id": 91,
+    "name": "WAHL BLADE 2-HOLE STAGGER TOOTH 02161",
+    "price": 24.99,
+    "brand": "Wahl",
+    "slug": "wahl-blade-2-hole-stagger-tooth-02161",
+    "brandId": 22
+  },
+  {
+    "id": 92,
+    "name": "Wahl Super Taper X Clipper (PRE-ORDER)",
+    "price": 179.99,
+    "brand": "Wahl",
+    "slug": "wahl-super-taper-x-clipper-pre-order",
+    "brandId": 23
+  },
+  {
+    "id": 93,
+    "name": "Wahl Vapor Cordless Clipper (3026480)",
+    "price": 250,
+    "brand": "Wahl",
+    "slug": "wahl-vapor-cordless-clipper-3026480",
+    "brandId": 24
+  },
+  {
+    "id": 94,
+    "name": "Wahl Professional Hi-Viz Cord/Cordless Trimmer (3023699)",
+    "price": 225,
+    "brand": "Wahl",
+    "slug": "wahl-professional-hi-viz-cordcordless-trimmer-3023699",
+    "brandId": 25
+  },
+  {
+    "id": 95,
+    "name": "Wahl Cordless Gold Magic Clip",
+    "price": 229.99,
+    "brand": "Wahl",
+    "slug": "wahl-cordless-gold-magic-clip",
+    "brandId": 26
+  },
+  {
+    "id": 96,
+    "name": "Wahl Senior Cordless 08504-400",
+    "price": 179.99,
+    "brand": "Wahl",
+    "slug": "wahl-senior-cordless-08504-400",
+    "brandId": 27
+  },
+  {
+    "id": 97,
+    "name": "Wahl Guides Metal Guards",
+    "price": 34.99,
+    "brand": "Wahl",
+    "slug": "wahl-guides-metal-guards",
+    "brandId": 28
+  },
+  {
+    "id": 98,
+    "name": "Wahl Vanish Shaver 08173-700",
+    "price": 129.99,
+    "brand": "Wahl",
+    "slug": "wahl-vanish-shaver-08173-700",
+    "brandId": 29
+  },
+  {
+    "id": 99,
+    "name": "Wahl Magic Clip Cordless 8148",
+    "price": 150,
+    "brand": "Wahl",
+    "slug": "wahl-magic-clip-cordless-8148",
+    "brandId": 30
+  },
+  {
+    "id": 100,
+    "name": "BaByliss Influencer Clipper FX870RI",
+    "price": 250,
+    "brand": "Babyliss",
+    "slug": "babyliss-influencer-clipper-fx870ri",
+    "brandId": 1
+  },
+  {
+    "id": 101,
+    "name": "BaBylissPRO Tomb45 Trimmer",
+    "price": 219.95,
+    "brand": "Babyliss",
+    "slug": "babylisspro-tomb45-trimmer",
+    "brandId": 2
+  },
+  {
+    "id": 102,
+    "name": "BaBylissPRO Tomb45 Wireless Charging Clipper FXT45C",
+    "price": 249.95,
+    "brand": "Babyliss",
+    "slug": "babylisspro-tomb45-wireless-charging-clipper-fxt45c",
+    "brandId": 3
+  },
+  {
+    "id": 103,
+    "name": "Babyliss Lo Pro FX One Neon Trimmer (FX729NYLT)",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-neon-trimmer-fx729nylt",
+    "brandId": 4
+  },
+  {
+    "id": 104,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION NEON CLIPPER (FX829NYLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-neon-clipper-fx829nylt",
+    "brandId": 5
+  },
+  {
+    "id": 105,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION Matte Black CLIPPER (FX829MBLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt",
+    "brandId": 6
+  },
+  {
+    "id": 106,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION Tan CLIPPER (FX829SDLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-tan-clipper-fx829sdlt",
+    "brandId": 7
+  },
+  {
+    "id": 107,
+    "name": "Babyliss Lo Pro FX One Tan Trimmer FX729SDLT",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-tan-trimmer-fx729sdlt",
+    "brandId": 8
+  },
+  {
+    "id": 108,
+    "name": "Babyliss Lo Pro FX One Black Trimmer FX729MBLT",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-black-trimmer-fx729mblt",
+    "brandId": 9
+  },
+  {
+    "id": 109,
+    "name": "BABYLISSPRO NANO TITANIUM LIGHT IONIC HIGH-SPEED DRYER",
+    "price": 159.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-nano-titanium-light-ionic-high-speed-dryer",
+    "brandId": 10
+  },
+  {
+    "id": 110,
+    "name": "BabylissPRO FXONE LIMITEDFX Tool Only Purple Trimmer and Foil Shaver",
+    "price": 269.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-limitedfx-tool-only-purple-trimmer-and-foil-shaver",
+    "brandId": 11
+  },
+  {
+    "id": 111,
+    "name": "Babyliss Limited Edition Gold FX Trimmer & UV Single-Foil Shaver Set (FXLFHOLPKG)",
+    "price": 275,
+    "brand": "Babyliss",
+    "slug": "babyliss-limited-edition-gold-fx-trimmer-uv-single-foil-shaver-set-fxlfholpkg",
+    "brandId": 12
+  },
+  {
+    "id": 112,
+    "name": "BabylissPro Rose Gold FXONE Trimmer",
+    "price": 209.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-rose-gold-fxone-trimmer",
+    "brandId": 13
+  },
+  {
+    "id": 113,
+    "name": "BabylissPro Rose Gold FXONE Clipper",
+    "price": 209.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-rose-gold-fxone-clipper",
+    "brandId": 14
+  },
+  {
+    "id": 114,
+    "name": "BABYLISSPRO FXONE BLUEFX TRIMMER",
+    "price": 199,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-bluefx-trimmer",
+    "brandId": 15
+  },
+  {
+    "id": 115,
+    "name": "BabylissPRO Limited Edition Matte Black UV Foil Shaver",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-matte-black-uv-foil-shaver",
+    "brandId": 16
+  },
+  {
+    "id": 116,
+    "name": "BaBylissPRO FXONE Lo-PRO Compact Clipper (FX82)",
+    "price": 149.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-compact-clipper-fx82",
+    "brandId": 17
+  },
+  {
+    "id": 117,
+    "name": "BabylissPRO Nano Titanium Professional High-Speed Dual Blow Dryer",
+    "price": 199.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-nano-titanium-professional-high-speed-dual-blow-dryer",
+    "brandId": 18
+  },
+  {
+    "id": 118,
+    "name": "BABYLISSPRO FXONE LO-PROFX LIMITED EDITION MATTE RED CLIPPER FX825RI",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-profx-limited-edition-matte-red-clipper-fx825ri",
+    "brandId": 19
+  },
+  {
+    "id": 119,
+    "name": "BABYLISSPRO FXONE LO-PROFX LIMITED EDITION MATTE RED TRIMMER FX726RI",
+    "price": 189.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-profx-limited-edition-matte-red-trimmer-fx726ri",
+    "brandId": 20
+  },
+  {
+    "id": 120,
+    "name": "BaByliss FXONE Replacement Battery",
+    "price": 49.95,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-replacement-battery",
+    "brandId": 21
+  },
+  {
+    "id": 121,
+    "name": "BaBylissPRO Limited Edition Lithium FX Matte Black Clipper",
+    "price": 200,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-lithium-fx-matte-black-clipper",
+    "brandId": 22
+  },
+  {
+    "id": 122,
+    "name": "BabylissPRO Limited Edition Matte Black LithiumFX Trimmer",
+    "price": 189,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-matte-black-lithiumfx-trimmer",
+    "brandId": 23
+  },
+  {
+    "id": 123,
+    "name": "BabylissPRO BLUEFX Trimmer Blade (FX707BL)",
+    "price": 48.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-bluefx-trimmer-blade-fx707bl",
+    "brandId": 24
+  },
+  {
+    "id": 124,
+    "name": "BaByliss FXONE Lo-ProFX Clipper FX829",
+    "price": 229,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-lo-profx-clipper-fx829",
+    "brandId": 25
+  },
+  {
+    "id": 125,
+    "name": "BaByliss FXONE Lo-ProFX Trimmer (FX729)",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-lo-profx-trimmer-fx729",
+    "brandId": 26
+  },
+  {
+    "id": 126,
+    "name": "Babyliss FXONE Trimmer (FX799MB)",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-trimmer-fx799mb",
+    "brandId": 27
+  },
+  {
+    "id": 127,
+    "name": "BaByliss FXONE Clipper",
+    "price": 229,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-clipper",
+    "brandId": 28
+  },
+  {
+    "id": 128,
+    "name": "BaByliss Influencer Lo-PRO FX Trimmer",
+    "price": 189.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-influencer-lo-pro-fx-trimmer",
+    "brandId": 29
+  },
+  {
+    "id": 129,
+    "name": "BaByliss FXONE Shaver",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-shaver",
+    "brandId": 30
+  }
+]
