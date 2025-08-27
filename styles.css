@@ -421,7 +421,6 @@ main {
     box-shadow: var(--shadow-xl);
 }
 
-/* Featured Brand (Barber World) */
 .featured-brand {
     border: 2px solid var(--accent-gold);
     position: relative;
