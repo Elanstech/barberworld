@@ -95,7 +95,6 @@ main {
 /* ============================================================================
    HEADER SECTION
    ============================================================================ */
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -121,11 +120,11 @@ main {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 85px;
+    height: 80px;
 }
 
 /* ============================================================================
-   ENHANCED LOGO INSPIRED BY THE BARBER PLUG
+   PROFESSIONAL LOGO WITH INTEGRATED CLIPPER
    ============================================================================ */
 
 .nav-logo {
@@ -136,181 +135,192 @@ main {
 }
 
 .nav-logo:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
+    background: rgba(212, 175, 55, 0.03);
 }
 
 .logo-container {
     position: relative;
-    width: 280px;
-    height: 65px;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    width: 260px;
+    height: 55px;
+}
+
+/* Professional Clipper Icon */
+.professional-clipper {
+    position: relative;
+    width: 45px;
+    height: 45px;
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.logo-background {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.logo-outline {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    opacity: 0;
-    transition: all var(--transition-slow);
-}
-
-.nav-logo:hover .logo-outline {
-    opacity: 1;
-    transform: scale(1.02);
-}
-
-/* Script Typography */
-.logo-text {
-    position: relative;
-    z-index: 3;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: -8px;
-}
-
-.logo-line-1 {
-    position: relative;
-}
-
-.logo-line-2 {
-    position: relative;
-    margin-top: -12px;
-    margin-left: 20px;
-}
-
-.script-text {
-    font-family: var(--font-script);
-    font-weight: 700;
-    color: var(--primary-black);
-    text-shadow: 
-        2px 2px 0 rgba(212, 175, 55, 0.3),
-        4px 4px 8px rgba(0, 0, 0, 0.1);
-    letter-spacing: 1px;
-    position: relative;
-    display: inline-block;
-    background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 50%, #0a0a0a 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-.script-text:first-child {
-    font-size: 2.2rem;
-    transform: rotate(-2deg);
-}
-
-.script-large {
-    font-size: 3.2rem !important;
-    font-weight: 800 !important;
-    transform: rotate(1deg) !important;
-    margin-left: -10px;
-}
-
-/* Hover Effects for Text */
-.nav-logo:hover .script-text {
-    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 50%, var(--accent-gold) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: 
-        2px 2px 0 rgba(0, 0, 0, 0.2),
-        4px 4px 12px rgba(212, 175, 55, 0.3);
-}
-
-/* Clipper Blade Element */
-.clipper-blade {
-    position: absolute;
-    bottom: 8px;
-    right: 25px;
-    z-index: 2;
-    transform: rotate(-15deg);
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: var(--radius-lg);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.1);
     transition: all var(--transition-normal);
 }
 
-.blade-body {
-    width: 35px;
-    height: 8px;
-    background: linear-gradient(135deg, #c0c0c0 0%, #e0e0e0 50%, #c0c0c0 100%);
-    border-radius: 2px;
-    position: relative;
+.nav-logo:hover .professional-clipper {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 100%);
     box-shadow: 
-        0 2px 4px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        0 6px 20px rgba(212, 175, 55, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3),
         inset 0 -1px 0 rgba(0, 0, 0, 0.2);
 }
 
-.blade-body::before {
-    content: '';
-    position: absolute;
-    top: -2px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(90deg, #888 0%, #bbb 50%, #888 100%);
-    border-radius: 1px;
+/* Clipper Body */
+.clipper-body {
+    width: 28px;
+    height: 20px;
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    border-radius: 4px;
+    position: relative;
+    box-shadow: 
+        0 2px 4px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transition: all var(--transition-normal);
 }
 
+.nav-logo:hover .clipper-body {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 50%, #e0e0e0 100%);
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Clipper Blade */
+.clipper-blade {
+    position: absolute;
+    top: -3px;
+    left: 2px;
+    width: 24px;
+    height: 8px;
+    background: linear-gradient(90deg, #c0c0c0 0%, #e8e8e8 30%, #c0c0c0 70%, #a0a0a0 100%);
+    border-radius: 2px 2px 0 0;
+    box-shadow: 
+        0 1px 3px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    transition: all var(--transition-normal);
+}
+
+.nav-logo:hover .clipper-blade {
+    background: linear-gradient(90deg, #ffd700 0%, #ffed4e 30%, #ffd700 70%, #d4af37 100%);
+    box-shadow: 
+        0 2px 6px rgba(212, 175, 55, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Blade Teeth */
 .blade-teeth {
     position: absolute;
-    bottom: -4px;
-    left: 3px;
+    bottom: -2px;
+    left: 0;
     display: flex;
-    gap: 3px;
+    gap: 1px;
+    width: 100%;
+    justify-content: space-evenly;
 }
 
 .tooth {
     width: 2px;
-    height: 4px;
-    background: linear-gradient(180deg, #a0a0a0 0%, #d0d0d0 100%);
+    height: 3px;
+    background: linear-gradient(180deg, var(--accent-silver) 0%, #999 100%);
     border-radius: 0 0 1px 1px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transition: all var(--transition-normal);
 }
 
-.nav-logo:hover .clipper-blade {
-    transform: rotate(-10deg) scale(1.1);
+.nav-logo:hover .tooth {
+    background: linear-gradient(180deg, #ffd700 0%, #d4af37 100%);
+    height: 4px;
+    transform: translateY(-0.5px);
 }
 
-/* Decorative Flourishes */
-.logo-flourish {
+/* Power Indicator */
+.power-indicator {
     position: absolute;
-    width: 40px;
-    height: 15px;
-    z-index: 1;
-    opacity: 0;
-    transition: all var(--transition-slow);
+    top: 3px;
+    right: 3px;
+    width: 4px;
+    height: 4px;
+    background: #10b981;
+    border-radius: 50%;
+    box-shadow: 0 0 4px rgba(16, 185, 129, 0.6);
+    animation: powerPulse 2s infinite;
 }
 
-.logo-flourish-left {
-    top: 15px;
-    left: 10px;
-    transform: rotate(-10deg);
+@keyframes powerPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
-.logo-flourish-right {
-    bottom: 15px;
-    right: 10px;
-    transform: rotate(10deg);
+/* Professional Typography */
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.nav-logo:hover .logo-flourish {
+.logo-main {
+    font-family: var(--font-accent);
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-black);
+    line-height: 1;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 50%, #0a0a0a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    transition: all var(--transition-normal);
+}
+
+.nav-logo:hover .logo-main {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-hover) 50%, var(--accent-gold) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-sub {
+    font-family: var(--font-primary);
+    font-size: 0.65rem;
+    font-weight: 500;
+    color: var(--medium-gray);
+    line-height: 1;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-align: left;
+    opacity: 0.8;
+    transition: all var(--transition-normal);
+}
+
+.nav-logo:hover .logo-sub {
+    color: var(--accent-gold);
     opacity: 1;
-    transform: rotate(0deg) scale(1.1);
+    letter-spacing: 5px;
+}
+
+/* Professional Accent Line */
+.logo-accent-line {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-gold), transparent);
+    border-radius: 1px;
+    transition: width var(--transition-slow);
+}
+
+.nav-logo:hover .logo-accent-line {
+    width: 100%;
 }
 
 /* ============================================================================
@@ -624,16 +634,28 @@ main {
     }
     
     .logo-container {
-        width: 240px;
-        height: 55px;
+        width: 220px;
+        height: 50px;
     }
     
-    .script-text:first-child {
-        font-size: 1.8rem;
+    .professional-clipper {
+        width: 40px;
+        height: 40px;
     }
     
-    .script-large {
-        font-size: 2.6rem !important;
+    .clipper-body {
+        width: 24px;
+        height: 18px;
+    }
+    
+    .logo-main {
+        font-size: 1.5rem;
+        letter-spacing: 1.5px;
+    }
+    
+    .logo-sub {
+        font-size: 0.6rem;
+        letter-spacing: 3px;
     }
 }
 
@@ -648,15 +670,27 @@ main {
     
     .logo-container {
         width: 200px;
-        height: 50px;
+        height: 45px;
     }
     
-    .script-text:first-child {
-        font-size: 1.5rem;
+    .professional-clipper {
+        width: 35px;
+        height: 35px;
     }
     
-    .script-large {
-        font-size: 2.2rem !important;
+    .clipper-body {
+        width: 20px;
+        height: 15px;
+    }
+    
+    .logo-main {
+        font-size: 1.3rem;
+        letter-spacing: 1px;
+    }
+    
+    .logo-sub {
+        font-size: 0.55rem;
+        letter-spacing: 2px;
     }
     
     .nav-container {
@@ -806,21 +840,27 @@ main {
     
     .logo-container {
         width: 180px;
-        height: 45px;
+        height: 40px;
     }
     
-    .script-text:first-child {
-        font-size: 1.3rem;
+    .professional-clipper {
+        width: 32px;
+        height: 32px;
     }
     
-    .script-large {
-        font-size: 2rem !important;
+    .clipper-body {
+        width: 18px;
+        height: 14px;
     }
     
-    .clipper-blade {
-        transform: rotate(-15deg) scale(0.8);
-        bottom: 5px;
-        right: 15px;
+    .logo-main {
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .logo-sub {
+        font-size: 0.5rem;
+        letter-spacing: 1.5px;
     }
 }
 
