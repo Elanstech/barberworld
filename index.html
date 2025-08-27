@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barber World - Professional Barber Equipment & Supplies</title>
+    <title>Barber World - Premium Professional Equipment</title>
     <meta name="description" content="Shop premium barber equipment from top brands like Wahl, Andis, StyleCraft, JRL, and more. Professional clippers, trimmers, and barber supplies.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,66 +19,73 @@
 </head>
 <body>
     <!-- Header -->
-    <header class="header">
+    <header class="header" id="header">
         <nav class="nav">
             <div class="nav-container">
-                <div class="nav-logo">
-                    <h1>Barber World</h1>
+                <div class="nav-logo" id="nav-logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-cut"></i>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-main">BARBER</span>
+                        <span class="logo-sub">WORLD</span>
+                    </div>
                 </div>
                 
                 <div class="nav-menu" id="nav-menu">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#home" class="nav-link active">Home</a>
                     <div class="nav-dropdown">
-                        <a href="#" class="nav-link dropdown-trigger">
+                        <a href="#shop" class="nav-link dropdown-trigger">
                             Shop
-                            <i class="fas fa-chevron-down"></i>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
                         </a>
                         <div class="mega-menu">
-                            <div class="mega-menu-container">
-                                <div class="mega-menu-grid">
-                                    <div class="mega-menu-column">
-                                        <h4>Brands</h4>
-                                        <a href="#" data-category="barber-world">Barber World</a>
-                                        <a href="#" data-category="wahl">Wahl</a>
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-section">
+                                    <h4>Premium Brands</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="wahl">Wahl Professional</a>
                                         <a href="#" data-category="andis">Andis</a>
-                                        <a href="#" data-category="stylecraft">StyleCraft</a>
-                                        <a href="#" data-category="babyliss">Babyliss</a>
-                                        <a href="#" data-category="jrl">JRL</a>
-                                        <a href="#" data-category="vgr">VGR</a>
+                                        <a href="#" data-category="stylecraft">StyleCraft Gamma</a>
+                                        <a href="#" data-category="babyliss">Babyliss Pro</a>
+                                        <a href="#" data-category="jrl">JRL Professional</a>
                                         <a href="#" data-category="cocco">Cocco</a>
                                     </div>
-                                    <div class="mega-menu-column">
-                                        <h4>Categories</h4>
-                                        <a href="#" data-category="clippers">Clippers</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>Categories</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="clippers">Hair Clippers</a>
                                         <a href="#" data-category="trimmers">Trimmers</a>
-                                        <a href="#" data-category="combos">Combos</a>
+                                        <a href="#" data-category="combos">Professional Combos</a>
                                         <a href="#" data-category="accessories">Accessories</a>
-                                        <a href="#" data-category="build-combo">Build Your Own</a>
                                     </div>
-                                    <div class="mega-menu-column">
-                                        <h4>Special</h4>
-                                        <a href="#" data-category="specials">Current Deals</a>
-                                        <a href="#" data-category="all">All Products</a>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>Special Offers</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="deals">Current Deals</a>
                                         <a href="#" data-category="new">New Arrivals</a>
-                                        <a href="#" data-category="best-sellers">Best Sellers</a>
+                                        <a href="#" data-category="bestsellers">Best Sellers</a>
+                                        <a href="#" data-category="all">All Products</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <a href="#about" class="nav-link">About Us</a>
+                    <a href="#about" class="nav-link">About</a>
                     <a href="#contact" class="nav-link">Contact</a>
                 </div>
                 
                 <div class="nav-actions">
-                    <button class="search-btn" aria-label="Search">
+                    <button class="nav-btn search-btn" aria-label="Search">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button class="cart-btn" aria-label="Shopping Cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
+                    <button class="nav-btn cart-btn" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-count">0</span>
                     </button>
-                    <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -90,186 +97,124 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero" id="home">
-            <div class="hero-container">
-                <div class="hero-content">
-                    <h1 class="hero-title">SHOP BARBER ESSENTIALS</h1>
-                    <p class="hero-subtitle">Premium professional equipment from the world's leading barber brands</p>
+        <!-- Brands Section -->
+        <section class="brands" id="brands">
+            <div class="brands-container">
+                <div class="section-header">
+                    <h1 class="section-title">Our Brands</h1>
                 </div>
-            </div>
-        </section>
-
-        <!-- Categories Grid -->
-        <section class="categories" id="categories">
-            <div class="categories-container">
-                <div class="categories-grid">
+                
+                <div class="brands-grid">
                     <!-- Row 1 -->
-                    <div class="category-card" data-category="barber-world">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="barber-world">
+                        <div class="brand-image">
                             <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&crop=center" alt="Our Brand" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Our Brand</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="build-combo">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="build-combo">
+                        <div class="brand-image">
                             <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&h=300&fit=crop&crop=center" alt="Build Your Own Combo" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Build Your Own Combo</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="combos">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="combos">
+                        <div class="brand-image">
                             <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=300&fit=crop&crop=center" alt="Combos" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Combos</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="babyliss">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="babyliss">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/Website_Categories__ST_af978db2-3860-46da-a8f3-cc966b5e8132.png?v=1737581511&width=832" alt="Babyliss" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Babyliss</h3>
                         </div>
                     </div>
                     
                     <!-- Row 2 -->
-                    <div class="category-card" data-category="stylecraft">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="stylecraft">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/website_category_blackice.zip_-_15.png?v=1725219296&width=832" alt="StyleCraft Gamma" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>StyleCraft Gamma</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="jrl">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="jrl">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/website_category_G_B_f2d5a369-8728-4568-9cac-ea3257826754.png?v=1721433674&width=832" alt="JRL" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>JRL</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="wahl">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="wahl">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/website_category_wahlNEW.png?v=1723133423&width=832" alt="Wahl" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Wahl</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="cocco">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="cocco">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/Website_Categories__cocco.png?v=1738873035&width=832" alt="Cocco" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Cocco</h3>
                         </div>
                     </div>
                     
                     <!-- Row 3 -->
-                    <div class="category-card" data-category="andis">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="andis">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/website_category_blackice.zip_-_16.png?v=1725219322&width=832" alt="Andis" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Andis</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="trimmers">
-                        <div class="category-image">
+                    <div class="brand-card" data-brand="supreme-trimmer">
+                        <div class="brand-image">
                             <img src="https://thebarberplug.com/cdn/shop/files/Website_Categories__ST.png?v=1737401477&width=832" alt="Supreme Trimmer" loading="lazy">
                         </div>
-                        <div class="category-content">
+                        <div class="brand-content">
                             <h3>Supreme Trimmer</h3>
                         </div>
                     </div>
                     
-                    <div class="category-card" data-category="vgr">
-                        <div class="category-image">
-                            <img src="https://m.media-amazon.com/images/I/71I+nz9LpkL._AC_SL1500_.jpg" alt="VGR" loading="lazy">
+                    <div class="brand-card" data-brand="tpob">
+                        <div class="brand-image">
+                            <img src="https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=400&h=300&fit=crop&crop=center" alt="TPOB" loading="lazy">
                         </div>
-                        <div class="category-content">
-                            <h3>VGR</h3>
-                        </div>
-                    </div>
-                    
-                    <div class="category-card" data-category="accessories">
-                        <div class="category-image">
-                            <img src="https://www.malys-equipements.com/web/image/276565/materiel-barbier-shop.jpg?access_token=d279c395-b744-425c-93ec-360247b12565" alt="Accessories" loading="lazy">
-                        </div>
-                        <div class="category-content">
-                            <h3>Accessories</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Specials Section -->
-        <section class="specials" id="specials">
-            <div class="specials-container">
-                <h2 class="section-title">Current Specials</h2>
-                <div class="specials-grid">
-                    <div class="special-card">
-                        <div class="special-badge">SALE</div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=400&h=300&fit=crop&crop=center" alt="Wahl Magic Clip Special" loading="lazy">
-                        </div>
-                        <div class="special-content">
-                            <h3>Wahl Magic Clip Cordless</h3>
-                            <div class="special-price">
-                                <span class="current-price">$89.99</span>
-                                <span class="original-price">$149.99</span>
-                            </div>
-                            <div class="discount">40% OFF</div>
+                        <div class="brand-content">
+                            <h3>TPOB</h3>
                         </div>
                     </div>
                     
-                    <div class="special-card">
-                        <div class="special-badge">NEW</div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&h=300&fit=crop&crop=center" alt="JRL Professional Set" loading="lazy">
+                    <div class="brand-card" data-brand="accessories">
+                        <div class="brand-image">
+                            <img src="https://www.malys-equipements.com/web/image/276565/materiel-barbier-shop.jpg?access_token=d279c395-b744-425c-93ec-360247b12565" alt="B-WAY" loading="lazy">
                         </div>
-                        <div class="special-content">
-                            <h3>JRL Professional Set</h3>
-                            <div class="special-price">
-                                <span class="current-price">$299.99</span>
-                                <span class="original-price">$399.99</span>
-                            </div>
-                            <div class="discount">25% OFF</div>
+                        <div class="brand-content">
+                            <h3>B-WAY</h3>
                         </div>
                     </div>
-                    
-                    <div class="special-card">
-                        <div class="special-badge">HOT</div>
-                        <div class="special-image">
-                            <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=300&fit=crop&crop=center" alt="Babyliss Pro Combo" loading="lazy">
-                        </div>
-                        <div class="special-content">
-                            <h3>Babyliss Pro Combo</h3>
-                            <div class="special-price">
-                                <span class="current-price">$199.99</span>
-                                <span class="original-price">$279.99</span>
-                            </div>
-                            <div class="discount">29% OFF</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specials-cta">
-                    <a href="#" class="btn btn-primary">View All Deals</a>
                 </div>
             </div>
         </section>
