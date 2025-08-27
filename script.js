@@ -794,131 +794,195 @@ class BarberWorldSearch {
 /* ========================================
    PRODUCTS & BRANDS SECTION
    ======================================== */
-class BarberWorldProducts {
+// Brands Section JavaScript
+class BrandsSection {
     constructor() {
-        this.allProducts = [];
-        this.brandsData = {};
-        this.brandCards = document.querySelectorAll('.brand-card');
+        this.brandTiles = document.querySelectorAll('.brand-tile');
+        this.isInitialized = false;
         
-        this.init();
-    }
-
-    async init() {
-        await this.loadProductData();
-        this.bindEvents();
-        this.setupBrandCards();
-    }
-
-    async loadProductData() {
-        try {
-            const response = await fetch('all-products.json');
-            if (response.ok) {
-                this.allProducts = await response.json();
-            } else {
-                throw new Error('Could not load products');
-            }
-            
-            // Group products by brand
-            this.brandsData = this.allProducts.reduce((acc, product) => {
-                if (!acc[product.brand]) {
-                    acc[product.brand] = [];
-                }
-                acc[product.brand].push(product);
-                return acc;
-            }, {});
-            
-            console.log('✅ Product data loaded successfully');
-        } catch (error) {
-            console.warn('⚠️ Could not load product data from JSON file:', error);
-            this.loadSampleData();
+        if (this.brandTiles.length > 0) {
+            this.init();
         }
     }
 
-    loadSampleData() {
-        this.allProducts = [
-            { id: 1, name: "JRL Onyx Clipper 2020C-B", price: 225, brand: "JRL", slug: "jrl-onyx-clipper-2020c-b" },
-            { id: 2, name: "StyleCraft Instinct Clipper SC607M", price: 269, brand: "StyleCraft", slug: "stylecraft-instinct-clipper-sc607m" },
-            { id: 3, name: "Wahl Magic Clip Cordless 8148", price: 150, brand: "Wahl", slug: "wahl-magic-clip-cordless-8148" },
-            { id: 4, name: "BaByliss FXONE Clipper", price: 229, brand: "Babyliss", slug: "babyliss-fxone-clipper" }
-        ];
+    init() {
+        this.setupBrandTileInteractions();
+        this.setupIntersectionObserver();
+        this.setupTouchEvents();
+        this.isInitialized = true;
         
-        this.brandsData = this.allProducts.reduce((acc, product) => {
-            if (!acc[product.brand]) {
-                acc[product.brand] = [];
-            }
-            acc[product.brand].push(product);
-            return acc;
-        }, {});
-        
-        console.log('📝 Sample product data loaded');
+        console.log('✅ Brands section initialized');
     }
 
-    bindEvents() {
-        // Brand card interactions will be set up in setupBrandCards
-    }
-
-    setupBrandCards() {
-        this.brandCards.forEach(card => {
-            const brand = card.dataset.brand;
-            
+    setupBrandTileInteractions() {
+        this.brandTiles.forEach((tile, index) => {
             // Enhanced hover effects
-            card.addEventListener('mouseenter', () => {
-                this.animateBrandCard(card, true);
+            tile.addEventListener('mouseenter', () => {
+                this.animateTileHover(tile, true);
             });
 
-            card.addEventListener('mouseleave', () => {
-                this.animateBrandCard(card, false);
+            tile.addEventListener('mouseleave', () => {
+                this.animateTileHover(tile, false);
             });
 
             // Click handler with ripple effect
-            card.addEventListener('click', (e) => {
-                this.createRippleEffect(card, e);
-                setTimeout(() => {
-                    this.handleBrandClick(brand, card);
-                }, 150);
+            tile.addEventListener('click', (e) => {
+                this.handleTileClick(tile, e);
             });
 
             // Touch feedback for mobile
-            card.addEventListener('touchstart', () => {
-                card.style.transform = 'scale(0.98)';
+            tile.addEventListener('touchstart', () => {
+                this.addTouchFeedback(tile, true);
             }, { passive: true });
 
-            card.addEventListener('touchend', () => {
+            tile.addEventListener('touchend', () => {
                 setTimeout(() => {
-                    card.style.transform = '';
+                    this.addTouchFeedback(tile, false);
                 }, 150);
             }, { passive: true });
+
+            // Keyboard navigation
+            tile.setAttribute('tabindex', '0');
+            tile.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.handleTileClick(tile, e);
+                }
+            });
         });
     }
 
-    animateBrandCard(card, isHover) {
-        const image = card.querySelector('.brand-image img');
+    setupIntersectionObserver() {
+        if ('IntersectionObserver' in window) {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe tiles for animation
+            this.brandTiles.forEach(tile => {
+                tile.style.opacity = '0';
+                tile.style.transform = 'translateY(30px)';
+                observer.observe(tile);
+            });
+        }
+    }
+
+    setupTouchEvents() {
+        // Enhanced touch interactions for mobile
+        this.brandTiles.forEach(tile => {
+            let touchStartTime = 0;
+            
+            tile.addEventListener('touchstart', (e) => {
+                touchStartTime = Date.now();
+                tile.style.transform = 'scale(0.98)';
+            }, { passive: true });
+
+            tile.addEventListener('touchend', (e) => {
+                const touchDuration = Date.now() - touchStartTime;
+                
+                setTimeout(() => {
+                    tile.style.transform = '';
+                }, 150);
+
+                // Prevent double-tap zoom
+                if (touchDuration < 300) {
+                    e.preventDefault();
+                }
+            });
+        });
+    }
+
+    animateTileHover(tile, isHover) {
+        const image = tile.querySelector('.brand-image img');
+        const overlay = tile.querySelector('.brand-overlay');
         
         if (isHover) {
-            if (card.classList.contains('featured-brand')) {
-                card.style.transform = 'translateY(-12px)';
-            } else {
-                card.style.transform = 'translateY(-8px)';
-            }
-            card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            tile.style.transform = 'translateY(-4px)';
+            tile.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.15)';
+            
             if (image) {
                 image.style.transform = 'scale(1.05)';
             }
+            
+            if (overlay) {
+                overlay.style.background = 'linear-gradient(transparent, rgba(0, 0, 0, 0.8))';
+            }
         } else {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '';
+            tile.style.transform = '';
+            tile.style.boxShadow = '';
+            
             if (image) {
-                image.style.transform = 'scale(1)';
+                image.style.transform = '';
+            }
+            
+            if (overlay) {
+                overlay.style.background = '';
             }
         }
     }
 
-    createRippleEffect(element, event) {
+    addTouchFeedback(tile, isPressed) {
+        if (isPressed) {
+            tile.style.transform = 'scale(0.96)';
+            tile.style.transition = 'transform 0.1s ease';
+        } else {
+            tile.style.transform = '';
+            tile.style.transition = 'transform 0.3s ease';
+        }
+    }
+
+    handleTileClick(tile, event) {
+        const brand = tile.dataset.brand;
+        const brandName = this.getBrandName(brand);
+        
+        // Create ripple effect
+        this.createRippleEffect(tile, event);
+        
+        // Add click animation
+        this.addClickAnimation(tile);
+        
+        // Show loading notification
+        this.showNotification(`Loading ${brandName} products...`, 'loading');
+        
+        // Simulate brand navigation
+        setTimeout(() => {
+            this.navigateToBrand(brand, brandName);
+        }, 800);
+
+        // Track analytics
+        this.trackEvent('brand_tile_click', { 
+            brand: brand, 
+            brand_name: brandName,
+            position: Array.from(tile.parentNode.children).indexOf(tile) + 1
+        });
+    }
+
+    createRippleEffect(tile, event) {
         const ripple = document.createElement('div');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
+        const rect = tile.getBoundingClientRect();
+        
+        // Calculate ripple size and position
+        const size = Math.max(rect.width, rect.height) * 1.2;
+        let x, y;
+        
+        if (event.type === 'click' && event.clientX) {
+            x = event.clientX - rect.left - size / 2;
+            y = event.clientY - rect.top - size / 2;
+        } else {
+            // Center the ripple for keyboard/touch events
+            x = rect.width / 2 - size / 2;
+            y = rect.height / 2 - size / 2;
+        }
 
         ripple.style.cssText = `
             position: absolute;
@@ -926,243 +990,211 @@ class BarberWorldProducts {
             height: ${size}px;
             left: ${x}px;
             top: ${y}px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
             border-radius: 50%;
             transform: scale(0);
             animation: ripple 0.6s linear;
             pointer-events: none;
-            z-index: 1;
+            z-index: 10;
         `;
 
-        element.style.position = 'relative';
-        element.style.overflow = 'hidden';
-        element.appendChild(ripple);
+        tile.style.position = 'relative';
+        tile.style.overflow = 'hidden';
+        tile.appendChild(ripple);
 
-        setTimeout(() => ripple.remove(), 600);
-    }
-
-    handleBrandClick(brand, card) {
-        const brandName = this.getBrandName(brand);
-        
-        // Show loading state
-        if (window.barberWorldApp) {
-            window.barberWorldApp.getComponent('ui').showNotification(`Loading ${brandName} products...`, 'loading');
-        }
-        
-        // Animate card
-        card.style.transform = 'scale(1.02)';
+        // Remove ripple after animation
         setTimeout(() => {
-            card.style.transform = '';
-        }, 200);
-
-        // Perform search
-        setTimeout(() => {
-            if (window.barberWorldApp) {
-                window.barberWorldApp.getComponent('search').performSearch(brandName);
+            if (ripple.parentNode) {
+                ripple.remove();
             }
-        }, 1000);
-
-        // Analytics tracking
-        this.trackEvent('brand_click', { brand, brand_name: brandName });
+        }, 600);
     }
 
-    searchProducts(query, filters = null) {
-        if (!query || query.length < 1) return [];
+    addClickAnimation(tile) {
+        tile.style.transform = 'scale(0.95)';
+        tile.style.transition = 'transform 0.1s ease';
         
-        const searchTerm = query.toLowerCase();
-        let products = [...this.allProducts];
-        
-        // Apply filters
-        const currentFilters = filters || {
-            brand: '',
-            category: '',
-            price: '',
-            sort: 'relevance'
-        };
-        
-        // Filter by brand
-        if (currentFilters.brand) {
-            products = products.filter(product => product.brand === currentFilters.brand);
-        }
-        
-        // Filter by category
-        if (currentFilters.category) {
-            products = products.filter(product => {
-                const name = product.name.toLowerCase();
-                switch (currentFilters.category) {
-                    case 'clipper':
-                        return name.includes('clipper') && !name.includes('trimmer');
-                    case 'trimmer':
-                        return name.includes('trimmer');
-                    case 'shaver':
-                        return name.includes('shaver') || name.includes('foil');
-                    case 'accessory':
-                        return name.includes('guard') || name.includes('blade') || name.includes('oil');
-                    case 'dryer':
-                        return name.includes('dryer') || name.includes('blow');
-                    default:
-                        return true;
-                }
-            });
-        }
-        
-        // Filter by price range
-        if (currentFilters.price) {
-            const [min, max] = currentFilters.price.split('-').map(Number);
-            products = products.filter(product => {
-                return product.price >= min && (max === undefined || product.price <= max);
-            });
-        }
-        
-        // Search in product names and brands
-        const results = products.filter(product => {
-            const nameMatch = product.name.toLowerCase().includes(searchTerm);
-            const brandMatch = product.brand.toLowerCase().includes(searchTerm);
-            return nameMatch || brandMatch;
-        });
-        
-        // Sort results
-        return this.sortSearchResults(results, currentFilters.sort, searchTerm);
+        setTimeout(() => {
+            tile.style.transform = '';
+            tile.style.transition = 'transform 0.3s ease';
+        }, 100);
     }
 
-    sortSearchResults(results, sortBy, searchTerm) {
-        switch (sortBy) {
-            case 'name-asc':
-                return results.sort((a, b) => a.name.localeCompare(b.name));
-            case 'name-desc':
-                return results.sort((a, b) => b.name.localeCompare(a.name));
-            case 'price-asc':
-                return results.sort((a, b) => a.price - b.price);
-            case 'price-desc':
-                return results.sort((a, b) => b.price - a.price);
-            case 'relevance':
-            default:
-                return results.sort((a, b) => {
-                    const aExact = a.name.toLowerCase().startsWith(searchTerm) ? 1 : 0;
-                    const bExact = b.name.toLowerCase().startsWith(searchTerm) ? 1 : 0;
-                    return bExact - aExact;
-                });
-        }
-    }
-
-    createProductCard(product) {
-        const getProductImage = (product) => {
-            const name = product.name.toLowerCase();
-            if (name.includes('clipper')) {
-                return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=300&h=200&fit=crop';
-            } else if (name.includes('trimmer')) {
-                return 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=300&h=200&fit=crop';
-            } else if (name.includes('shaver')) {
-                return 'https://images.unsplash.com/photo-1617224088016-bc8b34ee3be7?w=300&h=200&fit=crop';
+    navigateToBrand(brand, brandName) {
+        // This would integrate with your search/navigation system
+        if (window.barberWorldApp && window.barberWorldApp.getComponent) {
+            const search = window.barberWorldApp.getComponent('search');
+            if (search) {
+                search.performSearch(brandName);
+                this.showNotification(`Showing ${brandName} products`, 'success');
             } else {
-                return 'https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=300&h=200&fit=crop';
+                this.showNotification(`${brandName} - Coming soon!`, 'info');
             }
-        };
-
-        return `
-            <div class="search-product-card" onclick="window.barberWorldApp.getComponent('products').showProductDetails(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                <div class="search-product-image">
-                    <img src="${getProductImage(product)}" alt="${product.name}" loading="lazy">
-                </div>
-                <div class="search-product-content">
-                    <div class="search-product-brand">${product.brand}</div>
-                    <h3 class="search-product-name">${product.name}</h3>
-                    <div class="search-product-price">$${product.price.toFixed(2)}</div>
-                    <div class="search-product-actions">
-                        <button class="btn-secondary" onclick="event.stopPropagation(); window.barberWorldApp.getComponent('products').showProductDetails(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-                            View Details
-                        </button>
-                        <button class="btn-primary-small" onclick="event.stopPropagation(); window.barberWorldApp.getComponent('cart').addToCart({id: ${product.id}, name: '${product.name.replace(/'/g, "\\'")}', price: ${product.price}})">
-                            Add to Cart
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `;
-    }
-
-    showProductDetails(product) {
-        if (window.barberWorldApp) {
-            const ui = window.barberWorldApp.getComponent('ui');
-            ui.createModal({
-                title: product.name,
-                content: `
-                    <div style="text-align: center;">
-                        <div style="
-                            background: #f8f9fa;
-                            padding: 2rem;
-                            border-radius: 0.75rem;
-                            margin-bottom: 1.5rem;
-                            border: 2px solid #e9ecef;
-                        ">
-                            <div style="
-                                display: inline-block;
-                                background: linear-gradient(135deg, #d4af37, #b8941f);
-                                color: white;
-                                padding: 0.5rem 1rem;
-                                border-radius: 2rem;
-                                font-size: 0.8rem;
-                                font-weight: 600;
-                                margin-bottom: 1rem;
-                            ">${product.brand}</div>
-                            <h3 style="margin: 0 0 1rem 0; color: #0a0a0a;">${product.name}</h3>
-                            <div style="
-                                font-size: 2rem;
-                                font-weight: 700;
-                                color: #d4af37;
-                                margin-bottom: 1rem;
-                            ">$${product.price.toFixed(2)}</div>
-                            <div style="color: #6c757d; font-size: 0.9rem;">Product ID: ${product.id}</div>
-                        </div>
-                        <button onclick="window.barberWorldApp.getComponent('cart').addToCart({id: ${product.id}, name: '${product.name.replace(/'/g, "\\'")}', price: ${product.price}}); document.querySelector('.modal-overlay').remove();" style="
-                            width: 100%;
-                            padding: 1rem;
-                            background: linear-gradient(135deg, #d4af37, #b8941f);
-                            color: white;
-                            border: none;
-                            border-radius: 0.5rem;
-                            cursor: pointer;
-                            font-size: 1.1rem;
-                            font-weight: 600;
-                            transition: all 0.2s ease;
-                            margin-bottom: 1rem;
-                        " onmouseover="this.style.transform='translateY(-2px)'" onmouseout="this.style.transform='translateY(0)'">
-                            Add to Cart - $${product.price.toFixed(2)}
-                        </button>
-                    </div>
-                `,
-                onConfirm: () => {
-                    if (window.barberWorldApp) {
-                        window.barberWorldApp.getComponent('ui').showNotification(`Learn more about ${product.name}!`, 'info');
-                    }
-                },
-                confirmText: 'View Full Details'
-            });
+        } else {
+            // Fallback behavior
+            console.log(`Navigating to brand: ${brandName}`);
+            this.showNotification(`${brandName} - Coming soon!`, 'info');
         }
-    }
-
-    findProductById(productId) {
-        return this.allProducts.find(p => p.id === productId);
     }
 
     getBrandName(brand) {
         const brandNames = {
-            'barber-world': 'Barber World',
-            'stylecraft': 'StyleCraft',
-            'wahl': 'Wahl',
-            'andis': 'Andis',
+            'barber-world': 'Our Brand',
+            'combos': 'Professional Combos',
             'babyliss': 'Babyliss',
+            'stylecraft': 'StyleCraft',
             'jrl': 'JRL Professional',
+            'wahl': 'Wahl',
             'specials': 'Special Offers',
-            'vgr': 'VGR'
+            'andis': 'Andis',
+            'trimmers': 'Supreme Trimmer',
+            'vgr': 'TPOB',
+            'accessories': 'R-WAY'
         };
-        return brandNames[brand] || brand;
+        return brandNames[brand] || brand.charAt(0).toUpperCase() + brand.slice(1);
+    }
+
+    showNotification(message, type = 'info') {
+        // Remove existing notifications
+        const existing = document.querySelectorAll('.brand-notification');
+        existing.forEach(n => n.remove());
+
+        const notification = document.createElement('div');
+        notification.className = 'brand-notification';
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            background: ${this.getNotificationColor(type)};
+            color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 500;
+            max-width: 300px;
+            font-size: 0.9rem;
+        `;
+        
+        notification.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <i class="fas fa-${this.getNotificationIcon(type)}"></i>
+                <span>${message}</span>
+                ${type === 'loading' ? '<i class="fas fa-spinner fa-spin"></i>' : ''}
+            </div>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Animate in
+        setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+        }, 10);
+        
+        // Auto remove (unless loading)
+        if (type !== 'loading') {
+            setTimeout(() => {
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 400);
+            }, 3000);
+        }
+        
+        return notification;
+    }
+
+    getNotificationColor(type) {
+        const colors = {
+            success: 'linear-gradient(135deg, #10b981, #059669)',
+            error: 'linear-gradient(135deg, #ef4444, #dc2626)',
+            warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            info: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+            loading: 'linear-gradient(135deg, #d4af37, #b8941f)'
+        };
+        return colors[type] || colors.info;
+    }
+
+    getNotificationIcon(type) {
+        const icons = {
+            success: 'check-circle',
+            error: 'exclamation-circle',
+            warning: 'exclamation-triangle',
+            info: 'info-circle',
+            loading: 'hourglass-half'
+        };
+        return icons[type] || icons.info;
     }
 
     trackEvent(eventName, data = {}) {
+        // Analytics tracking
         console.log(`📊 Event tracked: ${eventName}`, data);
+        
+        // Integrate with your analytics service here
+        if (window.gtag) {
+            window.gtag('event', eventName, data);
+        }
+        
+        if (window.analytics) {
+            window.analytics.track(eventName, data);
+        }
+    }
+
+    // Public methods for external control
+    refreshTiles() {
+        if (this.isInitialized) {
+            this.setupBrandTileInteractions();
+        }
+    }
+
+    highlightTile(brand) {
+        const tile = document.querySelector(`[data-brand="${brand}"]`);
+        if (tile) {
+            tile.style.transform = 'scale(1.05)';
+            tile.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
+            
+            setTimeout(() => {
+                tile.style.transform = '';
+                tile.style.boxShadow = '';
+            }, 2000);
+        }
     }
 }
+
+// Auto-initialize when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    window.brandsSection = new BrandsSection();
+});
+
+// Also initialize if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+        window.brandsSection = new BrandsSection();
+    });
+} else {
+    window.brandsSection = new BrandsSection();
+}
+
+// CSS Animation for ripple effect
+const rippleAnimation = `
+    @keyframes ripple {
+        to {
+            transform: scale(2);
+            opacity: 0;
+        }
+    }
+    
+    .animate-in {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        transition: all 0.6s ease-out;
+    }
+`;
+
+// Add ripple animation styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = rippleAnimation;
+document.head.appendChild(styleSheet);
 
 /* ========================================
    CART SECTION
@@ -1657,7 +1689,7 @@ class BarberWorldApp {
             this.components.set('ui', new BarberWorldUI());
             this.components.set('mobileMenu', new BarberWorldMobileMenu());
             this.components.set('header', new BarberWorldHeader());
-            this.components.set('products', new BarberWorldProducts());
+            this.components.set('products', new BrandsSection());
             this.components.set('search', new BarberWorldSearch());
             this.components.set('cart', new BarberWorldCart());
             
