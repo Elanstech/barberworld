@@ -1,0 +1,212 @@
+[
+  {
+    "id": 1,
+    "name": "BaByliss Influencer Clipper FX870RI",
+    "price": 250,
+    "brand": "Babyliss",
+    "slug": "babyliss-influencer-clipper-fx870ri"
+  },
+  {
+    "id": 2,
+    "name": "BaBylissPRO Tomb45 Trimmer",
+    "price": 219.95,
+    "brand": "Babyliss",
+    "slug": "babylisspro-tomb45-trimmer"
+  },
+  {
+    "id": 3,
+    "name": "BaBylissPRO Tomb45 Wireless Charging Clipper FXT45C",
+    "price": 249.95,
+    "brand": "Babyliss",
+    "slug": "babylisspro-tomb45-wireless-charging-clipper-fxt45c"
+  },
+  {
+    "id": 4,
+    "name": "Babyliss Lo Pro FX One Neon Trimmer (FX729NYLT)",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-neon-trimmer-fx729nylt"
+  },
+  {
+    "id": 5,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION NEON CLIPPER (FX829NYLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-neon-clipper-fx829nylt"
+  },
+  {
+    "id": 6,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION Matte Black CLIPPER (FX829MBLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt"
+  },
+  {
+    "id": 7,
+    "name": "BABYLISSPRO FXONE LO-PRO FX LIMITED EDITION Tan CLIPPER (FX829SDLT)",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-tan-clipper-fx829sdlt"
+  },
+  {
+    "id": 8,
+    "name": "Babyliss Lo Pro FX One Tan Trimmer FX729SDLT",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-tan-trimmer-fx729sdlt"
+  },
+  {
+    "id": 9,
+    "name": "Babyliss Lo Pro FX One Black Trimmer FX729MBLT",
+    "price": 129.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-lo-pro-fx-one-black-trimmer-fx729mblt"
+  },
+  {
+    "id": 10,
+    "name": "BABYLISSPRO NANO TITANIUM LIGHT IONIC HIGH-SPEED DRYER",
+    "price": 159.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-nano-titanium-light-ionic-high-speed-dryer"
+  },
+  {
+    "id": 11,
+    "name": "BabylissPRO FXONE LIMITEDFX Tool Only Purple Trimmer and Foil Shaver",
+    "price": 269.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-limitedfx-tool-only-purple-trimmer-and-foil-shaver"
+  },
+  {
+    "id": 12,
+    "name": "Babyliss Limited Edition Gold FX Trimmer & UV Single-Foil Shaver Set (FXLFHOLPKG)",
+    "price": 275,
+    "brand": "Babyliss",
+    "slug": "babyliss-limited-edition-gold-fx-trimmer-uv-single-foil-shaver-set-fxlfholpkg"
+  },
+  {
+    "id": 13,
+    "name": "BabylissPro Rose Gold FXONE Trimmer",
+    "price": 209.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-rose-gold-fxone-trimmer"
+  },
+  {
+    "id": 14,
+    "name": "BabylissPro Rose Gold FXONE Clipper",
+    "price": 209.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-rose-gold-fxone-clipper"
+  },
+  {
+    "id": 15,
+    "name": "BABYLISSPRO FXONE BLUEFX TRIMMER",
+    "price": 199,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-bluefx-trimmer"
+  },
+  {
+    "id": 16,
+    "name": "BabylissPRO Limited Edition Matte Black UV Foil Shaver",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-matte-black-uv-foil-shaver"
+  },
+  {
+    "id": 17,
+    "name": "BaBylissPRO FXONE Lo-PRO Compact Clipper (FX82)",
+    "price": 149.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-pro-compact-clipper-fx82"
+  },
+  {
+    "id": 18,
+    "name": "BabylissPRO Nano Titanium Professional High-Speed Dual Blow Dryer",
+    "price": 199.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-nano-titanium-professional-high-speed-dual-blow-dryer"
+  },
+  {
+    "id": 19,
+    "name": "BABYLISSPRO FXONE LO-PROFX LIMITED EDITION MATTE RED CLIPPER FX825RI",
+    "price": 209,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-profx-limited-edition-matte-red-clipper-fx825ri"
+  },
+  {
+    "id": 20,
+    "name": "BABYLISSPRO FXONE LO-PROFX LIMITED EDITION MATTE RED TRIMMER FX726RI",
+    "price": 189.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-fxone-lo-profx-limited-edition-matte-red-trimmer-fx726ri"
+  },
+  {
+    "id": 21,
+    "name": "BaByliss FXONE Replacement Battery",
+    "price": 49.95,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-replacement-battery"
+  },
+  {
+    "id": 22,
+    "name": "BaBylissPRO Limited Edition Lithium FX Matte Black Clipper",
+    "price": 200,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-lithium-fx-matte-black-clipper"
+  },
+  {
+    "id": 23,
+    "name": "BabylissPRO Limited Edition Matte Black LithiumFX Trimmer",
+    "price": 189,
+    "brand": "Babyliss",
+    "slug": "babylisspro-limited-edition-matte-black-lithiumfx-trimmer"
+  },
+  {
+    "id": 24,
+    "name": "BabylissPRO BLUEFX Trimmer Blade (FX707BL)",
+    "price": 48.99,
+    "brand": "Babyliss",
+    "slug": "babylisspro-bluefx-trimmer-blade-fx707bl"
+  },
+  {
+    "id": 25,
+    "name": "BaByliss FXONE Lo-ProFX Clipper FX829",
+    "price": 229,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-lo-profx-clipper-fx829"
+  },
+  {
+    "id": 26,
+    "name": "BaByliss FXONE Lo-ProFX Trimmer (FX729)",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-lo-profx-trimmer-fx729"
+  },
+  {
+    "id": 27,
+    "name": "Babyliss FXONE Trimmer (FX799MB)",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-trimmer-fx799mb"
+  },
+  {
+    "id": 28,
+    "name": "BaByliss FXONE Clipper",
+    "price": 229,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-clipper"
+  },
+  {
+    "id": 29,
+    "name": "BaByliss Influencer Lo-PRO FX Trimmer",
+    "price": 189.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-influencer-lo-pro-fx-trimmer"
+  },
+  {
+    "id": 30,
+    "name": "BaByliss FXONE Shaver",
+    "price": 219,
+    "brand": "Babyliss",
+    "slug": "babyliss-fxone-shaver"
+  }
+]
