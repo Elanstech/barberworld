@@ -96,7 +96,6 @@ main {
    HEADER SECTION
    ============================================================================ */
 /* Header */
-/* Header */
 .header {
     position: fixed;
     top: 0;
@@ -157,38 +156,59 @@ main {
 }
 
 .barber-pole {
-    width: 18px;
+    width: 16px;
     height: 24px;
-    background: #f8f8f8;
-    border-radius: 6px;
+    background: linear-gradient(90deg, #f0f0f0 0%, #ffffff 50%, #f0f0f0 100%);
+    border-radius: 8px;
     position: relative;
     overflow: hidden;
+    box-shadow: inset -2px 0 4px rgba(0,0,0,0.1);
 }
 
 .barber-pole::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
     background: repeating-linear-gradient(
-        45deg,
+        -45deg,
         transparent 0px,
-        transparent 3px,
-        #dc2626 3px,
-        #dc2626 6px,
-        transparent 6px,
-        transparent 9px,
-        #2563eb 9px,
-        #2563eb 12px
+        transparent 4px,
+        #dc2626 4px,
+        #dc2626 8px,
+        transparent 8px,
+        transparent 12px,
+        #2563eb 12px,
+        #2563eb 16px,
+        transparent 16px,
+        transparent 20px
     );
-    animation: poleRotate 3s linear infinite;
+    animation: poleSpiral 2s linear infinite;
+    opacity: 0.9;
 }
 
-@keyframes poleRotate {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+.barber-pole::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        rgba(0,0,0,0.1) 0%, 
+        transparent 30%, 
+        rgba(255,255,255,0.3) 50%, 
+        transparent 70%, 
+        rgba(0,0,0,0.1) 100%
+    );
+    border-radius: 8px;
+}
+
+@keyframes poleSpiral {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(20px); }
 }
 
 .logo-text {
