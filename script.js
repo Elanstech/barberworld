@@ -130,7 +130,11 @@ class BarberWorld {
         const image = card.querySelector('.brand-image img');
         
         if (isHover) {
-            card.style.transform = 'translateY(-8px)';
+            if (card.classList.contains('featured-brand')) {
+                card.style.transform = 'translateY(-12px)';
+            } else {
+                card.style.transform = 'translateY(-8px)';
+            }
             card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
             if (image) {
                 image.style.transform = 'scale(1.05)';
@@ -195,7 +199,12 @@ class BarberWorld {
         this.showNotification(`Loading ${brandName} products...`, 'loading');
         
         // Animate card
-        card.style.transform = 'scale(1.02)';
+        if (card.classList.contains('featured-brand')) {
+            card.style.transform = 'scale(1.02)';
+        } else {
+            card.style.transform = 'scale(1.02)';
+        }
+        
         setTimeout(() => {
             card.style.transform = '';
         }, 200);
@@ -222,24 +231,28 @@ class BarberWorld {
 
     getBrandName(brand) {
         const brandNames = {
-            'wahl': 'Wahl Professional',
+            'barber-world': 'Barber World',
+            'stylecraft': 'StyleCraft',
+            'wahl': 'Wahl',
             'andis': 'Andis',
-            'stylecraft': 'StyleCraft Gamma',
-            'babyliss': 'Babyliss Pro',
+            'babyliss': 'Babyliss',
             'jrl': 'JRL Professional',
-            'cocco': 'Cocco',
-            'barber-world': 'Our Brand',
-            'build-combo': 'Build Your Own Combo',
-            'combos': 'Professional Combos',
-            'supreme-trimmer': 'Supreme Trimmer',
-            'tpob': 'TPOB',
-            'accessories': 'B-WAY Accessories'
+            'specials': 'Special Offers',
+            'vgr': 'VGR'
         };
         return brandNames[brand] || brand;
     }
 
     getCategoryName(category) {
         const categoryNames = {
+            'barber-world': 'Barber World',
+            'stylecraft': 'StyleCraft',
+            'wahl': 'Wahl',
+            'andis': 'Andis',
+            'babyliss': 'Babyliss',
+            'jrl': 'JRL Professional',
+            'vgr': 'VGR',
+            'specials': 'Special Offers',
             'clippers': 'Hair Clippers',
             'trimmers': 'Trimmers',
             'combos': 'Professional Combos',
@@ -411,7 +424,7 @@ class BarberWorld {
                 </div>
                 <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
                     <span style="font-size: 0.9rem; color: #6c757d; margin-bottom: 0.5rem;">Popular searches:</span>
-                    ${['Wahl', 'Andis', 'Clippers', 'Trimmers', 'Combos'].map(term => 
+                    ${['Wahl', 'Andis', 'StyleCraft', 'JRL', 'Babyliss'].map(term => 
                         `<button class="search-tag" onclick="document.getElementById('search-input').value='${term}'" style="
                             padding: 0.3rem 0.8rem;
                             background: #f8f9fa;
@@ -646,11 +659,13 @@ class BarberWorld {
     }
 
     prefetchResources() {
-        // Prefetch common brand images and pages
+        // Prefetch common brand pages
         const importantLinks = [
+            '/barber-world-products',
             '/wahl-products',
             '/andis-products',
-            '/stylecraft-products'
+            '/stylecraft-products',
+            '/specials'
         ];
 
         importantLinks.forEach(link => {
