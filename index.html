@@ -25,87 +25,133 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     
 <!-- Header -->
 <header class="header" id="header">
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="nav-logo" id="nav-logo">
-                <div class="logo-icon">
-                    <div class="barber-pole">
-                        <div class="pole-stripes"></div>
-                    </div>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-main">BARBER</span>
-                    <span class="logo-sub">WORLD</span>
-                </div>
-            </div>
-            
-            <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active">Home</a>
-                <div class="nav-dropdown">
-                    <a href="#shop" class="nav-link dropdown-trigger">
-                        Shop
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-content">
-                            <div class="mega-menu-section">
-                                <h4>Premium Brands</h4>
-                                <div class="mega-menu-links">
-                                    <a href="#" data-category="barber-world">Barber World</a>
-                                    <a href="#" data-category="stylecraft">StyleCraft</a>
-                                    <a href="#" data-category="wahl">Wahl</a>
-                                    <a href="#" data-category="andis">Andis</a>
-                                    <a href="#" data-category="babyliss">Babyliss</a>
-                                    <a href="#" data-category="jrl">JRL</a>
-                                    <a href="#" data-category="vgr">VGR</a>
+        <nav class="nav">
+            <div class="nav-container">
+                <!-- Enhanced Logo inspired by The Barber Plug -->
+                <div class="nav-logo" id="nav-logo">
+                    <div class="logo-container">
+                        <div class="logo-background">
+                            <svg class="logo-outline" viewBox="0 0 320 120" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M20,60 C20,20 40,10 80,10 L240,10 C280,10 300,20 300,60 C300,100 280,110 240,110 L80,110 C40,110 20,100 20,60 Z" 
+                                      fill="none" 
+                                      stroke="#d4af37" 
+                                      stroke-width="2" 
+                                      opacity="0.3"/>
+                            </svg>
+                            
+                            <!-- Clipper Blade Element -->
+                            <div class="clipper-blade">
+                                <div class="blade-body"></div>
+                                <div class="blade-teeth">
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
+                                    <div class="tooth"></div>
                                 </div>
                             </div>
-                            <div class="mega-menu-section">
-                                <h4>Categories</h4>
-                                <div class="mega-menu-links">
-                                    <a href="#" data-category="clippers">Hair Clippers</a>
-                                    <a href="#" data-category="trimmers">Trimmers</a>
-                                    <a href="#" data-category="combos">Professional Combos</a>
-                                    <a href="#" data-category="accessories">Accessories</a>
+                            
+                            <!-- Main Logo Text -->
+                            <div class="logo-text">
+                                <div class="logo-line-1">
+                                    <span class="script-text">Barber</span>
+                                </div>
+                                <div class="logo-line-2">
+                                    <span class="script-text script-large">World</span>
                                 </div>
                             </div>
-                            <div class="mega-menu-section">
-                                <h4>Special Offers</h4>
-                                <div class="mega-menu-links">
-                                    <a href="#" data-category="specials">Specials</a>
-                                    <a href="#" data-category="new">New Arrivals</a>
-                                    <a href="#" data-category="bestsellers">Best Sellers</a>
-                                    <a href="#" data-category="all">All Products</a>
-                                </div>
+                            
+                            <!-- Decorative Elements -->
+                            <div class="logo-flourish logo-flourish-left">
+                                <svg viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5,10 C15,5 25,5 35,10 C25,15 15,15 5,10" 
+                                          fill="none" 
+                                          stroke="#d4af37" 
+                                          stroke-width="1.5" 
+                                          opacity="0.7"/>
+                                </svg>
+                            </div>
+                            <div class="logo-flourish logo-flourish-right">
+                                <svg viewBox="0 0 50 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M15,10 C25,5 35,5 45,10 C35,15 25,15 15,10" 
+                                          fill="none" 
+                                          stroke="#d4af37" 
+                                          stroke-width="1.5" 
+                                          opacity="0.7"/>
+                                </svg>
                             </div>
                         </div>
                     </div>
                 </div>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#contact" class="nav-link">Contact</a>
+                
+                <!-- Navigation Menu -->
+                <div class="nav-menu" id="nav-menu">
+                    <a href="index.html" class="nav-link active">Home</a>
+                    <div class="nav-dropdown">
+                        <a href="#shop" class="nav-link dropdown-trigger">
+                            Shop
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="mega-menu">
+                            <div class="mega-menu-content">
+                                <div class="mega-menu-section">
+                                    <h4>Premium Brands</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="barber-world">Barber World</a>
+                                        <a href="#" data-category="stylecraft">StyleCraft</a>
+                                        <a href="#" data-category="wahl">Wahl</a>
+                                        <a href="#" data-category="andis">Andis</a>
+                                        <a href="#" data-category="babyliss">Babyliss</a>
+                                        <a href="#" data-category="jrl">JRL</a>
+                                        <a href="#" data-category="vgr">VGR</a>
+                                    </div>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>Categories</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="clippers">Hair Clippers</a>
+                                        <a href="#" data-category="trimmers">Trimmers</a>
+                                        <a href="#" data-category="combos">Professional Combos</a>
+                                        <a href="#" data-category="accessories">Accessories</a>
+                                    </div>
+                                </div>
+                                <div class="mega-menu-section">
+                                    <h4>Special Offers</h4>
+                                    <div class="mega-menu-links">
+                                        <a href="#" data-category="specials">Specials</a>
+                                        <a href="#" data-category="new">New Arrivals</a>
+                                        <a href="#" data-category="bestsellers">Best Sellers</a>
+                                        <a href="#" data-category="all">All Products</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                
+                <!-- Navigation Actions -->
+                <div class="nav-actions">
+                    <button class="nav-btn search-btn" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="nav-btn cart-btn" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-count">0</span>
+                    </button>
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
             </div>
-            
-            <div class="nav-actions">
-                <button class="nav-btn search-btn" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="nav-btn cart-btn" aria-label="Shopping Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count" id="cart-count">0</span>
-                </button>
-                <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
-        </div>
-    </nav>
-</header>
+        </nav>
+    </header>
     
     <!-- Search Modal -->
     <div class="search-modal" id="search-modal">
