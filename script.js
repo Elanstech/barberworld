@@ -1,5 +1,5 @@
-// Barber World - Complete JavaScript Implementation with Search Functionality
-// Enhanced UX with smooth animations and professional interactions
+// Barber World - Complete JavaScript Implementation
+// Organized by sections for better maintainability
 
 class BarberWorld {
     constructor() {
@@ -22,7 +22,9 @@ class BarberWorld {
     }
 
     async init() {
-        this.setupEventListeners();
+        this.setupHeaderEventListeners();
+        this.setupSearchEventListeners();
+        this.setupBrandEventListeners();
         this.setupScrollEffects();
         this.setupAnimations();
         this.setupPerformanceOptimizations();
@@ -38,60 +40,15 @@ class BarberWorld {
         this.initializeSearchModal();
     }
 
-    async loadProductData() {
-        try {
-            // Try to load all products from JSON file
-            const response = await fetch('all-products.json');
-            if (response.ok) {
-                this.allProducts = await response.json();
-            } else {
-                throw new Error('Could not load products');
-            }
-            
-            // Group products by brand for easy access
-            this.brandsData = this.allProducts.reduce((acc, product) => {
-                if (!acc[product.brand]) {
-                    acc[product.brand] = [];
-                }
-                acc[product.brand].push(product);
-                return acc;
-            }, {});
-            
-            console.log('✅ Product data loaded successfully');
-        } catch (error) {
-            console.warn('⚠️ Could not load product data from JSON file:', error);
-            // Fallback - use sample data if JSON files aren't available
-            this.loadSampleData();
-        }
-    }
+    // ============================================================================
+    // HEADER SECTION - Navigation, Mobile Menu, Logo, Actions
+    // ============================================================================
 
-    loadSampleData() {
-        // Sample data for demonstration when JSON files aren't available
-        this.allProducts = [
-            { id: 1, name: "JRL Onyx Clipper 2020C-B", price: 225, brand: "JRL", slug: "jrl-onyx-clipper-2020c-b" },
-            { id: 2, name: "StyleCraft Instinct Clipper SC607M", price: 269, brand: "StyleCraft", slug: "stylecraft-instinct-clipper-sc607m" },
-            { id: 3, name: "Wahl Magic Clip Cordless 8148", price: 150, brand: "Wahl", slug: "wahl-magic-clip-cordless-8148" },
-            { id: 4, name: "BaByliss FXONE Clipper", price: 229, brand: "Babyliss", slug: "babyliss-fxone-clipper" },
-            { id: 5, name: "JRL Professional Onyx SF Pro Foil Shaver SH2301", price: 89.95, brand: "JRL", slug: "jrl-professional-onyx-sf-pro-foil-shaver-sh2301" },
-            { id: 6, name: "StyleCraft Rebel Trimmer SC409M", price: 159.99, brand: "StyleCraft", slug: "stylecraft-rebel-trimmer-sc409m" },
-            { id: 7, name: "Wahl Detailer Cordless 08171", price: 139.99, brand: "Wahl", slug: "wahl-detailer-cordless-08171" },
-            { id: 8, name: "BaByliss Influencer Clipper FX870RI", price: 250, brand: "Babyliss", slug: "babyliss-influencer-clipper-fx870ri" }
-        ];
-        
-        this.brandsData = this.allProducts.reduce((acc, product) => {
-            if (!acc[product.brand]) {
-                acc[product.brand] = [];
-            }
-            acc[product.brand].push(product);
-            return acc;
-        }, {});
-        
-        console.log('📝 Sample product data loaded');
-    }
-
-    setupEventListeners() {
+    setupHeaderEventListeners() {
         // Mobile menu toggle
         const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
         mobileMenuToggle?.addEventListener('click', () => {
             this.toggleMobileMenu();
         });
@@ -100,12 +57,6 @@ class BarberWorld {
         const navLogo = document.getElementById('nav-logo');
         navLogo?.addEventListener('click', () => {
             this.scrollToTop();
-        });
-
-        // Brand cards
-        const brandCards = document.querySelectorAll('.brand-card');
-        brandCards.forEach(card => {
-            this.setupBrandCard(card);
         });
 
         // Navigation links
@@ -117,6 +68,7 @@ class BarberWorld {
                     e.preventDefault();
                     this.smoothScrollTo(href);
                     this.closeMobileMenu();
+                    this.setActiveNavLink(link);
                 }
             });
         });
@@ -127,21 +79,27 @@ class BarberWorld {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
                 const category = link.dataset.category;
-                this.handleCategoryClick(category);
+                this.handleCategoryClick(category, link);
                 this.closeMobileMenu();
             });
         });
 
-        // Search functionality
+        // Header actions
         const searchBtn = document.querySelector('.search-btn');
         searchBtn?.addEventListener('click', () => {
             this.openSearchModal();
         });
 
-        // Cart functionality
         const cartBtn = document.querySelector('.cart-btn');
         cartBtn?.addEventListener('click', () => {
             this.showCart();
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (this.mobileMenuOpen && !e.target.closest('.nav-menu') && !e.target.closest('.mobile-menu-toggle')) {
+                this.closeMobileMenu();
+            }
         });
 
         // Keyboard shortcuts
@@ -149,18 +107,209 @@ class BarberWorld {
             this.handleKeyboardShortcuts(e);
         });
 
-        // Window events
+        // Window resize handling
         window.addEventListener('resize', this.debounce(() => {
             if (window.innerWidth > 768 && this.mobileMenuOpen) {
                 this.closeMobileMenu();
             }
         }, 250));
 
+        // Mega menu hover effects
+        this.setupMegaMenuEffects();
+    }
+
+    setupMegaMenuEffects() {
+        const megaMenuSections = document.querySelectorAll('.mega-menu-section');
+        
+        megaMenuSections.forEach((section, index) => {
+            section.addEventListener('mouseenter', () => {
+                section.style.animationDelay = `${index * 0.1}s`;
+                section.classList.add('hover-animate');
+            });
+
+            section.addEventListener('mouseleave', () => {
+                section.classList.remove('hover-animate');
+            });
+        });
+    }
+
+    // Mobile Menu Management
+    toggleMobileMenu() {
+        this.mobileMenuOpen = !this.mobileMenuOpen;
+        const navMenu = document.getElementById('nav-menu');
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+
+        if (this.mobileMenuOpen) {
+            this.openMobileMenu(navMenu, mobileMenuToggle);
+        } else {
+            this.closeMobileMenu(navMenu, mobileMenuToggle);
+        }
+    }
+
+    openMobileMenu(navMenu, toggle) {
+        navMenu?.classList.add('active');
+        toggle?.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Add backdrop
+        const backdrop = document.createElement('div');
+        backdrop.id = 'mobile-menu-backdrop';
+        backdrop.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        `;
+        document.body.appendChild(backdrop);
+        
+        setTimeout(() => {
+            backdrop.style.opacity = '1';
+        }, 10);
+
+        backdrop.addEventListener('click', () => {
+            this.closeMobileMenu();
+        });
+
+        // Animate menu items
+        this.animateMobileMenuItems();
+    }
+
+    animateMobileMenuItems() {
+        const menuItems = document.querySelectorAll('.nav-menu.active .nav-link, .nav-menu.active .mega-menu-section');
+        
+        menuItems.forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.3s ease';
+            
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, index * 50 + 100);
+        });
+    }
+
+    closeMobileMenu(navMenu = null, toggle = null) {
+        if (!this.mobileMenuOpen) return;
+
+        this.mobileMenuOpen = false;
+        const menu = navMenu || document.getElementById('nav-menu');
+        const menuToggle = toggle || document.getElementById('mobile-menu-toggle');
+        const backdrop = document.getElementById('mobile-menu-backdrop');
+        
+        menu?.classList.remove('active');
+        menuToggle?.classList.remove('active');
+        document.body.style.overflow = '';
+        
+        if (backdrop) {
+            backdrop.style.opacity = '0';
+            setTimeout(() => backdrop.remove(), 300);
+        }
+    }
+
+    // Navigation helpers
+    setActiveNavLink(activeLink) {
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => link.classList.remove('active'));
+        activeLink.classList.add('active');
+    }
+
+    updateActiveNavOnScroll(scrollY) {
+        const sections = document.querySelectorAll('section[id], main[id]');
+        const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+        
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            
+            if (scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
+        });
+
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${current}`) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    handleCategoryClick(category, linkElement) {
+        const categoryName = this.getCategoryName(category);
+        
+        // Add click animation
+        this.addClickAnimation(linkElement);
+        
+        // Show notification
+        this.showNotification(`Loading ${categoryName}...`, 'loading');
+        
+        // Perform search
+        setTimeout(() => {
+            this.performSearch(categoryName);
+        }, 800);
+
+        // Analytics tracking
+        this.trackEvent('category_click', { 
+            category: category, 
+            category_name: categoryName 
+        });
+    }
+
+    addClickAnimation(element) {
+        element.style.transform = 'scale(0.95)';
+        element.style.transition = 'transform 0.1s ease';
+        
+        setTimeout(() => {
+            element.style.transform = 'scale(1)';
+        }, 100);
+    }
+
+    handleKeyboardShortcuts(e) {
+        // Escape key - close modals/menus
+        if (e.key === 'Escape') {
+            this.closeMobileMenu();
+            this.closeSearchModal();
+            const modals = document.querySelectorAll('.modal-overlay');
+            modals.forEach(modal => modal.remove());
+        }
+        
+        // Ctrl/Cmd + K - Search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+            e.preventDefault();
+            this.openSearchModal();
+        }
+
+        // Ctrl/Cmd + / - Focus search
+        if ((e.ctrlKey || e.metaKey) && e.key === '/') {
+            e.preventDefault();
+            this.openSearchModal();
+        }
+
+        // Alt + M - Toggle mobile menu (for accessibility)
+        if (e.altKey && e.key === 'm') {
+            e.preventDefault();
+            this.toggleMobileMenu();
+        }
+    }
+
+    // ============================================================================
+    // SEARCH SECTION - Search Modal, Suggestions, Results, Filters
+    // ============================================================================
+
+    setupSearchEventListeners() {
         // Touch events for better mobile experience
         this.setupTouchEvents();
     }
 
-    // Search Modal Functions
     initializeSearchModal() {
         this.searchModal = document.getElementById('search-modal');
         const searchInput = document.getElementById('search-input-main');
@@ -197,6 +346,11 @@ class BarberWorld {
                 this.closeSearchModal();
             });
         });
+
+        // Setup search filters after DOM is ready
+        setTimeout(() => {
+            this.setupSearchFilters();
+        }, 100);
     }
 
     openSearchModal() {
@@ -405,6 +559,248 @@ class BarberWorld {
         }, 800);
     }
 
+    closeSearchResults() {
+        // Hide search results and show main sections
+        document.getElementById('search-results-section').style.display = 'none';
+        document.getElementById('brands').style.display = 'block';
+        document.getElementById('why-choose-us').style.display = 'block';
+        document.getElementById('about').style.display = 'block';
+        
+        // Clear search state
+        this.currentSearchQuery = '';
+        this.searchFilters = {
+            brand: '',
+            category: '',
+            price: '',
+            sort: 'relevance'
+        };
+        
+        // Reset filter selects
+        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
+        filterSelects.forEach(id => {
+            const select = document.getElementById(id);
+            if (select) {
+                select.value = '';
+            }
+        });
+        
+        // Scroll to brands section
+        this.smoothScrollTo('#brands');
+    }
+
+    setupSearchFilters() {
+        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
+        
+        filterSelects.forEach(id => {
+            const select = document.getElementById(id);
+            if (select) {
+                select.addEventListener('change', () => {
+                    this.updateSearchFilters();
+                });
+            }
+        });
+    }
+
+    updateSearchFilters() {
+        // Get current filter values
+        this.searchFilters.brand = document.getElementById('brand-filter')?.value || '';
+        this.searchFilters.category = document.getElementById('category-filter')?.value || '';
+        this.searchFilters.price = document.getElementById('price-filter')?.value || '';
+        this.searchFilters.sort = document.getElementById('sort-filter')?.value || 'relevance';
+        
+        // Re-run search with new filters
+        if (this.currentSearchQuery) {
+            const results = this.searchProducts(this.currentSearchQuery);
+            this.displaySearchResults(results, this.currentSearchQuery);
+        }
+    }
+
+    clearAllSearchFilters() {
+        // Reset filter values
+        this.searchFilters = {
+            brand: '',
+            category: '',
+            price: '',
+            sort: 'relevance'
+        };
+        
+        // Reset UI
+        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
+        filterSelects.forEach(id => {
+            const select = document.getElementById(id);
+            if (select) {
+                select.value = '';
+            }
+        });
+        
+        // Re-run search if there's a current query
+        if (this.currentSearchQuery) {
+            const results = this.searchProducts(this.currentSearchQuery);
+            this.displaySearchResults(results, this.currentSearchQuery);
+        }
+    }
+
+    // ============================================================================
+    // PRODUCTS AND BRANDS SECTION - Data Loading, Brand Interactions, Product Display
+    // ============================================================================
+
+    async loadProductData() {
+        try {
+            // Try to load all products from JSON file
+            const response = await fetch('all-products.json');
+            if (response.ok) {
+                this.allProducts = await response.json();
+            } else {
+                throw new Error('Could not load products');
+            }
+            
+            // Group products by brand for easy access
+            this.brandsData = this.allProducts.reduce((acc, product) => {
+                if (!acc[product.brand]) {
+                    acc[product.brand] = [];
+                }
+                acc[product.brand].push(product);
+                return acc;
+            }, {});
+            
+            console.log('✅ Product data loaded successfully');
+        } catch (error) {
+            console.warn('⚠️ Could not load product data from JSON file:', error);
+            // Fallback - use sample data if JSON files aren't available
+            this.loadSampleData();
+        }
+    }
+
+    loadSampleData() {
+        // Sample data for demonstration when JSON files aren't available
+        this.allProducts = [
+            { id: 1, name: "JRL Onyx Clipper 2020C-B", price: 225, brand: "JRL", slug: "jrl-onyx-clipper-2020c-b" },
+            { id: 2, name: "StyleCraft Instinct Clipper SC607M", price: 269, brand: "StyleCraft", slug: "stylecraft-instinct-clipper-sc607m" },
+            { id: 3, name: "Wahl Magic Clip Cordless 8148", price: 150, brand: "Wahl", slug: "wahl-magic-clip-cordless-8148" },
+            { id: 4, name: "BaByliss FXONE Clipper", price: 229, brand: "Babyliss", slug: "babyliss-fxone-clipper" },
+            { id: 5, name: "JRL Professional Onyx SF Pro Foil Shaver SH2301", price: 89.95, brand: "JRL", slug: "jrl-professional-onyx-sf-pro-foil-shaver-sh2301" },
+            { id: 6, name: "StyleCraft Rebel Trimmer SC409M", price: 159.99, brand: "StyleCraft", slug: "stylecraft-rebel-trimmer-sc409m" },
+            { id: 7, name: "Wahl Detailer Cordless 08171", price: 139.99, brand: "Wahl", slug: "wahl-detailer-cordless-08171" },
+            { id: 8, name: "BaByliss Influencer Clipper FX870RI", price: 250, brand: "Babyliss", slug: "babyliss-influencer-clipper-fx870ri" }
+        ];
+        
+        this.brandsData = this.allProducts.reduce((acc, product) => {
+            if (!acc[product.brand]) {
+                acc[product.brand] = [];
+            }
+            acc[product.brand].push(product);
+            return acc;
+        }, {});
+        
+        console.log('📝 Sample product data loaded');
+    }
+
+    setupBrandEventListeners() {
+        // Brand cards
+        const brandCards = document.querySelectorAll('.brand-card');
+        brandCards.forEach(card => {
+            this.setupBrandCard(card);
+        });
+    }
+
+    setupBrandCard(card) {
+        const brand = card.dataset.brand;
+        
+        // Enhanced hover effects
+        card.addEventListener('mouseenter', () => {
+            this.animateBrandCard(card, true);
+        });
+
+        card.addEventListener('mouseleave', () => {
+            this.animateBrandCard(card, false);
+        });
+
+        // Click handler with ripple effect
+        card.addEventListener('click', (e) => {
+            this.createRippleEffect(card, e);
+            setTimeout(() => {
+                this.handleBrandClick(brand, card);
+            }, 150);
+        });
+
+        // Touch feedback for mobile
+        card.addEventListener('touchstart', () => {
+            card.style.transform = 'scale(0.98)';
+        }, { passive: true });
+
+        card.addEventListener('touchend', () => {
+            setTimeout(() => {
+                card.style.transform = '';
+            }, 150);
+        }, { passive: true });
+    }
+
+    animateBrandCard(card, isHover) {
+        const image = card.querySelector('.brand-image img');
+        
+        if (isHover) {
+            if (card.classList.contains('featured-brand')) {
+                card.style.transform = 'translateY(-12px)';
+            } else {
+                card.style.transform = 'translateY(-8px)';
+            }
+            card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
+            if (image) {
+                image.style.transform = 'scale(1.05)';
+            }
+        } else {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '';
+            if (image) {
+                image.style.transform = 'scale(1)';
+            }
+        }
+    }
+
+    handleBrandClick(brand, card) {
+        const brandName = this.getBrandName(brand);
+        
+        // Get products for this brand
+        const brandProducts = this.getBrandProducts(brand);
+        
+        // Show loading state
+        this.showNotification(`Loading ${brandName} products...`, 'loading');
+        
+        // Animate card
+        if (card.classList.contains('featured-brand')) {
+            card.style.transform = 'scale(1.02)';
+        } else {
+            card.style.transform = 'scale(1.02)';
+        }
+        
+        setTimeout(() => {
+            card.style.transform = '';
+        }, 200);
+
+        // Show brand products by performing a search
+        setTimeout(() => {
+            this.performSearch(brandName);
+        }, 1000);
+
+        // Analytics tracking
+        this.trackEvent('brand_click', { brand: brand, brand_name: brandName, product_count: brandProducts.length });
+    }
+
+    getBrandProducts(brandSlug) {
+        const brandMap = {
+            'barber-world': 'Barber World',
+            'stylecraft': 'StyleCraft',
+            'wahl': 'Wahl',
+            'andis': 'Andis',
+            'babyliss': 'Babyliss',
+            'jrl': 'JRL',
+            'vgr': 'VGR'
+        };
+        
+        const brandName = brandMap[brandSlug];
+        return brandName ? (this.brandsData[brandName] || []) : [];
+    }
+
     createProductCard(product) {
         // Generate a placeholder image based on product type
         const getProductImage = (product) => {
@@ -497,242 +893,6 @@ class BarberWorld {
         });
     }
 
-    closeSearchResults() {
-        // Hide search results and show main sections
-        document.getElementById('search-results-section').style.display = 'none';
-        document.getElementById('brands').style.display = 'block';
-        document.getElementById('why-choose-us').style.display = 'block';
-        document.getElementById('about').style.display = 'block';
-        
-        // Clear search state
-        this.currentSearchQuery = '';
-        this.searchFilters = {
-            brand: '',
-            category: '',
-            price: '',
-            sort: 'relevance'
-        };
-        
-        // Reset filter selects
-        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
-        filterSelects.forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                select.value = '';
-            }
-        });
-        
-        // Scroll to brands section
-        this.smoothScrollTo('#brands');
-    }
-
-    // Search filter functions
-    setupSearchFilters() {
-        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
-        
-        filterSelects.forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                select.addEventListener('change', () => {
-                    this.updateSearchFilters();
-                });
-            }
-        });
-    }
-
-    updateSearchFilters() {
-        // Get current filter values
-        this.searchFilters.brand = document.getElementById('brand-filter')?.value || '';
-        this.searchFilters.category = document.getElementById('category-filter')?.value || '';
-        this.searchFilters.price = document.getElementById('price-filter')?.value || '';
-        this.searchFilters.sort = document.getElementById('sort-filter')?.value || 'relevance';
-        
-        // Re-run search with new filters
-        if (this.currentSearchQuery) {
-            const results = this.searchProducts(this.currentSearchQuery);
-            this.displaySearchResults(results, this.currentSearchQuery);
-        }
-    }
-
-    clearAllSearchFilters() {
-        // Reset filter values
-        this.searchFilters = {
-            brand: '',
-            category: '',
-            price: '',
-            sort: 'relevance'
-        };
-        
-        // Reset UI
-        const filterSelects = ['brand-filter', 'category-filter', 'price-filter', 'sort-filter'];
-        filterSelects.forEach(id => {
-            const select = document.getElementById(id);
-            if (select) {
-                select.value = '';
-            }
-        });
-        
-        // Re-run search if there's a current query
-        if (this.currentSearchQuery) {
-            const results = this.searchProducts(this.currentSearchQuery);
-            this.displaySearchResults(results, this.currentSearchQuery);
-        }
-    }
-
-    // Brand card interactions
-    setupBrandCard(card) {
-        const brand = card.dataset.brand;
-        
-        // Enhanced hover effects
-        card.addEventListener('mouseenter', () => {
-            this.animateBrandCard(card, true);
-        });
-
-        card.addEventListener('mouseleave', () => {
-            this.animateBrandCard(card, false);
-        });
-
-        // Click handler with ripple effect
-        card.addEventListener('click', (e) => {
-            this.createRippleEffect(card, e);
-            setTimeout(() => {
-                this.handleBrandClick(brand, card);
-            }, 150);
-        });
-
-        // Touch feedback for mobile
-        card.addEventListener('touchstart', () => {
-            card.style.transform = 'scale(0.98)';
-        }, { passive: true });
-
-        card.addEventListener('touchend', () => {
-            setTimeout(() => {
-                card.style.transform = '';
-            }, 150);
-        }, { passive: true });
-    }
-
-    animateBrandCard(card, isHover) {
-        const image = card.querySelector('.brand-image img');
-        
-        if (isHover) {
-            if (card.classList.contains('featured-brand')) {
-                card.style.transform = 'translateY(-12px)';
-            } else {
-                card.style.transform = 'translateY(-8px)';
-            }
-            card.style.boxShadow = '0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04)';
-            if (image) {
-                image.style.transform = 'scale(1.05)';
-            }
-        } else {
-            card.style.transform = 'translateY(0)';
-            card.style.boxShadow = '';
-            if (image) {
-                image.style.transform = 'scale(1)';
-            }
-        }
-    }
-
-    createRippleEffect(element, event) {
-        const ripple = document.createElement('div');
-        const rect = element.getBoundingClientRect();
-        const size = Math.max(rect.width, rect.height);
-        const x = event.clientX - rect.left - size / 2;
-        const y = event.clientY - rect.top - size / 2;
-
-        ripple.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}px;
-            top: ${y}px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-            pointer-events: none;
-            z-index: 1;
-        `;
-
-        // Ensure parent has relative position
-        element.style.position = 'relative';
-        element.style.overflow = 'hidden';
-        element.appendChild(ripple);
-
-        // Add ripple animation
-        if (!document.querySelector('#ripple-styles')) {
-            const style = document.createElement('style');
-            style.id = 'ripple-styles';
-            style.textContent = `
-                @keyframes ripple {
-                    to {
-                        transform: scale(2);
-                        opacity: 0;
-                    }
-                }
-            `;
-            document.head.appendChild(style);
-        }
-
-        setTimeout(() => ripple.remove(), 600);
-    }
-
-    handleBrandClick(brand, card) {
-        const brandName = this.getBrandName(brand);
-        
-        // Get products for this brand
-        const brandProducts = this.getBrandProducts(brand);
-        
-        // Show loading state
-        this.showNotification(`Loading ${brandName} products...`, 'loading');
-        
-        // Animate card
-        if (card.classList.contains('featured-brand')) {
-            card.style.transform = 'scale(1.02)';
-        } else {
-            card.style.transform = 'scale(1.02)';
-        }
-        
-        setTimeout(() => {
-            card.style.transform = '';
-        }, 200);
-
-        // Show brand products by performing a search
-        setTimeout(() => {
-            this.performSearch(brandName);
-        }, 1000);
-
-        // Analytics tracking
-        this.trackEvent('brand_click', { brand: brand, brand_name: brandName, product_count: brandProducts.length });
-    }
-
-    getBrandProducts(brandSlug) {
-        const brandMap = {
-            'barber-world': 'Barber World',
-            'stylecraft': 'StyleCraft',
-            'wahl': 'Wahl',
-            'andis': 'Andis',
-            'babyliss': 'Babyliss',
-            'jrl': 'JRL',
-            'vgr': 'VGR'
-        };
-        
-        const brandName = brandMap[brandSlug];
-        return brandName ? (this.brandsData[brandName] || []) : [];
-    }
-
-    handleCategoryClick(category) {
-        const categoryName = this.getCategoryName(category);
-        this.showNotification(`Exploring ${categoryName}...`, 'loading');
-        
-        setTimeout(() => {
-            this.performSearch(categoryName);
-        }, 800);
-
-        this.trackEvent('category_click', { category: category, category_name: categoryName });
-    }
-
     getBrandName(brand) {
         const brandNames = {
             'barber-world': 'Barber World',
@@ -769,145 +929,10 @@ class BarberWorld {
         return categoryNames[category] || category;
     }
 
-    // Mobile Menu Management
-    toggleMobileMenu() {
-        this.mobileMenuOpen = !this.mobileMenuOpen;
-        const navMenu = document.getElementById('nav-menu');
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    // ============================================================================
+    // CART SECTION - Cart Management, Display, Checkout
+    // ============================================================================
 
-        if (this.mobileMenuOpen) {
-            this.openMobileMenu(navMenu, mobileMenuToggle);
-        } else {
-            this.closeMobileMenu(navMenu, mobileMenuToggle);
-        }
-    }
-
-    openMobileMenu(navMenu, toggle) {
-        navMenu?.classList.add('active');
-        toggle?.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        
-        // Add backdrop
-        const backdrop = document.createElement('div');
-        backdrop.id = 'mobile-menu-backdrop';
-        backdrop.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 998;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        `;
-        document.body.appendChild(backdrop);
-        
-        setTimeout(() => {
-            backdrop.style.opacity = '1';
-        }, 10);
-
-        backdrop.addEventListener('click', () => {
-            this.closeMobileMenu();
-        });
-    }
-
-    closeMobileMenu(navMenu = null, toggle = null) {
-        if (!this.mobileMenuOpen) return;
-
-        this.mobileMenuOpen = false;
-        const menu = navMenu || document.getElementById('nav-menu');
-        const menuToggle = toggle || document.getElementById('mobile-menu-toggle');
-        const backdrop = document.getElementById('mobile-menu-backdrop');
-        
-        menu?.classList.remove('active');
-        menuToggle?.classList.remove('active');
-        document.body.style.overflow = '';
-        
-        if (backdrop) {
-            backdrop.style.opacity = '0';
-            setTimeout(() => backdrop.remove(), 300);
-        }
-    }
-
-    // Scroll Effects and Navigation
-    setupScrollEffects() {
-        const header = document.getElementById('header');
-        
-        window.addEventListener('scroll', () => {
-            if (!this.ticking) {
-                requestAnimationFrame(() => {
-                    this.handleScroll(header);
-                    this.ticking = false;
-                });
-                this.ticking = true;
-            }
-        }, { passive: true });
-
-        // Create scroll to top button
-        this.createScrollToTopButton();
-        
-        // Setup search filters after DOM is ready
-        setTimeout(() => {
-            this.setupSearchFilters();
-        }, 100);
-    }
-
-    handleScroll(header) {
-        const scrollY = window.pageYOffset;
-        
-        // Header effects
-        if (scrollY > 50) {
-            header?.classList.add('scrolled');
-        } else {
-            header?.classList.remove('scrolled');
-        }
-
-        // Scroll to top button
-        const scrollBtn = document.querySelector('.scroll-to-top');
-        if (scrollY > 300) {
-            scrollBtn?.classList.add('visible');
-        } else {
-            scrollBtn?.classList.remove('visible');
-        }
-
-        this.lastScrollY = scrollY;
-    }
-
-    createScrollToTopButton() {
-        const scrollBtn = document.createElement('button');
-        scrollBtn.className = 'scroll-to-top';
-        scrollBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
-        scrollBtn.setAttribute('aria-label', 'Scroll to top');
-        
-        scrollBtn.addEventListener('click', () => {
-            this.scrollToTop();
-        });
-        
-        document.body.appendChild(scrollBtn);
-    }
-
-    smoothScrollTo(target) {
-        const element = document.querySelector(target);
-        if (element) {
-            const headerHeight = document.querySelector('.header').offsetHeight;
-            const elementPosition = element.offsetTop - headerHeight - 20;
-            
-            window.scrollTo({
-                top: elementPosition,
-                behavior: 'smooth'
-            });
-        }
-    }
-
-    scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    }
-
-    // Cart Management
     addToCart(product) {
         const existingItem = this.cart.find(item => item.id === product.id);
         
@@ -1022,7 +1047,90 @@ class BarberWorld {
         });
     }
 
-    // Animations and Effects
+    // ============================================================================
+    // UI AND ANIMATIONS SECTION - Scroll Effects, Animations, Touch Events, Modals
+    // ============================================================================
+
+    setupScrollEffects() {
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (!this.ticking) {
+                requestAnimationFrame(() => {
+                    this.handleScroll(header);
+                    this.ticking = false;
+                });
+                this.ticking = true;
+            }
+        }, { passive: true });
+
+        // Create scroll to top button
+        this.createScrollToTopButton();
+    }
+
+    handleScroll(header) {
+        const scrollY = window.pageYOffset;
+        
+        // Header effects
+        if (scrollY > 50) {
+            header?.classList.add('scrolled');
+        } else {
+            header?.classList.remove('scrolled');
+        }
+
+        // Update active navigation based on scroll position
+        this.updateActiveNavOnScroll(scrollY);
+
+        // Scroll to top button
+        const scrollBtn = document.querySelector('.scroll-to-top');
+        if (scrollY > 300) {
+            scrollBtn?.classList.add('visible');
+        } else {
+            scrollBtn?.classList.remove('visible');
+        }
+
+        this.lastScrollY = scrollY;
+    }
+
+    createScrollToTopButton() {
+        const scrollBtn = document.createElement('button');
+        scrollBtn.className = 'scroll-to-top';
+        scrollBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        scrollBtn.setAttribute('aria-label', 'Scroll to top');
+        
+        scrollBtn.addEventListener('click', () => {
+            this.scrollToTop();
+        });
+        
+        document.body.appendChild(scrollBtn);
+    }
+
+    smoothScrollTo(target) {
+        const element = document.querySelector(target);
+        if (element) {
+            const headerHeight = document.querySelector('.header').offsetHeight;
+            const elementPosition = element.offsetTop - headerHeight - 20;
+            
+            window.scrollTo({
+                top: elementPosition,
+                behavior: 'smooth'
+            });
+        }
+    }
+
+    scrollToTop() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        
+        // Update active nav link
+        const homeLink = document.querySelector('.nav-link[href="#home"]');
+        if (homeLink) {
+            this.setActiveNavLink(homeLink);
+        }
+    }
+
     setupAnimations() {
         // Intersection Observer for scroll animations
         if ('IntersectionObserver' in window) {
@@ -1085,72 +1193,50 @@ class BarberWorld {
         });
     }
 
-    // Utility Functions
-    setupPerformanceOptimizations() {
-        // Lazy load images
-        if ('IntersectionObserver' in window) {
-            const imageObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const img = entry.target;
-                        if (img.dataset.src) {
-                            img.src = img.dataset.src;
-                            img.removeAttribute('data-src');
-                        }
-                        imageObserver.unobserve(img);
+    createRippleEffect(element, event) {
+        const ripple = document.createElement('div');
+        const rect = element.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = event.clientX - rect.left - size / 2;
+        const y = event.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+            position: absolute;
+            width: ${size}px;
+            height: ${size}px;
+            left: ${x}px;
+            top: ${y}px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+            pointer-events: none;
+            z-index: 1;
+        `;
+
+        // Ensure parent has relative position
+        element.style.position = 'relative';
+        element.style.overflow = 'hidden';
+        element.appendChild(ripple);
+
+        // Add ripple animation
+        if (!document.querySelector('#ripple-styles')) {
+            const style = document.createElement('style');
+            style.id = 'ripple-styles';
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: scale(2);
+                        opacity: 0;
                     }
-                });
-            });
-
-            document.querySelectorAll('img[data-src]').forEach(img => {
-                imageObserver.observe(img);
-            });
+                }
+            `;
+            document.head.appendChild(style);
         }
 
-        // Prefetch important resources
-        this.prefetchResources();
+        setTimeout(() => ripple.remove(), 600);
     }
 
-    prefetchResources() {
-        // Prefetch JSON files
-        const jsonFiles = [
-            'jrl-products.json',
-            'stylecraft-products.json', 
-            'wahl-products.json',
-            'babyliss-products.json'
-        ];
-
-        jsonFiles.forEach(file => {
-            const linkEl = document.createElement('link');
-            linkEl.rel = 'prefetch';
-            linkEl.href = file;
-            document.head.appendChild(linkEl);
-        });
-    }
-
-    handleKeyboardShortcuts(e) {
-        // Escape key - close modals/menus
-        if (e.key === 'Escape') {
-            this.closeMobileMenu();
-            this.closeSearchModal();
-            const modals = document.querySelectorAll('.modal-overlay');
-            modals.forEach(modal => modal.remove());
-        }
-        
-        // Ctrl/Cmd + K - Search
-        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-            e.preventDefault();
-            this.openSearchModal();
-        }
-
-        // Ctrl/Cmd + / - Focus search
-        if ((e.ctrlKey || e.metaKey) && e.key === '/') {
-            e.preventDefault();
-            this.openSearchModal();
-        }
-    }
-
-    // Modal System
     createModal({ title, content, onConfirm, onCancel, confirmText = 'OK', cancelText = 'Cancel' }) {
         const modal = document.createElement('div');
         modal.className = 'modal-overlay';
@@ -1296,8 +1382,11 @@ class BarberWorld {
         return modal;
     }
 
-    // Notification System
     showNotification(message, type = 'info') {
+        // Remove existing notifications
+        const existingNotifications = document.querySelectorAll('.notification');
+        existingNotifications.forEach(notification => notification.remove());
+
         const notification = document.createElement('div');
         notification.className = 'notification';
         notification.style.cssText = `
@@ -1366,17 +1455,59 @@ class BarberWorld {
         return icons[type] || icons.info;
     }
 
-    // Analytics and Tracking
+    // ============================================================================
+    // UTILITY FUNCTIONS SECTION - Performance, Analytics, Helper Methods
+    // ============================================================================
+
+    setupPerformanceOptimizations() {
+        // Lazy load images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                        }
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Prefetch important resources
+        this.prefetchResources();
+    }
+
+    prefetchResources() {
+        // Prefetch JSON files
+        const jsonFiles = [
+            'jrl-products.json',
+            'stylecraft-products.json', 
+            'wahl-products.json',
+            'babyliss-products.json'
+        ];
+
+        jsonFiles.forEach(file => {
+            const linkEl = document.createElement('link');
+            linkEl.rel = 'prefetch';
+            linkEl.href = file;
+            document.head.appendChild(linkEl);
+        });
+    }
+
     trackEvent(eventName, data = {}) {
-        // Mock analytics tracking
         console.log(`📊 Event tracked: ${eventName}`, data);
-        
         // In a real app, you'd send this to your analytics service
         // gtag('event', eventName, data);
         // or analytics.track(eventName, data);
     }
 
-    // Utility Methods
     debounce(func, wait) {
         let timeout;
         return function executedFunction(...args) {
@@ -1402,6 +1533,10 @@ class BarberWorld {
         };
     }
 }
+
+// ============================================================================
+// GLOBAL FUNCTIONS AND INITIALIZATION
+// ============================================================================
 
 // Global functions for footer and external calls
 function searchAllProducts() {
@@ -1447,6 +1582,14 @@ function scrollToTop() {
     });
 }
 
+// Global utility functions
+window.scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element && window.barberWorld) {
+        window.barberWorld.smoothScrollTo(`#${sectionId}`);
+    }
+};
+
 // Initialize the application
 document.addEventListener('DOMContentLoaded', () => {
     window.barberWorld = new BarberWorld();
@@ -1461,14 +1604,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 500);
 });
-
-// Global utility functions
-window.scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element && window.barberWorld) {
-        window.barberWorld.smoothScrollTo(`#${sectionId}`);
-    }
-};
 
 // Export for potential module use
 if (typeof module !== 'undefined' && module.exports) {
