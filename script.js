@@ -794,7 +794,6 @@ class BarberWorldSearch {
 /* ========================================
    PRODUCTS & BRANDS SECTION
    ======================================== */
-// Brands Section JavaScript
 class BrandsSection {
     constructor() {
         this.brandTiles = document.querySelectorAll('.brand-tile');
@@ -903,30 +902,38 @@ class BrandsSection {
     }
 
     animateTileHover(tile, isHover) {
-        const image = tile.querySelector('.brand-image img');
-        const overlay = tile.querySelector('.brand-overlay');
+        const title = tile.querySelector('.brand-title');
+        const products = tile.querySelector('.brand-products');
         
         if (isHover) {
             tile.style.transform = 'translateY(-4px)';
             tile.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.15)';
+            tile.style.background = '#f0f0f0';
             
-            if (image) {
-                image.style.transform = 'scale(1.05)';
+            if (title) {
+                title.style.color = 'var(--accent-gold)';
             }
             
-            if (overlay) {
-                overlay.style.background = 'linear-gradient(transparent, rgba(0, 0, 0, 0.8))';
+            if (products) {
+                const images = products.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.transform = 'scale(1.05)';
+                });
             }
         } else {
             tile.style.transform = '';
             tile.style.boxShadow = '';
+            tile.style.background = '';
             
-            if (image) {
-                image.style.transform = '';
+            if (title) {
+                title.style.color = '';
             }
             
-            if (overlay) {
-                overlay.style.background = '';
+            if (products) {
+                const images = products.querySelectorAll('img');
+                images.forEach(img => {
+                    img.style.transform = '';
+                });
             }
         }
     }
@@ -972,7 +979,7 @@ class BrandsSection {
         const rect = tile.getBoundingClientRect();
         
         // Calculate ripple size and position
-        const size = Math.max(rect.width, rect.height) * 1.2;
+        const size = Math.max(rect.width, rect.height) * 0.8;
         let x, y;
         
         if (event.type === 'click' && event.clientX) {
@@ -990,16 +997,15 @@ class BrandsSection {
             height: ${size}px;
             left: ${x}px;
             top: ${y}px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             transform: scale(0);
             animation: ripple 0.6s linear;
             pointer-events: none;
-            z-index: 10;
+            z-index: 1;
         `;
 
         tile.style.position = 'relative';
-        tile.style.overflow = 'hidden';
         tile.appendChild(ripple);
 
         // Remove ripple after animation
@@ -1042,14 +1048,14 @@ class BrandsSection {
             'barber-world': 'Our Brand',
             'combos': 'Professional Combos',
             'babyliss': 'Babyliss',
-            'stylecraft': 'StyleCraft',
-            'jrl': 'JRL Professional',
+            'stylecraft': 'StyleCraft Gamma',
+            'jrl': 'JRL',
             'wahl': 'Wahl',
-            'specials': 'Special Offers',
+            'specials': 'Cocco',
             'andis': 'Andis',
             'trimmers': 'Supreme Trimmer',
             'vgr': 'TPOB',
-            'accessories': 'R-WAY'
+            'accessories': 'B-WAY'
         };
         return brandNames[brand] || brand.charAt(0).toUpperCase() + brand.slice(1);
     }
@@ -1150,12 +1156,23 @@ class BrandsSection {
     highlightTile(brand) {
         const tile = document.querySelector(`[data-brand="${brand}"]`);
         if (tile) {
-            tile.style.transform = 'scale(1.05)';
+            const title = tile.querySelector('.brand-title');
+            
+            tile.style.transform = 'scale(1.02)';
             tile.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
+            tile.style.background = '#f0f0f0';
+            
+            if (title) {
+                title.style.color = 'var(--accent-gold)';
+            }
             
             setTimeout(() => {
                 tile.style.transform = '';
                 tile.style.boxShadow = '';
+                tile.style.background = '';
+                if (title) {
+                    title.style.color = '';
+                }
             }, 2000);
         }
     }
@@ -1188,6 +1205,12 @@ const rippleAnimation = `
         opacity: 1 !important;
         transform: translateY(0) !important;
         transition: all 0.6s ease-out;
+    }
+
+    /* Enhanced tile styles */
+    .brand-tile {
+        position: relative;
+        overflow: hidden;
     }
 `;
 
