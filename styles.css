@@ -1143,8 +1143,6 @@ main {
    BRANDS SECTION
    ============================================================================ */
 
-/* Brands Section Styles */
-
 .brands {
     padding: var(--spacing-xl) 0;
     background: var(--white);
@@ -1190,7 +1188,7 @@ main {
 /* Refined Grid Layout */
 .brands-grid.compact-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
     max-width: 100%;
 }
@@ -1202,67 +1200,67 @@ main {
     overflow: hidden;
     cursor: pointer;
     transition: all var(--transition-normal);
-    height: 140px;
+    height: 160px;
     box-shadow: var(--shadow-sm);
     display: flex;
     align-items: flex-start;
-    padding: var(--spacing-lg);
+    padding: var(--spacing-xl);
     border: 1px solid #e8e8e8;
 }
 
 .brand-tile:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     box-shadow: var(--shadow-md);
     background: #f0f0f0;
 }
 
 .brand-title {
     position: absolute;
-    top: var(--spacing-lg);
-    left: var(--spacing-lg);
-    font-size: 1.2rem;
+    top: var(--spacing-xl);
+    left: var(--spacing-xl);
+    font-size: 1.4rem;
     font-weight: 700;
     color: var(--primary-black);
     margin: 0;
     line-height: 1.2;
-    max-width: 140px;
+    max-width: 160px;
     z-index: 2;
 }
 
 .brand-products {
     position: absolute;
-    right: var(--spacing-md);
+    right: var(--spacing-lg);
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     align-items: center;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-md);
     flex-wrap: wrap;
     justify-content: flex-end;
-    max-width: 60%;
+    max-width: 65%;
 }
 
 .brand-products img {
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
     object-fit: cover;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform var(--transition-fast);
 }
 
 .brand-products img:first-child {
-    width: 100px;
-    height: 80px;
+    width: 120px;
+    height: 95px;
     z-index: 1;
 }
 
 .brand-products img:nth-child(2) {
-    width: 60px;
-    height: 60px;
+    width: 75px;
+    height: 75px;
 }
 
 .brand-products img:nth-child(3) {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 .brand-tile:hover .brand-products img {
@@ -1303,6 +1301,44 @@ main {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .brands-grid.compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .brand-tile {
+        height: 140px;
+        padding: var(--spacing-lg);
+    }
+    
+    .brand-title {
+        font-size: 1.2rem;
+        top: var(--spacing-lg);
+        left: var(--spacing-lg);
+        max-width: 140px;
+    }
+    
+    .brand-products {
+        right: var(--spacing-md);
+        max-width: 60%;
+    }
+    
+    .brand-products img:first-child {
+        width: 100px;
+        height: 80px;
+    }
+    
+    .brand-products img:nth-child(2) {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .brand-products img:nth-child(3) {
+        width: 50px;
+        height: 50px;
+    }
+}
+
 @media (max-width: 768px) {
     .brands {
         padding: var(--spacing-lg) 0;
@@ -1315,6 +1351,11 @@ main {
     
     .section-title {
         font-size: 1.8rem;
+    }
+    
+    .brands-grid.compact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
     }
     
     .brand-tile {
@@ -1347,10 +1388,6 @@ main {
     .brand-products img:nth-child(3) {
         width: 40px;
         height: 40px;
-    }
-    
-    .brands-grid.compact-grid {
-        gap: var(--spacing-md);
     }
 }
 
@@ -1448,6 +1485,7 @@ main {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
+
 
 /* ============================================================================
    WHY CHOOSE US SECTION
