@@ -1143,7 +1143,7 @@ main {
    BRANDS SECTION
    ============================================================================ */
 
-..brands {
+.brands {
     padding: var(--spacing-xl) 0;
     background: var(--white);
     min-height: calc(100vh - 80px);
@@ -1153,14 +1153,14 @@ main {
 }
 
 .brands-container {
-    max-width: 1200px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xl);
 }
 
 .section-title {
@@ -1189,16 +1189,8 @@ main {
 .brands-grid.compact-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-xl);
+    gap: var(--spacing-md);
     max-width: 100%;
-}
-
-@media (min-width: 1024px) {
-    .brands-grid.compact-grid {
-        gap: var(--spacing-xxl);
-        max-width: 1000px;
-        margin: 0 auto;
-    }
 }
 
 .brand-tile {
@@ -1215,13 +1207,6 @@ main {
     align-items: center;
     justify-content: center;
     min-height: 140px;
-}
-
-@media (min-width: 1024px) {
-    .brand-tile {
-        min-height: 180px;
-        aspect-ratio: 1.5 / 1;
-    }
 }
 
 .brand-tile:hover {
@@ -1249,6 +1234,15 @@ main {
 
 .brand-tile:hover img {
     transform: scale(1.02);
+}
+
+/* Placeholder styling */
+.brand-placeholder {
+    opacity: 0.7;
+}
+
+.brand-tile:hover .brand-placeholder {
+    opacity: 0.9;
 }
 
 /* Focus states for accessibility */
@@ -1288,21 +1282,6 @@ main {
 }
 
 /* Responsive Design */
-@media (min-width: 769px) and (max-width: 1023px) {
-    .brands-container {
-        max-width: 800px;
-        padding: 0 var(--spacing-xl);
-    }
-    
-    .brands-grid.compact-grid {
-        gap: var(--spacing-lg);
-    }
-    
-    .brand-tile {
-        min-height: 160px;
-    }
-}
-
 @media (max-width: 768px) {
     .brands {
         padding: var(--spacing-lg) 0;
@@ -1315,10 +1294,6 @@ main {
     
     .section-title {
         font-size: 1.8rem;
-    }
-    
-    .section-header {
-        margin-bottom: var(--spacing-xl);
     }
     
     .brand-tile {
