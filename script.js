@@ -902,38 +902,23 @@ class BrandsSection {
     }
 
     animateTileHover(tile, isHover) {
-        const title = tile.querySelector('.brand-title');
-        const products = tile.querySelector('.brand-products');
-        
         if (isHover) {
             tile.style.transform = 'translateY(-4px)';
             tile.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.15)';
             tile.style.background = '#f0f0f0';
             
-            if (title) {
-                title.style.color = 'var(--accent-gold)';
-            }
-            
-            if (products) {
-                const images = products.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.transform = 'scale(1.05)';
-                });
+            const img = tile.querySelector('img');
+            if (img) {
+                img.style.transform = 'scale(1.02)';
             }
         } else {
             tile.style.transform = '';
             tile.style.boxShadow = '';
             tile.style.background = '';
             
-            if (title) {
-                title.style.color = '';
-            }
-            
-            if (products) {
-                const images = products.querySelectorAll('img');
-                images.forEach(img => {
-                    img.style.transform = '';
-                });
+            const img = tile.querySelector('img');
+            if (img) {
+                img.style.transform = '';
             }
         }
     }
@@ -1046,16 +1031,17 @@ class BrandsSection {
     getBrandName(brand) {
         const brandNames = {
             'barber-world': 'Our Brand',
-            'combos': 'Professional Combos',
+            'combos': 'Build Your Own Combo',
+            'combos-sets': 'Combos',
             'babyliss': 'Babyliss',
             'stylecraft': 'StyleCraft Gamma',
             'jrl': 'JRL',
             'wahl': 'Wahl',
-            'specials': 'Cocco',
+            'cocco': 'Cocco',
             'andis': 'Andis',
-            'trimmers': 'Supreme Trimmer',
-            'vgr': 'TPOB',
-            'accessories': 'B-WAY'
+            'supreme-trimmer': 'Supreme Trimmer',
+            'tpob': 'TPOB',
+            'b-way': 'B-WAY'
         };
         return brandNames[brand] || brand.charAt(0).toUpperCase() + brand.slice(1);
     }
@@ -1156,23 +1142,14 @@ class BrandsSection {
     highlightTile(brand) {
         const tile = document.querySelector(`[data-brand="${brand}"]`);
         if (tile) {
-            const title = tile.querySelector('.brand-title');
-            
             tile.style.transform = 'scale(1.02)';
             tile.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.5)';
             tile.style.background = '#f0f0f0';
-            
-            if (title) {
-                title.style.color = 'var(--accent-gold)';
-            }
             
             setTimeout(() => {
                 tile.style.transform = '';
                 tile.style.boxShadow = '';
                 tile.style.background = '';
-                if (title) {
-                    title.style.color = '';
-                }
             }, 2000);
         }
     }
