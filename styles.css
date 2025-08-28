@@ -1153,14 +1153,14 @@ main {
 }
 
 .brands-container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
 }
 
 .section-title {
@@ -1189,8 +1189,16 @@ main {
 .brands-grid.compact-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: var(--spacing-md);
+    gap: var(--spacing-xl);
     max-width: 100%;
+}
+
+@media (min-width: 1024px) {
+    .brands-grid.compact-grid {
+        gap: var(--spacing-xxl);
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 }
 
 .brand-tile {
@@ -1207,6 +1215,13 @@ main {
     align-items: center;
     justify-content: center;
     min-height: 140px;
+}
+
+@media (min-width: 1024px) {
+    .brand-tile {
+        min-height: 180px;
+        aspect-ratio: 1.5 / 1;
+    }
 }
 
 .brand-tile:hover {
@@ -1234,6 +1249,15 @@ main {
 
 .brand-tile:hover img {
     transform: scale(1.02);
+}
+
+/* Placeholder styling */
+.brand-placeholder {
+    opacity: 0.7;
+}
+
+.brand-tile:hover .brand-placeholder {
+    opacity: 0.9;
 }
 
 /* Focus states for accessibility */
@@ -1327,7 +1351,6 @@ main {
     0% { background-position: 200% 0; }
     100% { background-position: -200% 0; }
 }
-
 
 /* ============================================================================
    WHY CHOOSE US SECTION
