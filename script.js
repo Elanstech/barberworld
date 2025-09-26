@@ -3,7 +3,7 @@
 // ==========================================
 
 // Stripe Configuration
-const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_PUBLISHABLE_KEY_HERE'; // Replace with your key
+const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_KEY_HERE'; // Replace with your Stripe key
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 // State Management
@@ -17,81 +17,69 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAllProducts();
     loadCart();
     updateCartBadge();
+    console.log('🚀 Barber World Loaded');
 });
 
-// Load Products from JSON
+// ==========================================
+// LOAD PRODUCTS FROM JSON
+// ==========================================
+
 async function loadAllProducts() {
     try {
         const response = await fetch('all-products.json');
+        if (!response.ok) throw new Error('Failed to load products');
+        
         allProducts = await response.json();
+        console.log(`✅ Loaded ${allProducts.length} products`);
+        
         displayFeaturedProducts();
-        console.log('✅ Products loaded:', allProducts.length);
     } catch (error) {
-        console.error('Error loading products:', error);
-        // Fallback sample data
-        allProducts = [
-            {id: 1, name: "JRL Onyx Clipper", price: 225, brand: "JRL"},
-            {id: 2, name: "Wahl Magic Clip", price: 150, brand: "Wahl"},
-            {id: 3, name: "BaByliss FX Clipper", price: 229, brand: "Babyliss"},
-            {id: 4, name: "StyleCraft Instinct", price: 269, brand: "StyleCraft"}
-        ];
-        displayFeaturedProducts();
+        console.error('❌ Error loading products:', error);
+        
+        // Fallback: Load individual brand files
+        await loadBrandProducts();
     }
 }
 
-// Display Featured Products
+async function loadBrandProducts() {
+    try {
+        const brands = ['jrl', 'wahl', 'babyliss', 'stylecraft'];
+        const promises = brands.map(brand => 
+            fetch(`${brand}-products.json`)
+                .then(res => res.json())
+                .catch(() => [])
+        );
+        
+        const results = await Promise.all(promises);
+        allProducts = results.flat();
+        
+        console.log(`✅ Loaded ${allProducts.length} products from brand files`);
+        displayFeaturedProducts();
+    } catch (error) {
+        console.error('❌ Failed to load brand products:', error);
+    }
+}
+
+// ==========================================
+// DISPLAY PRODUCTS
+// ==========================================
+
 function displayFeaturedProducts() {
     const container = document.getElementById('featured-products');
-    const featured = allProducts.slice(0, 4);
+    if (!container) return;
     
-    container.innerHTML = featured.map(product => `
-        <div class="product-card" onclick="addToCart(${product.id})">
-            <div class="product-image">
-                <img src="${getProductImage(product)}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <span class="product-brand">${product.brand}</span>
-                <h3 class="product-name">${product.name}</h3>
-                <div class="product-price">$${product.price.toFixed(2)}</div>
-                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id})">
-                    <i class="fas fa-shopping-bag"></i> Add to Cart
-                </button>
-            </div>
-        </div>
-    `).join('');
+    // Get random featured products
+    const shuffled = [...allProducts].sort(() => 0.5 - Math.random());
+    const featured = shuffled.slice(0, 4);
+    
+    container.innerHTML = featured.map(product => createProductCard(product)).join('');
 }
 
-// Load Products by Category
-function loadProducts(category) {
-    currentCategory = category;
-    currentView = 'products';
-    
-    const filtered = allProducts.filter(p => 
-        p.brand.toLowerCase().includes(category.toLowerCase()) ||
-        category.toLowerCase().includes(p.brand.toLowerCase())
-    );
-    
-    document.getElementById('home-view').style.display = 'none';
-    document.getElementById('products-view').style.display = 'block';
-    document.getElementById('category-title').textContent = category;
-    
-    const grid = document.getElementById('products-grid');
-    
-    if (filtered.length === 0) {
-        grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-box-open" style="font-size: 3rem; color: #ccc; margin-bottom: 1rem;"></i>
-                <h3>No products found</h3>
-                <p style="color: #6c757d;">Try another category</p>
-            </div>
-        `;
-        return;
-    }
-    
-    grid.innerHTML = filtered.map(product => `
+function createProductCard(product) {
+    return `
         <div class="product-card">
             <div class="product-image">
-                <img src="${getProductImage(product)}" alt="${product.name}">
+                <img src="${getProductImage(product)}" alt="${product.name}" loading="lazy">
             </div>
             <div class="product-info">
                 <span class="product-brand">${product.brand}</span>
@@ -102,30 +90,100 @@ function loadProducts(category) {
                 </button>
             </div>
         </div>
-    `).join('');
-    
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    `;
 }
 
-// Show Home
-function showHome() {
-    currentView = 'home';
-    document.getElementById('home-view').style.display = 'block';
-    document.getElementById('products-view').style.display = 'none';
-    window.scrollTo({top: 0, behavior: 'smooth'});
-}
-
-// Get Product Image
 function getProductImage(product) {
     const name = product.name.toLowerCase();
+    const brand = product.brand.toLowerCase();
+    
+    // Brand-specific images
+    if (brand === 'babyliss') {
+        return 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw594b01df/images/large/SBS-008819.jpg?sw=750&sh=750&sfrm=png';
+    } else if (brand === 'stylecraft' || name.includes('gamma')) {
+        return 'https://www.barberdepots.com/wp-content/uploads/2023/01/stylecraft-instinct-clipper-sc607m-blue-cover-on-stand.webp';
+    } else if (brand === 'jrl') {
+        return 'https://m.media-amazon.com/images/I/51f7yv8H2-L._UF1000,1000_QL80_.jpg';
+    } else if (brand === 'wahl') {
+        return 'https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png';
+    } else if (brand === 'andis') {
+        return 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw94874ac8/images/large/SBS-022916.jpg?sw=1500&sh=1500&sfrm=png';
+    }
+    
+    // Product type images
     if (name.includes('clipper')) {
         return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop';
     } else if (name.includes('trimmer')) {
         return 'https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400&h=300&fit=crop';
     } else if (name.includes('shaver')) {
         return 'https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=400&h=300&fit=crop';
+    } else if (name.includes('dryer') || name.includes('blow')) {
+        return 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=400&h=300&fit=crop';
+    } else if (name.includes('comb') || name.includes('clip') || name.includes('cape') || name.includes('accessory')) {
+        return 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=400&h=300&fit=crop';
     }
+    
     return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop';
+}
+
+// ==========================================
+// CATEGORY FILTERING
+// ==========================================
+
+function loadProducts(category) {
+    currentCategory = category;
+    currentView = 'products';
+    
+    // Filter products by brand or category
+    const filtered = allProducts.filter(p => {
+        const brand = p.brand.toLowerCase();
+        const name = p.name.toLowerCase();
+        const cat = category.toLowerCase();
+        
+        // Match by brand
+        if (brand.includes(cat) || cat.includes(brand)) return true;
+        
+        // Match by product type
+        if (cat.includes('combo') && (name.includes('combo') || name.includes('kit'))) return true;
+        if (cat.includes('clipper') && name.includes('clipper')) return true;
+        if (cat.includes('trimmer') && name.includes('trimmer')) return true;
+        if (cat.includes('shaver') && name.includes('shaver')) return true;
+        
+        return false;
+    });
+    
+    // Show products view
+    document.getElementById('home-view').style.display = 'none';
+    document.getElementById('products-view').style.display = 'block';
+    document.getElementById('category-title').textContent = category;
+    
+    const grid = document.getElementById('products-grid');
+    
+    if (filtered.length === 0) {
+        grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem;">
+                <i class="fas fa-box-open" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
+                <h3 style="color: #666;">No products found</h3>
+                <p style="color: #999;">Try browsing another category</p>
+                <button class="btn-primary" onclick="showHome()" style="margin-top: 1rem; padding: 0.75rem 1.5rem; background: #d4af37; color: white; border: none; border-radius: 12px; cursor: pointer;">
+                    Back to Home
+                </button>
+            </div>
+        `;
+        return;
+    }
+    
+    grid.innerHTML = filtered.map(product => createProductCard(product)).join('');
+    window.scrollTo({top: 0, behavior: 'smooth'});
+    
+    console.log(`📦 Showing ${filtered.length} products for: ${category}`);
+}
+
+function showHome() {
+    currentView = 'home';
+    document.getElementById('home-view').style.display = 'block';
+    document.getElementById('products-view').style.display = 'none';
+    window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 // ==========================================
@@ -134,7 +192,10 @@ function getProductImage(product) {
 
 function addToCart(productId) {
     const product = allProducts.find(p => p.id === productId);
-    if (!product) return;
+    if (!product) {
+        console.error('Product not found:', productId);
+        return;
+    }
     
     const existingItem = cart.find(item => item.id === productId);
     
@@ -148,10 +209,10 @@ function addToCart(productId) {
     updateCartBadge();
     showNotification(`${product.name} added to cart!`);
     
-    // Animate cart button
-    const cartBtn = document.querySelector('.cart-badge');
-    cartBtn.style.transform = 'scale(1.3)';
-    setTimeout(() => cartBtn.style.transform = 'scale(1)', 300);
+    // Animate cart badge
+    const badge = document.getElementById('cart-badge');
+    badge.style.transform = 'scale(1.3)';
+    setTimeout(() => badge.style.transform = 'scale(1)', 300);
 }
 
 function updateCartQuantity(productId, change) {
@@ -227,8 +288,9 @@ function updateCartTotal() {
 
 function updateCartBadge() {
     const count = cart.reduce((sum, item) => sum + item.quantity, 0);
-    document.getElementById('cart-badge').textContent = count;
-    document.getElementById('cart-badge').style.display = count > 0 ? 'flex' : 'none';
+    const badge = document.getElementById('cart-badge');
+    badge.textContent = count;
+    badge.style.display = count > 0 ? 'flex' : 'none';
 }
 
 function saveCart() {
@@ -263,61 +325,56 @@ async function checkout() {
     
     showLoading();
     
+    // For demo: Create email order
+    const orderDetails = cart.map(item => 
+        `${item.name} (${item.brand}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
+    ).join('\n');
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    
+    const emailSubject = 'New Order - Barber World';
+    const emailBody = `
+NEW ORDER REQUEST
+
+Order Details:
+${orderDetails}
+
+TOTAL: $${total.toFixed(2)}
+
+---
+This order was placed through the Barber World website.
+`.trim();
+    
+    // Try to open email client
     try {
-        // Create line items for Stripe
-        const lineItems = cart.map(item => ({
-            price_data: {
-                currency: 'usd',
-                product_data: {
-                    name: item.name,
-                    description: item.brand,
-                },
-                unit_amount: Math.round(item.price * 100), // Convert to cents
-            },
-            quantity: item.quantity,
-        }));
+        const mailtoLink = `mailto:Bejdistributors@yahoo.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+        window.location.href = mailtoLink;
         
-        // Call your backend to create checkout session
-        const response = await fetch('/create-checkout-session', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                lineItems: lineItems,
-                successUrl: window.location.origin + '/success.html',
-                cancelUrl: window.location.origin + '/index.html',
-            }),
-        });
-        
-        const session = await response.json();
-        
-        // Redirect to Stripe Checkout
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id,
-        });
-        
-        if (result.error) {
-            throw new Error(result.error.message);
-        }
+        setTimeout(() => {
+            hideLoading();
+            showNotification('Opening your email client...', 'success');
+            
+            // Ask if they want to clear cart
+            setTimeout(() => {
+                if (confirm('Email opened! Clear your cart?')) {
+                    cart = [];
+                    saveCart();
+                    closeCart();
+                    updateCartBadge();
+                    showNotification('Cart cleared!', 'success');
+                }
+            }, 2000);
+        }, 1000);
         
     } catch (error) {
+        hideLoading();
         console.error('Checkout error:', error);
-        hideLoading();
-        showNotification('Checkout failed. Please try again.', 'error');
-        
-        // For demo: show what would be sent to Stripe
-        alert('DEMO MODE:\n\nYour cart items:\n' + 
-            cart.map(item => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`).join('\n') +
-            `\n\nTotal: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}\n\n` +
-            'To enable real checkout:\n1. Add your Stripe keys\n2. Create backend endpoint\n3. Follow setup instructions'
-        );
-        hideLoading();
+        showNotification('Please email us at: Bejdistributors@yahoo.com', 'error');
     }
 }
 
 // ==========================================
-// SEARCH
+// SEARCH FUNCTIONALITY
 // ==========================================
 
 function openSearch() {
@@ -343,32 +400,18 @@ function searchProducts(event) {
     const results = allProducts.filter(p => 
         p.name.toLowerCase().includes(query) ||
         p.brand.toLowerCase().includes(query)
-    ).slice(0, 8);
+    ).slice(0, 10);
     
     if (results.length === 0) {
-        resultsContainer.innerHTML = '<p style="text-align: center; color: #6c757d;">No results found</p>';
+        resultsContainer.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">No results found</p>';
         return;
     }
     
-    resultsContainer.innerHTML = results.map(product => `
-        <div class="product-card" onclick="addToCart(${product.id}); closeSearch();">
-            <div class="product-image">
-                <img src="${getProductImage(product)}" alt="${product.name}">
-            </div>
-            <div class="product-info">
-                <span class="product-brand">${product.brand}</span>
-                <h3 class="product-name">${product.name}</h3>
-                <div class="product-price">$${product.price.toFixed(2)}</div>
-                <button class="add-to-cart-btn" onclick="event.stopPropagation(); addToCart(${product.id}); closeSearch();">
-                    Add to Cart
-                </button>
-            </div>
-        </div>
-    `).join('');
+    resultsContainer.innerHTML = results.map(product => createProductCard(product)).join('');
 }
 
 // ==========================================
-// UTILITIES
+// UTILITY FUNCTIONS
 // ==========================================
 
 function showNotification(message, type = 'success') {
@@ -377,14 +420,15 @@ function showNotification(message, type = 'success') {
         position: fixed;
         top: 100px;
         right: 20px;
-        background: ${type === 'error' ? '#dc3545' : '#28a745'};
+        background: ${type === 'error' ? '#dc3545' : type === 'loading' ? '#d4af37' : '#28a745'};
         color: white;
         padding: 1rem 1.5rem;
         border-radius: 12px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         z-index: 10000;
         animation: slideInRight 0.3s ease;
         font-weight: 500;
+        max-width: 300px;
     `;
     notification.textContent = message;
     document.body.appendChild(notification);
@@ -403,7 +447,7 @@ function hideLoading() {
     document.getElementById('loading').classList.remove('active');
 }
 
-// Animations
+// Animations CSS
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
@@ -417,4 +461,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('🚀 Barber World initialized');
+// Log system ready
+console.log('✅ Barber World System Ready');
+console.log('📦 Products:', allProducts.length);
+console.log('🛒 Cart Items:', cart.length);
