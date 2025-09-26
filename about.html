@@ -19,83 +19,177 @@
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <!-- Header -->
-    <header class="header" id="header">
-        <nav class="nav">
-            <div class="nav-container">
-                <div class="nav-logo" id="nav-logo">
-                    <div class="logo-icon">
-                        <i class="fas fa-cut"></i>
-                    </div>
-                    <div class="logo-text">
-                        <span class="logo-main">BARBER</span>
-                        <span class="logo-sub">WORLD</span>
-                    </div>
+      <!-- Modern Header Section -->
+<header class="modern-header" id="header">
+    <div class="header-container">
+        <!-- Logo Section -->
+        <div class="logo-section" onclick="scrollToTop()">
+            <div class="logo-wrapper">
+                <img src="logo1.png" alt="Barber World Logo" class="logo-image">
+                <div class="logo-text">
+                    <span class="logo-main">BARBER WORLD</span>
+                    <span class="logo-sub">PROFESSIONAL EQUIPMENT</span>
                 </div>
-                
-                <div class="nav-menu" id="nav-menu">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <div class="nav-dropdown">
-                        <a href="#shop" class="nav-link dropdown-trigger">
-                            Shop
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <div class="mega-menu-section">
-                                    <h4>Premium Brands</h4>
-                                    <div class="mega-menu-links">
-                                        <a href="#" data-category="barber-world">Barber World</a>
-                                        <a href="#" data-category="stylecraft">StyleCraft</a>
-                                        <a href="#" data-category="wahl">Wahl</a>
-                                        <a href="#" data-category="andis">Andis</a>
-                                        <a href="#" data-category="babyliss">Babyliss</a>
-                                        <a href="#" data-category="jrl">JRL</a>
-                                        <a href="#" data-category="vgr">VGR</a>
-                                    </div>
-                                </div>
-                                <div class="mega-menu-section">
-                                    <h4>Categories</h4>
-                                    <div class="mega-menu-links">
-                                        <a href="#" data-category="clippers">Hair Clippers</a>
-                                        <a href="#" data-category="trimmers">Trimmers</a>
-                                        <a href="#" data-category="combos">Professional Combos</a>
-                                        <a href="#" data-category="accessories">Accessories</a>
-                                    </div>
-                                </div>
-                                <div class="mega-menu-section">
-                                    <h4>Special Offers</h4>
-                                    <div class="mega-menu-links">
-                                        <a href="#" data-category="specials">Specials</a>
-                                        <a href="#" data-category="new">New Arrivals</a>
-                                        <a href="#" data-category="bestsellers">Best Sellers</a>
-                                        <a href="#" data-category="all">All Products</a>
-                                    </div>
-                                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link active">
+                        <span>Home</span>
+                        <div class="nav-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-trigger">
+                        <span>Shop</span>
+                        <i class="fas fa-chevron-down dropdown-icon"></i>
+                        <div class="nav-underline"></div>
+                    </a>
+                    <div class="mega-dropdown">
+                        <div class="mega-content">
+                            <div class="mega-section">
+                                <h4>Premium Brands</h4>
+                                <ul>
+                                    <li><a href="#" onclick="filterProducts('Barber World')">Barber World</a></li>
+                                    <li><a href="#" onclick="filterProducts('StyleCraft')">StyleCraft</a></li>
+                                    <li><a href="#" onclick="filterProducts('Wahl')">Wahl</a></li>
+                                    <li><a href="#" onclick="filterProducts('Andis')">Andis</a></li>
+                                    <li><a href="#" onclick="filterProducts('Babyliss')">Babyliss</a></li>
+                                    <li><a href="#" onclick="filterProducts('JRL')">JRL™</a></li>
+                                    <li><a href="#" onclick="filterProducts('VGR')">VGR</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-section">
+                                <h4>Categories</h4>
+                                <ul>
+                                    <li><a href="#" onclick="filterByCategory('clipper')">Hair Clippers</a></li>
+                                    <li><a href="#" onclick="filterByCategory('trimmer')">Trimmers</a></li>
+                                    <li><a href="#" onclick="filterByCategory('shaver')">Shavers</a></li>
+                                    <li><a href="#" onclick="filterByCategory('accessories')">Accessories</a></li>
+                                </ul>
+                            </div>
+                            <div class="mega-section">
+                                <h4>Special Offers</h4>
+                                <ul>
+                                    <li><a href="#" onclick="showSpecials()">Current Specials</a></li>
+                                    <li><a href="#" onclick="showAllProducts()">All Products</a></li>
+                                    <li><a href="#" onclick="showNewArrivals()">New Arrivals</a></li>
+                                    <li><a href="#" onclick="showBestSellers()">Best Sellers</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <a href="about.html" class="nav-link active">About</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">
+                        <span>About</span>
+                        <div class="nav-underline"></div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">
+                        <span>Contact</span>
+                        <div class="nav-underline"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <button class="action-btn search-btn" onclick="openSearchModal()" aria-label="Search">
+                <i class="fas fa-search"></i>
+                <span class="btn-tooltip">Search</span>
+            </button>
+            <button class="action-btn cart-btn" onclick="showCart()" aria-label="Shopping Cart">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge" id="cart-count">0</span>
+                <span class="btn-tooltip">Cart</span>
+            </button>
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <div class="mobile-logo">
+                    <img src="logo1.png" alt="Barber World">
+                    <span>BARBER WORLD</span>
+                </div>
+                <button class="mobile-close" onclick="closeMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <nav class="mobile-menu">
+                <a href="#home" class="mobile-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                
+                <div class="mobile-dropdown">
+                    <button class="mobile-dropdown-trigger">
+                        <i class="fas fa-store"></i>
+                        <span>Shop</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="mobile-dropdown-content">
+                        <div class="mobile-sub-section">
+                            <h5>Brands</h5>
+                            <a href="#" onclick="filterProducts('Barber World'); closeMobileMenu();">Barber World</a>
+                            <a href="#" onclick="filterProducts('StyleCraft'); closeMobileMenu();">StyleCraft</a>
+                            <a href="#" onclick="filterProducts('Wahl'); closeMobileMenu();">Wahl</a>
+                            <a href="#" onclick="filterProducts('Andis'); closeMobileMenu();">Andis</a>
+                            <a href="#" onclick="filterProducts('Babyliss'); closeMobileMenu();">Babyliss</a>
+                            <a href="#" onclick="filterProducts('JRL'); closeMobileMenu();">JRL™</a>
+                            <a href="#" onclick="filterProducts('VGR'); closeMobileMenu();">VGR</a>
+                        </div>
+                        <div class="mobile-sub-section">
+                            <h5>Categories</h5>
+                            <a href="#" onclick="filterByCategory('clipper'); closeMobileMenu();">Clippers</a>
+                            <a href="#" onclick="filterByCategory('trimmer'); closeMobileMenu();">Trimmers</a>
+                            <a href="#" onclick="filterByCategory('shaver'); closeMobileMenu();">Shavers</a>
+                            <a href="#" onclick="filterByCategory('accessories'); closeMobileMenu();">Accessories</a>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="nav-actions">
-                    <button class="nav-btn search-btn" aria-label="Search">
+                <a href="about.html" class="mobile-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                
+                <a href="contact.html" class="mobile-link" onclick="closeMobileMenu()">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact</span>
+                </a>
+            </nav>
+            
+            <div class="mobile-nav-footer">
+                <div class="mobile-actions">
+                    <button class="mobile-action-btn" onclick="openSearchModal(); closeMobileMenu();">
                         <i class="fas fa-search"></i>
+                        <span>Search</span>
                     </button>
-                    <button class="nav-btn cart-btn" aria-label="Shopping Cart">
+                    <button class="mobile-action-btn" onclick="showCart(); closeMobileMenu();">
                         <i class="fas fa-shopping-bag"></i>
-                        <span class="cart-count" id="cart-count">0</span>
-                    </button>
-                    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span>Cart (<span id="mobile-cart-count">0</span>)</span>
                     </button>
                 </div>
             </div>
-        </nav>
-    </header>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
