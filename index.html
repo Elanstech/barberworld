@@ -28,47 +28,12 @@
                     <img src="logo1.png" alt="Barber World" class="logo-img">
                 </div>
                 
-                <!-- Navigation Menu -->
-                <div class="nav-menu" id="nav-menu">
-                    <a href="#home" class="nav-link active">Home</a>
-                    <div class="nav-dropdown">
-                        <a href="#shop" class="nav-link dropdown-trigger">
-                            Shop
-                            <i class="fas fa-chevron-down dropdown-arrow"></i>
-                        </a>
-                        <div class="mega-menu">
-                            <div class="mega-menu-content">
-                                <div class="mega-menu-section">
-                                    <h4>Brands</h4>
-                                    <div class="mega-menu-links">
-                                        <a href="#" data-brand="JRL">JRL</a>
-                                        <a href="#" data-brand="Wahl">Wahl</a>
-                                        <a href="#" data-brand="Babyliss">Babyliss</a>
-                                        <a href="#" data-brand="StyleCraft">StyleCraft</a>
-                                    </div>
-                                </div>
-                                <div class="mega-menu-section">
-                                    <h4>Categories</h4>
-                                    <div class="mega-menu-links">
-                                        <a href="#" data-category="clipper">Clippers</a>
-                                        <a href="#" data-category="trimmer">Trimmers</a>
-                                        <a href="#" data-category="shaver">Shavers</a>
-                                        <a href="#" data-category="combo">Combos</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href="about.html" class="nav-link">About</a>
-                    <a href="contact.html" class="nav-link">Contact</a>
-                </div>
-                
                 <!-- Navigation Actions -->
                 <div class="nav-actions">
-                    <button class="nav-btn search-btn" aria-label="Search">
+                    <button class="nav-btn search-btn" aria-label="Search" id="search-btn">
                         <i class="fas fa-search"></i>
                     </button>
-                    <button class="nav-btn cart-btn" aria-label="Shopping Cart">
+                    <button class="nav-btn cart-btn" aria-label="Shopping Cart" id="cart-btn">
                         <i class="fas fa-shopping-bag"></i>
                         <span class="cart-count" id="cart-count">0</span>
                     </button>
@@ -81,6 +46,20 @@
             </div>
         </nav>
     </header>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-container">
+            <button class="search-close" id="search-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search products, brands..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main>
@@ -97,7 +76,7 @@
                     </div>
                     
                     <!-- Build Your Own Combo -->
-                    <div class="brand-card" data-brand="Combos">
+                    <div class="brand-card" data-brand="Build Your Own Combo">
                         <div class="brand-image">
                             <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=400&h=300&fit=crop" alt="Build Your Own Combo">
                         </div>
@@ -187,55 +166,26 @@
             </div>
         </section>
 
-        <!-- Products Section (Hidden by default) -->
+        <!-- Products Section -->
         <section class="products-section" id="products" style="display: none;">
             <div class="products-container">
                 <div class="products-header">
-                    <button class="back-btn" onclick="hideProducts()">
+                    <button class="back-btn" id="back-btn">
                         <i class="fas fa-arrow-left"></i>
-                        <span class="back-text">Back</span>
+                        <span>Back</span>
                     </button>
                     <div class="products-info">
-                        <h2 id="products-title">All Products</h2>
+                        <h2 id="products-title">Products</h2>
                         <p id="products-count">0 products</p>
                     </div>
                 </div>
                 
-                <div class="products-filters">
-                    <select id="brand-filter" onchange="applyFilters()">
-                        <option value="">All Brands</option>
-                        <option value="JRL">JRL</option>
-                        <option value="Wahl">Wahl</option>
-                        <option value="Babyliss">Babyliss</option>
-                        <option value="StyleCraft">StyleCraft</option>
-                    </select>
-                    
-                    <select id="category-filter" onchange="applyFilters()">
-                        <option value="">All Types</option>
-                        <option value="clipper">Clippers</option>
-                        <option value="trimmer">Trimmers</option>
-                        <option value="shaver">Shavers</option>
-                    </select>
-                    
-                    <select id="sort-filter" onchange="applySorting()">
-                        <option value="name">Name</option>
-                        <option value="price-low">Price ↑</option>
-                        <option value="price-high">Price ↓</option>
-                    </select>
-                    
-                    <button class="clear-filters" onclick="clearFilters()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be dynamically inserted here -->
-                </div>
+                <div class="products-grid" id="products-grid"></div>
                 
                 <div class="no-products" id="no-products" style="display: none;">
                     <i class="fas fa-search"></i>
                     <h3>No products found</h3>
-                    <p>Try adjusting your filters</p>
+                    <p>Try searching for something else</p>
                 </div>
             </div>
         </section>
@@ -248,33 +198,6 @@
             <p>Contact: Bejdistributors@yahoo.com</p>
         </div>
     </footer>
-
-    <!-- Search Modal -->
-    <div class="search-modal" id="search-modal">
-        <div class="search-modal-content">
-            <div class="search-modal-header">
-                <h2>Search</h2>
-                <button class="search-modal-close" onclick="closeSearchModal()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="search-input-container">
-                <i class="fas fa-search search-input-icon"></i>
-                <input 
-                    type="text" 
-                    class="search-input" 
-                    id="search-input"
-                    placeholder="Search products..."
-                    onkeyup="liveSearch(event)"
-                >
-            </div>
-            
-            <div class="search-results" id="search-results">
-                <!-- Search results will appear here -->
-            </div>
-        </div>
-    </div>
 
     <!-- Cart Container -->
     <div id="cart-container"></div>
