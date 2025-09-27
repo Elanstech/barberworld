@@ -3,7 +3,7 @@
 // ==========================================
 
 // Stripe Configuration
-const STRIPE_PUBLIC_KEY = 'pk_test_YOUR_KEY_HERE'; // Replace with your Stripe key
+const STRIPE_PUBLIC_KEY = 'pk_test_51SBkTK0Q7Np77C4oaDCL5w7AMDHimAhovCqpHVI1CdgZSQ9uN9n5y8MvaeOOvGtuJcGuPPACrC2N8ptI6kjomC2Y00wxBrlF8j';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 // State Management
@@ -35,8 +35,6 @@ async function loadAllProducts() {
         displayFeaturedProducts();
     } catch (error) {
         console.error('❌ Error loading products:', error);
-        
-        // Fallback: Load individual brand files
         await loadBrandProducts();
     }
 }
@@ -68,7 +66,6 @@ function displayFeaturedProducts() {
     const container = document.getElementById('featured-products');
     if (!container) return;
     
-    // Get random featured products
     const shuffled = [...allProducts].sort(() => 0.5 - Math.random());
     const featured = shuffled.slice(0, 4);
     
@@ -97,7 +94,6 @@ function getProductImage(product) {
     const name = product.name.toLowerCase();
     const brand = product.brand.toLowerCase();
     
-    // Brand-specific images
     if (brand === 'babyliss') {
         return 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw594b01df/images/large/SBS-008819.jpg?sw=750&sh=750&sfrm=png';
     } else if (brand === 'stylecraft' || name.includes('gamma')) {
@@ -110,7 +106,6 @@ function getProductImage(product) {
         return 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw94874ac8/images/large/SBS-022916.jpg?sw=1500&sh=1500&sfrm=png';
     }
     
-    // Product type images
     if (name.includes('clipper')) {
         return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop';
     } else if (name.includes('trimmer')) {
@@ -134,16 +129,12 @@ function loadProducts(category) {
     currentCategory = category;
     currentView = 'products';
     
-    // Filter products by brand or category
     const filtered = allProducts.filter(p => {
         const brand = p.brand.toLowerCase();
         const name = p.name.toLowerCase();
         const cat = category.toLowerCase();
         
-        // Match by brand
         if (brand.includes(cat) || cat.includes(brand)) return true;
-        
-        // Match by product type
         if (cat.includes('combo') && (name.includes('combo') || name.includes('kit'))) return true;
         if (cat.includes('clipper') && name.includes('clipper')) return true;
         if (cat.includes('trimmer') && name.includes('trimmer')) return true;
@@ -152,7 +143,6 @@ function loadProducts(category) {
         return false;
     });
     
-    // Show products view
     document.getElementById('home-view').style.display = 'none';
     document.getElementById('products-view').style.display = 'block';
     document.getElementById('category-title').textContent = category;
@@ -209,7 +199,6 @@ function addToCart(productId) {
     updateCartBadge();
     showNotification(`${product.name} added to cart!`);
     
-    // Animate cart badge
     const badge = document.getElementById('cart-badge');
     badge.style.transform = 'scale(1.3)';
     setTimeout(() => badge.style.transform = 'scale(1)', 300);
@@ -325,51 +314,45 @@ async function checkout() {
     
     showLoading();
     
-    // For demo: Create email order
-    const orderDetails = cart.map(item => 
-        `${item.name} (${item.brand}) x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`
-    ).join('\n');
-    
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
-    const emailSubject = 'New Order - Barber World';
-    const emailBody = `
-NEW ORDER REQUEST
-
-Order Details:
-${orderDetails}
-
-TOTAL: $${total.toFixed(2)}
-
----
-This order was placed through the Barber World website.
-`.trim();
-    
-    // Try to open email client
     try {
-        const mailtoLink = `mailto:Bejdistributors@yahoo.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
-        window.location.href = mailtoLink;
+        const lineItems = cart.map(item => ({
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.name,
+                    description: `${item.brand} - Professional Equipment`,
+                },
+                unit_amount: Math.round(item.price * 100),
+            },
+            quantity: item.quantity,
+        }));
         
-        setTimeout(() => {
-            hideLoading();
-            showNotification('Opening your email client...', 'success');
-            
-            // Ask if they want to clear cart
-            setTimeout(() => {
-                if (confirm('Email opened! Clear your cart?')) {
-                    cart = [];
-                    saveCart();
-                    closeCart();
-                    updateCartBadge();
-                    showNotification('Cart cleared!', 'success');
-                }
-            }, 2000);
-        }, 1000);
+        const response = await fetch('/api/checkout', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ lineItems }),
+        });
+        
+        const data = await response.json();
+        
+        if (data.error) {
+            throw new Error(data.error);
+        }
+        
+        const result = await stripe.redirectToCheckout({
+            sessionId: data.id,
+        });
+        
+        if (result.error) {
+            throw new Error(result.error.message);
+        }
         
     } catch (error) {
-        hideLoading();
         console.error('Checkout error:', error);
-        showNotification('Please email us at: Bejdistributors@yahoo.com', 'error');
+        hideLoading();
+        showNotification('Checkout failed: ' + error.message, 'error');
     }
 }
 
@@ -461,7 +444,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Log system ready
 console.log('✅ Barber World System Ready');
-console.log('📦 Products:', allProducts.length);
-console.log('🛒 Cart Items:', cart.length);
