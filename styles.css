@@ -47,7 +47,7 @@ body {
 }
 
 .logo {
-    height: 50px;
+    height: 100px;
     cursor: pointer;
     transition: transform var(--transition);
 }
