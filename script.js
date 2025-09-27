@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
     loadAllProducts();
     loadCart();
     updateCartBadge();
+    initializeAboutSection();
+    initializeFooterInteractions();
     console.log('🚀 Barber World Loaded');
 });
 
@@ -420,6 +422,227 @@ function searchProducts(event) {
 }
 
 // ==========================================
+// ABOUT SECTION ANIMATIONS
+// ==========================================
+
+function initializeAboutSection() {
+    // Add scroll animations for about section
+    const aboutSection = document.getElementById('about-section');
+    if (!aboutSection) return;
+
+    // Create intersection observer for animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateAboutContent();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.3,
+        rootMargin: '0px 0px -50px 0px'
+    });
+
+    observer.observe(aboutSection);
+}
+
+function animateAboutContent() {
+    const elements = [
+        '.about-title',
+        '.about-description', 
+        '.feature-item',
+        '.warranty-notice',
+        '.about-image'
+    ];
+
+    elements.forEach((selector, index) => {
+        const element = document.querySelector(selector);
+        if (element) {
+            setTimeout(() => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease';
+                
+                // Trigger animation
+                requestAnimationFrame(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                });
+            }, index * 150);
+        }
+    });
+
+    // Animate feature items individually
+    const featureItems = document.querySelectorAll('.feature-item');
+    featureItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'all 0.5s ease';
+            
+            requestAnimationFrame(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            });
+        }, 800 + (index * 200));
+    });
+}
+
+// ==========================================
+// FOOTER INTERACTIONS
+// ==========================================
+
+function initializeFooterInteractions() {
+    // Add hover effects to payment cards
+    const paymentCards = document.querySelectorAll('.payment-card');
+    paymentCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-3px) scale(1.05)';
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Add click effect to designer credit
+    const designerCredit = document.querySelector('.designer-credit');
+    if (designerCredit) {
+        designerCredit.addEventListener('click', () => {
+            showDesignerInfo();
+        });
+        
+        designerCredit.style.cursor = 'pointer';
+        designerCredit.title = 'Click to learn more about Elan\'s Tech World';
+    }
+
+    // Add email copy functionality
+    const emailElements = document.querySelectorAll('p');
+    emailElements.forEach(element => {
+        if (element.textContent.includes('Bejdistributors@yahoo.com')) {
+            element.style.cursor = 'pointer';
+            element.title = 'Click to copy email';
+            element.addEventListener('click', copyEmail);
+        }
+    });
+}
+
+function showDesignerInfo() {
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: linear-gradient(135deg, #d4af37, #b8941f);
+        color: white;
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        z-index: 10000;
+        text-align: center;
+        max-width: 400px;
+        animation: popIn 0.3s ease;
+    `;
+    
+    notification.innerHTML = `
+        <div style="margin-bottom: 1rem;">
+            <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=60&h=60&fit=crop&crop=center" 
+                 style="width: 60px; height: 60px; border-radius: 50%; border: 3px solid white; margin-bottom: 1rem;">
+        </div>
+        <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">Elan's Tech World</h3>
+        <p style="margin: 0 0 1rem 0; line-height: 1.6;">
+            Professional web development and design services. 
+            Specializing in modern, responsive e-commerce solutions.
+        </p>
+        <button onclick="this.parentElement.remove(); document.querySelector('.modal-backdrop').remove();" 
+                style="background: white; color: #d4af37; border: none; padding: 0.75rem 1.5rem; 
+                       border-radius: 8px; font-weight: 600; cursor: pointer; transition: all 0.3s ease;">
+            Close
+        </button>
+    `;
+    
+    // Add backdrop
+    const backdrop = document.createElement('div');
+    backdrop.className = 'modal-backdrop';
+    backdrop.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.7);
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    backdrop.addEventListener('click', () => {
+        backdrop.remove();
+        notification.remove();
+    });
+    
+    document.body.appendChild(backdrop);
+    document.body.appendChild(notification);
+    
+    // Auto close after 8 seconds
+    setTimeout(() => {
+        if (document.body.contains(notification)) {
+            backdrop.remove();
+            notification.remove();
+        }
+    }, 8000);
+}
+
+function copyEmail() {
+    const email = 'Bejdistributors@yahoo.com';
+    
+    if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+            showNotification('Email copied to clipboard!', 'success');
+        }).catch(() => {
+            fallbackCopyEmail(email);
+        });
+    } else {
+        fallbackCopyEmail(email);
+    }
+}
+
+function fallbackCopyEmail(email) {
+    const textArea = document.createElement('textarea');
+    textArea.value = email;
+    textArea.style.position = 'fixed';
+    textArea.style.opacity = '0';
+    document.body.appendChild(textArea);
+    textArea.select();
+    
+    try {
+        document.execCommand('copy');
+        showNotification('Email copied to clipboard!', 'success');
+    } catch (err) {
+        showNotification('Could not copy email. Please copy manually.', 'error');
+    }
+    
+    document.body.removeChild(textArea);
+}
+
+// ==========================================
+// SMOOTH SCROLL TO ABOUT SECTION
+// ==========================================
+
+function scrollToAbout() {
+    const aboutSection = document.getElementById('about-section');
+    if (aboutSection) {
+        aboutSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Export function for use in other files
+window.scrollToAbout = scrollToAbout;
+
+// ==========================================
 // UTILITY FUNCTIONS
 // ==========================================
 
@@ -474,7 +697,27 @@ style.textContent = `
         from { transform: translateX(0); opacity: 1; }
         to { transform: translateX(100%); opacity: 0; }
     }
+    @keyframes popIn {
+        from {
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    .payment-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .designer-logo {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
 `;
 document.head.appendChild(style);
 
-console.log('✅ Barber World System Ready');
+console.log('✅ Barber World System Ready with About Section & Footer');
