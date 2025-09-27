@@ -2,7 +2,7 @@
 // BARBER WORLD - COMPLETE SHOPPING SYSTEM
 // ==========================================
 
-// Stripe Configuration
+// Stripe Configuration - PUBLIC KEY ONLY (Client-Side Safe)
 const STRIPE_PUBLIC_KEY = 'pk_test_51SBkTK0Q7Np77C4oaDCL5w7AMDHimAhovCqpHVI1CdgZSQ9uN9n5y8MvaeOOvGtuJcGuPPACrC2N8ptI6kjomC2Y00wxBrlF8j';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
@@ -303,7 +303,7 @@ function closeCart() {
 }
 
 // ==========================================
-// STRIPE CHECKOUT
+// STRIPE CHECKOUT - SECURE VERSION
 // ==========================================
 
 async function checkout() {
@@ -315,6 +315,7 @@ async function checkout() {
     showLoading();
     
     try {
+        // Prepare line items for Stripe
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
@@ -327,6 +328,9 @@ async function checkout() {
             quantity: item.quantity,
         }));
         
+        console.log('🛒 Starting checkout with', lineItems.length, 'items');
+        
+        // Call server-side checkout API
         const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
@@ -337,10 +341,20 @@ async function checkout() {
         
         const data = await response.json();
         
-        if (data.error) {
-            throw new Error(data.error);
+        // Handle errors
+        if (!response.ok) {
+            console.error('API Error:', data);
+            throw new Error(data.message || data.error || 'Checkout failed');
         }
         
+        // Validate session ID
+        if (!data.id) {
+            throw new Error('No session ID received from server');
+        }
+        
+        console.log('✅ Checkout session created:', data.id);
+        
+        // Redirect to Stripe Checkout
         const result = await stripe.redirectToCheckout({
             sessionId: data.id,
         });
@@ -350,9 +364,21 @@ async function checkout() {
         }
         
     } catch (error) {
-        console.error('Checkout error:', error);
+        console.error('❌ Checkout error:', error);
         hideLoading();
-        showNotification('Checkout failed: ' + error.message, 'error');
+        
+        // User-friendly error messages
+        let errorMessage = 'Checkout failed. Please try again.';
+        
+        if (error.message.includes('API key') || error.message.includes('configuration')) {
+            errorMessage = 'Payment system error. Please contact support at Bejdistributors@yahoo.com';
+        } else if (error.message.includes('network') || error.message.includes('fetch')) {
+            errorMessage = 'Network error. Please check your connection and try again.';
+        } else if (error.message) {
+            errorMessage = error.message;
+        }
+        
+        showNotification(errorMessage, 'error');
     }
 }
 
@@ -411,15 +437,22 @@ function showNotification(message, type = 'success') {
         z-index: 10000;
         animation: slideInRight 0.3s ease;
         font-weight: 500;
-        max-width: 300px;
+        max-width: 350px;
+        font-size: 0.95rem;
+        line-height: 1.5;
     `;
-    notification.textContent = message;
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <i class="fas fa-${type === 'error' ? 'exclamation-circle' : type === 'loading' ? 'spinner fa-spin' : 'check-circle'}"></i>
+            <span>${message}</span>
+        </div>
+    `;
     document.body.appendChild(notification);
     
     setTimeout(() => {
         notification.style.animation = 'slideOutRight 0.3s ease';
         setTimeout(() => notification.remove(), 300);
-    }, 3000);
+    }, type === 'error' ? 5000 : 3000);
 }
 
 function showLoading() {
