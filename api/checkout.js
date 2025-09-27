@@ -1,57 +1,120 @@
-// api/checkout.js - Fixed version
+// api/checkout.js - Production Ready with Error Handling
 const Stripe = require('stripe');
 
 module.exports = async (req, res) => {
-    // Enable CORS
+    // Enable CORS for all origins
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
     
-    // Handle preflight
+    // Handle preflight requests
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
     
+    // Only allow POST requests
     if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
+        return res.status(405).json({ 
+            error: 'Method not allowed',
+            message: 'This endpoint only accepts POST requests'
+        });
     }
     
     try {
-        // Get the secret key from environment variable
+        // Get Stripe secret key from environment
         const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
         
+        // Validate environment variable exists
         if (!stripeSecretKey) {
-            throw new Error('STRIPE_SECRET_KEY is not set in environment variables');
+            console.error('❌ STRIPE_SECRET_KEY not found in environment');
+            return res.status(500).json({ 
+                error: 'Server configuration error',
+                message: 'Stripe API key is not configured. Please contact support.',
+                debug: 'STRIPE_SECRET_KEY environment variable is missing'
+            });
         }
         
-        // Initialize Stripe with the secret key
+        // Validate Stripe key format
+        if (!stripeSecretKey.startsWith('sk_test_') && !stripeSecretKey.startsWith('sk_live_')) {
+            console.error('❌ Invalid Stripe key format');
+            return res.status(500).json({ 
+                error: 'Server configuration error',
+                message: 'Invalid Stripe API key format',
+                debug: 'Key must start with sk_test_ or sk_live_'
+            });
+        }
+        
+        // Initialize Stripe
         const stripe = Stripe(stripeSecretKey);
         
+        // Validate request body
         const { lineItems } = req.body;
         
-        if (!lineItems || lineItems.length === 0) {
-            throw new Error('No items in cart');
+        if (!lineItems || !Array.isArray(lineItems) || lineItems.length === 0) {
+            return res.status(400).json({ 
+                error: 'Invalid request',
+                message: 'Cart is empty or invalid'
+            });
         }
         
-        // Create Stripe checkout session
+        // Determine the base URL (works for both custom domain and Vercel URL)
+        const protocol = req.headers['x-forwarded-proto'] || 'https';
+        const host = req.headers['x-forwarded-host'] || req.headers.host;
+        const baseUrl = `${protocol}://${host}`;
+        
+        console.log('🌍 Base URL:', baseUrl);
+        console.log('🛒 Creating session for', lineItems.length, 'items');
+        
+        // Create Stripe Checkout Session
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
-            success_url: `${req.headers.origin || 'https://barberworld-beryl.vercel.app'}/success.html?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${req.headers.origin || 'https://barberworld-beryl.vercel.app'}/index.html`,
+            success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+            cancel_url: `${baseUrl}/index.html`,
+            shipping_address_collection: {
+                allowed_countries: ['US', 'CA']
+            },
             metadata: {
-                source: 'barber-world-website'
+                source: 'barber-world-website',
+                timestamp: new Date().toISOString()
             }
         });
         
-        res.status(200).json({ id: session.id });
+        console.log('✅ Session created:', session.id);
+        
+        // Return session ID
+        return res.status(200).json({ 
+            id: session.id,
+            url: session.url
+        });
         
     } catch (error) {
-        console.error('Stripe Error:', error);
-        res.status(500).json({ 
-            error: error.message,
-            details: 'Check Vercel logs for more information'
+        console.error('❌ Stripe Error:', error.message);
+        console.error('Error Details:', error);
+        
+        // Handle specific Stripe errors
+        if (error.type === 'StripeInvalidRequestError') {
+            return res.status(400).json({ 
+                error: 'Invalid request to Stripe',
+                message: error.message,
+                debug: error.type
+            });
+        }
+        
+        if (error.type === 'StripeAuthenticationError') {
+            return res.status(401).json({ 
+                error: 'Stripe authentication failed',
+                message: 'Invalid API credentials',
+                debug: error.message
+            });
+        }
+        
+        // Generic error response
+        return res.status(500).json({ 
+            error: 'Checkout failed',
+            message: error.message || 'An unexpected error occurred',
+            debug: process.env.NODE_ENV === 'development' ? error.stack : undefined
         });
     }
 };
