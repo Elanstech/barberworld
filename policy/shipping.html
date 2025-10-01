@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping Policy - Barber World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .policy-page {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .policy-header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .policy-header .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+        .policy-section h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-section h2 i {
+            color: var(--gold);
+        }
+        .policy-section p, .policy-section li {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .policy-section ul {
+            padding-left: 1.5rem;
+        }
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            margin-bottom: 2rem;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-page">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="policy-header">
+            <h1><i class="fas fa-shipping-fast"></i> Shipping Policy</h1>
+            <p class="last-updated">Last Updated: January 2024</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-box"></i> Processing Time</h2>
+            <p>At Barber World, we strive to process and ship your order as quickly as possible:</p>
+            <ul>
+                <li><strong>Standard Processing:</strong> 1-2 business days</li>
+                <li><strong>Peak Season:</strong> 2-3 business days (holidays and promotional periods)</li>
+                <li>Orders placed on weekends or holidays will be processed on the next business day</li>
+                <li>You will receive a confirmation email with tracking information once your order ships</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-truck"></i> Shipping Methods & Rates</h2>
+            <p>We offer several shipping options to meet your needs:</p>
+            
+            <div class="highlight-box">
+                <strong><i class="fas fa-star"></i> FREE STANDARD SHIPPING</strong>
+                <p>On all orders over $75 within the continental United States!</p>
+            </div>
+
+            <ul>
+                <li><strong>Standard Shipping (5-7 business days):</strong> $8.95</li>
+                <li><strong>Expedited Shipping (3-4 business days):</strong> $15.95</li>
+                <li><strong>Express Shipping (2-3 business days):</strong> $25.95</li>
+                <li><strong>Overnight Shipping (1 business day):</strong> $39.95</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-map-marked-alt"></i> Shipping Locations</h2>
+            <p><strong>Domestic Shipping:</strong> We ship to all 50 United States, including Alaska, Hawaii, and U.S. territories.</p>
+            <p><strong>International Shipping:</strong> Currently, we ship to Canada. International shipping rates and times vary based on destination. Additional customs fees and import duties may apply and are the responsibility of the customer.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-search-location"></i> Order Tracking</h2>
+            <p>Once your order ships, you will receive:</p>
+            <ul>
+                <li>Email confirmation with tracking number</li>
+                <li>Carrier information (USPS, UPS, or FedEx)</li>
+                <li>Direct link to track your package</li>
+                <li>Estimated delivery date</li>
+            </ul>
+            <div class="highlight-box">
+                <p><i class="fas fa-info-circle"></i> <strong>Pro Tip:</strong> Please allow 24 hours for tracking information to update in the carrier's system.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-box-open"></i> Packaging</h2>
+            <p>All products are carefully packaged to ensure they arrive in perfect condition:</p>
+            <ul>
+                <li>Professional-grade protective packaging materials</li>
+                <li>Secure boxing to prevent damage during transit</li>
+                <li>Discreet packaging with no external branding (upon request)</li>
+                <li>All manufacturer packaging and documentation included</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-exclamation-triangle"></i> Delivery Issues</h2>
+            <p>If you experience any issues with delivery:</p>
+            <ul>
+                <li><strong>Lost Packages:</strong> Contact us if tracking shows no movement for 10+ days</li>
+                <li><strong>Damaged Packages:</strong> Please photograph the damage and contact us within 48 hours</li>
+                <li><strong>Incorrect Address:</strong> Contact us immediately if you notice an error in your shipping address</li>
+                <li><strong>Refused Delivery:</strong> Additional fees may apply for refused packages</li>
+            </ul>
+            <div class="highlight-box">
+                <p><i class="fas fa-phone"></i> <strong>Need Help?</strong> Contact us at barberworldnyc@gmail.com for assistance with any shipping issues.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-calendar-alt"></i> Holiday Shipping</h2>
+            <p>During holiday seasons, please note:</p>
+            <ul>
+                <li>Processing times may be extended by 1-2 business days</li>
+                <li>Carrier delays are possible during peak shipping periods</li>
+                <li>We recommend ordering early to ensure timely delivery</li>
+                <li>Holiday cutoff dates will be posted on our website</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-shield-alt"></i> Insurance & Signature</h2>
+            <p>For your protection:</p>
+            <ul>
+                <li>All orders over $300 are automatically insured and require signature upon delivery</li>
+                <li>Additional insurance can be purchased for orders under $300</li>
+                <li>Signature confirmation can be added to any order for $5</li>
+                <li>We are not responsible for packages marked as "delivered" by the carrier</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-question-circle"></i> Questions?</h2>
+            <p>If you have any questions about our shipping policy, please don't hesitate to contact us:</p>
+            <p><strong>Email:</strong> barberworldnyc@gmail.com</p>
+            <p><strong>Business Hours:</strong> Monday - Friday, 9 AM - 6 PM EST</p>
+        </div>
+    </div>
+</body>
+</html>
