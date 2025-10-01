@@ -18,10 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 async function loadFeaturedProducts() {
     try {
-        // Load all brand JSONs
+        // Load all brand JSONs from json folder
         const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl'];
         const promises = brands.map(brand => 
-            fetch(`${brand}-products.json`)
+            fetch(`json/${brand}-products.json`)
                 .then(res => res.ok ? res.json() : [])
                 .catch(() => [])
         );
@@ -70,9 +70,9 @@ function truncateText(text, length) {
 // ==========================================
 async function addToCart(productId, brandName) {
     try {
-        // Load the correct brand JSON
+        // Load the correct brand JSON from json folder
         const brand = brandName.toLowerCase();
-        const response = await fetch(`${brand}-products.json`);
+        const response = await fetch(`json/${brand}-products.json`);
         const products = await response.json();
         const product = products.find(p => p.id === productId);
         
@@ -276,7 +276,7 @@ async function searchProducts(event) {
     try {
         const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl'];
         const promises = brands.map(brand => 
-            fetch(`${brand}-products.json`)
+            fetch(`json/${brand}-products.json`)
                 .then(res => res.ok ? res.json() : [])
                 .catch(() => [])
         );
@@ -304,7 +304,7 @@ async function searchProducts(event) {
                 <div class="product-info">
                     <span class="product-brand">${product.brand}</span>
                     <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="product-price">${product.price.toFixed(2)}</div>
                     <button class="add-to-cart-btn" onclick="event.stopPropagation();">
                         <i class="fas fa-shopping-bag"></i> Add to Cart
                     </button>
