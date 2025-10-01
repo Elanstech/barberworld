@@ -1,12 +1,17 @@
-// Enhanced Barber World Homepage JavaScript
+// Enhanced Barber World Homepage - Smart & Snappy
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
-// Global Cart State
+// Global State
 let cart = [];
 let megaMenuTimer = null;
+let carouselInterval = null;
+let currentSlide = 0;
+let featuredProducts = [];
+let touchStartX = 0;
+let touchEndX = 0;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,11 +19,33 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     loadFeaturedProducts();
     initializeAnimations();
-    console.log('🚀 Barber World Enhanced Homepage Loaded');
+    setupTouchHandlers();
+    console.log('🚀 Barber World Enhanced - Ready!');
 });
 
 // ==========================================
-// MEGA MENU FUNCTIONALITY
+// SCROLL LOCKING
+// ==========================================
+
+function lockScroll() {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    document.body.classList.add('no-scroll');
+}
+
+function unlockScroll() {
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    document.body.classList.remove('no-scroll');
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+
+// ==========================================
+// MEGA MENU
 // ==========================================
 
 function openMegaMenu() {
@@ -43,7 +70,7 @@ function closeMegaMenu() {
 }
 
 // ==========================================
-// MOBILE MENU FUNCTIONALITY
+// MOBILE MENU
 // ==========================================
 
 function toggleMobileMenu() {
@@ -52,24 +79,12 @@ function toggleMobileMenu() {
     
     if (isActive) {
         mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        unlockScroll();
     } else {
         mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        lockScroll();
     }
 }
-
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuBtn = document.querySelector('.mobile-menu-btn');
-    
-    if (mobileMenu.classList.contains('active') && 
-        !mobileMenu.contains(e.target) && 
-        !menuBtn.contains(e.target)) {
-        toggleMobileMenu();
-    }
-});
 
 // ==========================================
 // ENHANCED SEARCH PANEL
@@ -78,7 +93,7 @@ document.addEventListener('click', (e) => {
 function openSearchPanel() {
     const searchPanel = document.getElementById('search-panel');
     searchPanel.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockScroll();
     
     setTimeout(() => {
         document.getElementById('search-input-main').focus();
@@ -88,9 +103,8 @@ function openSearchPanel() {
 function closeSearchPanel() {
     const searchPanel = document.getElementById('search-panel');
     searchPanel.classList.remove('active');
-    document.body.style.overflow = '';
+    unlockScroll();
     
-    // Clear search
     document.getElementById('search-input-main').value = '';
     document.getElementById('search-results-panel').innerHTML = '';
     document.querySelector('.clear-search').style.display = 'none';
@@ -113,7 +127,6 @@ async function performSearch(event) {
     const resultsContainer = document.getElementById('search-results-panel');
     const clearBtn = document.querySelector('.clear-search');
     
-    // Show/hide clear button
     clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
     
     if (query.length < 2) {
@@ -122,7 +135,6 @@ async function performSearch(event) {
     }
     
     try {
-        // Show loading
         resultsContainer.innerHTML = `
             <div style="text-align: center; padding: 2rem; color: #999;">
                 <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
@@ -201,7 +213,9 @@ async function performSearch(event) {
                                 margin-bottom: 0.35rem;
                                 overflow: hidden;
                                 text-overflow: ellipsis;
-                                white-space: nowrap;
+                                display: -webkit-box;
+                                -webkit-line-clamp: 2;
+                                -webkit-box-orient: vertical;
                             ">${product.name}</div>
                             <div style="
                                 font-size: 1.2rem;
@@ -269,14 +283,13 @@ function initializeAnimations() {
         });
     }, observerOptions);
     
-    // Observe all elements with data-aos attribute
     document.querySelectorAll('[data-aos]').forEach(el => {
         observer.observe(el);
     });
 }
 
 // ==========================================
-// LOAD FEATURED PRODUCTS
+// CAROUSEL - SNAPPY & FAST
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -291,37 +304,168 @@ async function loadFeaturedProducts() {
         const results = await Promise.all(promises);
         const allProducts = results.flat();
         
-        // Shuffle and get 8 random products
+        // Shuffle and get 12 products
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
-        const featured = shuffled.slice(0, 8);
+        featuredProducts = shuffled.slice(0, 12);
         
-        displayFeaturedProducts(featured);
+        displayCarousel();
+        startAutoPlay();
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
     }
 }
 
-function displayFeaturedProducts(products) {
-    const container = document.getElementById('featured-products');
-    if (!container) return;
+function displayCarousel() {
+    const track = document.getElementById('carousel-track');
+    const dotsContainer = document.getElementById('carousel-dots');
     
-    container.innerHTML = products.map(product => `
-        <div class="product-card" onclick="addToCart(${product.id}, '${product.brand}')">
-            <div class="product-image">
-                <img src="${getProductImage(product)}" 
-                     alt="${product.name}" loading="lazy">
+    if (!track || !dotsContainer) return;
+    
+    // Determine items per slide based on screen size
+    const itemsPerSlide = window.innerWidth > 1024 ? 4 : window.innerWidth > 768 ? 2 : 1;
+    const totalSlides = Math.ceil(featuredProducts.length / itemsPerSlide);
+    
+    // Build carousel slides
+    let slidesHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const slideProducts = featuredProducts.slice(i * itemsPerSlide, (i + 1) * itemsPerSlide);
+        slidesHTML += `
+            <div class="carousel-item">
+                ${slideProducts.map(product => `
+                    <div class="product-card" onclick="addToCart(${product.id}, '${product.brand}')">
+                        <div class="product-image">
+                            <img src="${getProductImage(product)}" alt="${product.name}" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <span class="product-brand">${product.brand}</span>
+                            <h3 class="product-name">${truncateText(product.name, 50)}</h3>
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            <button class="add-to-cart-btn" onclick="event.stopPropagation();">
+                                <i class="fas fa-shopping-bag"></i> Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
             </div>
-            <div class="product-info">
-                <span class="product-brand">${product.brand}</span>
-                <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                <div class="product-price">$${product.price.toFixed(2)}</div>
-                <button class="add-to-cart-btn" onclick="event.stopPropagation();">
-                    <i class="fas fa-shopping-bag"></i> Add to Cart
-                </button>
-            </div>
-        </div>
-    `).join('');
+        `;
+    }
+    
+    track.innerHTML = slidesHTML;
+    
+    // Build dots
+    dotsContainer.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `carousel-dot ${i === 0 ? 'active' : ''}`;
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+    }
+    
+    currentSlide = 0;
 }
+
+function moveCarousel(direction) {
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const totalSlides = dots.length;
+    
+    if (totalSlides === 0) return;
+    
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+    resetAutoPlay();
+}
+
+function updateCarousel() {
+    const track = document.getElementById('carousel-track');
+    const dots = document.querySelectorAll('.carousel-dot');
+    
+    if (!track || dots.length === 0) return;
+    
+    // Smooth transform
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    
+    // Update dots
+    dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+    });
+}
+
+function startAutoPlay() {
+    stopAutoPlay();
+    carouselInterval = setInterval(() => {
+        moveCarousel(1);
+    }, 5000); // Change slide every 5 seconds
+}
+
+function stopAutoPlay() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+    }
+}
+
+function resetAutoPlay() {
+    stopAutoPlay();
+    startAutoPlay();
+}
+
+// Touch/Swipe support for carousel
+function setupTouchHandlers() {
+    const track = document.getElementById('carousel-track');
+    if (!track) return;
+    
+    track.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        stopAutoPlay();
+    });
+    
+    track.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+        startAutoPlay();
+    });
+}
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            // Swiped left
+            moveCarousel(1);
+        } else {
+            // Swiped right
+            moveCarousel(-1);
+        }
+    }
+}
+
+// Pause carousel on hover (desktop)
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('carousel-track');
+    if (track) {
+        track.addEventListener('mouseenter', stopAutoPlay);
+        track.addEventListener('mouseleave', startAutoPlay);
+    }
+});
+
+// Rebuild carousel on resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        if (featuredProducts.length > 0) {
+            displayCarousel();
+        }
+    }, 250);
+});
 
 function getProductImage(product) {
     if (product.image) return product.image;
@@ -334,7 +478,7 @@ function truncateText(text, length) {
 }
 
 // ==========================================
-// CART FUNCTIONALITY (Keep existing)
+// CART FUNCTIONALITY
 // ==========================================
 
 async function addToCart(productId, brandName) {
@@ -361,7 +505,6 @@ async function addToCart(productId, brandName) {
         updateCartBadge();
         showNotification(`${product.name} added to cart!`);
         
-        // Animate badge
         const badge = document.getElementById('cart-badge');
         if (badge) {
             badge.style.transform = 'scale(1.4)';
@@ -470,25 +613,13 @@ function loadCart() {
 function openCart() {
     displayCart();
     document.getElementById('cart-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    lockScroll();
 }
 
 function closeCart() {
     document.getElementById('cart-modal').classList.remove('active');
-    document.body.style.overflow = '';
+    unlockScroll();
 }
-
-// Close cart when clicking outside
-document.addEventListener('click', (e) => {
-    const cartModal = document.getElementById('cart-modal');
-    const cartBtn = document.querySelector('.icon-btn[onclick="openCart()"]');
-    
-    if (cartModal && cartModal.classList.contains('active')) {
-        if (e.target === cartModal) {
-            closeCart();
-        }
-    }
-});
 
 // ==========================================
 // STRIPE CHECKOUT
@@ -633,59 +764,11 @@ style.textContent = `
             opacity: 0; 
         }
     }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
 `;
 document.head.appendChild(style);
 
-// ==========================================
-// PERFORMANCE OPTIMIZATIONS
-// ==========================================
-
-// Lazy load images
-document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-});
-
-// Debounce function for search
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to search
-const debouncedSearch = debounce(performSearch, 300);
-
-console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Mega Menu, Advanced Search, Smooth Animations');
-console.log('🛒 Cart System: Fully Functional');
-console.log('💳 Payment: Stripe Integration Active');
+console.log('✅ Barber World - All Systems Ready!');
+console.log('🎠 Carousel: Auto-play with touch support');
+console.log('🔒 Scroll Lock: Active on modals');
+console.log('📱 Mobile: Fully optimized');
+console.log('💳 Stripe: Integrated');
