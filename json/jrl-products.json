@@ -1,31 +1,89 @@
-[
-  {
-    "id": 1,
-    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
-    "price": 134.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-clipper-2020c-b"
-  },
-  {
-    "id": 2,
-    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
-    "price": 134.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-trimmer-2020t-b"
-  },
-  {
-    "id": 3,
-    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
-    "price": 119.99,
-    "brand": "JRL",
-    "slug": "jrl-ghost-clipper"
-  },
-  {
-    "id": 4,
-    "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle #GH2401-2",
-    "price": 269.99,
-    "brand": "JRL",
-    "slug": "jrl-ghost-trimmer"
-  },
-  {
-]
+{
+  "brand": "JRL",
+  "products": [
+    {
+      "id": "jrl-onyx-2020c-b",
+      "name": "JRL ONYX Professional Cordless Hair Clipper - Black",
+      "sku": "FF 2020C-B",
+      "brand": "JRL",
+      "category": "clippers",
+      "type": "cordless",
+      "color": "Black",
+      "voltage": "Dual Voltage",
+      "price": 199.99,
+      "description": "Professional cordless hair clipper with dual voltage capability for worldwide use.",
+      "features": [
+        "Cordless operation",
+        "Dual voltage (100-240V)",
+        "Professional grade",
+        "Rotary motor"
+      ],
+      "inStock": true,
+      "image": "/images/products/jrl-onyx-black.jpg",
+      "images": [
+        "/images/products/jrl-onyx-black-1.jpg",
+        "/images/products/jrl-onyx-black-2.jpg",
+        "/images/products/jrl-onyx-black-3.jpg"
+      ]
+    },
+    {
+      "id": "jrl-ghost-2020c-b-w",
+      "name": "JRL GHOST Professional Cordless Hair Clipper - White",
+      "sku": "2020C-B-W",
+      "brand": "JRL",
+      "category": "clippers",
+      "type": "cordless",
+      "color": "White",
+      "voltage": "Dual Voltage",
+      "price": 199.99,
+      "description": "Professional cordless hair clipper in elegant white finish with dual voltage capability.",
+      "features": [
+        "Cordless operation",
+        "Dual voltage (100-240V)",
+        "Professional grade",
+        "Rotary motor",
+        "Premium white finish"
+      ],
+      "inStock": true,
+      "image": "/images/products/jrl-ghost-white.jpg",
+      "images": [
+        "/images/products/jrl-ghost-white-1.jpg",
+        "/images/products/jrl-ghost-white-2.jpg",
+        "/images/products/jrl-ghost-white-3.jpg"
+      ]
+    },
+    {
+      "id": "jrl-ghost2-bundle-gh2401-2",
+      "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle",
+      "sku": "GH2401-2",
+      "brand": "JRL",
+      "category": "combos",
+      "type": "bundle",
+      "voltage": "Dual Voltage",
+      "price": 499.99,
+      "description": "Complete professional grooming bundle including clipper, trimmer, and shaver.",
+      "features": [
+        "3-in-1 bundle",
+        "Professional clipper",
+        "Precision trimmer",
+        "Close shaver",
+        "Dual voltage",
+        "Complete grooming solution"
+      ],
+      "bundleIncludes": [
+        "GHOST2 Clipper",
+        "GHOST2 Trimmer",
+        "GHOST2 Shaver",
+        "Charging accessories",
+        "Premium case"
+      ],
+      "inStock": true,
+      "image": "/images/products/jrl-ghost2-bundle.jpg",
+      "images": [
+        "/images/products/jrl-ghost2-bundle-1.jpg",
+        "/images/products/jrl-ghost2-bundle-2.jpg",
+        "/images/products/jrl-ghost2-bundle-3.jpg"
+      ]
+    }
+  ]
+}
