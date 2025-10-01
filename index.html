@@ -14,10 +14,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Enhanced Header with Mega Menu -->
+    <!-- Enhanced Header with Fixed Layout -->
     <header class="header">
         <div class="header-wrapper">
             <div class="header-left">
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
                 <img src="logo11.png" alt="Barber World" class="logo" onclick="scrollToSection('hero')">
                 
                 <nav class="main-nav">
@@ -37,9 +40,6 @@
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
                 </button>
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
         </div>
         
@@ -51,7 +51,7 @@
                     <div class="brand-links">
                         <a href="brands/ourbrand.html" class="brand-link">
                             <div class="brand-icon">
-                                <img src="logo11.png" alt="Our Brand">
+                                <img src="logo1.png" alt="Our Brand">
                             </div>
                             <div class="brand-info">
                                 <span class="brand-name">Our Brand</span>
@@ -213,7 +213,7 @@
                 <h2 class="section-title">Shop by Brand</h2>
                 <div class="categories-grid">
                     <div class="category-card" onclick="window.location.href='brands/ourbrand.html'">
-                        <img src="logo11.png" alt="Our Brand">
+                        <img src="logo1.png" alt="Our Brand">
                         <div class="category-name">Our Brand</div>
                     </div>
                     
@@ -257,10 +257,23 @@
                 </div>
             </div>
             
-            <!-- Featured Products -->
+            <!-- Featured Products Carousel -->
             <div class="section">
-                <h2 class="section-title">Featured Products</h2>
-                <div class="featured-grid" id="featured-products"></div>
+                <div class="section-header">
+                    <h2 class="section-title">Featured Products</h2>
+                    <div class="carousel-controls">
+                        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-btn next" onclick="moveCarousel(1)">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="carousel-container">
+                    <div class="carousel-track" id="carousel-track"></div>
+                </div>
+                <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </section>
 
@@ -428,7 +441,7 @@
         </section>
     </main>
 
-    <!-- Cart Modal (Keep existing functionality) -->
+    <!-- Cart Modal -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
