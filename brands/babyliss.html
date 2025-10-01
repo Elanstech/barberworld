@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaByliss Professional Products - Barber World</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <link rel="stylesheet" href="products.css">
+</head>
+<body data-brand="babyliss">
+    <!-- Header -->
+    <header class="header">
+        <div class="header-wrapper">
+            <img src="logo1.png" alt="Barber World" class="logo" onclick="window.location.href='index.html'">
+            
+            <div class="header-actions">
+                <button class="icon-btn" onclick="openSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" onclick="openCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="products-main">
+        <!-- Hero Section -->
+        <section class="products-hero">
+            <div class="hero-content">
+                <button class="back-btn" onclick="window.location.href='index.html'">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Home</span>
+                </button>
+                <h1 class="brand-title">BaByliss Professional</h1>
+                <p class="brand-subtitle">Premium Professional Grooming Equipment</p>
+            </div>
+        </section>
+
+        <!-- Filters & Controls -->
+        <section class="filters-section">
+            <div class="filters-container">
+                <div class="search-filter">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="product-search" placeholder="Search products..." onkeyup="filterProducts()">
+                </div>
+                
+                <div class="filter-group">
+                    <label for="category-filter">
+                        <i class="fas fa-filter"></i>
+                        Category
+                    </label>
+                    <select id="category-filter" onchange="filterProducts()">
+                        <option value="">All Categories</option>
+                        <option value="Clipper">Clippers</option>
+                        <option value="Trimmer">Trimmers</option>
+                        <option value="Shaver">Shavers</option>
+                        <option value="Combo Set">Combo Sets</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="price-filter">
+                        <i class="fas fa-dollar-sign"></i>
+                        Price Range
+                    </label>
+                    <select id="price-filter" onchange="filterProducts()">
+                        <option value="">All Prices</option>
+                        <option value="0-50">Under $50</option>
+                        <option value="50-100">$50 - $100</option>
+                        <option value="100-150">$100 - $150</option>
+                        <option value="150-999">$150+</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="sort-filter">
+                        <i class="fas fa-sort"></i>
+                        Sort By
+                    </label>
+                    <select id="sort-filter" onchange="filterProducts()">
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="price-asc">Price (Low to High)</option>
+                        <option value="price-desc">Price (High to Low)</option>
+                        <option value="rating-desc">Highest Rated</option>
+                    </select>
+                </div>
+                
+                <button class="clear-filters-btn" onclick="clearFilters()">
+                    <i class="fas fa-times"></i>
+                    Clear Filters
+                </button>
+            </div>
+        </section>
+
+        <!-- Products Grid -->
+        <section class="products-section">
+            <div class="products-container">
+                <div class="products-count" id="products-count">Loading products...</div>
+                <div class="products-grid" id="products-grid">
+                    <!-- Products load here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-overlay" onclick="closeProductModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeProductModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modal-body">
+                <!-- Product details load here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2>Shopping Cart</h2>
+                <button class="close-btn" onclick="closeCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="cart-items" id="cart-items"></div>
+            
+            <div class="cart-empty" id="cart-empty" style="display: none;">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+            </div>
+            
+            <div class="cart-footer" id="cart-footer">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">
+                    <i class="fas fa-lock"></i>
+                    Checkout with Stripe
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-content">
+            <input type="text" id="search-input" placeholder="Search all products..." onkeyup="globalSearch(event)">
+            <button class="close-btn" onclick="closeSearch()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> barberworldnyc@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Business Hours: Online Only</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>We Accept</h3>
+                    <div class="payment-methods">
+                        <div class="payment-card"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-card"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-card"><i class="fab fa-cc-amex"></i></div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Professional Equipment</h3>
+                    <p>Trusted by barbers worldwide</p>
+                    <p>All products are brand new with manufacturer warranty</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Barber World. All rights reserved.</p>
+                </div>
+                <div class="designer-credit">
+                    <span>Designed by</span>
+                    <div class="designer-logo">
+                        <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World">
+                        <span>Elan's Tech World</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Processing...</p>
+    </div>
+
+    <script src="products.js"></script>
+</body>
+</html>
