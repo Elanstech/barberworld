@@ -1,0 +1,286 @@
+[
+  {
+    "id": 1,
+    "name": "WMARK NG-X1 Hair Clippers for Men 10000RPM Rechargeable Cordless Clipper with Magnetic 9V Motor",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-x1-clipper",
+    "image": "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless clipper with 10000RPM magnetic 9V motor",
+    "description": "The WMARK NG-X1 is a high-performance professional hair clipper featuring a powerful 10000RPM magnetic 9V motor. Designed for barbers and stylists who demand precision and reliability. The cordless design with Type-C charging provides ultimate flexibility, while the 3 replaceable skins allow for customization.",
+    "features": [
+      "10000RPM magnetic 9V motor for powerful cutting",
+      "Rechargeable cordless design for freedom of movement",
+      "3 replaceable skins for customization",
+      "Type-C fast charging technology",
+      "Professional-grade precision blades",
+      "Ergonomic design for comfortable use",
+      "Long-lasting battery life",
+      "Dual voltage capability"
+    ],
+    "specifications": {
+      "motor": "Magnetic 9V motor",
+      "speed": "10000 RPM",
+      "battery": "Lithium-ion rechargeable",
+      "charging": "Type-C fast charging",
+      "runtime": "120+ minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "9.5 oz",
+      "voltage": "Dual voltage",
+      "model": "NG-X1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 234,
+    "sku": "WMARK-NG-X1"
+  },
+  {
+    "id": 2,
+    "name": "WMARK NG-XT1 Vector Motor Detail Trimmer",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xt1-trimmer",
+    "image": "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Precision vector motor detail trimmer for professional finishing",
+    "description": "The WMARK NG-XT1 Vector Motor Detail Trimmer is engineered for precision detailing and finishing work. Featuring advanced vector motor technology, this trimmer delivers consistent power for clean lines, edge-ups, and intricate designs. Perfect for barbers who specialize in detailed work.",
+    "features": [
+      "Advanced vector motor technology",
+      "Precision T-blade for detailed work",
+      "Zero-gap adjustable blade",
+      "Cordless convenience with long runtime",
+      "Type-C fast charging",
+      "Lightweight ergonomic design",
+      "Professional-grade construction",
+      "Perfect for edge-ups and designs"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "blade": "Precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.8 oz",
+      "voltage": "Dual voltage",
+      "model": "NG-XT1"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "sku": "WMARK-NG-XT1"
+  },
+  {
+    "id": 3,
+    "name": "WMARK NG-8632KIT Rechargeable Hair Clipper Trimmer Kit",
+    "price": 124.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-8632kit",
+    "image": "https://images.unsplash.com/photo-1634735110936-a66f90e2e2d6?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1634735110936-a66f90e2e2d6?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Complete professional clipper and trimmer kit with accessories",
+    "description": "The WMARK NG-8632KIT is a comprehensive professional grooming kit that includes both a high-performance clipper and precision trimmer. This complete set comes with all the accessories you need for professional barbering, including multiple guide combs, cleaning tools, and a premium storage case.",
+    "features": [
+      "Professional clipper and trimmer combo",
+      "High-performance motors in both tools",
+      "Complete accessory kit included",
+      "Multiple guide combs for versatility",
+      "Rechargeable cordless operation",
+      "Type-C charging for both devices",
+      "Premium carrying case",
+      "Professional-grade blades"
+    ],
+    "specifications": {
+      "setIncludes": "Clipper + Trimmer + Accessories",
+      "clipperMotor": "High-torque motor",
+      "trimmerMotor": "Precision motor",
+      "battery": "Lithium-ion (both)",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "150 minutes",
+      "charging": "Type-C",
+      "model": "NG-8632KIT"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 312,
+    "sku": "WMARK-NG-8632KIT"
+  },
+  {
+    "id": 4,
+    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Black",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xs1-black",
+    "image": "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium metal body clipper with vector motor - Black Edition",
+    "description": "The WMARK NG-XS1 Black Edition features a premium all-metal body construction with a powerful 10000RPM vector motor. This professional clipper is designed for barbers who demand both performance and style. The metal housing provides exceptional durability while the vector motor ensures consistent cutting power.",
+    "features": [
+      "Premium all-metal body construction",
+      "10000 RPM vector motor",
+      "Professional electric shaver technology",
+      "Perfect for bald fades and close cuts",
+      "Cordless rechargeable design",
+      "Type-C fast charging",
+      "Ergonomic metal grip",
+      "Long-lasting battery"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Professional fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "140 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "housing": "Full metal body",
+      "finish": "Black",
+      "model": "NG-XS1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 267,
+    "sku": "WMARK-NG-XS1-BLK"
+  },
+  {
+    "id": 5,
+    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Red",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xs1-red",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium metal body clipper with vector motor - Red Edition",
+    "description": "The WMARK NG-XS1 Red Edition stands out with its striking red metal finish while delivering the same exceptional performance. Featuring a 10000RPM vector motor and all-metal construction, this clipper combines professional-grade power with eye-catching style.",
+    "features": [
+      "Premium all-metal body in red",
+      "10000 RPM vector motor",
+      "Professional electric shaver technology",
+      "Perfect for bald fades and close cuts",
+      "Cordless rechargeable design",
+      "Type-C fast charging",
+      "Ergonomic metal grip",
+      "Long-lasting battery"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Professional fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "140 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "housing": "Full metal body",
+      "finish": "Red",
+      "model": "NG-XS1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 245,
+    "sku": "WMARK-NG-XS1-RED"
+  },
+  {
+    "id": 6,
+    "name": "WMARK NG-XS1 Compact Vector Motor Clipper 10000 RPM",
+    "price": 49.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xs1-compact",
+    "image": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Compact professional clipper with vector motor technology",
+    "description": "The WMARK NG-XS1 Compact Edition offers the same powerful 10000RPM vector motor performance in a more affordable package. Perfect for professionals looking for reliable performance without the premium metal body. Features the same professional-grade blade and motor technology.",
+    "features": [
+      "10000 RPM vector motor",
+      "Professional cutting performance",
+      "Lightweight compact design",
+      "Cordless rechargeable operation",
+      "Type-C charging port",
+      "Professional fade blade",
+      "Ergonomic grip design",
+      "Great value for professionals"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Professional fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "8.5 oz",
+      "housing": "Durable plastic",
+      "model": "NG-XS1 Compact"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 412,
+    "sku": "WMARK-NG-XS1-CMP"
+  },
+  {
+    "id": 7,
+    "name": "WMARK NG-SM003 Mini Fascia Gun Massage Device",
+    "price": 39.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-sm003-massage-gun",
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&h=600&fit=crop"
+    ],
+    "category": "Accessory",
+    "shortDescription": "Portable mini fascia massage gun for muscle relaxation",
+    "description": "The WMARK NG-SM003 Mini Fascia Gun is a compact, portable massage device designed for barbers and stylists who spend long hours on their feet. This USB-rechargeable device helps relieve muscle tension in the neck, shoulders, and back. Perfect for quick relief between clients or at the end of a long day.",
+    "features": [
+      "Compact portable design",
+      "USB electric rechargeable",
+      "Multiple speed settings",
+      "Quiet operation for salon use",
+      "Interchangeable massage heads",
+      "Ergonomic grip design",
+      "Long battery life",
+      "Perfect for barbers and stylists"
+    ],
+    "specifications": {
+      "type": "Mini fascia massage gun",
+      "power": "USB rechargeable",
+      "speeds": "3 adjustable speeds",
+      "battery": "Built-in lithium battery",
+      "runtime": "4-6 hours",
+      "chargeTime": "2 hours",
+      "weight": "12 oz",
+      "noise": "Under 45dB",
+      "model": "NG-SM003"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 156,
+    "sku": "WMARK-NG-SM003"
+  }
+]
