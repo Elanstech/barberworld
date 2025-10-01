@@ -453,7 +453,7 @@ function addToCartFromModal(productId) {
 }
 
 function addToCart(product) {
-    const existingItem = cart.find(item => item.id === product.id);
+    const existingItem = cart.find(item => item.id === product.id && item.brand === product.brand);
     
     if (existingItem) {
         existingItem.quantity++;
@@ -463,7 +463,7 @@ function addToCart(product) {
     
     saveCart();
     updateCartBadge();
-    showNotification(`${product.name} added to cart!`);
+    showNotification(`${truncateText(product.name, 40)} added to cart!`);
     
     // Animate badge
     const badge = document.getElementById('cart-badge');
@@ -497,6 +497,18 @@ function removeFromCart(productId) {
     displayCart();
     updateCartBadge();
     showNotification('Item removed from cart');
+}
+
+function clearAllCart() {
+    if (cart.length === 0) return;
+    
+    if (confirm('Are you sure you want to clear all items from your cart?')) {
+        cart = [];
+        saveCart();
+        displayCart();
+        updateCartBadge();
+        showNotification('Cart cleared successfully');
+    }
 }
 
 function displayCart() {
@@ -581,6 +593,7 @@ function openCart() {
     const cartModal = document.getElementById('cart-modal');
     if (cartModal) {
         cartModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -588,6 +601,7 @@ function closeCart() {
     const cartModal = document.getElementById('cart-modal');
     if (cartModal) {
         cartModal.classList.remove('active');
+        document.body.style.overflow = '';
     }
 }
 
@@ -663,7 +677,7 @@ async function globalSearch(event) {
     }
     
     try {
-        const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl'];
+        const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl', 'wmark', 'vgr'];
         const promises = brands.map(brand => 
             fetch(`../json/${brand}-products.json`)
                 .then(res => res.ok ? res.json() : [])
@@ -686,14 +700,14 @@ async function globalSearch(event) {
         }
         
         resultsContainer.innerHTML = filtered.map(product => `
-            <div class="product-card" onclick="redirectToProduct('${product.brand.toLowerCase()}', ${product.id})" style="cursor: pointer;">
-                <div class="product-image">
+            <div class="search-result-card" onclick="redirectToProduct('${product.brand.toLowerCase()}', ${product.id})" style="cursor: pointer;">
+                <div class="search-result-image">
                     <img src="${getProductImage(product)}" alt="${escapeHtml(product.name)}" loading="lazy">
                 </div>
-                <div class="product-info">
-                    <span class="product-brand">${escapeHtml(product.brand)}</span>
-                    <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                <div class="search-result-info">
+                    <span class="search-result-brand">${escapeHtml(product.brand)}</span>
+                    <h4 class="search-result-name">${truncateText(product.name, 60)}</h4>
+                    <div class="search-result-price">$${product.price.toFixed(2)}</div>
                 </div>
             </div>
         `).join('');
@@ -712,7 +726,10 @@ function openSearch() {
     const searchInput = document.getElementById('search-input');
     if (searchModal) {
         searchModal.classList.add('active');
-        if (searchInput) searchInput.focus();
+        document.body.style.overflow = 'hidden';
+        if (searchInput) {
+            setTimeout(() => searchInput.focus(), 100);
+        }
     }
 }
 
@@ -721,7 +738,10 @@ function closeSearch() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
     
-    if (searchModal) searchModal.classList.remove('active');
+    if (searchModal) {
+        searchModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
     if (searchInput) searchInput.value = '';
     if (searchResults) searchResults.innerHTML = '';
 }
@@ -742,6 +762,12 @@ function initializeScrollAnimations() {
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        @keyframes badgePop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+            100% { transform: scale(1); }
         }
     `;
     document.head.appendChild(style);
