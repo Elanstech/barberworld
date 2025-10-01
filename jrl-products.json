@@ -1,107 +1,31 @@
 [
   {
     "id": 1,
-    "name": "JRL Onyx Clipper 2020C-B",
-    "price": 225,
+    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
+    "price": 134.99,
     "brand": "JRL",
     "slug": "jrl-onyx-clipper-2020c-b"
   },
   {
     "id": 2,
-    "name": "JRL Onyx Trimmer 2020T-B",
-    "price": 145,
+    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
+    "price": 134.99,
     "brand": "JRL",
     "slug": "jrl-onyx-trimmer-2020t-b"
   },
   {
     "id": 3,
-    "name": "JRL Ghost Clipper",
-    "price": 225.5,
+    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
+    "price": 119.99,
     "brand": "JRL",
     "slug": "jrl-ghost-clipper"
   },
   {
     "id": 4,
-    "name": "JRL Ghost Trimmer",
-    "price": 145,
+    "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle #GH2401-2",
+    "price": 269.99,
     "brand": "JRL",
     "slug": "jrl-ghost-trimmer"
   },
   {
-    "id": 5,
-    "name": "JRL Barber Comb Set",
-    "price": 29.99,
-    "brand": "JRL",
-    "slug": "jrl-barber-comb-set"
-  },
-  {
-    "id": 6,
-    "name": "JRL Professional Cutting Cape",
-    "price": 15.99,
-    "brand": "JRL",
-    "slug": "jrl-professional-cutting-cape"
-  },
-  {
-    "id": 7,
-    "name": "JRL Professional Hair Clips",
-    "price": 6.99,
-    "brand": "JRL",
-    "slug": "jrl-professional-hair-clips"
-  },
-  {
-    "id": 8,
-    "name": "JRL Professional Onyx SF Pro Foil Shaver SH2301",
-    "price": 89.95,
-    "brand": "JRL",
-    "slug": "jrl-professional-onyx-sf-pro-foil-shaver-sh2301"
-  },
-  {
-    "id": 9,
-    "name": "JRL Freshfade 2020C Cordless Clipper 2020C-G",
-    "price": 175,
-    "brand": "JRL",
-    "slug": "jrl-freshfade-2020c-cordless-clipper-2020c-g"
-  },
-  {
-    "id": 10,
-    "name": "JRL Freshfade 2020T Trimmers",
-    "price": 125,
-    "brand": "JRL",
-    "slug": "jrl-freshfade-2020t-trimmers"
-  },
-  {
-    "id": 11,
-    "name": "JRL Blow Dryer Forte Pro",
-    "price": 229.99,
-    "brand": "JRL",
-    "slug": "jrl-blow-dryer-forte-pro"
-  },
-  {
-    "id": 12,
-    "name": "JRL Charging Dock",
-    "price": 17.95,
-    "brand": "JRL",
-    "slug": "jrl-charging-dock"
-  },
-  {
-    "id": 13,
-    "name": "JRL BARBER MAGNETIC MAT",
-    "price": 63,
-    "brand": "JRL",
-    "slug": "jrl-barber-magnetic-mat"
-  },
-  {
-    "id": 14,
-    "name": "JRL Large Hand Held Mirror",
-    "price": 19.99,
-    "brand": "JRL",
-    "slug": "jrl-large-hand-held-mirror"
-  },
-  {
-    "id": 15,
-    "name": "JRL Fine Mist Spray Bottle",
-    "price": 3.99,
-    "brand": "JRL",
-    "slug": "jrl-fine-mist-spray-bottle"
-  }
 ]
