@@ -742,6 +742,13 @@ main {
     transform: scale(1.1);
 }
 
+/* Hide carousel arrows on mobile - swipe only */
+@media (max-width: 768px) {
+    .carousel-controls {
+        display: none;
+    }
+}
+
 .carousel-container {
     overflow: hidden;
     border-radius: var(--radius-lg);
