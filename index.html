@@ -17,7 +17,7 @@
     <!-- Header -->
     <header class="header">
         <div class="header-wrapper">
-            <img src="logo1.png" alt="Barber World" class="logo" onclick="window.location.reload()">
+            <img src="logo1.png" alt="Barber World" class="logo" onclick="window.location.href='index.html'">
             
             <div class="header-actions">
                 <button class="icon-btn" onclick="openSearch()">
@@ -33,53 +33,53 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Home View -->
-        <section id="home-view" class="home-view">
-
+        <section class="home-view">
             <!-- Categories -->
             <div class="section">
                 <h2 class="section-title">Shop by Brand</h2>
-                <div class="categories-grid" id="categories-grid">
-                    <!-- Categories -->
-                    <div class="category-card" onclick="loadProducts('Our Brand')">
+                <div class="categories-grid">
+                    
+                    <div class="category-card" onclick="window.location.href='ourbrand.html'">
                         <img src="logo1.png" alt="Our Brand">
                         <div class="category-name">Our Brand</div>
                     </div>
                     
-                    <div class="category-card" onclick="loadProducts('Combos')">
+                    <div class="category-card coming-soon-card">
                         <img src="https://play-lh.googleusercontent.com/HVZOQT6k5qrJtg1DxiMLox2vMnMD9kt9lMx6uZ1LJ2uQ0jdVMccHONIJVQY3jyrPyyWr" alt="Build Combo">
-                        <div class="category-name">Build Your Own Combo</div>
+                        <div class="category-name">Build Your Combo</div>
+                        <div class="coming-soon-badge">Coming Soon</div>
                     </div>
                     
-        
-                    <div class="category-card" onclick="loadProducts('Babyliss')">
+                    <div class="category-card" onclick="window.location.href='babyliss.html'">
                         <img src="https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw594b01df/images/large/SBS-008819.jpg?sw=750&sh=750&sfrm=png" alt="Babyliss">
-                        <div class="category-name">Babyliss</div>
+                        <div class="category-name">BaBylissPRO</div>
                     </div>
                     
-                    <div class="category-card" onclick="loadProducts('StyleCraft')">
+                    <div class="category-card" onclick="window.location.href='stylecraft.html'">
                         <img src="https://www.barberdepots.com/wp-content/uploads/2023/01/stylecraft-instinct-clipper-sc607m-blue-cover-on-stand.webp" alt="StyleCraft">
                         <div class="category-name">StyleCraft Gamma</div>
                     </div>
                     
-                    <div class="category-card" onclick="loadProducts('JRL')">
+                    <div class="category-card" onclick="window.location.href='jrl.html'">
                         <img src="https://m.media-amazon.com/images/I/51f7yv8H2-L._UF1000,1000_QL80_.jpg" alt="JRL">
                         <div class="category-name">JRL</div>
                     </div>
                     
-                    <div class="category-card" onclick="loadProducts('Wahl')">
+                    <div class="category-card" onclick="window.location.href='wahl.html'">
                         <img src="https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png" alt="Wahl">
                         <div class="category-name">Wahl</div>
                     </div>
 
-                    <div class="category-card" onclick="loadProducts('Wahl')">
-                        <img src="https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png" alt="Wahl">
+                    <div class="category-card coming-soon-card">
+                        <img src="https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=300&h=300&fit=crop" alt="W-Mark">
                         <div class="category-name">W - Mark</div>
+                        <div class="coming-soon-badge">Coming Soon</div>
                     </div>
 
-                    <div class="category-card" onclick="loadProducts('Wahl')">
-                        <img src="https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png" alt="Wahl">
+                    <div class="category-card coming-soon-card">
+                        <img src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=300&h=300&fit=crop" alt="VGR">
                         <div class="category-name">VGR</div>
+                        <div class="coming-soon-badge">Coming Soon</div>
                     </div>
                 </div>
             </div>
@@ -87,25 +87,7 @@
             <!-- Featured Products -->
             <div class="section">
                 <h2 class="section-title">Featured Products</h2>
-                <div class="featured-grid" id="featured-products">
-                    <!-- Featured products will load here -->
-                </div>
-            </div>
-            
-        </section>
-
-        <!-- Products View -->
-        <section id="products-view" class="products-view" style="display: none;">
-            <div class="products-header">
-                <button class="back-btn" onclick="showHome()">
-                    <i class="fas fa-arrow-left"></i>
-                    <span>Back</span>
-                </button>
-                <h2 id="category-title">Products</h2>
-            </div>
-            
-            <div class="products-grid" id="products-grid">
-                <!-- Products load here -->
+                <div class="featured-grid" id="featured-products"></div>
             </div>
         </section>
     </main>
@@ -120,9 +102,7 @@
                 </button>
             </div>
             
-            <div class="cart-items" id="cart-items">
-                <!-- Cart items here -->
-            </div>
+            <div class="cart-items" id="cart-items"></div>
             
             <div class="cart-empty" id="cart-empty" style="display: none;">
                 <i class="fas fa-shopping-bag"></i>
@@ -143,39 +123,39 @@
     </div>
 
     <!-- About Section -->
-<section id="about-section" class="about-section">
-    <div class="about-container">
-        <div class="about-content">
-            <div class="about-text">
-                <h2 class="about-title">About Barber World</h2>
-                <p class="about-description">
-                    We are your trusted partner in professional barbering equipment. Every product in our catalog is brand new and comes directly from authorized manufacturers, ensuring you receive only the highest quality tools for your craft.
-                </p>
-                <div class="about-features">
-                    <div class="feature-item">
-                        <i class="fas fa-certificate"></i>
-                        <span>100% Authentic Products</span>
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2 class="about-title">About Barber World</h2>
+                    <p class="about-description">
+                        We are your trusted partner in professional barbering equipment. Every product in our catalog is brand new and comes directly from authorized manufacturers, ensuring you receive only the highest quality tools for your craft.
+                    </p>
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <span>100% Authentic Products</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Fast & Secure Shipping</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-headset"></i>
+                            <span>Professional Support</span>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i class="fas fa-shipping-fast"></i>
-                        <span>Fast & Secure Shipping</span>
-                    </div>
-                    <div class="feature-item">
-                        <i class="fas fa-headset"></i>
-                        <span>Professional Support</span>
+                    <div class="warranty-notice">
+                        <i class="fas fa-info-circle"></i>
+                        <p>All products come with manufacturer warranty. For any technical issues or warranty claims, please contact the respective manufacturer directly.</p>
                     </div>
                 </div>
-                <div class="warranty-notice">
-                    <i class="fas fa-info-circle"></i>
-                    <p>All products come with manufacturer warranty. For any technical issues or warranty claims, please contact the respective manufacturer directly.</p>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&h=600&fit=crop" alt="Professional Barber Tools">
                 </div>
-            </div>
-            <div class="about-image">
-                <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=500&h=600&fit=crop" alt="Professional Barber Tools">
             </div>
         </div>
-    </div>
-</section>
+    </section>
     
     <!-- Search Modal -->
     <div class="search-modal" id="search-modal">
@@ -188,54 +168,47 @@
         </div>
     </div>
 
-  <!-- Updated Footer -->
-<footer class="footer">
-    <div class="footer-content">
-        <div class="footer-main">
-            <div class="footer-section">
-                <h3>Contact Information</h3>
-                <p><i class="fas fa-envelope"></i> barberworldnyc@gmail.com</p>
-                <p><i class="fas fa-clock"></i> Business Hours: Online Only</p>
-            </div>
-            
-            <div class="footer-section">
-                <h3>We Accept</h3>
-                <div class="payment-methods">
-                    <div class="payment-card">
-                        <i class="fab fa-cc-visa"></i>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> barberworldnyc@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Business Hours: Online Only</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>We Accept</h3>
+                    <div class="payment-methods">
+                        <div class="payment-card"><i class="fab fa-cc-visa"></i></div>
+                        <div class="payment-card"><i class="fab fa-cc-mastercard"></i></div>
+                        <div class="payment-card"><i class="fab fa-cc-amex"></i></div>
                     </div>
-                    <div class="payment-card">
-                        <i class="fab fa-cc-mastercard"></i>
-                    </div>
-                    <div class="payment-card">
-                        <i class="fab fa-cc-amex"></i>
-                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Professional Equipment</h3>
+                    <p>Trusted by barbers worldwide</p>
+                    <p>All products are brand new with manufacturer warranty</p>
                 </div>
             </div>
             
-            <div class="footer-section">
-                <h3>Professional Equipment</h3>
-                <p>Trusted by barbers worldwide</p>
-                <p>All products are brand new with manufacturer warranty</p>
-            </div>
-        </div>
-        
-        <div class="footer-bottom">
-            <div class="copyright">
-                <p>&copy; 2024 Barber World. All rights reserved.</p>
-            </div>
-            <div class="designer-credit">
-                <span>Designed by</span>
-                <div class="designer-logo">
-                    <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World">
-                    <span>Elan's Tech World</span>
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; 2024 Barber World. All rights reserved.</p>
+                </div>
+                <div class="designer-credit">
+                    <span>Designed by</span>
+                    <div class="designer-logo">
+                        <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World">
+                        <span>Elan's Tech World</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
 
-    <!-- Loading Overlay -->
     <div class="loading" id="loading">
         <div class="spinner"></div>
         <p>Processing...</p>
