@@ -193,11 +193,12 @@
     "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Silver)",
     "price": 89.99,
     "brand": "Babyliss",
-    "slug": "https://babylisspro.com/on/demandware.static/-/Sites-master-ca/default/dw2c5bba57/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2rg_hero_slf.jpg",
-    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt",
+    "image": "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-ca/default/dw011c23db/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2_hero.jpg?sw=1400&sh=1400&sm=fit",
     "images": [
-      "https://babylisspro.com/on/demandware.static/-/Sites-master-ca/default/dwb5302262/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2rg_3qtr_top_on_left_slf.jpg",
-      "https://babylisspro.com/on/demandware.static/-/Sites-master-ca/default/dw0a8ed0e7/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2rg_3qtr_right_cover_inset_mlf.jpg"
+      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-ca/default/dw806e9481/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2_3qtr_top_on_left.jpg?sw=1400&sh=1400&sm=fit",
+      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-ca/default/dw1c4bef0e/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2_3qtr_right_cover_inset.jpg?sw=1400&sh=1400&sm=fit",
+      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-ca/default/dw64e69f7a/images/Gray_Redesign/images%20for%20ECOM%208_17_22/fxfs2_gb.jpg?sw=1400&sh=1400&sm=fit"
     ],
     "category": "Shaver",
     "shortDescription": "Professional double-foil shaver with sleek silver finish",
