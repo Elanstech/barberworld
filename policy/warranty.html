@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warranty Information - Barber World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .policy-page {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .policy-header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .policy-header .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+        .policy-section h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-section h2 i {
+            color: var(--gold);
+        }
+        .policy-section p, .policy-section li {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .policy-section ul, .policy-section ol {
+            padding-left: 1.5rem;
+        }
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .warning-box {
+            background: rgba(220, 53, 69, 0.1);
+            border-left: 4px solid #dc3545;
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            margin-bottom: 2rem;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            transform: translateX(-5px);
+        }
+        .brand-warranty {
+            background: var(--gray-light);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin: 1rem 0;
+        }
+        .brand-warranty h3 {
+            color: var(--gold);
+            margin-bottom: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-page">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="policy-header">
+            <h1><i class="fas fa-shield-alt"></i> Warranty Information</h1>
+            <p class="last-updated">Last Updated: January 2024</p>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Quality Guarantee:</strong> All products sold by Barber World are brand new and come with full manufacturer warranties. We are an authorized retailer committed to providing authentic professional equipment.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-info-circle"></i> Understanding Product Warranties</h2>
+            <p>When you purchase from Barber World:</p>
+            <ul>
+                <li>All products are brand new in original packaging</li>
+                <li>Products include manufacturer warranty documentation</li>
+                <li>Warranty coverage varies by brand and product</li>
+                <li>Warranties are provided directly by manufacturers</li>
+                <li>We assist with the warranty claim process</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-building"></i> Manufacturer Warranties by Brand</h2>
+            
+            <div class="brand-warranty">
+                <h3><i class="fas fa-cut"></i> BaBylissPRO</h3>
+                <ul>
+                    <li>Typical Coverage: 1-2 years from date of purchase</li>
+                    <li>Covers manufacturing defects and workmanship</li>
+                    <li>Professional use warranty available</li>
+                    <li>Direct manufacturer support</li>
+                </ul>
+            </div>
+
+            <div class="brand-warranty">
+                <h3><i class="fas fa-star"></i> StyleCraft / Gamma+</h3>
+                <ul>
+                    <li>Typical Coverage: 2 years from date of purchase</li>
+                    <li>Comprehensive coverage on motor and parts</li>
+                    <li>Extended warranty options available</li>
+                    <li>Excellent customer service</li>
+                </ul>
+            </div>
+
+            <div class="brand-warranty">
+                <h3><i class="fas fa-crown"></i> JRL Professional</h3>
+                <ul>
+                    <li>Typical Coverage: 1 year from date of purchase</li>
+                    <li>Covers defects in materials and workmanship</li>
+                    <li>Professional-grade warranty support</li>
+                    <li>Repair or replacement at manufacturer discretion</li>
+                </ul>
+            </div>
+
+            <div class="brand-warranty">
+                <h3><i class="fas fa-medal"></i> Wahl</h3>
+                <ul>
+                    <li>Typical Coverage: 1-5 years depending on model</li>
+                    <li>Professional products: Extended warranty periods</li>
+                    <li>Lifetime warranty on certain premium models</li>
+                    <li>Established warranty process and support</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-check-square"></i> What Warranties Cover</h2>
+            <p>Manufacturer warranties typically cover:</p>
+            <ul>
+                <li>Defects in materials and workmanship</li>
+                <li>Manufacturing defects</li>
+                <li>Motor and electrical component failures</li>
+                <li>Blade defects (if not from wear)</li>
+                <li>Housing and structural issues</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-times-circle"></i> What Warranties Don't Cover</h2>
+            <div class="warning-box">
+                <p><strong>Important:</strong> Warranties do not cover:</p>
+            </div>
+            <ul>
+                <li>Normal wear and tear from regular use</li>
+                <li>Damage from misuse or abuse</li>
+                <li>Accidental damage or drops</li>
+                <li>Unauthorized repairs or modifications</li>
+                <li>Use of non-original parts or accessories</li>
+                <li>Cosmetic damage that doesn't affect function</li>
+                <li>Blade sharpening or replacement</li>
+                <li>Battery degradation over time</li>
+                <li>Damage from improper cleaning or maintenance</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-clipboard-list"></i> How to File a Warranty Claim</h2>
+            <p>Follow these steps for warranty service:</p>
+            <ol>
+                <li><strong>Verify Warranty Period:</strong> Check your purchase date and warranty documentation</li>
+                <li><strong>Contact Us First:</strong> Email barberworldnyc@gmail.com with your issue
+                    <ul>
+                        <li>Include order number and purchase date</li>
+                        <li>Describe the problem in detail</li>
+                        <li>Include photos or videos if applicable</li>
+                    </ul>
+                </li>
+                <li><strong>We'll Guide You:</strong> We'll help determine if it's a warranty issue and provide manufacturer contact information</li>
+                <li><strong>Contact Manufacturer:</strong> Reach out to the manufacturer's warranty department with:
+                    <ul>
+                        <li>Proof of purchase (we'll provide this)</li>
+                        <li>Product serial number</li>
+                        <li>Description of the problem</li>
+                    </ul>
+                </li>
+                <li><strong>Follow Manufacturer Instructions:</strong> They'll provide return shipping labels or repair instructions</li>
+            </ol>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-hands-helping"></i> Our Warranty Support</h2>
+            <p>While warranties are handled by manufacturers, Barber World assists by:</p>
+            <ul>
+                <li>Providing proof of purchase documentation</li>
+                <li>Supplying manufacturer contact information</li>
+                <li>Guiding you through the warranty process</li>
+                <li>Advocating on your behalf when needed</li>
+                <li>Answering questions about warranty coverage</li>
+                <li>Helping troubleshoot issues before warranty claims</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-file-alt"></i> Keeping Warranty Documentation</h2>
+            <p>To ensure smooth warranty claims:</p>
+            <ul>
+                <li>Keep your order confirmation email</li>
+                <li>Retain manufacturer warranty cards</li>
+                <li>Save product manuals and documentation</li>
+                <li>Note your product serial numbers</li>
+                <li>Keep original packaging when possible</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Take photos of serial numbers and register products with manufacturers immediately after purchase for faster warranty service.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-clock"></i> Warranty Claim Timeline</h2>
+            <p>Typical warranty claim process:</p>
+            <ul>
+                <li><strong>Day 1:</strong> Contact us or manufacturer</li>
+                <li><strong>Days 2-3:</strong> Evaluation and approval</li>
+                <li><strong>Days 4-7:</strong> Shipping to repair facility</li>
+                <li><strong>Days 8-21:</strong> Repair or replacement processing</li>
+                <li><strong>Days 22-28:</strong> Return shipping</li>
+            </ul>
+            <p>Total time varies by manufacturer and issue complexity. We'll help expedite when possible.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-wrench"></i> Warranty Repairs vs. Replacement</h2>
+            <p>Manufacturers may choose to:</p>
+            <ul>
+                <li><strong>Repair:</strong> Fix the defective product and return it</li>
+                <li><strong>Replace:</strong> Send a new or refurbished unit</li>
+                <li><strong>Refund:</strong> Provide credit or refund (rare)</li>
+            </ul>
+            <p>The decision is at the manufacturer's discretion based on the issue and product availability.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-calendar-alt"></i> Within 30 Days of Purchase</h2>
+            <p>For issues within the first 30 days:</p>
+            <ul>
+                <li>Contact us first before starting a warranty claim</li>
+                <li>You may be eligible for direct exchange or return</li>
+                <li>We can often resolve issues faster than manufacturer warranty</li>
+                <li>Review our Return Policy for options</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-toolbox"></i> Maintaining Your Products</h2>
+            <p>Proper maintenance helps ensure warranty validity:</p>
+            <ul>
+                <li>Follow manufacturer cleaning instructions</li>
+                <li>Oil blades regularly as recommended</li>
+                <li>Store in dry, safe locations</li>
+                <li>Charge batteries according to instructions</li>
+                <li>Use only recommended accessories</li>
+                <li>Have servicing done by authorized technicians</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-user-shield"></i> Extended Warranties</h2>
+            <p>Some manufacturers offer extended warranty options:</p>
+            <ul>
+                <li>Can be purchased at time of product registration</li>
+                <li>Extends coverage beyond standard warranty</li>
+                <li>May include additional benefits</li>
+                <li>Contact manufacturer for details and pricing</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-globe"></i> International Warranties</h2>
+            <p>For international customers:</p>
+            <ul>
+                <li>Warranty validity may vary by region</li>
+                <li>Some manufacturers offer international warranty</li>
+                <li>Return shipping for warranty may be customer responsibility</li>
+                <li>Contact manufacturer for international warranty details</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-question-circle"></i> Warranty FAQs</h2>
+            
+            <p><strong>Q: Can I return a defective product to Barber World?</strong><br>
+            A: Within 30 days of purchase, yes. After 30 days, warranty claims go through the manufacturer.</p>
+
+            <p><strong>Q: What if the manufacturer denies my warranty claim?</strong><br>
+            A: Contact us and we'll review the situation. We may be able to assist or provide alternative solutions.</p>
+
+            <p><strong>Q: Do I need to register my product?</strong><br>
+            A: It's highly recommended. Product registration makes warranty claims faster and easier.</p>
+
+            <p><strong>Q: Can I still get warranty service without my receipt?</strong><br>
+            A: You'll need proof of purchase. Contact us and we can provide purchase documentation.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-envelope"></i> Need Warranty Assistance?</h2>
+            <p>We're here to help navigate the warranty process:</p>
+            <p><strong>Email:</strong> barberworldnyc@gmail.com</p>
+            <p><strong>Subject:</strong> Include "Warranty Assistance" and your order number</p>
+            <p><strong>What to Include:</strong></p>
+            <ul>
+                <li>Order number and purchase date</li>
+                <li>Product name and model number</li>
+                <li>Description of the issue</li>
+                <li>Photos or videos (if applicable)</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <p><em>Warranty coverage is provided by the manufacturer and is subject to their terms and conditions. Barber World acts as a liaison but final warranty decisions are made by the manufacturer. This information is subject to change based on manufacturer policy updates.</em></p>
+        </div>
+    </div>
+</body>
+</html>

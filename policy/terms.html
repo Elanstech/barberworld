@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Barber World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .policy-page {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .policy-header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .policy-header .last-updated {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .policy-section {
+            margin-bottom: 2.5rem;
+        }
+        .policy-section h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .policy-section h2 i {
+            color: var(--gold);
+        }
+        .policy-section p, .policy-section li {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .policy-section ul {
+            padding-left: 1.5rem;
+        }
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--gold);
+            padding: 1.25rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            margin-bottom: 2rem;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-page">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="policy-header">
+            <h1><i class="fas fa-file-contract"></i> Terms of Service</h1>
+            <p class="last-updated">Last Updated: January 2024</p>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Agreement to Terms:</strong> By accessing and using Barber World's website and services, you agree to be bound by these Terms of Service. Please read them carefully.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-handshake"></i> Acceptance of Terms</h2>
+            <p>By accessing or using our website, you agree to:</p>
+            <ul>
+                <li>Comply with these Terms of Service</li>
+                <li>Comply with all applicable laws and regulations</li>
+                <li>Be at least 18 years of age or have parental consent</li>
+                <li>Provide accurate and complete information</li>
+                <li>Update your information as needed</li>
+            </ul>
+            <p>If you do not agree to these terms, you may not use our website or services.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-store"></i> Use of Website</h2>
+            <p>You may use our website for lawful purposes only. You agree not to:</p>
+            <ul>
+                <li>Violate any laws or regulations</li>
+                <li>Infringe on intellectual property rights</li>
+                <li>Transmit viruses or malicious code</li>
+                <li>Attempt to gain unauthorized access to our systems</li>
+                <li>Interfere with the proper functioning of the website</li>
+                <li>Use automated systems to access the website without permission</li>
+                <li>Resell or commercially exploit our content</li>
+                <li>Impersonate any person or entity</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-user-circle"></i> Account Registration</h2>
+            <p>When creating an account with us:</p>
+            <ul>
+                <li>You must provide accurate and complete information</li>
+                <li>You are responsible for maintaining account security</li>
+                <li>You must notify us immediately of unauthorized access</li>
+                <li>You are responsible for all activities under your account</li>
+                <li>You may not share your account credentials</li>
+                <li>We reserve the right to suspend or terminate accounts</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-shopping-cart"></i> Orders and Purchases</h2>
+            <p>When placing an order:</p>
+            <ul>
+                <li>All orders are subject to acceptance and availability</li>
+                <li>We reserve the right to refuse or cancel orders</li>
+                <li>Prices are subject to change without notice</li>
+                <li>You agree to pay all charges incurred</li>
+                <li>Payment must be received before shipping</li>
+                <li>Order confirmations are sent via email</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>Pricing Errors:</strong> We reserve the right to cancel orders if a pricing error occurs. You will be notified and offered the option to reorder at the correct price.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-credit-card"></i> Payment Terms</h2>
+            <p>Payment processing:</p>
+            <ul>
+                <li>We accept major credit cards, debit cards, and other payment methods</li>
+                <li>All payments are processed securely through Stripe</li>
+                <li>You authorize us to charge your payment method</li>
+                <li>You represent that you have the right to use the payment method</li>
+                <li>Additional fees may apply for certain payment methods</li>
+                <li>Sales tax will be charged where applicable</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-copyright"></i> Intellectual Property</h2>
+            <p>All content on our website is protected by intellectual property laws:</p>
+            <ul>
+                <li>Website content, design, and layout are owned by Barber World</li>
+                <li>Product images and descriptions may be owned by manufacturers</li>
+                <li>You may not reproduce, distribute, or create derivative works</li>
+                <li>Brand names and logos are trademarks of their respective owners</li>
+                <li>Unauthorized use may result in legal action</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-box-open"></i> Product Information</h2>
+            <p>Regarding product listings:</p>
+            <ul>
+                <li>We strive for accuracy but cannot guarantee all information is error-free</li>
+                <li>Product images may differ slightly from actual items</li>
+                <li>Colors may vary due to monitor settings</li>
+                <li>Specifications are provided by manufacturers</li>
+                <li>We reserve the right to correct any errors or inaccuracies</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-shield-alt"></i> Warranties and Disclaimers</h2>
+            <p>Our warranties and limitations:</p>
+            <ul>
+                <li>Products are covered by manufacturer warranties</li>
+                <li>We are not responsible for manufacturer warranty claims</li>
+                <li>Website is provided "as is" without warranties of any kind</li>
+                <li>We do not warrant uninterrupted or error-free service</li>
+                <li>We are not liable for delays or failures beyond our control</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>Disclaimer:</strong> TO THE FULLEST EXTENT PERMITTED BY LAW, BARBER WORLD DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-balance-scale"></i> Limitation of Liability</h2>
+            <p>Our liability is limited as follows:</p>
+            <ul>
+                <li>We are not liable for indirect, incidental, or consequential damages</li>
+                <li>Our total liability shall not exceed the amount you paid for the product</li>
+                <li>We are not liable for product defects or malfunctions</li>
+                <li>We are not liable for improper use of products</li>
+                <li>We are not liable for third-party actions or content</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-user-shield"></i> Indemnification</h2>
+            <p>You agree to indemnify and hold Barber World harmless from:</p>
+            <ul>
+                <li>Claims arising from your use of our website or products</li>
+                <li>Your violation of these Terms of Service</li>
+                <li>Your violation of any rights of another party</li>
+                <li>Any content you submit or transmit through our website</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-gavel"></i> Dispute Resolution</h2>
+            <p>For any disputes or claims:</p>
+            <ul>
+                <li>We encourage you to contact us first to resolve informally</li>
+                <li>Disputes will be governed by the laws of New York State</li>
+                <li>Venue for legal proceedings shall be in New York</li>
+                <li>You agree to arbitration for disputes under $10,000</li>
+                <li>Class action lawsuits are waived</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-link"></i> Third-Party Links</h2>
+            <p>Our website may contain links to third-party websites:</p>
+            <ul>
+                <li>We are not responsible for third-party content or practices</li>
+                <li>Links do not imply endorsement</li>
+                <li>Use of third-party sites is at your own risk</li>
+                <li>Third-party terms and policies apply to their websites</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-ban"></i> Termination</h2>
+            <p>We reserve the right to:</p>
+            <ul>
+                <li>Suspend or terminate your account at any time</li>
+                <li>Refuse service to anyone for any reason</li>
+                <li>Remove or disable access to any content</li>
+                <li>Take legal action for violations of these terms</li>
+            </ul>
+            <p>Upon termination, your right to use the website ceases immediately.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-edit"></i> Changes to Terms</h2>
+            <p>We may modify these Terms of Service:</p>
+            <ul>
+                <li>Changes will be posted on this page</li>
+                <li>Continued use constitutes acceptance of changes</li>
+                <li>Material changes will be communicated via email</li>
+                <li>It is your responsibility to review terms periodically</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-cut"></i> Professional Use</h2>
+            <p>Our products are intended for professional use:</p>
+            <ul>
+                <li>Products should be used by trained professionals</li>
+                <li>Follow all manufacturer instructions and safety guidelines</li>
+                <li>We are not liable for injury from improper use</li>
+                <li>Maintain and service equipment as recommended</li>
+            </ul>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-file-alt"></i> Entire Agreement</h2>
+            <p>These Terms of Service, along with our Privacy Policy and other posted policies, constitute the entire agreement between you and Barber World.</p>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-envelope"></i> Contact Information</h2>
+            <p>For questions about these Terms of Service:</p>
+            <p><strong>Email:</strong> barberworldnyc@gmail.com</p>
+            <p><strong>Business Name:</strong> Barber World</p>
+            <p><strong>Response Time:</strong> We typically respond within 24-48 hours</p>
+        </div>
+
+        <div class="policy-section">
+            <p><em>By using Barber World's website and services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</em></p>
+        </div>
+    </div>
+</body>
+</html>

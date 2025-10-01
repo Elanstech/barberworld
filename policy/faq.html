@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Barber World</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .policy-page {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .policy-header {
+            border-bottom: 3px solid var(--gold);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .policy-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .policy-header p {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+        .faq-category h2 {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--gold);
+        }
+        .faq-category h2 i {
+            color: var(--gold);
+        }
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: all var(--transition);
+        }
+        .faq-item:hover {
+            box-shadow: var(--shadow);
+        }
+        .faq-question {
+            padding: 1.25rem;
+            background: var(--gray-light);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--primary);
+            transition: all var(--transition);
+        }
+        .faq-question:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+        .faq-question i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: transform var(--transition);
+        }
+        .faq-question.active i {
+            transform: rotate(180deg);
+        }
+        .faq-answer {
+            padding: 0 1.25rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .faq-answer.active {
+            padding: 1.25rem;
+            max-height: 500px;
+        }
+        .faq-answer p {
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 0.75rem;
+        }
+        .faq-answer ul {
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+        .faq-answer li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--radius);
+            transition: all var(--transition);
+            margin-bottom: 2rem;
+        }
+        .back-btn:hover {
+            background: var(--gold);
+            transform: translateX(-5px);
+        }
+        .contact-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            border: 2px solid var(--gold);
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+        .contact-box h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .contact-box p {
+            margin-bottom: 1rem;
+            color: #666;
+        }
+        .contact-box a {
+            color: var(--gold);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .contact-box a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="policy-page">
+        <a href="../index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Back to Home
+        </a>
+        
+        <div class="policy-header">
+            <h1><i class="fas fa-question-circle"></i> Frequently Asked Questions</h1>
+            <p>Find answers to common questions about Barber World, our products, and services.</p>
+        </div>
+
+        <!-- Orders & Shipping -->
+        <div class="faq-category">
+            <h2><i class="fas fa-shipping-fast"></i> Orders & Shipping</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long does shipping take?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Shipping times depend on your selected method:</p>
+                    <ul>
+                        <li><strong>Standard Shipping:</strong> 5-7 business days</li>
+                        <li><strong>Expedited Shipping:</strong> 3-4 business days</li>
+                        <li><strong>Express Shipping:</strong> 2-3 business days</li>
+                        <li><strong>Overnight Shipping:</strong> 1 business day</li>
+                    </ul>
+                    <p>Processing time is 1-2 business days before shipment. You'll receive a tracking number once your order ships.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you offer free shipping?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We offer <strong>FREE standard shipping on all orders over $75</strong> within the continental United States. For orders under $75, standard shipping is $8.95.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you ship internationally?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently, we ship to all 50 U.S. states and Canada. International shipping rates vary by destination. Additional customs fees and import duties may apply and are the customer's responsibility.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I change or cancel my order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>If your order hasn't shipped yet, we can usually modify or cancel it. Contact us immediately at barberworldnyc@gmail.com with your order number. Once shipped, standard return policies apply.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How can I track my order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Once your order ships, you'll receive an email with a tracking number and carrier information. You can use this to track your package directly on the carrier's website (USPS, UPS, or FedEx).</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Returns & Refunds -->
+        <div class="faq-category">
+            <h2><i class="fas fa-undo-alt"></i> Returns & Refunds</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What is your return policy?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We offer a 30-day return policy on most items. Items must be:</p>
+                    <ul>
+                        <li>Unused and in original condition</li>
+                        <li>In original packaging with all accessories</li>
+                        <li>Accompanied by proof of purchase</li>
+                    </ul>
+                    <p>Contact us for a return authorization before shipping items back. See our full <a href="returns.html" style="color: var(--gold);">Return Policy</a> for details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How long does it take to receive my refund?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Once we receive and inspect your return:</p>
+                    <ul>
+                        <li>Inspection: 1-2 business days</li>
+                        <li>Processing: 3-5 business days</li>
+                        <li>Bank processing: 5-10 business days</li>
+                    </ul>
+                    <p>Total time is typically 10-15 business days from when we receive your return.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Who pays for return shipping?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Return shipping is typically the customer's responsibility. However, we provide free return shipping if:</p>
+                    <ul>
+                        <li>The item is defective or damaged</li>
+                        <li>We sent the wrong item</li>
+                        <li>There was an error on our part</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products & Authenticity -->
+        <div class="faq-category">
+            <h2><i class="fas fa-box-open"></i> Products & Authenticity</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Are your products authentic?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p><strong>Absolutely!</strong> All products sold by Barber World are 100% authentic and brand new. We are an authorized retailer for all brands we carry. Every product comes with:</p>
+                    <ul>
+                        <li>Original manufacturer packaging</li>
+                        <li>Full manufacturer warranty</li>
+                        <li>All included accessories and documentation</li>
+                        <li>Proof of authenticity</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do products come with a warranty?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! All products include the manufacturer's warranty, which varies by brand (typically 1-2 years). Warranty documentation is included with your product. See our <a href="warranty.html" style="color: var(--gold);">Warranty Information</a> page for details.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What brands do you carry?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We carry professional-grade equipment from leading brands including:</p>
+                    <ul>
+                        <li>BaBylissPRO</li>
+                        <li>StyleCraft / Gamma+</li>
+                        <li>JRL Professional</li>
+                        <li>Wahl Professional</li>
+                        <li>W-Mark</li>
+                        <li>VGR</li>
+                        <li>Our exclusive Barber World Collection</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I use these products for personal use?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! While our products are professional-grade and designed for barbers and stylists, they can absolutely be used for personal grooming. Many customers purchase for home use to get salon-quality results.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment & Security -->
+        <div class="faq-category">
+            <h2><i class="fas fa-credit-card"></i> Payment & Security</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What payment methods do you accept?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept:</p>
+                    <ul>
+                        <li>Visa, Mastercard, American Express, Discover</li>
+                        <li>PayPal</li>
+                        <li>Apple Pay</li>
+                        <li>Klarna (Buy Now, Pay Later)</li>
+                        <li>Afterpay</li>
+                    </ul>
+                    <p>All payments are processed securely through Stripe.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Is my payment information secure?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! We use Stripe for payment processing, which employs industry-standard encryption and security measures. We never store your full credit card information on our servers. All transactions are PCI DSS compliant.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you charge sales tax?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, sales tax is calculated based on your shipping address and local tax rates. The exact amount will be displayed during checkout before you complete your purchase.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account & Website -->
+        <div class="faq-category">
+            <h2><i class="fas fa-user-circle"></i> Account & Website</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do I need an account to place an order?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No, you can checkout as a guest. However, creating an account allows you to:</p>
+                    <ul>
+                        <li>Track orders easily</li>
+                        <li>Save addresses for faster checkout</li>
+                        <li>View order history</li>
+                        <li>Receive exclusive offers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How do I reset my password?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Click on the "Account" or "Login" button, then select "Forgot Password." Enter your email address and we'll send you instructions to reset your password.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Can I modify my account information?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes! Log into your account and navigate to account settings. You can update your email, password, addresses, and communication preferences at any time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Service -->
+        <div class="faq-category">
+            <h2><i class="fas fa-headset"></i> Customer Service</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>How can I contact customer service?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You can reach us at:</p>
+                    <ul>
+                        <li><strong>Email:</strong> barberworldnyc@gmail.com</li>
+                        <li><strong>Response Time:</strong> Within 24 hours (Monday-Friday)</li>
+                    </ul>
+                    <p>For order inquiries, please include your order number in the subject line.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>What are your business hours?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Our online store is open 24/7! Customer service emails are answered Monday through Friday, 9 AM - 6 PM EST. We typically respond within 24 hours.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    <span>Do you have a physical store?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Currently, Barber World operates as an online-only retailer. This allows us to offer competitive pricing and serve customers nationwide.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Still Have Questions? -->
+        <div class="contact-box">
+            <h3><i class="fas fa-envelope"></i> Still Have Questions?</h3>
+            <p>Can't find the answer you're looking for? We're here to help!</p>
+            <p><strong>Email us at:</strong> <a href="mailto:barberworldnyc@gmail.com">barberworldnyc@gmail.com</a></p>
+            <p>We typically respond within 24 hours (Monday-Friday)</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const allAnswers = document.querySelectorAll('.faq-answer');
+            const allQuestions = document.querySelectorAll('.faq-question');
+            
+            // Close all other FAQs
+            allAnswers.forEach(ans => {
+                if (ans !== answer) {
+                    ans.classList.remove('active');
+                }
+            });
+            
+            allQuestions.forEach(q => {
+                if (q !== element) {
+                    q.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            answer.classList.toggle('active');
+            element.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
