@@ -14,13 +14,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Enhanced Header with Fixed Layout -->
+    <!-- Enhanced Header with Mega Menu -->
     <header class="header">
         <div class="header-wrapper">
             <div class="header-left">
-                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
-                    <i class="fas fa-bars"></i>
-                </button>
                 <img src="logo11.png" alt="Barber World" class="logo" onclick="scrollToSection('hero')">
                 
                 <nav class="main-nav">
@@ -39,6 +36,9 @@
                 <button class="icon-btn" onclick="openCart()">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
@@ -257,23 +257,10 @@
                 </div>
             </div>
             
-            <!-- Featured Products Carousel -->
+            <!-- Featured Products -->
             <div class="section">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Products</h2>
-                    <div class="carousel-controls">
-                        <button class="carousel-btn prev" onclick="moveCarousel(-1)">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-btn next" onclick="moveCarousel(1)">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="carousel-container">
-                    <div class="carousel-track" id="carousel-track"></div>
-                </div>
-                <div class="carousel-dots" id="carousel-dots"></div>
+                <h2 class="section-title">Featured Products</h2>
+                <div class="featured-grid" id="featured-products"></div>
             </div>
         </section>
 
@@ -441,7 +428,7 @@
         </section>
     </main>
 
-    <!-- Cart Modal -->
+    <!-- Cart Modal (Keep existing functionality) -->
     <div class="cart-modal" id="cart-modal">
         <div class="cart-content">
             <div class="cart-header">
