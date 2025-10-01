@@ -17,13 +17,16 @@
     <!-- Header -->
     <header class="header">
         <div class="header-wrapper">
-            <img src="logo1.png" alt="Barber World" class="logo" onclick="window.location.href='index.html'">
+            <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
             
             <div class="header-actions">
-                <button class="icon-btn" onclick="openSearch()">
+                <button class="icon-btn mobile-filter-trigger" onclick="toggleMobileFilters()" aria-label="Open Filters">
+                    <i class="fas fa-sliders-h"></i>
+                </button>
+                <button class="icon-btn" onclick="openSearch()" aria-label="Search">
                     <i class="fas fa-search"></i>
                 </button>
-                <button class="icon-btn" onclick="openCart()">
+                <button class="icon-btn" onclick="openCart()" aria-label="Shopping Cart">
                     <i class="fas fa-shopping-bag"></i>
                     <span class="cart-badge" id="cart-badge">0</span>
                 </button>
@@ -36,7 +39,7 @@
         <!-- Hero Section -->
         <section class="products-hero">
             <div class="hero-content">
-                <button class="back-btn" onclick="window.location.href='index.html'">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
                     <i class="fas fa-arrow-left"></i>
                     <span>Back to Home</span>
                 </button>
@@ -45,20 +48,21 @@
             </div>
         </section>
 
-        <!-- Filters & Controls -->
-        <section class="filters-section">
-            <div class="filters-container">
-                <div class="search-filter">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="product-search" placeholder="Search products..." onkeyup="filterProducts()">
+        <!-- Products Container -->
+        <div class="products-container">
+            <!-- Desktop Filters Sidebar -->
+            <aside class="filters-sidebar desktop-only">
+                <div class="filter-section">
+                    <h3 class="filter-title">Search Products</h3>
+                    <div class="search-filter">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="product-search-desktop" placeholder="Search..." onkeyup="filterProducts()">
+                    </div>
                 </div>
-                
-                <div class="filter-group">
-                    <label for="category-filter">
-                        <i class="fas fa-filter"></i>
-                        Category
-                    </label>
-                    <select id="category-filter" onchange="filterProducts()">
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Category</h3>
+                    <select id="category-filter-desktop" onchange="filterProducts()" class="filter-select">
                         <option value="">All Categories</option>
                         <option value="Clipper">Clippers</option>
                         <option value="Trimmer">Trimmers</option>
@@ -66,13 +70,10 @@
                         <option value="Combo Set">Combo Sets</option>
                     </select>
                 </div>
-                
-                <div class="filter-group">
-                    <label for="price-filter">
-                        <i class="fas fa-dollar-sign"></i>
-                        Price Range
-                    </label>
-                    <select id="price-filter" onchange="filterProducts()">
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Price Range</h3>
+                    <select id="price-filter-desktop" onchange="filterProducts()" class="filter-select">
                         <option value="">All Prices</option>
                         <option value="0-50">Under $50</option>
                         <option value="50-100">$50 - $100</option>
@@ -80,13 +81,10 @@
                         <option value="150-999">$150+</option>
                     </select>
                 </div>
-                
-                <div class="filter-group">
-                    <label for="sort-filter">
-                        <i class="fas fa-sort"></i>
-                        Sort By
-                    </label>
-                    <select id="sort-filter" onchange="filterProducts()">
+
+                <div class="filter-section">
+                    <h3 class="filter-title">Sort By</h3>
+                    <select id="sort-filter-desktop" onchange="filterProducts()" class="filter-select">
                         <option value="name-asc">Name (A-Z)</option>
                         <option value="name-desc">Name (Z-A)</option>
                         <option value="price-asc">Price (Low to High)</option>
@@ -94,22 +92,90 @@
                         <option value="rating-desc">Highest Rated</option>
                     </select>
                 </div>
-                
+
                 <button class="clear-filters-btn" onclick="clearFilters()">
                     <i class="fas fa-times"></i>
-                    Clear Filters
+                    Clear All Filters
                 </button>
-            </div>
-        </section>
+            </aside>
 
-        <!-- Products Grid -->
-        <section class="products-section">
-            <div class="products-container">
-                <div class="products-count" id="products-count">Loading products...</div>
+            <!-- Products Section -->
+            <section class="products-section">
+                <div class="products-header">
+                    <div class="products-count" id="products-count">Loading products...</div>
+                    <button class="mobile-filter-btn mobile-only" onclick="toggleMobileFilters()">
+                        <i class="fas fa-sliders-h"></i>
+                        Filters
+                    </button>
+                </div>
                 <div class="products-grid" id="products-grid"></div>
-            </div>
-        </section>
+            </section>
+        </div>
     </main>
+
+    <!-- Mobile Filters Drawer -->
+    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
+    <div class="mobile-filters-drawer" id="mobile-filters-drawer">
+        <div class="mobile-filters-header">
+            <h2>Filters</h2>
+            <button class="close-btn" onclick="toggleMobileFilters()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="mobile-filters-content">
+            <div class="filter-section">
+                <h3 class="filter-title">Search Products</h3>
+                <div class="search-filter">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="product-search-mobile" placeholder="Search..." onkeyup="filterProducts()">
+                </div>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Category</h3>
+                <select id="category-filter-mobile" onchange="filterProducts()" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="Clipper">Clippers</option>
+                    <option value="Trimmer">Trimmers</option>
+                    <option value="Shaver">Shavers</option>
+                    <option value="Combo Set">Combo Sets</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Price Range</h3>
+                <select id="price-filter-mobile" onchange="filterProducts()" class="filter-select">
+                    <option value="">All Prices</option>
+                    <option value="0-50">Under $50</option>
+                    <option value="50-100">$50 - $100</option>
+                    <option value="100-150">$100 - $150</option>
+                    <option value="150-999">$150+</option>
+                </select>
+            </div>
+
+            <div class="filter-section">
+                <h3 class="filter-title">Sort By</h3>
+                <select id="sort-filter-mobile" onchange="filterProducts()" class="filter-select">
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                    <option value="rating-desc">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mobile-filters-footer">
+            <button class="clear-filters-btn" onclick="clearFilters()">
+                <i class="fas fa-times"></i>
+                Clear Filters
+            </button>
+            <button class="apply-filters-btn" onclick="toggleMobileFilters()">
+                Apply Filters
+            </button>
+        </div>
+    </div>
 
     <!-- Product Detail Modal -->
     <div class="product-modal" id="product-modal">
