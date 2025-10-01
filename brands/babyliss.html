@@ -14,15 +14,12 @@
     <link rel="stylesheet" href="products.css">
 </head>
 <body data-brand="babyliss">
-    <!-- Header -->
+    <!-- Enhanced Header -->
     <header class="header">
         <div class="header-wrapper">
-            <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
+            <img src="../logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
             
             <div class="header-actions">
-                <button class="icon-btn mobile-filter-trigger" onclick="toggleMobileFilters()" aria-label="Open Filters">
-                    <i class="fas fa-sliders-h"></i>
-                </button>
                 <button class="icon-btn" onclick="openSearch()" aria-label="Search">
                     <i class="fas fa-search"></i>
                 </button>
@@ -206,6 +203,10 @@
             </div>
             
             <div class="cart-footer" id="cart-footer">
+                <button class="clear-all-btn" onclick="clearAllCart()">
+                    <i class="fas fa-trash-alt"></i>
+                    Clear All
+                </button>
                 <div class="cart-total">
                     <span>Total:</span>
                     <span id="cart-total">$0.00</span>
@@ -221,10 +222,16 @@
     <!-- Search Modal -->
     <div class="search-modal" id="search-modal">
         <div class="search-content">
-            <input type="text" id="search-input" placeholder="Search all products..." onkeyup="globalSearch(event)">
-            <button class="close-btn" onclick="closeSearch()">
-                <i class="fas fa-times"></i>
-            </button>
+            <div class="search-header">
+                <h3>Search All Products</h3>
+                <button class="close-btn" onclick="closeSearch()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Search across all brands..." onkeyup="globalSearch(event)">
+            </div>
             <div class="search-results" id="search-results"></div>
         </div>
     </div>
