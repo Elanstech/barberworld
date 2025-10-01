@@ -4,9 +4,14 @@
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
-// Global Cart State
+// Global State
 let cart = [];
 let megaMenuTimer = null;
+let carouselProducts = [];
+let currentSlide = 0;
+let carouselInterval = null;
+let carouselTouchStartX = 0;
+let carouselTouchEndX = 0;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -52,10 +57,10 @@ function toggleMobileMenu() {
     
     if (isActive) {
         mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
     } else {
         mobileMenu.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        document.body.classList.add('no-scroll');
     }
 }
 
@@ -78,7 +83,7 @@ document.addEventListener('click', (e) => {
 function openSearchPanel() {
     const searchPanel = document.getElementById('search-panel');
     searchPanel.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
     
     setTimeout(() => {
         document.getElementById('search-input-main').focus();
@@ -88,12 +93,13 @@ function openSearchPanel() {
 function closeSearchPanel() {
     const searchPanel = document.getElementById('search-panel');
     searchPanel.classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
     
     // Clear search
     document.getElementById('search-input-main').value = '';
     document.getElementById('search-results-panel').innerHTML = '';
-    document.querySelector('.clear-search').style.display = 'none';
+    const clearBtn = document.querySelector('.clear-search');
+    if (clearBtn) clearBtn.style.display = 'none';
 }
 
 function clearSearch() {
@@ -231,6 +237,10 @@ document.addEventListener('keydown', (e) => {
         if (searchPanel.classList.contains('active')) {
             closeSearchPanel();
         }
+        const cartModal = document.getElementById('cart-modal');
+        if (cartModal.classList.contains('active')) {
+            closeCart();
+        }
     }
 });
 
@@ -276,7 +286,7 @@ function initializeAnimations() {
 }
 
 // ==========================================
-// LOAD FEATURED PRODUCTS
+// FEATURED PRODUCTS CAROUSEL
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -291,36 +301,152 @@ async function loadFeaturedProducts() {
         const results = await Promise.all(promises);
         const allProducts = results.flat();
         
-        // Shuffle and get 8 random products
+        // Shuffle and get products
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
-        const featured = shuffled.slice(0, 8);
+        carouselProducts = shuffled.slice(0, 12);
         
-        displayFeaturedProducts(featured);
+        displayCarousel();
+        initializeCarousel();
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
     }
 }
 
-function displayFeaturedProducts(products) {
-    const container = document.getElementById('featured-products');
-    if (!container) return;
+function displayCarousel() {
+    const track = document.getElementById('carousel-track');
+    if (!track) return;
     
-    container.innerHTML = products.map(product => `
-        <div class="product-card" onclick="addToCart(${product.id}, '${product.brand}')">
-            <div class="product-image">
-                <img src="${getProductImage(product)}" 
-                     alt="${product.name}" loading="lazy">
-            </div>
-            <div class="product-info">
-                <span class="product-brand">${product.brand}</span>
-                <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                <div class="product-price">$${product.price.toFixed(2)}</div>
-                <button class="add-to-cart-btn" onclick="event.stopPropagation();">
-                    <i class="fas fa-shopping-bag"></i> Add to Cart
-                </button>
+    track.innerHTML = carouselProducts.map(product => `
+        <div class="carousel-slide">
+            <div class="product-card" onclick="addToCart(${product.id}, '${product.brand}')">
+                <div class="product-image">
+                    <img src="${getProductImage(product)}" 
+                         alt="${product.name}" loading="lazy">
+                </div>
+                <div class="product-info">
+                    <span class="product-brand">${product.brand}</span>
+                    <h3 class="product-name">${truncateText(product.name, 50)}</h3>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <button class="add-to-cart-btn" onclick="event.stopPropagation();">
+                        <i class="fas fa-shopping-bag"></i> Add to Cart
+                    </button>
+                </div>
             </div>
         </div>
     `).join('');
+    
+    createCarouselDots();
+}
+
+function createCarouselDots() {
+    const dotsContainer = document.getElementById('carousel-dots');
+    if (!dotsContainer) return;
+    
+    const slidesPerView = getSlidesPerView();
+    const totalPages = Math.ceil(carouselProducts.length / slidesPerView);
+    
+    dotsContainer.innerHTML = Array.from({ length: totalPages }, (_, i) => 
+        `<button class="carousel-dot ${i === 0 ? 'active' : ''}" 
+                onclick="goToSlide(${i})" 
+                aria-label="Go to slide ${i + 1}"></button>`
+    ).join('');
+}
+
+function getSlidesPerView() {
+    const width = window.innerWidth;
+    if (width > 1024) return 3;
+    if (width > 768) return 2;
+    return 1;
+}
+
+function initializeCarousel() {
+    const wrapper = document.getElementById('featured-carousel');
+    if (!wrapper) return;
+    
+    // Auto-play
+    startAutoPlay();
+    
+    // Touch events for mobile
+    wrapper.addEventListener('touchstart', (e) => {
+        carouselTouchStartX = e.changedTouches[0].screenX;
+        stopAutoPlay();
+    });
+    
+    wrapper.addEventListener('touchend', (e) => {
+        carouselTouchEndX = e.changedTouches[0].screenX;
+        handleCarouselSwipe();
+        startAutoPlay();
+    });
+    
+    // Pause on hover
+    wrapper.addEventListener('mouseenter', stopAutoPlay);
+    wrapper.addEventListener('mouseleave', startAutoPlay);
+    
+    // Update on resize
+    window.addEventListener('resize', debounce(() => {
+        goToSlide(currentSlide);
+        createCarouselDots();
+    }, 250));
+}
+
+function handleCarouselSwipe() {
+    const swipeThreshold = 50;
+    const diff = carouselTouchStartX - carouselTouchEndX;
+    
+    if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+            carouselNext();
+        } else {
+            carouselPrev();
+        }
+    }
+}
+
+function carouselNext() {
+    const slidesPerView = getSlidesPerView();
+    const maxSlide = Math.ceil(carouselProducts.length / slidesPerView) - 1;
+    
+    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
+    updateCarousel();
+}
+
+function carouselPrev() {
+    const slidesPerView = getSlidesPerView();
+    const maxSlide = Math.ceil(carouselProducts.length / slidesPerView) - 1;
+    
+    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
+    updateCarousel();
+}
+
+function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+}
+
+function updateCarousel() {
+    const track = document.getElementById('carousel-track');
+    const slidesPerView = getSlidesPerView();
+    const slideWidth = 100 / slidesPerView;
+    const offset = currentSlide * slideWidth;
+    
+    track.style.transform = `translateX(-${offset}%)`;
+    
+    // Update dots
+    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentSlide);
+    });
+}
+
+function startAutoPlay() {
+    stopAutoPlay();
+    carouselInterval = setInterval(carouselNext, 5000);
+}
+
+function stopAutoPlay() {
+    if (carouselInterval) {
+        clearInterval(carouselInterval);
+        carouselInterval = null;
+    }
 }
 
 function getProductImage(product) {
@@ -334,7 +460,7 @@ function truncateText(text, length) {
 }
 
 // ==========================================
-// CART FUNCTIONALITY (Keep existing)
+// CART FUNCTIONALITY
 // ==========================================
 
 async function addToCart(productId, brandName) {
@@ -395,6 +521,18 @@ function removeFromCart(productId) {
     displayCart();
     updateCartBadge();
     showNotification('Item removed from cart');
+}
+
+function clearAllCart() {
+    if (cart.length === 0) return;
+    
+    if (confirm('Are you sure you want to clear all items from your cart?')) {
+        cart = [];
+        saveCart();
+        displayCart();
+        updateCartBadge();
+        showNotification('Cart cleared successfully');
+    }
 }
 
 function displayCart() {
@@ -470,18 +608,17 @@ function loadCart() {
 function openCart() {
     displayCart();
     document.getElementById('cart-modal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('no-scroll');
 }
 
 function closeCart() {
     document.getElementById('cart-modal').classList.remove('active');
-    document.body.style.overflow = '';
+    document.body.classList.remove('no-scroll');
 }
 
 // Close cart when clicking outside
 document.addEventListener('click', (e) => {
     const cartModal = document.getElementById('cart-modal');
-    const cartBtn = document.querySelector('.icon-btn[onclick="openCart()"]');
     
     if (cartModal && cartModal.classList.contains('active')) {
         if (e.target === cartModal) {
@@ -588,6 +725,18 @@ function hideLoading() {
     if (loading) loading.classList.remove('active');
 }
 
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
 // ==========================================
 // HEADER SCROLL EFFECT
 // ==========================================
@@ -646,46 +795,7 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ==========================================
-// PERFORMANCE OPTIMIZATIONS
-// ==========================================
-
-// Lazy load images
-document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('img[loading="lazy"]');
-    
-    if ('IntersectionObserver' in window) {
-        const imageObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const img = entry.target;
-                    img.src = img.dataset.src || img.src;
-                    imageObserver.unobserve(img);
-                }
-            });
-        });
-        
-        images.forEach(img => imageObserver.observe(img));
-    }
-});
-
-// Debounce function for search
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to search
-const debouncedSearch = debounce(performSearch, 300);
-
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Mega Menu, Advanced Search, Smooth Animations');
-console.log('🛒 Cart System: Fully Functional');
+console.log('🎨 Features: Mega Menu, Advanced Search, Carousel, Smooth Animations');
+console.log('🛒 Cart System: Fully Functional with Clear All');
 console.log('💳 Payment: Stripe Integration Active');
