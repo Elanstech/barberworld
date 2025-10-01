@@ -1,4 +1,4 @@
-/* Enhanced Styles for Barber World */
+/* Enhanced Styles for Barber World with Carousel */
 
 * {
     margin: 0;
@@ -31,7 +31,14 @@ body {
     overflow-x: hidden;
 }
 
-/* ==================== ENHANCED HEADER ==================== */
+body.no-scroll {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================== FIXED HEADER LAYOUT ==================== */
 
 .header {
     position: sticky;
@@ -51,22 +58,44 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 
 .header-left {
     display: flex;
     align-items: center;
-    gap: 3rem;
+    gap: 2rem;
+    flex: 1;
 }
 
 .logo {
-    height: 80px;
+    height: 70px;
     cursor: pointer;
     transition: transform var(--transition);
 }
 
 .logo:hover {
     transform: scale(1.05);
+}
+
+.mobile-menu-btn {
+    display: none;
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: var(--gray-light);
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all var(--transition);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+
+.mobile-menu-btn:hover {
+    background: var(--gold);
+    color: var(--white);
 }
 
 /* Main Navigation */
@@ -166,10 +195,6 @@ body {
     transition: transform var(--transition);
 }
 
-.mobile-menu-btn {
-    display: none;
-}
-
 /* ==================== MEGA MENU ==================== */
 
 .mega-menu {
@@ -212,7 +237,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Brand Links */
 .brand-links {
     display: flex;
     flex-direction: column;
@@ -279,7 +303,6 @@ body {
     opacity: 0.8;
 }
 
-/* Category Links */
 .category-links {
     display: flex;
     flex-direction: column;
@@ -316,7 +339,6 @@ body {
     transform: scale(1.2);
 }
 
-/* Featured Card */
 .mega-menu-featured {
     display: flex;
     align-items: center;
@@ -391,13 +413,14 @@ body {
     border-bottom: 1px solid var(--border);
     font-weight: 700;
     font-size: 1.2rem;
+    background: var(--gray-light);
 }
 
 .close-mobile-menu {
     width: 40px;
     height: 40px;
     border: none;
-    background: var(--gray-light);
+    background: var(--white);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -465,15 +488,12 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1500;
+    z-index: 2500;
     display: none;
-    align-items: flex-start;
-    justify-content: center;
-    padding-top: 100px;
 }
 
 .search-panel.active {
-    display: flex;
+    display: block;
 }
 
 .search-panel-overlay {
@@ -482,7 +502,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     backdrop-filter: blur(8px);
     animation: fadeIn 0.3s ease;
 }
@@ -493,25 +513,30 @@ body {
 }
 
 .search-panel-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 90%;
     max-width: 700px;
-    max-height: 80vh;
+    max-height: 85vh;
     background: var(--white);
     border-radius: var(--radius-lg);
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
     overflow: hidden;
     animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
 }
 
 @keyframes slideDown {
     from {
         opacity: 0;
-        transform: translateY(-50px);
+        transform: translate(-50%, -55%);
     }
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -521,6 +546,8 @@ body {
     align-items: center;
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border);
+    background: var(--gray-light);
+    flex-shrink: 0;
 }
 
 .search-panel-header h3 {
@@ -532,7 +559,7 @@ body {
     width: 40px;
     height: 40px;
     border: none;
-    background: var(--gray-light);
+    background: var(--white);
     border-radius: 50%;
     cursor: pointer;
     display: flex;
@@ -551,6 +578,7 @@ body {
     position: relative;
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .search-input-wrapper i {
@@ -599,10 +627,10 @@ body {
     color: var(--white);
 }
 
-/* Search Suggestions */
 .search-suggestions {
     padding: 1.5rem 2rem;
     border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
 }
 
 .suggestion-title {
@@ -637,15 +665,11 @@ body {
     transform: translateY(-2px);
 }
 
-/* Search Results */
 .search-results-panel {
-    max-height: 400px;
+    flex: 1;
     overflow-y: auto;
-    padding: 1rem;
-}
-
-.search-results-panel .product-card {
-    margin-bottom: 1rem;
+    padding: 1rem 2rem;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ==================== MAIN CONTENT ==================== */
@@ -664,10 +688,16 @@ main {
     margin-bottom: 4rem;
 }
 
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
 .section-title {
     font-size: 2rem;
     font-weight: 800;
-    margin-bottom: 2rem;
     color: var(--primary);
     position: relative;
     padding-bottom: 0.75rem;
@@ -682,6 +712,80 @@ main {
     height: 4px;
     background: var(--gold);
     border-radius: 2px;
+}
+
+/* ==================== CAROUSEL STYLES ==================== */
+
+.carousel-controls {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.carousel-btn {
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: var(--gray-light);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: var(--primary);
+}
+
+.carousel-btn:hover {
+    background: var(--gold);
+    color: var(--white);
+    transform: scale(1.1);
+}
+
+.carousel-container {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+}
+
+.carousel-item {
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    padding: 0.5rem;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.carousel-dot.active {
+    background: var(--gold);
+    width: 30px;
+    border-radius: 6px;
+}
+
+.carousel-dot:hover {
+    background: var(--gold);
+    transform: scale(1.2);
 }
 
 /* Categories Grid */
@@ -753,13 +857,7 @@ main {
     z-index: 10;
 }
 
-/* Featured Products */
-.featured-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
-}
-
+/* Product Cards */
 .product-card {
     background: var(--white);
     border: 1px solid var(--border);
@@ -850,7 +948,7 @@ main {
     box-shadow: var(--shadow-md);
 }
 
-/* ==================== REDESIGNED ABOUT SECTION ==================== */
+/* ==================== ABOUT SECTION ==================== */
 
 .about-section {
     background: linear-gradient(180deg, var(--white) 0%, var(--gray-light) 100%);
@@ -918,7 +1016,6 @@ main {
     padding: 4rem 2rem;
 }
 
-/* Value Propositions */
 .value-props {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -1009,7 +1106,6 @@ main {
     font-size: 1.1rem;
 }
 
-/* Stats Section */
 .stats-section {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1048,7 +1144,6 @@ main {
     font-weight: 600;
 }
 
-/* Process Section */
 .process-section {
     margin: 4rem 0;
 }
@@ -1112,7 +1207,6 @@ main {
     flex-shrink: 0;
 }
 
-/* Warranty Section */
 .warranty-section {
     background: linear-gradient(135deg, var(--primary), #1a1a1a);
     color: var(--white);
@@ -1150,7 +1244,7 @@ main {
     opacity: 0.95;
 }
 
-/* ==================== CART MODAL (Keep existing functionality) ==================== */
+/* ==================== CART MODAL ==================== */
 
 .cart-modal {
     position: fixed;
@@ -1524,24 +1618,6 @@ main {
 
 /* ==================== RESPONSIVE DESIGN ==================== */
 
-@media (max-width: 1200px) {
-    .mega-menu-content {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .mega-menu-featured {
-        grid-column: 1 / -1;
-    }
-    
-    .process-steps {
-        flex-wrap: wrap;
-    }
-    
-    .process-arrow {
-        display: none;
-    }
-}
-
 @media (max-width: 1024px) {
     .main-nav {
         display: none;
@@ -1551,12 +1627,21 @@ main {
         display: flex;
     }
     
-    .value-props {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .mega-menu-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .carousel-item {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
     }
     
     .process-steps {
         flex-direction: column;
+    }
+    
+    .process-arrow {
+        display: none;
     }
     
     .warranty-section {
@@ -1574,14 +1659,6 @@ main {
         height: 60px;
     }
     
-    .about-hero-title {
-        font-size: 2rem;
-    }
-    
-    .about-hero-subtitle {
-        font-size: 1rem;
-    }
-    
     .section-title {
         font-size: 1.6rem;
     }
@@ -1591,16 +1668,12 @@ main {
         gap: 1rem;
     }
     
-    .featured-grid {
+    .carousel-item {
         grid-template-columns: 1fr;
     }
     
     .stats-section {
         grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .stat-number {
-        font-size: 2.5rem;
     }
     
     .value-props {
@@ -1611,13 +1684,43 @@ main {
         max-width: 100%;
     }
     
+    /* Mobile Search Full Screen */
     .search-panel-content {
-        width: 95%;
-        max-height: 90vh;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100vh;
+        border-radius: 0;
+        top: 0;
+        left: 0;
+        transform: none;
     }
     
-    .search-input-wrapper input {
-        font-size: 1rem;
+    .search-panel-header {
+        padding: 1rem 1.5rem;
+    }
+    
+    .search-input-wrapper {
+        padding: 1rem 1.5rem;
+    }
+    
+    .search-input-wrapper i {
+        left: 2.5rem;
+    }
+    
+    .clear-search {
+        right: 2.5rem;
+    }
+    
+    .search-suggestions {
+        padding: 1rem 1.5rem;
+    }
+    
+    .search-results-panel {
+        padding: 1rem 1.5rem;
+    }
+    
+    .about-hero-title {
+        font-size: 2rem;
     }
 }
 
@@ -1630,37 +1733,19 @@ main {
         padding: 2rem 1rem;
     }
     
-    .about-hero {
-        padding: 3rem 1rem;
+    .section-title {
+        font-size: 1.4rem;
     }
     
-    .about-hero-title {
-        font-size: 1.75rem;
-    }
-    
-    .value-card {
-        padding: 1.5rem;
-    }
-    
-    .process-step {
-        padding: 1.5rem;
-    }
-    
-    .warranty-section {
-        padding: 1.5rem;
-    }
-    
-    .stats-section {
-        grid-template-columns: 1fr;
+    .carousel-controls {
+        display: none;
     }
 }
 
-/* Smooth Scrolling */
 html {
     scroll-behavior: smooth;
 }
 
-/* AOS Animation Support */
 [data-aos] {
     opacity: 0;
     transition: opacity 0.6s ease, transform 0.6s ease;
