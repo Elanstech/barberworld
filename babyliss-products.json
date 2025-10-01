@@ -4,97 +4,530 @@
     "name": "BaBylissPRO® GoldFX+ All Metal Lithium Outlining Trimmer FX787NG",
     "price": 109.99,
     "brand": "Babyliss",
-    "slug": "babyliss-influencer-clipper-fx870ng"
+    "slug": "babyliss-influencer-clipper-fx870ng",
+    "image": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Premium all-metal lithium outlining trimmer with gold-tone finish",
+    "description": "The BaBylissPRO® GoldFX+ All Metal Lithium Outlining Trimmer features a sleek all-metal housing with luxurious gold-tone finish. Equipped with a high-performance brushless engine for ultimate precision and power, this trimmer delivers exceptional cutting performance for detailed work and outlining.",
+    "features": [
+      "High-performance brushless Ferrari-designed engine",
+      "All-metal lithium housing with gold finish",
+      "Lithium-ion battery with rapid charging",
+      "Zero-gap adjustable DLC fade blade",
+      "Ergonomic design for extended comfort",
+      "2-hour runtime on single charge",
+      "Cord/cordless operation"
+    ],
+    "specifications": {
+      "motor": "Brushless engine",
+      "blade": "DLC fade blade, zero-gap adjustable",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "7.2 oz",
+      "voltage": "Dual voltage"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 342,
+    "sku": "FX787NG"
   },
   {
     "id": 2,
     "name": "BaBylissPRO® LimitedFX Silver Trimmer And Double-Foil Shaver Gift Set",
     "price": 139.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-tomb45-trimmer"
+    "slug": "babylisspro-tomb45-trimmer",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Limited edition silver trimmer and double-foil shaver professional set",
+    "description": "This exclusive BaBylissPRO® LimitedFX Silver Gift Set combines a premium outlining trimmer with a powerful double-foil shaver. Perfect for professionals seeking the ultimate grooming duo, this limited edition set features sleek silver metallic finish and includes everything needed for precision cutting and ultra-smooth finishing.",
+    "features": [
+      "Premium outlining trimmer included",
+      "Double-foil shaver for ultra-smooth finish",
+      "Limited edition silver metallic finish",
+      "Lithium-ion batteries in both tools",
+      "Complete professional grooming set",
+      "Premium carrying case included",
+      "Extended runtime on both devices"
+    ],
+    "specifications": {
+      "setIncludes": "Trimmer + Double-Foil Shaver",
+      "trimmerRuntime": "120 minutes",
+      "shaverRuntime": "90 minutes",
+      "batteries": "Lithium-ion (both)",
+      "voltage": "Dual voltage",
+      "case": "Premium storage case included"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 218,
+    "sku": "LIMITEDFX-SILVER-SET"
   },
   {
     "id": 3,
     "name": "BaBylissPRO® X Tomb45® Wireless-Charging Trimmer",
     "price": 139.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-tomb45-wireless-charging-clipper-fxt45c"
+    "slug": "babylisspro-tomb45-wireless-charging-clipper-fxt45c",
+    "image": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&h=600&fit=crop"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Revolutionary wireless-charging trimmer with Tomb45 technology",
+    "description": "The BaBylissPRO® X Tomb45® Wireless-Charging Trimmer features groundbreaking wireless charging technology. Simply place on the charging dock for effortless power-up. This collaboration brings cutting-edge convenience to professional grooming with Ferrari-designed engine and precision-ground blades.",
+    "features": [
+      "Revolutionary wireless charging technology",
+      "Ferrari-designed high-torque brushless engine",
+      "Graphite-toned fade blade",
+      "Lithium-ion battery technology",
+      "Ergonomic lightweight design",
+      "2-hour runtime",
+      "Tomb45 wireless charging dock included"
+    ],
+    "specifications": {
+      "motor": "Brushless Ferrari-designed",
+      "blade": "Graphite fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "Wireless charging",
+      "weight": "6.8 oz",
+      "chargingDock": "Tomb45 wireless dock included"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 456,
+    "sku": "FXT45T"
   },
   {
     "id": 4,
     "name": "BaBylissPRO® X Tomb45® Wireless-Charging Clipper",
     "price": 149.99,
     "brand": "Babyliss",
-    "slug": "babyliss-lo-pro-fx-one-neon-trimmer-fx729nylt"
+    "slug": "babyliss-lo-pro-fx-one-neon-trimmer-fx729nylt",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional wireless-charging clipper with advanced Tomb45 technology",
+    "description": "Experience the future of professional grooming with the BaBylissPRO® X Tomb45® Wireless-Charging Clipper. This revolutionary clipper combines powerful cutting performance with the convenience of wireless charging. Features a high-performance brushless motor and premium DLC fade blade for exceptional results.",
+    "features": [
+      "Wireless charging technology by Tomb45",
+      "High-performance brushless motor",
+      "DLC fade blade for precision cutting",
+      "Lithium-ion battery with extended runtime",
+      "All-metal housing construction",
+      "Ergonomic grip design",
+      "Wireless charging dock included"
+    ],
+    "specifications": {
+      "motor": "Brushless high-torque",
+      "blade": "DLC fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "Wireless 2.5 hours",
+      "weight": "9.2 oz",
+      "housing": "All-metal construction"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 389,
+    "sku": "FXT45C"
   },
   {
     "id": 5,
     "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Gold)",
     "price": 89.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-neon-clipper-fx829nylt"
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-neon-clipper-fx829nylt",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Premium double-foil shaver with luxurious gold finish",
+    "description": "The BaBylissPRO® FOILFX02™ Gold Double-Foil Shaver delivers the closest, smoothest shave possible. Featuring dual independent suspension foils with titanium-coated blades, this shaver provides exceptional cutting performance. The luxurious gold finish adds professional style to your toolkit.",
+    "features": [
+      "Dual independent suspension foils",
+      "Titanium-coated hypoallergenic blades",
+      "Powerful rotary motor",
+      "Cord/cordless operation",
+      "Lithium-ion battery",
+      "Gold metallic finish",
+      "USB-C charging"
+    ],
+    "specifications": {
+      "foils": "Dual independent suspension",
+      "blades": "Titanium-coated hypoallergenic",
+      "motor": "Rotary 9000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "180 minutes",
+      "finish": "Gold metallic"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 267,
+    "sku": "FOILFX02-GOLD"
   },
   {
     "id": 6,
     "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Silver)",
     "price": 89.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt"
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Professional double-foil shaver with sleek silver finish",
+    "description": "The BaBylissPRO® FOILFX02™ Silver Double-Foil Shaver combines cutting-edge technology with timeless style. Dual suspension foils work independently to capture and cut hair at skin level for an ultra-smooth finish. Perfect for professional barbershops and personal grooming.",
+    "features": [
+      "Dual independent suspension foils",
+      "Titanium-coated hypoallergenic blades",
+      "High-performance rotary motor",
+      "Cord/cordless versatility",
+      "Lithium-ion battery technology",
+      "Silver metallic finish",
+      "USB-C fast charging"
+    ],
+    "specifications": {
+      "foils": "Dual independent suspension",
+      "blades": "Titanium-coated hypoallergenic",
+      "motor": "Rotary 9000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "180 minutes",
+      "finish": "Silver metallic"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 283,
+    "sku": "FOILFX02-SILVER"
   },
   {
     "id": 7,
     "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Black)",
     "price": 89.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-tan-clipper-fx829sdlt"
+    "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-tan-clipper-fx829sdlt",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Classic black double-foil shaver for professional results",
+    "description": "The BaBylissPRO® FOILFX02™ Black Double-Foil Shaver offers professional-grade performance in a sleek black finish. Dual independent foils deliver the smoothest shave possible, while the powerful motor ensures consistent results. Ideal for finishing work and creating clean lines.",
+    "features": [
+      "Dual independent suspension foils",
+      "Titanium-coated hypoallergenic blades",
+      "Powerful rotary motor",
+      "Cord/cordless operation",
+      "Lithium-ion battery",
+      "Classic black finish",
+      "USB-C charging port"
+    ],
+    "specifications": {
+      "foils": "Dual independent suspension",
+      "blades": "Titanium-coated hypoallergenic",
+      "motor": "Rotary 9000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "180 minutes",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 301,
+    "sku": "FOILFX02-BLACK"
   },
   {
     "id": 8,
     "name": "BaByliss PRO UVFOIL Gold Double Foil Cordless Shaver",
     "price": 99.99,
     "brand": "Babyliss",
-    "slug": "babyliss-lo-pro-fx-one-tan-trimmer-fx729sdlt"
+    "slug": "babyliss-lo-pro-fx-one-tan-trimmer-fx729sdlt",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Premium gold cordless shaver with UV sanitizing case",
+    "description": "The BaBylissPRO® UVFOIL Gold Shaver takes hygiene to the next level with an included UV sanitizing case. This premium double-foil shaver features independent suspension foils and a powerful motor for ultra-smooth results. The luxurious gold finish adds professional elegance.",
+    "features": [
+      "UV sanitizing case included",
+      "Dual independent foils",
+      "Gold titanium-coated blades",
+      "Powerful rotary motor",
+      "Cordless operation",
+      "Lithium-ion battery",
+      "Premium gold finish"
+    ],
+    "specifications": {
+      "foils": "Dual independent suspension",
+      "blades": "Gold titanium-coated",
+      "motor": "Rotary 9000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2 hours",
+      "extra": "UV sanitizing case"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 412,
+    "sku": "UVFOIL-GOLD"
   },
   {
     "id": 9,
     "name": "BaByliss PRO UVFOIL Rose Gold Double Foil Cordless Shaver",
     "price": 99.99,
     "brand": "Babyliss",
-    "slug": "babyliss-lo-pro-fx-one-black-trimmer-fx729mblt"
+    "slug": "babyliss-lo-pro-fx-one-black-trimmer-fx729mblt",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Elegant rose gold shaver with UV sanitizing technology",
+    "description": "The BaBylissPRO® UVFOIL Rose Gold Shaver combines beauty with hygiene. Features an elegant rose gold finish and includes a UV sanitizing case that kills 99.9% of bacteria. Dual foils deliver an incredibly smooth shave, making it perfect for discerning professionals.",
+    "features": [
+      "UV sanitizing case included",
+      "Dual independent suspension foils",
+      "Rose gold titanium blades",
+      "High-performance motor",
+      "Cordless convenience",
+      "Lithium-ion battery",
+      "Elegant rose gold finish"
+    ],
+    "specifications": {
+      "foils": "Dual independent suspension",
+      "blades": "Rose gold titanium",
+      "motor": "Rotary 9000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2 hours",
+      "extra": "UV sanitizing case"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 387,
+    "sku": "UVFOIL-ROSEGOLD"
   },
   {
     "id": 10,
     "name": "BaBylissPRO® LithiumFX Cord/Cordless Lithium Ergonomic Clipper",
     "price": 99.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-nano-titanium-light-ionic-high-speed-dryer"
+    "slug": "babylisspro-nano-titanium-light-ionic-high-speed-dryer",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Ergonomic lithium clipper for all-day professional use",
+    "description": "The BaBylissPRO® LithiumFX Clipper features an ergonomic design that reduces hand fatigue during extended use. Powered by a high-torque brushless motor and equipped with a precision-ground fade blade, this clipper delivers professional results with exceptional runtime.",
+    "features": [
+      "Ergonomic lightweight design",
+      "High-torque brushless motor",
+      "Lithium-ion battery technology",
+      "Precision-ground fade blade",
+      "Cord/cordless operation",
+      "2-hour runtime",
+      "All-metal construction"
+    ],
+    "specifications": {
+      "motor": "Brushless high-torque",
+      "blade": "Precision fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "8.4 oz",
+      "housing": "All-metal"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 495,
+    "sku": "LITHIUMFX"
   },
   {
     "id": 11,
     "name": "BaBylissPRO® LithiumFX+ Limited Edition Grey Cord/Cordless Lithium Ergonomic Clipper",
     "price": 99.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-fxone-limitedfx-tool-only-purple-trimmer-and-foil-shaver"
+    "slug": "babylisspro-fxone-limitedfx-tool-only-purple-trimmer-and-foil-shaver",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Limited edition grey ergonomic clipper with enhanced features",
+    "description": "The BaBylissPRO® LithiumFX+ Limited Edition Grey Clipper features an exclusive grey finish with enhanced performance features. This special edition combines the proven LithiumFX ergonomics with upgraded components for even better cutting performance and extended runtime.",
+    "features": [
+      "Limited edition grey finish",
+      "Enhanced brushless motor",
+      "Advanced lithium-ion battery",
+      "Zero-gap adjustable blade",
+      "Ergonomic design",
+      "Extended 2.5-hour runtime",
+      "Cord/cordless versatility"
+    ],
+    "specifications": {
+      "motor": "Enhanced brushless",
+      "blade": "Zero-gap fade blade",
+      "battery": "Advanced lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "8.2 oz",
+      "finish": "Limited edition grey"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 234,
+    "sku": "LITHIUMFX-GREY-LE"
   },
   {
     "id": 12,
     "name": "BaBylissPRO® COREFX Clipper",
     "price": 94.99,
     "brand": "Babyliss",
-    "slug": "babyliss-limited-edition-gold-fx-trimmer-uv-single-foil-shaver-set-fxlfholpkg"
+    "slug": "babyliss-limited-edition-gold-fx-trimmer-uv-single-foil-shaver-set-fxlfholpkg",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional core performance clipper for everyday use",
+    "description": "The BaBylissPRO® COREFX Clipper delivers reliable professional performance at an exceptional value. Featuring a powerful motor and precision blade, this clipper is designed for daily professional use. Perfect for barbershops and stylists who demand consistent results.",
+    "features": [
+      "High-performance rotary motor",
+      "Precision-ground stainless steel blade",
+      "Lithium-ion battery",
+      "Cord/cordless operation",
+      "Ergonomic design",
+      "2-hour runtime",
+      "Professional grade construction"
+    ],
+    "specifications": {
+      "motor": "High-performance rotary",
+      "blade": "Stainless steel precision",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "3 hours",
+      "weight": "8.8 oz",
+      "voltage": "Dual voltage"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 521,
+    "sku": "COREFX-CLIPPER"
   },
   {
     "id": 13,
     "name": "BABYLISSPRO® COREFX PROFESSIONAL PERFORMANCE HAIR TRIMMER",
     "price": 94.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-rose-gold-fxone-trimmer"
+    "slug": "babylisspro-rose-gold-fxone-trimmer",
+    "image": "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional core performance trimmer for precision detailing",
+    "description": "The BaBylissPRO® COREFX Professional Performance Trimmer is designed for precision detailing and outlining work. Features a powerful motor and precision-ground T-blade for clean lines and detailed work. Ideal for professional barbershops and experienced stylists.",
+    "features": [
+      "High-performance motor",
+      "Precision-ground T-blade",
+      "Lithium-ion battery",
+      "Cord/cordless versatility",
+      "Lightweight design",
+      "90-minute runtime",
+      "Professional-grade quality"
+    ],
+    "specifications": {
+      "motor": "High-performance",
+      "blade": "Precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "3 hours",
+      "weight": "6.5 oz",
+      "voltage": "Dual voltage"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 448,
+    "sku": "COREFX-TRIMMER"
   },
   {
     "id": 14,
     "name": "BaBylissPRO COREFX Professional Performance Double Foil Shaver",
     "price": 94.99,
     "brand": "Babyliss",
-    "slug": "babylisspro-rose-gold-fxone-clipper"
-  },
-  {
+    "slug": "babylisspro-rose-gold-fxone-clipper",
+    "image": "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Professional core performance double-foil shaver",
+    "description": "The BaBylissPRO® COREFX Professional Performance Double Foil Shaver delivers smooth, close shaves with dual independent foils. Perfect for finishing work and creating ultra-clean lines. Features a powerful motor and extended battery life for all-day professional use.",
+    "features": [
+      "Dual independent foils",
+      "Hypoallergenic titanium blades",
+      "Powerful rotary motor",
+      "Cord/cordless operation",
+      "Lithium-ion battery",
+      "90-minute runtime",
+      "Professional performance"
+    ],
+    "specifications": {
+      "foils": "Dual independent",
+      "blades": "Titanium hypoallergenic",
+      "motor": "Rotary 8000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "3 hours",
+      "weight": "7.5 oz"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 392,
+    "sku": "COREFX-SHAVER"
+  }
+]
