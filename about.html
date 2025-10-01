@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Barber World</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="about.css">
+</head>
+<body>
+<!-- Enhanced Header with Mega Menu -->
+    <header class="header">
+        <div class="header-wrapper">
+            <div class="header-left">
+                <img src="logo11.png" alt="Barber World" class="logo" onclick="scrollToSection('hero')">
+                
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link" onclick="scrollToSection('hero')">Home</a>
+                    <a href="about.html" class="nav-link" onclick="scrollToSection('about')">About</a>
+                    <div class="nav-link shop-trigger" onmouseenter="openMegaMenu()" onmouseleave="closeMegaMenuDelayed()">
+                        Shop <i class="fas fa-chevron-down"></i>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="header-actions">
+                <button class="icon-btn search-trigger" onclick="openSearchPanel()" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="icon-btn" onclick="openCart()" aria-label="Shopping Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" id="cart-badge">0</span>
+                </button>
+                <button class="icon-btn mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mega Menu -->
+        <div class="mega-menu" id="mega-menu" onmouseenter="keepMegaMenuOpen()" onmouseleave="closeMegaMenu()">
+            <div class="mega-menu-content">
+                <div class="mega-menu-section">
+                    <h3>Shop by Brand</h3>
+                    <div class="brand-links">
+                        <a href="brands/ourbrand.html" class="brand-link">
+                            <div class="brand-icon">
+                                <img src="logo11.png" alt="Our Brand">
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">Our Brand</span>
+                                <span class="brand-desc">Exclusive Collection</span>
+                            </div>
+                        </a>
+                        <a href="brands/babyliss.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-cut"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">BaBylissPRO</span>
+                                <span class="brand-desc">Professional Tools</span>
+                            </div>
+                        </a>
+                        <a href="brands/stylecraft.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">StyleCraft Gamma</span>
+                                <span class="brand-desc">Premium Performance</span>
+                            </div>
+                        </a>
+                        <a href="brands/jrl.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">JRL</span>
+                                <span class="brand-desc">Elite Equipment</span>
+                            </div>
+                        </a>
+                        <a href="brands/wahl.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">Wahl</span>
+                                <span class="brand-desc">Industry Standard</span>
+                            </div>
+                        </a>
+                         <a href="brands/wmark.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">W - Mark</span>
+                                <span class="brand-desc">Industry Standard</span>
+                            </div>
+                        </a>
+                        <a href="brands/vgr.html" class="brand-link">
+                            <div class="brand-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="brand-info">
+                                <span class="brand-name">VGR</span>
+                                <span class="brand-desc">Industry Standard</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-section">
+                    <h3>Categories</h3>
+                    <div class="category-links">
+                        <a href="#" class="category-link">
+                            <i class="fas fa-cut"></i>
+                            <span>Clippers</span>
+                        </a>
+                        <a href="brands/clippers.html" class="category-link">
+                            <i class="fas fa-scissors"></i>
+                            <span>Trimmers</span>
+                        </a>
+                        <a href="brands/shavers.html" class="category-link">
+                            <i class="fas fa-spa"></i>
+                            <span>Shavers</span>
+                        </a>
+                        <a href="brands/comboset.html" class="category-link">
+                            <i class="fas fa-box-open"></i>
+                            <span>Combo Sets</span>
+                        </a>
+                        <a href="brands/allproducts.html" class="category-link">
+                            <i class="fas fa-cut"></i>
+                            <span>All Products</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="mega-menu-featured">
+                    <div class="featured-card">
+                        <div class="featured-badge">Coming Soon</div>
+                        <img src="https://play-lh.googleusercontent.com/HVZOQT6k5qrJtg1DxiMLox2vMnMD9kt9lMx6uZ1LJ2uQ0jdVMccHONIJVQY3jyrPyyWr" alt="Build Combo">
+                        <h4>Build Your Custom Combo</h4>
+                        <p>Mix and match your perfect professional toolkit</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu">
+            <div class="mobile-menu-header">
+                <span>Menu</span>
+                <button class="close-mobile-menu" onclick="toggleMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a href="#" class="mobile-nav-link" onclick="scrollToSection('hero'); toggleMobileMenu();">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="#" class="mobile-nav-link" onclick="scrollToSection('about'); toggleMobileMenu();">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About</span>
+                </a>
+                <div class="mobile-nav-section">
+                    <div class="mobile-nav-title">Shop by Brand</div>
+                    <a href="brands/ourbrand.html" class="mobile-nav-link">
+                        <i class="fas fa-star"></i>
+                        <span>Our Brand</span>
+                    </a>
+                    <a href="brands/babyliss.html" class="mobile-nav-link">
+                        <i class="fas fa-cut"></i>
+                        <span>BaBylissPRO</span>
+                    </a>
+                    <a href="brands/stylecraft.html" class="mobile-nav-link">
+                        <i class="fas fa-star"></i>
+                        <span>StyleCraft Gamma</span>
+                    </a>
+                    <a href="brands/jrl.html" class="mobile-nav-link">
+                        <i class="fas fa-crown"></i>
+                        <span>JRL</span>
+                    </a>
+                    <a href="brands/wahl.html" class="mobile-nav-link">
+                        <i class="fas fa-medal"></i>
+                        <span>Wahl</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+  <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="about-hero-content">
+            <span class="about-badge">About Barber World</span>
+            <h1 class="about-hero-title">Excellence in Every Tool</h1>
+            <p class="about-hero-subtitle">Your trusted partner in professional grooming equipment since day one. We don't just sell tools – we deliver precision, quality, and confidence.</p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <div class="about-container">
+            <!-- Value Propositions -->
+            <div class="value-props">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Every product undergoes rigorous quality control testing before reaching your hands. We partner with industry-leading manufacturers to ensure authenticity and performance.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>100% Authentic Products</span>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Certified Excellence</h3>
+                    <p>We maintain strict certification standards and work exclusively with authorized distributors. Your trust is our top priority, and we never compromise on authenticity.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Authorized Dealer</span>
+                    </div>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast & Secure Shipping</h3>
+                    <p>Your tools are carefully packaged and shipped with speed and security in mind. Track every step of your order from our warehouse to your door.</p>
+                    <div class="value-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Tracked Delivery</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mission Statement -->
+            <section class="mission-section">
+                <div class="mission-content">
+                    <span class="section-badge">Our Mission</span>
+                    <h2 class="section-heading">Empowering Professionals Worldwide</h2>
+                    <p class="mission-text">At Barber World, we believe that great tools create great work. Our mission is to provide barbers, stylists, and grooming professionals with premium equipment that enhances their craft. From precision clippers to ergonomic scissors, we curate only the finest tools that meet the demanding standards of modern professionals.</p>
+                    <p class="mission-text">We understand that your tools are an extension of your artistry. That's why we're committed to sourcing, testing, and delivering products that combine innovation with reliability. When you choose Barber World, you're choosing a partner dedicated to your success.</p>
+                </div>
+                <div class="mission-stats">
+                    <div class="stat-card">
+                        <div class="stat-number">15K+</div>
+                        <div class="stat-label">Happy Customers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Premium Products</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">98%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Customer Support</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quality Control Process -->
+            <section class="quality-section">
+                <div class="quality-header">
+                    <span class="section-badge">Quality Assurance</span>
+                    <h2 class="section-heading">Our Rigorous Quality Control Process</h2>
+                    <p class="section-subtitle">Every product goes through multiple checkpoints to ensure it meets our exacting standards</p>
+                </div>
+
+                <div class="quality-process">
+                    <div class="process-step">
+                        <div class="process-number">01</div>
+                        <div class="process-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h3>Supplier Verification</h3>
+                        <p>We partner only with authorized manufacturers and certified distributors. Every supplier undergoes thorough vetting to ensure product authenticity.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">02</div>
+                        <div class="process-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3>Initial Inspection</h3>
+                        <p>Upon arrival at our warehouse, each batch is inspected for packaging integrity, product condition, and authenticity markers.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">03</div>
+                        <div class="process-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3>Performance Testing</h3>
+                        <p>Random samples from each batch undergo hands-on performance testing. We verify power, precision, ergonomics, and durability.</p>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="process-number">04</div>
+                        <div class="process-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <h3>Final Packaging Check</h3>
+                        <p>Before shipping, each order is carefully inspected for completeness, proper packaging, and protective materials to ensure safe delivery.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Choose Us -->
+            <section class="why-choose-section">
+                <div class="why-choose-grid">
+                    <div class="why-choose-content">
+                        <span class="section-badge">Why Choose Us</span>
+                        <h2 class="section-heading">The Barber World Difference</h2>
+                        <div class="features-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-hand-holding-heart"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Customer-First Approach</h4>
+                                    <p>Your satisfaction drives everything we do. From product selection to after-sales support, we're here for you.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-award"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Industry Expertise</h4>
+                                    <p>Our team includes grooming professionals who understand your needs and can provide expert guidance.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Hassle-Free Returns</h4>
+                                    <p>Not satisfied? Our easy return process ensures you can shop with confidence and peace of mind.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Secure Payments</h4>
+                                    <p>Shop safely with our encrypted payment processing and multiple secure payment options.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Worldwide Shipping</h4>
+                                    <p>We deliver quality tools to professionals around the globe with reliable shipping partners.</p>
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-headset"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Expert Support</h4>
+                                    <p>Have questions? Our knowledgeable support team is ready to help you find the perfect tools.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="why-choose-visual">
+                        <div class="visual-card">
+                            <i class="fas fa-star"></i>
+                            <h3>Premium Quality</h3>
+                            <p>Only the best makes it to our catalog</p>
+                        </div>
+                        <div class="visual-card">
+                            <i class="fas fa-bolt"></i>
+                            <h3>Fast Delivery</h3>
+                            <p>Your tools arrive quickly and safely</p>
+                        </div>
+                        <div class="visual-card">
+                            <i class="fas fa-heart"></i>
+                            <h3>Trusted Partner</h3>
+                            <p>Join thousands of satisfied professionals</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="cta-section">
+                <div class="cta-content">
+                    <h2>Ready to Elevate Your Craft?</h2>
+                    <p>Explore our collection of premium grooming tools and experience the Barber World difference.</p>
+                    <a href="index.html#shop" class="cta-button">
+                        Shop Now <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <img src="logo11.png" alt="Barber World" class="footer-logo">
+                <p class="footer-description">Premium grooming equipment for professionals who demand excellence.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <a href="index.html">Home</a>
+                <a href="about.html">About Us</a>
+                <a href="index.html#shop">Shop</a>
+            </div>
+            <div class="footer-section">
+                <h4>Customer Service</h4>
+                <a href="#">Contact Us</a>
+                <a href="#">Shipping Info</a>
+                <a href="#">Returns</a>
+            </div>
+            <div class="footer-section">
+                <h4>Connect</h4>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Barber World. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="about.js"></script>
+</body>
+</html>
