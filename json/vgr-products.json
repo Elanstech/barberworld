@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "VGR Hair Clipper Professional Hair Trimmer Electric Hair Cutting Machine Vector Motor Haircut 9000 RPM Clipper for Men V-015",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-v015-clipper",
+    "image": "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional vector motor clipper with 9000 RPM for precise haircuts",
+    "description": "The VGR V-015 Professional Hair Clipper features advanced vector motor technology delivering 9000 RPM of consistent cutting power. Designed for professional barbers and stylists, this electric hair cutting machine provides precision, reliability, and exceptional performance for all hair types. The ergonomic design ensures comfort during extended use.",
+    "features": [
+      "Professional vector motor technology",
+      "9000 RPM high-speed cutting",
+      "Precision-ground stainless steel blades",
+      "Cordless rechargeable operation",
+      "Ergonomic grip design",
+      "Multiple guide combs included",
+      "Long-lasting lithium-ion battery",
+      "Suitable for all hair types",
+      "Professional barbershop quality"
+    ],
+    "specifications": {
+      "motor": "Vector motor 9000 RPM",
+      "blade": "Stainless steel precision blade",
+      "battery": "Lithium-ion rechargeable",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "9.8 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "8 guide combs, cleaning brush, oil",
+      "model": "V-015"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 289,
+    "sku": "VGR-V015"
+  },
+  {
+    "id": 2,
+    "name": "VGR Hair Trimmers Professional Body Trimmer Vector Motor 10000RPM Hair Clippers Rechargeable Clippers Hair Trimmer for Men V-994",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-v994-trimmer",
+    "image": "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
+    "description": "The VGR V-994 Professional Hair Trimmer combines powerful 10000RPM vector motor technology with versatile body grooming capabilities. Perfect for detailed hair trimming, body grooming, and precision work. This rechargeable trimmer offers professional-grade performance with exceptional runtime and multiple attachments for various grooming needs.",
+    "features": [
+      "Advanced vector motor 10000 RPM",
+      "Multi-purpose trimmer for hair and body",
+      "Professional precision T-blade",
+      "Rechargeable cordless design",
+      "Multiple trimming attachments included",
+      "Waterproof design for easy cleaning",
+      "Long-lasting battery performance",
+      "Quiet operation",
+      "Professional barbershop quality",
+      "Ergonomic lightweight design"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Precision T-blade stainless steel",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "200 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.5 oz",
+      "voltage": "110-240V dual voltage",
+      "waterproof": "IPX6 water-resistant",
+      "accessories": "5 guide combs, cleaning brush, USB cable",
+      "model": "V-994"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 342,
+    "sku": "VGR-V994"
+  }
+]
