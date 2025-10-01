@@ -544,16 +544,19 @@ function displayCart() {
     const container = document.getElementById('cart-items');
     const emptyEl = document.getElementById('cart-empty');
     const footerEl = document.getElementById('cart-footer');
+    const checkoutSection = document.getElementById('cart-checkout-section');
     
     if (cart.length === 0) {
         container.innerHTML = '';
         emptyEl.style.display = 'flex';
         footerEl.style.display = 'none';
+        if (checkoutSection) checkoutSection.style.display = 'none';
         return;
     }
     
     emptyEl.style.display = 'none';
     footerEl.style.display = 'block';
+    if (checkoutSection) checkoutSection.style.display = 'block';
     
     container.innerHTML = cart.map(item => `
         <div class="cart-item">
@@ -562,7 +565,7 @@ function displayCart() {
             </div>
             <div class="cart-item-details">
                 <div class="cart-item-name">${truncateText(item.name, 40)}</div>
-                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+                <div class="cart-item-price">${item.price.toFixed(2)}</div>
                 <div class="cart-item-actions">
                     <button class="qty-btn" onclick="updateCartQuantity(${item.id}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
                         <i class="fas fa-minus"></i>
