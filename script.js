@@ -8,10 +8,9 @@ const stripe = Stripe(STRIPE_PUBLIC_KEY);
 let cart = [];
 let megaMenuTimer = null;
 let carouselProducts = [];
-let currentSlide = 0;
-let carouselInterval = null;
-let carouselTouchStartX = 0;
-let carouselTouchEndX = 0;
+let currentCarouselPage = 0;
+let carouselAutoplayInterval = null;
+let isCarouselAnimating = false;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -69,7 +68,7 @@ document.addEventListener('click', (e) => {
     const mobileMenu = document.getElementById('mobile-menu');
     const menuBtn = document.querySelector('.mobile-menu-btn');
     
-    if (mobileMenu.classList.contains('active') && 
+    if (mobileMenu && mobileMenu.classList.contains('active') && 
         !mobileMenu.contains(e.target) && 
         !menuBtn.contains(e.target)) {
         toggleMobileMenu();
@@ -234,11 +233,11 @@ async function performSearch(event) {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         const searchPanel = document.getElementById('search-panel');
-        if (searchPanel.classList.contains('active')) {
+        if (searchPanel && searchPanel.classList.contains('active')) {
             closeSearchPanel();
         }
         const cartModal = document.getElementById('cart-modal');
-        if (cartModal.classList.contains('active')) {
+        if (cartModal && cartModal.classList.contains('active')) {
             closeCart();
         }
     }
@@ -286,7 +285,7 @@ function initializeAnimations() {
 }
 
 // ==========================================
-// FEATURED PRODUCTS CAROUSEL
+// NEW ELEGANT CAROUSEL
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -303,167 +302,174 @@ async function loadFeaturedProducts() {
         
         // Shuffle and get products
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
-        carouselProducts = shuffled.slice(0, 12);
+        carouselProducts = shuffled.slice(0, 24);
         
-        displayCarousel();
-        initializeCarousel();
+        renderCarousel();
+        createCarouselIndicators();
+        startCarouselAutoplay();
+        
+        console.log(`✅ Loaded ${carouselProducts.length} featured products`);
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
+        showCarouselError();
     }
 }
 
-function displayCarousel() {
-    const track = document.getElementById('carousel-track');
+function renderCarousel() {
+    const track = document.getElementById('carousel-track-new');
     if (!track) return;
     
-    track.innerHTML = carouselProducts.map(product => `
-        <div class="carousel-slide">
-            <div class="product-card" onclick="addToCart(${product.id}, '${product.brand}')">
-                <div class="product-image">
-                    <img src="${getProductImage(product)}" 
-                         alt="${product.name}" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <span class="product-brand">${product.brand}</span>
-                    <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                    <div class="product-price">$${product.price.toFixed(2)}</div>
-                    <button class="add-to-cart-btn" onclick="event.stopPropagation();">
-                        <i class="fas fa-shopping-bag"></i> Add to Cart
-                    </button>
-                </div>
+    track.innerHTML = carouselProducts.map((product, index) => `
+        <div class="carousel-product-card" style="animation-delay: ${index * 0.05}s;">
+            <div class="carousel-product-image">
+                <img src="${getProductImage(product)}" alt="${escapeHtml(product.name)}" loading="lazy">
+            </div>
+            <div class="carousel-product-info">
+                <span class="carousel-product-brand">${escapeHtml(product.brand)}</span>
+                <h3 class="carousel-product-name">${truncateText(product.name, 60)}</h3>
+                <div class="carousel-product-price">$${product.price.toFixed(2)}</div>
+                <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCartFromCarousel(${product.id}, '${product.brand}')">
+                    <i class="fas fa-shopping-bag"></i>
+                    Add to Cart
+                </button>
             </div>
         </div>
     `).join('');
-    
-    createCarouselDots();
 }
 
-function createCarouselDots() {
-    const dotsContainer = document.getElementById('carousel-dots');
-    if (!dotsContainer) return;
+function createCarouselIndicators() {
+    const container = document.getElementById('carousel-indicators');
+    if (!container) return;
     
-    const slidesPerView = getSlidesPerView();
-    const totalPages = Math.ceil(carouselProducts.length / slidesPerView);
+    const productsPerPage = getProductsPerPage();
+    const totalPages = Math.ceil(carouselProducts.length / productsPerPage);
     
-    dotsContainer.innerHTML = Array.from({ length: totalPages }, (_, i) => 
-        `<button class="carousel-dot ${i === 0 ? 'active' : ''}" 
-                onclick="goToSlide(${i})" 
-                aria-label="Go to slide ${i + 1}"></button>`
+    container.innerHTML = Array.from({ length: totalPages }, (_, i) => 
+        `<button class="carousel-indicator ${i === 0 ? 'active' : ''}" 
+                onclick="goToCarouselPage(${i})" 
+                aria-label="Go to page ${i + 1}"></button>`
     ).join('');
 }
 
-function getSlidesPerView() {
+function getProductsPerPage() {
     const width = window.innerWidth;
-    if (width > 1024) return 3;
-    if (width > 768) return 2;
+    if (width > 1200) return 5;
+    if (width > 1024) return 4;
+    if (width > 768) return 3;
+    if (width > 480) return 2;
     return 1;
 }
 
-function initializeCarousel() {
-    const wrapper = document.getElementById('featured-carousel');
-    if (!wrapper) return;
-    
-    // Auto-play
-    startAutoPlay();
-    
-    // Touch events for mobile
-    wrapper.addEventListener('touchstart', (e) => {
-        carouselTouchStartX = e.changedTouches[0].screenX;
-        stopAutoPlay();
-    });
-    
-    wrapper.addEventListener('touchend', (e) => {
-        carouselTouchEndX = e.changedTouches[0].screenX;
-        handleCarouselSwipe();
-        startAutoPlay();
-    });
-    
-    // Pause on hover
-    wrapper.addEventListener('mouseenter', stopAutoPlay);
-    wrapper.addEventListener('mouseleave', startAutoPlay);
-    
-    // Update on resize
-    window.addEventListener('resize', debounce(() => {
-        goToSlide(currentSlide);
-        createCarouselDots();
-    }, 250));
-}
-
-function handleCarouselSwipe() {
-    const swipeThreshold = 50;
-    const diff = carouselTouchStartX - carouselTouchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            carouselNext();
-        } else {
-            carouselPrev();
-        }
-    }
-}
-
 function carouselNext() {
-    const slidesPerView = getSlidesPerView();
-    const maxSlide = Math.ceil(carouselProducts.length / slidesPerView) - 1;
+    if (isCarouselAnimating) return;
     
-    currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
-    updateCarousel();
+    const productsPerPage = getProductsPerPage();
+    const maxPage = Math.ceil(carouselProducts.length / productsPerPage) - 1;
+    
+    currentCarouselPage = currentCarouselPage >= maxPage ? 0 : currentCarouselPage + 1;
+    updateCarouselPosition();
 }
 
 function carouselPrev() {
-    const slidesPerView = getSlidesPerView();
-    const maxSlide = Math.ceil(carouselProducts.length / slidesPerView) - 1;
+    if (isCarouselAnimating) return;
     
-    currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
-    updateCarousel();
+    const productsPerPage = getProductsPerPage();
+    const maxPage = Math.ceil(carouselProducts.length / productsPerPage) - 1;
+    
+    currentCarouselPage = currentCarouselPage <= 0 ? maxPage : currentCarouselPage - 1;
+    updateCarouselPosition();
 }
 
-function goToSlide(index) {
-    currentSlide = index;
-    updateCarousel();
+function goToCarouselPage(page) {
+    if (isCarouselAnimating) return;
+    
+    currentCarouselPage = page;
+    updateCarouselPosition();
+    resetCarouselAutoplay();
 }
 
-function updateCarousel() {
-    const track = document.getElementById('carousel-track');
-    const slidesPerView = getSlidesPerView();
-    const slideWidth = 100 / slidesPerView;
-    const offset = currentSlide * slideWidth;
+function updateCarouselPosition() {
+    const track = document.getElementById('carousel-track-new');
+    if (!track) return;
     
-    track.style.transform = `translateX(-${offset}%)`;
+    isCarouselAnimating = true;
     
-    // Update dots
-    document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === currentSlide);
+    const productsPerPage = getProductsPerPage();
+    const cardWidth = 260; // matches CSS
+    const gap = 24; // 1.5rem = 24px
+    const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
+    
+    track.style.transform = `translateX(-${offset}px)`;
+    
+    // Update indicators
+    document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === currentCarouselPage);
     });
+    
+    setTimeout(() => {
+        isCarouselAnimating = false;
+    }, 600);
 }
 
-function startAutoPlay() {
-    stopAutoPlay();
-    carouselInterval = setInterval(carouselNext, 5000);
+function startCarouselAutoplay() {
+    stopCarouselAutoplay();
+    carouselAutoplayInterval = setInterval(() => {
+        carouselNext();
+    }, 5000);
 }
 
-function stopAutoPlay() {
-    if (carouselInterval) {
-        clearInterval(carouselInterval);
-        carouselInterval = null;
+function stopCarouselAutoplay() {
+    if (carouselAutoplayInterval) {
+        clearInterval(carouselAutoplayInterval);
+        carouselAutoplayInterval = null;
     }
 }
 
-function getProductImage(product) {
-    if (product.image) return product.image;
-    if (product.images && product.images[0]) return product.images[0];
-    return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop';
+function resetCarouselAutoplay() {
+    stopCarouselAutoplay();
+    startCarouselAutoplay();
 }
 
-function truncateText(text, length) {
-    return text.length > length ? text.substring(0, length) + '...' : text;
+// Pause autoplay on hover
+const carousel = document.getElementById('products-carousel');
+if (carousel) {
+    carousel.addEventListener('mouseenter', stopCarouselAutoplay);
+    carousel.addEventListener('mouseleave', startCarouselAutoplay);
+}
+
+// Update carousel on window resize
+let resizeTimer;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+        createCarouselIndicators();
+        updateCarouselPosition();
+    }, 250);
+});
+
+function showCarouselError() {
+    const track = document.getElementById('carousel-track-new');
+    if (track) {
+        track.innerHTML = `
+            <div style="
+                width: 100%;
+                padding: 4rem;
+                text-align: center;
+                color: #999;
+            ">
+                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
+                <h3 style="color: #666; margin-bottom: 0.5rem;">Failed to load products</h3>
+                <p>Please refresh the page to try again</p>
+            </div>
+        `;
+    }
 }
 
 // ==========================================
 // CART FUNCTIONALITY
 // ==========================================
 
-async function addToCart(productId, brandName) {
+async function addToCartFromCarousel(productId, brandName) {
     try {
         const brand = brandName.toLowerCase();
         const response = await fetch(`json/${brand}-products.json`);
@@ -472,6 +478,7 @@ async function addToCart(productId, brandName) {
         
         if (!product) {
             console.error('Product not found');
+            showNotification('Product not found', 'error');
             return;
         }
         
@@ -485,13 +492,15 @@ async function addToCart(productId, brandName) {
         
         saveCart();
         updateCartBadge();
-        showNotification(`${product.name} added to cart!`);
+        showNotification(`${truncateText(product.name, 40)} added to cart!`);
         
         // Animate badge
         const badge = document.getElementById('cart-badge');
         if (badge) {
-            badge.style.transform = 'scale(1.4)';
-            setTimeout(() => badge.style.transform = 'scale(1)', 400);
+            badge.style.transform = 'scale(1.5)';
+            setTimeout(() => {
+                badge.style.transform = 'scale(1)';
+            }, 300);
         }
     } catch (error) {
         console.error('Error adding to cart:', error);
@@ -540,20 +549,22 @@ function displayCart() {
     const emptyEl = document.getElementById('cart-empty');
     const footerEl = document.getElementById('cart-footer');
     
+    if (!container) return;
+    
     if (cart.length === 0) {
         container.innerHTML = '';
-        emptyEl.style.display = 'flex';
-        footerEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'flex';
+        if (footerEl) footerEl.style.display = 'none';
         return;
     }
     
-    emptyEl.style.display = 'none';
-    footerEl.style.display = 'block';
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (footerEl) footerEl.style.display = 'block';
     
     container.innerHTML = cart.map(item => `
         <div class="cart-item">
             <div class="cart-item-image">
-                <img src="${getProductImage(item)}" alt="${item.name}">
+                <img src="${getProductImage(item)}" alt="${escapeHtml(item.name)}">
             </div>
             <div class="cart-item-details">
                 <div class="cart-item-name">${truncateText(item.name, 40)}</div>
@@ -601,19 +612,30 @@ function saveCart() {
 function loadCart() {
     const saved = localStorage.getItem('barber_cart');
     if (saved) {
-        cart = JSON.parse(saved);
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error('Error loading cart:', e);
+            cart = [];
+        }
     }
 }
 
 function openCart() {
     displayCart();
-    document.getElementById('cart-modal').classList.add('active');
-    document.body.classList.add('no-scroll');
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal) {
+        cartModal.classList.add('active');
+        document.body.classList.add('no-scroll');
+    }
 }
 
 function closeCart() {
-    document.getElementById('cart-modal').classList.remove('active');
-    document.body.classList.remove('no-scroll');
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal) {
+        cartModal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
 }
 
 // Close cart when clicking outside
@@ -685,6 +707,22 @@ async function checkout() {
 // UTILITY FUNCTIONS
 // ==========================================
 
+function getProductImage(product) {
+    if (product.image) return product.image;
+    if (product.images && product.images[0]) return product.images[0];
+    return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop';
+}
+
+function truncateText(text, length) {
+    return text.length > length ? text.substring(0, length) + '...' : text;
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 function showNotification(message, type = 'success') {
     const notification = document.createElement('div');
     notification.style.cssText = `
@@ -700,6 +738,7 @@ function showNotification(message, type = 'success') {
         animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 600;
         max-width: 380px;
+        font-family: 'Inter', sans-serif;
     `;
     notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.85rem;">
@@ -725,18 +764,6 @@ function hideLoading() {
     if (loading) loading.classList.remove('active');
 }
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
 // ==========================================
 // HEADER SCROLL EFFECT
 // ==========================================
@@ -744,6 +771,8 @@ function debounce(func, wait) {
 let lastScroll = 0;
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header');
+    if (!header) return;
+    
     const currentScroll = window.pageYOffset;
     
     if (currentScroll > 100) {
@@ -782,20 +811,10 @@ style.textContent = `
             opacity: 0; 
         }
     }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-    
-    @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
 `;
 document.head.appendChild(style);
 
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Mega Menu, Advanced Search, Carousel, Smooth Animations');
-console.log('🛒 Cart System: Fully Functional with Clear All');
+console.log('🎨 Features: Elegant Carousel, Mega Menu, Advanced Search');
+console.log('🛒 Cart System: Fully Functional');
 console.log('💳 Payment: Stripe Integration Active');
