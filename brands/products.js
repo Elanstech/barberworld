@@ -1,5 +1,6 @@
 // ==========================================
-// PRODUCTS PAGE - UNIFIED JS FOR ALL BRANDS
+// PRODUCTS PAGE - UNIFIED JAVASCRIPT
+// Modern, Fast, Smooth Animations
 // ==========================================
 
 // Stripe Configuration
@@ -18,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
     loadProducts();
+    initializeScrollAnimations();
     console.log(`🚀 ${currentBrand} products page loaded`);
 });
 
@@ -38,34 +40,47 @@ async function loadProducts() {
         console.log(`✅ Loaded ${allProducts.length} ${currentBrand} products`);
     } catch (error) {
         console.error('❌ Error loading products:', error);
-        document.getElementById('products-grid').innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem;">
-                <i class="fas fa-exclamation-circle" style="font-size: 4rem; color: #dc3545; margin-bottom: 1rem;"></i>
-                <h3 style="color: #666;">Failed to load products</h3>
-                <p style="color: #999;">Please try refreshing the page</p>
-            </div>
-        `;
+        showErrorState();
     }
 }
 
+function showErrorState() {
+    const grid = document.getElementById('products-grid');
+    grid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+            <i class="fas fa-exclamation-circle" style="font-size: 4rem; color: #dc3545; margin-bottom: 1rem; display: block;"></i>
+            <h3 style="color: #666; margin-bottom: 0.5rem;">Failed to load products</h3>
+            <p style="color: #999; margin-bottom: 1.5rem;">Please try refreshing the page</p>
+            <button onclick="location.reload()" style="padding: 0.75rem 1.5rem; background: var(--gold); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 600;">
+                Refresh Page
+            </button>
+        </div>
+    `;
+}
+
 // ==========================================
-// DISPLAY PRODUCTS
+// DISPLAY PRODUCTS WITH ANIMATIONS
 // ==========================================
 function displayProducts() {
     const grid = document.getElementById('products-grid');
     
     if (filteredProducts.length === 0) {
         grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem;">
-                <i class="fas fa-search" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem;"></i>
-                <h3 style="color: #666;">No products found</h3>
-                <p style="color: #999;">Try adjusting your filters</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
+                <i class="fas fa-search" style="font-size: 4rem; color: #ddd; margin-bottom: 1rem; display: block;"></i>
+                <h3 style="color: #666; margin-bottom: 0.5rem;">No products found</h3>
+                <p style="color: #999;">Try adjusting your filters or search terms</p>
             </div>
         `;
         return;
     }
     
-    grid.innerHTML = filteredProducts.map(product => createProductCard(product)).join('');
+    // Add staggered fade-in animation
+    grid.innerHTML = filteredProducts.map((product, index) => {
+        const card = createProductCard(product);
+        return card.replace('<div class="product-card"', 
+            `<div class="product-card" style="animation: fadeInUp 0.5s ease forwards; animation-delay: ${Math.min(index * 0.05, 0.5)}s; opacity: 0;"`);
+    }).join('');
 }
 
 function createProductCard(product) {
@@ -76,15 +91,15 @@ function createProductCard(product) {
     return `
         <div class="product-card" onclick="openProductModal(${product.id})">
             <div class="product-image">
-                <img src="${getProductImage(product)}" alt="${product.name}" loading="lazy">
-                ${product.inStock ? '' : '<div class="product-badge">Out of Stock</div>'}
+                <img src="${getProductImage(product)}" alt="${escapeHtml(product.name)}" loading="lazy">
+                ${!product.inStock ? '<div class="product-badge">Out of Stock</div>' : ''}
             </div>
             <div class="product-info">
                 <div>
-                    <span class="product-brand">${product.brand}</span>
-                    ${product.category ? `<span class="product-category">${product.category}</span>` : ''}
+                    <span class="product-brand">${escapeHtml(product.brand)}</span>
+                    ${product.category ? `<span class="product-category">${escapeHtml(product.category)}</span>` : ''}
                 </div>
-                <h3 class="product-name">${product.name}</h3>
+                <h3 class="product-name">${escapeHtml(product.name)}</h3>
                 ${reviewCount > 0 ? `
                     <div class="product-rating">
                         <div class="stars">${stars}</div>
@@ -131,14 +146,35 @@ function generateStars(rating) {
     return stars;
 }
 
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
 // ==========================================
 // FILTERING & SORTING
 // ==========================================
 function filterProducts() {
-    const searchTerm = document.getElementById('product-search').value.toLowerCase();
-    const category = document.getElementById('category-filter').value;
-    const priceRange = document.getElementById('price-filter').value;
-    const sortBy = document.getElementById('sort-filter').value;
+    // Get values from both desktop and mobile filters
+    const searchDesktop = document.getElementById('product-search-desktop')?.value.toLowerCase() || '';
+    const searchMobile = document.getElementById('product-search-mobile')?.value.toLowerCase() || '';
+    const searchTerm = searchDesktop || searchMobile;
+    
+    const categoryDesktop = document.getElementById('category-filter-desktop')?.value || '';
+    const categoryMobile = document.getElementById('category-filter-mobile')?.value || '';
+    const category = categoryDesktop || categoryMobile;
+    
+    const priceDesktop = document.getElementById('price-filter-desktop')?.value || '';
+    const priceMobile = document.getElementById('price-filter-mobile')?.value || '';
+    const priceRange = priceDesktop || priceMobile;
+    
+    const sortDesktop = document.getElementById('sort-filter-desktop')?.value || 'name-asc';
+    const sortMobile = document.getElementById('sort-filter-mobile')?.value || 'name-asc';
+    const sortBy = sortDesktop || sortMobile;
+    
+    // Sync filter values between desktop and mobile
+    syncFilterValues(searchTerm, category, priceRange, sortBy);
     
     // Start with all products
     filteredProducts = [...allProducts];
@@ -148,6 +184,7 @@ function filterProducts() {
         filteredProducts = filteredProducts.filter(p =>
             p.name.toLowerCase().includes(searchTerm) ||
             (p.shortDescription && p.shortDescription.toLowerCase().includes(searchTerm)) ||
+            (p.description && p.description.toLowerCase().includes(searchTerm)) ||
             (p.category && p.category.toLowerCase().includes(searchTerm))
         );
     }
@@ -166,6 +203,51 @@ function filterProducts() {
     }
     
     // Apply sorting
+    applySorting(sortBy);
+    
+    displayProducts();
+    updateProductCount();
+    
+    // Add smooth scroll to top on mobile after filtering
+    if (window.innerWidth <= 1024) {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 100);
+    }
+}
+
+function syncFilterValues(search, category, price, sort) {
+    // Sync desktop and mobile filter values
+    const searchDesktop = document.getElementById('product-search-desktop');
+    const searchMobile = document.getElementById('product-search-mobile');
+    if (searchDesktop && searchMobile) {
+        searchDesktop.value = search;
+        searchMobile.value = search;
+    }
+    
+    const categoryDesktop = document.getElementById('category-filter-desktop');
+    const categoryMobile = document.getElementById('category-filter-mobile');
+    if (categoryDesktop && categoryMobile) {
+        categoryDesktop.value = category;
+        categoryMobile.value = category;
+    }
+    
+    const priceDesktop = document.getElementById('price-filter-desktop');
+    const priceMobile = document.getElementById('price-filter-mobile');
+    if (priceDesktop && priceMobile) {
+        priceDesktop.value = price;
+        priceMobile.value = price;
+    }
+    
+    const sortDesktop = document.getElementById('sort-filter-desktop');
+    const sortMobile = document.getElementById('sort-filter-mobile');
+    if (sortDesktop && sortMobile) {
+        sortDesktop.value = sort;
+        sortMobile.value = sort;
+    }
+}
+
+function applySorting(sortBy) {
     switch(sortBy) {
         case 'name-asc':
             filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
@@ -183,26 +265,59 @@ function filterProducts() {
             filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
             break;
     }
-    
-    displayProducts();
-    updateProductCount();
 }
 
 function clearFilters() {
-    document.getElementById('product-search').value = '';
-    document.getElementById('category-filter').value = '';
-    document.getElementById('price-filter').value = '';
-    document.getElementById('sort-filter').value = 'name-asc';
+    // Clear all filter inputs
+    ['desktop', 'mobile'].forEach(type => {
+        const search = document.getElementById(`product-search-${type}`);
+        const category = document.getElementById(`category-filter-${type}`);
+        const price = document.getElementById(`price-filter-${type}`);
+        const sort = document.getElementById(`sort-filter-${type}`);
+        
+        if (search) search.value = '';
+        if (category) category.value = '';
+        if (price) price.value = '';
+        if (sort) sort.value = 'name-asc';
+    });
+    
     filterProducts();
+    showNotification('Filters cleared', 'success');
 }
 
 function updateProductCount() {
     const count = filteredProducts.length;
     const total = allProducts.length;
-    document.getElementById('products-count').textContent = 
-        count === total 
+    const countEl = document.getElementById('products-count');
+    if (countEl) {
+        countEl.textContent = count === total 
             ? `Showing all ${total} products` 
             : `Showing ${count} of ${total} products`;
+    }
+}
+
+// ==========================================
+// MOBILE FILTERS DRAWER
+// ==========================================
+function toggleMobileFilters() {
+    const overlay = document.getElementById('mobile-filters-overlay');
+    const drawer = document.getElementById('mobile-filters-drawer');
+    
+    if (!overlay || !drawer) return;
+    
+    const isActive = overlay.classList.contains('active');
+    
+    if (isActive) {
+        // Close
+        overlay.classList.remove('active');
+        drawer.classList.remove('active');
+        document.body.style.overflow = '';
+    } else {
+        // Open
+        overlay.classList.add('active');
+        drawer.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 // ==========================================
@@ -220,7 +335,7 @@ function openProductModal(productId) {
     modalBody.innerHTML = `
         <div class="modal-gallery">
             <div class="main-image">
-                <img src="${images[0]}" alt="${product.name}" id="main-product-image">
+                <img src="${images[0]}" alt="${escapeHtml(product.name)}" id="main-product-image">
             </div>
             ${images.length > 1 ? `
                 <div class="thumbnail-images">
@@ -234,7 +349,7 @@ function openProductModal(productId) {
         </div>
         
         <div class="modal-details">
-            <h2>${product.name}</h2>
+            <h2>${escapeHtml(product.name)}</h2>
             <div class="modal-meta">
                 <div class="modal-price">$${product.price.toFixed(2)}</div>
                 <span class="stock-badge ${product.inStock !== false ? '' : 'out-of-stock'}">
@@ -249,18 +364,18 @@ function openProductModal(productId) {
             </div>
             
             ${product.shortDescription ? `
-                <p class="modal-description"><strong>${product.shortDescription}</strong></p>
+                <p class="modal-description"><strong>${escapeHtml(product.shortDescription)}</strong></p>
             ` : ''}
             
             ${product.description ? `
-                <p class="modal-description">${product.description}</p>
+                <p class="modal-description">${escapeHtml(product.description)}</p>
             ` : ''}
             
             ${features.length > 0 ? `
                 <div class="modal-features">
                     <h3>Key Features</h3>
                     <ul>
-                        ${features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+                        ${features.map(f => `<li><i class="fas fa-check-circle"></i> ${escapeHtml(f)}</li>`).join('')}
                     </ul>
                 </div>
             ` : ''}
@@ -272,7 +387,7 @@ function openProductModal(productId) {
                         ${Object.entries(specs).map(([key, value]) => `
                             <div class="spec-item">
                                 <span class="spec-label">${formatSpecKey(key)}</span>
-                                <span class="spec-value">${value}</span>
+                                <span class="spec-value">${escapeHtml(String(value))}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -298,9 +413,18 @@ function closeProductModal() {
 }
 
 function changeMainImage(src, thumbnail) {
-    document.getElementById('main-product-image').src = src;
+    const mainImg = document.getElementById('main-product-image');
+    if (mainImg) {
+        // Smooth fade transition
+        mainImg.style.opacity = '0';
+        setTimeout(() => {
+            mainImg.src = src;
+            mainImg.style.opacity = '1';
+        }, 150);
+    }
+    
     document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-    thumbnail.classList.add('active');
+    if (thumbnail) thumbnail.classList.add('active');
 }
 
 function formatSpecKey(key) {
@@ -341,10 +465,13 @@ function addToCart(product) {
     updateCartBadge();
     showNotification(`${product.name} added to cart!`);
     
+    // Animate badge
     const badge = document.getElementById('cart-badge');
     if (badge) {
-        badge.style.transform = 'scale(1.3)';
-        setTimeout(() => badge.style.transform = 'scale(1)', 300);
+        badge.style.animation = 'none';
+        setTimeout(() => {
+            badge.style.animation = 'badgePop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+        }, 10);
     }
 }
 
@@ -377,20 +504,22 @@ function displayCart() {
     const emptyEl = document.getElementById('cart-empty');
     const footerEl = document.getElementById('cart-footer');
     
+    if (!container) return;
+    
     if (cart.length === 0) {
         container.innerHTML = '';
-        emptyEl.style.display = 'flex';
-        footerEl.style.display = 'none';
+        if (emptyEl) emptyEl.style.display = 'flex';
+        if (footerEl) footerEl.style.display = 'none';
         return;
     }
     
-    emptyEl.style.display = 'none';
-    footerEl.style.display = 'block';
+    if (emptyEl) emptyEl.style.display = 'none';
+    if (footerEl) footerEl.style.display = 'block';
     
     container.innerHTML = cart.map(item => `
         <div class="cart-item">
             <div class="cart-item-image">
-                <img src="${getProductImage(item)}" alt="${item.name}">
+                <img src="${getProductImage(item)}" alt="${escapeHtml(item.name)}">
             </div>
             <div class="cart-item-details">
                 <div class="cart-item-name">${truncateText(item.name, 40)}</div>
@@ -438,17 +567,28 @@ function saveCart() {
 function loadCart() {
     const saved = localStorage.getItem('barber_cart');
     if (saved) {
-        cart = JSON.parse(saved);
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error('Error loading cart:', e);
+            cart = [];
+        }
     }
 }
 
 function openCart() {
     displayCart();
-    document.getElementById('cart-modal').classList.add('active');
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal) {
+        cartModal.classList.add('active');
+    }
 }
 
 function closeCart() {
-    document.getElementById('cart-modal').classList.remove('active');
+    const cartModal = document.getElementById('cart-modal');
+    if (cartModal) {
+        cartModal.classList.remove('active');
+    }
 }
 
 function truncateText(text, length) {
@@ -515,6 +655,8 @@ async function globalSearch(event) {
     const query = event.target.value.toLowerCase().trim();
     const resultsContainer = document.getElementById('search-results');
     
+    if (!resultsContainer) return;
+    
     if (query.length < 2) {
         resultsContainer.innerHTML = '';
         return;
@@ -534,7 +676,8 @@ async function globalSearch(event) {
         const filtered = allBrandProducts.filter(p => 
             p.name.toLowerCase().includes(query) ||
             p.brand.toLowerCase().includes(query) ||
-            (p.category && p.category.toLowerCase().includes(query))
+            (p.category && p.category.toLowerCase().includes(query)) ||
+            (p.shortDescription && p.shortDescription.toLowerCase().includes(query))
         ).slice(0, 12);
         
         if (filtered.length === 0) {
@@ -543,19 +686,20 @@ async function globalSearch(event) {
         }
         
         resultsContainer.innerHTML = filtered.map(product => `
-            <div class="product-card" onclick="redirectToProduct('${product.brand.toLowerCase()}', ${product.id})">
+            <div class="product-card" onclick="redirectToProduct('${product.brand.toLowerCase()}', ${product.id})" style="cursor: pointer;">
                 <div class="product-image">
-                    <img src="${getProductImage(product)}" alt="${product.name}" loading="lazy">
+                    <img src="${getProductImage(product)}" alt="${escapeHtml(product.name)}" loading="lazy">
                 </div>
                 <div class="product-info">
-                    <span class="product-brand">${product.brand}</span>
+                    <span class="product-brand">${escapeHtml(product.brand)}</span>
                     <h3 class="product-name">${truncateText(product.name, 50)}</h3>
-                    <div class="product-price">${product.price.toFixed(2)}</div>
+                    <div class="product-price">$${product.price.toFixed(2)}</div>
                 </div>
             </div>
         `).join('');
     } catch (error) {
         console.error('Search error:', error);
+        resultsContainer.innerHTML = '<p style="text-align: center; color: #dc3545; padding: 2rem;">Search error. Please try again.</p>';
     }
 }
 
@@ -564,14 +708,43 @@ function redirectToProduct(brand, productId) {
 }
 
 function openSearch() {
-    document.getElementById('search-modal').classList.add('active');
-    document.getElementById('search-input').focus();
+    const searchModal = document.getElementById('search-modal');
+    const searchInput = document.getElementById('search-input');
+    if (searchModal) {
+        searchModal.classList.add('active');
+        if (searchInput) searchInput.focus();
+    }
 }
 
 function closeSearch() {
-    document.getElementById('search-modal').classList.remove('active');
-    document.getElementById('search-input').value = '';
-    document.getElementById('search-results').innerHTML = '';
+    const searchModal = document.getElementById('search-modal');
+    const searchInput = document.getElementById('search-input');
+    const searchResults = document.getElementById('search-results');
+    
+    if (searchModal) searchModal.classList.remove('active');
+    if (searchInput) searchInput.value = '';
+    if (searchResults) searchResults.innerHTML = '';
+}
+
+// ==========================================
+// SCROLL ANIMATIONS
+// ==========================================
+function initializeScrollAnimations() {
+    // Add CSS for fade-in animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
 }
 
 // ==========================================
@@ -589,9 +762,10 @@ function showNotification(message, type = 'success') {
         border-radius: 12px;
         box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         z-index: 10000;
-        animation: slideInRight 0.3s ease;
-        font-weight: 500;
+        animation: slideInRight 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        font-weight: 600;
         max-width: 350px;
+        font-size: 0.95rem;
     `;
     notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -617,9 +791,11 @@ function hideLoading() {
     if (loading) loading.classList.remove('active');
 }
 
-// Animations
-const style = document.createElement('style');
-style.textContent = `
+// ==========================================
+// ANIMATIONS STYLES
+// ==========================================
+const animationStyles = document.createElement('style');
+animationStyles.textContent = `
     @keyframes slideInRight {
         from { transform: translateX(100%); opacity: 0; }
         to { transform: translateX(0); opacity: 1; }
@@ -629,6 +805,28 @@ style.textContent = `
         to { transform: translateX(100%); opacity: 0; }
     }
 `;
-document.head.appendChild(style);
+document.head.appendChild(animationStyles);
+
+// ==========================================
+// KEYBOARD SHORTCUTS
+// ==========================================
+document.addEventListener('keydown', (e) => {
+    // ESC key closes modals
+    if (e.key === 'Escape') {
+        closeProductModal();
+        closeCart();
+        closeSearch();
+        if (document.getElementById('mobile-filters-drawer')?.classList.contains('active')) {
+            toggleMobileFilters();
+        }
+    }
+    
+    // Ctrl/Cmd + K opens search
+    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        openSearch();
+    }
+});
 
 console.log('✅ Products page system ready');
+console.log('💡 Tip: Press Ctrl+K to search, ESC to close modals');
