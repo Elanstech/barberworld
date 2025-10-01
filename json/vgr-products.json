@@ -5,12 +5,12 @@
     "price": 99.99,
     "brand": "VGR",
     "slug": "vgr-v015-clipper",
-    "image": "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
+    "image": "https://m.media-amazon.com/images/I/71xGLTjtd8L._AC_SY300_SX300_QL70_ML2_.jpg",
     "images": [
       "",
-      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop"
+      "https://m.media-amazon.com/images/I/61mLwKPYo9L._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71RntcJFdaL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71w8qOn7eML._AC_SL1500_.jpg"
     ],
     "category": "Clipper",
     "shortDescription": "Professional vector motor clipper with 9000 RPM for precise haircuts",
@@ -48,12 +48,10 @@
     "price": 99.99,
     "brand": "VGR",
     "slug": "vgr-v994-trimmer",
-    "image": "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
+    "image": "https://m.media-amazon.com/images/I/71rNwKBuFgL._AC_SL1500_.jpg",
     "images": [
-      "https://images.unsplash.com/photo-1607083206968-13611e3d76db?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1621607512214-68297480165e?w=600&h=600&fit=crop",
-      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+      "https://m.media-amazon.com/images/I/711dd0rQTlL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71aDPNhAB-L._AC_SL1500_.jpg"
     ],
     "category": "Trimmer",
     "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
