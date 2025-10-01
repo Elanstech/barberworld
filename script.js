@@ -3,7 +3,7 @@
 // ==========================================
 
 // Stripe Configuration - PUBLIC KEY ONLY (Client-Side Safe)
-const STRIPE_PUBLIC_KEY = 'pk_test_51SBkTK0Q7Np77C4oaDCL5w7AMDHimAhovCqpHVI1CdgZSQ9uN9n5y8MvaeOOvGtuJcGuPPACrC2N8ptI6kjomC2Y00wxBrlF8j';
+const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
 const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 // State Management
