@@ -1,6 +1,6 @@
 // ==========================================
 // PRODUCTS PAGE - UNIFIED JAVASCRIPT
-// Modern, Fast, Smooth Animations
+// Modern, Fast, 
 // ==========================================
 
 // Stripe Configuration
