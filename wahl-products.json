@@ -4,48 +4,279 @@
     "name": "Wahl 5 Star Vapor Cord/Cordless Clipper #3026480 (Dual Voltage)",
     "price": 164.99,
     "brand": "Wahl",
-    "slug": "wahl-shaver-replacement-gold-foil-super-close"
+    "slug": "wahl-shaver-replacement-gold-foil-super-close",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium 5 Star Vapor cord/cordless clipper with dual voltage",
+    "description": "The Wahl 5 Star Vapor Cord/Cordless Clipper represents the pinnacle of Wahl's engineering excellence. Featuring a powerful rotary motor and sleek, modern design, this professional clipper delivers exceptional cutting performance. The cord/cordless versatility and dual voltage capability make it perfect for professionals worldwide.",
+    "features": [
+      "Powerful rotary motor for consistent cutting",
+      "Cord/cordless operation for maximum flexibility",
+      "Dual voltage 110-240V for worldwide use",
+      "Premium 5 Star professional grade",
+      "Adjustable stainless steel blade",
+      "Lithium-ion battery technology",
+      "90-minute cordless runtime",
+      "Ergonomic lightweight design"
+    ],
+    "specifications": {
+      "motor": "High-performance rotary motor",
+      "blade": "Adjustable stainless steel #2161-400",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.8 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "3026480"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 612,
+    "sku": "3026480"
   },
   {
     "id": 2,
     "name": "Wahl 5 Star Gold Cordless Magic Clip Clipper #8148-700 (Dual Voltage)",
     "price": 149.99,
     "brand": "Wahl",
-    "slug": "wahl-shaver-finale-replacement-super-close-gold-foil"
+    "slug": "wahl-shaver-finale-replacement-super-close-gold-foil",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Limited edition gold Magic Clip with premium fade blade",
+    "description": "The Wahl 5 Star Gold Cordless Magic Clip is a limited edition masterpiece featuring an elegant gold finish. This professional clipper combines the legendary Magic Clip performance with premium aesthetics. The fade blade and powerful motor make it ideal for precision cutting and fading techniques.",
+    "features": [
+      "Limited edition gold finish",
+      "5 Star professional grade",
+      "Stagger-tooth crunch blade for fades",
+      "Dual voltage capability",
+      "Lithium-ion battery technology",
+      "90-minute cordless runtime",
+      "Zero-overlap blade design",
+      "Premium professional quality"
+    ],
+    "specifications": {
+      "motor": "Electromagnetic motor",
+      "blade": "Stagger-tooth crunch blade #2161",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.5 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8148-700"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 834,
+    "sku": "8148-700"
   },
   {
     "id": 3,
     "name": "Wahl 5 Star Cordless Magic Clip Clipper #8148 (Dual Voltage)",
     "price": 99.99,
     "brand": "Wahl",
-    "slug": "wahl-blade-3-hole-adjusto-lock-1005"
+    "slug": "wahl-blade-3-hole-adjusto-lock-1005",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Classic 5 Star Magic Clip cordless clipper for professionals",
+    "description": "The Wahl 5 Star Cordless Magic Clip is the industry-standard professional clipper trusted by barbers worldwide. Featuring a powerful electromagnetic motor and the signature stagger-tooth crunch blade, this clipper excels at fades, blends, and all-around cutting. The cordless design provides ultimate freedom of movement.",
+    "features": [
+      "Industry-standard professional clipper",
+      "Powerful electromagnetic motor",
+      "Stagger-tooth crunch blade",
+      "Cordless freedom of movement",
+      "Dual voltage for travel",
+      "Lithium-ion battery",
+      "90-minute runtime",
+      "5 Star professional quality"
+    ],
+    "specifications": {
+      "motor": "Electromagnetic motor",
+      "blade": "Stagger-tooth crunch blade #2161",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.5 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8148"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 1247,
+    "sku": "8148"
   },
   {
     "id": 4,
     "name": "Wahl 5 Star Cordless Senior Clipper #8504-400 (Dual Voltage)",
     "price": 149.99,
     "brand": "Wahl",
-    "slug": "wahl-clipper-oil"
+    "slug": "wahl-clipper-oil",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Legendary 5 Star Senior clipper now cordless with premium blade",
+    "description": "The Wahl 5 Star Cordless Senior Clipper brings the legendary power of the corded Senior to a cordless platform. Known for its exceptional cutting power and precision blade, this clipper is a favorite among professionals. The cordless version maintains the same powerful performance with added mobility and dual voltage capability.",
+    "features": [
+      "Legendary Senior clipper performance",
+      "Powerful electromagnetic motor",
+      "Premium adjustable blade",
+      "Cordless convenience",
+      "Dual voltage 110-240V",
+      "Lithium-ion battery technology",
+      "70-minute cordless runtime",
+      "Professional 5 Star grade"
+    ],
+    "specifications": {
+      "motor": "V9000 electromagnetic motor",
+      "blade": "Premium adjustable #1005",
+      "battery": "Lithium-ion",
+      "runtime": "70 minutes",
+      "chargeTime": "60 minutes",
+      "weight": "9.2 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8504-400"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 956,
+    "sku": "8504-400"
   },
   {
     "id": 5,
     "name": "Wahl Super Taper X Cord/Cordless Clipper #3026468 (Dual Voltage)",
     "price": 99.99,
     "brand": "Wahl",
-    "slug": "wahl-t-wide-adjustable-trimmer-blade"
+    "slug": "wahl-t-wide-adjustable-trimmer-blade",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Next-generation Super Taper with cord/cordless versatility",
+    "description": "The Wahl Super Taper X represents the evolution of the iconic Super Taper clipper. Featuring both cord and cordless operation, this professional clipper delivers consistent power in any mode. The adjustable taper blade and powerful motor make it perfect for all-around cutting, blending, and tapering work.",
+    "features": [
+      "Next-generation Super Taper design",
+      "Cord/cordless operation",
+      "Adjustable taper blade",
+      "Powerful rotary motor",
+      "Dual voltage capability",
+      "Lithium-ion battery",
+      "80-minute cordless runtime",
+      "Professional performance"
+    ],
+    "specifications": {
+      "motor": "High-speed rotary motor",
+      "blade": "Adjustable taper blade",
+      "battery": "Lithium-ion",
+      "runtime": "80 minutes",
+      "chargeTime": "75 minutes",
+      "weight": "8.6 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "3026468"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 523,
+    "sku": "3026468"
   },
   {
     "id": 6,
     "name": "Wahl Cordless Barber Combo - 5 Star Cordless Magic Clip & Cordless Detailer Li #3025397",
     "price": 209.99,
     "brand": "Wahl",
-    "slug": "wahl-clini-clip-cleaner-disinfectant"
+    "slug": "wahl-clini-clip-cleaner-disinfectant",
+    "image": "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1589710751893-f9a6770634a2?w=600&h=600&fit=crop"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Ultimate barber combo with Magic Clip clipper and Detailer trimmer",
+    "description": "The Wahl Cordless Barber Combo is the ultimate professional pairing, featuring the legendary 5 Star Cordless Magic Clip clipper and the precision Cordless Detailer Li trimmer. This combo provides everything needed for complete haircuts, from bulk removal and fading to detailed lining and finishing work. Both tools are cordless for maximum flexibility.",
+    "features": [
+      "5 Star Magic Clip clipper included",
+      "Cordless Detailer Li trimmer included",
+      "Complete professional setup",
+      "Both tools cordless",
+      "Lithium-ion batteries",
+      "Professional 5 Star grade",
+      "Perfect for all techniques",
+      "Premium storage case included"
+    ],
+    "specifications": {
+      "clipperMotor": "Electromagnetic motor",
+      "clipperBlade": "Stagger-tooth crunch blade",
+      "clipperRuntime": "90 minutes",
+      "trimmerMotor": "Rotary motor",
+      "trimmerBlade": "T-Wide blade",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage",
+      "model": "3025397"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 1456,
+    "sku": "3025397"
   },
   {
     "id": 7,
     "name": "WAHL POWER STATION - MULTI-CHARGE 3 TOOLS AT ONCE",
     "price": 49.99,
     "brand": "Wahl",
-    "slug": "wahl-professional-vapor-le-cordless-clipper-limited-edition-3028320"
-  },
-  {
+    "slug": "wahl-professional-vapor-le-cordless-clipper-limited-edition-3028320",
+    "image": "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&h=600&fit=crop",
+    "images": [
+      "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?w=600&h=600&fit=crop"
+    ],
+    "category": "Accessory",
+    "shortDescription": "Professional power station charges three tools simultaneously",
+    "description": "The Wahl Power Station is an essential accessory for any professional barbershop. This innovative charging station can charge up to three Wahl tools simultaneously, keeping your entire toolkit powered and ready. The sleek design organizes your workspace while the fast-charging technology minimizes downtime between clients.",
+    "features": [
+      "Charges 3 tools simultaneously",
+      "Compatible with most Wahl cordless tools",
+      "Fast-charging technology",
+      "Sleek professional design",
+      "Organizes workspace efficiently",
+      "LED charging indicators",
+      "Durable construction",
+      "Essential barbershop accessory"
+    ],
+    "specifications": {
+      "capacity": "3 tools simultaneously",
+      "compatibility": "Most Wahl cordless tools",
+      "charging": "Fast-charge technology",
+      "indicators": "LED status lights",
+      "dimensions": "12\" x 6\" x 4\"",
+      "weight": "2.8 lbs",
+      "power": "AC powered",
+      "warranty": "1 year manufacturer"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 724,
+    "sku": "POWER-STATION"
+  }
+]
