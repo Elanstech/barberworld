@@ -6,236 +6,289 @@ const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
 // Global State
 let cart = [];
-let megaMenuTimer = null;
 let carouselProducts = [];
 let currentCarouselPage = 0;
 let carouselAutoplayInterval = null;
 let isCarouselAnimating = false;
+
+// Modern Header Variables
+let allProductsData = [];
+let searchTimeout = null;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
     loadFeaturedProducts();
+    loadProductsData(); // Load products for search
+    setupSearchListeners();
     initializeAnimations();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
 // ==========================================
-// MEGA MENU FUNCTIONALITY
+// MODERN HEADER - SEARCH FUNCTIONALITY
 // ==========================================
 
-function openMegaMenu() {
-    clearTimeout(megaMenuTimer);
-    document.getElementById('mega-menu').classList.add('active');
-}
-
-function keepMegaMenuOpen() {
-    clearTimeout(megaMenuTimer);
-}
-
-function closeMegaMenuDelayed() {
-    megaMenuTimer = setTimeout(() => {
-        document.getElementById('mega-menu').classList.remove('active');
-    }, 300);
-}
-
-function closeMegaMenu() {
-    megaMenuTimer = setTimeout(() => {
-        document.getElementById('mega-menu').classList.remove('active');
-    }, 200);
-}
-
-// ==========================================
-// MOBILE MENU FUNCTIONALITY
-// ==========================================
-
-function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const isActive = mobileMenu.classList.contains('active');
-    
-    if (isActive) {
-        mobileMenu.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-    } else {
-        mobileMenu.classList.add('active');
-        document.body.classList.add('no-scroll');
+// Load products data for search
+async function loadProductsData() {
+    try {
+        const response = await fetch('/json/all-products-products.json');
+        if (response.ok) {
+            allProductsData = await response.json();
+            console.log('✅ Loaded', allProductsData.length, 'products for search');
+        }
+    } catch (error) {
+        console.error('❌ Error loading products:', error);
     }
 }
 
-// Close mobile menu when clicking outside
-document.addEventListener('click', (e) => {
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuBtn = document.querySelector('.mobile-menu-btn');
+function toggleSearch() {
+    const overlay = document.getElementById('searchOverlay');
+    const input = document.getElementById('smartSearchInput');
     
-    if (mobileMenu && mobileMenu.classList.contains('active') && 
-        !mobileMenu.contains(e.target) && 
-        !menuBtn.contains(e.target)) {
-        toggleMobileMenu();
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    setTimeout(() => {
+        input.focus();
+    }, 300);
+}
+
+function toggleMobileSearch() {
+    toggleSearch();
+}
+
+function closeSearch() {
+    const overlay = document.getElementById('searchOverlay');
+    const input = document.getElementById('smartSearchInput');
+    
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    input.value = '';
+    clearSearchInput();
+}
+
+function clearSearchInput() {
+    const input = document.getElementById('smartSearchInput');
+    const clearBtn = input.nextElementSibling;
+    
+    input.value = '';
+    clearBtn.style.display = 'none';
+    showSearchPlaceholder();
+}
+
+function showSearchPlaceholder() {
+    const resultsDiv = document.getElementById('searchResults');
+    resultsDiv.innerHTML = `
+        <div class="search-placeholder">
+            <i class="fas fa-search"></i>
+            <p>Start typing to search products...</p>
+            <div class="popular-searches">
+                <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
+                <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
+                <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
+                <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
+            </div>
+        </div>
+    `;
+}
+
+function quickSearch(term) {
+    const input = document.getElementById('smartSearchInput');
+    input.value = term;
+    performSmartSearch(term);
+}
+
+function setupSearchListeners() {
+    const input = document.getElementById('smartSearchInput');
+    const clearBtn = input?.nextElementSibling;
+    
+    if (!input) return;
+    
+    input.addEventListener('input', (e) => {
+        const value = e.target.value.trim();
+        
+        if (clearBtn) {
+            clearBtn.style.display = value ? 'block' : 'none';
+        }
+        
+        clearTimeout(searchTimeout);
+        
+        if (value.length === 0) {
+            showSearchPlaceholder();
+            return;
+        }
+        
+        if (value.length < 2) return;
+        
+        searchTimeout = setTimeout(() => {
+            performSmartSearch(value);
+        }, 300);
+    });
+    
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeSearch();
+        }
+    });
+    
+    // Close on overlay click
+    document.getElementById('searchOverlay')?.addEventListener('click', (e) => {
+        if (e.target.id === 'searchOverlay') {
+            closeSearch();
+        }
+    });
+}
+
+function performSmartSearch(query) {
+    const resultsDiv = document.getElementById('searchResults');
+    
+    if (!allProductsData.length) {
+        resultsDiv.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Loading products...</p>
+            </div>
+        `;
+        return;
+    }
+    
+    const searchTerm = query.toLowerCase();
+    
+    // Smart search: search in name, brand, category, description
+    const results = allProductsData.filter(product => {
+        const name = product.name?.toLowerCase() || '';
+        const brand = product.brand?.toLowerCase() || '';
+        const category = product.category?.toLowerCase() || '';
+        const description = product.description?.toLowerCase() || '';
+        const shortDesc = product.shortDescription?.toLowerCase() || '';
+        
+        return name.includes(searchTerm) ||
+               brand.includes(searchTerm) ||
+               category.includes(searchTerm) ||
+               description.includes(searchTerm) ||
+               shortDesc.includes(searchTerm);
+    });
+    
+    if (results.length === 0) {
+        resultsDiv.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <p>No products found for "${query}"</p>
+            </div>
+        `;
+        return;
+    }
+    
+    // Group results by category
+    const groupedResults = {};
+    results.forEach(product => {
+        const category = product.category || 'Other';
+        if (!groupedResults[category]) {
+            groupedResults[category] = [];
+        }
+        groupedResults[category].push(product);
+    });
+    
+    // Display results
+    let html = '';
+    
+    Object.keys(groupedResults).forEach(category => {
+        const products = groupedResults[category].slice(0, 5); // Limit to 5 per category
+        
+        html += `
+            <div class="search-category">
+                <div class="category-title">${category}s (${groupedResults[category].length})</div>
+                <div class="search-items">
+                    ${products.map(product => `
+                        <div class="search-item" onclick="goToProduct('${product.slug}', '${product.category}')">
+                            <img src="${product.image || product.images?.[0] || 'https://via.placeholder.com/50'}" 
+                                 alt="${product.name}" 
+                                 class="search-item-image"
+                                 onerror="this.src='https://via.placeholder.com/50'">
+                            <div class="search-item-info">
+                                <div class="search-item-name">${product.name}</div>
+                                <div class="search-item-brand">${product.brand}</div>
+                            </div>
+                            <div class="search-item-price">$${product.price.toFixed(2)}</div>
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+        `;
+    });
+    
+    resultsDiv.innerHTML = html;
+}
+
+function goToProduct(slug, category) {
+    // Determine the page based on category
+    let page = 'allproducts.html';
+    
+    if (category === 'Clipper') {
+        page = 'clippers.html';
+    } else if (category === 'Trimmer') {
+        page = 'trimmers.html';
+    } else if (category === 'Shaver') {
+        page = 'shavers.html';
+    } else if (category === 'Combo') {
+        page = 'combos.html';
+    }
+    
+    // Close search and navigate
+    closeSearch();
+    window.location.href = `brands/${page}`;
+}
+
+// ==========================================
+// MODERN HEADER - MOBILE MENU FUNCTIONALITY
+// ==========================================
+
+function toggleMobileMenu() {
+    const overlay = document.getElementById('mobileMenuOverlay');
+    const header = document.querySelector('.modern-header');
+    
+    if (overlay.classList.contains('active')) {
+        closeMobileMenu();
+    } else {
+        overlay.classList.add('active');
+        header.classList.add('mobile-menu-active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeMobileMenu() {
+    const overlay = document.getElementById('mobileMenuOverlay');
+    const header = document.querySelector('.modern-header');
+    
+    overlay.classList.remove('active');
+    header.classList.remove('mobile-menu-active');
+    document.body.style.overflow = '';
+}
+
+// Close mobile menu on overlay click
+document.getElementById('mobileMenuOverlay')?.addEventListener('click', (e) => {
+    if (e.target.id === 'mobileMenuOverlay') {
+        closeMobileMenu();
     }
 });
 
 // ==========================================
-// ENHANCED SEARCH PANEL
+// KEYBOARD SHORTCUTS
 // ==========================================
 
-function openSearchPanel() {
-    const searchPanel = document.getElementById('search-panel');
-    searchPanel.classList.add('active');
-    document.body.classList.add('no-scroll');
-    
-    setTimeout(() => {
-        document.getElementById('search-input-main').focus();
-    }, 100);
-}
-
-function closeSearchPanel() {
-    const searchPanel = document.getElementById('search-panel');
-    searchPanel.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-    
-    // Clear search
-    document.getElementById('search-input-main').value = '';
-    document.getElementById('search-results-panel').innerHTML = '';
-    const clearBtn = document.querySelector('.clear-search');
-    if (clearBtn) clearBtn.style.display = 'none';
-}
-
-function clearSearch() {
-    document.getElementById('search-input-main').value = '';
-    document.getElementById('search-results-panel').innerHTML = '';
-    document.querySelector('.clear-search').style.display = 'none';
-    document.getElementById('search-input-main').focus();
-}
-
-function quickSearch(term) {
-    document.getElementById('search-input-main').value = term;
-    performSearch({ target: { value: term } });
-}
-
-async function performSearch(event) {
-    const query = event.target.value.toLowerCase().trim();
-    const resultsContainer = document.getElementById('search-results-panel');
-    const clearBtn = document.querySelector('.clear-search');
-    
-    // Show/hide clear button
-    clearBtn.style.display = query.length > 0 ? 'flex' : 'none';
-    
-    if (query.length < 2) {
-        resultsContainer.innerHTML = '';
-        return;
-    }
-    
-    try {
-        // Show loading
-        resultsContainer.innerHTML = `
-            <div style="text-align: center; padding: 2rem; color: #999;">
-                <i class="fas fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                <p>Searching...</p>
-            </div>
-        `;
-        
-        const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl'];
-        const promises = brands.map(brand => 
-            fetch(`json/${brand}-products.json`)
-                .then(res => res.ok ? res.json() : [])
-                .catch(() => [])
-        );
-        
-        const results = await Promise.all(promises);
-        const allProducts = results.flat();
-        
-        const filtered = allProducts.filter(p => 
-            p.name.toLowerCase().includes(query) ||
-            p.brand.toLowerCase().includes(query) ||
-            (p.category && p.category.toLowerCase().includes(query)) ||
-            (p.shortDescription && p.shortDescription.toLowerCase().includes(query))
-        ).slice(0, 12);
-        
-        if (filtered.length === 0) {
-            resultsContainer.innerHTML = `
-                <div style="text-align: center; padding: 3rem; color: #999;">
-                    <i class="fas fa-search" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
-                    <h3 style="margin-bottom: 0.5rem; color: #666;">No results found</h3>
-                    <p>Try searching for a different brand or product type</p>
-                </div>
-            `;
-            return;
-        }
-        
-        resultsContainer.innerHTML = `
-            <div style="padding: 1rem; background: var(--gray-light); border-radius: 12px; margin-bottom: 1rem; font-weight: 600;">
-                Found ${filtered.length} product${filtered.length === 1 ? '' : 's'}
-            </div>
-            <div style="display: grid; gap: 1rem;">
-                ${filtered.map(product => `
-                    <div class="search-result-item" onclick="closeSearchPanel(); window.location.href='brands/${product.brand.toLowerCase()}.html';" style="
-                        display: flex;
-                        gap: 1rem;
-                        padding: 1rem;
-                        background: var(--white);
-                        border: 1px solid var(--border);
-                        border-radius: 12px;
-                        cursor: pointer;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.transform='translateX(5px)'; this.style.borderColor='var(--gold)';" onmouseout="this.style.transform='translateX(0)'; this.style.borderColor='var(--border)';">
-                        <div style="
-                            width: 80px;
-                            height: 80px;
-                            background: var(--gray-light);
-                            border-radius: 8px;
-                            overflow: hidden;
-                            flex-shrink: 0;
-                        ">
-                            <img src="${getProductImage(product)}" alt="${product.name}" style="width: 100%; height: 100%; object-fit: cover;">
-                        </div>
-                        <div style="flex: 1; min-width: 0;">
-                            <div style="
-                                display: inline-block;
-                                background: var(--gold);
-                                color: var(--white);
-                                padding: 0.25rem 0.6rem;
-                                border-radius: 4px;
-                                font-size: 0.7rem;
-                                font-weight: 700;
-                                margin-bottom: 0.5rem;
-                            ">${product.brand}</div>
-                            <div style="
-                                font-weight: 700;
-                                font-size: 0.95rem;
-                                margin-bottom: 0.35rem;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                                white-space: nowrap;
-                            ">${product.name}</div>
-                            <div style="
-                                font-size: 1.2rem;
-                                font-weight: 800;
-                                color: var(--gold);
-                            ">$${product.price.toFixed(2)}</div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-    } catch (error) {
-        console.error('Search error:', error);
-        resultsContainer.innerHTML = `
-            <div style="text-align: center; padding: 2rem; color: #dc3545;">
-                <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 1rem;"></i>
-                <p>An error occurred while searching</p>
-            </div>
-        `;
-    }
-}
-
-// Close search panel with Escape key
 document.addEventListener('keydown', (e) => {
+    // Cmd/Ctrl + K to open search
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        toggleSearch();
+    }
+    
+    // Escape to close any open overlay
     if (e.key === 'Escape') {
-        const searchPanel = document.getElementById('search-panel');
-        if (searchPanel && searchPanel.classList.contains('active')) {
-            closeSearchPanel();
-        }
+        closeSearch();
+        closeMobileMenu();
         const cartModal = document.getElementById('cart-modal');
         if (cartModal && cartModal.classList.contains('active')) {
             closeCart();
@@ -244,13 +297,36 @@ document.addEventListener('keydown', (e) => {
 });
 
 // ==========================================
+// SCROLL BEHAVIOR
+// ==========================================
+
+let lastScroll = 0;
+const header = document.querySelector('.modern-header');
+
+if (header) {
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            // Scrolling down
+            header.style.transform = 'translateY(-100%)';
+        } else {
+            // Scrolling up
+            header.style.transform = 'translateY(0)';
+        }
+        
+        lastScroll = currentScroll;
+    }, { passive: true });
+}
+
+// ==========================================
 // SMOOTH SCROLLING
 // ==========================================
 
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        const headerHeight = document.querySelector('.header').offsetHeight;
+        const headerHeight = document.querySelector('.modern-header')?.offsetHeight || 0;
         const sectionTop = section.offsetTop - headerHeight;
         
         window.scrollTo({
@@ -607,6 +683,8 @@ function updateCartBadge() {
 
 function saveCart() {
     localStorage.setItem('barber_cart', JSON.stringify(cart));
+    // Dispatch custom event for cart updates
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
 }
 
 function loadCart() {
@@ -647,6 +725,19 @@ document.addEventListener('click', (e) => {
             closeCart();
         }
     }
+});
+
+// Update cart badge when storage changes
+window.addEventListener('storage', (e) => {
+    if (e.key === 'barber_cart') {
+        loadCart();
+        updateCartBadge();
+    }
+});
+
+// Custom event for cart updates
+window.addEventListener('cartUpdated', () => {
+    updateCartBadge();
 });
 
 // ==========================================
@@ -765,26 +856,6 @@ function hideLoading() {
 }
 
 // ==========================================
-// HEADER SCROLL EFFECT
-// ==========================================
-
-let lastScroll = 0;
-window.addEventListener('scroll', () => {
-    const header = document.querySelector('.header');
-    if (!header) return;
-    
-    const currentScroll = window.pageYOffset;
-    
-    if (currentScroll > 100) {
-        header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
-    } else {
-        header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-    }
-    
-    lastScroll = currentScroll;
-});
-
-// ==========================================
 // ANIMATIONS
 // ==========================================
 
@@ -814,7 +885,17 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Export functions for external use
+window.modernHeader = {
+    toggleSearch,
+    closeSearch,
+    toggleMobileMenu,
+    closeMobileMenu,
+    updateCartBadge,
+    openCart
+};
+
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Elegant Carousel, Mega Menu, Advanced Search');
+console.log('🎨 Features: Modern Header, Elegant Carousel, Advanced Search');
 console.log('🛒 Cart System: Fully Functional');
 console.log('💳 Payment: Stripe Integration Active');
