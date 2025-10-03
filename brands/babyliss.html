@@ -54,52 +54,73 @@
 
         <!-- Products Container -->
         <div class="products-container">
-            <!-- Desktop Filters Bar -->
-            <div class="filters-bar desktop-only">
-                <div class="filters-grid">
-                    <div class="filter-group">
+            <!-- Desktop Filters Section -->
+            <div class="filters-section desktop-only">
+                <div class="filter-row">
+                    <!-- Search -->
+                    <div class="filter-col">
                         <label class="filter-label">Search Products</label>
-                        <div class="search-wrapper">
+                        <div class="search-box">
                             <i class="fas fa-search search-icon"></i>
-                            <input type="text" id="filter-search" class="filter-input" placeholder="Search by name, description..." onkeyup="filterProducts()">
+                            <input type="text" class="search-input" placeholder="Search by name, description..." oninput="filterBySearch(event)">
                         </div>
                     </div>
                     
-                    <div class="filter-group">
-                        <label class="filter-label">Category</label>
-                        <select id="filter-category" class="filter-select" onchange="filterProducts()">
-                            <option value="">All Categories</option>
-                            <option value="Clipper">Clippers</option>
-                            <option value="Trimmer">Trimmers</option>
-                            <option value="Shaver">Shavers</option>
-                            <option value="Combo Set">Combo Sets</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
-                        <label class="filter-label">Price Range</label>
-                        <select id="filter-price" class="filter-select" onchange="filterProducts()">
-                            <option value="">All Prices</option>
-                            <option value="0-50">Under $50</option>
-                            <option value="50-100">$50 - $100</option>
-                            <option value="100-150">$100 - $150</option>
-                            <option value="150-999">$150+</option>
-                        </select>
-                    </div>
-                    
-                    <div class="filter-group">
+                    <!-- Sort -->
+                    <div class="filter-col" style="max-width: 250px;">
                         <label class="filter-label">Sort By</label>
-                        <select id="filter-sort" class="filter-select" onchange="filterProducts()">
+                        <select class="sort-select" onchange="filterBySort(event)">
                             <option value="name-asc">Name (A-Z)</option>
                             <option value="name-desc">Name (Z-A)</option>
-                            <option value="price-asc">Price (Low to High)</option>
-                            <option value="price-desc">Price (High to Low)</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
                         </select>
                     </div>
                 </div>
                 
-                <div class="filters-actions" id="active-filters">
-                    <!-- Active filters will appear here -->
+                <div class="filter-row">
+                    <!-- Category Pills -->
+                    <div class="filter-col">
+                        <label class="filter-label">Category</label>
+                        <div class="category-pills">
+                            <div class="category-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">
+                                Clippers
+                            </div>
+                            <div class="category-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">
+                                Trimmers
+                            </div>
+                            <div class="category-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">
+                                Shavers
+                            </div>
+                            <div class="category-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">
+                                Combo Sets
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range Buttons -->
+                    <div class="filter-col" style="max-width: 300px;">
+                        <label class="filter-label">Price Range</label>
+                        <div class="price-buttons">
+                            <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">
+                                Under $50
+                            </div>
+                            <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">
+                                $50 - $100
+                            </div>
+                            <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">
+                                $100 - $150
+                            </div>
+                            <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">
+                                $150+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Active Filters -->
+                <div class="active-filters" id="active-filters">
+                    <!-- Filter chips will appear here -->
                 </div>
             </div>
 
@@ -131,42 +152,56 @@
         </div>
         
         <div class="filter-group">
-            <label class="filter-label">Search Products</label>
-            <div class="search-wrapper">
+            <label class="filter-label">Search</label>
+            <div class="search-box">
                 <i class="fas fa-search search-icon"></i>
-                <input type="text" id="mobile-search" class="filter-input" placeholder="Search..." onkeyup="filterProducts()">
+                <input type="text" class="search-input" placeholder="Search..." oninput="filterBySearch(event)">
             </div>
         </div>
         
         <div class="filter-group">
             <label class="filter-label">Category</label>
-            <select id="mobile-category" class="filter-select" onchange="filterProducts()">
-                <option value="">All Categories</option>
-                <option value="Clipper">Clippers</option>
-                <option value="Trimmer">Trimmers</option>
-                <option value="Shaver">Shavers</option>
-                <option value="Combo Set">Combo Sets</option>
-            </select>
+            <div class="category-pills">
+                <div class="category-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">
+                    Clippers
+                </div>
+                <div class="category-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">
+                    Trimmers
+                </div>
+                <div class="category-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">
+                    Shavers
+                </div>
+                <div class="category-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">
+                    Combo Sets
+                </div>
+            </div>
         </div>
         
         <div class="filter-group">
             <label class="filter-label">Price Range</label>
-            <select id="mobile-price" class="filter-select" onchange="filterProducts()">
-                <option value="">All Prices</option>
-                <option value="0-50">Under $50</option>
-                <option value="50-100">$50 - $100</option>
-                <option value="100-150">$100 - $150</option>
-                <option value="150-999">$150+</option>
-            </select>
+            <div class="price-buttons">
+                <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">
+                    Under $50
+                </div>
+                <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">
+                    $50 - $100
+                </div>
+                <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">
+                    $100 - $150
+                </div>
+                <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">
+                    $150+
+                </div>
+            </div>
         </div>
         
         <div class="filter-group">
             <label class="filter-label">Sort By</label>
-            <select id="mobile-sort" class="filter-select" onchange="filterProducts()">
+            <select class="sort-select" onchange="filterBySort(event)">
                 <option value="name-asc">Name (A-Z)</option>
                 <option value="name-desc">Name (Z-A)</option>
-                <option value="price-asc">Price (Low to High)</option>
-                <option value="price-desc">Price (High to Low)</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
             </select>
         </div>
         
