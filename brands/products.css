@@ -55,13 +55,19 @@ body {
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .desktop-only {
         display: none !important;
     }
     
     .mobile-only {
         display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
     }
 }
 
@@ -1275,15 +1281,26 @@ body {
    RESPONSIVE
    ========================================== */
 
+@media (max-width: 768px) {
+    .desktop-only {
+        display: none !important;
+    }
+    
+    .mobile-only {
+        display: block;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-only {
+        display: none !important;
+    }
+}
+
 @media (max-width: 1024px) {
     .filter-row {
         flex-direction: column;
         gap: 1.5rem;
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
     }
 
     .modal-content {
@@ -1308,13 +1325,19 @@ body {
     }
 }
 
+/* Mobile Grid - 2 columns for all phones */
 @media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.75rem;
+    }
+
     .header-wrapper {
-        padding: 0 1.5rem;
+        padding: 0 1rem;
     }
 
     .products-container {
-        padding: 1.5rem;
+        padding: 1rem;
     }
 
     .brand-title {
@@ -1336,11 +1359,33 @@ body {
     .modal-price {
         font-size: 1.85rem;
     }
+
+    .product-card {
+        min-height: auto;
+    }
+    
+    .product-image-container {
+        padding-top: 100%;
+    }
+
+    .product-info {
+        padding: 0.85rem;
+    }
+
+    .product-name {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
 }
 
-@media (max-width: 480px) {
+/* Very small phones - 1 column */
+@media (max-width: 375px) {
     .products-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
 
     .brand-title {
@@ -1362,17 +1407,6 @@ body {
     .category-pill {
         width: 100%;
         text-align: center;
-    }
-}
-
-/* Ensure cards are fully visible on mobile */
-@media (max-width: 1024px) {
-    .product-card {
-        min-height: 300px;
-    }
-    
-    .product-image-container {
-        padding-top: 100%;
     }
 }
 
