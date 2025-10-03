@@ -1445,7 +1445,18 @@ main {
 
 /* ==================== RESPONSIVE ==================== */
 
+@media (max-width: 1024px) {
+    .why-choose-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
 @media (max-width: 768px) {
+    .about-hero {
+        padding: 4rem 1.5rem;
+    }
+
     .about-hero-title {
         font-size: 2rem;
     }
@@ -1457,10 +1468,33 @@ main {
     .section-title {
         font-size: 1.6rem;
     }
+
+    .section-heading {
+        font-size: 2rem;
+    }
     
     .categories-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
+    }
+
+    .about-container {
+        padding: 3rem 1.5rem;
+    }
+
+    .value-props,
+    .quality-process,
+    .mission-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .why-choose-section,
+    .cta-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .cta-content h2 {
+        font-size: 1.8rem;
     }
     
     .cart-modal {
@@ -1523,6 +1557,32 @@ main {
 @media (max-width: 480px) {
     .home-view {
         padding: 1.5rem 1rem;
+    }
+
+    .about-container {
+        padding: 2rem 1rem;
+    }
+
+    .about-hero {
+        padding: 3rem 1rem;
+    }
+
+    .about-hero-title {
+        font-size: 1.75rem;
+    }
+
+    .value-card {
+        padding: 1.5rem;
+    }
+
+    .process-step {
+        padding: 1.5rem;
+    }
+
+    .warranty-section {
+        padding: 1.5rem;
+        flex-direction: column;
+        text-align: center;
     }
     
     .categories-grid {
