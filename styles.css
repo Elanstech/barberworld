@@ -1531,12 +1531,12 @@ main {
     box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
 }
 
-/* ==================== FOOTER ==================== */
+/* ==================== UPDATED FOOTER ==================== */
 
 .footer {
     background: linear-gradient(135deg, var(--primary) 0%, #1a1a1a 100%);
     color: var(--white);
-    padding: 3rem 2rem 1.5rem;
+    padding: 4rem 2rem 2rem;
     margin-top: 0;
 }
 
@@ -1547,29 +1547,118 @@ main {
 
 .footer-main {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
 }
 
 .footer-section h3 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 800;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     color: var(--gold);
 }
 
-.footer-section p {
-    margin: 0.75rem 0;
+.footer-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1rem;
+    border-radius: var(--radius);
+}
+
+.footer-desc {
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.footer-social {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    opacity: 0.9;
+    transition: all var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--gold);
+    transform: translateX(5px);
+}
+
+.footer-links a i {
+    font-size: 0.7rem;
+    color: var(--gold);
+}
+
+.footer-contact {
+    margin-top: 1.5rem;
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-contact i {
+    color: var(--gold);
+    font-size: 1.1rem;
+}
+
+.footer-payment {
+    text-align: center;
+    padding: 2rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 2rem;
+}
+
+.footer-payment h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+    color: var(--gold);
 }
 
 .payment-methods {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1rem;
 }
 
@@ -1578,7 +1667,7 @@ main {
     align-items: center;
     gap: 0.5rem;
     background: rgba(255, 255, 255, 0.1);
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
     border-radius: var(--radius);
     transition: all var(--transition);
 }
@@ -1589,7 +1678,7 @@ main {
 }
 
 .payment-card i {
-    font-size: 1.8rem;
+    font-size: 2rem;
     color: var(--gold);
 }
 
@@ -1598,9 +1687,13 @@ main {
     justify-content: space-between;
     align-items: center;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 1.5rem;
+}
+
+.copyright p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
 }
 
 .designer-credit {
@@ -1722,6 +1815,11 @@ main {
         min-width: 220px;
         max-width: 220px;
     }
+    
+    .footer-main {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1819,6 +1917,20 @@ main {
         width: 100%;
         justify-content: flex-end;
     }
+    
+    .footer {
+        padding: 3rem 1.5rem 1.5rem;
+    }
+    
+    .footer-main {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1865,6 +1977,19 @@ main {
     
     .carousel-product-image {
         height: 140px;
+    }
+    
+    .footer-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .payment-methods {
+        gap: 0.75rem;
+    }
+    
+    .payment-card {
+        padding: 0.6rem 1rem;
     }
 }
 
