@@ -1,4 +1,4 @@
-// api/checkout.js - Production Ready with Error Handling
+// api/checkout.js - Production Ready with Automatic Tax
 const Stripe = require('stripe');
 
 module.exports = async (req, res) => {
@@ -65,16 +65,25 @@ module.exports = async (req, res) => {
         console.log('🌍 Base URL:', baseUrl);
         console.log('🛒 Creating session for', lineItems.length, 'items');
         
-        // Create Stripe Checkout Session
+        // Create Stripe Checkout Session with AUTOMATIC TAX
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ['card'],
             line_items: lineItems,
             mode: 'payment',
+            
+            // ✅ ENABLE AUTOMATIC TAX (NY + NYC = 8.875%)
+            automatic_tax: {
+                enabled: true,
+            },
+            
+            // ✅ REQUIRE SHIPPING ADDRESS (needed for tax calculation)
+            shipping_address_collection: {
+                allowed_countries: ['US']
+            },
+            
             success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
             cancel_url: `${baseUrl}/index.html`,
-            shipping_address_collection: {
-                allowed_countries: ['US', 'CA']
-            },
+            
             metadata: {
                 source: 'barber-world-website',
                 timestamp: new Date().toISOString()
@@ -82,6 +91,7 @@ module.exports = async (req, res) => {
         });
         
         console.log('✅ Session created:', session.id);
+        console.log('💰 Automatic tax enabled');
         
         // Return session ID
         return res.status(200).json({ 
