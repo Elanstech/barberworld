@@ -1,6 +1,6 @@
 // ==========================================
-// PRODUCTS PAGE - COMPLETE JAVASCRIPT
-// Clean, Modern, Professional
+// PRODUCTS PAGE - ENHANCED JAVASCRIPT
+// Image Carousel, Smart Filters, Detailed Modal
 // ==========================================
 
 // Stripe Configuration
@@ -18,6 +18,7 @@ let activeFilters = {
     priceRange: '',
     sort: 'name-asc'
 };
+let currentImageIndices = {};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,6 +40,11 @@ async function loadProducts() {
         
         allProducts = await response.json();
         filteredProducts = [...allProducts];
+        
+        // Initialize image indices
+        allProducts.forEach(p => {
+            currentImageIndices[p.id] = 0;
+        });
         
         hideLoading();
         displayProducts();
@@ -69,7 +75,7 @@ function showErrorState() {
 }
 
 // ==========================================
-// DISPLAY PRODUCTS
+// DISPLAY PRODUCTS WITH IMAGE CAROUSEL
 // ==========================================
 function displayProducts() {
     const grid = document.getElementById('products-grid');
@@ -104,12 +110,37 @@ function createProductCard(product, index) {
     card.className = 'product-card';
     card.style.animationDelay = `${index * 0.05}s`;
     
+    // Get all product images
+    const images = getProductImages(product);
+    const imageIndex = currentImageIndices[product.id] || 0;
+    
     card.innerHTML = `
         <div class="product-image-container">
-            <img src="${getProductImage(product)}" alt="${escapeHtml(product.name)}" class="product-image" loading="lazy">
-            <button class="add-product-btn" onclick="openProductModal(${product.id})" aria-label="View Product">
-                <i class="fas fa-plus"></i>
-            </button>
+            ${images.map((img, i) => `
+                <img src="${img}" 
+                     alt="${escapeHtml(product.name)}" 
+                     class="product-image" 
+                     style="opacity: ${i === imageIndex ? 1 : 0}; position: ${i === 0 ? 'absolute' : 'absolute'};"
+                     loading="lazy">
+            `).join('')}
+            
+            <div class="product-actions">
+                <button class="action-btn quick-view" onclick="openProductModal(${product.id})" aria-label="Quick View" title="Quick View">
+                    <i class="fas fa-eye"></i>
+                </button>
+                <button class="action-btn quick-add" onclick="quickAddToCart(${product.id}, event)" aria-label="Add to Cart" title="Quick Add">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+            
+            ${images.length > 1 ? `
+                <div class="image-nav">
+                    ${images.map((_, i) => `
+                        <div class="image-dot ${i === imageIndex ? 'active' : ''}" 
+                             onclick="changeProductImage(${product.id}, ${i})"></div>
+                    `).join('')}
+                </div>
+            ` : ''}
         </div>
         <div class="product-info">
             <h3 class="product-name">${escapeHtml(product.name)}</h3>
@@ -117,13 +148,79 @@ function createProductCard(product, index) {
         </div>
     `;
     
+    // Add hover effect for image carousel
+    if (images.length > 1) {
+        setupImageCarousel(card, product.id, images.length);
+    }
+    
     return card;
 }
 
-function getProductImage(product) {
-    if (product.image) return product.image;
-    if (product.images && product.images[0]) return product.images[0];
-    return 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop';
+function getProductImages(product) {
+    const images = [];
+    if (product.image) images.push(product.image);
+    if (product.images && Array.isArray(product.images)) {
+        product.images.forEach(img => {
+            if (img && !images.includes(img)) images.push(img);
+        });
+    }
+    return images.length > 0 ? images : ['https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=600&fit=crop'];
+}
+
+function setupImageCarousel(card, productId, imageCount) {
+    const container = card.querySelector('.product-image-container');
+    const images = container.querySelectorAll('.product-image');
+    const dots = container.querySelectorAll('.image-dot');
+    let hoverInterval = null;
+    
+    container.addEventListener('mouseenter', () => {
+        let currentIndex = currentImageIndices[productId] || 0;
+        
+        hoverInterval = setInterval(() => {
+            // Hide current image
+            images[currentIndex].style.opacity = '0';
+            dots[currentIndex]?.classList.remove('active');
+            
+            // Move to next image
+            currentIndex = (currentIndex + 1) % imageCount;
+            currentImageIndices[productId] = currentIndex;
+            
+            // Show next image
+            images[currentIndex].style.opacity = '1';
+            dots[currentIndex]?.classList.add('active');
+        }, 1000); // Change image every 1 second
+    });
+    
+    container.addEventListener('mouseleave', () => {
+        if (hoverInterval) {
+            clearInterval(hoverInterval);
+        }
+    });
+}
+
+function changeProductImage(productId, imageIndex) {
+    currentImageIndices[productId] = imageIndex;
+    
+    // Find the product card
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        const images = card.querySelectorAll('.product-image');
+        const dots = card.querySelectorAll('.image-dot');
+        
+        // Check if this is the right card by checking if it has the correct number of images
+        if (images.length > imageIndex) {
+            images.forEach((img, i) => {
+                img.style.opacity = i === imageIndex ? '1' : '0';
+            });
+            dots.forEach((dot, i) => {
+                if (i === imageIndex) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+    });
 }
 
 function animateProducts() {
@@ -137,7 +234,49 @@ function animateProducts() {
 }
 
 // ==========================================
-// PRODUCT MODAL
+// QUICK ADD TO CART
+// ==========================================
+function quickAddToCart(productId, event) {
+    event.stopPropagation();
+    
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) return;
+    
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image || (product.images && product.images[0]),
+            brand: product.brand,
+            quantity: 1
+        });
+    }
+    
+    saveCart();
+    updateCartBadge();
+    displayCart();
+    showNotification(`${product.name} added to cart!`, 'success');
+    
+    // Visual feedback
+    const btn = event.currentTarget;
+    btn.classList.add('added');
+    const icon = btn.querySelector('i');
+    const originalIcon = icon.className;
+    icon.className = 'fas fa-check';
+    
+    setTimeout(() => {
+        btn.classList.remove('added');
+        icon.className = originalIcon;
+    }, 1500);
+}
+
+// ==========================================
+// ENHANCED PRODUCT MODAL
 // ==========================================
 function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
@@ -152,21 +291,32 @@ function openProductModal(productId) {
         return;
     }
     
-    // Populate modal
+    // Populate modal with ALL product details
     document.getElementById('modal-category').textContent = product.category || 'Product';
     document.getElementById('modal-title').textContent = product.name;
     document.getElementById('modal-price').textContent = `$${product.price.toFixed(2)}`;
-    document.getElementById('modal-description').textContent = product.description || product.shortDescription || '';
+    
+    // Brand info
+    const brandElement = document.getElementById('modal-brand');
+    if (brandElement) {
+        brandElement.innerHTML = `<strong>Brand:</strong> ${product.brand || currentBrand}`;
+    }
+    
+    // Description
+    const descElement = document.getElementById('modal-description');
+    if (descElement) {
+        descElement.textContent = product.description || product.shortDescription || 'Professional quality grooming equipment.';
+    }
     
     // Main image
     const mainImage = document.getElementById('modal-main-image');
-    mainImage.src = getProductImage(product);
+    const images = getProductImages(product);
+    mainImage.src = images[0];
     
     // Thumbnails
     const thumbnailGrid = document.getElementById('thumbnail-grid');
     thumbnailGrid.innerHTML = '';
     
-    const images = [product.image, ...(product.images || [])].filter(Boolean);
     images.forEach((img, index) => {
         const thumb = document.createElement('div');
         thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
@@ -178,6 +328,33 @@ function openProductModal(productId) {
         };
         thumbnailGrid.appendChild(thumb);
     });
+    
+    // Specifications
+    const specsList = document.getElementById('specs-list');
+    if (specsList) {
+        specsList.innerHTML = '';
+        
+        const specs = [
+            { icon: 'fa-tag', text: `Category: ${product.category || 'Professional Tool'}` },
+            { icon: 'fa-dollar-sign', text: `Price: $${product.price.toFixed(2)}` },
+            { icon: 'fa-star', text: product.rating ? `Rating: ${product.rating}/5` : 'Professional Quality' },
+            { icon: 'fa-box', text: product.inStock !== false ? 'In Stock' : 'Limited Stock' }
+        ];
+        
+        if (product.warranty) {
+            specs.push({ icon: 'fa-shield-alt', text: `Warranty: ${product.warranty}` });
+        }
+        
+        specs.forEach(spec => {
+            const item = document.createElement('div');
+            item.className = 'spec-item';
+            item.innerHTML = `
+                <i class="fas ${spec.icon}"></i>
+                <span>${spec.text}</span>
+            `;
+            specsList.appendChild(item);
+        });
+    }
     
     // Add to cart button
     const addBtn = document.getElementById('modal-add-to-cart');
@@ -217,7 +394,12 @@ function createProductModal() {
                         <div class="modal-category" id="modal-category">Product</div>
                         <h2 class="modal-title" id="modal-title"></h2>
                         <div class="modal-price" id="modal-price"></div>
+                        <div class="modal-brand" id="modal-brand"></div>
                         <p class="modal-description" id="modal-description"></p>
+                        <div class="modal-specs">
+                            <h4>Product Details</h4>
+                            <div class="specs-list" id="specs-list"></div>
+                        </div>
                         <div class="modal-actions">
                             <button class="modal-add-to-cart" id="modal-add-to-cart">
                                 <i class="fas fa-shopping-bag"></i>
@@ -234,59 +416,85 @@ function createProductModal() {
 }
 
 // ==========================================
-// FILTERING
+// SMART FILTERING SYSTEM
 // ==========================================
-function filterProducts() {
-    // Get filter values
-    const searchDesktop = document.getElementById('filter-search')?.value.toLowerCase() || '';
-    const searchMobile = document.getElementById('mobile-search')?.value.toLowerCase() || '';
-    const search = searchDesktop || searchMobile;
+function filterBySearch(event) {
+    activeFilters.search = event.target.value.toLowerCase();
+    applyFilters();
+}
+
+function filterByCategory(category) {
+    // Toggle category
+    if (activeFilters.category === category) {
+        activeFilters.category = '';
+    } else {
+        activeFilters.category = category;
+    }
     
-    const categoryDesktop = document.getElementById('filter-category')?.value || '';
-    const categoryMobile = document.getElementById('mobile-category')?.value || '';
-    const category = categoryDesktop || categoryMobile;
+    // Update UI
+    document.querySelectorAll('.category-pill').forEach(pill => {
+        if (pill.dataset.category === category) {
+            pill.classList.toggle('active');
+        } else {
+            pill.classList.remove('active');
+        }
+    });
     
-    const priceDesktop = document.getElementById('filter-price')?.value || '';
-    const priceMobile = document.getElementById('mobile-price')?.value || '';
-    const priceRange = priceDesktop || priceMobile;
+    applyFilters();
+}
+
+function filterByPrice(priceRange) {
+    // Toggle price range
+    if (activeFilters.priceRange === priceRange) {
+        activeFilters.priceRange = '';
+    } else {
+        activeFilters.priceRange = priceRange;
+    }
     
-    const sortDesktop = document.getElementById('filter-sort')?.value || 'name-asc';
-    const sortMobile = document.getElementById('mobile-sort')?.value || 'name-asc';
-    const sort = sortDesktop || sortMobile;
+    // Update UI
+    document.querySelectorAll('.price-btn').forEach(btn => {
+        if (btn.dataset.price === priceRange) {
+            btn.classList.toggle('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
     
-    // Update active filters
-    activeFilters = { search, category, priceRange, sort };
-    
-    // Sync values
-    syncFilterValues();
-    
-    // Apply filters
+    applyFilters();
+}
+
+function filterBySort(event) {
+    activeFilters.sort = event.target.value;
+    applyFilters();
+}
+
+function applyFilters() {
     filteredProducts = [...allProducts];
     
     // Search filter
-    if (search) {
+    if (activeFilters.search) {
         filteredProducts = filteredProducts.filter(p =>
-            p.name.toLowerCase().includes(search) ||
-            (p.description && p.description.toLowerCase().includes(search)) ||
-            (p.shortDescription && p.shortDescription.toLowerCase().includes(search)) ||
-            (p.category && p.category.toLowerCase().includes(search))
+            p.name.toLowerCase().includes(activeFilters.search) ||
+            (p.description && p.description.toLowerCase().includes(activeFilters.search)) ||
+            (p.shortDescription && p.shortDescription.toLowerCase().includes(activeFilters.search)) ||
+            (p.category && p.category.toLowerCase().includes(activeFilters.search))
         );
     }
     
     // Category filter
-    if (category) {
-        filteredProducts = filteredProducts.filter(p => p.category === category);
+    if (activeFilters.category) {
+        filteredProducts = filteredProducts.filter(p => p.category === activeFilters.category);
     }
     
     // Price filter
-    if (priceRange) {
-        const [min, max] = priceRange.split('-').map(Number);
+    if (activeFilters.priceRange) {
+        const [min, max] = activeFilters.priceRange.split('-').map(Number);
         filteredProducts = filteredProducts.filter(p => p.price >= min && p.price <= max);
     }
     
     // Sort
     filteredProducts.sort((a, b) => {
-        switch (sort) {
+        switch (activeFilters.sort) {
             case 'name-asc':
                 return a.name.localeCompare(b.name);
             case 'name-desc':
@@ -305,47 +513,23 @@ function filterProducts() {
     displayActiveFilters();
 }
 
-function syncFilterValues() {
-    // Desktop
-    const desktopSearch = document.getElementById('filter-search');
-    const desktopCategory = document.getElementById('filter-category');
-    const desktopPrice = document.getElementById('filter-price');
-    const desktopSort = document.getElementById('filter-sort');
-    
-    if (desktopSearch) desktopSearch.value = activeFilters.search;
-    if (desktopCategory) desktopCategory.value = activeFilters.category;
-    if (desktopPrice) desktopPrice.value = activeFilters.priceRange;
-    if (desktopSort) desktopSort.value = activeFilters.sort;
-    
-    // Mobile
-    const mobileSearch = document.getElementById('mobile-search');
-    const mobileCategory = document.getElementById('mobile-category');
-    const mobilePrice = document.getElementById('mobile-price');
-    const mobileSort = document.getElementById('mobile-sort');
-    
-    if (mobileSearch) mobileSearch.value = activeFilters.search;
-    if (mobileCategory) mobileCategory.value = activeFilters.category;
-    if (mobilePrice) mobilePrice.value = activeFilters.priceRange;
-    if (mobileSort) mobileSort.value = activeFilters.sort;
-}
-
 function displayActiveFilters() {
     const container = document.getElementById('active-filters');
     if (!container) return;
     
     container.innerHTML = '';
-    
     const filters = [];
     
     if (activeFilters.search) {
-        filters.push({ label: `Search: ${activeFilters.search}`, key: 'search' });
+        filters.push({ label: `"${activeFilters.search}"`, key: 'search' });
     }
     if (activeFilters.category) {
         filters.push({ label: activeFilters.category, key: 'category' });
     }
     if (activeFilters.priceRange) {
         const [min, max] = activeFilters.priceRange.split('-');
-        filters.push({ label: `$${min} - $${max}`, key: 'priceRange' });
+        const label = max === '999' ? `$${min}+` : `$${min}-$${max}`;
+        filters.push({ label, key: 'priceRange' });
     }
     
     filters.forEach(filter => {
@@ -370,8 +554,22 @@ function displayActiveFilters() {
 
 function removeFilter(key) {
     activeFilters[key] = '';
-    syncFilterValues();
-    filterProducts();
+    
+    // Update UI
+    if (key === 'category') {
+        document.querySelectorAll('.category-pill').forEach(pill => {
+            pill.classList.remove('active');
+        });
+    } else if (key === 'priceRange') {
+        document.querySelectorAll('.price-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+    } else if (key === 'search') {
+        const searchInputs = document.querySelectorAll('.search-input');
+        searchInputs.forEach(input => input.value = '');
+    }
+    
+    applyFilters();
 }
 
 function clearAllFilters() {
@@ -381,8 +579,14 @@ function clearAllFilters() {
         priceRange: '',
         sort: 'name-asc'
     };
-    syncFilterValues();
-    filterProducts();
+    
+    // Reset UI
+    document.querySelectorAll('.search-input').forEach(input => input.value = '');
+    document.querySelectorAll('.category-pill').forEach(pill => pill.classList.remove('active'));
+    document.querySelectorAll('.price-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll('.sort-select').forEach(select => select.value = 'name-asc');
+    
+    applyFilters();
 }
 
 function updateProductCount() {
@@ -407,14 +611,15 @@ function openMobileFilters() {
 
 function closeMobileFilters() {
     const panel = document.getElementById('mobile-filters-panel');
+    const overlay = document.getElementById('modal-overlay');
     if (panel) {
         panel.classList.remove('active');
+        if (overlay) overlay.classList.remove('active');
         document.body.style.overflow = '';
     }
 }
 
 function applyMobileFilters() {
-    filterProducts();
     closeMobileFilters();
 }
 
@@ -434,7 +639,7 @@ function addToCart(productId) {
             id: product.id,
             name: product.name,
             price: product.price,
-            image: getProductImage(product),
+            image: product.image || (product.images && product.images[0]),
             brand: product.brand,
             quantity: 1
         });
@@ -444,24 +649,6 @@ function addToCart(productId) {
     updateCartBadge();
     displayCart();
     showNotification(`${product.name} added to cart!`, 'success');
-    
-    // Visual feedback on button
-    const btns = document.querySelectorAll('.add-product-btn');
-    btns.forEach(btn => {
-        if (btn.closest('.product-card')) {
-            const card = btn.closest('.product-card');
-            const cardProduct = filteredProducts.find(p => getProductImage(p) === card.querySelector('.product-image')?.src);
-            if (cardProduct && cardProduct.id === productId) {
-                btn.classList.add('added');
-                const icon = btn.querySelector('i');
-                icon.className = 'fas fa-check';
-                setTimeout(() => {
-                    btn.classList.remove('added');
-                    icon.className = 'fas fa-plus';
-                }, 1500);
-            }
-        }
-    });
 }
 
 function updateCart(productId, change) {
@@ -633,7 +820,7 @@ async function checkout() {
 // UTILITY FUNCTIONS
 // ==========================================
 function openSearch() {
-    const searchInput = document.getElementById('filter-search') || document.getElementById('mobile-search');
+    const searchInput = document.querySelector('.search-input');
     if (searchInput) {
         searchInput.focus();
         searchInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -699,4 +886,4 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
-console.log('✨ Products page ready');
+console.log('✨ Enhanced products page ready');
