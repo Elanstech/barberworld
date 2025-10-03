@@ -64,7 +64,7 @@ body.no-scroll {
 }
 
 .logo {
-    height: 80px;
+    height: 150px;
     cursor: pointer;
     transition: transform var(--transition);
 }
@@ -1560,8 +1560,8 @@ main {
 }
 
 .footer-logo {
-    width: 80px;
-    height: 80px;
+    width: 180px;
+    height: 180px;
     margin-bottom: 1rem;
     border-radius: var(--radius);
 }
