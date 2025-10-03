@@ -4,17 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaByliss Professional Products - Barber World</title>
+    <meta name="description" content="Shop premium BaByliss professional grooming equipment at Barber World. High-quality clippers, trimmers, and professional tools.">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     
+    <!-- Styles -->
     <link rel="stylesheet" href="products.css">
 </head>
 <body data-brand="babyliss">
-    <!-- Enhanced Header -->
+    <!-- Header -->
     <header class="header">
         <div class="header-wrapper">
             <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
@@ -53,7 +60,7 @@
                     <h3 class="filter-title">Search Products</h3>
                     <div class="search-filter">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="product-search-desktop" placeholder="Search..." onkeyup="filterProducts()">
+                        <input type="text" id="product-search-desktop" placeholder="Search products..." onkeyup="filterProducts()">
                     </div>
                 </div>
 
@@ -98,34 +105,50 @@
 
             <!-- Products Section -->
             <section class="products-section">
-                <div class="products-header">
-                    <div class="products-count" id="products-count">Loading products...</div>
-                    <button class="mobile-filter-btn mobile-only" onclick="toggleMobileFilters()">
+                <!-- Mobile Filters Header -->
+                <div class="mobile-filters-header mobile-only">
+                    <button class="filters-toggle-btn" onclick="openFilters()">
                         <i class="fas fa-sliders-h"></i>
-                        Filters
+                        Filters & Sort
                     </button>
+                    <div class="view-toggle">
+                        <button class="view-btn active" id="grid-view-btn" onclick="toggleView('grid')">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn" id="list-view-btn" onclick="toggleView('list')">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
                 </div>
-                <div class="products-grid" id="products-grid"></div>
+
+                <!-- Products Header -->
+                <div class="products-header">
+                    <div class="products-count">Showing <strong>0</strong> of <strong>0</strong> products</div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
             </section>
         </div>
     </main>
 
-    <!-- Mobile Filters Drawer -->
-    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
-    <div class="mobile-filters-drawer" id="mobile-filters-drawer">
-        <div class="mobile-filters-header">
-            <h2>Filters</h2>
-            <button class="close-btn" onclick="toggleMobileFilters()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
+    <!-- Mobile Filters Panel -->
+    <div class="mobile-filters-panel mobile-only" id="mobile-filters-panel">
         <div class="mobile-filters-content">
+            <div class="filters-header">
+                <h3>Filters & Sort</h3>
+                <button class="close-filters-btn" onclick="closeFilters()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
             <div class="filter-section">
                 <h3 class="filter-title">Search Products</h3>
                 <div class="search-filter">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="product-search-mobile" placeholder="Search..." onkeyup="filterProducts()">
+                    <input type="text" id="product-search-mobile" placeholder="Search products..." onkeyup="filterProducts()">
                 </div>
             </div>
 
@@ -161,127 +184,55 @@
                     <option value="rating-desc">Highest Rated</option>
                 </select>
             </div>
-        </div>
 
-        <div class="mobile-filters-footer">
             <button class="clear-filters-btn" onclick="clearFilters()">
                 <i class="fas fa-times"></i>
-                Clear Filters
+                Clear All Filters
             </button>
-            <button class="apply-filters-btn" onclick="toggleMobileFilters()">
+
+            <button class="apply-filters-btn" onclick="applyFilters()">
                 Apply Filters
             </button>
         </div>
     </div>
 
-    <!-- Product Detail Modal -->
-    <div class="product-modal" id="product-modal">
-        <div class="modal-overlay" onclick="closeProductModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
-    </div>
-
     <!-- Cart Modal -->
     <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2>Shopping Cart</h2>
-                <button class="close-btn" onclick="closeCart()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="cart-items" id="cart-items"></div>
-            
-            <div class="cart-empty" id="cart-empty" style="display: none;">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart-btn" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
                 <i class="fas fa-shopping-bag"></i>
                 <p>Your cart is empty</p>
             </div>
-            
-            <div class="cart-footer" id="cart-footer">
-                <button class="clear-all-btn" onclick="clearAllCart()">
-                    <i class="fas fa-trash-alt"></i>
-                    Clear All
-                </button>
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total">$0.00</span>
-                </div>
-                <button class="checkout-btn" onclick="checkout()">
-                    <i class="fas fa-lock"></i>
-                    Checkout with Stripe
-                </button>
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-value" id="cart-total-value">$0.00</span>
             </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-lock"></i>
+                Secure Checkout
+            </button>
         </div>
     </div>
 
-    <!-- Search Modal -->
-    <div class="search-modal" id="search-modal">
-        <div class="search-content">
-            <div class="search-header">
-                <h3>Search All Products</h3>
-                <button class="close-btn" onclick="closeSearch()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-input-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="Search across all brands..." onkeyup="globalSearch(event)">
-            </div>
-            <div class="search-results" id="search-results"></div>
-        </div>
+    <!-- Cart Overlay -->
+    <div class="cart-overlay" onclick="closeCart()"></div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-envelope"></i> barberworldnyc@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Business Hours: Online Only</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>We Accept</h3>
-                    <div class="payment-methods">
-                        <div class="payment-card"><i class="fab fa-cc-visa"></i></div>
-                        <div class="payment-card"><i class="fab fa-cc-mastercard"></i></div>
-                        <div class="payment-card"><i class="fab fa-cc-amex"></i></div>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Professional Equipment</h3>
-                    <p>Trusted by barbers worldwide</p>
-                    <p>All products are brand new with manufacturer warranty</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; 2024 Barber World. All rights reserved.</p>
-                </div>
-                <div class="designer-credit">
-                    <span>Designed by</span>
-                    <div class="designer-logo">
-                        <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World">
-                        <span>Elan's Tech World</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Processing...</p>
-    </div>
-
+    <!-- JavaScript -->
     <script src="products.js"></script>
 </body>
 </html>
