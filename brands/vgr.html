@@ -3,22 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGR Professional Products - Barber World NYC </title>
+    <title>VGR Professional Products - Barber World</title>
+    <meta name="description" content="Shop premium VGR professional grooming equipment. High-quality clippers, trimmers, and professional tools.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://js.stripe.com/v3/"></script>
-    
     <link rel="stylesheet" href="products.css">
 </head>
 <body data-brand="vgr">
-    <!-- Enhanced Header -->
     <header class="header">
         <div class="header-wrapper">
             <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
-            
             <div class="header-actions">
                 <button class="icon-btn" onclick="openSearch()" aria-label="Search">
                     <i class="fas fa-search"></i>
@@ -31,9 +29,7 @@
         </div>
     </header>
 
-    <!-- Main Content -->
     <main class="products-main">
-        <!-- Hero Section -->
         <section class="products-hero">
             <div class="hero-content">
                 <button class="back-btn" onclick="window.location.href='../index.html'">
@@ -41,219 +37,138 @@
                     <span>Back to Home</span>
                 </button>
                 <h1 class="brand-title">VGR Professional</h1>
-                <p class="brand-subtitle">Professional Grade Grooming Tools</p>
+                <p class="brand-subtitle">Quality Professional Tools</p>
             </div>
         </section>
 
-        <!-- Products Container -->
         <div class="products-container">
-            <!-- Desktop Filters Sidebar -->
-            <aside class="filters-sidebar desktop-only">
-                <div class="filter-section">
-                    <h3 class="filter-title">Search Products</h3>
-                    <div class="search-filter">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="product-search-desktop" placeholder="Search..." onkeyup="filterProducts()">
+            <div class="filters-section desktop-only">
+                <div class="filter-row">
+                    <div class="filter-col">
+                        <label class="filter-label">Search Products</label>
+                        <div class="search-box">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" placeholder="Search by name, description..." oninput="filterBySearch(event)">
+                        </div>
+                    </div>
+                    <div class="filter-col" style="max-width: 250px;">
+                        <label class="filter-label">Sort By</label>
+                        <select class="sort-select" onchange="filterBySort(event)">
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="filter-section">
-                    <h3 class="filter-title">Category</h3>
-                    <select id="category-filter-desktop" onchange="filterProducts()" class="filter-select">
-                        <option value="">All Categories</option>
-                        <option value="Clipper">Clippers</option>
-                        <option value="Trimmer">Trimmers</option>
-                    </select>
+                <div class="filter-row">
+                    <div class="filter-col">
+                        <label class="filter-label">Category</label>
+                        <div class="category-pills">
+                            <div class="category-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">Clippers</div>
+                            <div class="category-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">Trimmers</div>
+                            <div class="category-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">Shavers</div>
+                            <div class="category-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">Combo Sets</div>
+                        </div>
+                    </div>
+                    <div class="filter-col" style="max-width: 300px;">
+                        <label class="filter-label">Price Range</label>
+                        <div class="price-buttons">
+                            <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">Under $50</div>
+                            <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">$50 - $100</div>
+                            <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">$100 - $150</div>
+                            <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">$150+</div>
+                        </div>
+                    </div>
                 </div>
+                <div class="active-filters" id="active-filters"></div>
+            </div>
 
-                <div class="filter-section">
-                    <h3 class="filter-title">Sort By</h3>
-                    <select id="sort-filter-desktop" onchange="filterProducts()" class="filter-select">
-                        <option value="name-asc">Name (A-Z)</option>
-                        <option value="name-desc">Name (Z-A)</option>
-                        <option value="price-asc">Price (Low to High)</option>
-                        <option value="price-desc">Price (High to Low)</option>
-                        <option value="rating-desc">Highest Rated</option>
-                    </select>
-                </div>
+            <button class="mobile-filters-btn mobile-only" onclick="openMobileFilters()">
+                <i class="fas fa-sliders-h"></i>
+                Filters & Sort
+            </button>
 
-                <button class="clear-filters-btn" onclick="clearFilters()">
-                    <i class="fas fa-times"></i>
-                    Clear All Filters
-                </button>
-            </aside>
+            <div class="products-header">
+                <div class="products-count">Showing <strong>0</strong> of <strong>0</strong> products</div>
+            </div>
 
-            <!-- Products Section -->
-            <section class="products-section">
-                <div class="products-header">
-                    <div class="products-count" id="products-count">Loading products...</div>
-                    <button class="mobile-filter-btn mobile-only" onclick="toggleMobileFilters()">
-                        <i class="fas fa-sliders-h"></i>
-                        Filters
-                    </button>
-                </div>
-                <div class="products-grid" id="products-grid"></div>
-            </section>
+            <div class="products-grid" id="products-grid"></div>
         </div>
     </main>
 
-    <!-- Mobile Filters Drawer -->
-    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
-    <div class="mobile-filters-drawer" id="mobile-filters-drawer">
+    <div class="mobile-filters-panel mobile-only" id="mobile-filters-panel">
         <div class="mobile-filters-header">
-            <h2>Filters</h2>
-            <button class="close-btn" onclick="toggleMobileFilters()">
+            <h3>Filters & Sort</h3>
+            <button class="close-mobile-filters" onclick="closeMobileFilters()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-
-        <div class="mobile-filters-content">
-            <div class="filter-section">
-                <h3 class="filter-title">Search Products</h3>
-                <div class="search-filter">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="product-search-mobile" placeholder="Search..." onkeyup="filterProducts()">
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Category</h3>
-                <select id="category-filter-mobile" onchange="filterProducts()" class="filter-select">
-                    <option value="">All Categories</option>
-                    <option value="Clipper">Clippers</option>
-                    <option value="Trimmer">Trimmers</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Sort By</h3>
-                <select id="sort-filter-mobile" onchange="filterProducts()" class="filter-select">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="rating-desc">Highest Rated</option>
-                </select>
+        <div class="filter-group">
+            <label class="filter-label">Search</label>
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search..." oninput="filterBySearch(event)">
             </div>
         </div>
-
-        <div class="mobile-filters-footer">
-            <button class="clear-filters-btn" onclick="clearFilters()">
-                <i class="fas fa-times"></i>
-                Clear Filters
-            </button>
-            <button class="apply-filters-btn" onclick="toggleMobileFilters()">
-                Apply Filters
-            </button>
+        <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <div class="category-pills">
+                <div class="category-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">Clippers</div>
+                <div class="category-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">Trimmers</div>
+                <div class="category-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">Shavers</div>
+                <div class="category-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">Combo Sets</div>
+            </div>
         </div>
+        <div class="filter-group">
+            <label class="filter-label">Price Range</label>
+            <div class="price-buttons">
+                <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">Under $50</div>
+                <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">$50 - $100</div>
+                <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">$100 - $150</div>
+                <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">$150+</div>
+            </div>
+        </div>
+        <div class="filter-group">
+            <label class="filter-label">Sort By</label>
+            <select class="sort-select" onchange="filterBySort(event)">
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="price-asc">Price: Low to High</option>
+                <option value="price-desc">Price: High to Low</option>
+            </select>
+        </div>
+        <button class="apply-filters-btn" onclick="applyMobileFilters()">Apply Filters</button>
     </div>
 
-    <!-- Product Detail Modal -->
-    <div class="product-modal" id="product-modal">
-        <div class="modal-overlay" onclick="closeProductModal()"></div>
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body" id="modal-body"></div>
-        </div>
-    </div>
-
-    <!-- Cart Modal -->
     <div class="cart-modal" id="cart-modal">
-        <div class="cart-content">
-            <div class="cart-header">
-                <h2>Shopping Cart</h2>
-                <button class="close-btn" onclick="closeCart()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            
-            <div class="cart-items" id="cart-items"></div>
-            
-            <div class="cart-empty" id="cart-empty" style="display: none;">
+        <div class="cart-header">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart-btn" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
                 <i class="fas fa-shopping-bag"></i>
                 <p>Your cart is empty</p>
             </div>
-            
-            <div class="cart-footer" id="cart-footer">
-                <button class="clear-all-btn" onclick="clearAllCart()">
-                    <i class="fas fa-trash-alt"></i>
-                    Clear All
-                </button>
-                <div class="cart-total">
-                    <span>Total:</span>
-                    <span id="cart-total">$0.00</span>
-                </div>
-                <button class="checkout-btn" onclick="checkout()">
-                    <i class="fas fa-lock"></i>
-                    Checkout with Stripe
-                </button>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span class="cart-total-label">Total:</span>
+                <span class="cart-total-value" id="cart-total-value">$0.00</span>
             </div>
+            <button class="checkout-btn" onclick="checkout()">
+                <i class="fas fa-lock"></i>
+                Secure Checkout
+            </button>
         </div>
     </div>
 
-    <!-- Search Modal -->
-    <div class="search-modal" id="search-modal">
-        <div class="search-content">
-            <div class="search-header">
-                <h3>Search All Products</h3>
-                <button class="close-btn" onclick="closeSearch()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-input-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="search-input" placeholder="Search across all brands..." onkeyup="globalSearch(event)">
-            </div>
-            <div class="search-results" id="search-results"></div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-section">
-                    <h3>Contact Information</h3>
-                    <p><i class="fas fa-envelope"></i> barberworldnyc@gmail.com</p>
-                    <p><i class="fas fa-clock"></i> Business Hours: Online Only</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>We Accept</h3>
-                    <div class="payment-methods">
-                        <div class="payment-card"><i class="fab fa-cc-visa"></i></div>
-                        <div class="payment-card"><i class="fab fa-cc-mastercard"></i></div>
-                        <div class="payment-card"><i class="fab fa-cc-amex"></i></div>
-                    </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Professional Equipment</h3>
-                    <p>Trusted by barbers worldwide</p>
-                    <p>All products are brand new with manufacturer warranty</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <div class="copyright">
-                    <p>&copy; 2024 Barber World. All rights reserved.</p>
-                </div>
-                <div class="designer-credit">
-                    <span>Designed by</span>
-                    <div class="designer-logo">
-                        <img src="https://elanstechworld.com/assets/images/Elanslogo.jpeg" alt="Elan's Tech World">
-                        <span>Elan's Tech World</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <p>Processing...</p>
+    <div class="cart-overlay" onclick="closeCart()"></div>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
     </div>
 
     <script src="products.js"></script>
