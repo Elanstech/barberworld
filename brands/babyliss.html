@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaByliss Professional Products - Barber World</title>
-    <meta name="description" content="Shop premium BaByliss professional grooming equipment at Barber World. High-quality clippers, trimmers, and professional tools.">
+    <meta name="description" content="Shop premium BaByliss professional grooming equipment. High-quality clippers, trimmers, and professional tools.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,146 +54,125 @@
 
         <!-- Products Container -->
         <div class="products-container">
-            <!-- Desktop Filters Sidebar -->
-            <aside class="filters-sidebar desktop-only">
-                <div class="filter-section">
-                    <h3 class="filter-title">Search Products</h3>
-                    <div class="search-filter">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="product-search-desktop" placeholder="Search products..." onkeyup="filterProducts()">
+            <!-- Desktop Filters Bar -->
+            <div class="filters-bar desktop-only">
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label class="filter-label">Search Products</label>
+                        <div class="search-wrapper">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" id="filter-search" class="filter-input" placeholder="Search by name, description..." onkeyup="filterProducts()">
+                        </div>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Category</label>
+                        <select id="filter-category" class="filter-select" onchange="filterProducts()">
+                            <option value="">All Categories</option>
+                            <option value="Clipper">Clippers</option>
+                            <option value="Trimmer">Trimmers</option>
+                            <option value="Shaver">Shavers</option>
+                            <option value="Combo Set">Combo Sets</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Price Range</label>
+                        <select id="filter-price" class="filter-select" onchange="filterProducts()">
+                            <option value="">All Prices</option>
+                            <option value="0-50">Under $50</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-150">$100 - $150</option>
+                            <option value="150-999">$150+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label class="filter-label">Sort By</label>
+                        <select id="filter-sort" class="filter-select" onchange="filterProducts()">
+                            <option value="name-asc">Name (A-Z)</option>
+                            <option value="name-desc">Name (Z-A)</option>
+                            <option value="price-asc">Price (Low to High)</option>
+                            <option value="price-desc">Price (High to Low)</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="filter-section">
-                    <h3 class="filter-title">Category</h3>
-                    <select id="category-filter-desktop" onchange="filterProducts()" class="filter-select">
-                        <option value="">All Categories</option>
-                        <option value="Clipper">Clippers</option>
-                        <option value="Trimmer">Trimmers</option>
-                        <option value="Shaver">Shavers</option>
-                        <option value="Combo Set">Combo Sets</option>
-                    </select>
+                
+                <div class="filters-actions" id="active-filters">
+                    <!-- Active filters will appear here -->
                 </div>
+            </div>
 
-                <div class="filter-section">
-                    <h3 class="filter-title">Price Range</h3>
-                    <select id="price-filter-desktop" onchange="filterProducts()" class="filter-select">
-                        <option value="">All Prices</option>
-                        <option value="0-50">Under $50</option>
-                        <option value="50-100">$50 - $100</option>
-                        <option value="100-150">$100 - $150</option>
-                        <option value="150-999">$150+</option>
-                    </select>
-                </div>
+            <!-- Mobile Filters Button -->
+            <button class="mobile-filters-btn mobile-only" onclick="openMobileFilters()">
+                <i class="fas fa-sliders-h"></i>
+                Filters & Sort
+            </button>
 
-                <div class="filter-section">
-                    <h3 class="filter-title">Sort By</h3>
-                    <select id="sort-filter-desktop" onchange="filterProducts()" class="filter-select">
-                        <option value="name-asc">Name (A-Z)</option>
-                        <option value="name-desc">Name (Z-A)</option>
-                        <option value="price-asc">Price (Low to High)</option>
-                        <option value="price-desc">Price (High to Low)</option>
-                        <option value="rating-desc">Highest Rated</option>
-                    </select>
-                </div>
+            <!-- Products Header -->
+            <div class="products-header">
+                <div class="products-count">Showing <strong>0</strong> of <strong>0</strong> products</div>
+            </div>
 
-                <button class="clear-filters-btn" onclick="clearFilters()">
-                    <i class="fas fa-times"></i>
-                    Clear All Filters
-                </button>
-            </aside>
-
-            <!-- Products Section -->
-            <section class="products-section">
-                <!-- Mobile Filters Header -->
-                <div class="mobile-filters-header mobile-only">
-                    <button class="filters-toggle-btn" onclick="openFilters()">
-                        <i class="fas fa-sliders-h"></i>
-                        Filters & Sort
-                    </button>
-                    <div class="view-toggle">
-                        <button class="view-btn active" id="grid-view-btn" onclick="toggleView('grid')">
-                            <i class="fas fa-th"></i>
-                        </button>
-                        <button class="view-btn" id="list-view-btn" onclick="toggleView('list')">
-                            <i class="fas fa-list"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Products Header -->
-                <div class="products-header">
-                    <div class="products-count">Showing <strong>0</strong> of <strong>0</strong> products</div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be loaded here -->
-                </div>
-            </section>
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
         </div>
     </main>
 
     <!-- Mobile Filters Panel -->
     <div class="mobile-filters-panel mobile-only" id="mobile-filters-panel">
-        <div class="mobile-filters-content">
-            <div class="filters-header">
-                <h3>Filters & Sort</h3>
-                <button class="close-filters-btn" onclick="closeFilters()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Search Products</h3>
-                <div class="search-filter">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="product-search-mobile" placeholder="Search products..." onkeyup="filterProducts()">
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Category</h3>
-                <select id="category-filter-mobile" onchange="filterProducts()" class="filter-select">
-                    <option value="">All Categories</option>
-                    <option value="Clipper">Clippers</option>
-                    <option value="Trimmer">Trimmers</option>
-                    <option value="Shaver">Shavers</option>
-                    <option value="Combo Set">Combo Sets</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Price Range</h3>
-                <select id="price-filter-mobile" onchange="filterProducts()" class="filter-select">
-                    <option value="">All Prices</option>
-                    <option value="0-50">Under $50</option>
-                    <option value="50-100">$50 - $100</option>
-                    <option value="100-150">$100 - $150</option>
-                    <option value="150-999">$150+</option>
-                </select>
-            </div>
-
-            <div class="filter-section">
-                <h3 class="filter-title">Sort By</h3>
-                <select id="sort-filter-mobile" onchange="filterProducts()" class="filter-select">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="rating-desc">Highest Rated</option>
-                </select>
-            </div>
-
-            <button class="clear-filters-btn" onclick="clearFilters()">
+        <div class="mobile-filters-header">
+            <h3>Filters & Sort</h3>
+            <button class="close-mobile-filters" onclick="closeMobileFilters()">
                 <i class="fas fa-times"></i>
-                Clear All Filters
-            </button>
-
-            <button class="apply-filters-btn" onclick="applyFilters()">
-                Apply Filters
             </button>
         </div>
+        
+        <div class="filter-group">
+            <label class="filter-label">Search Products</label>
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="mobile-search" class="filter-input" placeholder="Search..." onkeyup="filterProducts()">
+            </div>
+        </div>
+        
+        <div class="filter-group">
+            <label class="filter-label">Category</label>
+            <select id="mobile-category" class="filter-select" onchange="filterProducts()">
+                <option value="">All Categories</option>
+                <option value="Clipper">Clippers</option>
+                <option value="Trimmer">Trimmers</option>
+                <option value="Shaver">Shavers</option>
+                <option value="Combo Set">Combo Sets</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label class="filter-label">Price Range</label>
+            <select id="mobile-price" class="filter-select" onchange="filterProducts()">
+                <option value="">All Prices</option>
+                <option value="0-50">Under $50</option>
+                <option value="50-100">$50 - $100</option>
+                <option value="100-150">$100 - $150</option>
+                <option value="150-999">$150+</option>
+            </select>
+        </div>
+        
+        <div class="filter-group">
+            <label class="filter-label">Sort By</label>
+            <select id="mobile-sort" class="filter-select" onchange="filterProducts()">
+                <option value="name-asc">Name (A-Z)</option>
+                <option value="name-desc">Name (Z-A)</option>
+                <option value="price-asc">Price (Low to High)</option>
+                <option value="price-desc">Price (High to Low)</option>
+            </select>
+        </div>
+        
+        <button class="apply-filters-btn" onclick="applyMobileFilters()">
+            Apply Filters
+        </button>
     </div>
 
     <!-- Cart Modal -->
