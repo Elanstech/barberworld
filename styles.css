@@ -61,7 +61,7 @@ body.no-scroll {
     align-items: center;
     justify-content: space-between;
     padding: 0;
-    height: 130px;
+    height: 190px;
 }
 
 /* Logo Section with Matte Black Effect */
@@ -74,7 +74,7 @@ body.no-scroll {
 }
 
 .brand-logo {
-    height: 120px;
+    height: 180px;
     width: auto;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
