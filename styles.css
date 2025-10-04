@@ -96,7 +96,6 @@ body.no-scroll {
 /* Search Trigger (Desktop) */
 .search-container {
     margin-right: 0.5rem;
-    display: flex;
 }
 
 .search-trigger {
@@ -124,7 +123,6 @@ body.no-scroll {
 
 .search-trigger i {
     font-size: 1rem;
-    display: none;
 }
 
 .search-trigger span {
@@ -149,7 +147,7 @@ body.no-scroll {
     color: white;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex !important;
+    display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
@@ -537,7 +535,6 @@ body.no-scroll {
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-    border: none;
 }
 
 .close-mobile-menu:hover {
@@ -595,99 +592,6 @@ body.no-scroll {
     font-size: 0.95rem;
 }
 
-/* ==========================================
-   RESPONSIVE DESIGN FOR HEADER
-   ========================================== */
-
-/* Remove any mobile-only/desktop-only restrictions */
-.desktop-only {
-    display: flex;
-}
-
-.mobile-only {
-    display: flex !important;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
-    .header-container {
-        height: 100px;
-        padding: 0 1rem;
-    }
-
-    .logo-section {
-        padding: 0 1.5rem;
-    }
-
-    .brand-logo {
-        height: 100px;
-    }
-
-    .header-right {
-        padding: 0 1rem;
-    }
-
-    .search-container {
-        display: none;
-    }
-
-    .search-trigger {
-        display: none;
-    }
-
-    .action-btn {
-        width: 44px;
-        height: 44px;
-    }
-
-    .search-panel {
-        padding: 1rem;
-    }
-
-    .search-input-wrapper {
-        padding: 0 1rem;
-    }
-
-    .smart-search-input {
-        font-size: 1rem;
-        padding: 1rem 0;
-    }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    .header-container {
-        height: 90px;
-    }
-
-    .logo-section {
-        padding: 0 1rem;
-    }
-
-    .brand-logo {
-        height: 80px;
-    }
-
-    .header-right {
-        gap: 0.5rem;
-        padding: 0 0.75rem;
-    }
-
-    .action-btn {
-        width: 42px;
-        height: 42px;
-        font-size: 1rem;
-    }
-
-    .search-container {
-        display: none;
-    }
-
-    .search-trigger {
-        display: none;
-    }
-}
-
 /* Smooth Scrollbar */
 .search-results::-webkit-scrollbar {
     width: 8px;
@@ -704,23 +608,6 @@ body.no-scroll {
 
 .search-results::-webkit-scrollbar-thumb:hover {
     background: #b8941f;
-}
-
-.mobile-nav::-webkit-scrollbar {
-    width: 6px;
-}
-
-.mobile-nav::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.mobile-nav::-webkit-scrollbar-thumb {
-    background: rgba(212, 175, 55, 0.3);
-    border-radius: 3px;
-}
-
-.mobile-nav::-webkit-scrollbar-thumb:hover {
-    background: rgba(212, 175, 55, 0.5);
 }
 
 /* ==================== MAIN CONTENT ==================== */
