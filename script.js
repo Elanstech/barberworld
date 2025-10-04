@@ -91,6 +91,8 @@ function closeSearch() {
     const searchInput = document.getElementById('smartSearchInput');
     const body = document.body;
     
+    if (!searchOverlay) return;
+    
     // Restore scroll position
     const scrollY = body.style.top;
     searchOverlay.classList.remove('active');
@@ -98,8 +100,13 @@ function closeSearch() {
     body.style.position = '';
     body.style.top = '';
     body.style.width = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    searchInput.value = '';
+    body.style.left = '';
+    const scrollPosition = parseInt(scrollY || '0') * -1;
+    window.scrollTo(0, scrollPosition);
+    
+    if (searchInput) {
+        searchInput.value = '';
+    }
     clearSearchInput();
 }
 
@@ -324,6 +331,8 @@ function closeMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
     const body = document.body;
     
+    if (!overlay) return;
+    
     // Restore scroll position
     const scrollY = body.style.top;
     overlay.classList.remove('active');
@@ -331,7 +340,9 @@ function closeMobileMenu() {
     body.style.position = '';
     body.style.top = '';
     body.style.width = '';
-    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    body.style.left = '';
+    const scrollPosition = parseInt(scrollY || '0') * -1;
+    window.scrollTo(0, scrollPosition);
 }
 
 // Close mobile menu on overlay click
