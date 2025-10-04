@@ -636,7 +636,7 @@ body.no-scroll {
 @media (max-width: 768px) {
 
     .header-container {
-        height: 100px;
+        height: 130px;
         padding: 0 1rem;
     }
 
@@ -645,7 +645,7 @@ body.no-scroll {
     }
 
     .brand-logo {
-        height: 90px;
+        height: 120px;
     }
 
     .header-right {
