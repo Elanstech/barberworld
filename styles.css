@@ -39,10 +39,6 @@ body.no-scroll {
    MODERN HEADER
    ========================================== */
 
-/* ==========================================
-   MODERN HEADER
-   ========================================== */
-
 .modern-header {
     position: sticky;
     top: 0;
@@ -238,14 +234,7 @@ body.no-scroll {
     transform: translateY(-6px) rotate(-45deg);
 }
 
-/* Disable body scroll when menu is open */
-body.mobile-menu-active,
-body.search-active {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-}
+/* Body scroll lock handled by JavaScript inline styles */
 
 /* ==========================================
    RESPONSIVE BEHAVIOR
@@ -355,6 +344,7 @@ body.search-active {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
 }
 
 .search-overlay.active {
@@ -639,6 +629,7 @@ body.search-active {
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .mobile-menu-overlay.active {
@@ -647,7 +638,7 @@ body.search-active {
 }
 
 .mobile-menu-panel {
-    position: absolute;
+    position: fixed;
     right: 0;
     top: 0;
     bottom: 0;
@@ -659,6 +650,7 @@ body.search-active {
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 }
 
 .mobile-menu-overlay.active .mobile-menu-panel {
@@ -790,6 +782,7 @@ body.search-active {
     }
 }
 
+/* Exception: Mobile menu button shows on all screen sizes */
 .mobile-menu-btn.mobile-only {
     display: flex !important;
 }
