@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Load products data for search
 async function loadProductsData() {
     try {
-        const response = await fetch('/json/all-products-products.json');
+        const response = await fetch('json/all-products-products.json');
         if (response.ok) {
             allProductsData = await response.json();
             console.log('✅ Loaded', allProductsData.length, 'products for search');
@@ -46,6 +46,8 @@ async function loadProductsData() {
 function toggleSearch() {
     const overlay = document.getElementById('searchOverlay');
     const input = document.getElementById('smartSearchInput');
+    
+    if (!overlay || !input) return;
     
     overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
@@ -63,6 +65,8 @@ function closeSearch() {
     const overlay = document.getElementById('searchOverlay');
     const input = document.getElementById('smartSearchInput');
     
+    if (!overlay || !input) return;
+    
     overlay.classList.remove('active');
     document.body.style.overflow = '';
     input.value = '';
@@ -71,15 +75,19 @@ function closeSearch() {
 
 function clearSearchInput() {
     const input = document.getElementById('smartSearchInput');
+    if (!input) return;
+    
     const clearBtn = input.nextElementSibling;
     
     input.value = '';
-    clearBtn.style.display = 'none';
+    if (clearBtn) clearBtn.style.display = 'none';
     showSearchPlaceholder();
 }
 
 function showSearchPlaceholder() {
     const resultsDiv = document.getElementById('searchResults');
+    if (!resultsDiv) return;
+    
     resultsDiv.innerHTML = `
         <div class="search-placeholder">
             <i class="fas fa-search"></i>
@@ -96,15 +104,17 @@ function showSearchPlaceholder() {
 
 function quickSearch(term) {
     const input = document.getElementById('smartSearchInput');
+    if (!input) return;
+    
     input.value = term;
     performSmartSearch(term);
 }
 
 function setupSearchListeners() {
     const input = document.getElementById('smartSearchInput');
-    const clearBtn = input?.nextElementSibling;
-    
     if (!input) return;
+    
+    const clearBtn = input.nextElementSibling;
     
     input.addEventListener('input', (e) => {
         const value = e.target.value.trim();
@@ -134,15 +144,19 @@ function setupSearchListeners() {
     });
     
     // Close on overlay click
-    document.getElementById('searchOverlay')?.addEventListener('click', (e) => {
-        if (e.target.id === 'searchOverlay') {
-            closeSearch();
-        }
-    });
+    const searchOverlay = document.getElementById('searchOverlay');
+    if (searchOverlay) {
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target.id === 'searchOverlay') {
+                closeSearch();
+            }
+        });
+    }
 }
 
 function performSmartSearch(query) {
     const resultsDiv = document.getElementById('searchResults');
+    if (!resultsDiv) return;
     
     if (!allProductsData.length) {
         resultsDiv.innerHTML = `
@@ -240,42 +254,24 @@ function goToProduct(slug, category) {
 }
 
 // ==========================================
-// MODERN HEADER - MOBILE MENU FUNCTIONALITY
+// MOBILE MENU FUNCTIONALITY
 // ==========================================
 
 function toggleMobileMenu() {
-    const overlay = document.getElementById('mobileMenuOverlay');
-    const header = document.querySelector('.modern-header');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!mobileMenu) return;
     
-    if (overlay.classList.contains('active')) {
-        closeMobileMenu();
-    } else {
-        overlay.classList.add('active');
-        header.classList.add('mobile-menu-active');
-        document.body.style.overflow = 'hidden';
-    }
+    mobileMenu.classList.toggle('active');
+    document.body.classList.toggle('no-scroll');
 }
 
 function closeMobileMenu() {
-    const overlay = document.getElementById('mobileMenuOverlay');
-    const header = document.querySelector('.modern-header');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!mobileMenu) return;
     
-    overlay.classList.remove('active');
-    header.classList.remove('mobile-menu-active');
-    document.body.style.overflow = '';
+    mobileMenu.classList.remove('active');
+    document.body.classList.remove('no-scroll');
 }
-
-// Close mobile menu on overlay click
-document.addEventListener('DOMContentLoaded', () => {
-    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
-    if (mobileMenuOverlay) {
-        mobileMenuOverlay.addEventListener('click', (e) => {
-            if (e.target === mobileMenuOverlay) {
-                closeMobileMenu();
-            }
-        });
-    }
-});
 
 // ==========================================
 // KEYBOARD SHORTCUTS
@@ -292,8 +288,8 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeSearch();
         closeMobileMenu();
-        const cartModal = document.getElementById('cart-modal');
-        if (cartModal && cartModal.classList.contains('active')) {
+        const cartPanel = document.getElementById('cart-panel');
+        if (cartPanel && cartPanel.classList.contains('active')) {
             closeCart();
         }
     }
@@ -361,7 +357,7 @@ function initializeAnimations() {
 }
 
 // ==========================================
-// NEW ELEGANT CAROUSEL
+// FEATURED PRODUCTS CAROUSEL
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -695,26 +691,26 @@ function loadCart() {
 
 function openCart() {
     displayCart();
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal) {
-        cartModal.classList.add('active');
+    const cartPanel = document.getElementById('cart-panel');
+    if (cartPanel) {
+        cartPanel.classList.add('active');
         document.body.classList.add('no-scroll');
     }
 }
 
 function closeCart() {
-    const cartModal = document.getElementById('cart-modal');
-    if (cartModal) {
-        cartModal.classList.remove('active');
+    const cartPanel = document.getElementById('cart-panel');
+    if (cartPanel) {
+        cartPanel.classList.remove('active');
         document.body.classList.remove('no-scroll');
     }
 }
 
 document.addEventListener('click', (e) => {
-    const cartModal = document.getElementById('cart-modal');
+    const cartPanel = document.getElementById('cart-panel');
     
-    if (cartModal && cartModal.classList.contains('active')) {
-        if (e.target === cartModal) {
+    if (cartPanel && cartPanel.classList.contains('active')) {
+        if (e.target === cartPanel) {
             closeCart();
         }
     }
@@ -756,7 +752,7 @@ async function checkout() {
             quantity: item.quantity,
         }));
         
-        const response = await fetch('/api/checkout', {
+        const response = await fetch('https://barber-world-stripe.vercel.app/create-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -770,12 +766,10 @@ async function checkout() {
             throw new Error(data.message || 'Checkout failed');
         }
         
-        const result = await stripe.redirectToCheckout({
-            sessionId: data.id,
-        });
-        
-        if (result.error) {
-            throw new Error(result.error.message);
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            throw new Error('No checkout URL received');
         }
         
     } catch (error) {
