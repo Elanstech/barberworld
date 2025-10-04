@@ -635,7 +635,7 @@ body.no-scroll {
 
 @media (max-width: 768px) {
     .header-container {
-        height: 150px;
+        height: 190px;
         padding: 0 1rem;
     }
 
