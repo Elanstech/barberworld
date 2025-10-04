@@ -15,216 +15,85 @@
     <link rel="stylesheet" href="about.css">
 </head>
 <body>
-    <!-- Enhanced Header with Mega Menu (SAME AS INDEX) -->
-    <header class="header">
-        <div class="header-wrapper">
-            <div class="header-left">
-                <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='index.html'">
-                
-                <nav class="main-nav">
-                    <a href="index.html" class="nav-link">Home</a>
-                    <a href="about.html" class="nav-link active">About</a>
-                    <div class="nav-link shop-trigger" onmouseenter="openMegaMenu()" onmouseleave="closeMegaMenuDelayed()">
-                        Shop <i class="fas fa-chevron-down"></i>
-                    </div>
-                </nav>
+    
+    <!-- MODERN REDESIGNED HEADER -->
+    <header class="modern-header">
+        <div class="header-container">
+            <!-- Left Side: Logo with Gradient Background -->
+            <div class="logo-section">
+                <img src="logofooter.png" alt="Barber World" class="brand-logo" onclick="window.location.href='index.html'">
             </div>
-            
-            <div class="header-actions">
-                <button class="icon-btn search-trigger" onclick="openSearchPanel()" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="icon-btn" onclick="openCart()" aria-label="Shopping Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cart-badge">0</span>
-                </button>
-                <button class="icon-btn mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mega Menu -->
-        <div class="mega-menu" id="mega-menu" onmouseenter="keepMegaMenuOpen()" onmouseleave="closeMegaMenu()">
-            <div class="mega-menu-content">
-                <div class="mega-menu-section">
-                    <h3>Shop by Brand</h3>
-                    <div class="brand-links">
-                        <a href="brands/ourbrand.html" class="brand-link">
-                            <div class="brand-icon">
-                                <img src="logo11.png" alt="Our Brand">
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">Our Brand</span>
-                                <span class="brand-desc">Exclusive Collection</span>
-                            </div>
-                        </a>
-                        <a href="brands/babyliss.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-cut"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">BaBylissPRO</span>
-                                <span class="brand-desc">Professional Tools</span>
-                            </div>
-                        </a>
-                        <a href="brands/stylecraft.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">StyleCraft Gamma</span>
-                                <span class="brand-desc">Premium Performance</span>
-                            </div>
-                        </a>
-                        <a href="brands/jrl.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-crown"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">JRL</span>
-                                <span class="brand-desc">Elite Equipment</span>
-                            </div>
-                        </a>
-                        <a href="brands/wahl.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">Wahl</span>
-                                <span class="brand-desc">Industry Standard</span>
-                            </div>
-                        </a>
-                         <a href="brands/wmark.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">W - Mark</span>
-                                <span class="brand-desc">Industry Standard</span>
-                            </div>
-                        </a>
-                        <a href="brands/vgr.html" class="brand-link">
-                            <div class="brand-icon">
-                                <i class="fas fa-medal"></i>
-                            </div>
-                            <div class="brand-info">
-                                <span class="brand-name">VGR</span>
-                                <span class="brand-desc">Industry Standard</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="mega-menu-section">
-                    <h3>Categories</h3>
-                    <div class="category-links">
-                        <a href="#" class="category-link">
-                            <i class="fas fa-cut"></i>
-                            <span>Clippers</span>
-                        </a>
-                        <a href="brands/clippers.html" class="category-link">
-                            <i class="fas fa-scissors"></i>
-                            <span>Trimmers</span>
-                        </a>
-                        <a href="brands/shavers.html" class="category-link">
-                            <i class="fas fa-spa"></i>
-                            <span>Shavers</span>
-                        </a>
-                        <a href="brands/comboset.html" class="category-link">
-                            <i class="fas fa-box-open"></i>
-                            <span>Combo Sets</span>
-                        </a>
-                        <a href="brands/allproducts.html" class="category-link">
-                            <i class="fas fa-cut"></i>
-                            <span>All Products</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="mega-menu-featured">
-                    <div class="featured-card">
-                        <div class="featured-badge">Coming Soon</div>
-                        <img src="https://play-lh.googleusercontent.com/HVZOQT6k5qrJtg1DxiMLox2vMnMD9kt9lMx6uZ1LJ2uQ0jdVMccHONIJVQY3jyrPyyWr" alt="Build Combo">
-                        <h4>Build Your Custom Combo</h4>
-                        <p>Mix and match your perfect professional toolkit</p>
-                    </div>
+
+            <!-- Right Side: Actions -->
+            <div class="header-right">
+                <!-- Action Buttons -->
+                <div class="header-actions">
+                    <button class="action-btn" onclick="openCart()" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cart-badge">0</span>
+                    </button>
+                    <button class="action-btn mobile-only" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div class="mobile-menu" id="mobile-menu">
-            <div class="mobile-menu-header">
-                <span>Menu</span>
-                <button class="close-mobile-menu" onclick="toggleMobileMenu()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <nav class="mobile-nav">
-                <a href="index.html" class="mobile-nav-link">
-                    <i class="fas fa-home"></i>
-                    <span>Home</span>
-                </a>
-                <a href="about.html" class="mobile-nav-link">
-                    <i class="fas fa-info-circle"></i>
-                    <span>About</span>
-                </a>
-                <div class="mobile-nav-section">
-                    <div class="mobile-nav-title">Shop by Brand</div>
-                    <a href="brands/ourbrand.html" class="mobile-nav-link">
-                        <i class="fas fa-star"></i>
-                        <span>Our Brand</span>
-                    </a>
-                    <a href="brands/babyliss.html" class="mobile-nav-link">
-                        <i class="fas fa-cut"></i>
-                        <span>BaBylissPRO</span>
-                    </a>
-                    <a href="brands/stylecraft.html" class="mobile-nav-link">
-                        <i class="fas fa-star"></i>
-                        <span>StyleCraft Gamma</span>
-                    </a>
-                    <a href="brands/jrl.html" class="mobile-nav-link">
-                        <i class="fas fa-crown"></i>
-                        <span>JRL</span>
-                    </a>
-                    <a href="brands/wahl.html" class="mobile-nav-link">
-                        <i class="fas fa-medal"></i>
-                        <span>Wahl</span>
-                    </a>
-                </div>
-            </nav>
         </div>
     </header>
 
-    <!-- Enhanced Search Panel -->
-    <div class="search-panel" id="search-panel">
-        <div class="search-panel-overlay" onclick="closeSearchPanel()"></div>
-        <div class="search-panel-content">
-            <div class="search-panel-header">
-                <h3>Search Products</h3>
-                <button class="close-search-panel" onclick="closeSearchPanel()">
-                    <i class="fas fa-times"></i>
-                </button>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>Menu</span>
+            <button class="close-mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="about.html" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <div class="mobile-nav-section">
+                <div class="mobile-nav-title">Shop by Brand</div>
+                <a href="brands/ourbrand.html" class="mobile-nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>Our Brand</span>
+                </a>
+                <a href="brands/babyliss.html" class="mobile-nav-link">
+                    <i class="fas fa-cut"></i>
+                    <span>BaBylissPRO</span>
+                </a>
+                <a href="brands/stylecraft.html" class="mobile-nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>StyleCraft Gamma</span>
+                </a>
+                <a href="brands/jrl.html" class="mobile-nav-link">
+                    <i class="fas fa-crown"></i>
+                    <span>JRL</span>
+                </a>
+                <a href="brands/wahl.html" class="mobile-nav-link">
+                    <i class="fas fa-trophy"></i>
+                    <span>Wahl</span>
+                </a>
+                <a href="brands/wmark.html" class="mobile-nav-link">
+                    <i class="fas fa-gem"></i>
+                    <span>W-Mark</span>
+                </a>
+                <a href="brands/allproducts.html" class="mobile-nav-link">
+                    <i class="fas fa-th"></i>
+                    <span>All Products</span>
+                </a>
             </div>
-            <div class="search-input-wrapper">
-                <i class="fas fa-search"></i>
-                <input type="text" id="search-input-main" placeholder="Search for clippers, trimmers, shavers..." onkeyup="performSearch(event)">
-                <button class="clear-search" onclick="clearSearch()" style="display: none;">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="search-suggestions">
-                <div class="suggestion-title">Popular Searches</div>
-                <div class="suggestion-tags">
-                    <span class="suggestion-tag" onclick="quickSearch('BaByliss')">BaByliss</span>
-                    <span class="suggestion-tag" onclick="quickSearch('Wahl')">Wahl</span>
-                    <span class="suggestion-tag" onclick="quickSearch('trimmer')">Trimmers</span>
-                    <span class="suggestion-tag" onclick="quickSearch('clipper')">Clippers</span>
-                    <span class="suggestion-tag" onclick="quickSearch('cordless')">Cordless</span>
-                </div>
-            </div>
-            <div class="search-results-panel" id="search-results-panel"></div>
+        </nav>
+        <div class="mobile-menu-footer">
+            <p>Need help? Contact us</p>
+            <a href="mailto:barberworldnyc@gmail.com" class="contact-link">
+                barberworldnyc@gmail.com
+            </a>
         </div>
     </div>
 
