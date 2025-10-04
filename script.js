@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// MODERN HEADER - SEARCH FUNCTIONALITY
+// MODERN HEADER - SEARCH FUNCTIONALITY (UPDATED)
 // ==========================================
 
 // Load products data for search
@@ -44,15 +44,34 @@ async function loadProductsData() {
 }
 
 function toggleSearch() {
-    const overlay = document.getElementById('searchOverlay');
-    const input = document.getElementById('smartSearchInput');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('smartSearchInput');
+    const body = document.body;
     
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    setTimeout(() => {
-        input.focus();
-    }, 300);
+    if (searchOverlay.classList.contains('active')) {
+        // Close search and restore scroll position
+        const scrollY = body.style.top;
+        searchOverlay.classList.remove('active');
+        body.classList.remove('search-active');
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        searchInput.value = '';
+        clearSearchInput();
+    } else {
+        // Open search and save scroll position
+        const scrollY = window.scrollY;
+        body.style.position = 'fixed';
+        body.style.top = `-${scrollY}px`;
+        body.style.width = '100%';
+        searchOverlay.classList.add('active');
+        body.classList.add('search-active');
+        // Focus on input after animation
+        setTimeout(() => {
+            if (searchInput) searchInput.focus();
+        }, 300);
+    }
 }
 
 function toggleMobileSearch() {
@@ -60,38 +79,51 @@ function toggleMobileSearch() {
 }
 
 function closeSearch() {
-    const overlay = document.getElementById('searchOverlay');
-    const input = document.getElementById('smartSearchInput');
+    const searchOverlay = document.getElementById('searchOverlay');
+    const searchInput = document.getElementById('smartSearchInput');
+    const body = document.body;
     
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-    input.value = '';
+    // Restore scroll position
+    const scrollY = body.style.top;
+    searchOverlay.classList.remove('active');
+    body.classList.remove('search-active');
+    body.style.position = '';
+    body.style.top = '';
+    body.style.width = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    searchInput.value = '';
     clearSearchInput();
 }
 
 function clearSearchInput() {
     const input = document.getElementById('smartSearchInput');
-    const clearBtn = input.nextElementSibling;
+    const clearBtn = input?.nextElementSibling;
     
-    input.value = '';
-    clearBtn.style.display = 'none';
+    if (input) {
+        input.value = '';
+    }
+    if (clearBtn) {
+        clearBtn.style.display = 'none';
+    }
     showSearchPlaceholder();
 }
 
 function showSearchPlaceholder() {
     const resultsDiv = document.getElementById('searchResults');
-    resultsDiv.innerHTML = `
-        <div class="search-placeholder">
-            <i class="fas fa-search"></i>
-            <p>Start typing to search products...</p>
-            <div class="popular-searches">
-                <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
-                <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
-                <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
-                <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
+    if (resultsDiv) {
+        resultsDiv.innerHTML = `
+            <div class="search-placeholder">
+                <i class="fas fa-search"></i>
+                <p>Start typing to search products...</p>
+                <div class="popular-searches">
+                    <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
+                    <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
+                    <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
+                    <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
+                </div>
             </div>
-        </div>
-    `;
+        `;
+    }
 }
 
 function quickSearch(term) {
@@ -134,11 +166,14 @@ function setupSearchListeners() {
     });
     
     // Close on overlay click
-    document.getElementById('searchOverlay')?.addEventListener('click', (e) => {
-        if (e.target.id === 'searchOverlay') {
-            closeSearch();
-        }
-    });
+    const searchOverlay = document.getElementById('searchOverlay');
+    if (searchOverlay) {
+        searchOverlay.addEventListener('click', (e) => {
+            if (e.target === searchOverlay) {
+                closeSearch();
+            }
+        });
+    }
 }
 
 function performSmartSearch(query) {
@@ -242,35 +277,56 @@ function goToProduct(slug, category) {
 }
 
 // ==========================================
-// MODERN HEADER - MOBILE MENU FUNCTIONALITY
+// MODERN HEADER - MOBILE MENU FUNCTIONALITY (UPDATED)
 // ==========================================
 
 function toggleMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
-    const header = document.querySelector('.modern-header');
+    const body = document.body;
     
     if (overlay.classList.contains('active')) {
-        closeMobileMenu();
+        // Close menu and restore scroll position
+        const scrollY = body.style.top;
+        overlay.classList.remove('active');
+        body.classList.remove('mobile-menu-active');
+        body.style.position = '';
+        body.style.top = '';
+        body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
     } else {
+        // Open menu and save scroll position
+        const scrollY = window.scrollY;
+        body.style.position = 'fixed';
+        body.style.top = `-${scrollY}px`;
+        body.style.width = '100%';
         overlay.classList.add('active');
-        header.classList.add('mobile-menu-active');
-        document.body.style.overflow = 'hidden';
+        body.classList.add('mobile-menu-active');
     }
 }
 
 function closeMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
-    const header = document.querySelector('.modern-header');
+    const body = document.body;
     
+    // Restore scroll position
+    const scrollY = body.style.top;
     overlay.classList.remove('active');
-    header.classList.remove('mobile-menu-active');
-    document.body.style.overflow = '';
+    body.classList.remove('mobile-menu-active');
+    body.style.position = '';
+    body.style.top = '';
+    body.style.width = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
 }
 
 // Close mobile menu on overlay click
-document.getElementById('mobileMenuOverlay')?.addEventListener('click', (e) => {
-    if (e.target.id === 'mobileMenuOverlay') {
-        closeMobileMenu();
+document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    if (mobileMenuOverlay) {
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenu();
+            }
+        });
     }
 });
 
@@ -287,9 +343,16 @@ document.addEventListener('keydown', (e) => {
     
     // Escape to close any open overlay
     if (e.key === 'Escape') {
-        closeSearch();
-        closeMobileMenu();
+        const searchOverlay = document.getElementById('searchOverlay');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const cartModal = document.getElementById('cart-modal');
+        
+        if (searchOverlay && searchOverlay.classList.contains('active')) {
+            closeSearch();
+        }
+        if (mobileMenuOverlay && mobileMenuOverlay.classList.contains('active')) {
+            closeMobileMenu();
+        }
         if (cartModal && cartModal.classList.contains('active')) {
             closeCart();
         }
