@@ -20,14 +20,14 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
     loadFeaturedProducts();
-    loadProductsData(); // Load products for search
+    loadProductsData();
     setupSearchListeners();
     initializeAnimations();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
 // ==========================================
-// MODERN HEADER - SEARCH FUNCTIONALITY (UPDATED)
+// MODERN HEADER - SEARCH FUNCTIONALITY
 // ==========================================
 
 // Load products data for search
@@ -44,42 +44,15 @@ async function loadProductsData() {
 }
 
 function toggleSearch() {
-    const searchOverlay = document.getElementById('searchOverlay');
-    const searchInput = document.getElementById('smartSearchInput');
-    const body = document.body;
+    const overlay = document.getElementById('searchOverlay');
+    const input = document.getElementById('smartSearchInput');
     
-    if (!searchOverlay || !searchInput) {
-        console.error('Search overlay or input not found');
-        return;
-    }
+    overlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
     
-    if (searchOverlay.classList.contains('active')) {
-        // Close search and restore scroll position
-        const scrollY = body.style.top;
-        searchOverlay.classList.remove('active');
-        body.classList.remove('search-active');
-        body.style.position = '';
-        body.style.top = '';
-        body.style.width = '';
-        body.style.left = '';
-        const scrollPosition = parseInt(scrollY || '0') * -1;
-        window.scrollTo(0, scrollPosition);
-        searchInput.value = '';
-        clearSearchInput();
-    } else {
-        // Open search and save scroll position
-        const scrollY = window.scrollY;
-        body.style.position = 'fixed';
-        body.style.top = `-${scrollY}px`;
-        body.style.left = '0';
-        body.style.width = '100%';
-        searchOverlay.classList.add('active');
-        body.classList.add('search-active');
-        // Focus on input after animation
-        setTimeout(() => {
-            if (searchInput) searchInput.focus();
-        }, 300);
-    }
+    setTimeout(() => {
+        input.focus();
+    }, 300);
 }
 
 function toggleMobileSearch() {
@@ -87,58 +60,38 @@ function toggleMobileSearch() {
 }
 
 function closeSearch() {
-    const searchOverlay = document.getElementById('searchOverlay');
-    const searchInput = document.getElementById('smartSearchInput');
-    const body = document.body;
+    const overlay = document.getElementById('searchOverlay');
+    const input = document.getElementById('smartSearchInput');
     
-    if (!searchOverlay) return;
-    
-    // Restore scroll position
-    const scrollY = body.style.top;
-    searchOverlay.classList.remove('active');
-    body.classList.remove('search-active');
-    body.style.position = '';
-    body.style.top = '';
-    body.style.width = '';
-    body.style.left = '';
-    const scrollPosition = parseInt(scrollY || '0') * -1;
-    window.scrollTo(0, scrollPosition);
-    
-    if (searchInput) {
-        searchInput.value = '';
-    }
+    overlay.classList.remove('active');
+    document.body.style.overflow = '';
+    input.value = '';
     clearSearchInput();
 }
 
 function clearSearchInput() {
     const input = document.getElementById('smartSearchInput');
-    const clearBtn = input?.nextElementSibling;
+    const clearBtn = input.nextElementSibling;
     
-    if (input) {
-        input.value = '';
-    }
-    if (clearBtn) {
-        clearBtn.style.display = 'none';
-    }
+    input.value = '';
+    clearBtn.style.display = 'none';
     showSearchPlaceholder();
 }
 
 function showSearchPlaceholder() {
     const resultsDiv = document.getElementById('searchResults');
-    if (resultsDiv) {
-        resultsDiv.innerHTML = `
-            <div class="search-placeholder">
-                <i class="fas fa-search"></i>
-                <p>Start typing to search products...</p>
-                <div class="popular-searches">
-                    <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
-                    <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
-                    <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
-                    <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
-                </div>
+    resultsDiv.innerHTML = `
+        <div class="search-placeholder">
+            <i class="fas fa-search"></i>
+            <p>Start typing to search products...</p>
+            <div class="popular-searches">
+                <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
+                <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
+                <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
+                <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
             </div>
-        `;
-    }
+        </div>
+    `;
 }
 
 function quickSearch(term) {
@@ -181,14 +134,11 @@ function setupSearchListeners() {
     });
     
     // Close on overlay click
-    const searchOverlay = document.getElementById('searchOverlay');
-    if (searchOverlay) {
-        searchOverlay.addEventListener('click', (e) => {
-            if (e.target === searchOverlay) {
-                closeSearch();
-            }
-        });
-    }
+    document.getElementById('searchOverlay')?.addEventListener('click', (e) => {
+        if (e.target.id === 'searchOverlay') {
+            closeSearch();
+        }
+    });
 }
 
 function performSmartSearch(query) {
@@ -245,7 +195,7 @@ function performSmartSearch(query) {
     let html = '';
     
     Object.keys(groupedResults).forEach(category => {
-        const products = groupedResults[category].slice(0, 5); // Limit to 5 per category
+        const products = groupedResults[category].slice(0, 5);
         
         html += `
             <div class="search-category">
@@ -273,7 +223,6 @@ function performSmartSearch(query) {
 }
 
 function goToProduct(slug, category) {
-    // Determine the page based on category
     let page = 'allproducts.html';
     
     if (category === 'Clipper') {
@@ -286,63 +235,34 @@ function goToProduct(slug, category) {
         page = 'combos.html';
     }
     
-    // Close search and navigate
     closeSearch();
     window.location.href = `brands/${page}`;
 }
 
 // ==========================================
-// MODERN HEADER - MOBILE MENU FUNCTIONALITY (UPDATED)
+// MODERN HEADER - MOBILE MENU FUNCTIONALITY
 // ==========================================
 
 function toggleMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
-    const body = document.body;
-    
-    if (!overlay) {
-        console.error('Mobile menu overlay not found');
-        return;
-    }
+    const header = document.querySelector('.modern-header');
     
     if (overlay.classList.contains('active')) {
-        // Close menu and restore scroll position
-        const scrollY = body.style.top;
-        overlay.classList.remove('active');
-        body.classList.remove('mobile-menu-active');
-        body.style.position = '';
-        body.style.top = '';
-        body.style.width = '';
-        body.style.left = '';
-        const scrollPosition = parseInt(scrollY || '0') * -1;
-        window.scrollTo(0, scrollPosition);
+        closeMobileMenu();
     } else {
-        // Open menu and save scroll position
-        const scrollY = window.scrollY;
-        body.style.position = 'fixed';
-        body.style.top = `-${scrollY}px`;
-        body.style.left = '0';
-        body.style.width = '100%';
         overlay.classList.add('active');
-        body.classList.add('mobile-menu-active');
+        header.classList.add('mobile-menu-active');
+        document.body.style.overflow = 'hidden';
     }
 }
 
 function closeMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
-    const body = document.body;
+    const header = document.querySelector('.modern-header');
     
-    if (!overlay) return;
-    
-    // Restore scroll position
-    const scrollY = body.style.top;
     overlay.classList.remove('active');
-    body.classList.remove('mobile-menu-active');
-    body.style.position = '';
-    body.style.top = '';
-    body.style.width = '';
-    body.style.left = '';
-    const scrollPosition = parseInt(scrollY || '0') * -1;
-    window.scrollTo(0, scrollPosition);
+    header.classList.remove('mobile-menu-active');
+    document.body.style.overflow = '';
 }
 
 // Close mobile menu on overlay click
@@ -370,16 +290,9 @@ document.addEventListener('keydown', (e) => {
     
     // Escape to close any open overlay
     if (e.key === 'Escape') {
-        const searchOverlay = document.getElementById('searchOverlay');
-        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+        closeSearch();
+        closeMobileMenu();
         const cartModal = document.getElementById('cart-modal');
-        
-        if (searchOverlay && searchOverlay.classList.contains('active')) {
-            closeSearch();
-        }
-        if (mobileMenuOverlay && mobileMenuOverlay.classList.contains('active')) {
-            closeMobileMenu();
-        }
         if (cartModal && cartModal.classList.contains('active')) {
             closeCart();
         }
@@ -398,10 +311,8 @@ if (header) {
         const currentScroll = window.pageYOffset;
         
         if (currentScroll > lastScroll && currentScroll > 100) {
-            // Scrolling down
             header.style.transform = 'translateY(-100%)';
         } else {
-            // Scrolling up
             header.style.transform = 'translateY(0)';
         }
         
@@ -444,7 +355,6 @@ function initializeAnimations() {
         });
     }, observerOptions);
     
-    // Observe all elements with data-aos attribute
     document.querySelectorAll('[data-aos]').forEach(el => {
         observer.observe(el);
     });
@@ -466,7 +376,6 @@ async function loadFeaturedProducts() {
         const results = await Promise.all(promises);
         const allProducts = results.flat();
         
-        // Shuffle and get products
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
         carouselProducts = shuffled.slice(0, 24);
         
@@ -561,13 +470,12 @@ function updateCarouselPosition() {
     isCarouselAnimating = true;
     
     const productsPerPage = getProductsPerPage();
-    const cardWidth = 260; // matches CSS
-    const gap = 24; // 1.5rem = 24px
+    const cardWidth = 260;
+    const gap = 24;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
     track.style.transform = `translateX(-${offset}px)`;
     
-    // Update indicators
     document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
         indicator.classList.toggle('active', i === currentCarouselPage);
     });
@@ -596,14 +504,12 @@ function resetCarouselAutoplay() {
     startCarouselAutoplay();
 }
 
-// Pause autoplay on hover
 const carousel = document.getElementById('products-carousel');
 if (carousel) {
     carousel.addEventListener('mouseenter', stopCarouselAutoplay);
     carousel.addEventListener('mouseleave', startCarouselAutoplay);
 }
 
-// Update carousel on window resize
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
@@ -660,7 +566,6 @@ async function addToCartFromCarousel(productId, brandName) {
         updateCartBadge();
         showNotification(`${truncateText(product.name, 40)} added to cart!`);
         
-        // Animate badge
         const badge = document.getElementById('cart-badge');
         if (badge) {
             badge.style.transform = 'scale(1.5)';
@@ -773,7 +678,6 @@ function updateCartBadge() {
 
 function saveCart() {
     localStorage.setItem('barber_cart', JSON.stringify(cart));
-    // Dispatch custom event for cart updates
     window.dispatchEvent(new CustomEvent('cartUpdated'));
 }
 
@@ -806,7 +710,6 @@ function closeCart() {
     }
 }
 
-// Close cart when clicking outside
 document.addEventListener('click', (e) => {
     const cartModal = document.getElementById('cart-modal');
     
@@ -817,7 +720,6 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Update cart badge when storage changes
 window.addEventListener('storage', (e) => {
     if (e.key === 'barber_cart') {
         loadCart();
@@ -825,7 +727,6 @@ window.addEventListener('storage', (e) => {
     }
 });
 
-// Custom event for cart updates
 window.addEventListener('cartUpdated', () => {
     updateCartBadge();
 });
