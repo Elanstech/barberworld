@@ -123,6 +123,7 @@ body.no-scroll {
 
 .search-trigger i {
     font-size: 1rem;
+    display: none;
 }
 
 .search-trigger span {
