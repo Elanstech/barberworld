@@ -147,7 +147,7 @@ body.no-scroll {
     color: white;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
@@ -535,150 +535,7 @@ body.no-scroll {
     align-items: center;
     justify-content: center;
     font-size: 1.1rem;
-}
-
-.close-mobile-menu:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
-}
-
-.mobile-nav {
-    flex: 1;
-    padding: 1rem 0;
-    overflow-y: auto;
-}
-
-.mobile-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem 1.5rem;
-    color: white;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    border-left: 3px solid transparent;
-}
-
-.mobile-nav-link:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-left-color: #d4af37;
-    padding-left: 2rem;
-}
-
-.mobile-nav-link i {
-    font-size: 1.1rem;
-    color: #d4af37;
-    width: 24px;
-}
-
-.mobile-menu-footer {
-    padding: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    text-align: center;
-}
-
-.mobile-menu-footer p {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-link {
-    color: #d4af37;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-/* Smooth Scrollbar */
-.search-results::-webkit-scrollbar {
-    width: 8px;
-}
-
-.search-results::-webkit-scrollbar-track {
-    background: #f5f5f5;
-}
-
-.search-results::-webkit-scrollbar-thumb {
-    background: #d4af37;
-    border-radius: 4px;
-}
-
-.search-results::-webkit-scrollbar-thumb:hover {
-    background: #b8941f;
-}
-
-/* ==========================================
-   MOBILE MENU OVERLAY
-   ========================================== */
-
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(10px);
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.mobile-menu-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.mobile-menu-panel {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 320px;
-    max-width: 85%;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
-    transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: flex;
-    flex-direction: column;
-}
-
-.mobile-menu-overlay.active .mobile-menu-panel {
-    transform: translateX(0);
-}
-
-.mobile-menu-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-menu-header h3 {
-    color: white;
-    font-size: 1.3rem;
-    font-weight: 700;
-}
-
-.close-mobile-menu {
-    width: 40px;
-    height: 40px;
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 10px;
-    color: white;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
+    border: none;
 }
 
 .close-mobile-menu:hover {
@@ -740,23 +597,17 @@ body.no-scroll {
    RESPONSIVE DESIGN FOR HEADER
    ========================================== */
 
+/* Remove any mobile-only/desktop-only restrictions */
 .desktop-only {
     display: flex;
 }
 
 .mobile-only {
-    display: none;
+    display: flex !important;
 }
 
+/* Tablet */
 @media (max-width: 768px) {
-    .desktop-only {
-        display: none;
-    }
-
-    .mobile-only {
-        display: flex;
-    }
-
     .header-container {
         height: 100px;
         padding: 0 1rem;
@@ -771,7 +622,22 @@ body.no-scroll {
     }
 
     .header-right {
-        padding: 0;
+        padding: 0 1rem;
+    }
+
+    .search-trigger span {
+        display: none;
+    }
+
+    .search-trigger {
+        padding: 0.75rem;
+        width: 48px;
+        justify-content: center;
+    }
+
+    .action-btn {
+        width: 44px;
+        height: 44px;
     }
 
     .search-panel {
@@ -788,7 +654,12 @@ body.no-scroll {
     }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
+    .header-container {
+        height: 90px;
+    }
+
     .logo-section {
         padding: 0 1rem;
     }
@@ -797,9 +668,19 @@ body.no-scroll {
         height: 80px;
     }
 
+    .header-right {
+        gap: 0.5rem;
+        padding: 0 0.75rem;
+    }
+
     .action-btn {
         width: 42px;
         height: 42px;
+        font-size: 1rem;
+    }
+
+    .search-container {
+        margin-right: 0;
     }
 }
 
@@ -819,6 +700,23 @@ body.no-scroll {
 
 .search-results::-webkit-scrollbar-thumb:hover {
     background: #b8941f;
+}
+
+.mobile-nav::-webkit-scrollbar {
+    width: 6px;
+}
+
+.mobile-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.mobile-nav::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 3px;
+}
+
+.mobile-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
 }
 
 /* ==================== MAIN CONTENT ==================== */
