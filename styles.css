@@ -619,10 +619,12 @@ body.no-scroll {
 
 .mobile-menu-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw;
+    height: 100vh;
     background: rgba(0, 0, 0, 0.85);
     backdrop-filter: blur(10px);
     z-index: 9999;
@@ -630,11 +632,13 @@ body.no-scroll {
     visibility: hidden;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
+    pointer-events: none;
 }
 
 .mobile-menu-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
 }
 
 .mobile-menu-panel {
@@ -644,6 +648,7 @@ body.no-scroll {
     bottom: 0;
     width: 380px;
     max-width: 85%;
+    height: 100vh;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
     transform: translateX(100%);
@@ -651,6 +656,7 @@ body.no-scroll {
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    z-index: 10000;
 }
 
 .mobile-menu-overlay.active .mobile-menu-panel {
