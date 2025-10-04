@@ -610,6 +610,22 @@ body.no-scroll {
     background: #b8941f;
 }
 
+.header-actions .icon-btn[aria-label="Search"],
+.header-actions .action-btn.mobile-search-btn,
+.search-trigger.action-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .header-actions .icon-btn[aria-label="Search"],
+    .header-actions .action-btn.mobile-search-btn,
+    .search-trigger.action-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 /* ==================== MAIN CONTENT ==================== */
 
 main {
