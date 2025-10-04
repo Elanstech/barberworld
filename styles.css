@@ -96,6 +96,7 @@ body.no-scroll {
 /* Search Trigger (Desktop) */
 .search-container {
     margin-right: 0.5rem;
+    display: flex;
 }
 
 .search-trigger {
@@ -626,14 +627,12 @@ body.no-scroll {
         padding: 0 1rem;
     }
 
-    .search-trigger span {
+    .search-container {
         display: none;
     }
 
     .search-trigger {
-        padding: 0.75rem;
-        width: 48px;
-        justify-content: center;
+        display: none;
     }
 
     .action-btn {
@@ -681,7 +680,11 @@ body.no-scroll {
     }
 
     .search-container {
-        margin-right: 0;
+        display: none;
+    }
+
+    .search-trigger {
+        display: none;
     }
 }
 
