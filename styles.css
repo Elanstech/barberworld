@@ -36,10 +36,6 @@ body.no-scroll {
 }
 
 /* ==========================================
-   MODERN HEADER REDESIGN
-   ========================================== */
-
-/* ==========================================
    MODERN HEADER
    ========================================== */
 
@@ -200,10 +196,16 @@ body.no-scroll {
     50% { transform: scale(1.1); }
 }
 
-/* Hamburger Menu Icon */
+/* Hamburger Menu Icon - Visible on Desktop and Mobile */
+.mobile-menu-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .hamburger {
     width: 22px;
-    height: 18px;
+    height: 16px;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -212,6 +214,7 @@ body.no-scroll {
 
 .hamburger span {
     display: block;
+    width: 100%;
     height: 2px;
     background: white;
     border-radius: 2px;
@@ -219,7 +222,7 @@ body.no-scroll {
 }
 
 .mobile-menu-active .hamburger span:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
+    transform: translateY(7px) rotate(45deg);
 }
 
 .mobile-menu-active .hamburger span:nth-child(2) {
@@ -227,7 +230,7 @@ body.no-scroll {
 }
 
 .mobile-menu-active .hamburger span:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================
