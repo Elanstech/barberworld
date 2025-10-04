@@ -48,6 +48,11 @@ function toggleSearch() {
     const searchInput = document.getElementById('smartSearchInput');
     const body = document.body;
     
+    if (!searchOverlay || !searchInput) {
+        console.error('Search overlay or input not found');
+        return;
+    }
+    
     if (searchOverlay.classList.contains('active')) {
         // Close search and restore scroll position
         const scrollY = body.style.top;
@@ -56,7 +61,9 @@ function toggleSearch() {
         body.style.position = '';
         body.style.top = '';
         body.style.width = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        body.style.left = '';
+        const scrollPosition = parseInt(scrollY || '0') * -1;
+        window.scrollTo(0, scrollPosition);
         searchInput.value = '';
         clearSearchInput();
     } else {
@@ -64,6 +71,7 @@ function toggleSearch() {
         const scrollY = window.scrollY;
         body.style.position = 'fixed';
         body.style.top = `-${scrollY}px`;
+        body.style.left = '0';
         body.style.width = '100%';
         searchOverlay.classList.add('active');
         body.classList.add('search-active');
@@ -284,6 +292,11 @@ function toggleMobileMenu() {
     const overlay = document.getElementById('mobileMenuOverlay');
     const body = document.body;
     
+    if (!overlay) {
+        console.error('Mobile menu overlay not found');
+        return;
+    }
+    
     if (overlay.classList.contains('active')) {
         // Close menu and restore scroll position
         const scrollY = body.style.top;
@@ -292,12 +305,15 @@ function toggleMobileMenu() {
         body.style.position = '';
         body.style.top = '';
         body.style.width = '';
-        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+        body.style.left = '';
+        const scrollPosition = parseInt(scrollY || '0') * -1;
+        window.scrollTo(0, scrollPosition);
     } else {
         // Open menu and save scroll position
         const scrollY = window.scrollY;
         body.style.position = 'fixed';
         body.style.top = `-${scrollY}px`;
+        body.style.left = '0';
         body.style.width = '100%';
         overlay.classList.add('active');
         body.classList.add('mobile-menu-active');
