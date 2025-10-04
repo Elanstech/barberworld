@@ -752,7 +752,7 @@ async function checkout() {
             quantity: item.quantity,
         }));
         
-        const response = await fetch('https://barber-world-stripe.vercel.app/create-checkout-session', {
+        const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -766,10 +766,12 @@ async function checkout() {
             throw new Error(data.message || 'Checkout failed');
         }
         
-        if (data.url) {
-            window.location.href = data.url;
-        } else {
-            throw new Error('No checkout URL received');
+        const result = await stripe.redirectToCheckout({
+            sessionId: data.id,
+        });
+        
+        if (result.error) {
+            throw new Error(result.error.message);
         }
         
     } catch (error) {
