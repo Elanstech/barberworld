@@ -642,11 +642,7 @@ body.no-scroll {
     .logo-section {
         padding: 0 1.5rem;
     }
-
-    .brand-logo {
-        height: 150px;
-    }
-
+    
     .header-right {
         padding: 0;
     }
@@ -669,11 +665,7 @@ body.no-scroll {
     .logo-section {
         padding: 0 1rem;
     }
-
-    .brand-logo {
-        height: 70px;
-    }
-
+    
     .action-btn {
         width: 42px;
         height: 42px;
