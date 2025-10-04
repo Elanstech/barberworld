@@ -39,6 +39,10 @@ body.no-scroll {
    MODERN HEADER
    ========================================== */
 
+/* ==========================================
+   MODERN HEADER
+   ========================================== */
+
 .modern-header {
     position: sticky;
     top: 0;
@@ -198,18 +202,19 @@ body.no-scroll {
 
 /* Hamburger Menu Icon - Visible on Desktop and Mobile */
 .mobile-menu-btn {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: center;
+    padding: 0;
 }
 
 .hamburger {
-    width: 22px;
-    height: 16px;
-    position: relative;
+    width: 20px;
+    height: 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
 .hamburger span {
@@ -222,7 +227,7 @@ body.no-scroll {
 }
 
 .mobile-menu-active .hamburger span:nth-child(1) {
-    transform: translateY(7px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
 }
 
 .mobile-menu-active .hamburger span:nth-child(2) {
@@ -230,7 +235,16 @@ body.no-scroll {
 }
 
 .mobile-menu-active .hamburger span:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg);
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Disable body scroll when menu is open */
+body.mobile-menu-active,
+body.search-active {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
 }
 
 /* ==========================================
@@ -610,7 +624,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   MOBILE MENU OVERLAY
+   MOBILE MENU OVERLAY - Works on Desktop & Mobile
    ========================================== */
 
 .mobile-menu-overlay {
@@ -637,7 +651,7 @@ body.no-scroll {
     right: 0;
     top: 0;
     bottom: 0;
-    width: 320px;
+    width: 380px;
     max-width: 85%;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
     box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
@@ -773,6 +787,16 @@ body.no-scroll {
     
     .mobile-only {
         display: block;
+    }
+}
+
+.mobile-menu-btn.mobile-only {
+    display: flex !important;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-panel {
+        width: 320px;
     }
 }
 
