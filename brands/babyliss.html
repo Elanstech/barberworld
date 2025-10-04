@@ -21,19 +21,122 @@
     <link rel="stylesheet" href="products.css">
 </head>
 <body data-brand="babyliss">
-    <!-- Header -->
-    <header class="header">
-        <div class="header-wrapper">
-            <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
-            
-            <div class="header-actions">
-                <button class="icon-btn" onclick="openSearch()" aria-label="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <button class="icon-btn" onclick="openCart()" aria-label="Shopping Cart">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-badge" id="cart-badge">0</span>
-                </button>
+   
+    <!-- MODERN REDESIGNED HEADER -->
+    <header class="modern-header">
+        <div class="header-container">
+            <!-- Left Side: Logo with Gradient Background -->
+            <div class="logo-section">
+                <img src="logofooter.png" alt="Barber World" class="brand-logo" onclick="window.location.href='index.html'">
+            </div>
+
+            <!-- Right Side: Actions -->
+            <div class="header-right">
+                <!-- Desktop Search -->
+                <div class="search-container desktop-only">
+                    <button class="search-trigger" onclick="toggleSearch()">
+                        <i class="fas fa-search"></i>
+                        <span>Search products...</span>
+                    </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="action-btn mobile-search-btn mobile-only" onclick="toggleMobileSearch()" aria-label="Search">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <button class="action-btn mobile-menu-btn mobile-only" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </button>
+                    <button class="action-btn cart-btn" onclick="openCart()" aria-label="Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-count" id="cart-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Smart Search Overlay -->
+        <div class="search-overlay" id="searchOverlay">
+            <div class="search-panel">
+                <div class="search-header">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input 
+                            type="text" 
+                            class="smart-search-input" 
+                            id="smartSearchInput"
+                            placeholder="Search clippers, trimmers, shavers..."
+                            autocomplete="off"
+                        >
+                        <button class="clear-search" onclick="clearSearch()" style="display: none;">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <button class="close-search" onclick="closeSearch()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="search-results" id="searchResults">
+                    <div class="search-placeholder">
+                        <i class="fas fa-search"></i>
+                        <p>Start typing to search products...</p>
+                        <div class="popular-searches">
+                            <span class="popular-tag" onclick="quickSearch('clippers')">Clippers</span>
+                            <span class="popular-tag" onclick="quickSearch('trimmers')">Trimmers</span>
+                            <span class="popular-tag" onclick="quickSearch('shavers')">Shavers</span>
+                            <span class="popular-tag" onclick="quickSearch('combo')">Combo Sets</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+            <div class="mobile-menu-panel">
+                <div class="mobile-menu-header">
+                    <h3>Menu</h3>
+                    <button class="close-mobile-menu" onclick="closeMobileMenu()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <nav class="mobile-nav">
+                    <a href="index.html" class="mobile-nav-link">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    <a href="brands/allproducts.html" class="mobile-nav-link">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>All Products</span>
+                    </a>
+                    <a href="brands/clippers.html" class="mobile-nav-link">
+                        <i class="fas fa-cut"></i>
+                        <span>Clippers</span>
+                    </a>
+                    <a href="brands/trimmers.html" class="mobile-nav-link">
+                        <i class="fas fa-scissors"></i>
+                        <span>Trimmers</span>
+                    </a>
+                    <a href="brands/shavers.html" class="mobile-nav-link">
+                        <i class="fas fa-star"></i>
+                        <span>Shavers</span>
+                    </a>
+                    <a href="brands/combos.html" class="mobile-nav-link">
+                        <i class="fas fa-box"></i>
+                        <span>Combo Sets</span>
+                    </a>
+                </nav>
+                <div class="mobile-menu-footer">
+                    <p>Need help? Contact us</p>
+                    <a href="mailto:barberworldnyc@gmail.com" class="contact-link">
+                        barberworldnyc@gmail.com
+                    </a>
+                </div>
             </div>
         </div>
     </header>
