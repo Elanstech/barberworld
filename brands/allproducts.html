@@ -3,26 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Products - Clippers, Trimmers, Shavers & Combo Sets | Barber World</title>
+    <title>All Products - Barber World</title>
+    <meta name="description" content="Shop all professional grooming equipment from top brands. High-quality clippers, trimmers, and professional tools.">
     
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     
+    <!-- Styles -->
     <link rel="stylesheet" href="products.css">
 </head>
-<body data-brand="all-products">
-    <!-- Enhanced Header -->
+<body data-brand="allproducts">
+    <!-- Header -->
     <header class="header">
         <div class="header-wrapper">
-            <img src="logo11.png" alt="Barber World" class="logo" onclick="window.location.href='index.html'">
+            <img src="../logofooter.png" alt="Barber World" class="logo" onclick="window.location.href='../index.html'">
             
             <div class="header-actions">
-                <button class="icon-btn mobile-filter-trigger" onclick="toggleMobileFilters()" aria-label="Open Filters">
-                    <i class="fas fa-sliders-h"></i>
-                </button>
                 <button class="icon-btn" onclick="openSearch()" aria-label="Search">
                     <i class="fas fa-search"></i>
                 </button>
@@ -39,187 +43,119 @@
         <!-- Hero Section -->
         <section class="products-hero">
             <div class="hero-content">
-                <button class="back-btn" onclick="window.location.href='index.html'">
+                <button class="back-btn" onclick="window.location.href='../index.html'">
                     <i class="fas fa-arrow-left"></i>
                     <span>Back to Home</span>
                 </button>
-                <h1 class="brand-title">All Professional Products</h1>
-                <p class="brand-subtitle">Explore Our Complete Collection of Clippers, Trimmers, Shavers & Combo Sets</p>
+                <h1 class="brand-title">All Products</h1>
+                <p class="brand-subtitle">Browse Our Complete Collection</p>
             </div>
         </section>
 
         <!-- Products Container -->
         <div class="products-container">
-            <!-- Desktop Filters Sidebar -->
-            <aside class="filters-sidebar desktop-only">
-                <!-- Search Filter -->
-                <div class="filter-section">
-                    <div class="filter-title">Search Products</div>
-                    <div class="search-filter">
+            <!-- Desktop Filters Section -->
+            <div class="filters-section desktop-only">
+                <!-- Search Bar -->
+                <div class="filter-group">
+                    <label class="filter-label">Search Products</label>
+                    <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" id="product-search-desktop" placeholder="Search..." oninput="filterProducts()">
+                        <input type="text" id="search-input" placeholder="Search by name or model..." oninput="filterBySearch(this.value)">
                     </div>
                 </div>
 
-                <!-- Category Filter -->
-                <div class="filter-section">
-                    <div class="filter-title">Category</div>
-                    <select class="filter-select" id="category-filter-desktop" onchange="filterProducts()">
-                        <option value="">All Categories</option>
-                        <option value="Clipper">Clippers</option>
-                        <option value="Trimmer">Trimmers</option>
-                        <option value="Shaver">Shavers</option>
-                        <option value="Combo">Combo Sets</option>
-                    </select>
+                <!-- Filter Pills Container -->
+                <div class="filters-pills-container">
+                    <!-- Category Pills -->
+                    <div class="filter-col">
+                        <label class="filter-label">Category</label>
+                        <div class="filter-pills">
+                            <div class="filter-pill" data-category="All" onclick="filterByCategory('All')">
+                                All
+                            </div>
+                            <div class="filter-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">
+                                Clippers
+                            </div>
+                            <div class="filter-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">
+                                Trimmers
+                            </div>
+                            <div class="filter-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">
+                                Shavers
+                            </div>
+                            <div class="filter-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">
+                                Combo Sets
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Price Range Buttons -->
+                    <div class="filter-col" style="max-width: 300px;">
+                        <label class="filter-label">Price Range</label>
+                        <div class="price-buttons">
+                            <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">
+                                Under $50
+                            </div>
+                            <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">
+                                $50 - $100
+                            </div>
+                            <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">
+                                $100 - $150
+                            </div>
+                            <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">
+                                $150+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Brand Filter -->
-                <div class="filter-section">
-                    <div class="filter-title">Brand</div>
-                    <select class="filter-select" id="brand-filter-desktop" onchange="filterProducts()">
-                        <option value="">All Brands</option>
-                    </select>
+                
+                <!-- Active Filters -->
+                <div class="active-filters" id="active-filters">
+                    <!-- Filter chips will appear here -->
                 </div>
+            </div>
 
-                <!-- Price Filter -->
-                <div class="filter-section">
-                    <div class="filter-title">Price Range</div>
-                    <select class="filter-select" id="price-filter-desktop" onchange="filterProducts()">
-                        <option value="">All Prices</option>
-                        <option value="0-100">Under $100</option>
-                        <option value="100-150">$100 - $150</option>
-                        <option value="150-200">$150 - $200</option>
-                        <option value="200-99999">Over $200</option>
-                    </select>
-                </div>
+            <!-- Mobile Filters Button -->
+            <button class="mobile-filters-btn mobile-only" onclick="openMobileFilters()">
+                <i class="fas fa-sliders-h"></i>
+                Filters & Sort
+            </button>
 
-                <!-- Sort Filter -->
-                <div class="filter-section">
-                    <div class="filter-title">Sort By</div>
-                    <select class="filter-select" id="sort-filter-desktop" onchange="filterProducts()">
-                        <option value="name-asc">Name (A-Z)</option>
-                        <option value="name-desc">Name (Z-A)</option>
-                        <option value="price-asc">Price (Low to High)</option>
-                        <option value="price-desc">Price (High to Low)</option>
-                        <option value="rating-desc">Highest Rated</option>
-                    </select>
-                </div>
+            <!-- Products Header -->
+            <div class="products-header">
+                <div class="products-count">Showing <strong>0</strong> of <strong>0</strong> products</div>
+            </div>
 
-                <!-- Clear Filters -->
-                <button class="clear-filters-btn" onclick="clearFilters()">
-                    <i class="fas fa-redo"></i>
-                    Clear All Filters
-                </button>
-            </aside>
-
-            <!-- Products Section -->
-            <section class="products-section">
-                <!-- Products Header -->
-                <div class="products-header">
-                    <div class="products-count" id="products-count">Loading products...</div>
-                    <button class="mobile-filter-btn mobile-only" onclick="toggleMobileFilters()">
-                        <i class="fas fa-sliders-h"></i>
-                        Filters
-                    </button>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="products-grid" id="products-grid">
-                    <!-- Products will be loaded here -->
-                </div>
-            </section>
+            <!-- Products Grid -->
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded here -->
+            </div>
         </div>
     </main>
 
-    <!-- Mobile Filters Drawer -->
-    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
-    <div class="mobile-filters-drawer" id="mobile-filters-drawer">
-        <div class="mobile-filters-header">
-            <h3>Filters</h3>
-            <button class="close-filters-btn" onclick="toggleMobileFilters()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-
-        <div class="mobile-filters-content">
-            <!-- Search Filter -->
-            <div class="filter-section">
-                <div class="filter-title">Search Products</div>
-                <div class="search-filter">
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-modal-content">
+            <div class="search-modal-header">
+                <div class="search-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="product-search-mobile" placeholder="Search..." oninput="filterProducts()">
+                    <input type="text" id="modal-search-input" placeholder="Search products..." autocomplete="off">
                 </div>
+                <button class="close-search" onclick="closeSearch()">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
-
-            <!-- Category Filter -->
-            <div class="filter-section">
-                <div class="filter-title">Category</div>
-                <select class="filter-select" id="category-filter-mobile" onchange="filterProducts()">
-                    <option value="">All Categories</option>
-                    <option value="Clipper">Clippers</option>
-                    <option value="Trimmer">Trimmers</option>
-                    <option value="Shaver">Shavers</option>
-                    <option value="Combo">Combo Sets</option>
-                </select>
-            </div>
-
-            <!-- Brand Filter -->
-            <div class="filter-section">
-                <div class="filter-title">Brand</div>
-                <select class="filter-select" id="brand-filter-mobile" onchange="filterProducts()">
-                    <option value="">All Brands</option>
-                </select>
-            </div>
-
-            <!-- Price Filter -->
-            <div class="filter-section">
-                <div class="filter-title">Price Range</div>
-                <select class="filter-select" id="price-filter-mobile" onchange="filterProducts()">
-                    <option value="">All Prices</option>
-                    <option value="0-100">Under $100</option>
-                    <option value="100-150">$100 - $150</option>
-                    <option value="150-200">$150 - $200</option>
-                    <option value="200-99999">Over $200</option>
-                </select>
-            </div>
-
-            <!-- Sort Filter -->
-            <div class="filter-section">
-                <div class="filter-title">Sort By</div>
-                <select class="filter-select" id="sort-filter-mobile" onchange="filterProducts()">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="rating-desc">Highest Rated</option>
-                </select>
-            </div>
-
-            <!-- Clear Filters -->
-            <button class="clear-filters-btn" onclick="clearFilters()">
-                <i class="fas fa-redo"></i>
-                Clear All Filters
-            </button>
-        </div>
-    </div>
-
-    <!-- Product Modal -->
-    <div class="product-modal" id="product-modal" onclick="closeProductModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body" id="modal-body">
-                <!-- Product details will be loaded here -->
+            <div class="search-results" id="search-results">
+                <!-- Search results will appear here -->
             </div>
         </div>
     </div>
 
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cart-sidebar">
+    <!-- Cart Panel -->
+    <div class="cart-panel" id="cart-panel">
         <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="close-cart-btn" onclick="closeCart()">
+            <h2>Shopping Cart</h2>
+            <button class="close-cart" onclick="closeCart()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
@@ -238,12 +174,75 @@
         </div>
     </div>
 
-    <!-- Cart Overlay -->
-    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <!-- Mobile Filters Modal -->
+    <div class="mobile-filters-modal" id="mobile-filters-modal">
+        <div class="mobile-filters-content">
+            <div class="mobile-filters-header">
+                <h3>Filters & Sort</h3>
+                <button class="close-filters" onclick="closeMobileFilters()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-filters-body">
+                <!-- Search -->
+                <div class="mobile-filter-group">
+                    <label>Search</label>
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="mobile-search-input" placeholder="Search products..." oninput="filterBySearch(this.value)">
+                    </div>
+                </div>
 
-    <!-- Notification Toast -->
-    <div class="notification" id="notification"></div>
+                <!-- Category -->
+                <div class="mobile-filter-group">
+                    <label>Category</label>
+                    <div class="filter-pills">
+                        <div class="filter-pill" data-category="All" onclick="filterByCategory('All')">All</div>
+                        <div class="filter-pill" data-category="Clipper" onclick="filterByCategory('Clipper')">Clippers</div>
+                        <div class="filter-pill" data-category="Trimmer" onclick="filterByCategory('Trimmer')">Trimmers</div>
+                        <div class="filter-pill" data-category="Shaver" onclick="filterByCategory('Shaver')">Shavers</div>
+                        <div class="filter-pill" data-category="Combo Set" onclick="filterByCategory('Combo Set')">Combo Sets</div>
+                    </div>
+                </div>
 
+                <!-- Price Range -->
+                <div class="mobile-filter-group">
+                    <label>Price Range</label>
+                    <div class="price-buttons">
+                        <div class="price-btn" data-price="0-50" onclick="filterByPrice('0-50')">Under $50</div>
+                        <div class="price-btn" data-price="50-100" onclick="filterByPrice('50-100')">$50 - $100</div>
+                        <div class="price-btn" data-price="100-150" onclick="filterByPrice('100-150')">$100 - $150</div>
+                        <div class="price-btn" data-price="150-999" onclick="filterByPrice('150-999')">$150+</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mobile-filters-footer">
+                <button class="clear-filters-btn" onclick="clearAllFilters()">Clear All</button>
+                <button class="apply-filters-btn" onclick="closeMobileFilters()">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="product-modal-content">
+            <button class="close-modal" onclick="closeProductModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="product-modal-body" id="product-modal-body">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Scripts -->
     <script src="products.js"></script>
 </body>
 </html>
