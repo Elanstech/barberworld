@@ -540,7 +540,7 @@ function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     if (menu) {
         menu.classList.toggle('active');
-        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : '';
+        document.body.classList.toggle('no-scroll');
     }
 }
 
@@ -597,6 +597,17 @@ function setupEventListeners() {
             }
         }
     });
+}
+
+// ==========================================
+// MOBILE MENU & HEADER FUNCTIONS
+// ==========================================
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+        menu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    }
 }
 
 // ==========================================
