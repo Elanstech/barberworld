@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaByliss Professional - Barber World</title>
+    <title>BaByliss Professional - Premium Grooming Equipment | Barber World</title>
+    <meta name="description" content="Shop premium BaByliss Professional grooming equipment. High-quality clippers, trimmers, shavers with UV technology.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,20 +17,23 @@
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     
-    <!-- Styles - ONLY products.css -->
+    <!-- Styles -->
     <link rel="stylesheet" href="products.css">
 </head>
 <body data-brand="babyliss">
     
-    <!-- HEADER (Same as index.html) -->
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notification-toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="notification-message">Item added to cart!</span>
+    </div>
+
+    <!-- HEADER -->
     <header class="modern-header">
         <div class="header-container">
-            <!-- Logo -->
             <div class="logo-section">
                 <img src="../logofooter.png" alt="Barber World" class="brand-logo" onclick="window.location.href='../index.html'">
             </div>
-
-            <!-- Header Actions -->
             <div class="header-right">
                 <div class="header-actions">
                     <button class="action-btn" onclick="openCart()" aria-label="Shopping Cart">
@@ -44,7 +48,7 @@
         </div>
     </header>
 
-    <!-- Mobile Menu (Same as index.html) -->
+    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-header">
             <span>Menu</span>
@@ -54,42 +58,33 @@
         </div>
         <nav class="mobile-nav">
             <a href="../index.html" class="mobile-nav-link">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
+                <i class="fas fa-home"></i><span>Home</span>
             </a>
             <a href="../about.html" class="mobile-nav-link">
-                <i class="fas fa-info-circle"></i>
-                <span>About</span>
+                <i class="fas fa-info-circle"></i><span>About</span>
             </a>
             <div class="mobile-nav-section">
                 <div class="mobile-nav-title">Shop by Brand</div>
                 <a href="ourbrand.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i>
-                    <span>Our Brand</span>
+                    <i class="fas fa-star"></i><span>Our Brand</span>
                 </a>
                 <a href="babyliss.html" class="mobile-nav-link">
-                    <i class="fas fa-cut"></i>
-                    <span>BaBylissPRO</span>
+                    <i class="fas fa-cut"></i><span>BaBylissPRO</span>
                 </a>
                 <a href="stylecraft.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i>
-                    <span>StyleCraft Gamma</span>
+                    <i class="fas fa-star"></i><span>StyleCraft Gamma</span>
                 </a>
                 <a href="jrl.html" class="mobile-nav-link">
-                    <i class="fas fa-crown"></i>
-                    <span>JRL</span>
+                    <i class="fas fa-crown"></i><span>JRL</span>
                 </a>
                 <a href="wahl.html" class="mobile-nav-link">
-                    <i class="fas fa-trophy"></i>
-                    <span>Wahl</span>
+                    <i class="fas fa-trophy"></i><span>Wahl</span>
                 </a>
                 <a href="wmark.html" class="mobile-nav-link">
-                    <i class="fas fa-gem"></i>
-                    <span>W-Mark</span>
+                    <i class="fas fa-gem"></i><span>W-Mark</span>
                 </a>
                 <a href="allproducts.html" class="mobile-nav-link">
-                    <i class="fas fa-th"></i>
-                    <span>All Products</span>
+                    <i class="fas fa-th"></i><span>All Products</span>
                 </a>
             </div>
         </nav>
@@ -105,7 +100,7 @@
             <i class="fas fa-sliders-h"></i>
             <span>Filters</span>
         </button>
-        <div class="active-filter-count" id="active-filter-count" style="display: none;">
+        <div class="active-filter-count" id="active-filter-count">
             <span id="filter-count-number">0</span>
         </div>
     </div>
@@ -113,25 +108,23 @@
     <!-- Main Container -->
     <div class="products-page">
         
-        <!-- Desktop Filter Sidebar -->
-        <aside class="filter-sidebar desktop-only" id="filter-sidebar">
+        <!-- Desktop Filter Sidebar (HIDDEN ON MOBILE) -->
+        <aside class="filter-sidebar desktop-only">
             <div class="filter-header">
                 <h3>Filters</h3>
-                <button class="clear-all-btn" onclick="clearAllFilters()" id="clear-all-btn" style="display: none;">
+                <button class="clear-all-btn" onclick="clearAllFilters()" id="clear-all-btn">
                     Clear All
                 </button>
             </div>
 
-            <!-- Search -->
             <div class="filter-group">
-                <label class="filter-label">Search Products</label>
+                <label class="filter-label">Search</label>
                 <div class="search-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="desktop-search" placeholder="Search..." oninput="handleSearch(this.value)">
+                    <input type="text" class="filter-search-input" id="desktop-search" placeholder="Search products..." oninput="handleSearch(this.value)">
                 </div>
             </div>
 
-            <!-- Category Filter -->
             <div class="filter-group">
                 <label class="filter-label">Category</label>
                 <div class="filter-options">
@@ -151,14 +144,9 @@
                         <input type="radio" name="category" value="Shaver" onchange="handleCategoryFilter(this.value)">
                         <span>Shavers</span>
                     </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Combo Set" onchange="handleCategoryFilter(this.value)">
-                        <span>Combo Sets</span>
-                    </label>
                 </div>
             </div>
 
-            <!-- Price Filter -->
             <div class="filter-group">
                 <label class="filter-label">Price Range</label>
                 <div class="filter-options">
@@ -185,42 +173,35 @@
                 </div>
             </div>
 
-            <!-- Sort -->
             <div class="filter-group">
                 <label class="filter-label">Sort By</label>
-                <select class="filter-select" id="sort-select" onchange="handleSort(this.value)">
+                <select class="filter-select" onchange="handleSort(this.value)">
                     <option value="name-asc">Name (A-Z)</option>
                     <option value="name-desc">Name (Z-A)</option>
                     <option value="price-asc">Price (Low to High)</option>
                     <option value="price-desc">Price (High to Low)</option>
+                    <option value="rating">Highest Rated</option>
                 </select>
             </div>
         </aside>
 
         <!-- Products Section -->
         <main class="products-section">
-            
-            <!-- Products Header -->
             <div class="products-header">
                 <h1 class="brand-title" id="brand-title">BaByliss Professional</h1>
-                <p class="products-count" id="products-count">
+                <p class="products-count">
                     Showing <strong id="showing-count">0</strong> of <strong id="total-count">0</strong> products
                 </p>
             </div>
 
-            <!-- Products Grid (2 columns on mobile) -->
             <div class="products-grid" id="products-grid">
-                <div class="loading-state">
-                    <div class="spinner"></div>
-                    <p>Loading products...</p>
-                </div>
+                <!-- Loading animation -->
             </div>
 
-            <!-- Empty State -->
-            <div class="empty-state" id="empty-state" style="display: none;">
+            <div class="empty-state" id="empty-state">
                 <i class="fas fa-search"></i>
                 <h3>No products found</h3>
-                <p>Try adjusting your filters or search term</p>
+                <p>Try adjusting your filters</p>
                 <button class="reset-btn" onclick="clearAllFilters()">Reset Filters</button>
             </div>
         </main>
@@ -236,22 +217,20 @@
         </div>
         
         <div class="filter-panel-body">
-            <!-- Search -->
             <div class="filter-group">
                 <label class="filter-label">Search</label>
                 <div class="search-input-wrapper">
                     <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="mobile-search" placeholder="Search products..." oninput="handleSearch(this.value)">
+                    <input type="text" class="filter-search-input" id="mobile-search" placeholder="Search..." oninput="handleSearch(this.value)">
                 </div>
             </div>
 
-            <!-- Category -->
             <div class="filter-group">
                 <label class="filter-label">Category</label>
                 <div class="filter-options">
                     <label class="filter-option">
                         <input type="radio" name="mobile-category" value="all" checked onchange="handleCategoryFilter(this.value)">
-                        <span>All Products</span>
+                        <span>All</span>
                     </label>
                     <label class="filter-option">
                         <input type="radio" name="mobile-category" value="Clipper" onchange="handleCategoryFilter(this.value)">
@@ -265,20 +244,15 @@
                         <input type="radio" name="mobile-category" value="Shaver" onchange="handleCategoryFilter(this.value)">
                         <span>Shavers</span>
                     </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Combo Set" onchange="handleCategoryFilter(this.value)">
-                        <span>Combo Sets</span>
-                    </label>
                 </div>
             </div>
 
-            <!-- Price -->
             <div class="filter-group">
-                <label class="filter-label">Price Range</label>
+                <label class="filter-label">Price</label>
                 <div class="filter-options">
                     <label class="filter-option">
                         <input type="radio" name="mobile-price" value="all" checked onchange="handlePriceFilter(this.value)">
-                        <span>All Prices</span>
+                        <span>All</span>
                     </label>
                     <label class="filter-option">
                         <input type="radio" name="mobile-price" value="0-50" onchange="handlePriceFilter(this.value)">
@@ -286,11 +260,11 @@
                     </label>
                     <label class="filter-option">
                         <input type="radio" name="mobile-price" value="50-100" onchange="handlePriceFilter(this.value)">
-                        <span>$50 - $100</span>
+                        <span>$50-$100</span>
                     </label>
                     <label class="filter-option">
                         <input type="radio" name="mobile-price" value="100-150" onchange="handlePriceFilter(this.value)">
-                        <span>$100 - $150</span>
+                        <span>$100-$150</span>
                     </label>
                     <label class="filter-option">
                         <input type="radio" name="mobile-price" value="150-999" onchange="handlePriceFilter(this.value)">
@@ -299,27 +273,26 @@
                 </div>
             </div>
 
-            <!-- Sort -->
             <div class="filter-group">
-                <label class="filter-label">Sort By</label>
+                <label class="filter-label">Sort</label>
                 <select class="filter-select" onchange="handleSort(this.value)">
                     <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
+                    <option value="price-asc">Price (Low-High)</option>
+                    <option value="price-desc">Price (High-Low)</option>
+                    <option value="rating">Highest Rated</option>
                 </select>
             </div>
         </div>
 
         <div class="filter-panel-footer">
-            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear All</button>
+            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear</button>
             <button class="apply-filters-btn" onclick="toggleFilters()">
-                Show Products (<span id="filtered-count">0</span>)
+                Show (<span id="filtered-count">0</span>)
             </button>
         </div>
     </div>
 
-    <!-- Product Detail Modal -->
+    <!-- Product Modal -->
     <div class="product-modal" id="product-modal">
         <div class="modal-overlay" onclick="closeProductModal()"></div>
         <div class="modal-container">
@@ -327,7 +300,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-content" id="modal-content">
-                <!-- Product details loaded by JS -->
+                <!-- Loaded by JS -->
             </div>
         </div>
     </div>
@@ -341,9 +314,9 @@
             </button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Cart items loaded by JS -->
+            <!-- Loaded by JS -->
         </div>
-        <div class="cart-footer">
+        <div class="cart-footer" id="cart-footer">
             <div class="cart-total">
                 <span>Total:</span>
                 <span class="total-price" id="cart-total">$0.00</span>
@@ -355,7 +328,6 @@
         </div>
     </div>
 
-    <!-- Scripts - ONLY products.js -->
     <script src="products.js"></script>
 </body>
 </html>
