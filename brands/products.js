@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
 async function loadProducts() {
     try {
         showLoading();
-        const response = await fetch(`json/${currentBrand}-products.json`);
+        const response = await fetch(`../json/${currentBrand}-products.json`);
         if (!response.ok) throw new Error('Failed to load products');
         
         allProducts = await response.json();
