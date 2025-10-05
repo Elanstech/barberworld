@@ -90,7 +90,7 @@ body {
 }
 
 .logo {
-    height: 100px;
+    height: 150px;
     cursor: pointer;
     transition: transform var(--transition);
 }
