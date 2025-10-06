@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JRL Professional - Ultra Premium Grooming | Barber World</title>
-    <meta name="description" content="Shop JRL Professional ultra-premium grooming equipment. Luxury clippers and trimmers with advanced technology.">
+    <title>JRL Professional - Premium Grooming Equipment | Barber World</title>
+    <meta name="description" content="Shop premium JRL professional grooming equipment. Ultra-premium clippers, trimmers, and tools with exceptional craftsmanship.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,256 +19,6 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="products.css">
-    
-    <style>
-        /* JRL Ultra Luxury Styling */
-        .jrl-hero {
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #2d2416 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .jrl-hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
-            pointer-events: none;
-        }
-        
-        .diamond-particles {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .diamond {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(45deg, transparent 25%, rgba(212, 175, 55, 0.8) 50%, transparent 75%);
-            transform: rotate(45deg);
-            animation: diamondFloat 15s infinite ease-in-out;
-            opacity: 0.6;
-        }
-        
-        .diamond:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; animation-duration: 12s; }
-        .diamond:nth-child(2) { top: 35%; left: 60%; animation-delay: 2s; animation-duration: 14s; }
-        .diamond:nth-child(3) { top: 55%; left: 30%; animation-delay: 4s; animation-duration: 16s; }
-        .diamond:nth-child(4) { top: 75%; left: 70%; animation-delay: 1s; animation-duration: 13s; }
-        .diamond:nth-child(5) { top: 25%; left: 85%; animation-delay: 3s; animation-duration: 15s; }
-        .diamond:nth-child(6) { top: 65%; left: 15%; animation-delay: 5s; animation-duration: 11s; }
-        
-        @keyframes diamondFloat {
-            0%, 100% {
-                transform: rotate(45deg) translateY(0) scale(1);
-                opacity: 0.6;
-            }
-            25% {
-                transform: rotate(135deg) translateY(-40px) scale(1.3);
-                opacity: 0.9;
-            }
-            50% {
-                transform: rotate(225deg) translateY(-20px) scale(0.8);
-                opacity: 0.4;
-            }
-            75% {
-                transform: rotate(315deg) translateY(-50px) scale(1.1);
-                opacity: 0.7;
-            }
-        }
-        
-        .luxury-grid {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-        
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-        
-        .jrl-badge {
-            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
-            border: 3px solid var(--gold);
-            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .jrl-badge::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
-            animation: luxuryShine 4s linear infinite;
-        }
-        
-        @keyframes luxuryShine {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        .jrl-title {
-            font-size: 6rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 0%, #D4AF37 50%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 0 80px rgba(212, 175, 55, 0.5);
-            letter-spacing: 8px;
-            position: relative;
-            animation: titleGlow 4s ease-in-out infinite;
-        }
-        
-        @keyframes titleGlow {
-            0%, 100% {
-                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
-            }
-            50% {
-                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
-            }
-        }
-        
-        .professional-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, var(--gold), #c19b2b);
-            color: #0a0a0a;
-            padding: 0.6rem 1.8rem;
-            border-radius: 50px;
-            font-size: 0.3em;
-            font-weight: 900;
-            letter-spacing: 3px;
-            margin-left: 1.5rem;
-            vertical-align: middle;
-            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.6);
-            animation: professionalPulse 3s ease-in-out infinite;
-            position: relative;
-        }
-        
-        @keyframes professionalPulse {
-            0%, 100% {
-                transform: scale(1);
-                box-shadow: 0 8px 32px rgba(212, 175, 55, 0.6);
-            }
-            50% {
-                transform: scale(1.05);
-                box-shadow: 0 12px 48px rgba(212, 175, 55, 0.9);
-            }
-        }
-        
-        .crown-icon {
-            position: absolute;
-            top: -30px;
-            right: -15px;
-            font-size: 1.8rem;
-            color: var(--gold);
-            animation: crownFloat 3s ease-in-out infinite;
-        }
-        
-        @keyframes crownFloat {
-            0%, 100% { transform: translateY(0) rotate(-10deg); }
-            50% { transform: translateY(-10px) rotate(10deg); }
-        }
-        
-        .luxury-product-card {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(40px);
-            border: 3px solid rgba(212, 175, 55, 0.3);
-            box-shadow: 
-                0 30px 60px rgba(0, 0, 0, 0.5),
-                inset 0 0 40px rgba(212, 175, 55, 0.1);
-            position: relative;
-        }
-        
-        .luxury-product-card::before {
-            content: '';
-            position: absolute;
-            top: -3px;
-            left: -3px;
-            right: -3px;
-            bottom: -3px;
-            background: linear-gradient(45deg, 
-                var(--gold) 0%, 
-                transparent 20%, 
-                transparent 80%, 
-                var(--gold) 100%);
-            border-radius: 30px;
-            opacity: 0.5;
-            animation: borderGlow 4s linear infinite;
-        }
-        
-        @keyframes borderGlow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.7; }
-        }
-        
-        .luxury-product-card .card-glow {
-            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.4), transparent 70%);
-            filter: blur(40px);
-        }
-        
-        .excellence-badge {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid var(--gold);
-            padding: 1rem 1.5rem;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .excellence-badge i {
-            color: var(--gold);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-        
-        .excellence-badge span {
-            color: var(--white);
-            font-size: 0.875rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .premium-stats .stat-number {
-            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFD700 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            position: relative;
-        }
-        
-        .premium-stats .stat-number::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        }
-    </style>
 </head>
 <body data-brand="jrl">
     
@@ -318,53 +68,44 @@
                 <a href="babyliss.html" class="mobile-nav-link">
                     <i class="fas fa-star"></i><span>BaByliss PRO</span>
                 </a>
+                <a href="wahl.html" class="mobile-nav-link">
+                    <i class="fas fa-bolt"></i><span>Wahl</span>
+                </a>
                 <a href="stylecraft.html" class="mobile-nav-link">
                     <i class="fas fa-gem"></i><span>StyleCraft Gamma+</span>
                 </a>
                 <a href="jrl.html" class="mobile-nav-link active">
-                    <i class="fas fa-crown"></i><span>JRL Professional</span>
-                </a>
-                <a href="wahl.html" class="mobile-nav-link">
-                    <i class="fas fa-bolt"></i><span>Wahl</span>
+                    <i class="fas fa-crown"></i><span>JRL</span>
                 </a>
             </div>
         </nav>
     </div>
 
-    <!-- JRL ULTRA LUXURY HERO -->
-    <div class="luxury-hero jrl-hero">
-        <div class="luxury-grid"></div>
-        
-        <div class="diamond-particles">
-            <div class="diamond"></div>
-            <div class="diamond"></div>
-            <div class="diamond"></div>
-            <div class="diamond"></div>
-            <div class="diamond"></div>
-            <div class="diamond"></div>
+    <!-- LUXURY HERO SECTION -->
+    <div class="luxury-hero">
+        <div class="hero-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-        
-        <div class="hero-gradient-orb orb-1" style="background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);"></div>
-        <div class="hero-gradient-orb orb-2" style="background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);"></div>
-        <div class="hero-gradient-orb orb-3" style="background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent);"></div>
+        <div class="hero-gradient-orb orb-1"></div>
+        <div class="hero-gradient-orb orb-2"></div>
+        <div class="hero-gradient-orb orb-3"></div>
         
         <div class="hero-content-wrapper">
             <div class="hero-text-section">
-                <div class="hero-badge-luxury jrl-badge">
+                <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
                     Ultra Premium Collection
                 </div>
-                <h1 class="jrl-title">
-                    JRL
-                    <span class="professional-badge">
-                        PROFESSIONAL
-                        <i class="fas fa-crown crown-icon"></i>
-                    </span>
+                <h1 class="hero-title-luxury">
+                    <span class="brand-name">JRL</span>
+                    <span class="pro-badge">PROFESSIONAL</span>
                 </h1>
-                <p class="hero-subtitle-luxury" style="color: rgba(255, 255, 255, 0.9); font-size: 1.35rem; font-weight: 500;">
-                    Uncompromising excellence in every detail
-                </p>
-                <div class="hero-stats premium-stats">
+                <p class="hero-subtitle-luxury">Uncompromising excellence in every detail</p>
+                <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number" id="product-count-hero">0</div>
                         <div class="stat-label">Luxury Tools</div>
@@ -383,11 +124,17 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="hero-visual-section">
+                <div class="floating-product-card">
+                    <div class="card-glow"></div>
+                    <img src="https://jrlprofessional.com/cdn/shop/files/jrl-onyx-black-main.jpg?v=1685123456&width=1400" alt="Featured Product" class="floating-product-img">
+                </div>
+            </div>
         </div>
-     </div>
- </div>
+    </div>
 
-    <!-- Rest of the page uses same structure -->
+    <!-- ACTIVE FILTERS BAR -->
     <div class="active-filters-bar" id="active-filters-bar" style="display: none;">
         <div class="container">
             <div class="active-filters-content">
@@ -400,8 +147,13 @@
         </div>
     </div>
 
+    <!-- Main Container -->
     <div class="premium-container">
+        
+        <!-- Products Wrapper -->
         <div class="products-wrapper">
+            
+            <!-- PREMIUM SIDEBAR FILTERS -->
             <aside class="premium-sidebar" id="premium-sidebar">
                 <div class="sidebar-sticky">
                     <div class="filters-header-premium">
@@ -414,6 +166,7 @@
                         </div>
                     </div>
 
+                    <!-- Search -->
                     <div class="filter-section">
                         <div class="filter-section-header">
                             <i class="fas fa-search"></i>
@@ -425,43 +178,45 @@
                         </div>
                     </div>
 
+                    <!-- Category Filters -->
                     <div class="filter-section">
                         <div class="filter-section-header">
-                            <i class="fas fa-layer-group"></i>
+                            <i class="fas fa-th-large"></i>
                             <span>Category</span>
                         </div>
                         <div class="filter-options-premium">
                             <label class="filter-chip">
                                 <input type="radio" name="category" value="all" checked onchange="applyFilters()">
-                                <span class="chip-content">
+                                <div class="chip-content">
                                     <span class="chip-text">All Products</span>
                                     <span class="chip-count" id="count-all">0</span>
-                                </span>
+                                </div>
                             </label>
                             <label class="filter-chip">
                                 <input type="radio" name="category" value="Clipper" onchange="applyFilters()">
-                                <span class="chip-content">
+                                <div class="chip-content">
                                     <span class="chip-text">Clippers</span>
                                     <span class="chip-count" id="count-clipper">0</span>
-                                </span>
+                                </div>
                             </label>
                             <label class="filter-chip">
                                 <input type="radio" name="category" value="Trimmer" onchange="applyFilters()">
-                                <span class="chip-content">
+                                <div class="chip-content">
                                     <span class="chip-text">Trimmers</span>
                                     <span class="chip-count" id="count-trimmer">0</span>
-                                </span>
+                                </div>
                             </label>
                             <label class="filter-chip">
                                 <input type="radio" name="category" value="Shaver" onchange="applyFilters()">
-                                <span class="chip-content">
+                                <div class="chip-content">
                                     <span class="chip-text">Shavers</span>
                                     <span class="chip-count" id="count-shaver">0</span>
-                                </span>
+                                </div>
                             </label>
                         </div>
                     </div>
 
+                    <!-- Price Range -->
                     <div class="filter-section">
                         <div class="filter-section-header">
                             <i class="fas fa-dollar-sign"></i>
@@ -480,6 +235,7 @@
                         </div>
                     </div>
 
+                    <!-- Quick Filters -->
                     <div class="filter-section">
                         <div class="filter-section-header">
                             <i class="fas fa-bolt"></i>
@@ -501,6 +257,7 @@
                         </div>
                     </div>
 
+                    <!-- Reset Button -->
                     <button class="reset-filters-btn" onclick="clearAllFilters()">
                         <i class="fas fa-redo"></i>
                         Reset All Filters
@@ -508,13 +265,17 @@
                 </div>
             </aside>
 
+            <!-- PRODUCTS MAIN -->
             <main class="products-main-premium">
+                
+                <!-- Mobile Filter Toggle -->
                 <button class="mobile-filter-toggle-premium" onclick="toggleMobileFilters()">
                     <i class="fas fa-sliders-h"></i>
                     <span>Filters & Sort</span>
                     <span class="filter-count" id="mobile-filter-count">0</span>
                 </button>
 
+                <!-- Products Controls -->
                 <div class="products-controls">
                     <div class="results-info">
                         <h2 class="collection-title">Our Collection</h2>
@@ -543,8 +304,12 @@
                     </div>
                 </div>
 
-                <div class="products-grid-premium" id="products-grid" data-view="grid"></div>
+                <!-- Products Grid -->
+                <div class="products-grid-premium" id="products-grid" data-view="grid">
+                    <!-- Products will be loaded here -->
+                </div>
 
+                <!-- No Results -->
                 <div class="no-results-premium" id="no-results" style="display: none;">
                     <div class="no-results-icon">
                         <i class="fas fa-search"></i>
@@ -556,39 +321,27 @@
                         Reset Filters
                     </button>
                 </div>
+
             </main>
+
         </div>
     </div>
 
-    <div class="luxury-modal" id="product-modal" onclick="closeProductModal(event)">
-        <div class="modal-backdrop"></div>
-        <div class="luxury-modal-content" onclick="event.stopPropagation()">
-            <button class="luxury-modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-body-luxury" id="modal-body"></div>
-        </div>
-    </div>
-
+    <!-- MOBILE FILTERS -->
     <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
     <div class="mobile-filters-panel-premium" id="mobile-filters-panel">
         <div class="mobile-filters-header-premium">
             <div>
-                <h3>Filters & Sort</h3>
-                <p>Refine your search</p>
+                <h3>Filters & Sorting</h3>
+                <p>Customize your view</p>
             </div>
-            <button onclick="toggleMobileFilters()"><i class="fas fa-times"></i></button>
+            <button onclick="toggleMobileFilters()">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
+        
         <div class="mobile-filters-content-premium">
-            <div class="mobile-filter-group">
-                <label>Category</label>
-                <div class="mobile-filter-pills">
-                    <button class="mobile-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
-                    <button class="mobile-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
-                    <button class="mobile-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
-                    <button class="mobile-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
-                </div>
-            </div>
+            <!-- Sort -->
             <div class="mobile-filter-group">
                 <label>Sort By</label>
                 <select class="mobile-select" id="mobile-sort-select" onchange="mobileSort()">
@@ -599,13 +352,40 @@
                     <option value="rating">Highest Rated</option>
                 </select>
             </div>
+            
+            <!-- Categories -->
+            <div class="mobile-filter-group">
+                <label>Category</label>
+                <div class="mobile-filter-pills">
+                    <button class="mobile-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
+                    <button class="mobile-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
+                    <button class="mobile-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
+                    <button class="mobile-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
+                </div>
+            </div>
         </div>
+        
         <div class="mobile-filters-footer-premium">
             <button class="mobile-btn-clear" onclick="clearAllFilters()">Clear All</button>
             <button class="mobile-btn-apply" onclick="toggleMobileFilters()">Apply Filters</button>
         </div>
     </div>
 
+    <!-- PRODUCT MODAL -->
+    <div class="luxury-modal" id="product-modal" onclick="closeProductModal(event)">
+        <div class="modal-backdrop"></div>
+        <div class="luxury-modal-content">
+            <button class="luxury-modal-close" onclick="closeProductModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body-luxury" id="modal-body">
+                <!-- Product details loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- PREMIUM CART PANEL -->
+    <div class="cart-overlay-premium" id="cart-overlay" onclick="closeCart()"></div>
     <div class="premium-cart-panel" id="cart-panel">
         <div class="cart-header-premium">
             <div>
@@ -616,15 +396,17 @@
                 <i class="fas fa-times"></i>
             </button>
         </div>
+        
         <div class="cart-items-premium" id="cart-items">
             <div class="cart-empty-premium">
                 <div class="empty-cart-icon">
                     <i class="fas fa-shopping-bag"></i>
                 </div>
                 <p>Your cart is empty</p>
-                <span>Start adding some products!</span>
+                <span>Start adding some premium products!</span>
             </div>
         </div>
+        
         <div class="cart-footer-premium" id="cart-footer" style="display: none;">
             <div class="cart-summary">
                 <div class="summary-row">
@@ -642,8 +424,8 @@
             </button>
         </div>
     </div>
-    <div class="cart-overlay-premium" id="cart-overlay" onclick="closeCart()"></div>
 
+    <!-- Scripts -->
     <script src="products.js"></script>
 </body>
 </html>
