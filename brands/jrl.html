@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> JRL - Premium Grooming Equipment | Barber World</title>
-    <meta name="description" content="Shop premium BaByliss Professional grooming equipment. High-quality clippers, trimmers, shavers with UV technology.">
+    <title>JRL Professional - Ultra Premium Grooming | Barber World</title>
+    <meta name="description" content="Shop JRL Professional ultra-premium grooming equipment. Luxury clippers and trimmers with advanced technology.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,256 @@
     
     <!-- Styles -->
     <link rel="stylesheet" href="products.css">
+    
+    <style>
+        /* JRL Ultra Luxury Styling */
+        .jrl-hero {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 40%, #2d2416 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jrl-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(212, 175, 55, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .diamond-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .diamond {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: linear-gradient(45deg, transparent 25%, rgba(212, 175, 55, 0.8) 50%, transparent 75%);
+            transform: rotate(45deg);
+            animation: diamondFloat 15s infinite ease-in-out;
+            opacity: 0.6;
+        }
+        
+        .diamond:nth-child(1) { top: 15%; left: 20%; animation-delay: 0s; animation-duration: 12s; }
+        .diamond:nth-child(2) { top: 35%; left: 60%; animation-delay: 2s; animation-duration: 14s; }
+        .diamond:nth-child(3) { top: 55%; left: 30%; animation-delay: 4s; animation-duration: 16s; }
+        .diamond:nth-child(4) { top: 75%; left: 70%; animation-delay: 1s; animation-duration: 13s; }
+        .diamond:nth-child(5) { top: 25%; left: 85%; animation-delay: 3s; animation-duration: 15s; }
+        .diamond:nth-child(6) { top: 65%; left: 15%; animation-delay: 5s; animation-duration: 11s; }
+        
+        @keyframes diamondFloat {
+            0%, 100% {
+                transform: rotate(45deg) translateY(0) scale(1);
+                opacity: 0.6;
+            }
+            25% {
+                transform: rotate(135deg) translateY(-40px) scale(1.3);
+                opacity: 0.9;
+            }
+            50% {
+                transform: rotate(225deg) translateY(-20px) scale(0.8);
+                opacity: 0.4;
+            }
+            75% {
+                transform: rotate(315deg) translateY(-50px) scale(1.1);
+                opacity: 0.7;
+            }
+        }
+        
+        .luxury-grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
+        }
+        
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .jrl-badge {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.05));
+            border: 3px solid var(--gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .jrl-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: luxuryShine 4s linear infinite;
+        }
+        
+        @keyframes luxuryShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .jrl-title {
+            font-size: 6rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 0%, #D4AF37 50%, #ffffff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 80px rgba(212, 175, 55, 0.5);
+            letter-spacing: 8px;
+            position: relative;
+            animation: titleGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% {
+                filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.4));
+            }
+            50% {
+                filter: drop-shadow(0 0 40px rgba(212, 175, 55, 0.8));
+            }
+        }
+        
+        .professional-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #c19b2b);
+            color: #0a0a0a;
+            padding: 0.6rem 1.8rem;
+            border-radius: 50px;
+            font-size: 0.3em;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin-left: 1.5rem;
+            vertical-align: middle;
+            box-shadow: 0 8px 32px rgba(212, 175, 55, 0.6);
+            animation: professionalPulse 3s ease-in-out infinite;
+            position: relative;
+        }
+        
+        @keyframes professionalPulse {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 8px 32px rgba(212, 175, 55, 0.6);
+            }
+            50% {
+                transform: scale(1.05);
+                box-shadow: 0 12px 48px rgba(212, 175, 55, 0.9);
+            }
+        }
+        
+        .crown-icon {
+            position: absolute;
+            top: -30px;
+            right: -15px;
+            font-size: 1.8rem;
+            color: var(--gold);
+            animation: crownFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes crownFloat {
+            0%, 100% { transform: translateY(0) rotate(-10deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+        }
+        
+        .luxury-product-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(40px);
+            border: 3px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                inset 0 0 40px rgba(212, 175, 55, 0.1);
+            position: relative;
+        }
+        
+        .luxury-product-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, 
+                var(--gold) 0%, 
+                transparent 20%, 
+                transparent 80%, 
+                var(--gold) 100%);
+            border-radius: 30px;
+            opacity: 0.5;
+            animation: borderGlow 4s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        .luxury-product-card .card-glow {
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.4), transparent 70%);
+            filter: blur(40px);
+        }
+        
+        .excellence-badge {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: rgba(0, 0, 0, 0.8);
+            border: 2px solid var(--gold);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .excellence-badge i {
+            color: var(--gold);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .excellence-badge span {
+            color: var(--white);
+            font-size: 0.875rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .premium-stats .stat-number {
+            background: linear-gradient(135deg, #FFD700 0%, #D4AF37 50%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+        }
+        
+        .premium-stats .stat-number::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+    </style>
 </head>
 <body data-brand="jrl">
     
@@ -65,268 +315,343 @@
             </a>
             <div class="mobile-nav-section">
                 <div class="mobile-nav-title">Shop by Brand</div>
-                <a href="ourbrand.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i><span>Our Brand</span>
-                </a>
                 <a href="babyliss.html" class="mobile-nav-link">
-                    <i class="fas fa-cut"></i><span>BaBylissPRO</span>
+                    <i class="fas fa-star"></i><span>BaByliss PRO</span>
                 </a>
                 <a href="stylecraft.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i><span>StyleCraft Gamma</span>
+                    <i class="fas fa-gem"></i><span>StyleCraft Gamma+</span>
                 </a>
-                <a href="jrl.html" class="mobile-nav-link">
-                    <i class="fas fa-crown"></i><span>JRL</span>
+                <a href="jrl.html" class="mobile-nav-link active">
+                    <i class="fas fa-crown"></i><span>JRL Professional</span>
                 </a>
                 <a href="wahl.html" class="mobile-nav-link">
-                    <i class="fas fa-trophy"></i><span>Wahl</span>
-                </a>
-                <a href="wmark.html" class="mobile-nav-link">
-                    <i class="fas fa-gem"></i><span>W-Mark</span>
-                </a>
-                <a href="allproducts.html" class="mobile-nav-link">
-                    <i class="fas fa-th"></i><span>All Products</span>
+                    <i class="fas fa-bolt"></i><span>Wahl</span>
                 </a>
             </div>
         </nav>
-        <div class="mobile-menu-footer">
-            <p>Need help?</p>
-            <a href="mailto:barberworldnyc@gmail.com">barberworldnyc@gmail.com</a>
-        </div>
     </div>
 
-    <!-- Mobile Filter Toggle -->
-    <div class="mobile-filter-bar">
-        <button class="filter-toggle-btn" onclick="toggleFilters()">
-            <i class="fas fa-sliders-h"></i>
-            <span>Filters</span>
-        </button>
-        <div class="active-filter-count" id="active-filter-count">
-            <span id="filter-count-number">0</span>
-        </div>
-    </div>
-
-    <!-- Main Container -->
-    <div class="products-page">
+    <!-- JRL ULTRA LUXURY HERO -->
+    <div class="luxury-hero jrl-hero">
+        <div class="luxury-grid"></div>
         
-        <!-- Desktop Filter Sidebar (HIDDEN ON MOBILE) -->
-        <aside class="filter-sidebar desktop-only">
-            <div class="filter-header">
-                <h3>Filters</h3>
-                <button class="clear-all-btn" onclick="clearAllFilters()" id="clear-all-btn">
-                    Clear All
+        <div class="diamond-particles">
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+            <div class="diamond"></div>
+        </div>
+        
+        <div class="hero-gradient-orb orb-1" style="background: radial-gradient(circle, rgba(212, 175, 55, 0.3), transparent);"></div>
+        <div class="hero-gradient-orb orb-2" style="background: radial-gradient(circle, rgba(255, 215, 0, 0.2), transparent);"></div>
+        <div class="hero-gradient-orb orb-3" style="background: radial-gradient(circle, rgba(212, 175, 55, 0.25), transparent);"></div>
+        
+        <div class="hero-content-wrapper">
+            <div class="hero-text-section">
+                <div class="hero-badge-luxury jrl-badge">
+                    <span class="badge-shimmer"></span>
+                    Ultra Premium Collection
+                </div>
+                <h1 class="jrl-title">
+                    JRL
+                    <span class="professional-badge">
+                        PROFESSIONAL
+                        <i class="fas fa-crown crown-icon"></i>
+                    </span>
+                </h1>
+                <p class="hero-subtitle-luxury" style="color: rgba(255, 255, 255, 0.9); font-size: 1.35rem; font-weight: 500;">
+                    Uncompromising excellence in every detail
+                </p>
+                <div class="hero-stats premium-stats">
+                    <div class="stat-item">
+                        <div class="stat-number" id="product-count-hero">0</div>
+                        <div class="stat-label">Luxury Tools</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div class="stat-label">Award Winning</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number">5.0★</div>
+                        <div class="stat-label">Perfect Score</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual-section">
+                <div class="floating-product-card luxury-product-card">
+                    <div class="card-glow"></div>
+                    <div class="excellence-badge">
+                        <i class="fas fa-certificate"></i>
+                        <span>Premium Quality</span>
+                    </div>
+                    <img src="https://cdn11.bigcommerce.com/s-1g6d4klqty/images/stencil/1280x1280/products/378/1607/jrl-2020t__79164.1655924166.jpg?c=1" alt="JRL Premium Product" class="floating-product-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rest of the page uses same structure -->
+    <div class="active-filters-bar" id="active-filters-bar" style="display: none;">
+        <div class="container">
+            <div class="active-filters-content">
+                <span class="filters-label">Active Filters:</span>
+                <div class="active-filter-tags" id="active-filter-tags"></div>
+                <button class="clear-all-filters-btn" onclick="clearAllFilters()">
+                    <i class="fas fa-times"></i> Clear All
                 </button>
             </div>
+        </div>
+    </div>
 
-            <div class="filter-group">
-                <label class="filter-label">Search</label>
-                <div class="search-input-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="desktop-search" placeholder="Search products..." oninput="handleSearch(this.value)">
+    <div class="premium-container">
+        <div class="products-wrapper">
+            <aside class="premium-sidebar" id="premium-sidebar">
+                <div class="sidebar-sticky">
+                    <div class="filters-header-premium">
+                        <div class="filter-icon-wrapper">
+                            <i class="fas fa-sliders-h"></i>
+                        </div>
+                        <div>
+                            <h3>Filters</h3>
+                            <p class="filter-subtitle">Refine your search</p>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <i class="fas fa-search"></i>
+                            <span>Search</span>
+                        </div>
+                        <div class="search-wrapper">
+                            <input type="text" id="search-input" class="search-input-premium" placeholder="Search products..." oninput="applyFilters()">
+                            <i class="fas fa-search search-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <i class="fas fa-layer-group"></i>
+                            <span>Category</span>
+                        </div>
+                        <div class="filter-options-premium">
+                            <label class="filter-chip">
+                                <input type="radio" name="category" value="all" checked onchange="applyFilters()">
+                                <span class="chip-content">
+                                    <span class="chip-text">All Products</span>
+                                    <span class="chip-count" id="count-all">0</span>
+                                </span>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="category" value="Clipper" onchange="applyFilters()">
+                                <span class="chip-content">
+                                    <span class="chip-text">Clippers</span>
+                                    <span class="chip-count" id="count-clipper">0</span>
+                                </span>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="category" value="Trimmer" onchange="applyFilters()">
+                                <span class="chip-content">
+                                    <span class="chip-text">Trimmers</span>
+                                    <span class="chip-count" id="count-trimmer">0</span>
+                                </span>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="category" value="Shaver" onchange="applyFilters()">
+                                <span class="chip-content">
+                                    <span class="chip-text">Shavers</span>
+                                    <span class="chip-count" id="count-shaver">0</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <i class="fas fa-dollar-sign"></i>
+                            <span>Price Range</span>
+                        </div>
+                        <div class="price-range-container">
+                            <div class="price-display">
+                                <span id="min-price-display">$0</span>
+                                <span id="max-price-display">$500</span>
+                            </div>
+                            <input type="range" id="price-range" min="0" max="500" value="500" class="price-slider" oninput="updatePriceRange()">
+                            <div class="price-labels">
+                                <span>$0</span>
+                                <span>$500+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="filter-section">
+                        <div class="filter-section-header">
+                            <i class="fas fa-bolt"></i>
+                            <span>Quick Filters</span>
+                        </div>
+                        <div class="quick-filters">
+                            <button class="quick-filter-btn" onclick="quickFilter('inStock')">
+                                <i class="fas fa-check-circle"></i>
+                                In Stock Only
+                            </button>
+                            <button class="quick-filter-btn" onclick="quickFilter('topRated')">
+                                <i class="fas fa-star"></i>
+                                Top Rated
+                            </button>
+                            <button class="quick-filter-btn" onclick="quickFilter('newArrivals')">
+                                <i class="fas fa-sparkles"></i>
+                                New Arrivals
+                            </button>
+                        </div>
+                    </div>
+
+                    <button class="reset-filters-btn" onclick="clearAllFilters()">
+                        <i class="fas fa-redo"></i>
+                        Reset All Filters
+                    </button>
+                </div>
+            </aside>
+
+            <main class="products-main-premium">
+                <button class="mobile-filter-toggle-premium" onclick="toggleMobileFilters()">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Filters & Sort</span>
+                    <span class="filter-count" id="mobile-filter-count">0</span>
+                </button>
+
+                <div class="products-controls">
+                    <div class="results-info">
+                        <h2 class="collection-title">Our Collection</h2>
+                        <p class="products-count-display" id="products-count">Loading...</p>
+                    </div>
+                    
+                    <div class="controls-right">
+                        <div class="view-toggle">
+                            <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list" onclick="changeView('list')">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="sort-dropdown">
+                            <select id="sort-select" class="sort-select-premium" onchange="applyFilters()">
+                                <option value="name-asc">Name (A-Z)</option>
+                                <option value="name-desc">Name (Z-A)</option>
+                                <option value="price-asc">Price: Low to High</option>
+                                <option value="price-desc">Price: High to Low</option>
+                                <option value="rating">Highest Rated</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products-grid-premium" id="products-grid" data-view="grid"></div>
+
+                <div class="no-results-premium" id="no-results" style="display: none;">
+                    <div class="no-results-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>No products found</h3>
+                    <p>Try adjusting your filters or search terms</p>
+                    <button class="btn-reset-premium" onclick="clearAllFilters()">
+                        <i class="fas fa-redo"></i>
+                        Reset Filters
+                    </button>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <div class="luxury-modal" id="product-modal" onclick="closeProductModal(event)">
+        <div class="modal-backdrop"></div>
+        <div class="luxury-modal-content" onclick="event.stopPropagation()">
+            <button class="luxury-modal-close" onclick="closeProductModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body-luxury" id="modal-body"></div>
+        </div>
+    </div>
+
+    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
+    <div class="mobile-filters-panel-premium" id="mobile-filters-panel">
+        <div class="mobile-filters-header-premium">
+            <div>
+                <h3>Filters & Sort</h3>
+                <p>Refine your search</p>
+            </div>
+            <button onclick="toggleMobileFilters()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-filters-content-premium">
+            <div class="mobile-filter-group">
+                <label>Category</label>
+                <div class="mobile-filter-pills">
+                    <button class="mobile-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
+                    <button class="mobile-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
+                    <button class="mobile-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
+                    <button class="mobile-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
                 </div>
             </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Category</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="all" checked onchange="handleCategoryFilter(this.value)">
-                        <span>All Products</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Clipper" onchange="handleCategoryFilter(this.value)">
-                        <span>Clippers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Trimmer" onchange="handleCategoryFilter(this.value)">
-                        <span>Trimmers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Shaver" onchange="handleCategoryFilter(this.value)">
-                        <span>Shavers</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Price Range</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="all" checked onchange="handlePriceFilter(this.value)">
-                        <span>All Prices</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="0-50" onchange="handlePriceFilter(this.value)">
-                        <span>Under $50</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="50-100" onchange="handlePriceFilter(this.value)">
-                        <span>$50 - $100</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="100-150" onchange="handlePriceFilter(this.value)">
-                        <span>$100 - $150</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="150-999" onchange="handlePriceFilter(this.value)">
-                        <span>$150+</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Sort By</label>
-                <select class="filter-select" onchange="handleSort(this.value)">
+            <div class="mobile-filter-group">
+                <label>Sort By</label>
+                <select class="mobile-select" id="mobile-sort-select" onchange="mobileSort()">
                     <option value="name-asc">Name (A-Z)</option>
                     <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
-            </div>
-        </aside>
-
-        <!-- Products Section -->
-        <main class="products-section">
-            <div class="products-header">
-                <h1 class="brand-title" id="brand-title">BaByliss Professional</h1>
-                <p class="products-count">
-                    Showing <strong id="showing-count">0</strong> of <strong id="total-count">0</strong> products
-                </p>
-            </div>
-
-            <div class="products-grid" id="products-grid">
-                <!-- Loading animation -->
-            </div>
-
-            <div class="empty-state" id="empty-state">
-                <i class="fas fa-search"></i>
-                <h3>No products found</h3>
-                <p>Try adjusting your filters</p>
-                <button class="reset-btn" onclick="clearAllFilters()">Reset Filters</button>
-            </div>
-        </main>
-    </div>
-
-    <!-- Mobile Filter Panel -->
-    <div class="mobile-filter-panel" id="mobile-filter-panel">
-        <div class="filter-panel-header">
-            <h3>Filters</h3>
-            <button class="close-filter-panel" onclick="toggleFilters()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="filter-panel-body">
-            <div class="filter-group">
-                <label class="filter-label">Search</label>
-                <div class="search-input-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="mobile-search" placeholder="Search..." oninput="handleSearch(this.value)">
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Category</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="all" checked onchange="handleCategoryFilter(this.value)">
-                        <span>All</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Clipper" onchange="handleCategoryFilter(this.value)">
-                        <span>Clippers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Trimmer" onchange="handleCategoryFilter(this.value)">
-                        <span>Trimmers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Shaver" onchange="handleCategoryFilter(this.value)">
-                        <span>Shavers</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Price</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="all" checked onchange="handlePriceFilter(this.value)">
-                        <span>All</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="0-50" onchange="handlePriceFilter(this.value)">
-                        <span>Under $50</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="50-100" onchange="handlePriceFilter(this.value)">
-                        <span>$50-$100</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="100-150" onchange="handlePriceFilter(this.value)">
-                        <span>$100-$150</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="150-999" onchange="handlePriceFilter(this.value)">
-                        <span>$150+</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Sort</label>
-                <select class="filter-select" onchange="handleSort(this.value)">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="price-asc">Price (Low-High)</option>
-                    <option value="price-desc">Price (High-Low)</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
                     <option value="rating">Highest Rated</option>
                 </select>
             </div>
         </div>
-
-        <div class="filter-panel-footer">
-            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear</button>
-            <button class="apply-filters-btn" onclick="toggleFilters()">
-                Show (<span id="filtered-count">0</span>)
-            </button>
+        <div class="mobile-filters-footer-premium">
+            <button class="mobile-btn-clear" onclick="clearAllFilters()">Clear All</button>
+            <button class="mobile-btn-apply" onclick="toggleMobileFilters()">Apply Filters</button>
         </div>
     </div>
 
-    <!-- Product Modal -->
-    <div class="product-modal" id="product-modal">
-        <div class="modal-overlay" onclick="closeProductModal()"></div>
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeProductModal()">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-content" id="modal-content">
-                <!-- Loaded by JS -->
+    <div class="premium-cart-panel" id="cart-panel">
+        <div class="cart-header-premium">
+            <div>
+                <h3>Shopping Cart</h3>
+                <p class="cart-subtitle" id="cart-subtitle">0 items</p>
             </div>
-        </div>
-    </div>
-
-    <!-- Cart Panel -->
-    <div class="cart-panel" id="cart-panel">
-        <div class="cart-header">
-            <h3>Shopping Cart</h3>
-            <button class="close-cart" onclick="closeCart()">
+            <button class="cart-close-premium" onclick="closeCart()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
-        <div class="cart-items" id="cart-items">
-            <!-- Loaded by JS -->
-        </div>
-        <div class="cart-footer" id="cart-footer">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span class="total-price" id="cart-total">$0.00</span>
+        <div class="cart-items-premium" id="cart-items">
+            <div class="cart-empty-premium">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <p>Your cart is empty</p>
+                <span>Start adding some products!</span>
             </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">
+        </div>
+        <div class="cart-footer-premium" id="cart-footer" style="display: none;">
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <button class="btn-checkout-premium" onclick="proceedToCheckout()">
                 <i class="fas fa-lock"></i>
-                Proceed to Checkout
+                <span>Secure Checkout</span>
             </button>
         </div>
     </div>
+    <div class="cart-overlay-premium" id="cart-overlay" onclick="closeCart()"></div>
 
     <script src="products.js"></script>
 </body>
