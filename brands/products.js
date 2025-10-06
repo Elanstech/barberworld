@@ -1,6 +1,6 @@
 /* ==========================================
-   PREMIUM SHOPPING EXPERIENCE ENGINE
-   Production-Ready, Smooth, Professional
+   LUXURY PREMIUM SHOPPING EXPERIENCE ENGINE
+   Advanced Features, Smart Filtering, Smooth Animations
    ========================================== */
 
 // Stripe Configuration
@@ -14,9 +14,11 @@ let cart = [];
 let currentFilters = {
     search: '',
     category: 'all',
-    price: 'all',
-    sort: 'name-asc'
+    priceMax: 500,
+    sort: 'name-asc',
+    quickFilter: null
 };
+let currentView = 'grid';
 
 // ==========================================
 // INITIALIZATION
@@ -28,21 +30,58 @@ document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
     initializeEventListeners();
-    console.log('🎯 Premium Shopping Experience Loaded!');
+    initializeScrollEffects();
+    console.log('✨ Luxury Shopping Experience Loaded!');
 });
 
 function initializeEventListeners() {
-    // Close mobile menu when clicking outside
+    // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
         const mobileMenu = document.getElementById('mobile-menu');
         const menuBtn = document.querySelector('.action-btn.mobile-only');
         
         if (mobileMenu && mobileMenu.classList.contains('active')) {
-            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+            if (!mobileMenu.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
                 toggleMobileMenu();
             }
         }
     });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProductModal();
+            closeCart();
+            const mobileFilters = document.getElementById('mobile-filters-panel');
+            if (mobileFilters && mobileFilters.classList.contains('active')) {
+                toggleMobileFilters();
+            }
+        }
+    });
+}
+
+function initializeScrollEffects() {
+    // Smooth scroll animations for product cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+    
+    // Observe product cards when they're added
+    setTimeout(() => {
+        document.querySelectorAll('.product-card-premium').forEach(card => {
+            observer.observe(card);
+        });
+    }, 500);
 }
 
 // ==========================================
@@ -55,9 +94,10 @@ async function loadProducts(brand) {
         const countEl = document.getElementById('products-count');
         
         grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem;">
-                <div style="width: 60px; height: 60px; border: 4px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 1rem; animation: spin 1s linear infinite;"></div>
-                <p style="color: var(--gray-600); font-weight: 600;">Loading premium products...</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
+                <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
             </div>
         `;
         
@@ -69,18 +109,23 @@ async function loadProducts(brand) {
         allProducts = await response.json();
         filteredProducts = [...allProducts];
         
+        updateProductCounts();
+        updateHeroStats();
         applyFilters();
         
-        console.log(`✅ Loaded ${allProducts.length} products`);
+        console.log(`✅ Loaded ${allProducts.length} premium products`);
         
     } catch (error) {
         console.error('❌ Error loading products:', error);
         const grid = document.getElementById('products-grid');
         grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem; color: var(--gray-600);">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold); margin-bottom: 1rem;"></i>
-                <h3>Oops! Unable to load products</h3>
-                <p style="margin-top: 0.5rem;">Please refresh the page or try again later.</p>
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
+                </div>
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
+                <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
+                <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
             </div>
         `;
     }
@@ -94,14 +139,15 @@ function applyFilters() {
     // Get filter values
     const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
     const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
-    const priceValue = document.querySelector('input[name="price"]:checked')?.value || 'all';
+    const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
     const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
     
     currentFilters = {
         search: searchValue,
         category: categoryValue,
-        price: priceValue,
-        sort: sortValue
+        priceMax: priceValue,
+        sort: sortValue,
+        quickFilter: currentFilters.quickFilter
     };
     
     // Apply filters
@@ -117,11 +163,16 @@ function applyFilters() {
         }
         
         // Price filter
-        if (priceValue !== 'all') {
-            const [min, max] = priceValue.split('-').map(Number);
-            if (product.price < min || product.price > max) {
-                return false;
-            }
+        if (product.price > priceValue) {
+            return false;
+        }
+        
+        // Quick filters
+        if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
+            return false;
+        }
+        if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
+            return false;
         }
         
         return true;
@@ -145,7 +196,78 @@ function applyFilters() {
         }
     });
     
+    updateActiveFilters();
     renderProducts();
+    updateProductCounts();
+}
+
+function updateActiveFilters() {
+    const activeFiltersBar = document.getElementById('active-filters-bar');
+    const activeFilterTags = document.getElementById('active-filter-tags');
+    
+    if (!activeFiltersBar || !activeFilterTags) return;
+    
+    const tags = [];
+    
+    if (currentFilters.search) {
+        tags.push({ type: 'search', label: `Search: "${currentFilters.search}"` });
+    }
+    
+    if (currentFilters.category !== 'all') {
+        tags.push({ type: 'category', label: `Category: ${currentFilters.category}` });
+    }
+    
+    if (currentFilters.priceMax < 500) {
+        tags.push({ type: 'price', label: `Under $${currentFilters.priceMax}` });
+    }
+    
+    if (currentFilters.quickFilter) {
+        const labels = {
+            inStock: 'In Stock Only',
+            topRated: 'Top Rated',
+            newArrivals: 'New Arrivals'
+        };
+        tags.push({ type: 'quick', label: labels[currentFilters.quickFilter] });
+    }
+    
+    if (tags.length > 0) {
+        activeFiltersBar.style.display = 'block';
+        activeFilterTags.innerHTML = tags.map(tag => `
+            <div class="filter-tag">
+                ${escapeHtml(tag.label)}
+                <button onclick="removeFilter('${tag.type}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `).join('');
+    } else {
+        activeFiltersBar.style.display = 'none';
+    }
+}
+
+function removeFilter(type) {
+    switch (type) {
+        case 'search':
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.value = '';
+            break;
+        case 'category':
+            const allCategoryRadio = document.querySelector('input[name="category"][value="all"]');
+            if (allCategoryRadio) allCategoryRadio.checked = true;
+            break;
+        case 'price':
+            const priceRange = document.getElementById('price-range');
+            if (priceRange) priceRange.value = 500;
+            updatePriceRange();
+            break;
+        case 'quick':
+            currentFilters.quickFilter = null;
+            document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            break;
+    }
+    applyFilters();
 }
 
 function clearAllFilters() {
@@ -158,20 +280,94 @@ function clearAllFilters() {
     if (allCategoryRadio) allCategoryRadio.checked = true;
     
     // Reset price
-    const allPriceRadio = document.querySelector('input[name="price"][value="all"]');
-    if (allPriceRadio) allPriceRadio.checked = true;
+    const priceRange = document.getElementById('price-range');
+    if (priceRange) {
+        priceRange.value = 500;
+        updatePriceRange();
+    }
     
     // Reset sort
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) sortSelect.value = 'name-asc';
     
+    // Reset quick filters
+    currentFilters.quickFilter = null;
+    document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
     // Reset mobile filters
-    document.querySelectorAll('.filter-pill').forEach(pill => {
+    document.querySelectorAll('.mobile-pill').forEach(pill => {
         pill.classList.remove('active');
-        if (pill.dataset.category === 'all' || pill.dataset.price === 'all') {
+        if (pill.dataset.category === 'all') {
             pill.classList.add('active');
         }
     });
+    
+    applyFilters();
+}
+
+function updateProductCounts() {
+    if (allProducts.length === 0) return;
+    
+    // Count by category
+    const counts = {
+        all: allProducts.length,
+        Clipper: allProducts.filter(p => p.category === 'Clipper').length,
+        Trimmer: allProducts.filter(p => p.category === 'Trimmer').length,
+        Shaver: allProducts.filter(p => p.category === 'Shaver').length
+    };
+    
+    // Update count badges
+    Object.keys(counts).forEach(key => {
+        const badge = document.getElementById(`count-${key.toLowerCase()}`);
+        if (badge) badge.textContent = counts[key];
+    });
+}
+
+function updateHeroStats() {
+    const heroCount = document.getElementById('product-count-hero');
+    if (heroCount) {
+        heroCount.textContent = allProducts.length;
+    }
+}
+
+function updatePriceRange() {
+    const slider = document.getElementById('price-range');
+    const minDisplay = document.getElementById('min-price-display');
+    const maxDisplay = document.getElementById('max-price-display');
+    
+    if (!slider) return;
+    
+    const value = parseInt(slider.value);
+    
+    if (minDisplay) minDisplay.textContent = '$0';
+    if (maxDisplay) maxDisplay.textContent = value >= 500 ? '$500+' : `$${value}`;
+    
+    // Update slider gradient
+    const percentage = (value / 500) * 100;
+    slider.style.setProperty('--slider-value', `${percentage}%`);
+    
+    applyFilters();
+}
+
+function quickFilter(type) {
+    // Toggle quick filter
+    if (currentFilters.quickFilter === type) {
+        currentFilters.quickFilter = null;
+    } else {
+        currentFilters.quickFilter = type;
+    }
+    
+    // Update button states
+    document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    if (currentFilters.quickFilter) {
+        const activeBtn = document.querySelector(`.quick-filter-btn[onclick="quickFilter('${type}')"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
     
     applyFilters();
 }
@@ -185,46 +381,62 @@ function renderProducts() {
     const noResults = document.getElementById('no-results');
     const countEl = document.getElementById('products-count');
     
+    if (!grid) return;
+    
     if (filteredProducts.length === 0) {
         grid.style.display = 'none';
-        noResults.style.display = 'block';
+        if (noResults) noResults.style.display = 'block';
         if (countEl) countEl.textContent = 'No products found';
         return;
     }
     
     grid.style.display = 'grid';
-    noResults.style.display = 'none';
+    if (noResults) noResults.style.display = 'none';
     
     if (countEl) {
-        countEl.innerHTML = `Showing <strong>${filteredProducts.length}</strong> ${filteredProducts.length === 1 ? 'product' : 'products'}`;
+        countEl.innerHTML = `Showing <strong>${filteredProducts.length}</strong> of <strong>${allProducts.length}</strong> products`;
     }
     
-    grid.innerHTML = filteredProducts.map(product => `
-        <div class="product-card" onclick="openProductModal(${product.id})">
-            <div class="product-image-wrapper">
+    grid.innerHTML = filteredProducts.map((product, index) => `
+        <div class="product-card-premium" onclick="openProductModal(${product.id})" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image-container">
                 ${product.inStock !== false ? 
-                    '<div class="product-stock-badge">In Stock</div>' : 
-                    '<div class="product-stock-badge out-of-stock">Out of Stock</div>'
+                    '<div class="product-stock-badge-premium">In Stock</div>' : 
+                    '<div class="product-stock-badge-premium out-of-stock">Out of Stock</div>'
                 }
-                <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="product-image" loading="lazy">
-                <button class="product-quick-add" onclick="event.stopPropagation(); addToCart(${product.id});">
-                    <i class="fas fa-plus"></i>
-                </button>
+                <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="product-image-premium" loading="lazy">
+                <div class="product-actions-overlay">
+                    <button class="action-btn-premium" onclick="event.stopPropagation(); openProductModal(${product.id});" title="Quick View">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});" title="Add to Cart">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
-            <div class="product-info">
-                <h3 class="product-name">${escapeHtml(product.name)}</h3>
+            <div class="product-info-premium">
+                ${product.category ? `<div class="product-category-badge">${escapeHtml(product.category)}</div>` : ''}
+                <h3 class="product-name-premium">${escapeHtml(product.name)}</h3>
                 ${product.rating ? `
-                    <div class="product-rating">
-                        <div class="stars">
+                    <div class="product-rating-premium">
+                        <div class="stars-premium">
                             ${generateStars(product.rating)}
                         </div>
-                        ${product.reviewCount ? `<span class="review-count">(${product.reviewCount})</span>` : ''}
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount})</span>` : ''}
                     </div>
                 ` : ''}
-                <div class="product-price">$${product.price.toFixed(2)}</div>
+                <div class="product-footer">
+                    <div class="product-price-premium">$${product.price.toFixed(2)}</div>
+                    <button class="add-to-cart-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
+                </div>
             </div>
         </div>
     `).join('');
+    
+    // Re-initialize scroll effects for new products
+    initializeScrollEffects();
 }
 
 function generateStars(rating) {
@@ -234,15 +446,32 @@ function generateStars(rating) {
     
     for (let i = 0; i < 5; i++) {
         if (i < fullStars) {
-            starsHTML += '<i class="fas fa-star star"></i>';
+            starsHTML += '<i class="fas fa-star star-premium"></i>';
         } else if (i === fullStars && hasHalfStar) {
-            starsHTML += '<i class="fas fa-star-half-alt star"></i>';
+            starsHTML += '<i class="fas fa-star-half-alt star-premium"></i>';
         } else {
-            starsHTML += '<i class="far fa-star star empty"></i>';
+            starsHTML += '<i class="far fa-star star-premium empty"></i>';
         }
     }
     
     return starsHTML;
+}
+
+function changeView(view) {
+    currentView = view;
+    const grid = document.getElementById('products-grid');
+    const viewBtns = document.querySelectorAll('.view-btn');
+    
+    if (grid) {
+        grid.setAttribute('data-view', view);
+    }
+    
+    viewBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.view === view) {
+            btn.classList.add('active');
+        }
+    });
 }
 
 // ==========================================
@@ -256,57 +485,61 @@ function openProductModal(productId) {
     const modal = document.getElementById('product-modal');
     const modalBody = document.getElementById('modal-body');
     
+    if (!modal || !modalBody) return;
+    
     const images = product.images && product.images.length > 0 ? 
         [product.image, ...product.images] : [product.image];
     
     modalBody.innerHTML = `
-        <div class="modal-grid">
-            <div class="modal-images">
-                <img id="modal-main-image" src="${escapeHtml(images[0])}" alt="${escapeHtml(product.name)}" class="modal-main-image">
+        <div class="modal-grid-luxury">
+            <div class="modal-images-luxury">
+                <div class="modal-main-image-container">
+                    <img id="modal-main-image" src="${escapeHtml(images[0])}" alt="${escapeHtml(product.name)}" class="modal-main-image-luxury">
+                </div>
                 ${images.length > 1 ? `
-                    <div class="modal-thumbnails">
+                    <div class="modal-thumbnails-luxury">
                         ${images.map((img, idx) => `
                             <img src="${escapeHtml(img)}" 
                                  alt="${escapeHtml(product.name)}" 
-                                 class="modal-thumbnail ${idx === 0 ? 'active' : ''}" 
+                                 class="modal-thumbnail-luxury ${idx === 0 ? 'active' : ''}" 
                                  onclick="changeModalImage('${escapeHtml(img)}', this)">
                         `).join('')}
                     </div>
                 ` : ''}
             </div>
             
-            <div class="modal-details">
+            <div class="modal-details-luxury">
                 <h2>${escapeHtml(product.name)}</h2>
                 
                 ${product.rating ? `
-                    <div class="product-rating" style="margin-bottom: 1rem;">
-                        <div class="stars">
+                    <div class="product-rating-premium" style="margin-bottom: 1.5rem;">
+                        <div class="stars-premium">
                             ${generateStars(product.rating)}
                         </div>
-                        ${product.reviewCount ? `<span class="review-count">(${product.reviewCount} reviews)</span>` : ''}
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount} reviews)</span>` : ''}
                     </div>
                 ` : ''}
                 
-                <div class="modal-price">$${product.price.toFixed(2)}</div>
+                <div class="modal-price-luxury">$${product.price.toFixed(2)}</div>
                 
                 ${product.inStock !== false ? 
-                    '<div class="modal-stock"><i class="fas fa-check-circle"></i> In Stock</div>' : 
-                    '<div class="modal-stock" style="background: rgba(220, 53, 69, 0.1); color: #dc3545;"><i class="fas fa-times-circle"></i> Out of Stock</div>'
+                    '<div class="modal-stock-luxury"><i class="fas fa-check-circle"></i> In Stock & Ready to Ship</div>' : 
+                    '<div class="modal-stock-luxury" style="background: rgba(220, 53, 69, 0.1); color: #dc3545; border-color: #dc3545;"><i class="fas fa-times-circle"></i> Currently Out of Stock</div>'
                 }
                 
                 ${product.shortDescription ? `
-                    <p style="color: var(--gray-600); margin-bottom: 2rem; line-height: 1.8;">${escapeHtml(product.shortDescription)}</p>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem; line-height: 1.9; font-size: 1.05rem;">${escapeHtml(product.shortDescription)}</p>
                 ` : ''}
                 
                 ${product.description ? `
-                    <div class="modal-description">
+                    <div class="modal-description-luxury">
                         ${escapeHtml(product.description)}
                     </div>
                 ` : ''}
                 
                 ${product.features && product.features.length > 0 ? `
-                    <div class="modal-features">
-                        <h4>Key Features</h4>
+                    <div class="modal-features-luxury">
+                        <h4><i class="fas fa-sparkles" style="color: var(--gold); margin-right: 0.5rem;"></i>Key Features</h4>
                         <ul>
                             ${product.features.map(feature => `
                                 <li>
@@ -319,22 +552,22 @@ function openProductModal(productId) {
                 ` : ''}
                 
                 ${product.specifications ? `
-                    <div class="modal-specs">
-                        <h4>Specifications</h4>
-                        <div class="specs-grid">
+                    <div class="modal-specs-luxury">
+                        <h4><i class="fas fa-cog" style="color: var(--gold); margin-right: 0.5rem;"></i>Specifications</h4>
+                        <div class="specs-grid-luxury">
                             ${Object.entries(product.specifications).map(([key, value]) => `
-                                <div class="spec-item">
-                                    <div class="spec-label">${escapeHtml(key)}</div>
-                                    <div class="spec-value">${escapeHtml(String(value))}</div>
+                                <div class="spec-item-luxury">
+                                    <div class="spec-label-luxury">${escapeHtml(key)}</div>
+                                    <div class="spec-value-luxury">${escapeHtml(String(value))}</div>
                                 </div>
                             `).join('')}
                         </div>
                     </div>
                 ` : ''}
                 
-                <button class="modal-add-to-cart" onclick="addToCart(${product.id}); closeProductModal();">
+                <button class="modal-add-to-cart-luxury" onclick="addToCart(${product.id}); closeProductModal();">
                     <i class="fas fa-shopping-bag"></i>
-                    Add to Cart - $${product.price.toFixed(2)}
+                    <span>Add to Cart - $${product.price.toFixed(2)}</span>
                 </button>
             </div>
         </div>
@@ -345,24 +578,29 @@ function openProductModal(productId) {
 }
 
 function closeProductModal(event) {
-    if (event && event.target.id !== 'product-modal') return;
+    if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('luxury-modal-close')) return;
     
     const modal = document.getElementById('product-modal');
-    modal.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
 }
 
 function changeModalImage(imageSrc, thumbnail) {
     const mainImage = document.getElementById('modal-main-image');
     if (mainImage) {
         mainImage.style.opacity = '0';
+        mainImage.style.transform = 'scale(0.95)';
+        
         setTimeout(() => {
             mainImage.src = imageSrc;
             mainImage.style.opacity = '1';
-        }, 150);
+            mainImage.style.transform = 'scale(1)';
+        }, 200);
     }
     
-    document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
+    document.querySelectorAll('.modal-thumbnail-luxury').forEach(thumb => {
         thumb.classList.remove('active');
     });
     thumbnail.classList.add('active');
@@ -375,6 +613,8 @@ function changeModalImage(imageSrc, thumbnail) {
 function toggleMobileFilters() {
     const overlay = document.getElementById('mobile-filters-overlay');
     const panel = document.getElementById('mobile-filters-panel');
+    
+    if (!overlay || !panel) return;
     
     if (panel.classList.contains('active')) {
         panel.classList.remove('active');
@@ -389,7 +629,7 @@ function toggleMobileFilters() {
 
 function selectMobileCategory(button, category) {
     // Update visual state
-    document.querySelectorAll('.filter-pill[data-category]').forEach(pill => {
+    document.querySelectorAll('.mobile-pill[data-category]').forEach(pill => {
         pill.classList.remove('active');
     });
     button.classList.add('active');
@@ -401,18 +641,14 @@ function selectMobileCategory(button, category) {
     applyFilters();
 }
 
-function selectMobilePrice(button, price) {
-    // Update visual state
-    document.querySelectorAll('.filter-pill[data-price]').forEach(pill => {
-        pill.classList.remove('active');
-    });
-    button.classList.add('active');
+function mobileSort() {
+    const mobileSelect = document.getElementById('mobile-sort-select');
+    const desktopSelect = document.getElementById('sort-select');
     
-    // Update desktop radio
-    const radio = document.querySelector(`input[name="price"][value="${price}"]`);
-    if (radio) radio.checked = true;
-    
-    applyFilters();
+    if (mobileSelect && desktopSelect) {
+        desktopSelect.value = mobileSelect.value;
+        applyFilters();
+    }
 }
 
 // ==========================================
@@ -478,9 +714,13 @@ function addToCart(productId) {
 }
 
 function removeFromCart(productId) {
+    const product = cart.find(item => item.id === productId);
     cart = cart.filter(item => item.id !== productId);
     saveCart();
-    showNotification('Item removed from cart');
+    
+    if (product) {
+        showNotification(`${product.name} removed from cart`);
+    }
 }
 
 function updateCartQuantity(productId, change) {
@@ -508,15 +748,26 @@ function updateCartBadge() {
 function updateCartDisplay() {
     const cartItems = document.getElementById('cart-items');
     const cartFooter = document.getElementById('cart-footer');
+    const cartSubtotal = document.getElementById('cart-subtotal');
     const cartTotal = document.getElementById('cart-total');
+    const cartSubtitle = document.getElementById('cart-subtitle');
     
     if (!cartItems) return;
     
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    if (cartSubtitle) {
+        cartSubtitle.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+    }
+    
     if (cart.length === 0) {
         cartItems.innerHTML = `
-            <div class="cart-empty">
-                <i class="fas fa-shopping-bag"></i>
+            <div class="cart-empty-premium">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
                 <p>Your cart is empty</p>
+                <span>Start adding some premium products!</span>
             </div>
         `;
         if (cartFooter) cartFooter.style.display = 'none';
@@ -525,21 +776,21 @@ function updateCartDisplay() {
     
     if (cartFooter) cartFooter.style.display = 'block';
     
-    cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item-image">
-            <div class="cart-item-details">
-                <div class="cart-item-name">${escapeHtml(item.name)}</div>
-                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
-                <div class="cart-item-actions">
-                    <button class="qty-btn" onclick="updateCartQuantity(${item.id}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
+    cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item-premium" style="animation-delay: ${index * 0.1}s">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item-image-premium">
+            <div class="cart-item-details-premium">
+                <div class="cart-item-name-premium">${escapeHtml(item.name)}</div>
+                <div class="cart-item-price-premium">$${item.price.toFixed(2)}</div>
+                <div class="cart-item-actions-premium">
+                    <button class="qty-btn-premium" onclick="updateCartQuantity(${item.id}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
                         <i class="fas fa-minus"></i>
                     </button>
-                    <span class="qty-display">${item.quantity}</span>
-                    <button class="qty-btn" onclick="updateCartQuantity(${item.id}, 1)">
+                    <span class="qty-display-premium">${item.quantity}</span>
+                    <button class="qty-btn-premium" onclick="updateCartQuantity(${item.id}, 1)">
                         <i class="fas fa-plus"></i>
                     </button>
-                    <button class="remove-btn" onclick="removeFromCart(${item.id})">
+                    <button class="remove-btn-premium" onclick="removeFromCart(${item.id})" title="Remove from cart">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
@@ -548,6 +799,7 @@ function updateCartDisplay() {
     `).join('');
     
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    if (cartSubtotal) cartSubtotal.textContent = `$${total.toFixed(2)}`;
     if (cartTotal) cartTotal.textContent = `$${total.toFixed(2)}`;
 }
 
@@ -639,7 +891,7 @@ function showNotification(message) {
         
         setTimeout(() => {
             toast.classList.remove('show');
-        }, 3000);
+        }, 3500);
     }
 }
 
@@ -654,7 +906,7 @@ function escapeHtml(text) {
 }
 
 // ==========================================
-// ADD SPIN ANIMATION FOR LOADING
+// ADD NECESSARY ANIMATIONS
 // ==========================================
 
 const style = document.createElement('style');
@@ -665,4 +917,4 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-console.log('✨ Premium Shopping Experience Ready!');
+console.log('✨ Luxury Premium Shopping Experience Ready!');
