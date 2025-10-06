@@ -28,7 +28,7 @@
         <span id="notification-message">Item added to cart!</span>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER (Copied from index.html) -->
     <header class="modern-header">
         <div class="header-container">
             <div class="logo-section">
@@ -65,242 +65,187 @@
             </a>
             <div class="mobile-nav-section">
                 <div class="mobile-nav-title">Shop by Brand</div>
-                <a href="ourbrand.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i><span>Our Brand</span>
-                </a>
-                <a href="babyliss.html" class="mobile-nav-link">
-                    <i class="fas fa-cut"></i><span>BaBylissPRO</span>
-                </a>
-                <a href="stylecraft.html" class="mobile-nav-link">
-                    <i class="fas fa-star"></i><span>StyleCraft Gamma</span>
-                </a>
-                <a href="jrl.html" class="mobile-nav-link">
-                    <i class="fas fa-crown"></i><span>JRL</span>
+                <a href="babyliss.html" class="mobile-nav-link active">
+                    <i class="fas fa-star"></i><span>BaByliss PRO</span>
                 </a>
                 <a href="wahl.html" class="mobile-nav-link">
-                    <i class="fas fa-trophy"></i><span>Wahl</span>
+                    <i class="fas fa-bolt"></i><span>Wahl</span>
                 </a>
-                <a href="wmark.html" class="mobile-nav-link">
-                    <i class="fas fa-gem"></i><span>W-Mark</span>
-                </a>
-                <a href="allproducts.html" class="mobile-nav-link">
-                    <i class="fas fa-th"></i><span>All Products</span>
+                <a href="jrl.html" class="mobile-nav-link">
+                    <i class="fas fa-gem"></i><span>JRL</span>
                 </a>
             </div>
         </nav>
-        <div class="mobile-menu-footer">
-            <p>Need help?</p>
-            <a href="mailto:barberworldnyc@gmail.com">barberworldnyc@gmail.com</a>
-        </div>
-    </div>
-
-    <!-- Mobile Filter Toggle -->
-    <div class="mobile-filter-bar">
-        <button class="filter-toggle-btn" onclick="toggleFilters()">
-            <i class="fas fa-sliders-h"></i>
-            <span>Filters</span>
-        </button>
-        <div class="active-filter-count" id="active-filter-count">
-            <span id="filter-count-number">0</span>
-        </div>
     </div>
 
     <!-- Main Container -->
-    <div class="products-page">
+    <div class="premium-container">
         
-        <!-- Desktop Filter Sidebar (HIDDEN ON MOBILE) -->
-        <aside class="filter-sidebar desktop-only">
-            <div class="filter-header">
-                <h3>Filters</h3>
-                <button class="clear-all-btn" onclick="clearAllFilters()" id="clear-all-btn">
-                    Clear All
+        <!-- Hero Section -->
+        <div class="brand-hero">
+            <div class="hero-content">
+                <div class="hero-badge">Premium Collection</div>
+                <h1 class="hero-title">BaByliss<span class="pro-text">PRO</span></h1>
+                <p class="hero-subtitle">Professional grooming excellence since 1961</p>
+            </div>
+            <div class="hero-gradient"></div>
+        </div>
+
+        <!-- Filters & Products Grid -->
+        <div class="products-wrapper">
+            
+            <!-- Sidebar Filters -->
+            <aside class="filters-sidebar">
+                <div class="filters-header">
+                    <h3>Filters</h3>
+                    <button class="clear-filters" onclick="clearAllFilters()">Clear All</button>
+                </div>
+
+                <!-- Search -->
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-search"></i> Search Products
+                    </label>
+                    <input type="text" id="search-input" class="search-input" placeholder="Search..." oninput="applyFilters()">
+                </div>
+
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-layer-group"></i> Category
+                    </label>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="all" checked onchange="applyFilters()">
+                            <span>All Products</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="Clipper" onchange="applyFilters()">
+                            <span>Clippers</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="Trimmer" onchange="applyFilters()">
+                            <span>Trimmers</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="category" value="Shaver" onchange="applyFilters()">
+                            <span>Shavers</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Price Filter -->
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-dollar-sign"></i> Price Range
+                    </label>
+                    <div class="filter-options">
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="all" checked onchange="applyFilters()">
+                            <span>All Prices</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="0-100" onchange="applyFilters()">
+                            <span>Under $100</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="100-150" onchange="applyFilters()">
+                            <span>$100 - $150</span>
+                        </label>
+                        <label class="filter-option">
+                            <input type="radio" name="price" value="150-999" onchange="applyFilters()">
+                            <span>$150+</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Sort -->
+                <div class="filter-group">
+                    <label class="filter-label">
+                        <i class="fas fa-sort"></i> Sort By
+                    </label>
+                    <select class="sort-select" id="sort-select" onchange="applyFilters()">
+                        <option value="name-asc">Name (A-Z)</option>
+                        <option value="name-desc">Name (Z-A)</option>
+                        <option value="price-asc">Price (Low-High)</option>
+                        <option value="price-desc">Price (High-Low)</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </aside>
+
+            <!-- Products Section -->
+            <main class="products-main">
+                
+                <!-- Mobile Filter Toggle -->
+                <button class="mobile-filter-toggle" onclick="toggleMobileFilters()">
+                    <i class="fas fa-filter"></i>
+                    Filters
                 </button>
-            </div>
 
-            <div class="filter-group">
-                <label class="filter-label">Search</label>
-                <div class="search-input-wrapper">
+                <!-- Products Header -->
+                <div class="products-header">
+                    <h2 class="products-title">Our Collection</h2>
+                    <p class="products-count" id="products-count">Loading products...</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid" id="products-grid">
+                    <!-- Products will be loaded here -->
+                </div>
+
+                <!-- No Results -->
+                <div class="no-results" id="no-results" style="display: none;">
                     <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="desktop-search" placeholder="Search products..." oninput="handleSearch(this.value)">
+                    <h3>No products found</h3>
+                    <p>Try adjusting your filters</p>
+                    <button class="btn-reset" onclick="clearAllFilters()">Reset Filters</button>
                 </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Category</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="all" checked onchange="handleCategoryFilter(this.value)">
-                        <span>All Products</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Clipper" onchange="handleCategoryFilter(this.value)">
-                        <span>Clippers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Trimmer" onchange="handleCategoryFilter(this.value)">
-                        <span>Trimmers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="category" value="Shaver" onchange="handleCategoryFilter(this.value)">
-                        <span>Shavers</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Price Range</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="all" checked onchange="handlePriceFilter(this.value)">
-                        <span>All Prices</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="0-50" onchange="handlePriceFilter(this.value)">
-                        <span>Under $50</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="50-100" onchange="handlePriceFilter(this.value)">
-                        <span>$50 - $100</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="100-150" onchange="handlePriceFilter(this.value)">
-                        <span>$100 - $150</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="price" value="150-999" onchange="handlePriceFilter(this.value)">
-                        <span>$150+</span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Sort By</label>
-                <select class="filter-select" onchange="handleSort(this.value)">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price (Low to High)</option>
-                    <option value="price-desc">Price (High to Low)</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
-            </div>
-        </aside>
-
-        <!-- Products Section -->
-        <main class="products-section">
-            <div class="products-header">
-                <h1 class="brand-title" id="brand-title">BaByliss Professional</h1>
-                <p class="products-count">
-                    Showing <strong id="showing-count">0</strong> of <strong id="total-count">0</strong> products
-                </p>
-            </div>
-
-            <div class="products-grid" id="products-grid">
-                <!-- Loading animation -->
-            </div>
-
-            <div class="empty-state" id="empty-state">
-                <i class="fas fa-search"></i>
-                <h3>No products found</h3>
-                <p>Try adjusting your filters</p>
-                <button class="reset-btn" onclick="clearAllFilters()">Reset Filters</button>
-            </div>
-        </main>
+            </main>
+        </div>
     </div>
 
-    <!-- Mobile Filter Panel -->
-    <div class="mobile-filter-panel" id="mobile-filter-panel">
-        <div class="filter-panel-header">
+    <!-- Mobile Filters Panel -->
+    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
+    <div class="mobile-filters-panel" id="mobile-filters-panel">
+        <div class="mobile-filters-header">
             <h3>Filters</h3>
-            <button class="close-filter-panel" onclick="toggleFilters()">
-                <i class="fas fa-times"></i>
-            </button>
+            <button onclick="toggleMobileFilters()"><i class="fas fa-times"></i></button>
         </div>
-        
-        <div class="filter-panel-body">
-            <div class="filter-group">
-                <label class="filter-label">Search</label>
-                <div class="search-input-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" class="filter-search-input" id="mobile-search" placeholder="Search..." oninput="handleSearch(this.value)">
-                </div>
-            </div>
-
+        <div class="mobile-filters-content">
             <div class="filter-group">
                 <label class="filter-label">Category</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="all" checked onchange="handleCategoryFilter(this.value)">
-                        <span>All</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Clipper" onchange="handleCategoryFilter(this.value)">
-                        <span>Clippers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Trimmer" onchange="handleCategoryFilter(this.value)">
-                        <span>Trimmers</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-category" value="Shaver" onchange="handleCategoryFilter(this.value)">
-                        <span>Shavers</span>
-                    </label>
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
+                    <button class="filter-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
+                    <button class="filter-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
+                    <button class="filter-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
                 </div>
             </div>
-
             <div class="filter-group">
-                <label class="filter-label">Price</label>
-                <div class="filter-options">
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="all" checked onchange="handlePriceFilter(this.value)">
-                        <span>All</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="0-50" onchange="handlePriceFilter(this.value)">
-                        <span>Under $50</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="50-100" onchange="handlePriceFilter(this.value)">
-                        <span>$50-$100</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="100-150" onchange="handlePriceFilter(this.value)">
-                        <span>$100-$150</span>
-                    </label>
-                    <label class="filter-option">
-                        <input type="radio" name="mobile-price" value="150-999" onchange="handlePriceFilter(this.value)">
-                        <span>$150+</span>
-                    </label>
+                <label class="filter-label">Price Range</label>
+                <div class="filter-pills">
+                    <button class="filter-pill active" data-price="all" onclick="selectMobilePrice(this, 'all')">All</button>
+                    <button class="filter-pill" data-price="0-100" onclick="selectMobilePrice(this, '0-100')">Under $100</button>
+                    <button class="filter-pill" data-price="100-150" onclick="selectMobilePrice(this, '100-150')">$100-$150</button>
+                    <button class="filter-pill" data-price="150-999" onclick="selectMobilePrice(this, '150-999')">$150+</button>
                 </div>
-            </div>
-
-            <div class="filter-group">
-                <label class="filter-label">Sort</label>
-                <select class="filter-select" onchange="handleSort(this.value)">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="price-asc">Price (Low-High)</option>
-                    <option value="price-desc">Price (High-Low)</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
             </div>
         </div>
-
-        <div class="filter-panel-footer">
-            <button class="clear-filters-btn" onclick="clearAllFilters()">Clear</button>
-            <button class="apply-filters-btn" onclick="toggleFilters()">
-                Show (<span id="filtered-count">0</span>)
-            </button>
+        <div class="mobile-filters-footer">
+            <button class="btn-clear" onclick="clearAllFilters()">Clear</button>
+            <button class="btn-apply" onclick="toggleMobileFilters()">Apply</button>
         </div>
     </div>
 
     <!-- Product Modal -->
-    <div class="product-modal" id="product-modal">
-        <div class="modal-overlay" onclick="closeProductModal()"></div>
-        <div class="modal-container">
+    <div class="product-modal" id="product-modal" onclick="closeProductModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
             <button class="modal-close" onclick="closeProductModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="modal-content" id="modal-content">
-                <!-- Loaded by JS -->
+            <div class="modal-body" id="modal-body">
+                <!-- Product details loaded dynamically -->
             </div>
         </div>
     </div>
@@ -309,25 +254,30 @@
     <div class="cart-panel" id="cart-panel">
         <div class="cart-header">
             <h3>Shopping Cart</h3>
-            <button class="close-cart" onclick="closeCart()">
+            <button class="cart-close" onclick="closeCart()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         <div class="cart-items" id="cart-items">
-            <!-- Loaded by JS -->
+            <div class="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+            </div>
         </div>
-        <div class="cart-footer" id="cart-footer">
+        <div class="cart-footer" id="cart-footer" style="display: none;">
             <div class="cart-total">
                 <span>Total:</span>
-                <span class="total-price" id="cart-total">$0.00</span>
+                <span id="cart-total">$0.00</span>
             </div>
-            <button class="checkout-btn" onclick="proceedToCheckout()">
+            <button class="btn-checkout" onclick="proceedToCheckout()">
                 <i class="fas fa-lock"></i>
-                Proceed to Checkout
+                Secure Checkout
             </button>
         </div>
     </div>
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
 
+    <!-- Scripts -->
     <script src="products.js"></script>
 </body>
 </html>
