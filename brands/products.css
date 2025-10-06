@@ -650,6 +650,7 @@ body.no-scroll {
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
     z-index: 1;
+    border-radius: var(--radius-lg);
 }
 
 /* ==========================================
@@ -1291,6 +1292,7 @@ body.no-scroll {
     object-fit: contain;
     padding: 2rem;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--radius-lg);
 }
 
 .product-card-premium:hover .product-image-premium {
@@ -1519,7 +1521,8 @@ body.no-scroll {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     padding: 2rem;
 }
 
@@ -1528,17 +1531,31 @@ body.no-scroll {
     visibility: visible;
 }
 
+.luxury-modal.active .modal-backdrop {
+    animation: backdropFadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.luxury-modal.active .luxury-modal-content {
+    animation: modalEntranceSoft 0.6s cubic-bezier(0.34, 1.2, 0.64, 1) forwards;
+}
+
 .modal-backdrop {
     position: absolute;
     inset: 0;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(12px);
-    animation: backdropFade 0.4s ease;
+    opacity: 0;
 }
 
-@keyframes backdropFade {
-    from { opacity: 0; }
-    to { opacity: 1; }
+@keyframes backdropFadeIn {
+    0% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+    100% {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
 }
 
 .luxury-modal-content {
@@ -1550,18 +1567,53 @@ body.no-scroll {
     max-height: 90vh;
     overflow-y: auto;
     z-index: 1;
-    animation: modalEntrance 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: scale(0.95) translateY(30px);
 }
 
-@keyframes modalEntrance {
+@keyframes modalEntranceSoft {
     0% {
         opacity: 0;
-        transform: scale(0.8) translateY(100px) rotateX(30deg);
+        transform: scale(0.95) translateY(30px);
     }
     100% {
         opacity: 1;
-        transform: scale(1) translateY(0) rotateX(0deg);
+        transform: scale(1) translateY(0);
+    }
+}
+
+@keyframes modalExitSoft {
+    0% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.95) translateY(30px);
+    }
+}
+
+@keyframes backdropFadeOut {
+    0% {
+        opacity: 1;
+        backdrop-filter: blur(12px);
+    }
+    100% {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+}
+
+@keyframes thumbnailBounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
@@ -1628,9 +1680,13 @@ body.no-scroll {
     position: relative;
     background: var(--gray-50);
     border-radius: var(--radius-lg);
-    padding: 3rem;
+    padding: 2rem;
     margin-bottom: 1.5rem;
     overflow: hidden;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-main-image-container::before {
@@ -1642,41 +1698,47 @@ body.no-scroll {
 }
 
 .modal-main-image-luxury {
-    width: 100%;
-    aspect-ratio: 1;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
-    transition: transform 0.5s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: zoom-in;
+    border-radius: var(--radius-lg);
 }
 
 .modal-main-image-luxury:hover {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 .modal-thumbnails-luxury {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 0.75rem;
 }
 
 .modal-thumbnail-luxury {
-    aspect-ratio: 1;
+    width: 100%;
+    height: 80px;
     object-fit: contain;
     background: var(--gray-50);
     border-radius: var(--radius);
-    padding: 0.75rem;
+    padding: 0.5rem;
     cursor: pointer;
     border: 3px solid transparent;
-    transition: var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .modal-thumbnail-luxury:hover {
     border-color: var(--gold);
-    transform: scale(1.05);
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
 }
 
 .modal-thumbnail-luxury.active {
     border-color: var(--gold);
+    background: rgba(212, 175, 55, 0.05);
     box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
 }
 
