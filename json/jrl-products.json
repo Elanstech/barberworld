@@ -5,11 +5,9 @@
     "price": 199.99,
     "brand": "JRL",
     "slug": "jrl-onyx-2020c-b",
-    "image": "https://jrlprofessional.com/cdn/shop/files/jrl-onyx-black-main.jpg?v=1685123456&width=1400",
+    "image": "https://www.chicbeautydepot.com/cdn/shop/files/JRL_Ghost_Clipper_Onyx_Professional_Cordless_Hair_Clipper_FF2020C_W_White.png?v=1753917032",
     "images": [
-      "https://jrlprofessional.com/cdn/shop/files/jrl-onyx-black-side.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-onyx-black-blade.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-onyx-black-accessories.jpg?v=1685123456&width=1400"
+      "https://www.chicbeautydepot.com/cdn/shop/files/JRL_Ghost_Clipper_Onyx_Professional_Cordless_Hair_Clipper_FF2020C_W_White.png?v=1753917032"
     ],
     "category": "Clipper",
     "shortDescription": "Professional cordless hair clipper with dual voltage capability",
@@ -45,11 +43,9 @@
     "price": 199.99,
     "brand": "JRL",
     "slug": "jrl-ghost-2020c-b-w",
-    "image": "https://jrlprofessional.com/cdn/shop/files/jrl-ghost-white-main.jpg?v=1685123456&width=1400",
+    "image": "https://alamobarber.com/cdn/shop/files/jrl-ghost.jpg?v=1746817807&width=1346",
     "images": [
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost-white-side.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost-white-blade.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost-white-charging.jpg?v=1685123456&width=1400"
+      "https://alamobarber.com/cdn/shop/files/jrl-ghost.jpg?v=1746817807&width=1346"
     ],
     "category": "Clipper",
     "shortDescription": "Professional cordless clipper in elegant white finish with dual voltage",
@@ -85,11 +81,11 @@
     "price": 499.99,
     "brand": "JRL",
     "slug": "jrl-ghost2-bundle-gh2401-2",
-    "image": "https://jrlprofessional.com/cdn/shop/files/jrl-ghost2-bundle-main.jpg?v=1685123456&width=1400",
+    "image": "https://wbbarber.com/cdn/shop/files/GH2024-Collection2_1400x1400.jpg?v=1758198831",
     "images": [
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost2-bundle-tools.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost2-bundle-case.jpg?v=1685123456&width=1400",
-      "https://jrlprofessional.com/cdn/shop/files/jrl-ghost2-bundle-accessories.jpg?v=1685123456&width=1400"
+      "https://wbbarber.com/cdn/shop/files/Jrl-Ghost-Onyx-Shaver-White_600x800_930a3df3-b41f-449a-ba3b-ab2c650f066b_599x798.jpg?v=1758198831",
+      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Trimmer_600x800_2a6ca78c-090a-43a8-87cd-03c295f2b3db_599x798.png?v=1758198831",
+      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Clipper_600x800_fe017a88-e0cb-443f-b218-359d4a622715_599x798.png?v=1758198831"
     ],
     "category": "Combo Set",
     "shortDescription": "Complete professional grooming bundle with clipper, trimmer, and shaver",
