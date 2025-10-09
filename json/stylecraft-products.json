@@ -4,7 +4,7 @@
     "name": "STYLECRAFT INSTINCT PROFESSIONAL VECTOR MOTOR CORDLESS CLIPPER",
     "price": 199.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-flex-shaver",
+    "slug": "stylecraft-instinct-clipper",
     "image": "https://prostylingtools.com/cdn/shop/files/SC607M_MAIN_1000x.jpg?v=1716318086",
     "images": [
       "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_blue_stand_600x.jpg?v=1716318086",
@@ -12,8 +12,6 @@
       "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_black_stand_600x.jpg?v=1716318086",
       "https://prostylingtools.com/cdn/shop/products/12900_1000x.jpg?v=1716318086",
       "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_red_stand_600x.jpg?v=1716318086"
-
-      
     ],
     "category": "Clipper",
     "shortDescription": "Professional vector motor cordless clipper with intuitive torque control",
@@ -48,7 +46,7 @@
     "name": "Stylecraft Pro Instinct Professional Vector Motor Trimmer with Intuitive Torque Control #SC407M (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "gamma-boosted-shaver-gp808m",
+    "slug": "stylecraft-instinct-trimmer-sc407m",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__5_.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
@@ -88,7 +86,7 @@
     "name": "Stylecraft Professional Instinct-X Cordless Clipper",
     "price": 199.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-nano-mister",
+    "slug": "stylecraft-instinct-x-clipper",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/7/s/7stylecraft100207.jpg",
@@ -128,7 +126,7 @@
     "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
     "price": 164.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-silver-slick-replacement-prodigy-shaver-foil-head",
+    "slug": "stylecraft-metal-edition-trimmer-sc410m",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
@@ -168,7 +166,7 @@
     "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "gamma-magnetic-matt",
+    "slug": "stylecraft-metal-shaver-black-sc807b",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy6.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy10.jpg",
@@ -208,7 +206,7 @@
     "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807B (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-cordless-heat-strok-beard-styling-hot-brush-schswbb",
+    "slug": "stylecraft-metal-shaver-pink-sc807b",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_15_.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_11_.jpg",
@@ -248,7 +246,7 @@
     "name": "Stylecraft Pro SABER II Professional Metal Clipper with Digital Brushless EON Motor - Gold #SC617M (Dual Voltage)",
     "price": 224.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-precision-saber-trimmer-sc403bp",
+    "slug": "stylecraft-saber-ii-gold-sc617m",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_2.png",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_2.png",
@@ -288,14 +286,13 @@
     "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-on-the-go-barberstylist-tool-case-w-mirror-sc328b",
+    "slug": "stylecraft-saber-trimmer-black",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_black.png",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_black.png",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790_black.png",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
-
     ],
     "category": "Trimmer",
     "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
@@ -330,7 +327,7 @@
     "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
     "price": 224.99,
     "brand": "StyleCraft",
-    "slug": "evo-nano-mister-spray-system-black",
+    "slug": "stylecraft-saber-trimmer-gold",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_stand_rev.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_rev_blade.jpg",
@@ -370,7 +367,7 @@
     "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "gamma-evo-trimmer",
+    "slug": "stylecraft-saber-full-metal-sc403b",
     "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
     "images": [
       "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
@@ -410,7 +407,7 @@
     "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-ergo-prodigy-shaver",
+    "slug": "stylecraft-precision-saber-sc403bp",
     "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
     "images": [
       "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
@@ -450,7 +447,7 @@
     "name": "Stylecraft X 360 Jeezy Professional IN2 Vector Motor Clipper with Full Metal Housing #SC614B",
     "price": 249.99,
     "brand": "StyleCraft",
-    "slug": "gamma-clipper-blade-dlc-fixed-taper-gold-titanium-cutter-gpcrbts",
+    "slug": "stylecraft-360-jeezy-clipper-sc614b",
     "image": "https://prostylingtools.com/cdn/shop/files/stylecraft182600_Light_2_1200x.jpg?v=1738776041",
     "images": [
       "https://prostylingtools.com/cdn/shop/files/stylecraft182590_1200x.jpg?v=1738776041",
@@ -490,7 +487,7 @@
     "name": "Stylecraft Pro METAL EDITION Instinct-X Professional Vector Motor Trimmer with Rear Metal Housing #SC411M (Dual Voltage)",
     "price": 164.99,
     "brand": "StyleCraft",
-    "slug": "gamma-replacement-gold-titanium-single-foil-head",
+    "slug": "stylecraft-instinct-x-metal-sc411m",
     "image": "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_main_lids_light_1200x.jpg?v=1729112505",
     "images": [
       "https://prostylingtools.com/cdn/shop/files/InstinctXTrimmerXProblade_1200x.jpg?v=1729112474",
@@ -525,5 +522,270 @@
     "rating": 4.8,
     "reviewCount": 445,
     "sku": "SC411M"
+  },
+  {
+    "id": 14,
+    "name": "Gamma+ Italia Uno Shaver - Close-Cutting Shaver with No Irritation",
+    "price": 30.00,
+    "brand": "Gamma+",
+    "slug": "gamma-italia-uno-shaver",
+    "image": "https://target.scene7.com/is/image/Target/GUEST_2e7ae8b1-f854-40c4-a4c6-a3dbe6e78884?wid=1200&hei=1200&qlt=80",
+    "images": [
+      "https://target.scene7.com/is/image/Target/GUEST_ecbf30d3-ace9-4626-a4db-cd01800955bd?wid=1200&hei=1200&qlt=80",
+      "https://target.scene7.com/is/image/Target/GUEST_025b31b8-ae43-478c-bbf1-a6a6e6d979a3?wid=1200&hei=1200&qlt=80",
+      "https://target.scene7.com/is/image/Target/GUEST_0338f2f4-e588-402b-b3c9-5519c0fdf5e3?wid=1200&hei=1200&qlt=80",
+      "https://target.scene7.com/is/image/Target/GUEST_38ee2626-005f-431f-8e74-d2f6072b69d8?wid=1200&hei=1200&qlt=80"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Super close-cutting shaver with no irritation, perfect for sensitive skin",
+    "description": "The Gamma+ Italia Uno Shaver delivers super close-cutting performance while keeping even the most sensitive skin free of razor bumps, ingrown hairs, and skin irritation. This super sleek, lightweight shaver features premium gold titanium foils, a 9,000 RPM supercharged motor, and includes both forged and crunchy cutters for versatile cutting options. The ergonomic compact design makes it a pocket-size shaver with remarkable 120 minutes of continuous cordless runtime.",
+    "features": [
+      "Super close-cutting with zero irritation",
+      "Premium gold titanium foils for sensitive skin",
+      "9,000 RPM supercharged motor eliminates drag",
+      "120 minutes continuous cordless runtime",
+      "Lightweight at only 3.2 ounces",
+      "30-minute rapid USB recharge",
+      "Includes forged cutter for power",
+      "Includes crunchy cutter for guided cutting",
+      "Ergonomic compact pocket-size design",
+      "Comes with plush velvet bag",
+      "Includes protective cap",
+      "Multi-function USB charger and adapter",
+      "Cord/cordless operation",
+      "1 year warranty"
+    ],
+    "specifications": {
+      "motor": "9,000 RPM supercharged",
+      "foils": "Premium gold titanium",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "30 minutes rapid charge",
+      "weight": "3.2 oz",
+      "voltage": "USB rechargeable",
+      "included": "Forged cutter, crunchy cutter, velvet bag, protective cap, USB charger, adapter"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 892,
+    "sku": "GP-UNO-SHAVER"
+  },
+  {
+    "id": 15,
+    "name": "Stylecraft Uno Shaver Blue - Stylecraft/Gamma+",
+    "price": 30.00,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-shaver-blue",
+    "image": "https://prostylingtools.com/cdn/shop/products/10522_12fd6e6b-d02d-4183-a672-cb7d7ba878fb_900x.jpg?v=1655539056",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/products/10523_9f82549f-ef5f-42ea-97a6-de242bc4d222_900x.jpg?v=1655539056",
+      "https://prostylingtools.com/cdn/shop/products/10524_07717450-6f5f-4451-a2f8-7d5dd75c7e1c_900x.jpg?v=1655539056",
+      "https://prostylingtools.com/cdn/shop/products/10525_a0c2e13c-a4ea-4cce-8785-20a195844d9b_900x.jpg?v=1655539056"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Compact USB rechargeable single foil shaver in blue",
+    "description": "The StyleCraft Uno Shaver in blue features the same exceptional performance as the Gamma+ Italia Uno with StyleCraft's signature styling. This ultra-compact shaver delivers professional-grade results with premium gold titanium foils and a powerful 9,000 RPM motor, all in a sleek blue finish that stands out from the crowd.",
+    "features": [
+      "Premium gold titanium foils",
+      "9,000 RPM supercharged motor",
+      "120 minutes cordless runtime",
+      "30-minute rapid USB recharge",
+      "Ultra-lightweight 3.2 ounces",
+      "Compact pocket-size design",
+      "Stylish blue finish",
+      "Includes forged and crunchy cutters",
+      "Protective cap included",
+      "Velvet storage bag",
+      "USB charger and adapter",
+      "Perfect for sensitive skin"
+    ],
+    "specifications": {
+      "motor": "9,000 RPM",
+      "foils": "Gold titanium single foil",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "30 minutes",
+      "weight": "3.2 oz",
+      "color": "Blue",
+      "voltage": "USB rechargeable"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 654,
+    "sku": "SC-UNO-BLUE"
+  },
+  {
+    "id": 16,
+    "name": "StyleCraft Uno USB Rechargeable Single Foil Shaver - Red (SCUNOSFSR)",
+    "price": 30.00,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-uno-shaver-red",
+    "image": "https://prostylingtools.com/cdn/shop/products/10533_ef65b1fa-d77c-4f1d-ac2d-f0a5b0aa4a04_900x.jpg?v=1655539064",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/products/10528_b278db78-29cf-4fe9-8a2e-d0598bc22f4b_900x.jpg?v=1655539064",
+      "https://prostylingtools.com/cdn/shop/products/10530_2d37b2f0-a5f9-4eb0-936b-a421b9709a6c_900x.jpg?v=1655539064",
+      "https://prostylingtools.com/cdn/shop/products/10531_0628d84f-86ba-4783-873e-8ced17238927_900x.jpg?v=1655539064"
+    ],
+    "category": "Shaver",
+    "shortDescription": "USB rechargeable single foil shaver in vibrant red",
+    "description": "The StyleCraft Uno USB Rechargeable Single Foil Shaver in red combines bold styling with professional performance. Featuring premium gold titanium foils and a powerful motor, this compact shaver is perfect for professionals who want style and substance in their grooming tools.",
+    "features": [
+      "Bold vibrant red finish",
+      "Premium gold titanium foils",
+      "9,000 RPM motor performance",
+      "120 minutes of cordless use",
+      "30-minute rapid recharge",
+      "Ultra-portable 3.2 oz design",
+      "Includes dual cutters",
+      "USB charging convenience",
+      "Protective cap",
+      "Velvet storage bag",
+      "Multi-function adapter",
+      "Ideal for sensitive skin"
+    ],
+    "specifications": {
+      "motor": "9,000 RPM",
+      "foils": "Gold titanium single foil",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "30 minutes",
+      "weight": "3.2 oz",
+      "color": "Red",
+      "model": "SCUNOSFSR"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 623,
+    "sku": "SCUNOSFSR"
+  },
+  {
+    "id": 17,
+    "name": "FLEX PROFESSIONAL HAIR TRIMMER WITH SUPER-TORQUE MOTOR",
+    "price": 120.00,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-trimmer",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc406m__main2.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/p/h/photo_aug_18_12_10_20_pm.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/f/l/flex_usb_charging.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/f/l/flex_blades.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional trimmer with super-torque motor for maximum power",
+    "description": "The FLEX Professional Hair Trimmer features a revolutionary super-torque motor that delivers unmatched cutting power for the most demanding professional applications. Engineered for precision detailing, outlining, and finishing work, this trimmer combines raw power with refined control for exceptional results on all hair types.",
+    "features": [
+      "Super-torque motor technology",
+      "Maximum cutting power",
+      "Professional-grade performance",
+      "DLC precision blade",
+      "Zero-gap adjustable",
+      "Extended battery life",
+      "Ergonomic design",
+      "Cord/cordless operation",
+      "All-metal construction",
+      "Professional durability"
+    ],
+    "specifications": {
+      "motor": "Super-torque motor",
+      "blade": "DLC precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.0 oz",
+      "voltage": "Dual voltage",
+      "housing": "All-metal body"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 512,
+    "sku": "FLEX-TRIMMER-120"
+  },
+  {
+    "id": 18,
+    "name": "FLEX PROFESSIONAL DOUBLE FOIL SHAVER WITH SUPER-TORQUE MOTOR",
+    "price": 50.00,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-shaver",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/s/c/sc-sc806b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/s/c/sc-sc806b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/s/c/sc-sc806b-2.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/s/c/sc-sc806b-5.jpg"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Double foil professional shaver with super-torque motor",
+    "description": "The FLEX Professional Double Foil Shaver combines dual independent foils with super-torque motor technology for the ultimate smooth shave. This powerful shaver delivers professional results with reduced irritation, making it perfect for sensitive skin while maintaining the power needed for thick, coarse hair.",
+    "features": [
+      "Dual independent foils",
+      "Super-torque motor",
+      "Hypoallergenic blades",
+      "Powerful yet gentle",
+      "Perfect for sensitive skin",
+      "Extended runtime",
+      "Ergonomic grip design",
+      "Cord/cordless flexibility",
+      "Quick charge capability",
+      "Professional performance"
+    ],
+    "specifications": {
+      "motor": "Super-torque motor",
+      "foils": "Dual independent suspension foils",
+      "blades": "Hypoallergenic titanium",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.5 oz",
+      "voltage": "Dual voltage"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 387,
+    "sku": "FLEX-SHAVER-50"
+  },
+  {
+    "id": 19,
+    "name": "Gamma+ Boosted Super-Torque Modular Cordless Clipper #GP601M (Dual Voltage)",
+    "price": 125.00,
+    "brand": "Gamma+",
+    "slug": "gamma-boosted-clipper-gp601m",
+    "image": "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted_1_599x798.jpg?v=1649885466",
+    "images": [
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-full_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted-red_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-gold-side_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-black_599x798.jpg?v=1649885466"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Modular super-torque clipper with dual voltage capability",
+    "description": "The Gamma+ Boosted Super-Torque Modular Cordless Clipper represents the next evolution in professional clipper technology. Featuring a revolutionary modular design with interchangeable components and a powerful super-torque motor, this clipper delivers exceptional cutting performance with the versatility professionals demand. The dual voltage capability makes it perfect for international use.",
+    "features": [
+      "Revolutionary modular design",
+      "Super-torque motor technology",
+      "Interchangeable components",
+      "Dual voltage 110-240V",
+      "DLC precision fade blade",
+      "Extended 3-hour runtime",
+      "Professional all-metal housing",
+      "Cord/cordless operation",
+      "Rapid charge technology",
+      "Customizable performance",
+      "International compatibility",
+      "Premium build quality"
+    ],
+    "specifications": {
+      "motor": "Super-torque modular",
+      "blade": "DLC fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.0 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "GP601M",
+      "housing": "All-metal construction"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 721,
+    "sku": "GP601M"
   }
 ]
