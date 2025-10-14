@@ -52,7 +52,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   NOTIFICATION TOAST
+   NOTIFICATION TOAST - FIXED ANIMATION
    ========================================== */
 
 .notification-toast {
@@ -68,14 +68,21 @@ body.no-scroll {
     align-items: center;
     gap: 1rem;
     z-index: 10000;
-    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     font-weight: 600;
     backdrop-filter: blur(10px);
+    opacity: 1;
 }
 
 .notification-toast.show {
     right: 24px;
     animation: toastBounce 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.notification-toast.hiding {
+    right: -400px;
+    opacity: 0;
+    transform: translateX(50px) scale(0.9);
 }
 
 @keyframes toastBounce {
@@ -778,7 +785,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   PREMIUM SIDEBAR
+   PREMIUM SIDEBAR - FIXED SCROLL
    ========================================== */
 
 .premium-sidebar {
@@ -798,7 +805,7 @@ body.no-scroll {
     overflow-x: hidden;
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar for Sidebar */
 .sidebar-sticky::-webkit-scrollbar {
     width: 6px;
 }
@@ -1092,11 +1099,32 @@ body.no-scroll {
 }
 
 /* ==========================================
-   PRODUCTS MAIN
+   PRODUCTS MAIN - FIXED SCROLL
    ========================================== */
 
 .products-main-premium {
     animation: fadeInUp 0.6s ease;
+    max-height: calc(100vh - 230px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Products Main */
+.products-main-premium::-webkit-scrollbar {
+    width: 8px;
+}
+
+.products-main-premium::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.products-main-premium::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border-radius: 10px;
+}
+
+.products-main-premium::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-hover);
 }
 
 @keyframes fadeInUp {
@@ -1197,6 +1225,7 @@ body.no-scroll {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
+    padding-bottom: 2rem;
 }
 
 .products-grid-premium[data-view="list"] {
@@ -1204,7 +1233,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   PRODUCT CARD - LUXURY DESIGN
+   PRODUCT CARD - LUXURY DESIGN WITH ROUNDED IMAGES
    ========================================== */
 
 .product-card-premium {
@@ -1260,6 +1289,7 @@ body.no-scroll {
     padding-top: 100%;
     background: var(--gray-50);
     overflow: hidden;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
 }
 
 .product-stock-badge-premium {
@@ -1438,10 +1468,12 @@ body.no-scroll {
 .products-grid-premium[data-view="list"] .product-image-container {
     padding-top: 0;
     height: 200px;
+    border-radius: var(--radius-lg);
 }
 
 .products-grid-premium[data-view="list"] .product-image-premium {
     position: relative;
+    border-radius: var(--radius-lg);
 }
 
 /* ==========================================
@@ -1506,7 +1538,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   LUXURY PRODUCT MODAL
+   LUXURY PRODUCT MODAL - ROUNDED IMAGES
    ========================================== */
 
 .luxury-modal {
@@ -2099,7 +2131,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   PREMIUM CART PANEL
+   PREMIUM CART PANEL - ROUNDED IMAGES
    ========================================== */
 
 .cart-overlay-premium {
@@ -2424,6 +2456,11 @@ body.no-scroll {
     .premium-sidebar {
         display: none;
     }
+
+    .products-main-premium {
+        max-height: none;
+        overflow-y: visible;
+    }
     
     .mobile-filter-toggle-premium {
         display: flex;
@@ -2547,6 +2584,29 @@ body.no-scroll {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
+
+    /* SMALLER STOCK BADGES ON MOBILE */
+    .product-stock-badge-premium {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.65rem;
+        top: 0.75rem;
+        left: 0.75rem;
+    }
+
+    /* SMALLER NOTIFICATION TOAST ON MOBILE */
+    .notification-toast {
+        right: -350px;
+        padding: 1rem 1.25rem;
+        font-size: 0.875rem;
+    }
+
+    .notification-toast.show {
+        right: 16px;
+    }
+
+    .notification-toast.hiding {
+        right: -350px;
+    }
     
     .modal-body-luxury {
         padding: 1.5rem;
@@ -2594,5 +2654,11 @@ body.no-scroll {
     
     .stat-item {
         min-width: 80px;
+    }
+
+    /* EVEN SMALLER BADGES ON VERY SMALL SCREENS */
+    .product-stock-badge-premium {
+        padding: 0.35rem 0.65rem;
+        font-size: 0.6rem;
     }
 }
