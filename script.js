@@ -170,10 +170,10 @@ function renderCarousel() {
             <div class="carousel-product-info">
                 <span class="carousel-product-brand">${escapeHtml(product.brand)}</span>
                 <h3 class="carousel-product-name">${truncateText(product.name, 60)}</h3>
-                <div class="carousel-product-price">$${product.price.toFixed(2)}</div>
+                <div class="carousel-product-price">${product.price.toFixed(2)}</div>
                 <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCart(${product.id}, '${escapeHtml(product.brand)}')">
                     <i class="fas fa-shopping-bag"></i>
-                    Add to Cart
+                    <span>Add to Cart</span>
                 </button>
             </div>
         </div>
@@ -235,7 +235,7 @@ function updateCarouselPosition() {
     
     const productsPerPage = getProductsPerPage();
     const containerWidth = track.parentElement.offsetWidth;
-    const gap = 24; // 1.5rem
+    const gap = 32; // 2rem = 32px (updated gap)
     const cardWidth = (containerWidth - (gap * (productsPerPage - 1))) / productsPerPage;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
@@ -735,5 +735,6 @@ window.modernHeader = {
 
 console.log('✅ Barber World Enhanced System Ready');
 console.log('🎨 Categories: Now redirect to respective pages');
+console.log('🎪 Carousel: Premium redesign with rounded corners & overlay');
 console.log('📱 Mobile: 2 products | 🖥️ Desktop: 3 products');
-console.log('✉️ Checkout: Email contact system active');
+console.log('💳 Stripe Checkout: Working & Integrated');
