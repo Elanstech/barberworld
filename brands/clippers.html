@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Clippers  - Professional Grooming Equipment | Barber World</title>
-    <meta name="description" content="Shop all professional grooming equipment from top brands. Browse our complete collection of clippers, trimmers, and professional tools.">
+    <title>Professional Clippers - Premium Hair Clippers | Barber World</title>
+    <meta name="description" content="Shop professional hair clippers from top brands. Browse our complete collection of premium clippers for barbers and stylists.">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -86,7 +86,10 @@
                 <a href="vgr.html" class="mobile-nav-link">
                     <i class="fas fa-rocket"></i><span>VGR</span>
                 </a>
-                <a href="allproducts.html" class="mobile-nav-link active">
+                <a href="clippers.html" class="mobile-nav-link active">
+                    <i class="fas fa-cut"></i><span>Professional Clippers</span>
+                </a>
+                <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i><span>All Products</span>
                 </a>
             </div>
@@ -110,21 +113,21 @@
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
-                    Complete Collection
+                    Professional Grade
                 </div>
                 <h1 class="hero-title-luxury">
-                    <span class="brand-name">All Products</span>
+                    <span class="brand-name">Professional Clippers</span>
                 </h1>
-                <p class="hero-subtitle-luxury">Browse our entire collection of professional grooming equipment</p>
+                <p class="hero-subtitle-luxury">Premium hair clippers from the world's leading brands - BaByliss PRO, Wahl, StyleCraft, JRL & more</p>
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number" id="product-count-hero">0</div>
-                        <div class="stat-label">Total Products</div>
+                        <div class="stat-label">Clippers Available</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <div class="stat-number">7+</div>
-                        <div class="stat-label">Top Brands</div>
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Premium Brands</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
@@ -137,7 +140,7 @@
             <div class="hero-visual-section">
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
-                    <img src="https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dw954e7779/images/1-4-24/fx787ng_s_slf.jpg?sw=600&sh=600&sm=fit" alt="Featured Product" class="floating-product-img">
+                    <img src="https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dwa9e10748/FXT45C.jpg?sw=600&sh=600&sm=fit" alt="Professional Clipper" class="floating-product-img">
                 </div>
             </div>
         </div>
@@ -182,44 +185,65 @@
                             <span>Search</span>
                         </div>
                         <div class="search-wrapper">
-                            <input type="text" id="search-input" class="search-input-premium" placeholder="Search products..." oninput="applyFilters()">
+                            <input type="text" id="search-input" class="search-input-premium" placeholder="Search clippers..." oninput="applyFilters()">
                             <i class="fas fa-search search-icon"></i>
                         </div>
                     </div>
 
-                    <!-- Category Filters -->
+                    <!-- Brand Filters -->
                     <div class="filter-section">
                         <div class="filter-section-header">
-                            <i class="fas fa-th-large"></i>
-                            <span>Category</span>
+                            <i class="fas fa-tag"></i>
+                            <span>Brand</span>
                         </div>
                         <div class="filter-options-premium">
                             <label class="filter-chip">
-                                <input type="radio" name="category" value="all" checked onchange="applyFilters()">
+                                <input type="radio" name="brand" value="all" checked onchange="applyFilters()">
                                 <div class="chip-content">
-                                    <span class="chip-text">All Products</span>
-                                    <span class="chip-count" id="count-all">0</span>
+                                    <span class="chip-text">All Brands</span>
+                                    <span class="chip-count" id="count-all-brands">0</span>
                                 </div>
                             </label>
                             <label class="filter-chip">
-                                <input type="radio" name="category" value="Clipper" onchange="applyFilters()">
+                                <input type="radio" name="brand" value="Babyliss" onchange="applyFilters()">
                                 <div class="chip-content">
-                                    <span class="chip-text">Clippers</span>
-                                    <span class="chip-count" id="count-clipper">0</span>
+                                    <span class="chip-text">BaByliss PRO</span>
+                                    <span class="chip-count" id="count-babyliss">0</span>
                                 </div>
                             </label>
                             <label class="filter-chip">
-                                <input type="radio" name="category" value="Trimmer" onchange="applyFilters()">
+                                <input type="radio" name="brand" value="Wahl" onchange="applyFilters()">
                                 <div class="chip-content">
-                                    <span class="chip-text">Trimmers</span>
-                                    <span class="chip-count" id="count-trimmer">0</span>
+                                    <span class="chip-text">Wahl</span>
+                                    <span class="chip-count" id="count-wahl">0</span>
                                 </div>
                             </label>
                             <label class="filter-chip">
-                                <input type="radio" name="category" value="Shaver" onchange="applyFilters()">
+                                <input type="radio" name="brand" value="StyleCraft" onchange="applyFilters()">
                                 <div class="chip-content">
-                                    <span class="chip-text">Shavers</span>
-                                    <span class="chip-count" id="count-shaver">0</span>
+                                    <span class="chip-text">StyleCraft</span>
+                                    <span class="chip-count" id="count-stylecraft">0</span>
+                                </div>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="brand" value="JRL" onchange="applyFilters()">
+                                <div class="chip-content">
+                                    <span class="chip-text">JRL</span>
+                                    <span class="chip-count" id="count-jrl">0</span>
+                                </div>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="brand" value="WMARK" onchange="applyFilters()">
+                                <div class="chip-content">
+                                    <span class="chip-text">W-Mark</span>
+                                    <span class="chip-count" id="count-wmark">0</span>
+                                </div>
+                            </label>
+                            <label class="filter-chip">
+                                <input type="radio" name="brand" value="VGR" onchange="applyFilters()">
+                                <div class="chip-content">
+                                    <span class="chip-text">VGR</span>
+                                    <span class="chip-count" id="count-vgr">0</span>
                                 </div>
                             </label>
                         </div>
@@ -259,9 +283,9 @@
                                 <i class="fas fa-star"></i>
                                 Top Rated
                             </button>
-                            <button class="quick-filter-btn" onclick="quickFilter('newArrivals')">
-                                <i class="fas fa-sparkles"></i>
-                                New Arrivals
+                            <button class="quick-filter-btn" onclick="quickFilter('cordless')">
+                                <i class="fas fa-battery-full"></i>
+                                Cordless
                             </button>
                         </div>
                     </div>
@@ -287,7 +311,7 @@
                 <!-- Products Controls -->
                 <div class="products-controls">
                     <div class="results-info">
-                        <h2 class="collection-title">Complete Collection</h2>
+                        <h2 class="collection-title">Professional Clippers</h2>
                         <p class="products-count-display" id="products-count">Loading...</p>
                     </div>
                     
@@ -323,7 +347,7 @@
                     <div class="no-results-icon">
                         <i class="fas fa-search"></i>
                     </div>
-                    <h3>No products found</h3>
+                    <h3>No clippers found</h3>
                     <p>Try adjusting your filters or search terms</p>
                     <button class="btn-reset-premium" onclick="clearAllFilters()">
                         <i class="fas fa-redo"></i>
@@ -362,14 +386,17 @@
                 </select>
             </div>
             
-            <!-- Categories -->
+            <!-- Brands -->
             <div class="mobile-filter-group">
-                <label>Category</label>
+                <label>Brand</label>
                 <div class="mobile-filter-pills">
-                    <button class="mobile-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
-                    <button class="mobile-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
-                    <button class="mobile-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
-                    <button class="mobile-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
+                    <button class="mobile-pill active" data-brand="all" onclick="selectMobileBrand(this, 'all')">All</button>
+                    <button class="mobile-pill" data-brand="Babyliss" onclick="selectMobileBrand(this, 'Babyliss')">BaByliss PRO</button>
+                    <button class="mobile-pill" data-brand="Wahl" onclick="selectMobileBrand(this, 'Wahl')">Wahl</button>
+                    <button class="mobile-pill" data-brand="StyleCraft" onclick="selectMobileBrand(this, 'StyleCraft')">StyleCraft</button>
+                    <button class="mobile-pill" data-brand="JRL" onclick="selectMobileBrand(this, 'JRL')">JRL</button>
+                    <button class="mobile-pill" data-brand="WMARK" onclick="selectMobileBrand(this, 'WMARK')">W-Mark</button>
+                    <button class="mobile-pill" data-brand="VGR" onclick="selectMobileBrand(this, 'VGR')">VGR</button>
                 </div>
             </div>
         </div>
@@ -436,5 +463,19 @@
 
     <!-- Scripts -->
     <script src="products.js"></script>
+    <script>
+    // Additional function for brand filtering
+    function selectMobileBrand(button, brand) {
+        document.querySelectorAll('.mobile-pill[data-brand]').forEach(pill => {
+            pill.classList.remove('active');
+        });
+        button.classList.add('active');
+        
+        const radio = document.querySelector(`input[name="brand"][value="${brand}"]`);
+        if (radio) radio.checked = true;
+        
+        applyFilters();
+    }
+    </script>
 </body>
 </html>
