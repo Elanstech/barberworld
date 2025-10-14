@@ -511,7 +511,7 @@ async function checkout() {
         
         console.log('📦 Line items prepared:', lineItems);
         
-        const response = await fetch('https://barber-world-stripe.vercel.app/create-checkout-session', {
+        const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -528,8 +528,28 @@ async function checkout() {
             throw new Error(data.message || data.error || 'Checkout failed');
         }
         
-        if (data.url) {
-            console.log('✅ Redirecting to Stripe Checkout...');
+        // Use the session ID to redirect to Stripe Checkout
+        if (data.id) {
+            console.log('✅ Redirecting to Stripe Checkout with session ID:', data.id);
+            
+            const loadingText = document.querySelector('.loading-text');
+            if (loadingText) {
+                loadingText.textContent = 'Redirecting to secure checkout...';
+            }
+            
+            showNotification('Redirecting to checkout...', 'success');
+            
+            // Redirect using Stripe's redirectToCheckout
+            const result = await stripe.redirectToCheckout({
+                sessionId: data.id,
+            });
+            
+            if (result.error) {
+                throw new Error(result.error.message);
+            }
+        } else if (data.url) {
+            // Alternative: if API returns a URL directly
+            console.log('✅ Redirecting to Stripe Checkout URL...');
             
             const loadingText = document.querySelector('.loading-text');
             if (loadingText) {
@@ -542,7 +562,7 @@ async function checkout() {
                 window.location.href = data.url;
             }, 800);
         } else {
-            throw new Error('No checkout URL received');
+            throw new Error('No checkout session ID or URL received');
         }
         
     } catch (error) {
