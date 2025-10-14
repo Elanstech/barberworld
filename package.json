@@ -1,7 +1,9 @@
 {
   "name": "barber-world",
   "version": "1.0.0",
+  "description": "E-commerce website",
   "dependencies": {
-    "stripe": "^14.0.0"
+    "stripe": "^14.0.0",
+    "shippo": "^1.7.1"
   }
 }
