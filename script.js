@@ -1,4 +1,4 @@
-// Enhanced Barber World Homepage JavaScript - Complete Working Version
+// Enhanced Barber World Homepage JavaScript - Complete Working Version with Fixed Image Glitching
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
 // ==========================================
 
 function initializeEventListeners() {
-    // Close modals on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeMobileMenu();
@@ -34,13 +33,6 @@ function initializeEventListeners() {
         }
     });
     
-    // Close cart when clicking overlay
-    const cartOverlay = document.getElementById('cart-overlay');
-    if (cartOverlay) {
-        cartOverlay.addEventListener('click', closeCart);
-    }
-    
-    // Listen for cart updates from other tabs/windows
     window.addEventListener('storage', (e) => {
         if (e.key === 'barber_cart') {
             loadCart();
@@ -97,7 +89,7 @@ function initializeAnimations() {
 }
 
 // ==========================================
-// FEATURED PRODUCTS CAROUSEL
+// FEATURED PRODUCTS CAROUSEL - FIXED GLITCHING ISSUE
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -114,14 +106,55 @@ async function loadFeaturedProducts() {
         carouselProducts = shuffled.slice(0, 30);
         
         renderCarousel();
+        await waitForImagesToLoad();
         createCarouselIndicators();
-        startCarouselAutoplay();
+        
+        setTimeout(() => {
+            startCarouselAutoplay();
+        }, 1000);
         
         console.log(`✅ Loaded ${carouselProducts.length} featured products`);
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
         showCarouselError();
     }
+}
+
+function waitForImagesToLoad() {
+    return new Promise((resolve) => {
+        const track = document.getElementById('carousel-track-new');
+        if (!track) {
+            resolve();
+            return;
+        }
+        
+        const images = track.querySelectorAll('img');
+        if (images.length === 0) {
+            resolve();
+            return;
+        }
+        
+        let loadedCount = 0;
+        const totalImages = images.length;
+        
+        const checkAllLoaded = () => {
+            loadedCount++;
+            if (loadedCount >= totalImages) {
+                resolve();
+            }
+        };
+        
+        images.forEach(img => {
+            if (img.complete) {
+                checkAllLoaded();
+            } else {
+                img.addEventListener('load', checkAllLoaded);
+                img.addEventListener('error', checkAllLoaded);
+            }
+        });
+        
+        setTimeout(resolve, 3000);
+    });
 }
 
 function renderCarousel() {
@@ -204,7 +237,9 @@ function updateCarouselPosition() {
     const cardWidth = (containerWidth - (gap * (productsPerPage - 1))) / productsPerPage;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
-    track.style.transform = `translateX(-${offset}px)`;
+    requestAnimationFrame(() => {
+        track.style.transform = `translateX(-${offset}px)`;
+    });
     
     document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
         indicator.classList.toggle('active', i === currentCarouselPage);
@@ -253,12 +288,7 @@ function showCarouselError() {
     const track = document.getElementById('carousel-track-new');
     if (track) {
         track.innerHTML = `
-            <div style="
-                width: 100%;
-                padding: 4rem;
-                text-align: center;
-                color: #999;
-            ">
+            <div style="width: 100%; padding: 4rem; text-align: center; color: #999;">
                 <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.3;"></i>
                 <h3 style="color: #666; margin-bottom: 0.5rem;">Failed to load products</h3>
                 <p>Please refresh the page to try again</p>
@@ -268,7 +298,7 @@ function showCarouselError() {
 }
 
 // ==========================================
-// CART MANAGEMENT - ENHANCED VERSION FROM PRODUCTS PAGE
+// CART MANAGEMENT
 // ==========================================
 
 function loadCart() {
@@ -454,7 +484,7 @@ function closeCart() {
 }
 
 // ==========================================
-// STRIPE CHECKOUT - WORKING INTEGRATION
+// STRIPE CHECKOUT
 // ==========================================
 
 async function checkout() {
@@ -533,7 +563,6 @@ function truncateText(text, maxLength) {
 }
 
 function showNotification(message, type = 'success') {
-    // Remove any existing notifications
     const existingToast = document.querySelector('.notification-toast');
     if (existingToast) {
         existingToast.remove();
@@ -610,43 +639,21 @@ if (header) {
 const style = document.createElement('style');
 style.textContent = `
     @keyframes slideInRight {
-        from { 
-            transform: translateX(100%); 
-            opacity: 0; 
-        }
-        to { 
-            transform: translateX(0); 
-            opacity: 1; 
-        }
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
     
     @keyframes slideOutRight {
-        from { 
-            transform: translateX(0); 
-            opacity: 1; 
-        }
-        to { 
-            transform: translateX(100%); 
-            opacity: 0; 
-        }
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
     }
     
     @keyframes slideInFromRight {
-        from {
-            transform: translateX(30px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
+        from { transform: translateX(30px); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
     }
 `;
 document.head.appendChild(style);
-
-// ==========================================
-// EXPORT FUNCTIONS FOR GLOBAL USE
-// ==========================================
 
 window.modernHeader = {
     toggleMobileMenu,
@@ -656,8 +663,5 @@ window.modernHeader = {
 };
 
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Modern Header, Smooth Carousel, 2-Column Mobile Grid Brands');
-console.log('🛒 Cart System: Fully Functional with Enhanced Display');
-console.log('💳 Payment: Stripe Integration Active & Working');
-console.log('📦 JSON Path: all-products-products.json');
-console.log('🖼️ Mobile Brands: Clean 2-Column Grid Layout');
+console.log('🎨 Mobile Brands: Exact Image-Based Design');
+console.log('🔧 Fixed: Desktop carousel glitching issue');
