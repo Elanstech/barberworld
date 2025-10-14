@@ -109,7 +109,7 @@ function initializeAnimations() {
 
 async function loadFeaturedProducts() {
     try {
-        const response = await fetch('json/allproducts.json');
+        const response = await fetch('json/all-products-products.json');
         
         if (!response.ok) {
             throw new Error('Failed to load products');
