@@ -342,6 +342,16 @@ main {
     border-radius: 4px;
 }
 
+/* BARBER TOOLS Title */
+.section-title-brands {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: var(--primary);
+    text-align: center;
+    letter-spacing: 1px;
+}
+
 /* ==========================================
    DESKTOP SHOP BY BRAND - Horizontal Scroll
    ========================================== */
@@ -418,6 +428,7 @@ main {
     object-fit: cover;
     transition: transform 0.3s ease;
     border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    will-change: auto;
 }
 
 .brand-card-desktop:hover .brand-image-desktop img {
@@ -451,247 +462,81 @@ main {
 }
 
 /* ==========================================
-   MOBILE GRID BRAND CARDS - NEW 2-COLUMN LAYOUT WITH OVERLAYS
+   MOBILE IMAGE-BASED DESIGN - EXACT FROM SCREENSHOT
    ========================================== */
 
-.brands-grid-mobile {
+.brands-image-mobile {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
     padding: 0.5rem 0;
 }
 
-.brand-grid-card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+.brand-image-card {
+    background: #e8e8e8;
     border-radius: 20px;
     overflow: hidden;
     cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--border);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
-    position: relative;
+    min-height: 180px;
 }
 
-.brand-grid-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, transparent, rgba(212, 175, 55, 0.08));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    border-radius: 20px;
-    z-index: 1;
+.brand-image-card:active {
+    transform: scale(0.98);
 }
 
-.brand-grid-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
-    border-color: var(--gold);
-}
-
-.brand-grid-card:hover::before {
-    opacity: 1;
-}
-
-.brand-grid-name {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: var(--primary);
+.brand-image-name {
     padding: 1rem 1rem 0.75rem;
-    text-align: center;
-    letter-spacing: -0.3px;
-    position: relative;
-    z-index: 2;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    color: white;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    text-align: left;
+    line-height: 1.2;
 }
 
-.brand-grid-images {
+.brand-image-products {
     flex: 1;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 0.5rem;
-    padding: 1rem;
-    background: white;
-    position: relative;
-    z-index: 2;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
+    padding: 0 1rem 1rem 1rem;
 }
 
-.brand-grid-images.single-image {
+.brand-image-products.single {
     grid-template-columns: 1fr;
-    padding: 1.5rem;
+    padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
-.brand-grid-images.three-images {
+.brand-image-products.triple {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.4rem;
-    padding: 0.75rem;
 }
 
-/* Image wrapper with overlay */
-.brand-grid-images > * {
-    position: relative;
-    overflow: hidden;
-    border-radius: 16px;
-    background: var(--gray-light);
-}
-
-.brand-grid-images img {
+.brand-image-products img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
+    background: white;
+    border-radius: 12px;
+    padding: 0.5rem;
     min-height: 80px;
     max-height: 100px;
-    object-fit: contain;
-    border-radius: 16px;
-    padding: 0.5rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
-    position: relative;
 }
 
-/* Overlay effect on images */
-.brand-grid-images img::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.05));
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    border-radius: 16px;
-}
-
-.brand-grid-card:hover .brand-grid-images img {
-    transform: scale(1.1);
-    filter: brightness(1.05);
-}
-
-/* Single image takes full space with more rounding */
-.brand-grid-images.single-image > * {
-    border-radius: 20px;
-}
-
-.brand-grid-images.single-image img {
+.brand-image-products.single img {
     max-height: 120px;
-    border-radius: 20px;
     padding: 1rem;
 }
 
-/* Three images are smaller */
-.brand-grid-images.three-images > * {
-    border-radius: 12px;
-}
-
-.brand-grid-images.three-images img {
+.brand-image-products.triple img {
     max-height: 70px;
-    border-radius: 12px;
     padding: 0.4rem;
 }
 
-/* Add subtle overlay to each image container */
-.brand-grid-images > *::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
-    opacity: 0;
-    transition: opacity 0.4s ease;
-    pointer-events: none;
-    z-index: 1;
-    border-radius: inherit;
-}
-
-.brand-grid-card:hover .brand-grid-images > *::before {
-    opacity: 1;
-}
-
-/* Responsive adjustments for very small screens */
-@media (max-width: 400px) {
-    .brands-grid-mobile {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-    }
-    
-    .brand-grid-card {
-        border-radius: 16px;
-    }
-    
-    .brand-grid-name {
-        font-size: 0.75rem;
-        padding: 0.75rem 0.75rem 0.5rem;
-    }
-    
-    .brand-grid-images {
-        padding: 0.75rem;
-        gap: 0.4rem;
-        border-bottom-left-radius: 16px;
-        border-bottom-right-radius: 16px;
-    }
-    
-    .brand-grid-images > * {
-        border-radius: 12px;
-    }
-    
-    .brand-grid-images img {
-        min-height: 60px;
-        max-height: 80px;
-        padding: 0.35rem;
-        border-radius: 12px;
-    }
-    
-    .brand-grid-images.single-image {
-        padding: 1rem;
-    }
-    
-    .brand-grid-images.single-image > * {
-        border-radius: 16px;
-    }
-    
-    .brand-grid-images.single-image img {
-        max-height: 100px;
-        border-radius: 16px;
-    }
-    
-    .brand-grid-images.three-images > * {
-        border-radius: 10px;
-    }
-    
-    .brand-grid-images.three-images img {
-        max-height: 55px;
-        border-radius: 10px;
-    }
-}
-
-/* OLD SLEEK MOBILE BRANDS - HIDDEN NOW */
-.brands-sleek-mobile {
-    display: none;
-}
-
-/* Hide mobile brands on desktop */
-@media (min-width: 769px) {
-    .brands-grid-mobile {
-        display: none;
-    }
-}
-
-/* ==================== FEATURED CAROUSEL - WITH ROUNDED CORNERS ==================== */
+/* ==================== FEATURED CAROUSEL ==================== */
 
 .featured-section {
     position: relative;
@@ -753,9 +598,9 @@ main {
     display: flex;
     gap: 1.5rem;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
 }
 
-/* CAROUSEL CARDS WITH ROUNDED IMAGE CORNERS */
 .carousel-product-card {
     flex: 0 0 auto;
     min-width: calc((100% - 3rem) / 3);
@@ -813,6 +658,7 @@ main {
     object-fit: contain;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 16px;
+    will-change: auto;
 }
 
 .carousel-product-card:hover .carousel-product-image img {
@@ -1094,6 +940,10 @@ main {
     text-align: center;
     padding: 3rem 1.5rem;
     color: var(--gray);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .cart-empty i {
@@ -1577,6 +1427,10 @@ main {
         font-size: 1.6rem;
     }
     
+    .section-title-brands {
+        font-size: 1.8rem;
+    }
+    
     .about-hero {
         padding: 3rem 1.5rem;
         margin: 1rem;
@@ -1659,8 +1513,8 @@ main {
         text-align: center;
     }
     
-    /* Show mobile grid brands, hide desktop */
-    .brands-grid-mobile {
+    /* Show mobile image brands, hide desktop */
+    .brands-image-mobile {
         display: grid;
     }
     
@@ -1715,6 +1569,50 @@ main {
     
     .payment-card.payment-text {
         font-size: 0.9rem;
+    }
+    
+    .brands-image-mobile {
+        gap: 0.75rem;
+    }
+    
+    .brand-image-card {
+        min-height: 160px;
+    }
+    
+    .brand-image-name {
+        font-size: 0.9rem;
+        padding: 0.85rem 0.85rem 0.65rem;
+    }
+    
+    .brand-image-products {
+        padding: 0 0.85rem 0.85rem 0.85rem;
+    }
+    
+    .brand-image-products img {
+        min-height: 70px;
+        max-height: 90px;
+    }
+}
+
+@media (max-width: 400px) {
+    .brand-image-products.triple {
+        gap: 0.3rem;
+    }
+    
+    .brand-image-products.triple img {
+        max-height: 60px;
+        padding: 0.3rem;
+    }
+}
+
+/* Show desktop brands on desktop */
+@media (min-width: 769px) {
+    .brands-image-mobile {
+        display: none;
+    }
+    
+    .brands-container-desktop {
+        display: block;
     }
 }
 
