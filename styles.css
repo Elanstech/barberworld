@@ -1,4 +1,4 @@
-/* Enhanced Styles for Barber World - Mobile Menu Always Visible */
+/* Enhanced Styles for Barber World - Complete Final Version */
 
 * {
     margin: 0;
@@ -146,7 +146,7 @@ body.no-scroll {
 }
 
 /* ==========================================
-   MOBILE MENU - ALWAYS VISIBLE
+   MOBILE MENU
    ========================================== */
 
 .mobile-menu {
@@ -262,19 +262,21 @@ body.no-scroll {
 
 /* ==========================================
    RESPONSIVE DESIGN FOR HEADER
-   REMOVED MOBILE-ONLY HIDING - MENU ALWAYS VISIBLE
    ========================================== */
 
 .desktop-only {
     display: flex;
 }
 
-/* Mobile menu button is now ALWAYS visible on all devices */
 .mobile-only {
-    display: flex !important;
+    display: none;
 }
 
 @media (max-width: 768px) {
+    .mobile-only {
+        display: flex;
+    }
+    
     .header-container {
         height: 125px;
         padding: 0 1rem;
