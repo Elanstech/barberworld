@@ -1,4 +1,4 @@
-// Enhanced Barber World Homepage JavaScript - Complete Working Version
+// Enhanced Barber World Homepage JavaScript
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -11,54 +11,18 @@ let currentCarouselPage = 0;
 let carouselAutoplayInterval = null;
 let isCarouselAnimating = false;
 
+// Modern Header Variables
+let allProductsData = [];
+let searchTimeout = null;
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
     loadFeaturedProducts();
     initializeAnimations();
-    initializeEventListeners();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
-
-// ==========================================
-// EVENT LISTENERS
-// ==========================================
-
-function initializeEventListeners() {
-    // Close modals on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeMobileMenu();
-            const cartPanel = document.getElementById('cart-panel');
-            if (cartPanel && cartPanel.classList.contains('active')) {
-                closeCart();
-            }
-        }
-    });
-    
-    // Close cart when clicking overlay
-    document.addEventListener('click', (e) => {
-        const cartPanel = document.getElementById('cart-panel');
-        if (cartPanel && cartPanel.classList.contains('active')) {
-            if (e.target === cartPanel) {
-                closeCart();
-            }
-        }
-    });
-    
-    // Listen for cart updates from other tabs/windows
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'barber_cart') {
-            loadCart();
-            updateCartBadge();
-        }
-    });
-    
-    window.addEventListener('cartUpdated', () => {
-        updateCartBadge();
-    });
-}
 
 // ==========================================
 // MOBILE MENU FUNCTIONALITY
@@ -109,16 +73,18 @@ function initializeAnimations() {
 
 async function loadFeaturedProducts() {
     try {
-        const response = await fetch('json/all-products-products.json');
+        const brands = ['babyliss', 'stylecraft', 'jrl', 'wahl'];
+        const promises = brands.map(brand => 
+            fetch(`json/${brand}-products.json`)
+                .then(res => res.ok ? res.json() : [])
+                .catch(() => [])
+        );
         
-        if (!response.ok) {
-            throw new Error('Failed to load products');
-        }
-        
-        const allProducts = await response.json();
+        const results = await Promise.all(promises);
+        const allProducts = results.flat();
         
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
-        carouselProducts = shuffled.slice(0, 30);
+        carouselProducts = shuffled.slice(0, 24);
         
         renderCarousel();
         createCarouselIndicators();
@@ -144,7 +110,7 @@ function renderCarousel() {
                 <span class="carousel-product-brand">${escapeHtml(product.brand)}</span>
                 <h3 class="carousel-product-name">${truncateText(product.name, 60)}</h3>
                 <div class="carousel-product-price">$${product.price.toFixed(2)}</div>
-                <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCart(${product.id}, '${escapeHtml(product.brand)}')">
+                <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCartFromCarousel(${product.id}, '${product.brand}')">
                     <i class="fas fa-shopping-bag"></i>
                     Add to Cart
                 </button>
@@ -167,8 +133,11 @@ function createCarouselIndicators() {
     ).join('');
 }
 
+// UPDATED: Show 3 products on desktop, 2 on mobile
 function getProductsPerPage() {
-    return 3;
+    const width = window.innerWidth;
+    if (width > 768) return 3;  // Desktop: 3 products
+    return 2;  // Mobile: 2 products
 }
 
 function carouselNext() {
@@ -275,37 +244,15 @@ function showCarouselError() {
 }
 
 // ==========================================
-// CART MANAGEMENT - IMPROVED FROM PRODUCTS.JS
+// CART FUNCTIONALITY
 // ==========================================
 
-function loadCart() {
-    const savedCart = localStorage.getItem('barber_cart');
-    if (savedCart) {
-        try {
-            cart = JSON.parse(savedCart);
-        } catch (e) {
-            console.error('Error loading cart:', e);
-            cart = [];
-        }
-    }
-}
-
-function saveCart() {
-    localStorage.setItem('barber_cart', JSON.stringify(cart));
-    updateCartDisplay();
-    updateCartBadge();
-    window.dispatchEvent(new CustomEvent('cartUpdated'));
-}
-
-async function addToCart(productId, brandName) {
+async function addToCartFromCarousel(productId, brandName) {
     try {
-        const response = await fetch('json/all-products-products.json');
-        if (!response.ok) {
-            throw new Error('Failed to load products');
-        }
-        
+        const brand = brandName.toLowerCase();
+        const response = await fetch(`json/${brand}-products.json`);
         const products = await response.json();
-        const product = products.find(p => p.id === productId && p.brand === brandName);
+        const product = products.find(p => p.id === productId);
         
         if (!product) {
             console.error('Product not found');
@@ -318,21 +265,12 @@ async function addToCart(productId, brandName) {
         if (existingItem) {
             existingItem.quantity++;
         } else {
-            const productImages = product.images && product.images.length > 0 ? 
-                [product.image, ...product.images] : [product.image];
-            
-            cart.push({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                image: productImages[0],
-                brand: product.brand || brandName,
-                quantity: 1
-            });
+            cart.push({...product, brand: brandName, quantity: 1});
         }
         
         saveCart();
-        showNotification(`${truncateText(product.name, 40)} added to cart!`, 'success');
+        updateCartBadge();
+        showNotification(`${truncateText(product.name, 40)} added to cart!`);
         
         const badge = document.getElementById('cart-badge');
         if (badge) {
@@ -347,40 +285,6 @@ async function addToCart(productId, brandName) {
     }
 }
 
-function removeFromCart(productId, brandName) {
-    const product = cart.find(item => item.id === productId && item.brand === brandName);
-    cart = cart.filter(item => !(item.id === productId && item.brand === brandName));
-    saveCart();
-    
-    if (product) {
-        showNotification(`${truncateText(product.name, 30)} removed from cart`, 'success');
-    }
-}
-
-function updateCartQuantity(productId, brandName, change) {
-    const item = cart.find(i => i.id === productId && i.brand === brandName);
-    if (!item) return;
-    
-    item.quantity += change;
-    
-    if (item.quantity <= 0) {
-        removeFromCart(productId, brandName);
-        return;
-    }
-    
-    saveCart();
-}
-
-function clearAllCart() {
-    if (cart.length === 0) return;
-    
-    if (confirm('Are you sure you want to clear all items from your cart?')) {
-        cart = [];
-        saveCart();
-        showNotification('Cart cleared', 'success');
-    }
-}
-
 function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
     if (!badge) return;
@@ -390,12 +294,11 @@ function updateCartBadge() {
     badge.style.display = totalItems > 0 ? 'flex' : 'none';
 }
 
-function updateCartDisplay() {
+function displayCart() {
     const cartBody = document.getElementById('cart-body');
     const cartEmpty = document.getElementById('cart-empty');
     const cartItems = document.getElementById('cart-items');
     const cartFooter = document.getElementById('cart-footer');
-    const cartTotal = document.getElementById('cart-total');
     
     if (!cartBody || !cartEmpty || !cartItems || !cartFooter) return;
     
@@ -410,10 +313,10 @@ function updateCartDisplay() {
     cartItems.style.display = 'flex';
     cartFooter.style.display = 'block';
     
-    cartItems.innerHTML = cart.map((item, index) => `
-        <div class="cart-item" style="animation: slideInFromRight 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s both;">
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
             <div class="cart-item-image">
-                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}">
+                <img src="${getProductImage(item)}" alt="${escapeHtml(item.name)}">
             </div>
             <div class="cart-item-info">
                 <div class="cart-item-brand">${escapeHtml(item.brand)}</div>
@@ -421,15 +324,15 @@ function updateCartDisplay() {
                 <div class="cart-item-price">$${item.price.toFixed(2)}</div>
                 <div class="cart-item-actions">
                     <div class="quantity-controls">
-                        <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, '${escapeHtml(item.brand)}', -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
+                        <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, -1)">
                             <i class="fas fa-minus"></i>
                         </button>
                         <span class="quantity">${item.quantity}</span>
-                        <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, '${escapeHtml(item.brand)}', 1)">
+                        <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, 1)">
                             <i class="fas fa-plus"></i>
                         </button>
                     </div>
-                    <button class="remove-btn" onclick="removeFromCart(${item.id}, '${escapeHtml(item.brand)}')">
+                    <button class="remove-btn" onclick="removeFromCart(${item.id})">
                         <i class="fas fa-trash"></i>
                     </button>
                 </div>
@@ -438,13 +341,67 @@ function updateCartDisplay() {
     `).join('');
     
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const cartTotal = document.getElementById('cart-total');
     if (cartTotal) {
         cartTotal.textContent = `$${total.toFixed(2)}`;
     }
 }
 
+function updateCartQuantity(productId, change) {
+    const item = cart.find(i => i.id === productId);
+    if (!item) return;
+    
+    item.quantity += change;
+    
+    if (item.quantity <= 0) {
+        removeFromCart(productId);
+        return;
+    }
+    
+    saveCart();
+    displayCart();
+    updateCartBadge();
+}
+
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    displayCart();
+    updateCartBadge();
+    showNotification('Item removed from cart');
+}
+
+function clearAllCart() {
+    if (cart.length === 0) return;
+    
+    if (confirm('Are you sure you want to clear all items from your cart?')) {
+        cart = [];
+        saveCart();
+        displayCart();
+        updateCartBadge();
+        showNotification('Cart cleared');
+    }
+}
+
+function saveCart() {
+    localStorage.setItem('barber_cart', JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
+}
+
+function loadCart() {
+    const saved = localStorage.getItem('barber_cart');
+    if (saved) {
+        try {
+            cart = JSON.parse(saved);
+        } catch (e) {
+            console.error('Error loading cart:', e);
+            cart = [];
+        }
+    }
+}
+
 function openCart() {
-    updateCartDisplay();
+    displayCart();
     const cartPanel = document.getElementById('cart-panel');
     if (cartPanel) {
         cartPanel.classList.add('active');
@@ -461,7 +418,7 @@ function closeCart() {
 }
 
 // ==========================================
-// STRIPE CHECKOUT - WORKING INTEGRATION
+// STRIPE CHECKOUT
 // ==========================================
 
 async function checkout() {
@@ -508,7 +465,7 @@ async function checkout() {
     } catch (error) {
         console.error('❌ Checkout error:', error);
         hideLoading();
-        showNotification('Checkout failed. Please try again or contact support.', 'error');
+        showNotification('Checkout failed. Please try again.', 'error');
     }
 }
 
@@ -520,32 +477,21 @@ function getProductImage(product) {
     if (product.images && product.images.length > 0) {
         return product.images[0];
     }
-    if (product.image) {
-        return product.image;
-    }
     return 'https://via.placeholder.com/300x300?text=No+Image';
 }
 
 function escapeHtml(text) {
-    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
 }
 
 function truncateText(text, maxLength) {
-    if (!text) return '';
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength) + '...';
 }
 
 function showNotification(message, type = 'success') {
-    // Remove any existing notifications
-    const existingToast = document.querySelector('.notification-toast');
-    if (existingToast) {
-        existingToast.remove();
-    }
-    
     const notification = document.createElement('div');
     notification.className = 'notification-toast';
     notification.style.cssText = `
@@ -556,26 +502,25 @@ function showNotification(message, type = 'success') {
         color: white;
         padding: 1.25rem 1.75rem;
         border-radius: 16px;
-        box-shadow: 0 8px 32px ${type === 'error' ? 'rgba(220, 53, 69, 0.4)' : 'rgba(212, 175, 55, 0.4)'};
+        box-shadow: 0 8px 32px rgba(212, 175, 55, 0.4);
         display: flex;
         align-items: center;
         gap: 1rem;
         z-index: 10000;
-        animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: slideInRight 0.3s ease;
         font-weight: 600;
-        max-width: 400px;
     `;
     
     notification.innerHTML = `
         <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="font-size: 1.3rem;"></i>
-        <span style="flex: 1;">${message}</span>
+        <span>${message}</span>
     `;
     
     document.body.appendChild(notification);
     
     setTimeout(() => {
-        notification.style.animation = 'slideOutRight 0.4s cubic-bezier(0.4, 0, 0.6, 1)';
-        setTimeout(() => notification.remove(), 400);
+        notification.style.animation = 'slideOutRight 0.3s ease';
+        setTimeout(() => notification.remove(), 300);
     }, type === 'error' ? 5000 : 3000);
 }
 
@@ -588,6 +533,20 @@ function hideLoading() {
     const loading = document.getElementById('loading');
     if (loading) loading.classList.remove('active');
 }
+
+// ==========================================
+// KEYBOARD SHORTCUTS
+// ==========================================
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeMobileMenu();
+        const cartPanel = document.getElementById('cart-panel');
+        if (cartPanel && cartPanel.classList.contains('active')) {
+            closeCart();
+        }
+    }
+});
 
 // ==========================================
 // SCROLL BEHAVIOR
@@ -637,24 +596,32 @@ style.textContent = `
             opacity: 0; 
         }
     }
-    
-    @keyframes slideInFromRight {
-        from {
-            transform: translateX(30px);
-            opacity: 0;
-        }
-        to {
-            transform: translateX(0);
-            opacity: 1;
-        }
-    }
 `;
 document.head.appendChild(style);
 
-// ==========================================
-// EXPORT FUNCTIONS FOR GLOBAL USE
-// ==========================================
+// Event listeners
+document.addEventListener('click', (e) => {
+    const cartPanel = document.getElementById('cart-panel');
+    
+    if (cartPanel && cartPanel.classList.contains('active')) {
+        if (e.target === cartPanel) {
+            closeCart();
+        }
+    }
+});
 
+window.addEventListener('storage', (e) => {
+    if (e.key === 'barber_cart') {
+        loadCart();
+        updateCartBadge();
+    }
+});
+
+window.addEventListener('cartUpdated', () => {
+    updateCartBadge();
+});
+
+// Export functions for external use
 window.modernHeader = {
     toggleMobileMenu,
     closeMobileMenu,
@@ -663,8 +630,6 @@ window.modernHeader = {
 };
 
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Features: Modern Header, Smooth Carousel, Enhanced Mobile Brands');
-console.log('🛒 Cart System: Fully Functional with Unified Product Source');
-console.log('💳 Payment: Stripe Integration Active & Working');
-console.log('📦 JSON Path: all-products-products.json');
-console.log('🖼️ Rounded Corners: Applied to carousel and mobile brand images');
+console.log('🎨 Features: Modern Header, Elegant Carousel, Advanced Search');
+console.log('🛒 Cart System: Fully Functional');
+console.log('💳 Payment: Stripe Integration Active');
