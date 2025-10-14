@@ -1,4 +1,4 @@
-// Enhanced Barber World Homepage JavaScript - Complete Working Version
+// Enhanced Barber World Homepage JavaScript - Complete Version with Stripe
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -12,7 +12,10 @@ let currentCarouselPage = 0;
 let carouselAutoplayInterval = null;
 let isCarouselAnimating = false;
 
-// Initialize
+// ==========================================
+// INITIALIZATION
+// ==========================================
+
 document.addEventListener('DOMContentLoaded', () => {
     loadCart();
     updateCartBadge();
@@ -21,10 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
-
-// ==========================================
-// EVENT LISTENERS
-// ==========================================
 
 function initializeEventListeners() {
     document.addEventListener('keydown', (e) => {
@@ -43,6 +42,25 @@ function initializeEventListeners() {
     
     window.addEventListener('cartUpdated', () => {
         updateCartBadge();
+    });
+}
+
+function initializeAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('aos-animate');
+            }
+        });
+    }, observerOptions);
+    
+    document.querySelectorAll('[data-aos]').forEach(el => {
+        observer.observe(el);
     });
 }
 
@@ -67,30 +85,7 @@ function closeMobileMenu() {
 }
 
 // ==========================================
-// ANIMATIONS ON SCROLL
-// ==========================================
-
-function initializeAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('aos-animate');
-            }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('[data-aos]').forEach(el => {
-        observer.observe(el);
-    });
-}
-
-// ==========================================
-// FEATURED PRODUCTS CAROUSEL - IMPROVED
+// FEATURED PRODUCTS CAROUSEL
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -114,7 +109,7 @@ async function loadFeaturedProducts() {
             startCarouselAutoplay();
         }, 1000);
         
-        console.log(`✅ Loaded ${allProducts.length} total products`);
+        console.log(`✅ Loaded ${carouselProducts.length} featured products`);
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
         showCarouselError();
@@ -170,7 +165,7 @@ function renderCarousel() {
             <div class="carousel-product-info">
                 <span class="carousel-product-brand">${escapeHtml(product.brand)}</span>
                 <h3 class="carousel-product-name">${truncateText(product.name, 60)}</h3>
-                <div class="carousel-product-price">${product.price.toFixed(2)}</div>
+                <div class="carousel-product-price">$${product.price.toFixed(2)}</div>
                 <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCart(${product.id}, '${escapeHtml(product.brand)}')">
                     <i class="fas fa-shopping-bag"></i>
                     <span>Add to Cart</span>
@@ -195,7 +190,6 @@ function createCarouselIndicators() {
 }
 
 function getProductsPerPage() {
-    // Mobile: 2 products, Desktop: 3 products
     return window.innerWidth <= 768 ? 2 : 3;
 }
 
@@ -235,7 +229,7 @@ function updateCarouselPosition() {
     
     const productsPerPage = getProductsPerPage();
     const containerWidth = track.parentElement.offsetWidth;
-    const gap = 32; // 2rem = 32px (updated gap)
+    const gap = 32;
     const cardWidth = (containerWidth - (gap * (productsPerPage - 1))) / productsPerPage;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
@@ -486,7 +480,7 @@ function closeCart() {
 }
 
 // ==========================================
-// STRIPE CHECKOUT - FIXED
+// STRIPE CHECKOUT - COMPLETE INTEGRATION
 // ==========================================
 
 async function checkout() {
@@ -495,148 +489,71 @@ async function checkout() {
         return;
     }
     
-    // Show contact information modal instead of API call
-    showCheckoutModal();
-}
-
-function showCheckoutModal() {
-    const cartTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const loadingOverlay = document.getElementById('loading-overlay');
+    if (loadingOverlay) {
+        loadingOverlay.classList.add('active');
+    }
     
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10003;
-        animation: fadeIn 0.3s ease;
-    `;
-    
-    modal.innerHTML = `
-        <div style="
-            background: white;
-            border-radius: 24px;
-            padding: 2.5rem;
-            max-width: 500px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        ">
-            <div style="text-align: center; margin-bottom: 2rem;">
-                <div style="
-                    width: 80px;
-                    height: 80px;
-                    background: linear-gradient(135deg, #d4af37, #b8941f);
-                    border-radius: 50%;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin: 0 auto 1.5rem;
-                    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-                ">
-                    <i class="fas fa-shopping-bag" style="font-size: 2rem; color: white;"></i>
-                </div>
-                <h2 style="font-size: 1.8rem; font-weight: 800; color: #0a0a0a; margin-bottom: 0.5rem;">
-                    Complete Your Order
-                </h2>
-                <p style="color: #6c757d; font-size: 1rem;">
-                    ${itemCount} item${itemCount > 1 ? 's' : ''} • Total: <strong style="color: #d4af37;">${cartTotal.toFixed(2)}</strong>
-                </p>
-            </div>
+    try {
+        console.log('💳 Starting Stripe checkout process...');
+        
+        const lineItems = cart.map(item => ({
+            price_data: {
+                currency: 'usd',
+                product_data: {
+                    name: item.name,
+                    description: `${item.brand || 'Barber World'} - Professional Equipment`,
+                },
+                unit_amount: Math.round(item.price * 100),
+            },
+            quantity: item.quantity,
+        }));
+        
+        console.log('📦 Line items prepared:', lineItems);
+        
+        const response = await fetch('https://barber-world-stripe.vercel.app/create-checkout-session', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ lineItems }),
+        });
+        
+        console.log('📡 API Response status:', response.status);
+        
+        const data = await response.json();
+        console.log('📥 API Response data:', data);
+        
+        if (!response.ok) {
+            throw new Error(data.message || data.error || 'Checkout failed');
+        }
+        
+        if (data.url) {
+            console.log('✅ Redirecting to Stripe Checkout...');
             
-            <div style="
-                background: #f8f9fa;
-                border-radius: 16px;
-                padding: 1.5rem;
-                margin-bottom: 2rem;
-            ">
-                <p style="
-                    color: #0a0a0a;
-                    font-size: 1.05rem;
-                    line-height: 1.6;
-                    margin-bottom: 1rem;
-                ">
-                    To complete your purchase, please contact us directly:
-                </p>
-                <a href="mailto:barberworldnyc@gmail.com?subject=Order Inquiry - Cart Total ${cartTotal.toFixed(2)}" 
-                   style="
-                    display: flex;
-                    align-items: center;
-                    gap: 0.75rem;
-                    padding: 1rem 1.5rem;
-                    background: linear-gradient(135deg, #d4af37, #b8941f);
-                    color: white;
-                    text-decoration: none;
-                    border-radius: 12px;
-                    font-weight: 700;
-                    font-size: 1rem;
-                    transition: all 0.3s ease;
-                    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
-                    margin-bottom: 1rem;
-                " 
-                onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(212, 175, 55, 0.5)'"
-                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 12px rgba(212, 175, 55, 0.3)'">
-                    <i class="fas fa-envelope" style="font-size: 1.2rem;"></i>
-                    <span>Email: barberworldnyc@gmail.com</span>
-                </a>
-                <p style="
-                    color: #6c757d;
-                    font-size: 0.9rem;
-                    text-align: center;
-                    margin-top: 1rem;
-                ">
-                    We'll respond within 24 hours with payment options
-                </p>
-            </div>
+            const loadingText = document.querySelector('.loading-text');
+            if (loadingText) {
+                loadingText.textContent = 'Redirecting to secure checkout...';
+            }
             
-            <button onclick="this.closest('div').parentElement.remove()" style="
-                width: 100%;
-                padding: 1rem;
-                background: white;
-                border: 2px solid #e9ecef;
-                border-radius: 12px;
-                color: #6c757d;
-                font-weight: 700;
-                font-size: 1rem;
-                cursor: pointer;
-                transition: all 0.3s ease;
-            "
-            onmouseover="this.style.borderColor='#d4af37'; this.style.color='#d4af37'"
-            onmouseout="this.style.borderColor='#e9ecef'; this.style.color='#6c757d'">
-                Continue Shopping
-            </button>
-        </div>
-    `;
-    
-    document.body.appendChild(modal);
-    
-    // Close on outside click
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            modal.remove();
+            showNotification('Redirecting to checkout...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = data.url;
+            }, 800);
+        } else {
+            throw new Error('No checkout URL received');
         }
-    });
-    
-    // Add animations
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        
+    } catch (error) {
+        console.error('❌ Checkout error:', error);
+        
+        if (loadingOverlay) {
+            loadingOverlay.classList.remove('active');
         }
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-    `;
-    document.head.appendChild(style);
+        
+        showNotification(`Checkout failed: ${error.message}`, 'error');
+    }
 }
 
 // ==========================================
@@ -686,7 +603,7 @@ function showNotification(message, type = 'success') {
         display: flex;
         align-items: center;
         gap: 1rem;
-        z-index: 10000;
+        z-index: 10005;
         animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         font-weight: 600;
         max-width: 400px;
@@ -694,7 +611,7 @@ function showNotification(message, type = 'success') {
     
     notification.innerHTML = `
         <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="font-size: 1.3rem;"></i>
-        <span style="flex: 1;">${message}</span>
+        <span style="flex: 1;">${escapeHtml(message)}</span>
     `;
     
     document.body.appendChild(notification);
@@ -726,6 +643,10 @@ if (header) {
     }, { passive: true });
 }
 
+// ==========================================
+// GLOBAL EXPORTS
+// ==========================================
+
 window.modernHeader = {
     toggleMobileMenu,
     closeMobileMenu,
@@ -734,7 +655,8 @@ window.modernHeader = {
 };
 
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Categories: Now redirect to respective pages');
-console.log('🎪 Carousel: Premium redesign with rounded corners & overlay');
+console.log('🎨 Categories: Redirecting to respective pages');
+console.log('🎪 Carousel: Premium design with animations');
 console.log('📱 Mobile: 2 products | 🖥️ Desktop: 3 products');
-console.log('💳 Stripe Checkout: Fully Integrated with Vercel API');
+console.log('💳 Stripe Checkout: Fully Integrated');
+console.log('🔒 API: https://barber-world-stripe.vercel.app/create-checkout-session');
