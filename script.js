@@ -109,8 +109,7 @@ function initializeAnimations() {
 
 async function loadFeaturedProducts() {
     try {
-        // CORRECTED PATH: json/all-products.json
-        const response = await fetch('json/all-products.json');
+        const response = await fetch('json/all-products-products.json');
         
         if (!response.ok) {
             throw new Error('Failed to load products');
@@ -300,8 +299,7 @@ function saveCart() {
 
 async function addToCart(productId, brandName) {
     try {
-        // CORRECTED PATH: json/all-products.json
-        const response = await fetch('json/all-products.json');
+        const response = await fetch('json/all-products-products.json');
         if (!response.ok) {
             throw new Error('Failed to load products');
         }
@@ -668,5 +666,5 @@ console.log('✅ Barber World Enhanced System Ready');
 console.log('🎨 Features: Modern Header, Smooth Carousel, Enhanced Mobile Brands');
 console.log('🛒 Cart System: Fully Functional with Unified Product Source');
 console.log('💳 Payment: Stripe Integration Active & Working');
-console.log('📦 JSON Path: json/all-products.json');
+console.log('📦 JSON Path: all-products-products.json');
 console.log('🖼️ Rounded Corners: Applied to carousel and mobile brand images');
