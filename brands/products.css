@@ -1318,18 +1318,20 @@ body.no-scroll {
 /* ROUNDED PRODUCT IMAGE IN CARDS */
 .product-image-premium {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 3rem);
+    height: calc(100% - 3rem);
     object-fit: contain;
-    padding: 1.5rem;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: var(--radius-xl);
+    background: var(--white);
+    padding: 1rem;
 }
 
 .product-card-premium:hover .product-image-premium {
-    transform: scale(1.08);
+    transform: translate(-50%, -50%) scale(1.08);
 }
 
 .product-actions-overlay {
@@ -1735,14 +1737,17 @@ body.no-scroll {
 
 /* ROUNDED MAIN IMAGE IN MODAL */
 .modal-main-image-luxury {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     width: auto;
     height: auto;
     object-fit: contain;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: zoom-in;
     border-radius: var(--radius-xl);
+    background: var(--white);
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 .modal-main-image-luxury:hover {
@@ -1760,12 +1765,13 @@ body.no-scroll {
     width: 100%;
     height: 80px;
     object-fit: contain;
-    background: var(--gray-50);
+    background: var(--white);
     border-radius: var(--radius-lg);
-    padding: 0.5rem;
+    padding: 0.75rem;
     cursor: pointer;
     border: 3px solid transparent;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .modal-thumbnail-luxury:hover {
