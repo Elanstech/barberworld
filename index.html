@@ -27,7 +27,7 @@
                         <i class="fas fa-shopping-bag"></i>
                         <span class="cart-badge" id="cart-badge">0</span>
                     </button>
-                    <button class="action-btn mobile-only" onclick="toggleMobileMenu()" aria-label="Menu">
+                    <button class="action-btn" onclick="toggleMobileMenu()" aria-label="Menu">
                         <i class="fas fa-bars"></i>
                     </button>
                 </div>
@@ -95,12 +95,85 @@
     <!-- Main Content -->
     <main id="main-content">
         <section class="home-view" id="hero">
+            
+            <!-- NEW SHOP BY CATEGORIES SECTION -->
+            <div class="section categories-section">
+                <h2 class="section-title">Shop by Category</h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="all" onclick="filterByCategory('all')">
+                        <div class="category-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                        <h3 class="category-name">All Products</h3>
+                        <p class="category-desc">Browse everything</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="clippers" onclick="filterByCategory('clippers')">
+                        <div class="category-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                        <h3 class="category-name">Clippers</h3>
+                        <p class="category-desc">Professional grade</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="trimmers" onclick="filterByCategory('trimmers')">
+                        <div class="category-icon">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                        <h3 class="category-name">Trimmers</h3>
+                        <p class="category-desc">Precision tools</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="shavers" onclick="filterByCategory('shavers')">
+                        <div class="category-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3 class="category-name">Shavers</h3>
+                        <p class="category-desc">Smooth finish</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="accessories" onclick="filterByCategory('accessories')">
+                        <div class="category-icon">
+                            <i class="fas fa-toolbox"></i>
+                        </div>
+                        <h3 class="category-name">Accessories</h3>
+                        <p class="category-desc">Essential tools</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-card" data-category="combo" onclick="filterByCategory('combo')">
+                        <div class="category-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                        <h3 class="category-name">Combo Sets</h3>
+                        <p class="category-desc">Best value</p>
+                        <div class="category-arrow">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- SHOP BY BRAND SECTION -->
             <div class="section">
                 <h2 class="section-title">Shop by Brand</h2>
                 
                 <!-- Desktop: Horizontal Scroll -->
-                <div class="brands-container-desktop desktop-only">
+                <div class="brands-container-desktop">
                     <div class="brands-scroll-wrapper">
                         <div class="brand-card-desktop" onclick="window.location.href='brands/ourbrand.html'">
                             <div class="brand-image-desktop">
@@ -162,7 +235,7 @@
                 </div>
                 
                 <!-- Mobile: Single Image Per Brand -->
-                <div class="brands-image-mobile mobile-only">
+                <div class="brands-image-mobile">
                     <div class="brand-image-card" onclick="window.location.href='brands/ourbrand.html'">
                         <div class="brand-image-name">Our Brand</div>
                         <div class="brand-image-products single">
