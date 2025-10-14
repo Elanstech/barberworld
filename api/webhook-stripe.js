@@ -82,10 +82,10 @@ module.exports = async (req, res) => {
             const shipment = await shippoClient.shipment.create({
                 address_from: {
                     name: "Barber World NYC",
-                    street1: "YOUR_STORE_ADDRESS",  // ⚠️ CHANGE THIS
-                    city: "New York",
+                    street1: "565 PLANDOME RD", 
+                    city: "Manhasset",
                     state: "NY",
-                    zip: "YOUR_ZIP",  // ⚠️ CHANGE THIS
+                    zip: "11030",  // ⚠️ CHANGE THIS
                     country: "US",
                     email: "barberworldnyc@gmail.com"
                 },
