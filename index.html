@@ -9,11 +9,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://js.stripe.com/v3/"></script>
     
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
     <!-- MODERN REDESIGNED HEADER -->
     <header class="modern-header">
         <div class="header-container">
@@ -95,7 +95,100 @@
     <!-- Main Content -->
     <main id="main-content">
         <section class="home-view" id="hero">
-        
+            
+            <!-- SHOP BY CATEGORIES SECTION - REDESIGNED -->
+            <div class="section">
+                <h2 class="section-title">Shop by Category</h2>
+                
+                <!-- Desktop: Horizontal Scroll -->
+                <div class="categories-container-desktop">
+                    <div class="categories-scroll-wrapper">
+                        <div class="category-card-desktop" onclick="window.location.href='brands/allproducts.html'">
+                            <div class="category-image-desktop">
+                                <div class="category-icon-large">
+                                    <i class="fas fa-th-large"></i>
+                                </div>
+                            </div>
+                            <div class="category-name-desktop">All Products</div>
+                        </div>
+                        
+                        <div class="category-card-desktop" onclick="window.location.href='brands/clippers.html'">
+                            <div class="category-image-desktop">
+                                <div class="category-icon-large">
+                                    <i class="fas fa-cut"></i>
+                                </div>
+                            </div>
+                            <div class="category-name-desktop">Clippers</div>
+                        </div>
+                        
+                        <div class="category-card-desktop" onclick="window.location.href='brands/trimmers.html'">
+                            <div class="category-image-desktop">
+                                <div class="category-icon-large">
+                                    <i class="fas fa-scissors"></i>
+                                </div>
+                            </div>
+                            <div class="category-name-desktop">Trimmers</div>
+                        </div>
+                        
+                        <div class="category-card-desktop" onclick="window.location.href='brands/shavers.html'">
+                            <div class="category-image-desktop">
+                                <div class="category-icon-large">
+                                    <i class="fas fa-wind"></i>
+                                </div>
+                            </div>
+                            <div class="category-name-desktop">Shavers</div>
+                        </div>
+                        
+                        <div class="category-card-desktop" onclick="window.location.href='brands/combos.html'">
+                            <div class="category-image-desktop">
+                                <div class="category-icon-large">
+                                    <i class="fas fa-box-open"></i>
+                                </div>
+                            </div>
+                            <div class="category-name-desktop">Combo Sets</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile: Grid Layout -->
+                <div class="categories-image-mobile">
+                    <div class="category-image-card" onclick="window.location.href='brands/allproducts.html'">
+                        <div class="category-image-name">All Products</div>
+                        <div class="category-image-icon">
+                            <i class="fas fa-th-large"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-image-card" onclick="window.location.href='brands/clippers.html'">
+                        <div class="category-image-name">Clippers</div>
+                        <div class="category-image-icon">
+                            <i class="fas fa-cut"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-image-card" onclick="window.location.href='brands/trimmers.html'">
+                        <div class="category-image-name">Trimmers</div>
+                        <div class="category-image-icon">
+                            <i class="fas fa-scissors"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-image-card" onclick="window.location.href='brands/shavers.html'">
+                        <div class="category-image-name">Shavers</div>
+                        <div class="category-image-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                    </div>
+
+                    <div class="category-image-card" onclick="window.location.href='brands/combos.html'">
+                        <div class="category-image-name">Combo Sets</div>
+                        <div class="category-image-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- SHOP BY BRAND SECTION -->
             <div class="section">
                 <h2 class="section-title">Shop by Brand</h2>
@@ -222,99 +315,6 @@
                     </div>
                 </div>
             </div>
-
-                        <!-- SHOP BY CATEGORIES SECTION - REDESIGNED -->
-            <div class="section">
-                <h2 class="section-title">Shop by Category</h2>
-                
-                <!-- Desktop: Horizontal Scroll -->
-                <div class="categories-container-desktop">
-                    <div class="categories-scroll-wrapper">
-                        <div class="category-card-desktop" onclick="window.location.href='brands/allproducts.html'">
-                            <div class="category-image-desktop">
-                                <div class="category-icon-large">
-                                    <i class="fas fa-th-large"></i>
-                                </div>
-                            </div>
-                            <div class="category-name-desktop">All Products</div>
-                        </div>
-                        
-                        <div class="category-card-desktop" onclick="window.location.href='brands/clippers.html'">
-                            <div class="category-image-desktop">
-                                <div class="category-icon-large">
-                                    <i class="fas fa-cut"></i>
-                                </div>
-                            </div>
-                            <div class="category-name-desktop">Clippers</div>
-                        </div>
-                        
-                        <div class="category-card-desktop" onclick="window.location.href='brands/trimmers.html'">
-                            <div class="category-image-desktop">
-                                <div class="category-icon-large">
-                                    <i class="fas fa-scissors"></i>
-                                </div>
-                            </div>
-                            <div class="category-name-desktop">Trimmers</div>
-                        </div>
-                        
-                        <div class="category-card-desktop" onclick="window.location.href='brands/shavers.html'">
-                            <div class="category-image-desktop">
-                                <div class="category-icon-large">
-                                    <i class="fas fa-wind"></i>
-                                </div>
-                            </div>
-                            <div class="category-name-desktop">Shavers</div>
-                        </div>
-                        
-                        <div class="category-card-desktop" onclick="window.location.href='brands/combos.html'">
-                            <div class="category-image-desktop">
-                                <div class="category-icon-large">
-                                    <i class="fas fa-box-open"></i>
-                                </div>
-                            </div>
-                            <div class="category-name-desktop">Combo Sets</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Mobile: Grid Layout -->
-                <div class="categories-image-mobile">
-                    <div class="category-image-card" onclick="window.location.href='brands/allproducts.html'">
-                        <div class="category-image-name">All Products</div>
-                        <div class="category-image-icon">
-                            <i class="fas fa-th-large"></i>
-                        </div>
-                    </div>
-
-                    <div class="category-image-card" onclick="window.location.href='brands/clippers.html'">
-                        <div class="category-image-name">Clippers</div>
-                        <div class="category-image-icon">
-                            <i class="fas fa-cut"></i>
-                        </div>
-                    </div>
-
-                    <div class="category-image-card" onclick="window.location.href='brands/trimmers.html'">
-                        <div class="category-image-name">Trimmers</div>
-                        <div class="category-image-icon">
-                            <i class="fas fa-scissors"></i>
-                        </div>
-                    </div>
-
-                    <div class="category-image-card" onclick="window.location.href='brands/shavers.html'">
-                        <div class="category-image-name">Shavers</div>
-                        <div class="category-image-icon">
-                            <i class="fas fa-wind"></i>
-                        </div>
-                    </div>
-
-                    <div class="category-image-card" onclick="window.location.href='brands/combos.html'">
-                        <div class="category-image-name">Combo Sets</div>
-                        <div class="category-image-icon">
-                            <i class="fas fa-box-open"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
             
             <!-- Featured Products Carousel -->
             <div class="section featured-section">
@@ -423,8 +423,8 @@
                 <span id="cart-total">$0.00</span>
             </div>
             <button class="checkout-btn" onclick="checkout()">
-                <i class="fas fa-envelope"></i>
-                Contact to Checkout
+                <i class="fas fa-lock"></i>
+                Checkout with Stripe
             </button>
         </div>
     </div>
