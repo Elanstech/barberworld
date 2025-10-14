@@ -239,5 +239,46 @@
     "rating": 4.5,
     "reviewCount": 156,
     "sku": "WMARK-NG-SM003"
+  },
+  {
+    "id": 7,
+    "name": "WMARK New Professional Hair Trimmer NG-7982",
+    "price": 79.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-7982-trimmer",
+    "image": "https://i.ebayimg.com/images/g/KKgAAeSw1JRoZ3ud/s-l1600.png",
+    "images": [
+      "https://i.ebayimg.com/images/g/ULoAAeSw2HtoZ3uf/s-l1600.png",
+      "https://i.ebayimg.com/images/g/Za4AAeSw8d9oZ3ug/s-l1600.png",
+      "https://i.ebayimg.com/images/g/kXkAAeSw-1BoZ3ug/s-l1600.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer for precision cutting and detailing",
+    "description": "The WMARK NG-7982 is a professional-grade hair trimmer designed for barbers who demand precision and versatility. Featuring a powerful motor and sharp blades, this cordless trimmer excels at detail work, line-ups, and beard trimming. Its ergonomic design and long battery life make it perfect for all-day use in busy barbershops.",
+    "features": [
+      "Professional precision trimmer",
+      "Powerful high-speed motor",
+      "Sharp stainless steel blades",
+      "Rechargeable cordless operation",
+      "Ergonomic lightweight design",
+      "Type-C fast charging",
+      "Long-lasting battery performance",
+      "Perfect for detail work and finishing"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Stainless steel precision blade",
+      "battery": "Lithium-ion rechargeable",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "7.2 oz",
+      "charging": "Type-C",
+      "voltage": "Dual voltage",
+      "model": "NG-7982"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 178,
+    "sku": "WMARK-NG-7982"
   }
 ]
