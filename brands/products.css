@@ -30,6 +30,7 @@
     --radius: 12px;
     --radius-sm: 8px;
     --radius-lg: 16px;
+    --radius-xl: 20px;
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -657,7 +658,7 @@ body.no-scroll {
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
     z-index: 1;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
 }
 
 /* ==========================================
@@ -1322,7 +1323,7 @@ body.no-scroll {
     object-fit: contain;
     padding: 2rem;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
 }
 
 .product-card-premium:hover .product-image-premium {
@@ -1711,7 +1712,7 @@ body.no-scroll {
 .modal-main-image-container {
     position: relative;
     background: var(--gray-50);
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
     padding: 2rem;
     margin-bottom: 1.5rem;
     overflow: hidden;
@@ -1737,7 +1738,7 @@ body.no-scroll {
     object-fit: contain;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: zoom-in;
-    border-radius: var(--radius-lg);
+    border-radius: var(--radius-xl);
 }
 
 .modal-main-image-luxury:hover {
@@ -1755,7 +1756,7 @@ body.no-scroll {
     height: 80px;
     object-fit: contain;
     background: var(--gray-50);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 0.5rem;
     cursor: pointer;
     border: 3px solid transparent;
@@ -2283,7 +2284,7 @@ body.no-scroll {
     height: 90px;
     object-fit: contain;
     background: var(--white);
-    border-radius: var(--radius);
+    border-radius: var(--radius-lg);
     padding: 0.75rem;
     border: 1px solid var(--border);
 }
