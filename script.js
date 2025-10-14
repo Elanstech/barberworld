@@ -1,4 +1,4 @@
-// Enhanced Barber World Homepage JavaScript - Complete Working Version with Fixed Image Glitching
+// Enhanced Barber World Homepage JavaScript - Complete Working Version
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -7,9 +7,11 @@ const stripe = Stripe(STRIPE_PUBLIC_KEY);
 // Global State
 let cart = [];
 let carouselProducts = [];
+let allProducts = [];
 let currentCarouselPage = 0;
 let carouselAutoplayInterval = null;
 let isCarouselAnimating = false;
+let currentCategory = 'all';
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -66,6 +68,74 @@ function closeMobileMenu() {
 }
 
 // ==========================================
+// CATEGORY FILTERING
+// ==========================================
+
+function filterByCategory(category) {
+    currentCategory = category;
+    
+    // Update active state on category cards
+    document.querySelectorAll('.category-card').forEach(card => {
+        if (card.dataset.category === category) {
+            card.style.background = 'linear-gradient(135deg, #d4af37 0%, #b8941f 100%)';
+            card.style.color = 'white';
+            card.querySelector('.category-name').style.color = 'white';
+            card.querySelector('.category-desc').style.color = 'rgba(255,255,255,0.9)';
+            card.querySelector('.category-icon').style.background = 'rgba(255,255,255,0.2)';
+        } else {
+            card.style.background = 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)';
+            card.style.color = '';
+            card.querySelector('.category-name').style.color = '';
+            card.querySelector('.category-desc').style.color = '';
+            card.querySelector('.category-icon').style.background = '';
+        }
+    });
+    
+    // Filter products based on category
+    if (category === 'all') {
+        carouselProducts = [...allProducts].sort(() => 0.5 - Math.random()).slice(0, 30);
+    } else {
+        const filtered = allProducts.filter(product => {
+            const name = product.name.toLowerCase();
+            const productCategory = product.category ? product.category.toLowerCase() : '';
+            
+            switch(category) {
+                case 'clippers':
+                    return name.includes('clipper') || productCategory.includes('clipper');
+                case 'trimmers':
+                    return name.includes('trimmer') || productCategory.includes('trimmer');
+                case 'shavers':
+                    return name.includes('shaver') || name.includes('foil') || productCategory.includes('shaver');
+                case 'accessories':
+                    return name.includes('blade') || name.includes('guard') || 
+                           name.includes('comb') || name.includes('attachment') ||
+                           productCategory.includes('accessory') || productCategory.includes('accessories');
+                case 'combo':
+                    return name.includes('combo') || name.includes('set') || 
+                           name.includes('kit') || productCategory.includes('combo');
+                default:
+                    return true;
+            }
+        });
+        
+        carouselProducts = filtered.length > 0 ? filtered : allProducts.slice(0, 15);
+    }
+    
+    currentCarouselPage = 0;
+    renderCarousel();
+    createCarouselIndicators();
+    updateCarouselPosition();
+    
+    // Smooth scroll to carousel
+    document.getElementById('products-carousel').scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'center' 
+    });
+    
+    showNotification(`Showing ${category === 'all' ? 'all' : category} products`, 'success');
+}
+
+// ==========================================
 // ANIMATIONS ON SCROLL
 // ==========================================
 
@@ -89,7 +159,7 @@ function initializeAnimations() {
 }
 
 // ==========================================
-// FEATURED PRODUCTS CAROUSEL - FIXED GLITCHING ISSUE
+// FEATURED PRODUCTS CAROUSEL - IMPROVED
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -100,7 +170,7 @@ async function loadFeaturedProducts() {
             throw new Error('Failed to load products');
         }
         
-        const allProducts = await response.json();
+        allProducts = await response.json();
         
         const shuffled = allProducts.sort(() => 0.5 - Math.random());
         carouselProducts = shuffled.slice(0, 30);
@@ -113,7 +183,7 @@ async function loadFeaturedProducts() {
             startCarouselAutoplay();
         }, 1000);
         
-        console.log(`✅ Loaded ${carouselProducts.length} featured products`);
+        console.log(`✅ Loaded ${allProducts.length} total products`);
     } catch (error) {
         console.error('❌ Error loading featured products:', error);
         showCarouselError();
@@ -194,7 +264,8 @@ function createCarouselIndicators() {
 }
 
 function getProductsPerPage() {
-    return 3;
+    // Mobile: 2 products, Desktop: 3 products
+    return window.innerWidth <= 768 ? 2 : 3;
 }
 
 function carouselNext() {
@@ -233,7 +304,7 @@ function updateCarouselPosition() {
     
     const productsPerPage = getProductsPerPage();
     const containerWidth = track.parentElement.offsetWidth;
-    const gap = 24;
+    const gap = 24; // 1.5rem
     const cardWidth = (containerWidth - (gap * (productsPerPage - 1))) / productsPerPage;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
@@ -632,29 +703,6 @@ if (header) {
     }, { passive: true });
 }
 
-// ==========================================
-// ANIMATIONS
-// ==========================================
-
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    
-    @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-    
-    @keyframes slideInFromRight {
-        from { transform: translateX(30px); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-`;
-document.head.appendChild(style);
-
 window.modernHeader = {
     toggleMobileMenu,
     closeMobileMenu,
@@ -663,5 +711,5 @@ window.modernHeader = {
 };
 
 console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Mobile Brands: Exact Image-Based Design');
-console.log('🔧 Fixed: Desktop carousel glitching issue');
+console.log('🎨 New Features: Category Filtering & Improved Carousel');
+console.log('📱 Mobile: 2 products | 🖥️ Desktop: 3 products');
