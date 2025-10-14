@@ -118,7 +118,7 @@
     "name": "Stylecraft Pro Instinct Professional Vector Motor Trimmer with Intuitive Torque Control #SC407M (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "gamma-boosted-shaver-gp808m",
+    "slug": "stylecraft-instinct-trimmer-sc407m",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__5_.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
@@ -158,7 +158,7 @@
     "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
     "price": 164.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-silver-slick-replacement-prodigy-shaver-foil-head",
+    "slug": "stylecraft-metal-edition-trimmer-sc410m",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
@@ -196,14 +196,15 @@
   {
     "id": 25,
     "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
-    "price": 149.99,
+    "price": 224.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-on-the-go-barberstylist-tool-case-w-mirror-sc328b",
+    "slug": "stylecraft-saber-trimmer-black",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_black.png",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_black.png",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png"
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
     ],
     "category": "Trimmer",
     "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
@@ -236,9 +237,9 @@
   {
     "id": 26,
     "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
-    "price": 224.99,
+    "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "evo-nano-mister-spray-system-black",
+    "slug": "stylecraft-saber-trimmer-gold",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_stand_rev.jpg",
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_rev_blade.jpg",
@@ -278,7 +279,7 @@
     "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "gamma-evo-trimmer",
+    "slug": "stylecraft-saber-full-metal-sc403b",
     "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
     "images": [
       "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
@@ -318,7 +319,7 @@
     "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
     "price": 149.99,
     "brand": "StyleCraft",
-    "slug": "stylecraft-ergo-prodigy-shaver",
+    "slug": "stylecraft-precision-saber-sc403bp",
     "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
     "images": [
       "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
@@ -358,12 +359,13 @@
     "name": "Stylecraft Pro METAL EDITION Instinct-X Professional Vector Motor Trimmer with Rear Metal Housing #SC411M (Dual Voltage)",
     "price": 164.99,
     "brand": "StyleCraft",
-    "slug": "gamma-replacement-gold-titanium-single-foil-head",
+    "slug": "stylecraft-instinct-x-metal-sc411m",
     "image": "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_main_lids_light_1200x.jpg?v=1729112505",
     "images": [
       "https://prostylingtools.com/cdn/shop/files/InstinctXTrimmerXProblade_1200x.jpg?v=1729112474",
       "https://prostylingtools.com/cdn/shop/files/Stylecraft136604BLK-1_1200x.jpg?v=1729112612",
-      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604RED-1_1200x.jpg?v=1729112622"
+      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604RED-1_1200x.jpg?v=1729112622",
+      "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_infog_1200x.jpg?v=1729112854"
     ],
     "category": "Trimmer",
     "shortDescription": "Metal edition Instinct-X trimmer with rear metal housing",
@@ -475,5 +477,45 @@
     "rating": 4.7,
     "reviewCount": 189,
     "sku": "WMARK-NG-XT1"
+  },
+  {
+    "id": 46,
+    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
+    "price": 149.99,
+    "brand": "JRL",
+    "slug": "jrl-onyx-trimmer-2020t-b",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020t-b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-2.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer with dual voltage for precision detailing",
+    "description": "The JRL ONYX Professional Cordless Hair Trimmer in sleek black is engineered for precision detailing and finishing work. Featuring a powerful motor and sharp T-blade, this trimmer excels at creating clean lines, edge-ups, and intricate designs. The dual voltage capability makes it perfect for professional use worldwide.",
+    "features": [
+      "Professional precision motor",
+      "Dual voltage 100-240V for worldwide use",
+      "Cordless operation for maximum flexibility",
+      "Sharp T-blade for detailed work",
+      "Ergonomic lightweight design",
+      "Lithium-ion battery technology",
+      "Extended runtime for all-day use",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Professional T-blade #FF2020T",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.5 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Professional grade plastic"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 287,
+    "sku": "FF 2020T-B"
   }
 ]
