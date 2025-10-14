@@ -451,7 +451,7 @@ main {
 }
 
 /* ==========================================
-   MOBILE GRID BRAND CARDS - NEW 2-COLUMN LAYOUT
+   MOBILE GRID BRAND CARDS - NEW 2-COLUMN LAYOUT WITH OVERLAYS
    ========================================== */
 
 .brands-grid-mobile {
@@ -524,14 +524,27 @@ main {
     background: white;
     position: relative;
     z-index: 2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
 .brand-grid-images.single-image {
     grid-template-columns: 1fr;
+    padding: 1.5rem;
 }
 
 .brand-grid-images.three-images {
     grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+    padding: 0.75rem;
+}
+
+/* Image wrapper with overlay */
+.brand-grid-images > * {
+    position: relative;
+    overflow: hidden;
+    border-radius: 16px;
+    background: var(--gray-light);
 }
 
 .brand-grid-images img {
@@ -540,29 +553,142 @@ main {
     min-height: 80px;
     max-height: 100px;
     object-fit: contain;
-    border-radius: 12px;
-    background: var(--gray-light);
+    border-radius: 16px;
     padding: 0.5rem;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    position: relative;
+}
+
+/* Overlay effect on images */
+.brand-grid-images img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(0, 0, 0, 0.05));
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    border-radius: 16px;
 }
 
 .brand-grid-card:hover .brand-grid-images img {
     transform: scale(1.1);
+    filter: brightness(1.05);
 }
 
-/* Single image takes full space */
+/* Single image takes full space with more rounding */
+.brand-grid-images.single-image > * {
+    border-radius: 20px;
+}
+
 .brand-grid-images.single-image img {
     max-height: 120px;
+    border-radius: 20px;
+    padding: 1rem;
 }
 
 /* Three images are smaller */
+.brand-grid-images.three-images > * {
+    border-radius: 12px;
+}
+
 .brand-grid-images.three-images img {
     max-height: 70px;
+    border-radius: 12px;
+    padding: 0.4rem;
+}
+
+/* Add subtle overlay to each image container */
+.brand-grid-images > *::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: inherit;
+}
+
+.brand-grid-card:hover .brand-grid-images > *::before {
+    opacity: 1;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 400px) {
+    .brands-grid-mobile {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+    
+    .brand-grid-card {
+        border-radius: 16px;
+    }
+    
+    .brand-grid-name {
+        font-size: 0.75rem;
+        padding: 0.75rem 0.75rem 0.5rem;
+    }
+    
+    .brand-grid-images {
+        padding: 0.75rem;
+        gap: 0.4rem;
+        border-bottom-left-radius: 16px;
+        border-bottom-right-radius: 16px;
+    }
+    
+    .brand-grid-images > * {
+        border-radius: 12px;
+    }
+    
+    .brand-grid-images img {
+        min-height: 60px;
+        max-height: 80px;
+        padding: 0.35rem;
+        border-radius: 12px;
+    }
+    
+    .brand-grid-images.single-image {
+        padding: 1rem;
+    }
+    
+    .brand-grid-images.single-image > * {
+        border-radius: 16px;
+    }
+    
+    .brand-grid-images.single-image img {
+        max-height: 100px;
+        border-radius: 16px;
+    }
+    
+    .brand-grid-images.three-images > * {
+        border-radius: 10px;
+    }
+    
+    .brand-grid-images.three-images img {
+        max-height: 55px;
+        border-radius: 10px;
+    }
 }
 
 /* OLD SLEEK MOBILE BRANDS - HIDDEN NOW */
 .brands-sleek-mobile {
     display: none;
+}
+
+/* Hide mobile brands on desktop */
+@media (min-width: 769px) {
+    .brands-grid-mobile {
+        display: none;
+    }
 }
 
 /* ==================== FEATURED CAROUSEL - WITH ROUNDED CORNERS ==================== */
@@ -1589,49 +1715,6 @@ main {
     
     .payment-card.payment-text {
         font-size: 0.9rem;
-    }
-}
-
-/* Responsive adjustments for very small screens - Mobile Grid Brands */
-@media (max-width: 400px) {
-    .brands-grid-mobile {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-    }
-    
-    .brand-grid-name {
-        font-size: 0.75rem;
-        padding: 0.75rem 0.75rem 0.5rem;
-    }
-    
-    .brand-grid-images {
-        padding: 0.75rem;
-        gap: 0.4rem;
-    }
-    
-    .brand-grid-images img {
-        min-height: 60px;
-        max-height: 80px;
-        padding: 0.35rem;
-    }
-    
-    .brand-grid-images.single-image img {
-        max-height: 100px;
-    }
-    
-    .brand-grid-images.three-images img {
-        max-height: 55px;
-    }
-}
-
-/* Hide mobile brands on desktop, show desktop brands */
-@media (min-width: 769px) {
-    .brands-grid-mobile {
-        display: none;
-    }
-    
-    .brands-container-desktop {
-        display: block;
     }
 }
 
