@@ -438,7 +438,7 @@ main {
     background: var(--white);
 }
 
-/* MOBILE: 2 Column Grid Layout - IMPROVED NO OVERFLOW */
+/* MOBILE: 2 Column Grid Layout - IMPROVED WITH ROUNDED CORNERS */
 .brands-grid-mobile {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -500,6 +500,7 @@ main {
     height: 100%;
     object-fit: contain;
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 12px;
 }
 
 .brand-card-mobile:hover .brand-images-mobile {
@@ -547,7 +548,7 @@ main {
     }
 }
 
-/* ==================== FEATURED CAROUSEL - REDESIGNED ==================== */
+/* ==================== FEATURED CAROUSEL - WITH ROUNDED CORNERS ==================== */
 
 .featured-section {
     position: relative;
@@ -611,7 +612,7 @@ main {
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* UPDATED: 3 tiles on mobile, maintain desktop */
+/* CAROUSEL CARDS WITH ROUNDED IMAGE CORNERS */
 .carousel-product-card {
     flex: 0 0 auto;
     min-width: calc((100% - 3rem) / 3);
@@ -656,8 +657,10 @@ main {
     background: var(--gray-light);
     overflow: hidden;
     position: relative;
-    border-radius: var(--radius) var(--radius) 0 0;
     padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .carousel-product-image img {
@@ -665,7 +668,7 @@ main {
     height: 100%;
     object-fit: contain;
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: var(--radius);
+    border-radius: 12px;
 }
 
 .carousel-product-card:hover .carousel-product-image img {
