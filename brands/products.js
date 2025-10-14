@@ -1,6 +1,7 @@
 /* ==========================================
    LUXURY PREMIUM SHOPPING EXPERIENCE ENGINE
    Advanced Features, Smart Filtering, Smooth Animations
+   Enhanced Independent Scrolling for Sidebar & Products
    Production-Ready with Working Stripe Checkout
    ========================================== */
 
@@ -21,6 +22,10 @@ let currentFilters = {
 };
 let currentView = 'grid';
 
+// Scroll state
+let isHoveringFilters = false;
+let isHoveringProducts = false;
+
 // ==========================================
 // INITIALIZATION
 // ==========================================
@@ -32,7 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     initializeEventListeners();
     initializeScrollEffects();
+    initializeIndependentScrolling();
     console.log('✨ Luxury Shopping Experience Loaded!');
+    console.log('🖱️ Enhanced Independent Scrolling Active!');
 });
 
 function initializeEventListeners() {
@@ -83,6 +90,122 @@ function initializeScrollEffects() {
             observer.observe(card);
         });
     }, 500);
+}
+
+// ==========================================
+// ENHANCED INDEPENDENT SCROLLING
+// ==========================================
+
+function initializeIndependentScrolling() {
+    const sidebar = document.querySelector('.sidebar-sticky');
+    const productsMain = document.querySelector('.products-main-premium');
+    
+    // Only apply on desktop (when sidebar is visible)
+    if (!sidebar || !productsMain) return;
+    
+    // Check if we're on desktop
+    const isDesktop = () => window.innerWidth > 1024;
+    
+    // Track hover state for sidebar
+    sidebar.addEventListener('mouseenter', () => {
+        if (isDesktop()) {
+            isHoveringFilters = true;
+            isHoveringProducts = false;
+            sidebar.style.pointerEvents = 'auto';
+            productsMain.style.overflow = 'hidden';
+        }
+    });
+    
+    sidebar.addEventListener('mouseleave', () => {
+        if (isDesktop()) {
+            isHoveringFilters = false;
+            productsMain.style.overflow = 'auto';
+        }
+    });
+    
+    // Track hover state for products area
+    productsMain.addEventListener('mouseenter', () => {
+        if (isDesktop()) {
+            isHoveringProducts = true;
+            isHoveringFilters = false;
+            productsMain.style.pointerEvents = 'auto';
+        }
+    });
+    
+    productsMain.addEventListener('mouseleave', () => {
+        if (isDesktop()) {
+            isHoveringProducts = false;
+        }
+    });
+    
+    // Handle scroll events with smooth behavior
+    let scrollTimeout;
+    
+    document.addEventListener('wheel', (e) => {
+        if (!isDesktop()) return;
+        
+        clearTimeout(scrollTimeout);
+        
+        if (isHoveringFilters && sidebar.scrollHeight > sidebar.clientHeight) {
+            // Scrolling filters only
+            e.preventDefault();
+            
+            const delta = e.deltaY;
+            const currentScroll = sidebar.scrollTop;
+            const maxScroll = sidebar.scrollHeight - sidebar.clientHeight;
+            
+            // Smooth scroll animation
+            const targetScroll = Math.max(0, Math.min(maxScroll, currentScroll + delta));
+            
+            sidebar.scrollTo({
+                top: targetScroll,
+                behavior: 'auto'
+            });
+            
+            // Add visual feedback
+            sidebar.style.transition = 'box-shadow 0.2s ease';
+            sidebar.style.boxShadow = '0 8px 24px rgba(212, 175, 55, 0.15)';
+            
+            scrollTimeout = setTimeout(() => {
+                sidebar.style.boxShadow = '';
+            }, 300);
+            
+        } else if (isHoveringProducts && productsMain.scrollHeight > productsMain.clientHeight) {
+            // Scrolling products only
+            e.preventDefault();
+            
+            const delta = e.deltaY;
+            const currentScroll = productsMain.scrollTop;
+            const maxScroll = productsMain.scrollHeight - productsMain.clientHeight;
+            
+            // Smooth scroll animation
+            const targetScroll = Math.max(0, Math.min(maxScroll, currentScroll + delta));
+            
+            productsMain.scrollTo({
+                top: targetScroll,
+                behavior: 'auto'
+            });
+            
+            // Add visual feedback
+            productsMain.style.transition = 'transform 0.2s ease';
+            productsMain.style.transform = 'translateX(2px)';
+            
+            scrollTimeout = setTimeout(() => {
+                productsMain.style.transform = 'translateX(0)';
+            }, 300);
+        }
+    }, { passive: false });
+    
+    // Reset on window resize
+    window.addEventListener('resize', () => {
+        if (!isDesktop()) {
+            productsMain.style.overflow = 'auto';
+            sidebar.style.pointerEvents = 'auto';
+            productsMain.style.pointerEvents = 'auto';
+        }
+    });
+    
+    console.log('✅ Independent scrolling initialized');
 }
 
 // ==========================================
@@ -978,3 +1101,4 @@ window.addEventListener('cartUpdated', () => {
 console.log('✨ Luxury Premium Shopping Experience Ready!');
 console.log('🛒 Cart System: Fully Functional');
 console.log('💳 Stripe Checkout: Working & Tested');
+console.log('🖱️ Enhanced Independent Scrolling: Active');
