@@ -36,6 +36,107 @@ body.no-scroll {
 }
 
 /* ==========================================
+   WELCOME SECTION - HANDWRITTEN ANIMATION
+   ========================================== */
+
+.welcome-section {
+    width: 100%;
+    padding: 40px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    overflow: hidden;
+}
+
+.welcome-container {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.handwritten-text {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.handwritten-path {
+    font-family: 'Allura', cursive;
+    font-size: 72px;
+    font-weight: 400;
+    fill: none;
+    stroke: #c9a961;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s;
+    animation-delay: 0.3s;
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fillTextGold {
+    from {
+        fill: none;
+    }
+    to {
+        fill: #c9a961;
+        stroke: #c9a961;
+    }
+}
+
+/* Welcome Section Responsive Styles */
+@media (max-width: 768px) {
+    .welcome-section {
+        padding: 30px 15px 15px;
+    }
+    
+    .handwritten-path {
+        font-size: 56px;
+        stroke-width: 1.3;
+    }
+    
+    .handwritten-text {
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-section {
+        padding: 25px 10px 10px;
+    }
+    
+    .handwritten-path {
+        font-size: 38px;
+        stroke-width: 1.2;
+    }
+    
+    .handwritten-text {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 360px) {
+    .handwritten-path {
+        font-size: 32px;
+    }
+}
+
+/* Shop by brand section spacing adjustment */
+.shop-by-brand-section {
+    margin-top: 60px;
+}
+
+/* ==========================================
    MODERN HEADER REDESIGN
    ========================================== */
 
@@ -258,6 +359,10 @@ body.no-scroll {
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
+}
+
+.mobile-only {
+    display: none;
 }
 
 /* ==========================================
@@ -1541,6 +1646,27 @@ main {
 }
 
 @media (max-width: 768px) {
+    .header-container {
+        height: 80px;
+        padding: 0 1rem;
+    }
+    
+    .logo-section {
+        padding: 0 1rem;
+    }
+    
+    .brand-logo {
+        height: 60px;
+    }
+    
+    .header-right {
+        padding: 0 0.5rem;
+    }
+    
+    .mobile-only {
+        display: flex;
+    }
+    
     .home-view {
         padding: 1.5rem 1rem;
     }
@@ -1652,7 +1778,7 @@ main {
 
 @media (max-width: 480px) {
     .header-container {
-        height: 100px;
+        height: 70px;
         padding: 0 1rem;
     }
 
@@ -1661,12 +1787,19 @@ main {
     }
     
     .brand-logo {
-        height: 80px;
+        height: 50px;
     }
     
     .action-btn {
-        width: 42px;
-        height: 42px;
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+    }
+    
+    .cart-badge {
+        width: 20px;
+        height: 20px;
+        font-size: 0.65rem;
     }
     
     .home-view {
