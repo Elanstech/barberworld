@@ -531,11 +531,9 @@
         </a>
     </div>
 </div>
-
-        </div>
     </footer>
 
-    <!-- QUIZ MODAL - Add before closing </body> tag -->
+<!-- QUIZ MODAL - Add before closing </body> tag -->
 <div class="quiz-modal-overlay" id="quiz-modal-overlay">
     <div class="quiz-modal" id="quiz-modal">
         <div class="quiz-modal-header">
@@ -545,49 +543,70 @@
             <div class="quiz-icon">
                 <i class="fas fa-clipboard-list"></i>
             </div>
-            <h3 class="quiz-modal-title">Find Your Perfect Product</h3>
-            <p class="quiz-modal-subtitle">Take our quick quiz to get personalized recommendations</p>
+            <h3 class="quiz-modal-title">Which Brand is Right for You?</h3>
+            <p class="quiz-modal-subtitle">Take our quick quiz to find your perfect match</p>
         </div>
         <div class="quiz-modal-body">
-            <div class="quiz-features">
-                <div class="quiz-feature">
-                    <div class="quiz-feature-icon">
-                        <i class="fas fa-clock"></i>
+            <!-- Intro Screen -->
+            <div class="quiz-intro">
+                <div class="quiz-features">
+                    <div class="quiz-feature">
+                        <div class="quiz-feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="quiz-feature-text">
+                            <div class="quiz-feature-title">Just 4 Questions</div>
+                            <div class="quiz-feature-desc">Takes less than 1 minute</div>
+                        </div>
                     </div>
-                    <div class="quiz-feature-text">
-                        <div class="quiz-feature-title">Just 2 Minutes</div>
-                        <div class="quiz-feature-desc">Quick and easy questionnaire</div>
+                    <div class="quiz-feature">
+                        <div class="quiz-feature-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <div class="quiz-feature-text">
+                            <div class="quiz-feature-title">Personalized Match</div>
+                            <div class="quiz-feature-desc">Find the perfect brand for your needs</div>
+                        </div>
+                    </div>
+                    <div class="quiz-feature">
+                        <div class="quiz-feature-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="quiz-feature-text">
+                            <div class="quiz-feature-title">Expert Guidance</div>
+                            <div class="quiz-feature-desc">Pro-recommended selections</div>
+                        </div>
                     </div>
                 </div>
-                <div class="quiz-feature">
-                    <div class="quiz-feature-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <div class="quiz-feature-text">
-                        <div class="quiz-feature-title">Personalized Results</div>
-                        <div class="quiz-feature-desc">Get products tailored to your needs</div>
-                    </div>
-                </div>
-                <div class="quiz-feature">
-                    <div class="quiz-feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="quiz-feature-text">
-                        <div class="quiz-feature-title">Expert Recommendations</div>
-                        <div class="quiz-feature-desc">Professional barber-approved choices</div>
-                    </div>
-                </div>
+                <button class="quiz-cta-button" id="start-quiz-btn">
+                    <span>Start Quiz</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="quiz-dismiss" id="dismiss-quiz">Maybe Later</button>
             </div>
-            <button class="quiz-cta-button" id="quiz-cta-btn">
-                <span>Start Quiz</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
-            <button class="quiz-dismiss" id="dismiss-quiz">Maybe Later</button>
+
+            <!-- Progress Indicator -->
+            <div class="quiz-progress" id="quiz-progress" style="display: none;"></div>
+
+            <!-- Quiz Steps Container -->
+            <div id="quiz-steps"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="quiz-buttons" style="display: none;">
+                <button class="quiz-btn quiz-btn-back" id="quiz-back-btn" style="display: none;">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back</span>
+                </button>
+                <button class="quiz-btn quiz-btn-next" id="quiz-next-btn" disabled>
+                    <span>Next</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
         </div>
     </div>
 </div>
 
-<!-- BACK TO TOP BUTTON - Add before closing </body> tag -->
+    <!-- BACK TO TOP BUTTON - Add before closing </body> tag -->
 <button class="back-to-top" id="back-to-top" aria-label="Back to top">
     <i class="fas fa-arrow-up"></i>
 </button>
