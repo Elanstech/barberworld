@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
     initializeWelcomeSection();
     initializeShippingBanner();
+    initializeQuizModal();
+    initializeBackToTop();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -722,4 +724,117 @@ function debounce(func, wait) {
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
     };
+}
+
+// ==========================================
+// QUIZ MODAL
+// ==========================================
+
+function initializeQuizModal() {
+    const quizOverlay = document.getElementById('quiz-modal-overlay');
+    const quizModal = document.getElementById('quiz-modal');
+    const closeQuizBtn = document.getElementById('close-quiz-modal');
+    const dismissQuizBtn = document.getElementById('dismiss-quiz');
+    const quizCTABtn = document.getElementById('quiz-cta-btn');
+    
+    if (!quizOverlay || !quizModal) return;
+    
+    // Check if quiz was dismissed
+    const quizDismissed = sessionStorage.getItem('quizDismissed');
+    
+    // Show quiz after 10 seconds if not dismissed
+    if (!quizDismissed) {
+        setTimeout(() => {
+            showQuizModal();
+        }, 10000);
+    }
+    
+    // Close button
+    if (closeQuizBtn) {
+        closeQuizBtn.addEventListener('click', closeQuizModal);
+    }
+    
+    // Dismiss button
+    if (dismissQuizBtn) {
+        dismissQuizBtn.addEventListener('click', () => {
+            closeQuizModal();
+            sessionStorage.setItem('quizDismissed', 'true');
+        });
+    }
+    
+    // Overlay click
+    quizOverlay.addEventListener('click', (e) => {
+        if (e.target === quizOverlay) {
+            closeQuizModal();
+        }
+    });
+    
+    // CTA button - you can link this to your quiz page
+    if (quizCTABtn) {
+        quizCTABtn.addEventListener('click', () => {
+            // Replace with your quiz page URL
+            window.location.href = '/quiz.html';
+            // Or open in new tab: window.open('/quiz.html', '_blank');
+        });
+    }
+    
+    // ESC key to close
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && quizModal.classList.contains('active')) {
+            closeQuizModal();
+        }
+    });
+}
+
+function showQuizModal() {
+    const quizOverlay = document.getElementById('quiz-modal-overlay');
+    const quizModal = document.getElementById('quiz-modal');
+    
+    if (quizOverlay && quizModal) {
+        quizOverlay.classList.add('active');
+        setTimeout(() => {
+            quizModal.classList.add('active');
+        }, 100);
+        document.body.classList.add('no-scroll');
+    }
+}
+
+function closeQuizModal() {
+    const quizOverlay = document.getElementById('quiz-modal-overlay');
+    const quizModal = document.getElementById('quiz-modal');
+    
+    if (quizOverlay && quizModal) {
+        quizModal.classList.remove('active');
+        setTimeout(() => {
+            quizOverlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        }, 300);
+    }
+}
+
+// ==========================================
+// BACK TO TOP BUTTON
+// ==========================================
+
+function initializeBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (!backToTopBtn) return;
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', debounce(() => {
+        if (window.scrollY > 500) {
+            backToTopBtn.classList.add('visible');
+        } else {
+            backToTopBtn.classList.remove('visible');
+        }
+    }, 100));
+    
+    // Smooth scroll to top
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 }
