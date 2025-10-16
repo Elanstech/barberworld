@@ -1,6 +1,6 @@
 /* ==========================================
    ULTIMATE SMART E-COMMERCE SYSTEM
-   All Existing Features + Smart Enhancements
+   All Existing Features + Modern Notifications
    Production-Ready with Working Stripe
    ========================================== */
 
@@ -95,6 +95,326 @@ const performanceOptimizer = {
         };
     }
 };
+
+// ==========================================
+// MODERN NOTIFICATION SYSTEM
+// ==========================================
+
+const NotificationSystem = {
+    container: null,
+    notifications: [],
+    maxNotifications: 5,
+    
+    init() {
+        if (!this.container) {
+            this.container = document.createElement('div');
+            this.container.className = 'modern-notifications-container';
+            document.body.appendChild(this.container);
+            this.injectStyles();
+        }
+    },
+    
+    show(message, type = 'success', duration = 4000) {
+        this.init();
+        
+        const id = Date.now() + Math.random();
+        const notification = this.createNotification(message, type, duration, id);
+        
+        this.notifications.push({ id, element: notification });
+        this.container.appendChild(notification);
+        
+        // Limit notifications
+        if (this.notifications.length > this.maxNotifications) {
+            const oldest = this.notifications.shift();
+            this.remove(oldest.id);
+        }
+        
+        // Trigger entrance animation
+        setTimeout(() => notification.classList.add('show'), 10);
+        
+        // Auto dismiss
+        if (duration > 0) {
+            setTimeout(() => this.remove(id), duration);
+        }
+        
+        return id;
+    },
+    
+    createNotification(message, type, duration, id) {
+        const notification = document.createElement('div');
+        notification.className = `modern-notification ${type}`;
+        notification.dataset.id = id;
+        
+        const icons = {
+            success: 'fa-check-circle',
+            error: 'fa-times-circle',
+            warning: 'fa-exclamation-triangle',
+            info: 'fa-info-circle',
+            cart: 'fa-shopping-cart'
+        };
+        
+        const titles = {
+            success: 'Success',
+            error: 'Error',
+            warning: 'Warning',
+            info: 'Info',
+            cart: 'Added to Cart'
+        };
+        
+        notification.innerHTML = `
+            <div class="notification-icon">
+                <i class="fas ${icons[type] || icons.success}"></i>
+            </div>
+            <div class="notification-content">
+                <div class="notification-title">${titles[type] || titles.success}</div>
+                <div class="notification-message">${this.escapeHtml(message)}</div>
+            </div>
+            <button class="notification-close" onclick="NotificationSystem.remove(${id})">
+                <i class="fas fa-times"></i>
+            </button>
+            ${duration > 0 ? `<div class="notification-progress" style="animation-duration: ${duration}ms;"></div>` : ''}
+        `;
+        
+        return notification;
+    },
+    
+    remove(id) {
+        const notification = this.container.querySelector(`[data-id="${id}"]`);
+        if (notification) {
+            notification.classList.add('hiding');
+            setTimeout(() => {
+                notification.remove();
+                this.notifications = this.notifications.filter(n => n.id !== id);
+            }, 400);
+        }
+    },
+    
+    removeAll() {
+        this.notifications.forEach(n => this.remove(n.id));
+    },
+    
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    },
+    
+    injectStyles() {
+        if (document.getElementById('modern-notifications-styles')) return;
+        
+        const styles = document.createElement('style');
+        styles.id = 'modern-notifications-styles';
+        styles.textContent = `
+            .modern-notifications-container {
+                position: fixed;
+                top: 140px;
+                right: 24px;
+                z-index: 10001;
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                pointer-events: none;
+            }
+            
+            .modern-notification {
+                position: relative;
+                display: flex;
+                align-items: flex-start;
+                gap: 14px;
+                min-width: 380px;
+                max-width: 420px;
+                background: #ffffff;
+                padding: 18px 20px;
+                border-radius: 16px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
+                pointer-events: auto;
+                opacity: 0;
+                transform: translateX(450px) scale(0.9);
+                transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+                overflow: hidden;
+                backdrop-filter: blur(10px);
+                border: 1px solid rgba(0, 0, 0, 0.06);
+            }
+            
+            .modern-notification.show {
+                opacity: 1;
+                transform: translateX(0) scale(1);
+            }
+            
+            .modern-notification.hiding {
+                opacity: 0;
+                transform: translateX(450px) scale(0.9);
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
+            }
+            
+            .modern-notification::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 4px;
+                background: var(--notification-color);
+            }
+            
+            .modern-notification.success {
+                --notification-color: #10B981;
+            }
+            
+            .modern-notification.error {
+                --notification-color: #EF4444;
+            }
+            
+            .modern-notification.warning {
+                --notification-color: #F59E0B;
+            }
+            
+            .modern-notification.info {
+                --notification-color: #3B82F6;
+            }
+            
+            .modern-notification.cart {
+                --notification-color: #D4AF37;
+            }
+            
+            .notification-icon {
+                width: 42px;
+                height: 42px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: var(--notification-color);
+                color: white;
+                font-size: 1.25rem;
+                flex-shrink: 0;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            }
+            
+            @keyframes iconBounce {
+                0% {
+                    transform: scale(0) rotate(-180deg);
+                }
+                50% {
+                    transform: scale(1.2) rotate(10deg);
+                }
+                100% {
+                    transform: scale(1) rotate(0deg);
+                }
+            }
+            
+            .notification-content {
+                flex: 1;
+                min-width: 0;
+            }
+            
+            .notification-title {
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: #0a0a0a;
+                margin-bottom: 4px;
+                letter-spacing: -0.01em;
+            }
+            
+            .notification-message {
+                font-size: 0.875rem;
+                color: #6b7280;
+                line-height: 1.5;
+                font-weight: 500;
+            }
+            
+            .notification-close {
+                position: absolute;
+                top: 16px;
+                right: 16px;
+                width: 28px;
+                height: 28px;
+                border: none;
+                background: rgba(0, 0, 0, 0.05);
+                border-radius: 8px;
+                color: #6b7280;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s ease;
+                font-size: 0.875rem;
+            }
+            
+            .notification-close:hover {
+                background: rgba(0, 0, 0, 0.1);
+                color: #0a0a0a;
+                transform: scale(1.1);
+            }
+            
+            .notification-progress {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                height: 3px;
+                background: var(--notification-color);
+                width: 100%;
+                transform-origin: left;
+                animation: progressBar linear forwards;
+            }
+            
+            @keyframes progressBar {
+                from {
+                    transform: scaleX(1);
+                }
+                to {
+                    transform: scaleX(0);
+                }
+            }
+            
+            /* Responsive */
+            @media (max-width: 768px) {
+                .modern-notifications-container {
+                    top: 140px;
+                    right: 16px;
+                    left: 16px;
+                }
+                
+                .modern-notification {
+                    min-width: auto;
+                    max-width: 100%;
+                }
+            }
+            
+            /* Hover pause animation */
+            .modern-notification:hover .notification-progress {
+                animation-play-state: paused;
+            }
+        `;
+        document.head.appendChild(styles);
+    }
+};
+
+// Convenience notification functions
+function showNotification(message, type = 'success') {
+    NotificationSystem.show(message, type);
+}
+
+function showSuccess(message) {
+    NotificationSystem.show(message, 'success');
+}
+
+function showError(message) {
+    NotificationSystem.show(message, 'error');
+}
+
+function showWarning(message) {
+    NotificationSystem.show(message, 'warning');
+}
+
+function showInfo(message) {
+    NotificationSystem.show(message, 'info');
+}
+
+function showCartNotification(message) {
+    NotificationSystem.show(message, 'cart');
+}
 
 // ==========================================
 // INITIALIZATION
@@ -311,6 +631,7 @@ async function loadProducts(brand) {
                 <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
             </div>
         `;
+        showError('Failed to load products. Please try again.');
     }
 }
 
@@ -490,6 +811,7 @@ function clearAllFilters() {
     });
     
     applyFilters();
+    showInfo('All filters cleared');
 }
 
 function updateProductCounts() {
@@ -964,7 +1286,7 @@ function addToCart(productId) {
     }
     
     saveCart();
-    showNotification(`${product.name} added to cart!`);
+    showCartNotification(`${product.name} added to cart!`);
     
     // Add bounce animation to cart badge
     const badge = document.getElementById('cart-badge');
@@ -982,7 +1304,7 @@ function removeFromCart(productId) {
     saveCart();
     
     if (product) {
-        showNotification(`${product.name} removed from cart`);
+        showInfo(`${product.name} removed from cart`);
     }
 }
 
@@ -1095,12 +1417,12 @@ function closeCart() {
 
 async function proceedToCheckout() {
     if (cart.length === 0) {
-        showNotification('Your cart is empty!');
+        showWarning('Your cart is empty!');
         return;
     }
     
     try {
-        showNotification('Preparing your checkout...');
+        showInfo('Preparing your checkout...');
         
         // Format line items for Stripe
         const lineItems = cart.map(item => ({
@@ -1141,25 +1463,7 @@ async function proceedToCheckout() {
         
     } catch (error) {
         console.error('❌ Checkout error:', error);
-        showNotification('Checkout failed. Please contact support at barberworldnyc@gmail.com');
-    }
-}
-
-// ==========================================
-// NOTIFICATIONS
-// ==========================================
-
-function showNotification(message) {
-    const toast = document.getElementById('notification-toast');
-    const messageEl = document.getElementById('notification-message');
-    
-    if (toast && messageEl) {
-        messageEl.textContent = message;
-        toast.classList.add('show');
-        
-        setTimeout(() => {
-            toast.classList.remove('show');
-        }, 3500);
+        showError('Checkout failed. Please contact support at barberworldnyc@gmail.com');
     }
 }
 
@@ -1195,3 +1499,4 @@ console.log('💳 Stripe Checkout: Working & Tested');
 console.log('🎯 Smart Scrolling: Active');
 console.log('⚡ Performance: Optimized');
 console.log('📱 Mobile: Responsive');
+console.log('🔔 Modern Notifications: Active');
