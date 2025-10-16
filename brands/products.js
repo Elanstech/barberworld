@@ -1,7 +1,7 @@
 /* ==========================================
-   LUXURY PREMIUM SHOPPING EXPERIENCE ENGINE
-   Advanced Features, Smart Filtering, Smooth Animations
-   Production-Ready with Working Stripe Checkout
+   ULTIMATE SMART E-COMMERCE SYSTEM
+   All Existing Features + Smart Enhancements
+   Production-Ready with Working Stripe
    ========================================== */
 
 // Stripe Configuration
@@ -21,6 +21,81 @@ let currentFilters = {
 };
 let currentView = 'grid';
 
+// Smart Scroll Management System
+const scrollManager = {
+    positions: {
+        products: 0,
+        sidebar: 0
+    },
+    activeElement: null,
+    isModalOpen: false,
+    
+    savePosition(element, position) {
+        this.positions[element] = position;
+        sessionStorage.setItem(`scroll_${element}`, position);
+    },
+    
+    restorePosition(element) {
+        const saved = sessionStorage.getItem(`scroll_${element}`);
+        return saved ? parseInt(saved) : 0;
+    },
+    
+    preventBodyScroll() {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = scrollbarWidth + 'px';
+    },
+    
+    allowBodyScroll() {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    }
+};
+
+// Recently Viewed Products
+const recentlyViewed = {
+    max: 10,
+    
+    add(productId) {
+        let recent = this.get();
+        recent = recent.filter(id => id !== productId);
+        recent.unshift(productId);
+        recent = recent.slice(0, this.max);
+        localStorage.setItem('barber_recent', JSON.stringify(recent));
+    },
+    
+    get() {
+        try {
+            return JSON.parse(localStorage.getItem('barber_recent') || '[]');
+        } catch {
+            return [];
+        }
+    }
+};
+
+// Performance Optimizer
+const performanceOptimizer = {
+    debounceTimers: {},
+    
+    debounce(func, wait, key) {
+        clearTimeout(this.debounceTimers[key]);
+        this.debounceTimers[key] = setTimeout(func, wait);
+    },
+    
+    throttle(func, limit) {
+        let inThrottle;
+        return function() {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+                func.apply(context, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    }
+};
+
 // ==========================================
 // INITIALIZATION
 // ==========================================
@@ -32,7 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     initializeEventListeners();
     initializeScrollEffects();
-    console.log('✨ Luxury Shopping Experience Loaded!');
+    initializeSmartScrolling();
+    restoreScrollPositions();
+    console.log('✨ Ultimate Smart Shopping Experience Loaded!');
 });
 
 function initializeEventListeners() {
@@ -58,11 +135,33 @@ function initializeEventListeners() {
                 toggleMobileFilters();
             }
         }
+        
+        // Arrow key navigation in modal
+        if (scrollManager.isModalOpen) {
+            if (e.key === 'ArrowLeft') navigateModalImage('prev');
+            if (e.key === 'ArrowRight') navigateModalImage('next');
+        }
     });
+    
+    // Listen for cart updates from other tabs
+    window.addEventListener('storage', (e) => {
+        if (e.key === 'barber_cart') {
+            loadCart();
+            updateCartBadge();
+        }
+    });
+    
+    window.addEventListener('cartUpdated', () => {
+        updateCartBadge();
+    });
+    
+    // Prevent scroll restoration
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
 }
 
 function initializeScrollEffects() {
-    // Smooth scroll animations for product cards
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -77,7 +176,6 @@ function initializeScrollEffects() {
         });
     }, observerOptions);
     
-    // Observe product cards when they're added
     setTimeout(() => {
         document.querySelectorAll('.product-card-premium').forEach(card => {
             observer.observe(card);
@@ -86,7 +184,91 @@ function initializeScrollEffects() {
 }
 
 // ==========================================
-// LOAD PRODUCTS FROM JSON
+// SMART SCROLLING SYSTEM
+// ==========================================
+
+function initializeSmartScrolling() {
+    const productsMain = document.getElementById('products-main');
+    const sidebar = document.querySelector('.sidebar-sticky');
+    
+    // Smart scroll for products main
+    if (productsMain) {
+        productsMain.addEventListener('scroll', performanceOptimizer.throttle(() => {
+            scrollManager.savePosition('products', productsMain.scrollTop);
+        }, 100));
+        
+        productsMain.addEventListener('mouseenter', () => {
+            scrollManager.activeElement = 'products';
+        });
+        
+        productsMain.addEventListener('mouseleave', () => {
+            scrollManager.activeElement = null;
+        });
+    }
+    
+    // Smart scroll for sidebar
+    if (sidebar) {
+        sidebar.addEventListener('scroll', performanceOptimizer.throttle(() => {
+            scrollManager.savePosition('sidebar', sidebar.scrollTop);
+        }, 100));
+        
+        sidebar.addEventListener('mouseenter', () => {
+            scrollManager.activeElement = 'sidebar';
+        });
+        
+        sidebar.addEventListener('mouseleave', () => {
+            scrollManager.activeElement = null;
+        });
+    }
+    
+    // Intelligent wheel event handling
+    document.addEventListener('wheel', (e) => {
+        if (scrollManager.isModalOpen) return;
+        
+        const productsMain = document.getElementById('products-main');
+        const sidebar = document.querySelector('.sidebar-sticky');
+        
+        // Smart scrolling for products grid
+        if (scrollManager.activeElement === 'products' && productsMain) {
+            const canScrollDown = productsMain.scrollTop < productsMain.scrollHeight - productsMain.clientHeight;
+            const canScrollUp = productsMain.scrollTop > 0;
+            const isScrollingDown = e.deltaY > 0;
+            
+            if ((isScrollingDown && canScrollDown) || (!isScrollingDown && canScrollUp)) {
+                e.preventDefault();
+                productsMain.scrollTop += e.deltaY;
+            }
+        } 
+        // Smart scrolling for sidebar
+        else if (scrollManager.activeElement === 'sidebar' && sidebar) {
+            const canScrollDown = sidebar.scrollTop < sidebar.scrollHeight - sidebar.clientHeight;
+            const canScrollUp = sidebar.scrollTop > 0;
+            const isScrollingDown = e.deltaY > 0;
+            
+            if ((isScrollingDown && canScrollDown) || (!isScrollingDown && canScrollUp)) {
+                e.preventDefault();
+                sidebar.scrollTop += e.deltaY;
+            }
+        }
+    }, { passive: false });
+}
+
+function restoreScrollPositions() {
+    setTimeout(() => {
+        const productsMain = document.getElementById('products-main');
+        const sidebar = document.querySelector('.sidebar-sticky');
+        
+        if (productsMain) {
+            productsMain.scrollTop = scrollManager.restorePosition('products');
+        }
+        if (sidebar) {
+            sidebar.scrollTop = scrollManager.restorePosition('sidebar');
+        }
+    }, 100);
+}
+
+// ==========================================
+// LOAD PRODUCTS
 // ==========================================
 
 async function loadProducts(brand) {
@@ -137,69 +319,71 @@ async function loadProducts(brand) {
 // ==========================================
 
 function applyFilters() {
-    // Get filter values
-    const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
-    const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
-    const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
-    const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
-    
-    currentFilters = {
-        search: searchValue,
-        category: categoryValue,
-        priceMax: priceValue,
-        sort: sortValue,
-        quickFilter: currentFilters.quickFilter
-    };
-    
-    // Apply filters
-    filteredProducts = allProducts.filter(product => {
-        // Search filter
-        if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
-            return false;
-        }
+    performanceOptimizer.debounce(() => {
+        // Get filter values
+        const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
+        const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
+        const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
+        const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
         
-        // Category filter
-        if (categoryValue !== 'all' && product.category !== categoryValue) {
-            return false;
-        }
+        currentFilters = {
+            search: searchValue,
+            category: categoryValue,
+            priceMax: priceValue,
+            sort: sortValue,
+            quickFilter: currentFilters.quickFilter
+        };
         
-        // Price filter
-        if (product.price > priceValue) {
-            return false;
-        }
+        // Apply filters
+        filteredProducts = allProducts.filter(product => {
+            // Search filter
+            if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
+                return false;
+            }
+            
+            // Category filter
+            if (categoryValue !== 'all' && product.category !== categoryValue) {
+                return false;
+            }
+            
+            // Price filter
+            if (product.price > priceValue) {
+                return false;
+            }
+            
+            // Quick filters
+            if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
+                return false;
+            }
+            if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
+                return false;
+            }
+            
+            return true;
+        });
         
-        // Quick filters
-        if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
-            return false;
-        }
-        if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
-            return false;
-        }
+        // Sort products
+        filteredProducts.sort((a, b) => {
+            switch (sortValue) {
+                case 'name-asc':
+                    return a.name.localeCompare(b.name);
+                case 'name-desc':
+                    return b.name.localeCompare(a.name);
+                case 'price-asc':
+                    return a.price - b.price;
+                case 'price-desc':
+                    return b.price - a.price;
+                case 'rating':
+                    return (b.rating || 0) - (a.rating || 0);
+                default:
+                    return 0;
+            }
+        });
         
-        return true;
-    });
-    
-    // Sort products
-    filteredProducts.sort((a, b) => {
-        switch (sortValue) {
-            case 'name-asc':
-                return a.name.localeCompare(b.name);
-            case 'name-desc':
-                return b.name.localeCompare(a.name);
-            case 'price-asc':
-                return a.price - b.price;
-            case 'price-desc':
-                return b.price - a.price;
-            case 'rating':
-                return (b.rating || 0) - (a.rating || 0);
-            default:
-                return 0;
-        }
-    });
-    
-    updateActiveFilters();
-    renderProducts();
-    updateProductCounts();
+        updateActiveFilters();
+        renderProducts();
+        updateProductCounts();
+    }, 300, 'applyFilters');
 }
 
 function updateActiveFilters() {
@@ -436,7 +620,7 @@ function renderProducts() {
         </div>
     `).join('');
     
-    // Re-initialize scroll effects for new products
+    // Re-initialize scroll effects
     initializeScrollEffects();
 }
 
@@ -476,12 +660,21 @@ function changeView(view) {
 }
 
 // ==========================================
-// PRODUCT MODAL
+// PRODUCT MODAL - SMART SCROLL
 // ==========================================
 
 function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
+    
+    // Add to recently viewed
+    recentlyViewed.add(productId);
+    
+    // Save scroll position
+    const productsMain = document.getElementById('products-main');
+    if (productsMain) {
+        scrollManager.savePosition('products', productsMain.scrollTop);
+    }
     
     const modal = document.getElementById('product-modal');
     const modalBody = document.getElementById('modal-body');
@@ -574,6 +767,10 @@ function openProductModal(productId) {
         </div>
     `;
     
+    // Prevent body scroll
+    scrollManager.preventBodyScroll();
+    scrollManager.isModalOpen = true;
+    
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
 }
@@ -594,6 +791,10 @@ function closeProductModal(event) {
             backdrop.style.animation = 'backdropFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
         }
         
+        // Allow body scroll
+        scrollManager.allowBodyScroll();
+        scrollManager.isModalOpen = false;
+        
         // Remove active class after animation
         setTimeout(() => {
             modal.classList.remove('active');
@@ -602,6 +803,12 @@ function closeProductModal(event) {
             // Reset animations
             if (modalContent) modalContent.style.animation = '';
             if (backdrop) backdrop.style.animation = '';
+            
+            // Restore scroll position
+            const productsMain = document.getElementById('products-main');
+            if (productsMain) {
+                productsMain.scrollTop = scrollManager.positions.products;
+            }
         }, 400);
     }
 }
@@ -609,7 +816,6 @@ function closeProductModal(event) {
 function changeModalImage(imageSrc, thumbnail) {
     const mainImage = document.getElementById('modal-main-image');
     if (mainImage) {
-        // Smooth fade and scale transition
         mainImage.style.opacity = '0';
         mainImage.style.transform = 'scale(0.92)';
         
@@ -628,12 +834,28 @@ function changeModalImage(imageSrc, thumbnail) {
     
     if (thumbnail) {
         thumbnail.classList.add('active');
-        // Add a subtle bounce effect
         thumbnail.style.animation = 'thumbnailBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
         setTimeout(() => {
             thumbnail.style.animation = '';
         }, 400);
     }
+}
+
+function navigateModalImage(direction) {
+    const thumbnails = document.querySelectorAll('.modal-thumbnail-luxury');
+    if (thumbnails.length <= 1) return;
+    
+    const activeThumbnail = document.querySelector('.modal-thumbnail-luxury.active');
+    const currentIndex = Array.from(thumbnails).indexOf(activeThumbnail);
+    
+    let newIndex;
+    if (direction === 'next') {
+        newIndex = (currentIndex + 1) % thumbnails.length;
+    } else {
+        newIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
+    }
+    
+    thumbnails[newIndex].click();
 }
 
 // ==========================================
@@ -649,11 +871,11 @@ function toggleMobileFilters() {
     if (panel.classList.contains('active')) {
         panel.classList.remove('active');
         overlay.classList.remove('active');
-        document.body.classList.remove('no-scroll');
+        scrollManager.allowBodyScroll();
     } else {
         panel.classList.add('active');
         overlay.classList.add('active');
-        document.body.classList.add('no-scroll');
+        scrollManager.preventBodyScroll();
     }
 }
 
@@ -690,9 +912,9 @@ function toggleMobileMenu() {
     if (menu) {
         menu.classList.toggle('active');
         if (menu.classList.contains('active')) {
-            document.body.classList.add('no-scroll');
+            scrollManager.preventBodyScroll();
         } else {
-            document.body.classList.remove('no-scroll');
+            scrollManager.allowBodyScroll();
         }
     }
 }
@@ -852,7 +1074,7 @@ function openCart() {
         updateCartDisplay();
         cartPanel.classList.add('active');
         cartOverlay.classList.add('active');
-        document.body.classList.add('no-scroll');
+        scrollManager.preventBodyScroll();
     }
 }
 
@@ -863,12 +1085,12 @@ function closeCart() {
     if (cartPanel && cartOverlay) {
         cartPanel.classList.remove('active');
         cartOverlay.classList.remove('active');
-        document.body.classList.remove('no-scroll');
+        scrollManager.allowBodyScroll();
     }
 }
 
 // ==========================================
-// CHECKOUT - WORKING STRIPE INTEGRATION
+// CHECKOUT - STRIPE INTEGRATION
 // ==========================================
 
 async function proceedToCheckout() {
@@ -952,7 +1174,7 @@ function escapeHtml(text) {
 }
 
 // ==========================================
-// ADD NECESSARY ANIMATIONS
+// ANIMATIONS
 // ==========================================
 
 const style = document.createElement('style');
@@ -963,18 +1185,13 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Listen for cart updates from other tabs/windows
-window.addEventListener('storage', (e) => {
-    if (e.key === 'barber_cart') {
-        loadCart();
-        updateCartBadge();
-    }
-});
+// ==========================================
+// FINAL LOGS
+// ==========================================
 
-window.addEventListener('cartUpdated', () => {
-    updateCartBadge();
-});
-
-console.log('✨ Luxury Premium Shopping Experience Ready!');
+console.log('✨ Ultimate Smart Shopping Experience Ready!');
 console.log('🛒 Cart System: Fully Functional');
 console.log('💳 Stripe Checkout: Working & Tested');
+console.log('🎯 Smart Scrolling: Active');
+console.log('⚡ Performance: Optimized');
+console.log('📱 Mobile: Responsive');
