@@ -727,26 +727,108 @@ function debounce(func, wait) {
 }
 
 // ==========================================
-// QUIZ MODAL
+// QUIZ MODAL - INTERACTIVE BRAND FINDER
 // ==========================================
+
+let quizState = {
+    currentStep: 0,
+    answers: {},
+    totalSteps: 4
+};
+
+const quizQuestions = [
+    {
+        id: 'usage',
+        question: 'What will you primarily use the equipment for?',
+        options: [
+            { value: 'professional', icon: 'fa-briefcase', title: 'Professional Barber', desc: 'For salon or barbershop use' },
+            { value: 'personal', icon: 'fa-home', title: 'Personal Grooming', desc: 'For home use and personal care' },
+            { value: 'both', icon: 'fa-users', title: 'Both', desc: 'Professional and personal use' }
+        ]
+    },
+    {
+        id: 'experience',
+        question: 'What\'s your experience level?',
+        options: [
+            { value: 'beginner', icon: 'fa-seedling', title: 'Beginner', desc: 'Just getting started' },
+            { value: 'intermediate', icon: 'fa-graduation-cap', title: 'Intermediate', desc: 'Some experience' },
+            { value: 'expert', icon: 'fa-star', title: 'Expert', desc: 'Professional level skills' }
+        ]
+    },
+    {
+        id: 'budget',
+        question: 'What\'s your budget range?',
+        options: [
+            { value: 'budget', icon: 'fa-dollar-sign', title: 'Budget-Friendly', desc: 'Under $100' },
+            { value: 'mid', icon: 'fa-balance-scale', title: 'Mid-Range', desc: '$100 - $250' },
+            { value: 'premium', icon: 'fa-gem', title: 'Premium', desc: 'Over $250' }
+        ]
+    },
+    {
+        id: 'priority',
+        question: 'What matters most to you?',
+        options: [
+            { value: 'power', icon: 'fa-bolt', title: 'Power & Performance', desc: 'Strong motor and cutting ability' },
+            { value: 'versatility', icon: 'fa-layer-group', title: 'Versatility', desc: 'Multiple attachments and uses' },
+            { value: 'durability', icon: 'fa-shield-alt', title: 'Durability', desc: 'Long-lasting and reliable' },
+            { value: 'design', icon: 'fa-paint-brush', title: 'Design & Style', desc: 'Modern look and feel' }
+        ]
+    }
+];
+
+const brandRecommendations = {
+    'wahl': {
+        name: 'Wahl Professional',
+        page: 'brands/wahl.html',
+        icon: 'fa-award',
+        description: 'Industry-leading professional equipment with legendary reliability and power. Perfect for professionals who demand the best.',
+        features: ['Professional Grade', 'Powerful Motors', 'Industry Standard', 'Proven Durability']
+    },
+    'stylecraft': {
+        name: 'StyleCraft',
+        page: 'brands/stylecraft.html',
+        icon: 'fa-crown',
+        description: 'Premium professional tools combining cutting-edge technology with sleek modern design. The choice of elite barbers.',
+        features: ['Premium Quality', 'Modern Design', 'Advanced Technology', 'Pro Performance']
+    },
+    'vgr': {
+        name: 'VGR Professional',
+        page: 'brands/vgr.html',
+        icon: 'fa-star',
+        description: 'High-quality professional equipment offering exceptional value. Perfect balance of performance and affordability.',
+        features: ['Great Value', 'Professional Quality', 'Versatile', 'Reliable Performance']
+    },
+    'ourbrand': {
+        name: 'Our Brand',
+        page: 'brands/ourbrand.html',
+        icon: 'fa-heart',
+        description: 'Carefully curated selection of quality grooming tools. Perfect for personal use and aspiring professionals.',
+        features: ['Affordable Quality', 'Easy to Use', 'Great for Beginners', 'Versatile Options']
+    }
+};
 
 function initializeQuizModal() {
     const quizOverlay = document.getElementById('quiz-modal-overlay');
     const quizModal = document.getElementById('quiz-modal');
     const closeQuizBtn = document.getElementById('close-quiz-modal');
     const dismissQuizBtn = document.getElementById('dismiss-quiz');
-    const quizCTABtn = document.getElementById('quiz-cta-btn');
+    const startQuizBtn = document.getElementById('start-quiz-btn');
     
     if (!quizOverlay || !quizModal) return;
     
     // Check if quiz was dismissed
     const quizDismissed = sessionStorage.getItem('quizDismissed');
     
-    // Show quiz after 10 seconds if not dismissed
+    // Show quiz after 3 seconds if not dismissed
     if (!quizDismissed) {
         setTimeout(() => {
             showQuizModal();
-        }, 10000);
+        }, 3000);
+    }
+    
+    // Start quiz button
+    if (startQuizBtn) {
+        startQuizBtn.addEventListener('click', startQuiz);
     }
     
     // Close button
@@ -769,21 +851,260 @@ function initializeQuizModal() {
         }
     });
     
-    // CTA button - you can link this to your quiz page
-    if (quizCTABtn) {
-        quizCTABtn.addEventListener('click', () => {
-            // Replace with your quiz page URL
-            window.location.href = '/quiz.html';
-            // Or open in new tab: window.open('/quiz.html', '_blank');
-        });
-    }
-    
     // ESC key to close
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && quizModal.classList.contains('active')) {
             closeQuizModal();
         }
     });
+    
+    // Setup quiz navigation
+    setupQuizNavigation();
+}
+
+function startQuiz() {
+    document.querySelector('.quiz-intro').classList.add('hidden');
+    document.getElementById('quiz-progress').style.display = 'flex';
+    document.querySelector('.quiz-buttons').style.display = 'flex';
+    quizState.currentStep = 0;
+    quizState.answers = {};
+    renderQuizStep();
+}
+
+function setupQuizNavigation() {
+    const backBtn = document.getElementById('quiz-back-btn');
+    const nextBtn = document.getElementById('quiz-next-btn');
+    
+    if (backBtn) {
+        backBtn.addEventListener('click', () => {
+            if (quizState.currentStep > 0) {
+                quizState.currentStep--;
+                renderQuizStep();
+            }
+        });
+    }
+    
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const currentQuestion = quizQuestions[quizState.currentStep];
+            if (quizState.answers[currentQuestion.id]) {
+                if (quizState.currentStep < quizState.totalSteps - 1) {
+                    quizState.currentStep++;
+                    renderQuizStep();
+                } else {
+                    showQuizResult();
+                }
+            }
+        });
+    }
+}
+
+function renderQuizStep() {
+    const currentQuestion = quizQuestions[quizState.currentStep];
+    const quizStepsContainer = document.getElementById('quiz-steps');
+    
+    // Update progress dots
+    updateProgressDots();
+    
+    // Render current question
+    quizStepsContainer.innerHTML = `
+        <div class="quiz-step active">
+            <div class="quiz-question">${currentQuestion.question}</div>
+            <div class="quiz-options">
+                ${currentQuestion.options.map(option => `
+                    <div class="quiz-option ${quizState.answers[currentQuestion.id] === option.value ? 'selected' : ''}" 
+                         data-value="${option.value}">
+                        <div class="option-icon">
+                            <i class="fas ${option.icon}"></i>
+                        </div>
+                        <div class="option-text">
+                            <div class="option-title">${option.title}</div>
+                            <div class="option-desc">${option.desc}</div>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+    `;
+    
+    // Add click handlers to options
+    document.querySelectorAll('.quiz-option').forEach(option => {
+        option.addEventListener('click', () => {
+            const value = option.dataset.value;
+            quizState.answers[currentQuestion.id] = value;
+            
+            // Update UI
+            document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            
+            // Enable next button
+            document.getElementById('quiz-next-btn').disabled = false;
+        });
+    });
+    
+    // Update buttons
+    const backBtn = document.getElementById('quiz-back-btn');
+    const nextBtn = document.getElementById('quiz-next-btn');
+    
+    if (backBtn) {
+        backBtn.style.display = quizState.currentStep > 0 ? 'flex' : 'none';
+    }
+    
+    if (nextBtn) {
+        nextBtn.disabled = !quizState.answers[currentQuestion.id];
+        nextBtn.innerHTML = quizState.currentStep === quizState.totalSteps - 1 
+            ? '<span>See Results</span><i class="fas fa-check"></i>' 
+            : '<span>Next</span><i class="fas fa-arrow-right"></i>';
+    }
+}
+
+function updateProgressDots() {
+    const progressContainer = document.getElementById('quiz-progress');
+    progressContainer.innerHTML = '';
+    
+    for (let i = 0; i < quizState.totalSteps; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'progress-dot';
+        
+        if (i < quizState.currentStep) {
+            dot.classList.add('completed');
+        } else if (i === quizState.currentStep) {
+            dot.classList.add('active');
+        }
+        
+        progressContainer.appendChild(dot);
+    }
+}
+
+function determineBrand() {
+    const { usage, experience, budget, priority } = quizState.answers;
+    
+    // Brand scoring logic
+    let scores = {
+        wahl: 0,
+        stylecraft: 0,
+        vgr: 0,
+        ourbrand: 0
+    };
+    
+    // Usage scoring
+    if (usage === 'professional') {
+        scores.wahl += 3;
+        scores.stylecraft += 3;
+        scores.vgr += 2;
+    } else if (usage === 'personal') {
+        scores.ourbrand += 3;
+        scores.vgr += 2;
+    } else { // both
+        scores.vgr += 3;
+        scores.stylecraft += 2;
+    }
+    
+    // Experience scoring
+    if (experience === 'expert') {
+        scores.wahl += 3;
+        scores.stylecraft += 3;
+    } else if (experience === 'intermediate') {
+        scores.vgr += 3;
+        scores.stylecraft += 2;
+    } else { // beginner
+        scores.ourbrand += 3;
+        scores.vgr += 2;
+    }
+    
+    // Budget scoring
+    if (budget === 'premium') {
+        scores.stylecraft += 3;
+        scores.wahl += 2;
+    } else if (budget === 'mid') {
+        scores.wahl += 3;
+        scores.vgr += 2;
+    } else { // budget
+        scores.vgr += 3;
+        scores.ourbrand += 2;
+    }
+    
+    // Priority scoring
+    if (priority === 'power') {
+        scores.wahl += 2;
+        scores.stylecraft += 2;
+    } else if (priority === 'versatility') {
+        scores.vgr += 2;
+    } else if (priority === 'durability') {
+        scores.wahl += 2;
+    } else { // design
+        scores.stylecraft += 2;
+    }
+    
+    // Find highest scoring brand
+    let recommendedBrand = 'vgr';
+    let highestScore = 0;
+    
+    for (const [brand, score] of Object.entries(scores)) {
+        if (score > highestScore) {
+            highestScore = score;
+            recommendedBrand = brand;
+        }
+    }
+    
+    return recommendedBrand;
+}
+
+function showQuizResult() {
+    const recommendedBrand = determineBrand();
+    const brand = brandRecommendations[recommendedBrand];
+    
+    const quizStepsContainer = document.getElementById('quiz-steps');
+    const quizButtons = document.querySelector('.quiz-buttons');
+    const progressContainer = document.getElementById('quiz-progress');
+    
+    // Hide buttons and progress
+    if (quizButtons) quizButtons.style.display = 'none';
+    if (progressContainer) progressContainer.style.display = 'none';
+    
+    // Show result
+    quizStepsContainer.innerHTML = `
+        <div class="quiz-result active">
+            <div class="result-brand-logo">
+                <i class="fas ${brand.icon}"></i>
+            </div>
+            <div class="result-title">Perfect Match!</div>
+            <div class="result-brand-name">${brand.name}</div>
+            <div class="result-description">${brand.description}</div>
+            <div class="result-features">
+                ${brand.features.map(feature => `
+                    <span class="result-feature-tag"><i class="fas fa-check"></i> ${feature}</span>
+                `).join('')}
+            </div>
+            <div class="result-cta">
+                <button class="result-btn-primary" onclick="goToBrandPage('${brand.page}')">
+                    <span>View ${brand.name} Products</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="result-btn-secondary" onclick="restartQuiz()">
+                    <i class="fas fa-redo"></i>
+                    <span>Retake Quiz</span>
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+function goToBrandPage(page) {
+    window.location.href = page;
+}
+
+function restartQuiz() {
+    quizState.currentStep = 0;
+    quizState.answers = {};
+    
+    const quizButtons = document.querySelector('.quiz-buttons');
+    const progressContainer = document.getElementById('quiz-progress');
+    
+    if (quizButtons) quizButtons.style.display = 'flex';
+    if (progressContainer) progressContainer.style.display = 'flex';
+    
+    renderQuizStep();
 }
 
 function showQuizModal() {
@@ -795,7 +1116,6 @@ function showQuizModal() {
         setTimeout(() => {
             quizModal.classList.add('active');
         }, 100);
-        document.body.classList.add('no-scroll');
     }
 }
 
@@ -807,7 +1127,6 @@ function closeQuizModal() {
         quizModal.classList.remove('active');
         setTimeout(() => {
             quizOverlay.classList.remove('active');
-            document.body.classList.remove('no-scroll');
         }, 300);
     }
 }
