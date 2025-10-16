@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFeaturedProducts();
     initializeAnimations();
     initializeEventListeners();
+    initializeWelcomeSection();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -65,23 +66,105 @@ function initializeAnimations() {
 }
 
 // ==========================================
+// WELCOME SECTION ANIMATION
+// ==========================================
+
+function initializeWelcomeSection() {
+    const welcomeSection = document.querySelector('.welcome-section');
+    const handwrittenPath = document.querySelector('.handwritten-path');
+    
+    if (!welcomeSection || !handwrittenPath) return;
+
+    // Intersection Observer for triggering animation when section is visible
+    const observerOptions = {
+        threshold: 0.3,
+        rootMargin: '0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Reset animation
+                handwrittenPath.style.animation = 'none';
+                
+                // Trigger reflow
+                void handwrittenPath.offsetWidth;
+                
+                // Restart animation
+                handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
+            }
+        });
+    }, observerOptions);
+
+    observer.observe(welcomeSection);
+
+    // Add a subtle fade-in for the entire section
+    welcomeSection.style.opacity = '0';
+    welcomeSection.style.transform = 'translateY(20px)';
+    welcomeSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    
+    setTimeout(() => {
+        welcomeSection.style.opacity = '1';
+        welcomeSection.style.transform = 'translateY(0)';
+    }, 100);
+
+    // Replay animation on click
+    welcomeSection.addEventListener('click', function() {
+        handwrittenPath.style.animation = 'none';
+        void handwrittenPath.offsetWidth;
+        handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
+    });
+}
+
+// Dynamic opacity change as you scroll past
+window.addEventListener('scroll', function() {
+    const welcomeSection = document.querySelector('.welcome-section');
+    if (!welcomeSection) return;
+    
+    const scrollPosition = window.scrollY;
+    const sectionTop = welcomeSection.offsetTop;
+    
+    if (scrollPosition > sectionTop + 200) {
+        welcomeSection.style.opacity = '0.7';
+    } else {
+        welcomeSection.style.opacity = '1';
+    }
+});
+
+// ==========================================
 // MOBILE MENU FUNCTIONALITY
 // ==========================================
 
 function toggleMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (!mobileMenu) return;
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
     
-    mobileMenu.classList.toggle('active');
-    document.body.classList.toggle('no-scroll');
+    if (menu) {
+        menu.classList.toggle('active');
+        
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+        
+        if (menu.classList.contains('active')) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }
 }
 
 function closeMobileMenu() {
-    const mobileMenu = document.getElementById('mobile-menu');
-    if (!mobileMenu) return;
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
     
-    mobileMenu.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+    if (menu) {
+        menu.classList.remove('active');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        document.body.classList.remove('no-scroll');
+    }
 }
 
 // ==========================================
@@ -89,49 +172,74 @@ function closeMobileMenu() {
 // ==========================================
 
 async function loadFeaturedProducts() {
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
     try {
+        if (loadingOverlay) {
+            loadingOverlay.classList.add('active');
+        }
+        
         const response = await fetch('json/all-products-products.json');
         
         if (!response.ok) {
-            throw new Error('Failed to load products');
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
         
         allProducts = await response.json();
         
-        const shuffled = allProducts.sort(() => 0.5 - Math.random());
-        carouselProducts = shuffled.slice(0, 30);
+        if (!Array.isArray(allProducts) || allProducts.length === 0) {
+            throw new Error('No products found');
+        }
+        
+        const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
+        carouselProducts = shuffled.slice(0, 12);
         
         renderCarousel();
-        await waitForImagesToLoad();
         createCarouselIndicators();
+        startCarouselAutoplay();
         
-        setTimeout(() => {
-            startCarouselAutoplay();
-        }, 1000);
+        await preloadCarouselImages();
         
-        console.log(`✅ Loaded ${carouselProducts.length} featured products`);
     } catch (error) {
-        console.error('❌ Error loading featured products:', error);
+        console.error('Error loading products:', error);
         showCarouselError();
+    } finally {
+        if (loadingOverlay) {
+            setTimeout(() => {
+                loadingOverlay.classList.remove('active');
+            }, 500);
+        }
     }
 }
 
-function waitForImagesToLoad() {
+function getProductImage(product) {
+    if (product.images && Array.isArray(product.images) && product.images.length > 0) {
+        return product.images[0];
+    }
+    return product.image || 'placeholder.jpg';
+}
+
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function truncateText(text, maxLength) {
+    if (!text) return '';
+    return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
+}
+
+async function preloadCarouselImages() {
+    const images = document.querySelectorAll('.carousel-product-card img');
+    const totalImages = images.length;
+    let loadedCount = 0;
+    
     return new Promise((resolve) => {
-        const track = document.getElementById('carousel-track-new');
-        if (!track) {
+        if (totalImages === 0) {
             resolve();
             return;
         }
-        
-        const images = track.querySelectorAll('img');
-        if (images.length === 0) {
-            resolve();
-            return;
-        }
-        
-        let loadedCount = 0;
-        const totalImages = images.length;
         
         const checkAllLoaded = () => {
             loadedCount++;
@@ -213,41 +321,39 @@ function carouselPrev() {
     updateCarouselPosition();
 }
 
-function goToCarouselPage(page) {
+function goToCarouselPage(pageIndex) {
     if (isCarouselAnimating) return;
-    
-    currentCarouselPage = page;
+    currentCarouselPage = pageIndex;
     updateCarouselPosition();
     resetCarouselAutoplay();
 }
 
 function updateCarouselPosition() {
     const track = document.getElementById('carousel-track-new');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
     if (!track) return;
     
-    isCarouselAnimating = true;
-    
     const productsPerPage = getProductsPerPage();
-    const containerWidth = track.parentElement.offsetWidth;
-    const gap = 32;
-    const cardWidth = (containerWidth - (gap * (productsPerPage - 1))) / productsPerPage;
+    const cardWidth = track.querySelector('.carousel-product-card')?.offsetWidth || 0;
+    const gap = 24;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
-    requestAnimationFrame(() => {
-        track.style.transform = `translateX(-${offset}px)`;
-    });
+    isCarouselAnimating = true;
+    track.style.transform = `translateX(-${offset}px)`;
     
-    document.querySelectorAll('.carousel-indicator').forEach((indicator, i) => {
-        indicator.classList.toggle('active', i === currentCarouselPage);
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentCarouselPage);
     });
     
     setTimeout(() => {
         isCarouselAnimating = false;
-    }, 600);
+    }, 500);
 }
 
 function startCarouselAutoplay() {
-    stopCarouselAutoplay();
+    if (carouselAutoplayInterval) return;
+    
     carouselAutoplayInterval = setInterval(() => {
         carouselNext();
     }, 5000);
@@ -337,7 +443,7 @@ async function addToCart(productId, brandName) {
         if (existingItem) {
             existingItem.quantity++;
         } else {
-            const productImages = product.images && product.images.length > 0 ? 
+            const productImages = product.images && product.images.length > 0 ?
                 [product.image, ...product.images] : [product.image];
             
             cart.push({
@@ -465,16 +571,26 @@ function updateCartDisplay() {
 function openCart() {
     updateCartDisplay();
     const cartPanel = document.getElementById('cart-panel');
+    const cartOverlay = document.getElementById('cart-overlay');
+    
     if (cartPanel) {
         cartPanel.classList.add('active');
+        if (cartOverlay) {
+            cartOverlay.classList.add('active');
+        }
         document.body.classList.add('no-scroll');
     }
 }
 
 function closeCart() {
     const cartPanel = document.getElementById('cart-panel');
+    const cartOverlay = document.getElementById('cart-overlay');
+    
     if (cartPanel) {
         cartPanel.classList.remove('active');
+        if (cartOverlay) {
+            cartOverlay.classList.remove('active');
+        }
         document.body.classList.remove('no-scroll');
     }
 }
@@ -528,155 +644,59 @@ async function checkout() {
             throw new Error(data.message || data.error || 'Checkout failed');
         }
         
-        // Use the session ID to redirect to Stripe Checkout
-        if (data.id) {
-            console.log('✅ Redirecting to Stripe Checkout with session ID:', data.id);
-            
-            const loadingText = document.querySelector('.loading-text');
-            if (loadingText) {
-                loadingText.textContent = 'Redirecting to secure checkout...';
-            }
-            
-            showNotification('Redirecting to checkout...', 'success');
-            
-            // Redirect using Stripe's redirectToCheckout
-            const result = await stripe.redirectToCheckout({
-                sessionId: data.id,
+        if (data.sessionId) {
+            console.log('✅ Session ID received, redirecting to Stripe...');
+            const { error } = await stripe.redirectToCheckout({
+                sessionId: data.sessionId,
             });
             
-            if (result.error) {
-                throw new Error(result.error.message);
+            if (error) {
+                throw new Error(error.message);
             }
-        } else if (data.url) {
-            // Alternative: if API returns a URL directly
-            console.log('✅ Redirecting to Stripe Checkout URL...');
-            
-            const loadingText = document.querySelector('.loading-text');
-            if (loadingText) {
-                loadingText.textContent = 'Redirecting to secure checkout...';
-            }
-            
-            showNotification('Redirecting to checkout...', 'success');
-            
-            setTimeout(() => {
-                window.location.href = data.url;
-            }, 800);
         } else {
-            throw new Error('No checkout session ID or URL received');
+            throw new Error('No session ID received from server');
         }
         
     } catch (error) {
         console.error('❌ Checkout error:', error);
-        
+        showNotification(`Checkout failed: ${error.message}`, 'error');
+    } finally {
         if (loadingOverlay) {
             loadingOverlay.classList.remove('active');
         }
-        
-        showNotification(`Checkout failed: ${error.message}`, 'error');
     }
 }
 
 // ==========================================
-// HELPER FUNCTIONS
+// NOTIFICATIONS
 // ==========================================
-
-function getProductImage(product) {
-    if (product.images && product.images.length > 0) {
-        return product.images[0];
-    }
-    if (product.image) {
-        return product.image;
-    }
-    return 'https://via.placeholder.com/300x300?text=No+Image';
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function truncateText(text, maxLength) {
-    if (!text) return '';
-    if (text.length <= maxLength) return text;
-    return text.substring(0, maxLength) + '...';
-}
 
 function showNotification(message, type = 'success') {
-    const existingToast = document.querySelector('.notification-toast');
-    if (existingToast) {
-        existingToast.remove();
-    }
+    const toast = document.getElementById('notification-toast');
+    const messageSpan = document.getElementById('notification-message');
     
-    const notification = document.createElement('div');
-    notification.className = 'notification-toast';
-    notification.style.cssText = `
-        position: fixed;
-        top: 100px;
-        right: 24px;
-        background: ${type === 'error' ? '#dc3545' : 'linear-gradient(135deg, #d4af37, #b8941f)'};
-        color: white;
-        padding: 1.25rem 1.75rem;
-        border-radius: 16px;
-        box-shadow: 0 8px 32px ${type === 'error' ? 'rgba(220, 53, 69, 0.4)' : 'rgba(212, 175, 55, 0.4)'};
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        z-index: 10005;
-        animation: slideInRight 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        font-weight: 600;
-        max-width: 400px;
-    `;
+    if (!toast || !messageSpan) return;
     
-    notification.innerHTML = `
-        <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}" style="font-size: 1.3rem;"></i>
-        <span style="flex: 1;">${escapeHtml(message)}</span>
-    `;
-    
-    document.body.appendChild(notification);
+    messageSpan.textContent = message;
+    toast.classList.add('show');
     
     setTimeout(() => {
-        notification.style.animation = 'slideOutRight 0.4s cubic-bezier(0.4, 0, 0.6, 1)';
-        setTimeout(() => notification.remove(), 400);
-    }, type === 'error' ? 5000 : 3000);
+        toast.classList.remove('show');
+    }, 3000);
 }
 
 // ==========================================
-// SCROLL BEHAVIOR
+// UTILITY FUNCTIONS
 // ==========================================
 
-let lastScroll = 0;
-const header = document.querySelector('.modern-header');
-
-if (header) {
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            header.style.transform = 'translateY(-100%)';
-        } else {
-            header.style.transform = 'translateY(0)';
-        }
-        
-        lastScroll = currentScroll;
-    }, { passive: true });
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
 }
-
-// ==========================================
-// GLOBAL EXPORTS
-// ==========================================
-
-window.modernHeader = {
-    toggleMobileMenu,
-    closeMobileMenu,
-    updateCartBadge,
-    openCart
-};
-
-console.log('✅ Barber World Enhanced System Ready');
-console.log('🎨 Categories: Redirecting to respective pages');
-console.log('🎪 Carousel: Premium design with animations');
-console.log('📱 Mobile: 2 products | 🖥️ Desktop: 3 products');
-console.log('💳 Stripe Checkout: Fully Integrated');
-console.log('🔒 API: https://barber-world-stripe.vercel.app/create-checkout-session');
