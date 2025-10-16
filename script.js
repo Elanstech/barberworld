@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeAnimations();
     initializeEventListeners();
     initializeWelcomeSection();
+    initializeShippingBanner();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -130,6 +131,28 @@ window.addEventListener('scroll', function() {
         welcomeSection.style.opacity = '1';
     }
 });
+
+// ==========================================
+// SHIPPING BANNER
+// ==========================================
+
+function initializeShippingBanner() {
+    const closeBannerBtn = document.querySelector('.close-banner');
+    const shippingBanner = document.querySelector('.shipping-banner');
+    
+    if (!closeBannerBtn || !shippingBanner) return;
+    
+    // Check if banner was previously closed
+    const bannerClosed = localStorage.getItem('shippingBannerClosed');
+    if (bannerClosed === 'true') {
+        shippingBanner.classList.add('hidden');
+    }
+    
+    closeBannerBtn.addEventListener('click', function() {
+        shippingBanner.classList.add('hidden');
+        localStorage.setItem('shippingBannerClosed', 'true');
+    });
+}
 
 // ==========================================
 // MOBILE MENU FUNCTIONALITY
