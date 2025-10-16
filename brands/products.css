@@ -342,6 +342,43 @@ body.no-scroll {
     display: none;
 }
 
+@media (max-width: 768px) {
+    .header-container {
+        height: 80px;
+        padding: 0 1rem;
+    }
+    
+    .logo-section {
+        padding: 0 1rem;
+    }
+    
+    .brand-logo {
+        height: 60px;
+    }
+    
+    .header-right {
+        padding: 0 0.5rem;
+    }
+    
+    .mobile-only {
+        display: flex;
+    }
+
+@media (max-width: 480px) {
+    .header-container {
+        height: 70px;
+        padding: 0 1rem;
+    }
+
+    .logo-section {
+        padding: 0 1rem;
+    }
+    
+    .brand-logo {
+        height: 50px;
+    }
+}
+
 /* ==========================================
    LUXURY HERO SECTION
    ========================================== */
@@ -2573,23 +2610,7 @@ body.no-scroll {
 }
 
 @media (max-width: 768px) {
-    .mobile-only {
-        display: flex !important;
-    }
-    
-    .header-container {
-        height: 120px;
-        padding: 0 1rem;
-    }
-    
-    .logo-section {
-        padding: 0 0.5rem;
-    }
-    
-    .brand-logo {
-        height: 100px;
-    }
-    
+   
     .luxury-hero {
         padding: 3rem 1.5rem;
         min-height: auto;
