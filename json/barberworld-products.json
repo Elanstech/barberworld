@@ -166,11 +166,11 @@
     "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-mini-professional-trimmer-silver",
-    "image": "https://example.com/barber-world-trimmer-silver-main.jpg",
+    "image": "../brbwrldimages/Trimmer1.png",
     "images": [
-      "https://example.com/barber-world-trimmer-silver-front.jpg",
-      "https://example.com/barber-world-trimmer-silver-side.jpg",
-      "https://example.com/barber-world-trimmer-silver-back.jpg"
+      "../brbwrldimages/Trimmer2.png",
+      "../brbwrldimages/Trimmer3.png",
+      "../brbwrldimages/Trimmer4.png"
     ],
     "category": "Trimmer",
     "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor in silver",
