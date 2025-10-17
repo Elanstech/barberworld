@@ -1,121 +1,5 @@
 [
   {
-    "id": 14,
-    "name": "BaBylissPRO COREFX Professional Performance Double Foil Shaver",
-    "price": 94.99,
-    "brand": "Babyliss",
-    "slug": "babylisspro-rose-gold-fxone-clipper",
-    "image": "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dwec7d0eac/images/8-12-25/FX75FS2_front_on.jpg?sw=1400&sh=1400&sm=fit",
-    "images": [
-      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dw50850a40/images/8-12-25/FX75FS2_front_off.jpg?sw=1400&sh=1400&sm=fit",
-      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dw7786f2f5/images/8-12-25/FX75FS2_3qtr_rt_off.jpg?sw=1400&sh=1400&sm=fit",
-      "https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dwe87fe58f/images/8-12-25/FX75FS2_FRONT.jpg?sw=1400&sh=1400&sm=fit"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Professional core performance double-foil shaver",
-    "description": "The BaBylissPRO® COREFX Professional Performance Double Foil Shaver delivers smooth, close shaves with dual independent foils. Perfect for finishing work and creating ultra-clean lines. Features a powerful motor and extended battery life for all-day professional use.",
-    "features": [
-      "Dual independent foils",
-      "Hypoallergenic titanium blades",
-      "Powerful rotary motor",
-      "Cord/cordless operation",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Professional performance"
-    ],
-    "specifications": {
-      "foils": "Dual independent",
-      "blades": "Titanium hypoallergenic",
-      "motor": "Rotary 8000 RPM",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "3 hours",
-      "weight": "7.5 oz"
-    },
-    "inStock": true,
-    "rating": 4.6,
-    "reviewCount": 392,
-    "sku": "COREFX-SHAVER"
-  },
-  {
-    "id": 15,
-    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
-    "price": 199.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-2020c-b",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-20220c-b.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-1.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-3.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional cordless hair clipper with dual voltage capability",
-    "description": "The JRL ONYX Professional Cordless Hair Clipper in sleek black delivers exceptional cutting performance with its powerful rotary motor and precision-ground blades. Designed for professional barbers and stylists, this clipper features dual voltage capability for worldwide use. The ergonomic design ensures comfort during extended cutting sessions while maintaining consistent power throughout use.",
-    "features": [
-      "Professional rotary motor for consistent power",
-      "Dual voltage 100-240V for worldwide use",
-      "Cordless operation for freedom of movement",
-      "Precision-ground stainless steel blades",
-      "Ergonomic grip design",
-      "Lithium-ion battery technology",
-      "2-hour runtime on single charge",
-      "Professional black finish"
-    ],
-    "specifications": {
-      "motor": "Professional rotary motor",
-      "blade": "Precision stainless steel #FF2020",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.9 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Professional grade plastic"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 456,
-    "sku": "FF 2020C-B"
-  },
-  {
-    "id": 16,
-    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
-    "price": 199.99,
-    "brand": "JRL",
-    "slug": "jrl-ghost-2020c-b-w",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional cordless clipper in elegant white finish with dual voltage",
-    "description": "The JRL GHOST Professional Cordless Hair Clipper in pristine white combines cutting-edge technology with stunning aesthetics. This professional-grade clipper features the same powerful performance as the ONYX in a distinctive white finish. Perfect for barbers who want to make a statement while delivering exceptional cuts. The dual voltage capability ensures reliable performance worldwide.",
-    "features": [
-      "Professional rotary motor technology",
-      "Elegant white finish for distinctive style",
-      "Dual voltage 100-240V capability",
-      "Cordless freedom of movement",
-      "Precision-ground professional blades",
-      "Ergonomic lightweight design",
-      "Lithium-ion battery with long runtime",
-      "Premium white housing"
-    ],
-    "specifications": {
-      "motor": "Professional rotary motor",
-      "blade": "Precision stainless steel #2020",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.9 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Premium white finish"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 423,
-    "sku": "2020C-B-W"
-  },
-  {
     "id": 1,
     "name": "BaBylissPRO® GoldFX+ All Metal Lithium Outlining Trimmer FX787NG",
     "price": 109.99,
@@ -644,6 +528,84 @@
     "rating": 4.6,
     "reviewCount": 392,
     "sku": "COREFX-SHAVER"
+  },
+  {
+    "id": 15,
+    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
+    "price": 199.99,
+    "brand": "JRL",
+    "slug": "jrl-onyx-2020c-b",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-20220c-b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-3.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless hair clipper with dual voltage capability",
+    "description": "The JRL ONYX Professional Cordless Hair Clipper in sleek black delivers exceptional cutting performance with its powerful rotary motor and precision-ground blades. Designed for professional barbers and stylists, this clipper features dual voltage capability for worldwide use. The ergonomic design ensures comfort during extended cutting sessions while maintaining consistent power throughout use.",
+    "features": [
+      "Professional rotary motor for consistent power",
+      "Dual voltage 100-240V for worldwide use",
+      "Cordless operation for freedom of movement",
+      "Precision-ground stainless steel blades",
+      "Ergonomic grip design",
+      "Lithium-ion battery technology",
+      "2-hour runtime on single charge",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "motor": "Professional rotary motor",
+      "blade": "Precision stainless steel #FF2020",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.9 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Professional grade plastic"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 456,
+    "sku": "FF 2020C-B"
+  },
+  {
+    "id": 16,
+    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
+    "price": 199.99,
+    "brand": "JRL",
+    "slug": "jrl-ghost-2020c-b-w",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless clipper in elegant white finish with dual voltage",
+    "description": "The JRL GHOST Professional Cordless Hair Clipper in pristine white combines cutting-edge technology with stunning aesthetics. This professional-grade clipper features the same powerful performance as the ONYX in a distinctive white finish. Perfect for barbers who want to make a statement while delivering exceptional cuts. The dual voltage capability ensures reliable performance worldwide.",
+    "features": [
+      "Professional rotary motor technology",
+      "Elegant white finish for distinctive style",
+      "Dual voltage 100-240V capability",
+      "Cordless freedom of movement",
+      "Precision-ground professional blades",
+      "Ergonomic lightweight design",
+      "Lithium-ion battery with long runtime",
+      "Premium white housing"
+    ],
+    "specifications": {
+      "motor": "Professional rotary motor",
+      "blade": "Precision stainless steel #2020",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.9 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Premium white finish"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 423,
+    "sku": "2020C-B-W"
   },
   {
     "id": 17,
@@ -1337,7 +1299,7 @@
     "sku": "3026480"
   },
   {
-    "id": 34,
+"id": 34,
     "name": "Wahl 5 Star Gold Cordless Magic Clip Clipper #8148-700 (Dual Voltage)",
     "price": 149.99,
     "brand": "Wahl",
@@ -1855,5 +1817,296 @@
     "rating": 4.8,
     "reviewCount": 287,
     "sku": "FF 2020T-B"
+  },
+  {
+    "id": 47,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 5.5\"",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-5-5",
+    "image": "../brbwrldimages/sis1.png",
+    "images": [
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 5.5 inch",
+    "description": "Premium Barber World Japanese steel hair cutting scissors designed for professional barbers and stylists. Crafted from high-quality Japanese steel, these 5.5-inch scissors provide exceptional sharpness and precision for all cutting techniques. The ergonomic design reduces hand fatigue during extended use, while the razor-sharp blades ensure clean, effortless cuts every time.",
+    "features": [
+      "Japanese steel construction",
+      "5.5-inch blade length",
+      "Ergonomic finger rest design",
+      "Razor-sharp precision blades",
+      "Professional-grade quality",
+      "Adjustable tension screw",
+      "Comfortable grip handles",
+      "Ideal for detailed cutting work"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "5.5 inches",
+      "totalLength": "5.5 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "2.8 oz"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "sku": "BW-SCISSORS-55"
+  },
+  {
+    "id": 48,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 6.0\"",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-6-0",
+    "image": "../brbwrldimages/sis1.png",
+    "images": [
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 6.0 inch",
+    "description": "The Barber World 6.0-inch Japanese steel scissors offer the perfect balance between precision and versatility. Ideal for both detailed work and general cutting, these professional-grade scissors feature ultra-sharp blades made from premium Japanese steel. The comfortable ergonomic design allows for hours of use without hand strain, making them perfect for busy barbers and stylists.",
+    "features": [
+      "Premium Japanese steel blades",
+      "6.0-inch blade length",
+      "Ergonomic offset handle design",
+      "Ultra-sharp convex edge",
+      "Professional barber quality",
+      "Adjustable pivot tension",
+      "Comfortable finger rest",
+      "Versatile for all cutting techniques"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "6.0 inches",
+      "totalLength": "6.0 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "3.1 oz"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 245,
+    "sku": "BW-SCISSORS-60"
+  },
+  {
+    "id": 49,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 7.0\"",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-7-0",
+    "image": "../brbwrldimages/sis1.png",
+    "images": [
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 7.0 inch",
+    "description": "Experience professional cutting performance with the Barber World 7.0-inch Japanese steel scissors. These larger scissors are perfect for cutting longer hair and completing work quickly without sacrificing precision. Crafted from premium Japanese steel with razor-sharp convex edges, they deliver smooth, effortless cuts. The ergonomic design ensures comfort during extended cutting sessions.",
+    "features": [
+      "High-quality Japanese steel",
+      "7.0-inch blade length",
+      "Ergonomic offset design",
+      "Razor-sharp convex blades",
+      "Professional-grade construction",
+      "Adjustable tension system",
+      "Comfortable finger rest",
+      "Perfect for longer hair cutting"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "7.0 inches",
+      "totalLength": "7.0 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "3.5 oz"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 198,
+    "sku": "BW-SCISSORS-70"
+  },
+  {
+    "id": 50,
+    "name": "Barber World Mini Professional Trimmer (Black)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-black",
+    "image": "../brbwrldimages/trimmerblack1.png",
+    "images": [
+      "../brbwrldimages/trimmerblack2.png",
+      "../brbwrldimages/trimmerblack3.png",
+      "../brbwrldimages/trimmerblack4.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor",
+    "description": "The Barber World Mini Professional Trimmer delivers powerful performance in a compact design. Featuring a high-speed 8000 RPM motor, this trimmer is perfect for precision detailing, outlining, and finishing work. The sleek black finish provides a professional appearance, while the ergonomic design ensures comfortable handling. With 2 hours of runtime and quick 2-hour charging, this trimmer is ideal for busy professionals.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Sleek black finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Matte black",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 324,
+    "sku": "BW-TRIMMER-BLACK"
+  },
+  {
+    "id": 51,
+    "name": "Barber World Mini Professional Trimmer (Silver)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-silver",
+    "image": "../brbwrldimages/Trimmer1.png",
+    "images": [
+      "../brbwrldimages/Trimmer2.png",
+      "../brbwrldimages/Trimmer3.png",
+      "../brbwrldimages/Trimmer4.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor in silver",
+    "description": "The Barber World Mini Professional Trimmer in elegant silver combines powerful performance with sleek styling. Equipped with a high-speed 8000 RPM motor, this compact trimmer excels at precision detailing, crisp line work, and professional finishing. The silver metallic finish adds a touch of sophistication, while the ergonomic design ensures comfort during extended use. Features 2 hours of continuous runtime with quick 2-hour charging.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Elegant silver finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Metallic silver",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 298,
+    "sku": "BW-TRIMMER-SILVER"
+  },
+  {
+    "id": 52,
+    "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Gold)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-air-duster-mirror-gold",
+    "image": "../brbwrldimages/barbergold.png",
+    "images": [
+      "../brbwrldimages/barbergold2.png",
+      "../brbwrldimages/barbergold3.png",
+      "../brbwrldimages/barbergold4.png"
+    ],
+    "category": "Accessories",
+    "shortDescription": "Portable multi-function air duster in luxurious mirror gold finish",
+    "description": "The Barber World Air Duster in stunning mirror gold is an essential tool for professional barbers and stylists. This versatile multi-function device quickly removes loose hair and clippings from clients, tools, and workstations. The powerful yet quiet motor provides efficient airflow, while the ergonomic design ensures comfortable handling. Includes multiple attachments for various cleaning tasks. The luxurious mirror gold finish adds a premium touch to any professional setup.",
+    "features": [
+      "Powerful portable air blow motor",
+      "Multi-function design",
+      "Luxurious mirror gold finish",
+      "Cordless operation",
+      "Rechargeable battery",
+      "Multiple nozzle attachments included",
+      "Ergonomic grip design",
+      "Quiet operation",
+      "Perfect for hair removal",
+      "USB-C charging",
+      "Compact and lightweight"
+    ],
+    "specifications": {
+      "power": "High-efficiency motor",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "150 minutes",
+      "finish": "Mirror gold",
+      "weight": "8.5 oz",
+      "attachments": "4 interchangeable nozzles",
+      "voltage": "USB-C 5V"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 412,
+    "sku": "BW-AIRDUSTER-GOLD"
+  },
+  {
+    "id": 53,
+    "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Multicolor)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-air-duster-mirror-multicolor",
+    "image": "../brbwrldimages/barbermulti.png",
+    "images": [
+      "../brbwrldimages/barbermulti2.png",
+      "../brbwrldimages/barbermulti3.png",
+      "../brbwrldimages/barbermulti4.png"
+    ],
+    "category": "Accessories",
+    "shortDescription": "Portable multi-function air duster with eye-catching mirror multicolor finish",
+    "description": "Stand out with the Barber World Air Duster in vibrant mirror multicolor finish. This professional-grade portable air duster efficiently removes hair clippings and debris from clients, tools, and workstations. Featuring a powerful motor with quiet operation and multiple interchangeable nozzles for different cleaning tasks. The eye-catching iridescent finish makes a bold statement while delivering exceptional performance. Cordless design with rechargeable battery for maximum convenience.",
+    "features": [
+      "Powerful portable air blow motor",
+      "Multi-function design",
+      "Eye-catching mirror multicolor finish",
+      "Cordless operation",
+      "Rechargeable battery",
+      "Multiple nozzle attachments included",
+      "Ergonomic grip design",
+      "Quiet operation",
+      "Perfect for hair removal",
+      "USB-C charging",
+      "Compact and lightweight"
+    ],
+    "specifications": {
+      "power": "High-efficiency motor",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "150 minutes",
+      "finish": "Mirror multicolor iridescent",
+      "weight": "8.5 oz",
+      "attachments": "4 interchangeable nozzles",
+      "voltage": "USB-C 5V"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 387,
+    "sku": "BW-AIRDUSTER-MULTI"
   }
 ]
