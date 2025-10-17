@@ -1697,6 +1697,51 @@ main {
     transform: translateY(-2px);
 }
 
+/* Payment Logo Cards - For Klarna & Afterpay */
+.payment-card.payment-logo {
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.payment-logo-img {
+    height: 28px;
+    width: auto;
+    max-width: 80px;
+    object-fit: contain;
+    filter: brightness(1);
+    transition: all 0.3s ease;
+}
+
+.payment-card.payment-logo:hover .payment-logo-img {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .payment-logo-img {
+        height: 24px;
+        max-width: 70px;
+    }
+    
+    .payment-card.payment-logo {
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .payment-logo-img {
+        height: 20px;
+        max-width: 60px;
+    }
+    
+    .payment-card.payment-logo {
+        padding: 0.35rem 0.7rem;
+    }
+}
+
 .footer-bottom {
     display: flex;
     justify-content: space-between;
