@@ -1,4 +1,4 @@
-// api/checkout.js - Production Ready with Automatic Tax
+// api/checkout.js - Production Ready with Automatic Tax + Klarna + Afterpay
 const Stripe = require('stripe');
 
 module.exports = async (req, res) => {
@@ -57,6 +57,24 @@ module.exports = async (req, res) => {
             });
         }
         
+        // Validate line items have required fields
+        for (const item of lineItems) {
+            if (!item.price_data || !item.quantity) {
+                return res.status(400).json({
+                    error: 'Invalid line item',
+                    message: 'Each item must have price_data and quantity'
+                });
+            }
+            
+            // Klarna and Afterpay require minimum amounts
+            if (item.price_data.unit_amount < 50) {
+                return res.status(400).json({
+                    error: 'Invalid price',
+                    message: 'Items must be at least $0.50 for Klarna/Afterpay compatibility'
+                });
+            }
+        }
+        
         // Determine the base URL (works for both custom domain and Vercel URL)
         const protocol = req.headers['x-forwarded-proto'] || 'https';
         const host = req.headers['x-forwarded-host'] || req.headers.host;
@@ -65,9 +83,11 @@ module.exports = async (req, res) => {
         console.log('🌍 Base URL:', baseUrl);
         console.log('🛒 Creating session for', lineItems.length, 'items');
         
-        // Create Stripe Checkout Session with AUTOMATIC TAX
+        // Create Stripe Checkout Session with Klarna, Afterpay & Automatic Tax
         const session = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
+            // ✅ PAYMENT METHODS: Card, Klarna, and Afterpay
+            payment_method_types: ['card', 'klarna', 'afterpay_clearpay'],
+            
             line_items: lineItems,
             mode: 'payment',
             
@@ -76,9 +96,21 @@ module.exports = async (req, res) => {
                 enabled: true,
             },
             
-            // ✅ REQUIRE SHIPPING ADDRESS (needed for tax calculation)
+            // ✅ SHIPPING ADDRESS COLLECTION (required for tax + Klarna/Afterpay)
             shipping_address_collection: {
-                allowed_countries: ['US']
+                allowed_countries: [
+                    'US', 'CA',  // North America
+                    'GB', 'DE', 'FR', 'IT', 'ES', 'NL', 'BE', 'AT', 'IE', 'SE', 'NO', 'DK', 'FI',  // Europe
+                    'AU', 'NZ'  // Oceania
+                ]
+            },
+            
+            // ✅ BILLING ADDRESS COLLECTION (required for Klarna/Afterpay)
+            billing_address_collection: 'required',
+            
+            // ✅ PHONE NUMBER COLLECTION (helpful for order fulfillment)
+            phone_number_collection: {
+                enabled: true
             },
             
             success_url: `${baseUrl}/success.html?session_id={CHECKOUT_SESSION_ID}`,
@@ -91,11 +123,13 @@ module.exports = async (req, res) => {
         });
         
         console.log('✅ Session created:', session.id);
+        console.log('💳 Payment methods: Card, Klarna, Afterpay');
         console.log('💰 Automatic tax enabled');
         
-        // Return session ID
+        // Return session ID (matching your frontend expectations)
         return res.status(200).json({ 
-            id: session.id,
+            sessionId: session.id,  // Your frontend expects 'sessionId'
+            id: session.id,         // Also include 'id' for compatibility
             url: session.url
         });
         
@@ -117,6 +151,34 @@ module.exports = async (req, res) => {
                 error: 'Stripe authentication failed',
                 message: 'Invalid API credentials',
                 debug: error.message
+            });
+        }
+        
+        if (error.type === 'StripeCardError') {
+            return res.status(400).json({
+                error: 'Card error',
+                message: error.message
+            });
+        }
+        
+        if (error.type === 'StripeAPIError') {
+            return res.status(500).json({
+                error: 'Payment processor error',
+                message: 'Our payment processor is temporarily unavailable. Please try again later.'
+            });
+        }
+        
+        if (error.type === 'StripeConnectionError') {
+            return res.status(503).json({
+                error: 'Connection error',
+                message: 'Unable to connect to payment processor. Please check your internet connection.'
+            });
+        }
+        
+        if (error.type === 'StripeRateLimitError') {
+            return res.status(429).json({
+                error: 'Too many requests',
+                message: 'Please wait a moment before trying again.'
             });
         }
         
