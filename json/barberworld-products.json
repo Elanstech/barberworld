@@ -5,11 +5,11 @@
     "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-5-5",
-    "image": "https://example.com/barber-world-scissors-5-5-main.jpg",
+    "image": "../brbwrldimages/sis1.png",
     "images": [
-      "https://example.com/barber-world-scissors-5-5-angle.jpg",
-      "https://example.com/barber-world-scissors-5-5-detail.jpg",
-      "https://example.com/barber-world-scissors-5-5-package.jpg"
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
     ],
     "category": "Scissors",
     "shortDescription": "Professional Japanese steel hair cutting scissors 5.5 inch",
@@ -44,11 +44,11 @@
     "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-6-0",
-    "image": "https://example.com/barber-world-scissors-6-0-main.jpg",
+    "image": "../brbwrldimages/sis1.png",
     "images": [
-      "https://example.com/barber-world-scissors-6-0-angle.jpg",
-      "https://example.com/barber-world-scissors-6-0-detail.jpg",
-      "https://example.com/barber-world-scissors-6-0-package.jpg"
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
     ],
     "category": "Scissors",
     "shortDescription": "Professional Japanese steel hair cutting scissors 6.0 inch",
@@ -83,11 +83,11 @@
     "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-7-0",
-    "image": "https://example.com/barber-world-scissors-7-0-main.jpg",
+    "image": "../brbwrldimages/sis1.png",
     "images": [
-      "https://example.com/barber-world-scissors-7-0-angle.jpg",
-      "https://example.com/barber-world-scissors-7-0-detail.jpg",
-      "https://example.com/barber-world-scissors-7-0-package.jpg"
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
     ],
     "category": "Scissors",
     "shortDescription": "Professional Japanese steel hair cutting scissors 7.0 inch",
@@ -119,7 +119,7 @@
   {
     "id": 4,
     "name": "Barber World Mini Professional Trimmer (Black)",
-    "price": 29.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-mini-professional-trimmer-black",
     "image": "https://example.com/barber-world-trimmer-black-main.jpg",
@@ -250,7 +250,7 @@
   {
     "id": 7,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Multicolor)",
-    "price": 44.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-air-duster-mirror-multicolor",
     "image": "../brbwrldimages/barbermulti.png",
