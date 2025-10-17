@@ -1,7 +1,7 @@
 /* ==========================================
    ULTIMATE SMART E-COMMERCE SYSTEM
-   All Existing Features + Modern Notifications
-   Production-Ready with Working Stripe
+   Complete Integration with All Features
+   Production-Ready with Stripe & Notifications
    ========================================== */
 
 // Stripe Configuration
@@ -123,16 +123,13 @@ const NotificationSystem = {
         this.notifications.push({ id, element: notification });
         this.container.appendChild(notification);
         
-        // Limit notifications
         if (this.notifications.length > this.maxNotifications) {
             const oldest = this.notifications.shift();
             this.remove(oldest.id);
         }
         
-        // Trigger entrance animation
         setTimeout(() => notification.classList.add('show'), 10);
         
-        // Auto dismiss
         if (duration > 0) {
             setTimeout(() => this.remove(id), duration);
         }
@@ -368,7 +365,6 @@ const NotificationSystem = {
                 }
             }
             
-            /* Responsive */
             @media (max-width: 768px) {
                 .modern-notifications-container {
                     top: 140px;
@@ -382,7 +378,6 @@ const NotificationSystem = {
                 }
             }
             
-            /* Hover pause animation */
             .modern-notification:hover .notification-progress {
                 animation-play-state: paused;
             }
@@ -429,10 +424,47 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeScrollEffects();
     initializeSmartScrolling();
     restoreScrollPositions();
+    setupIntersectionObserver();
+    setupTouchGestures();
     console.log('✨ Ultimate Smart Shopping Experience Loaded!');
 });
 
 function initializeEventListeners() {
+    // View toggle
+    document.querySelectorAll('.view-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const view = e.currentTarget.dataset.view;
+            changeView(view);
+        });
+    });
+
+    // Sort functionality
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', () => applyFilters());
+    }
+
+    // Search functionality
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) {
+        searchInput.addEventListener('input', () => {
+            performanceOptimizer.debounce(applyFilters, 300, 'search');
+        });
+    }
+
+    // Category filters
+    document.querySelectorAll('.filter-chip input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', applyFilters);
+    });
+
+    // Price range filter
+    const priceSlider = document.getElementById('price-range');
+    if (priceSlider) {
+        priceSlider.addEventListener('input', () => {
+            updatePriceRange();
+        });
+    }
+
     // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
         const mobileMenu = document.getElementById('mobile-menu');
@@ -456,7 +488,6 @@ function initializeEventListeners() {
             }
         }
         
-        // Arrow key navigation in modal
         if (scrollManager.isModalOpen) {
             if (e.key === 'ArrowLeft') navigateModalImage('prev');
             if (e.key === 'ArrowRight') navigateModalImage('next');
@@ -503,6 +534,68 @@ function initializeScrollEffects() {
     }, 500);
 }
 
+// Intersection Observer for lazy loading
+function setupIntersectionObserver() {
+    const options = {
+        root: null,
+        rootMargin: '50px',
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
+
+    const observeProducts = () => {
+        const cards = document.querySelectorAll('.product-card-premium:not(.visible)');
+        cards.forEach(card => observer.observe(card));
+    };
+
+    observeProducts();
+}
+
+// Touch gesture support
+function setupTouchGestures() {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    const modal = document.getElementById('product-modal');
+    const mobileFilters = document.getElementById('mobile-filters-panel');
+
+    if (modal) {
+        modal.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        modal.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            if (touchStartX - touchEndX > 100) {
+                closeProductModal();
+            }
+        }, { passive: true });
+    }
+
+    if (mobileFilters) {
+        mobileFilters.addEventListener('touchstart', (e) => {
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        mobileFilters.addEventListener('touchend', (e) => {
+            touchEndY = e.changedTouches[0].screenY;
+            if (touchStartY - touchEndY > 50) {
+                toggleMobileFilters();
+            }
+        }, { passive: true });
+    }
+}
+
 // ==========================================
 // SMART SCROLLING SYSTEM
 // ==========================================
@@ -511,7 +604,6 @@ function initializeSmartScrolling() {
     const productsMain = document.getElementById('products-main');
     const sidebar = document.querySelector('.sidebar-sticky');
     
-    // Smart scroll for products main
     if (productsMain) {
         productsMain.addEventListener('scroll', performanceOptimizer.throttle(() => {
             scrollManager.savePosition('products', productsMain.scrollTop);
@@ -526,7 +618,6 @@ function initializeSmartScrolling() {
         });
     }
     
-    // Smart scroll for sidebar
     if (sidebar) {
         sidebar.addEventListener('scroll', performanceOptimizer.throttle(() => {
             scrollManager.savePosition('sidebar', sidebar.scrollTop);
@@ -541,14 +632,12 @@ function initializeSmartScrolling() {
         });
     }
     
-    // Intelligent wheel event handling
     document.addEventListener('wheel', (e) => {
         if (scrollManager.isModalOpen) return;
         
         const productsMain = document.getElementById('products-main');
         const sidebar = document.querySelector('.sidebar-sticky');
         
-        // Smart scrolling for products grid
         if (scrollManager.activeElement === 'products' && productsMain) {
             const canScrollDown = productsMain.scrollTop < productsMain.scrollHeight - productsMain.clientHeight;
             const canScrollUp = productsMain.scrollTop > 0;
@@ -559,7 +648,6 @@ function initializeSmartScrolling() {
                 productsMain.scrollTop += e.deltaY;
             }
         } 
-        // Smart scrolling for sidebar
         else if (scrollManager.activeElement === 'sidebar' && sidebar) {
             const canScrollDown = sidebar.scrollTop < sidebar.scrollHeight - sidebar.clientHeight;
             const canScrollUp = sidebar.scrollTop > 0;
@@ -596,13 +684,15 @@ async function loadProducts(brand) {
         const grid = document.getElementById('products-grid');
         const countEl = document.getElementById('products-count');
         
-        grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
-                <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
-                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
-                <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
-            </div>
-        `;
+        if (grid) {
+            grid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                    <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
+                    <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
+                    <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
+                </div>
+            `;
+        }
         
         const jsonFile = `../json/${brand}-products.json`;
         const response = await fetch(jsonFile);
@@ -621,16 +711,18 @@ async function loadProducts(brand) {
     } catch (error) {
         console.error('❌ Error loading products:', error);
         const grid = document.getElementById('products-grid');
-        grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
-                <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
-                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
+        if (grid) {
+            grid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                    <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
+                    </div>
+                    <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
+                    <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
+                    <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
                 </div>
-                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
-                <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
-                <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
-            </div>
-        `;
+            `;
+        }
         showError('Failed to load products. Please try again.');
     }
 }
@@ -641,7 +733,6 @@ async function loadProducts(brand) {
 
 function applyFilters() {
     performanceOptimizer.debounce(() => {
-        // Get filter values
         const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
         const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
         const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
@@ -655,24 +746,19 @@ function applyFilters() {
             quickFilter: currentFilters.quickFilter
         };
         
-        // Apply filters
         filteredProducts = allProducts.filter(product => {
-            // Search filter
             if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
                 return false;
             }
             
-            // Category filter
             if (categoryValue !== 'all' && product.category !== categoryValue) {
                 return false;
             }
             
-            // Price filter
             if (product.price > priceValue) {
                 return false;
             }
             
-            // Quick filters
             if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
                 return false;
             }
@@ -683,7 +769,6 @@ function applyFilters() {
             return true;
         });
         
-        // Sort products
         filteredProducts.sort((a, b) => {
             switch (sortValue) {
                 case 'name-asc':
@@ -777,32 +862,26 @@ function removeFilter(type) {
 }
 
 function clearAllFilters() {
-    // Reset search
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.value = '';
     
-    // Reset category
     const allCategoryRadio = document.querySelector('input[name="category"][value="all"]');
     if (allCategoryRadio) allCategoryRadio.checked = true;
     
-    // Reset price
     const priceRange = document.getElementById('price-range');
     if (priceRange) {
         priceRange.value = 500;
         updatePriceRange();
     }
     
-    // Reset sort
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) sortSelect.value = 'name-asc';
     
-    // Reset quick filters
     currentFilters.quickFilter = null;
     document.querySelectorAll('.quick-filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     
-    // Reset mobile filters
     document.querySelectorAll('.mobile-pill').forEach(pill => {
         pill.classList.remove('active');
         if (pill.dataset.category === 'all') {
@@ -817,7 +896,6 @@ function clearAllFilters() {
 function updateProductCounts() {
     if (allProducts.length === 0) return;
     
-    // Count by category
     const counts = {
         all: allProducts.length,
         Clipper: allProducts.filter(p => p.category === 'Clipper').length,
@@ -825,7 +903,6 @@ function updateProductCounts() {
         Shaver: allProducts.filter(p => p.category === 'Shaver').length
     };
     
-    // Update count badges
     Object.keys(counts).forEach(key => {
         const badge = document.getElementById(`count-${key.toLowerCase()}`);
         if (badge) badge.textContent = counts[key];
@@ -851,7 +928,6 @@ function updatePriceRange() {
     if (minDisplay) minDisplay.textContent = '$0';
     if (maxDisplay) maxDisplay.textContent = value >= 500 ? '$500+' : `$${value}`;
     
-    // Update slider gradient
     const percentage = (value / 500) * 100;
     slider.style.setProperty('--slider-value', `${percentage}%`);
     
@@ -859,14 +935,12 @@ function updatePriceRange() {
 }
 
 function quickFilter(type) {
-    // Toggle quick filter
     if (currentFilters.quickFilter === type) {
         currentFilters.quickFilter = null;
     } else {
         currentFilters.quickFilter = type;
     }
     
-    // Update button states
     document.querySelectorAll('.quick-filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -924,14 +998,6 @@ function renderProducts() {
             <div class="product-info-premium">
                 ${product.category ? `<div class="product-category-badge">${escapeHtml(product.category)}</div>` : ''}
                 <h3 class="product-name-premium">${escapeHtml(product.name)}</h3>
-                ${product.rating ? `
-                    <div class="product-rating-premium">
-                        <div class="stars-premium">
-                            ${generateStars(product.rating)}
-                        </div>
-                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount})</span>` : ''}
-                    </div>
-                ` : ''}
                 <div class="product-footer">
                     <div class="product-price-premium">$${product.price.toFixed(2)}</div>
                     <button class="add-to-cart-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});">
@@ -942,26 +1008,8 @@ function renderProducts() {
         </div>
     `).join('');
     
-    // Re-initialize scroll effects
     initializeScrollEffects();
-}
-
-function generateStars(rating) {
-    const fullStars = Math.floor(rating);
-    const hasHalfStar = rating % 1 >= 0.5;
-    let starsHTML = '';
-    
-    for (let i = 0; i < 5; i++) {
-        if (i < fullStars) {
-            starsHTML += '<i class="fas fa-star star-premium"></i>';
-        } else if (i === fullStars && hasHalfStar) {
-            starsHTML += '<i class="fas fa-star-half-alt star-premium"></i>';
-        } else {
-            starsHTML += '<i class="far fa-star star-premium empty"></i>';
-        }
-    }
-    
-    return starsHTML;
+    setupIntersectionObserver();
 }
 
 function changeView(view) {
@@ -982,17 +1030,15 @@ function changeView(view) {
 }
 
 // ==========================================
-// PRODUCT MODAL - SMART SCROLL
+// PRODUCT MODAL
 // ==========================================
 
 function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
     
-    // Add to recently viewed
     recentlyViewed.add(productId);
     
-    // Save scroll position
     const productsMain = document.getElementById('products-main');
     if (productsMain) {
         scrollManager.savePosition('products', productsMain.scrollTop);
@@ -1026,15 +1072,6 @@ function openProductModal(productId) {
             
             <div class="modal-details-luxury">
                 <h2>${escapeHtml(product.name)}</h2>
-                
-                ${product.rating ? `
-                    <div class="product-rating-premium" style="margin-bottom: 1.5rem;">
-                        <div class="stars-premium">
-                            ${generateStars(product.rating)}
-                        </div>
-                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount} reviews)</span>` : ''}
-                    </div>
-                ` : ''}
                 
                 <div class="modal-price-luxury">$${product.price.toFixed(2)}</div>
                 
@@ -1089,7 +1126,6 @@ function openProductModal(productId) {
         </div>
     `;
     
-    // Prevent body scroll
     scrollManager.preventBodyScroll();
     scrollManager.isModalOpen = true;
     
@@ -1102,36 +1138,16 @@ function closeProductModal(event) {
     
     const modal = document.getElementById('product-modal');
     if (modal && modal.classList.contains('active')) {
-        const modalContent = modal.querySelector('.luxury-modal-content');
-        const backdrop = modal.querySelector('.modal-backdrop');
-        
-        // Animate out
-        if (modalContent) {
-            modalContent.style.animation = 'modalExitSoft 0.4s cubic-bezier(0.4, 0, 0.6, 1) forwards';
-        }
-        if (backdrop) {
-            backdrop.style.animation = 'backdropFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
-        }
-        
-        // Allow body scroll
         scrollManager.allowBodyScroll();
         scrollManager.isModalOpen = false;
         
-        // Remove active class after animation
-        setTimeout(() => {
-            modal.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-            
-            // Reset animations
-            if (modalContent) modalContent.style.animation = '';
-            if (backdrop) backdrop.style.animation = '';
-            
-            // Restore scroll position
-            const productsMain = document.getElementById('products-main');
-            if (productsMain) {
-                productsMain.scrollTop = scrollManager.positions.products;
-            }
-        }, 400);
+        modal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        
+        const productsMain = document.getElementById('products-main');
+        if (productsMain) {
+            productsMain.scrollTop = scrollManager.positions.products;
+        }
     }
 }
 
@@ -1156,10 +1172,6 @@ function changeModalImage(imageSrc, thumbnail) {
     
     if (thumbnail) {
         thumbnail.classList.add('active');
-        thumbnail.style.animation = 'thumbnailBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
-        setTimeout(() => {
-            thumbnail.style.animation = '';
-        }, 400);
     }
 }
 
@@ -1202,13 +1214,11 @@ function toggleMobileFilters() {
 }
 
 function selectMobileCategory(button, category) {
-    // Update visual state
     document.querySelectorAll('.mobile-pill[data-category]').forEach(pill => {
         pill.classList.remove('active');
     });
     button.classList.add('active');
     
-    // Update desktop radio
     const radio = document.querySelector(`input[name="category"][value="${category}"]`);
     if (radio) radio.checked = true;
     
@@ -1288,7 +1298,6 @@ function addToCart(productId) {
     saveCart();
     showCartNotification(`${product.name} added to cart!`);
     
-    // Add bounce animation to cart badge
     const badge = document.getElementById('cart-badge');
     if (badge) {
         badge.style.transform = 'scale(1.4)';
@@ -1424,7 +1433,6 @@ async function proceedToCheckout() {
     try {
         showInfo('Preparing your checkout...');
         
-        // Format line items for Stripe
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
@@ -1437,7 +1445,6 @@ async function proceedToCheckout() {
             quantity: item.quantity,
         }));
         
-        // Call checkout API
         const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
@@ -1452,7 +1459,6 @@ async function proceedToCheckout() {
             throw new Error(data.message || 'Checkout failed');
         }
         
-        // Redirect to Stripe Checkout
         const result = await stripe.redirectToCheckout({
             sessionId: data.id,
         });
@@ -1490,7 +1496,7 @@ style.textContent = `
 document.head.appendChild(style);
 
 // ==========================================
-// FINAL LOGS
+// CONSOLE LOGS
 // ==========================================
 
 console.log('✨ Ultimate Smart Shopping Experience Ready!');
