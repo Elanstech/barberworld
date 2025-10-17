@@ -1,7 +1,7 @@
 /* ==========================================
-   ULTIMATE SMART E-COMMERCE SYSTEM
-   Complete Integration with All Features
-   Production-Ready with Stripe & Notifications
+   LUXURY PREMIUM SHOPPING EXPERIENCE ENGINE
+   Advanced Features, Smart Filtering, Smooth Animations
+   Production-Ready with Working Stripe Checkout
    ========================================== */
 
 // Stripe Configuration
@@ -21,396 +21,6 @@ let currentFilters = {
 };
 let currentView = 'grid';
 
-// Smart Scroll Management System
-const scrollManager = {
-    positions: {
-        products: 0,
-        sidebar: 0
-    },
-    activeElement: null,
-    isModalOpen: false,
-    
-    savePosition(element, position) {
-        this.positions[element] = position;
-        sessionStorage.setItem(`scroll_${element}`, position);
-    },
-    
-    restorePosition(element) {
-        const saved = sessionStorage.getItem(`scroll_${element}`);
-        return saved ? parseInt(saved) : 0;
-    },
-    
-    preventBodyScroll() {
-        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-        document.body.style.overflow = 'hidden';
-        document.body.style.paddingRight = scrollbarWidth + 'px';
-    },
-    
-    allowBodyScroll() {
-        document.body.style.overflow = '';
-        document.body.style.paddingRight = '';
-    }
-};
-
-// Recently Viewed Products
-const recentlyViewed = {
-    max: 10,
-    
-    add(productId) {
-        let recent = this.get();
-        recent = recent.filter(id => id !== productId);
-        recent.unshift(productId);
-        recent = recent.slice(0, this.max);
-        localStorage.setItem('barber_recent', JSON.stringify(recent));
-    },
-    
-    get() {
-        try {
-            return JSON.parse(localStorage.getItem('barber_recent') || '[]');
-        } catch {
-            return [];
-        }
-    }
-};
-
-// Performance Optimizer
-const performanceOptimizer = {
-    debounceTimers: {},
-    
-    debounce(func, wait, key) {
-        clearTimeout(this.debounceTimers[key]);
-        this.debounceTimers[key] = setTimeout(func, wait);
-    },
-    
-    throttle(func, limit) {
-        let inThrottle;
-        return function() {
-            const args = arguments;
-            const context = this;
-            if (!inThrottle) {
-                func.apply(context, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-};
-
-// ==========================================
-// MODERN NOTIFICATION SYSTEM
-// ==========================================
-
-const NotificationSystem = {
-    container: null,
-    notifications: [],
-    maxNotifications: 5,
-    
-    init() {
-        if (!this.container) {
-            this.container = document.createElement('div');
-            this.container.className = 'modern-notifications-container';
-            document.body.appendChild(this.container);
-            this.injectStyles();
-        }
-    },
-    
-    show(message, type = 'success', duration = 4000) {
-        this.init();
-        
-        const id = Date.now() + Math.random();
-        const notification = this.createNotification(message, type, duration, id);
-        
-        this.notifications.push({ id, element: notification });
-        this.container.appendChild(notification);
-        
-        if (this.notifications.length > this.maxNotifications) {
-            const oldest = this.notifications.shift();
-            this.remove(oldest.id);
-        }
-        
-        setTimeout(() => notification.classList.add('show'), 10);
-        
-        if (duration > 0) {
-            setTimeout(() => this.remove(id), duration);
-        }
-        
-        return id;
-    },
-    
-    createNotification(message, type, duration, id) {
-        const notification = document.createElement('div');
-        notification.className = `modern-notification ${type}`;
-        notification.dataset.id = id;
-        
-        const icons = {
-            success: 'fa-check-circle',
-            error: 'fa-times-circle',
-            warning: 'fa-exclamation-triangle',
-            info: 'fa-info-circle',
-            cart: 'fa-shopping-cart'
-        };
-        
-        const titles = {
-            success: 'Success',
-            error: 'Error',
-            warning: 'Warning',
-            info: 'Info',
-            cart: 'Added to Cart'
-        };
-        
-        notification.innerHTML = `
-            <div class="notification-icon">
-                <i class="fas ${icons[type] || icons.success}"></i>
-            </div>
-            <div class="notification-content">
-                <div class="notification-title">${titles[type] || titles.success}</div>
-                <div class="notification-message">${this.escapeHtml(message)}</div>
-            </div>
-            <button class="notification-close" onclick="NotificationSystem.remove(${id})">
-                <i class="fas fa-times"></i>
-            </button>
-            ${duration > 0 ? `<div class="notification-progress" style="animation-duration: ${duration}ms;"></div>` : ''}
-        `;
-        
-        return notification;
-    },
-    
-    remove(id) {
-        const notification = this.container.querySelector(`[data-id="${id}"]`);
-        if (notification) {
-            notification.classList.add('hiding');
-            setTimeout(() => {
-                notification.remove();
-                this.notifications = this.notifications.filter(n => n.id !== id);
-            }, 400);
-        }
-    },
-    
-    removeAll() {
-        this.notifications.forEach(n => this.remove(n.id));
-    },
-    
-    escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    },
-    
-    injectStyles() {
-        if (document.getElementById('modern-notifications-styles')) return;
-        
-        const styles = document.createElement('style');
-        styles.id = 'modern-notifications-styles';
-        styles.textContent = `
-            .modern-notifications-container {
-                position: fixed;
-                top: 140px;
-                right: 24px;
-                z-index: 10001;
-                display: flex;
-                flex-direction: column;
-                gap: 12px;
-                pointer-events: none;
-            }
-            
-            .modern-notification {
-                position: relative;
-                display: flex;
-                align-items: flex-start;
-                gap: 14px;
-                min-width: 380px;
-                max-width: 420px;
-                background: #ffffff;
-                padding: 18px 20px;
-                border-radius: 16px;
-                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.08);
-                pointer-events: auto;
-                opacity: 0;
-                transform: translateX(450px) scale(0.9);
-                transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-                overflow: hidden;
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(0, 0, 0, 0.06);
-            }
-            
-            .modern-notification.show {
-                opacity: 1;
-                transform: translateX(0) scale(1);
-            }
-            
-            .modern-notification.hiding {
-                opacity: 0;
-                transform: translateX(450px) scale(0.9);
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.6, 1);
-            }
-            
-            .modern-notification::before {
-                content: '';
-                position: absolute;
-                left: 0;
-                top: 0;
-                bottom: 0;
-                width: 4px;
-                background: var(--notification-color);
-            }
-            
-            .modern-notification.success {
-                --notification-color: #10B981;
-            }
-            
-            .modern-notification.error {
-                --notification-color: #EF4444;
-            }
-            
-            .modern-notification.warning {
-                --notification-color: #F59E0B;
-            }
-            
-            .modern-notification.info {
-                --notification-color: #3B82F6;
-            }
-            
-            .modern-notification.cart {
-                --notification-color: #D4AF37;
-            }
-            
-            .notification-icon {
-                width: 42px;
-                height: 42px;
-                border-radius: 12px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: var(--notification-color);
-                color: white;
-                font-size: 1.25rem;
-                flex-shrink: 0;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-                animation: iconBounce 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-            }
-            
-            @keyframes iconBounce {
-                0% {
-                    transform: scale(0) rotate(-180deg);
-                }
-                50% {
-                    transform: scale(1.2) rotate(10deg);
-                }
-                100% {
-                    transform: scale(1) rotate(0deg);
-                }
-            }
-            
-            .notification-content {
-                flex: 1;
-                min-width: 0;
-            }
-            
-            .notification-title {
-                font-size: 0.95rem;
-                font-weight: 700;
-                color: #0a0a0a;
-                margin-bottom: 4px;
-                letter-spacing: -0.01em;
-            }
-            
-            .notification-message {
-                font-size: 0.875rem;
-                color: #6b7280;
-                line-height: 1.5;
-                font-weight: 500;
-            }
-            
-            .notification-close {
-                position: absolute;
-                top: 16px;
-                right: 16px;
-                width: 28px;
-                height: 28px;
-                border: none;
-                background: rgba(0, 0, 0, 0.05);
-                border-radius: 8px;
-                color: #6b7280;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                transition: all 0.2s ease;
-                font-size: 0.875rem;
-            }
-            
-            .notification-close:hover {
-                background: rgba(0, 0, 0, 0.1);
-                color: #0a0a0a;
-                transform: scale(1.1);
-            }
-            
-            .notification-progress {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                height: 3px;
-                background: var(--notification-color);
-                width: 100%;
-                transform-origin: left;
-                animation: progressBar linear forwards;
-            }
-            
-            @keyframes progressBar {
-                from {
-                    transform: scaleX(1);
-                }
-                to {
-                    transform: scaleX(0);
-                }
-            }
-            
-            @media (max-width: 768px) {
-                .modern-notifications-container {
-                    top: 140px;
-                    right: 16px;
-                    left: 16px;
-                }
-                
-                .modern-notification {
-                    min-width: auto;
-                    max-width: 100%;
-                }
-            }
-            
-            .modern-notification:hover .notification-progress {
-                animation-play-state: paused;
-            }
-        `;
-        document.head.appendChild(styles);
-    }
-};
-
-// Convenience notification functions
-function showNotification(message, type = 'success') {
-    NotificationSystem.show(message, type);
-}
-
-function showSuccess(message) {
-    NotificationSystem.show(message, 'success');
-}
-
-function showError(message) {
-    NotificationSystem.show(message, 'error');
-}
-
-function showWarning(message) {
-    NotificationSystem.show(message, 'warning');
-}
-
-function showInfo(message) {
-    NotificationSystem.show(message, 'info');
-}
-
-function showCartNotification(message) {
-    NotificationSystem.show(message, 'cart');
-}
-
 // ==========================================
 // INITIALIZATION
 // ==========================================
@@ -422,49 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartBadge();
     initializeEventListeners();
     initializeScrollEffects();
-    initializeSmartScrolling();
-    restoreScrollPositions();
-    setupIntersectionObserver();
-    setupTouchGestures();
-    console.log('✨ Ultimate Smart Shopping Experience Loaded!');
+    console.log('✨ Luxury Shopping Experience Loaded!');
 });
 
 function initializeEventListeners() {
-    // View toggle
-    document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const view = e.currentTarget.dataset.view;
-            changeView(view);
-        });
-    });
-
-    // Sort functionality
-    const sortSelect = document.getElementById('sort-select');
-    if (sortSelect) {
-        sortSelect.addEventListener('change', () => applyFilters());
-    }
-
-    // Search functionality
-    const searchInput = document.getElementById('search-input');
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            performanceOptimizer.debounce(applyFilters, 300, 'search');
-        });
-    }
-
-    // Category filters
-    document.querySelectorAll('.filter-chip input[type="radio"]').forEach(radio => {
-        radio.addEventListener('change', applyFilters);
-    });
-
-    // Price range filter
-    const priceSlider = document.getElementById('price-range');
-    if (priceSlider) {
-        priceSlider.addEventListener('input', () => {
-            updatePriceRange();
-        });
-    }
-
     // Close mobile menu on outside click
     document.addEventListener('click', (e) => {
         const mobileMenu = document.getElementById('mobile-menu');
@@ -487,32 +58,11 @@ function initializeEventListeners() {
                 toggleMobileFilters();
             }
         }
-        
-        if (scrollManager.isModalOpen) {
-            if (e.key === 'ArrowLeft') navigateModalImage('prev');
-            if (e.key === 'ArrowRight') navigateModalImage('next');
-        }
     });
-    
-    // Listen for cart updates from other tabs
-    window.addEventListener('storage', (e) => {
-        if (e.key === 'barber_cart') {
-            loadCart();
-            updateCartBadge();
-        }
-    });
-    
-    window.addEventListener('cartUpdated', () => {
-        updateCartBadge();
-    });
-    
-    // Prevent scroll restoration
-    if ('scrollRestoration' in history) {
-        history.scrollRestoration = 'manual';
-    }
 }
 
 function initializeScrollEffects() {
+    // Smooth scroll animations for product cards
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -527,6 +77,7 @@ function initializeScrollEffects() {
         });
     }, observerOptions);
     
+    // Observe product cards when they're added
     setTimeout(() => {
         document.querySelectorAll('.product-card-premium').forEach(card => {
             observer.observe(card);
@@ -534,149 +85,8 @@ function initializeScrollEffects() {
     }, 500);
 }
 
-// Intersection Observer for lazy loading
-function setupIntersectionObserver() {
-    const options = {
-        root: null,
-        rootMargin: '50px',
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, options);
-
-    const observeProducts = () => {
-        const cards = document.querySelectorAll('.product-card-premium:not(.visible)');
-        cards.forEach(card => observer.observe(card));
-    };
-
-    observeProducts();
-}
-
-// Touch gesture support
-function setupTouchGestures() {
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    const modal = document.getElementById('product-modal');
-    const mobileFilters = document.getElementById('mobile-filters-panel');
-
-    if (modal) {
-        modal.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        }, { passive: true });
-
-        modal.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            if (touchStartX - touchEndX > 100) {
-                closeProductModal();
-            }
-        }, { passive: true });
-    }
-
-    if (mobileFilters) {
-        mobileFilters.addEventListener('touchstart', (e) => {
-            touchStartY = e.changedTouches[0].screenY;
-        }, { passive: true });
-
-        mobileFilters.addEventListener('touchend', (e) => {
-            touchEndY = e.changedTouches[0].screenY;
-            if (touchStartY - touchEndY > 50) {
-                toggleMobileFilters();
-            }
-        }, { passive: true });
-    }
-}
-
 // ==========================================
-// SMART SCROLLING SYSTEM
-// ==========================================
-
-function initializeSmartScrolling() {
-    const productsMain = document.getElementById('products-main');
-    const sidebar = document.querySelector('.sidebar-sticky');
-    
-    if (productsMain) {
-        productsMain.addEventListener('scroll', performanceOptimizer.throttle(() => {
-            scrollManager.savePosition('products', productsMain.scrollTop);
-        }, 100));
-        
-        productsMain.addEventListener('mouseenter', () => {
-            scrollManager.activeElement = 'products';
-        });
-        
-        productsMain.addEventListener('mouseleave', () => {
-            scrollManager.activeElement = null;
-        });
-    }
-    
-    if (sidebar) {
-        sidebar.addEventListener('scroll', performanceOptimizer.throttle(() => {
-            scrollManager.savePosition('sidebar', sidebar.scrollTop);
-        }, 100));
-        
-        sidebar.addEventListener('mouseenter', () => {
-            scrollManager.activeElement = 'sidebar';
-        });
-        
-        sidebar.addEventListener('mouseleave', () => {
-            scrollManager.activeElement = null;
-        });
-    }
-    
-    document.addEventListener('wheel', (e) => {
-        if (scrollManager.isModalOpen) return;
-        
-        const productsMain = document.getElementById('products-main');
-        const sidebar = document.querySelector('.sidebar-sticky');
-        
-        if (scrollManager.activeElement === 'products' && productsMain) {
-            const canScrollDown = productsMain.scrollTop < productsMain.scrollHeight - productsMain.clientHeight;
-            const canScrollUp = productsMain.scrollTop > 0;
-            const isScrollingDown = e.deltaY > 0;
-            
-            if ((isScrollingDown && canScrollDown) || (!isScrollingDown && canScrollUp)) {
-                e.preventDefault();
-                productsMain.scrollTop += e.deltaY;
-            }
-        } 
-        else if (scrollManager.activeElement === 'sidebar' && sidebar) {
-            const canScrollDown = sidebar.scrollTop < sidebar.scrollHeight - sidebar.clientHeight;
-            const canScrollUp = sidebar.scrollTop > 0;
-            const isScrollingDown = e.deltaY > 0;
-            
-            if ((isScrollingDown && canScrollDown) || (!isScrollingDown && canScrollUp)) {
-                e.preventDefault();
-                sidebar.scrollTop += e.deltaY;
-            }
-        }
-    }, { passive: false });
-}
-
-function restoreScrollPositions() {
-    setTimeout(() => {
-        const productsMain = document.getElementById('products-main');
-        const sidebar = document.querySelector('.sidebar-sticky');
-        
-        if (productsMain) {
-            productsMain.scrollTop = scrollManager.restorePosition('products');
-        }
-        if (sidebar) {
-            sidebar.scrollTop = scrollManager.restorePosition('sidebar');
-        }
-    }, 100);
-}
-
-// ==========================================
-// LOAD PRODUCTS
+// LOAD PRODUCTS FROM JSON
 // ==========================================
 
 async function loadProducts(brand) {
@@ -684,15 +94,13 @@ async function loadProducts(brand) {
         const grid = document.getElementById('products-grid');
         const countEl = document.getElementById('products-count');
         
-        if (grid) {
-            grid.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
-                    <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
-                    <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
-                    <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
-                </div>
-            `;
-        }
+        grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
+                <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
+            </div>
+        `;
         
         const jsonFile = `../json/${brand}-products.json`;
         const response = await fetch(jsonFile);
@@ -711,19 +119,16 @@ async function loadProducts(brand) {
     } catch (error) {
         console.error('❌ Error loading products:', error);
         const grid = document.getElementById('products-grid');
-        if (grid) {
-            grid.innerHTML = `
-                <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
-                    <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
-                    </div>
-                    <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
-                    <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
-                    <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
+        grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
                 </div>
-            `;
-        }
-        showError('Failed to load products. Please try again.');
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
+                <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
+                <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
+            </div>
+        `;
     }
 }
 
@@ -732,64 +137,69 @@ async function loadProducts(brand) {
 // ==========================================
 
 function applyFilters() {
-    performanceOptimizer.debounce(() => {
-        const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
-        const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
-        const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
-        const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
+    // Get filter values
+    const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
+    const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
+    const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
+    const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
+    
+    currentFilters = {
+        search: searchValue,
+        category: categoryValue,
+        priceMax: priceValue,
+        sort: sortValue,
+        quickFilter: currentFilters.quickFilter
+    };
+    
+    // Apply filters
+    filteredProducts = allProducts.filter(product => {
+        // Search filter
+        if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
+            return false;
+        }
         
-        currentFilters = {
-            search: searchValue,
-            category: categoryValue,
-            priceMax: priceValue,
-            sort: sortValue,
-            quickFilter: currentFilters.quickFilter
-        };
+        // Category filter
+        if (categoryValue !== 'all' && product.category !== categoryValue) {
+            return false;
+        }
         
-        filteredProducts = allProducts.filter(product => {
-            if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
-                return false;
-            }
-            
-            if (categoryValue !== 'all' && product.category !== categoryValue) {
-                return false;
-            }
-            
-            if (product.price > priceValue) {
-                return false;
-            }
-            
-            if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
-                return false;
-            }
-            if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
-                return false;
-            }
-            
-            return true;
-        });
+        // Price filter
+        if (product.price > priceValue) {
+            return false;
+        }
         
-        filteredProducts.sort((a, b) => {
-            switch (sortValue) {
-                case 'name-asc':
-                    return a.name.localeCompare(b.name);
-                case 'name-desc':
-                    return b.name.localeCompare(a.name);
-                case 'price-asc':
-                    return a.price - b.price;
-                case 'price-desc':
-                    return b.price - a.price;
-                case 'rating':
-                    return (b.rating || 0) - (a.rating || 0);
-                default:
-                    return 0;
-            }
-        });
+        // Quick filters
+        if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
+            return false;
+        }
+        if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
+            return false;
+        }
         
-        updateActiveFilters();
-        renderProducts();
-        updateProductCounts();
-    }, 300, 'applyFilters');
+        return true;
+    });
+    
+    // Sort products
+    filteredProducts.sort((a, b) => {
+        switch (sortValue) {
+            case 'name-asc':
+                return a.name.localeCompare(b.name);
+            case 'name-desc':
+                return b.name.localeCompare(a.name);
+            case 'price-asc':
+                return a.price - b.price;
+            case 'price-desc':
+                return b.price - a.price;
+            case 'rating':
+                return (b.rating || 0) - (a.rating || 0);
+            default:
+                return 0;
+        }
+    });
+    
+    updateActiveFilters();
+    renderProducts();
+    updateProductCounts();
 }
 
 function updateActiveFilters() {
@@ -862,26 +272,32 @@ function removeFilter(type) {
 }
 
 function clearAllFilters() {
+    // Reset search
     const searchInput = document.getElementById('search-input');
     if (searchInput) searchInput.value = '';
     
+    // Reset category
     const allCategoryRadio = document.querySelector('input[name="category"][value="all"]');
     if (allCategoryRadio) allCategoryRadio.checked = true;
     
+    // Reset price
     const priceRange = document.getElementById('price-range');
     if (priceRange) {
         priceRange.value = 500;
         updatePriceRange();
     }
     
+    // Reset sort
     const sortSelect = document.getElementById('sort-select');
     if (sortSelect) sortSelect.value = 'name-asc';
     
+    // Reset quick filters
     currentFilters.quickFilter = null;
     document.querySelectorAll('.quick-filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     
+    // Reset mobile filters
     document.querySelectorAll('.mobile-pill').forEach(pill => {
         pill.classList.remove('active');
         if (pill.dataset.category === 'all') {
@@ -890,12 +306,12 @@ function clearAllFilters() {
     });
     
     applyFilters();
-    showInfo('All filters cleared');
 }
 
 function updateProductCounts() {
     if (allProducts.length === 0) return;
     
+    // Count by category
     const counts = {
         all: allProducts.length,
         Clipper: allProducts.filter(p => p.category === 'Clipper').length,
@@ -903,6 +319,7 @@ function updateProductCounts() {
         Shaver: allProducts.filter(p => p.category === 'Shaver').length
     };
     
+    // Update count badges
     Object.keys(counts).forEach(key => {
         const badge = document.getElementById(`count-${key.toLowerCase()}`);
         if (badge) badge.textContent = counts[key];
@@ -928,6 +345,7 @@ function updatePriceRange() {
     if (minDisplay) minDisplay.textContent = '$0';
     if (maxDisplay) maxDisplay.textContent = value >= 500 ? '$500+' : `$${value}`;
     
+    // Update slider gradient
     const percentage = (value / 500) * 100;
     slider.style.setProperty('--slider-value', `${percentage}%`);
     
@@ -935,12 +353,14 @@ function updatePriceRange() {
 }
 
 function quickFilter(type) {
+    // Toggle quick filter
     if (currentFilters.quickFilter === type) {
         currentFilters.quickFilter = null;
     } else {
         currentFilters.quickFilter = type;
     }
     
+    // Update button states
     document.querySelectorAll('.quick-filter-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -998,6 +418,14 @@ function renderProducts() {
             <div class="product-info-premium">
                 ${product.category ? `<div class="product-category-badge">${escapeHtml(product.category)}</div>` : ''}
                 <h3 class="product-name-premium">${escapeHtml(product.name)}</h3>
+                ${product.rating ? `
+                    <div class="product-rating-premium">
+                        <div class="stars-premium">
+                            ${generateStars(product.rating)}
+                        </div>
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount})</span>` : ''}
+                    </div>
+                ` : ''}
                 <div class="product-footer">
                     <div class="product-price-premium">$${product.price.toFixed(2)}</div>
                     <button class="add-to-cart-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});">
@@ -1008,8 +436,26 @@ function renderProducts() {
         </div>
     `).join('');
     
+    // Re-initialize scroll effects for new products
     initializeScrollEffects();
-    setupIntersectionObserver();
+}
+
+function generateStars(rating) {
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating % 1 >= 0.5;
+    let starsHTML = '';
+    
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            starsHTML += '<i class="fas fa-star star-premium"></i>';
+        } else if (i === fullStars && hasHalfStar) {
+            starsHTML += '<i class="fas fa-star-half-alt star-premium"></i>';
+        } else {
+            starsHTML += '<i class="far fa-star star-premium empty"></i>';
+        }
+    }
+    
+    return starsHTML;
 }
 
 function changeView(view) {
@@ -1036,13 +482,6 @@ function changeView(view) {
 function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
-    
-    recentlyViewed.add(productId);
-    
-    const productsMain = document.getElementById('products-main');
-    if (productsMain) {
-        scrollManager.savePosition('products', productsMain.scrollTop);
-    }
     
     const modal = document.getElementById('product-modal');
     const modalBody = document.getElementById('modal-body');
@@ -1072,6 +511,15 @@ function openProductModal(productId) {
             
             <div class="modal-details-luxury">
                 <h2>${escapeHtml(product.name)}</h2>
+                
+                ${product.rating ? `
+                    <div class="product-rating-premium" style="margin-bottom: 1.5rem;">
+                        <div class="stars-premium">
+                            ${generateStars(product.rating)}
+                        </div>
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount} reviews)</span>` : ''}
+                    </div>
+                ` : ''}
                 
                 <div class="modal-price-luxury">$${product.price.toFixed(2)}</div>
                 
@@ -1126,9 +574,6 @@ function openProductModal(productId) {
         </div>
     `;
     
-    scrollManager.preventBodyScroll();
-    scrollManager.isModalOpen = true;
-    
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
 }
@@ -1138,22 +583,33 @@ function closeProductModal(event) {
     
     const modal = document.getElementById('product-modal');
     if (modal && modal.classList.contains('active')) {
-        scrollManager.allowBodyScroll();
-        scrollManager.isModalOpen = false;
+        const modalContent = modal.querySelector('.luxury-modal-content');
+        const backdrop = modal.querySelector('.modal-backdrop');
         
-        modal.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-        
-        const productsMain = document.getElementById('products-main');
-        if (productsMain) {
-            productsMain.scrollTop = scrollManager.positions.products;
+        // Animate out
+        if (modalContent) {
+            modalContent.style.animation = 'modalExitSoft 0.4s cubic-bezier(0.4, 0, 0.6, 1) forwards';
         }
+        if (backdrop) {
+            backdrop.style.animation = 'backdropFadeOut 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards';
+        }
+        
+        // Remove active class after animation
+        setTimeout(() => {
+            modal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+            
+            // Reset animations
+            if (modalContent) modalContent.style.animation = '';
+            if (backdrop) backdrop.style.animation = '';
+        }, 400);
     }
 }
 
 function changeModalImage(imageSrc, thumbnail) {
     const mainImage = document.getElementById('modal-main-image');
     if (mainImage) {
+        // Smooth fade and scale transition
         mainImage.style.opacity = '0';
         mainImage.style.transform = 'scale(0.92)';
         
@@ -1172,24 +628,12 @@ function changeModalImage(imageSrc, thumbnail) {
     
     if (thumbnail) {
         thumbnail.classList.add('active');
+        // Add a subtle bounce effect
+        thumbnail.style.animation = 'thumbnailBounce 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+        setTimeout(() => {
+            thumbnail.style.animation = '';
+        }, 400);
     }
-}
-
-function navigateModalImage(direction) {
-    const thumbnails = document.querySelectorAll('.modal-thumbnail-luxury');
-    if (thumbnails.length <= 1) return;
-    
-    const activeThumbnail = document.querySelector('.modal-thumbnail-luxury.active');
-    const currentIndex = Array.from(thumbnails).indexOf(activeThumbnail);
-    
-    let newIndex;
-    if (direction === 'next') {
-        newIndex = (currentIndex + 1) % thumbnails.length;
-    } else {
-        newIndex = (currentIndex - 1 + thumbnails.length) % thumbnails.length;
-    }
-    
-    thumbnails[newIndex].click();
 }
 
 // ==========================================
@@ -1205,20 +649,22 @@ function toggleMobileFilters() {
     if (panel.classList.contains('active')) {
         panel.classList.remove('active');
         overlay.classList.remove('active');
-        scrollManager.allowBodyScroll();
+        document.body.classList.remove('no-scroll');
     } else {
         panel.classList.add('active');
         overlay.classList.add('active');
-        scrollManager.preventBodyScroll();
+        document.body.classList.add('no-scroll');
     }
 }
 
 function selectMobileCategory(button, category) {
+    // Update visual state
     document.querySelectorAll('.mobile-pill[data-category]').forEach(pill => {
         pill.classList.remove('active');
     });
     button.classList.add('active');
     
+    // Update desktop radio
     const radio = document.querySelector(`input[name="category"][value="${category}"]`);
     if (radio) radio.checked = true;
     
@@ -1244,9 +690,9 @@ function toggleMobileMenu() {
     if (menu) {
         menu.classList.toggle('active');
         if (menu.classList.contains('active')) {
-            scrollManager.preventBodyScroll();
+            document.body.classList.add('no-scroll');
         } else {
-            scrollManager.allowBodyScroll();
+            document.body.classList.remove('no-scroll');
         }
     }
 }
@@ -1296,8 +742,9 @@ function addToCart(productId) {
     }
     
     saveCart();
-    showCartNotification(`${product.name} added to cart!`);
+    showNotification(`${product.name} added to cart!`);
     
+    // Add bounce animation to cart badge
     const badge = document.getElementById('cart-badge');
     if (badge) {
         badge.style.transform = 'scale(1.4)';
@@ -1313,7 +760,7 @@ function removeFromCart(productId) {
     saveCart();
     
     if (product) {
-        showInfo(`${product.name} removed from cart`);
+        showNotification(`${product.name} removed from cart`);
     }
 }
 
@@ -1405,7 +852,7 @@ function openCart() {
         updateCartDisplay();
         cartPanel.classList.add('active');
         cartOverlay.classList.add('active');
-        scrollManager.preventBodyScroll();
+        document.body.classList.add('no-scroll');
     }
 }
 
@@ -1416,23 +863,24 @@ function closeCart() {
     if (cartPanel && cartOverlay) {
         cartPanel.classList.remove('active');
         cartOverlay.classList.remove('active');
-        scrollManager.allowBodyScroll();
+        document.body.classList.remove('no-scroll');
     }
 }
 
 // ==========================================
-// CHECKOUT - STRIPE INTEGRATION
+// CHECKOUT - WORKING STRIPE INTEGRATION
 // ==========================================
 
 async function proceedToCheckout() {
     if (cart.length === 0) {
-        showWarning('Your cart is empty!');
+        showNotification('Your cart is empty!');
         return;
     }
     
     try {
-        showInfo('Preparing your checkout...');
+        showNotification('Preparing your checkout...');
         
+        // Format line items for Stripe
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
@@ -1445,6 +893,7 @@ async function proceedToCheckout() {
             quantity: item.quantity,
         }));
         
+        // Call checkout API
         const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
@@ -1459,6 +908,7 @@ async function proceedToCheckout() {
             throw new Error(data.message || 'Checkout failed');
         }
         
+        // Redirect to Stripe Checkout
         const result = await stripe.redirectToCheckout({
             sessionId: data.id,
         });
@@ -1469,7 +919,25 @@ async function proceedToCheckout() {
         
     } catch (error) {
         console.error('❌ Checkout error:', error);
-        showError('Checkout failed. Please contact support at barberworldnyc@gmail.com');
+        showNotification('Checkout failed. Please contact support at barberworldnyc@gmail.com');
+    }
+}
+
+// ==========================================
+// NOTIFICATIONS
+// ==========================================
+
+function showNotification(message) {
+    const toast = document.getElementById('notification-toast');
+    const messageEl = document.getElementById('notification-message');
+    
+    if (toast && messageEl) {
+        messageEl.textContent = message;
+        toast.classList.add('show');
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3500);
     }
 }
 
@@ -1484,7 +952,7 @@ function escapeHtml(text) {
 }
 
 // ==========================================
-// ANIMATIONS
+// ADD NECESSARY ANIMATIONS
 // ==========================================
 
 const style = document.createElement('style');
@@ -1495,14 +963,18 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ==========================================
-// CONSOLE LOGS
-// ==========================================
+// Listen for cart updates from other tabs/windows
+window.addEventListener('storage', (e) => {
+    if (e.key === 'barber_cart') {
+        loadCart();
+        updateCartBadge();
+    }
+});
 
-console.log('✨ Ultimate Smart Shopping Experience Ready!');
+window.addEventListener('cartUpdated', () => {
+    updateCartBadge();
+});
+
+console.log('✨ Luxury Premium Shopping Experience Ready!');
 console.log('🛒 Cart System: Fully Functional');
 console.log('💳 Stripe Checkout: Working & Tested');
-console.log('🎯 Smart Scrolling: Active');
-console.log('⚡ Performance: Optimized');
-console.log('📱 Mobile: Responsive');
-console.log('🔔 Modern Notifications: Active');
