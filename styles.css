@@ -1874,7 +1874,7 @@ main {
 
 @media (max-width: 768px) {
     .header-container {
-        height: 80px;
+        height: 120px;
         padding: 0 1rem;
     }
     
@@ -1883,7 +1883,7 @@ main {
     }
     
     .brand-logo {
-        height: 60px;
+        height: 100px;
     }
     
     .header-right {
