@@ -517,5 +517,93 @@
     "rating": 4.8,
     "reviewCount": 287,
     "sku": "FF 2020T-B"
+  },
+  {
+    "id": 50,
+    "name": "Barber World Mini Professional Trimmer (Black)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-black",
+    "image": "../brbwrldimages/trimmerblack1.png",
+    "images": [
+      "../brbwrldimages/trimmerblack2.png",
+      "../brbwrldimages/trimmerblack3.png",
+      "../brbwrldimages/trimmerblack4.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor",
+    "description": "The Barber World Mini Professional Trimmer delivers powerful performance in a compact design. Featuring a high-speed 8000 RPM motor, this trimmer is perfect for precision detailing, outlining, and finishing work. The sleek black finish provides a professional appearance, while the ergonomic design ensures comfortable handling. With 2 hours of runtime and quick 2-hour charging, this trimmer is ideal for busy professionals.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Sleek black finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Matte black",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 324,
+    "sku": "BW-TRIMMER-BLACK"
+  },
+  {
+    "id": 51,
+    "name": "Barber World Mini Professional Trimmer (Silver)",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-silver",
+    "image": "../brbwrldimages/Trimmer1.png",
+    "images": [
+      "../brbwrldimages/Trimmer2.png",
+      "../brbwrldimages/Trimmer3.png",
+      "../brbwrldimages/Trimmer4.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor in silver",
+    "description": "The Barber World Mini Professional Trimmer in elegant silver combines powerful performance with sleek styling. Equipped with a high-speed 8000 RPM motor, this compact trimmer excels at precision detailing, crisp line work, and professional finishing. The silver metallic finish adds a touch of sophistication, while the ergonomic design ensures comfort during extended use. Features 2 hours of continuous runtime with quick 2-hour charging.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Elegant silver finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Metallic silver",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 298,
+    "sku": "BW-TRIMMER-SILVER"
   }
 ]
