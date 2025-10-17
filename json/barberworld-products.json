@@ -210,11 +210,11 @@
     "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-air-duster-mirror-gold",
-    "image": "https://example.com/barber-world-air-duster-gold-main.jpg",
+    "image": "../brbwrldimages/barbergold.png",
     "images": [
-      "https://example.com/barber-world-air-duster-gold-side.jpg",
-      "https://example.com/barber-world-air-duster-gold-accessories.jpg",
-      "https://example.com/barber-world-air-duster-gold-package.jpg"
+      "../brbwrldimages/barbergold2.png",
+      "../brbwrldimages/barbergold3.png",
+      "../brbwrldimages/barbergold4.png"
     ],
     "category": "Accessories",
     "shortDescription": "Portable multi-function air duster in luxurious mirror gold finish",
