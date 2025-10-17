@@ -381,49 +381,6 @@ main {
 }
 
 /* ==========================================
-   WELCOME SECTION
-   ========================================== */
-
-.welcome-section {
-    width: 100%;
-    padding: 40px 20px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: transparent;
-    overflow: hidden;
-}
-
-.welcome-container {
-    max-width: 1200px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.handwritten-text {
-    width: 100%;
-    max-width: 800px;
-    height: auto;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-}
-
-.handwritten-path {
-    font-family: 'Pacifico', cursive;
-    font-size: 68px;
-    font-weight: 400;
-    fill: none;
-    stroke: #c9a961;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke-dasharray: 2000;
-    stroke-dashoffset: 2000;
-    animation: draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s;
-    animation-delay: 0.3s;
-}
-
-/* ==========================================
    MAIN CONTENT CONTAINER
    ========================================== */
 
