@@ -253,11 +253,11 @@
     "price": 44.99,
     "brand": "Barber World",
     "slug": "barber-world-air-duster-mirror-multicolor",
-    "image": "https://example.com/barber-world-air-duster-multicolor-main.jpg",
+    "image": "barbermulti.png",
     "images": [
-      "https://example.com/barber-world-air-duster-multicolor-side.jpg",
-      "https://example.com/barber-world-air-duster-multicolor-accessories.jpg",
-      "https://example.com/barber-world-air-duster-multicolor-package.jpg"
+      "barbermulti2.png",
+      "barbermulti3.png",
+      "barbermulti4.png"
     ],
     "category": "Accessories",
     "shortDescription": "Portable multi-function air duster with eye-catching mirror multicolor finish",
