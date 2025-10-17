@@ -1,0 +1,293 @@
+[
+  {
+    "id": 1,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 5.5\"",
+    "price": 34.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-5-5",
+    "image": "https://example.com/barber-world-scissors-5-5-main.jpg",
+    "images": [
+      "https://example.com/barber-world-scissors-5-5-angle.jpg",
+      "https://example.com/barber-world-scissors-5-5-detail.jpg",
+      "https://example.com/barber-world-scissors-5-5-package.jpg"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 5.5 inch",
+    "description": "Premium Barber World Japanese steel hair cutting scissors designed for professional barbers and stylists. Crafted from high-quality Japanese steel, these 5.5-inch scissors provide exceptional sharpness and precision for all cutting techniques. The ergonomic design reduces hand fatigue during extended use, while the razor-sharp blades ensure clean, effortless cuts every time.",
+    "features": [
+      "Japanese steel construction",
+      "5.5-inch blade length",
+      "Ergonomic finger rest design",
+      "Razor-sharp precision blades",
+      "Professional-grade quality",
+      "Adjustable tension screw",
+      "Comfortable grip handles",
+      "Ideal for detailed cutting work"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "5.5 inches",
+      "totalLength": "5.5 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "2.8 oz"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "sku": "BW-SCISSORS-55"
+  },
+  {
+    "id": 2,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 6.0\"",
+    "price": 37.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-6-0",
+    "image": "https://example.com/barber-world-scissors-6-0-main.jpg",
+    "images": [
+      "https://example.com/barber-world-scissors-6-0-angle.jpg",
+      "https://example.com/barber-world-scissors-6-0-detail.jpg",
+      "https://example.com/barber-world-scissors-6-0-package.jpg"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 6.0 inch",
+    "description": "The Barber World 6.0-inch Japanese steel scissors offer the perfect balance between precision and versatility. Ideal for both detailed work and general cutting, these professional-grade scissors feature ultra-sharp blades made from premium Japanese steel. The comfortable ergonomic design allows for hours of use without hand strain, making them perfect for busy barbers and stylists.",
+    "features": [
+      "Premium Japanese steel blades",
+      "6.0-inch blade length",
+      "Ergonomic offset handle design",
+      "Ultra-sharp convex edge",
+      "Professional barber quality",
+      "Adjustable pivot tension",
+      "Comfortable finger rest",
+      "Versatile for all cutting techniques"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "6.0 inches",
+      "totalLength": "6.0 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "3.1 oz"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 245,
+    "sku": "BW-SCISSORS-60"
+  },
+  {
+    "id": 3,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 7.0\"",
+    "price": 39.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-7-0",
+    "image": "https://example.com/barber-world-scissors-7-0-main.jpg",
+    "images": [
+      "https://example.com/barber-world-scissors-7-0-angle.jpg",
+      "https://example.com/barber-world-scissors-7-0-detail.jpg",
+      "https://example.com/barber-world-scissors-7-0-package.jpg"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 7.0 inch",
+    "description": "Experience professional cutting performance with the Barber World 7.0-inch Japanese steel scissors. These larger scissors are perfect for cutting longer hair and completing work quickly without sacrificing precision. Crafted from premium Japanese steel with razor-sharp convex edges, they deliver smooth, effortless cuts. The ergonomic design ensures comfort during extended cutting sessions.",
+    "features": [
+      "High-quality Japanese steel",
+      "7.0-inch blade length",
+      "Ergonomic offset design",
+      "Razor-sharp convex blades",
+      "Professional-grade construction",
+      "Adjustable tension system",
+      "Comfortable finger rest",
+      "Perfect for longer hair cutting"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "7.0 inches",
+      "totalLength": "7.0 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "3.5 oz"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 198,
+    "sku": "BW-SCISSORS-70"
+  },
+  {
+    "id": 4,
+    "name": "Barber World Mini Professional Trimmer (Black)",
+    "price": 29.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-black",
+    "image": "https://example.com/barber-world-trimmer-black-main.jpg",
+    "images": [
+      "https://example.com/barber-world-trimmer-black-front.jpg",
+      "https://example.com/barber-world-trimmer-black-side.jpg",
+      "https://example.com/barber-world-trimmer-black-back.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor",
+    "description": "The Barber World Mini Professional Trimmer delivers powerful performance in a compact design. Featuring a high-speed 8000 RPM motor, this trimmer is perfect for precision detailing, outlining, and finishing work. The sleek black finish provides a professional appearance, while the ergonomic design ensures comfortable handling. With 2 hours of runtime and quick 2-hour charging, this trimmer is ideal for busy professionals.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Sleek black finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Matte black",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 324,
+    "sku": "BW-TRIMMER-BLACK"
+  },
+  {
+    "id": 5,
+    "name": "Barber World Mini Professional Trimmer (Silver)",
+    "price": 29.99,
+    "brand": "Barber World",
+    "slug": "barber-world-mini-professional-trimmer-silver",
+    "image": "https://example.com/barber-world-trimmer-silver-main.jpg",
+    "images": [
+      "https://example.com/barber-world-trimmer-silver-front.jpg",
+      "https://example.com/barber-world-trimmer-silver-side.jpg",
+      "https://example.com/barber-world-trimmer-silver-back.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Compact mini professional trimmer with high-speed 8000 RPM motor in silver",
+    "description": "The Barber World Mini Professional Trimmer in elegant silver combines powerful performance with sleek styling. Equipped with a high-speed 8000 RPM motor, this compact trimmer excels at precision detailing, crisp line work, and professional finishing. The silver metallic finish adds a touch of sophistication, while the ergonomic design ensures comfort during extended use. Features 2 hours of continuous runtime with quick 2-hour charging.",
+    "features": [
+      "High-speed 8000 RPM motor",
+      "Compact mini design",
+      "2-hour runtime",
+      "2-hour fast charging",
+      "400mAh battery capacity",
+      "Professional T-blade",
+      "Elegant silver finish",
+      "USB charging cable included",
+      "Multiple guide combs",
+      "Lightweight and portable"
+    ],
+    "specifications": {
+      "motor": "8000 RPM",
+      "batteryCapacity": "400mAh",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "voltage": "5V",
+      "power": "5W",
+      "bladeType": "T-blade",
+      "weight": "3.5 oz",
+      "finish": "Metallic silver",
+      "model": "BW1"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 298,
+    "sku": "BW-TRIMMER-SILVER"
+  },
+  {
+    "id": 6,
+    "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Gold)",
+    "price": 44.99,
+    "brand": "Barber World",
+    "slug": "barber-world-air-duster-mirror-gold",
+    "image": "https://example.com/barber-world-air-duster-gold-main.jpg",
+    "images": [
+      "https://example.com/barber-world-air-duster-gold-side.jpg",
+      "https://example.com/barber-world-air-duster-gold-accessories.jpg",
+      "https://example.com/barber-world-air-duster-gold-package.jpg"
+    ],
+    "category": "Accessories",
+    "shortDescription": "Portable multi-function air duster in luxurious mirror gold finish",
+    "description": "The Barber World Air Duster in stunning mirror gold is an essential tool for professional barbers and stylists. This versatile multi-function device quickly removes loose hair and clippings from clients, tools, and workstations. The powerful yet quiet motor provides efficient airflow, while the ergonomic design ensures comfortable handling. Includes multiple attachments for various cleaning tasks. The luxurious mirror gold finish adds a premium touch to any professional setup.",
+    "features": [
+      "Powerful portable air blow motor",
+      "Multi-function design",
+      "Luxurious mirror gold finish",
+      "Cordless operation",
+      "Rechargeable battery",
+      "Multiple nozzle attachments included",
+      "Ergonomic grip design",
+      "Quiet operation",
+      "Perfect for hair removal",
+      "USB-C charging",
+      "Compact and lightweight"
+    ],
+    "specifications": {
+      "power": "High-efficiency motor",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "150 minutes",
+      "finish": "Mirror gold",
+      "weight": "8.5 oz",
+      "attachments": "4 interchangeable nozzles",
+      "voltage": "USB-C 5V"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 412,
+    "sku": "BW-AIRDUSTER-GOLD"
+  },
+  {
+    "id": 7,
+    "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Multicolor)",
+    "price": 44.99,
+    "brand": "Barber World",
+    "slug": "barber-world-air-duster-mirror-multicolor",
+    "image": "https://example.com/barber-world-air-duster-multicolor-main.jpg",
+    "images": [
+      "https://example.com/barber-world-air-duster-multicolor-side.jpg",
+      "https://example.com/barber-world-air-duster-multicolor-accessories.jpg",
+      "https://example.com/barber-world-air-duster-multicolor-package.jpg"
+    ],
+    "category": "Accessories",
+    "shortDescription": "Portable multi-function air duster with eye-catching mirror multicolor finish",
+    "description": "Stand out with the Barber World Air Duster in vibrant mirror multicolor finish. This professional-grade portable air duster efficiently removes hair clippings and debris from clients, tools, and workstations. Featuring a powerful motor with quiet operation and multiple interchangeable nozzles for different cleaning tasks. The eye-catching iridescent finish makes a bold statement while delivering exceptional performance. Cordless design with rechargeable battery for maximum convenience.",
+    "features": [
+      "Powerful portable air blow motor",
+      "Multi-function design",
+      "Eye-catching mirror multicolor finish",
+      "Cordless operation",
+      "Rechargeable battery",
+      "Multiple nozzle attachments included",
+      "Ergonomic grip design",
+      "Quiet operation",
+      "Perfect for hair removal",
+      "USB-C charging",
+      "Compact and lightweight"
+    ],
+    "specifications": {
+      "power": "High-efficiency motor",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "150 minutes",
+      "finish": "Mirror multicolor iridescent",
+      "weight": "8.5 oz",
+      "attachments": "4 interchangeable nozzles",
+      "voltage": "USB-C 5V"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 387,
+    "sku": "BW-AIRDUSTER-MULTI"
+  }
+]
