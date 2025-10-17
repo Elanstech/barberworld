@@ -1873,27 +1873,6 @@ main {
 }
 
 @media (max-width: 768px) {
-    .header-container {
-        height: 120px;
-        padding: 0 1rem;
-    }
-    
-    .logo-section {
-        padding: 0 1rem;
-    }
-    
-    .brand-logo {
-        height: 100px;
-    }
-    
-    .header-right {
-        padding: 0 0.5rem;
-    }
-    
-    .mobile-only {
-        display: flex;
-    }
-    
     .home-view {
         padding: 1.5rem 1rem;
     }
@@ -2028,20 +2007,7 @@ main {
     }
 }
 
-@media (max-width: 480px) {
-    .header-container {
-        height: 70px;
-        padding: 0 1rem;
-    }
-
-    .logo-section {
-        padding: 0 1rem;
-    }
-    
-    .brand-logo {
-        height: 50px;
-    }
-    
+@media (max-width: 480px) {    
     .action-btn {
         width: 45px;
         height: 45px;
