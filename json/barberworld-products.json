@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 5.5\"",
-    "price": 34.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-5-5",
     "image": "https://example.com/barber-world-scissors-5-5-main.jpg",
@@ -41,7 +41,7 @@
   {
     "id": 2,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 6.0\"",
-    "price": 37.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-6-0",
     "image": "https://example.com/barber-world-scissors-6-0-main.jpg",
@@ -80,7 +80,7 @@
   {
     "id": 3,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 7.0\"",
-    "price": 39.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-japanese-steel-scissors-7-0",
     "image": "https://example.com/barber-world-scissors-7-0-main.jpg",
@@ -163,7 +163,7 @@
   {
     "id": 5,
     "name": "Barber World Mini Professional Trimmer (Silver)",
-    "price": 29.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-mini-professional-trimmer-silver",
     "image": "https://example.com/barber-world-trimmer-silver-main.jpg",
@@ -207,7 +207,7 @@
   {
     "id": 6,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Gold)",
-    "price": 44.99,
+    "price": 49.99,
     "brand": "Barber World",
     "slug": "barber-world-air-duster-mirror-gold",
     "image": "https://example.com/barber-world-air-duster-gold-main.jpg",
@@ -253,11 +253,11 @@
     "price": 44.99,
     "brand": "Barber World",
     "slug": "barber-world-air-duster-mirror-multicolor",
-    "image": "barbermulti.png",
+    "image": "../brbwrldimages/barbermulti.png",
     "images": [
-      "barbermulti2.png",
-      "barbermulti3.png",
-      "barbermulti4.png"
+      "../brbwrldimages/barbermulti2.png",
+      "../brbwrldimages/barbermulti3.png",
+      "../brbwrldimages/barbermulti4.png"
     ],
     "category": "Accessories",
     "shortDescription": "Portable multi-function air duster with eye-catching mirror multicolor finish",
