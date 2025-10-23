@@ -1,0 +1,161 @@
+[
+  {
+    "id": 1,
+    "name": "Monster Clippers Cerberus Clipper - Vector Engine",
+    "price": 149.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-cerberus-clipper-vector-engine",
+    "image": "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446728001.png?pad_color=fff&v=1733970114&width=240",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446760769.png?pad_color=fff&v=1733970114&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446793537.png?pad_color=fff&v=1733970127&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446826305.png?pad_color=fff&v=1733970127&width=940"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional clipper with intuitive vector motor technology and responsive torque control",
+    "description": "The Cerberus Clipper features revolutionary Vector Engine technology - the latest innovation in professional hair clippers. The intuitive torque control technology automatically increases power when resistance is detected, ensuring smooth cutting through thick hair without snags or pulls. Its compact 15cm design fits comfortably in your palm for precise control and effortless handling.",
+    "features": [
+      "Extremely powerful high torque VECTOR motor",
+      "Intuitive torque control technology",
+      "9,000 RPM for efficient cutting",
+      "Double DLC (Diamond-like carbon coated) Hybrid cutting blade",
+      "Metal custom click or freestyle lever",
+      "Metal bottom housing for reduced vibration and noise",
+      "Adjustable zero gap cutting blade",
+      "Cord and cordless operation",
+      "Compact size - 15 centimeter",
+      "Lightweight ergonomic design",
+      "Mini USB recharge",
+      "Multiple spare colored thumb parts and levers included",
+      "10 premium double magnetic cutting guides included"
+    ],
+    "specifications": {
+      "motor": "Vector motor with responsive torque control",
+      "rpm": "9,000 RPM",
+      "blade": "Double DLC Hybrid, adjustable zero gap",
+      "battery": "Lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "120 minutes",
+      "size": "15 cm (compact)",
+      "charging": "Mini USB",
+      "operation": "Cord/cordless",
+      "housing": "Metal bottom housing"
+    },
+    "accessories": [
+      "1 x AC adapter",
+      "1 x Charging stand",
+      "1 x Micro USB cable",
+      "1 x Mini screwdriver",
+      "1 x Small cleaning brush",
+      "1 x 10 cc clipper oil",
+      "Multiple spare thumb parts in different colours",
+      "Multiple spare levers in different colours",
+      "10 x Premium double magnetic cutting guides (#0.5-1.5mm, #1-3mm, #1.5-4.5mm, #2-6mm, #3-10mm, #4-13mm, #5-16mm, #6-19mm, #7-22mm, #8-25mm)"
+    ],
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 287,
+    "sku": "MC-CERBERUS-CLIPPER"
+  },
+  {
+    "id": 2,
+    "name": "Monster Clippers Cerberus Trimmer - Vector Engine",
+    "price": 129.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-cerberus-trimmer-vector-engine",
+    "image": "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445908801.png?pad_color=fff&v=1733970114&width=240",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445941569.png?pad_color=fff&v=1733970114&width=350",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445974337.png?pad_color=fff&v=1733970114&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153446007105.png?pad_color=fff&v=1733970114&width=720"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional trimmer with vector motor technology and extra wide T-shaped blade",
+    "description": "The Cerberus Trimmer brings Vector Motor technology to precision trimming work. With intuitive torque control that adapts to hair resistance, this trimmer delivers smooth, efficient cutting without snags. The extra wide T-shaped double DLC blade combined with 10,000 RPM power makes it perfect for detailed work, outlining, and finishing. Its compact 15cm design allows you to work closer to hair and skin with exceptional ease.",
+    "features": [
+      "Extremely powerful high torque VECTOR motor",
+      "Intuitive torque control technology",
+      "10,000 RPM for superior performance",
+      "Extra wide T-shaped double DLC cutting blades",
+      "Metal bottom housing for reduced vibration and noise",
+      "Adjustable zero gap cutting blade",
+      "Cord and cordless operation",
+      "Compact size - 15 centimeter",
+      "Lightweight ergonomic design",
+      "Mini USB recharge",
+      "Multiple spare colored top parts included"
+    ],
+    "specifications": {
+      "motor": "Vector motor with responsive torque control",
+      "rpm": "10,000 RPM",
+      "blade": "Extra wide T-shaped double DLC, adjustable zero gap",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "size": "15 cm (compact)",
+      "charging": "Mini USB",
+      "operation": "Cord/cordless",
+      "housing": "Metal bottom housing"
+    },
+    "accessories": [
+      "1 x AC adapter",
+      "1 x Charging stand",
+      "1 x Micro USB cable",
+      "1 x Mini screwdriver",
+      "1 x Small cleaning brush",
+      "1 x 10 cc Trimmer oil",
+      "Multiple spare top parts in different colours"
+    ],
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 213,
+    "sku": "MC-CERBERUS-TRIMMER"
+  },
+  {
+    "id": 3,
+    "name": "Monster Clippers Assassin Shaver",
+    "price": 89.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-assassin-shaver",
+    "image": "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250236737.jpg?pad_color=fff&v=1733970127&width=350",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250335041.png?v=1733970133",
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250269505.png?v=1733970133"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Professional pocket-sized shaver with hypo-allergenic gold titanium foil",
+    "description": "The Assassin is a professional lightweight pocket-sized shaver with a powerful turbocharged motor running at 9,000 RPM. Its compact design makes it perfect for travel while maintaining professional-grade performance. The hypo-allergenic gold titanium foil delivers a bump-free shaving experience, ideal for sensitive skin. Fast charging lithium-ion battery provides 90 minutes of runtime with USB-C convenience.",
+    "features": [
+      "Hypo-allergenic gold titanium foil for bump-free shaving",
+      "Turbocharged 9,000 RPM motor",
+      "Pocket-sized compact design",
+      "Perfect for travel",
+      "USB-C rechargeable",
+      "Fast charge function",
+      "Cord and cordless use",
+      "Lightweight construction",
+      "Velvet travel bag included"
+    ],
+    "specifications": {
+      "foil": "Hypo-allergenic gold titanium",
+      "motor": "Turbocharged 9,000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "90 minutes",
+      "charging": "USB-C",
+      "operation": "Cord/cordless",
+      "design": "Pocket size, lightweight"
+    },
+    "accessories": [
+      "Universal USB charger/adapter",
+      "Interchangeable plugs: EU, UK and UL/US",
+      "USB cable",
+      "Cleaning brush",
+      "Velvet travel bag"
+    ],
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 156,
+    "sku": "MC-ASSASSIN-SHAVER"
+  }
+]
