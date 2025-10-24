@@ -17,11 +17,12 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <link rel="stylesheet" href="products.css">
-
+    
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="products.css">
 </head>
 <body data-category="Shaver">
     
@@ -78,17 +79,6 @@
                 <span>About</span>
             </a>
             <div class="mobile-nav-section">
-                <div class="mobile-nav-title">Shop by Category</div>
-                <a href="shavers.html" class="mobile-nav-link active">
-                    <i class="fas fa-user-check"></i>
-                    <span>Shavers</span>
-                </a>
-                <a href="trimmers.html" class="mobile-nav-link">
-                    <i class="fas fa-cut"></i>
-                    <span>Trimmers</span>
-                </a>
-            </div>
-            <div class="mobile-nav-section">
                 <div class="mobile-nav-title">Shop by Brand</div>
                 <a href="ourbrand.html" class="mobile-nav-link">
                     <i class="fas fa-star"></i>
@@ -113,10 +103,6 @@
                 <a href="wmark.html" class="mobile-nav-link">
                     <i class="fas fa-gem"></i>
                     <span>W-Mark</span>
-                </a>
-                <a href="vgr.html" class="mobile-nav-link">
-                    <i class="fas fa-bolt"></i>
-                    <span>VGR</span>
                 </a>
                 <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
@@ -151,7 +137,7 @@
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
-                    <i class="fas fa-user-check"></i>
+                    <i class="fas fa-certificate"></i>
                     Professional Grade Equipment
                 </div>
                 
@@ -287,35 +273,35 @@
                             <span>Search</span>
                         </div>
                         <div class="search-box">
-                            <input type="text" id="search-input" placeholder="Search shavers..." oninput="applyFilters()">
+                            <input type="text" id="search-input" placeholder="Search products..." oninput="applyFilters()">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
 
-                    <!-- Brand Filter -->
+                    <!-- Category Filter -->
                     <div class="filter-group">
                         <div class="filter-group-header" onclick="toggleFilterGroup(this)">
                             <div class="filter-title">
-                                <i class="fas fa-tag"></i>
-                                <span>Brand</span>
+                                <i class="fas fa-layer-group"></i>
+                                <span>Category</span>
                             </div>
                             <i class="fas fa-chevron-down toggle-icon"></i>
                         </div>
                         <div class="filter-options">
                             <label class="filter-option">
-                                <input type="checkbox" value="Babyliss" onchange="applyFilters()">
+                                <input type="checkbox" value="Clipper" onchange="applyFilters()">
                                 <span class="checkmark"></span>
-                                <span>BaBylissPRO</span>
+                                <span>Clippers</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" value="Wahl" onchange="applyFilters()">
+                                <input type="checkbox" value="Trimmer" onchange="applyFilters()">
                                 <span class="checkmark"></span>
-                                <span>Wahl</span>
+                                <span>Trimmers</span>
                             </label>
                             <label class="filter-option">
-                                <input type="checkbox" value="Andis" onchange="applyFilters()">
+                                <input type="checkbox" value="Shaver" onchange="applyFilters()">
                                 <span class="checkmark"></span>
-                                <span>Andis</span>
+                                <span>Shavers</span>
                             </label>
                         </div>
                     </div>
