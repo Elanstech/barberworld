@@ -41,6 +41,9 @@ async function loadProducts() {
             case 'StyleCraft':
                 jsonFile = '../json/stylecraft-products.json';
                 break;
+            case 'Monster':
+                jsonFile = '../json/monster-products.json';
+                break;
             case 'JRL':
                 jsonFile = '../json/jrl-products.json';
                 break;
@@ -54,13 +57,13 @@ async function loadProducts() {
                 jsonFile = '../json/vgr-products.json';
                 break;
             case 'clippers':
-                jsonFile = '../json/all-products-products.json';
+                jsonFile = '../json/clippers-products.json';
                 break;
             case 'trimmers':
-                jsonFile = '../json/all-products-products.json';
+                jsonFile = '../json/trimmers-products.json';
                 break;
             case 'shavers':
-                jsonFile = '../json/all-products-products.json';
+                jsonFile = '../json/shavers-products.json';
                 break;
             default:
                 jsonFile = '../json/all-products-products.json';
