@@ -38,6 +38,9 @@ async function loadProducts() {
             case 'Babyliss':
                 jsonFile = '../json/babyliss-products.json';
                 break;
+            case 'Ourbrand':
+                jsonFile = '../json/barberworld-products.json';
+                break;
             case 'StyleCraft':
                 jsonFile = '../json/stylecraft-products.json';
                 break;
