@@ -3,69 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahl Professional Barber Equipment | Magic Clip & Detailer | Barber World NYC</title>
-<meta name="title" content="Wahl Professional Barber Equipment | Magic Clip & Detailer | Barber World NYC">
-<meta name="description" content="Shop authentic Wahl professional barber equipment. Magic Clip, 5-Star Detailer, Senior clippers & more. 100% genuine with full manufacturer warranty. Factory sealed. Free shipping over $99.">
-<meta name="keywords" content="Wahl, Wahl professional, Wahl Magic Clip, Wahl Detailer, Wahl 5-Star, Wahl Senior, professional barber clippers, authentic Wahl, Wahl equipment">
-
-<!-- Canonical URL -->
-<link rel="canonical" href="https://www.barberworldnyc.com/brands/wahl.html">
-
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.barberworldnyc.com/brands/wahl.html">
-<meta property="og:title" content="Wahl Professional Barber Equipment | Barber World NYC">
-<meta property="og:description" content="Shop authentic Wahl professional equipment. Magic Clip, 5-Star Detailer, Senior clippers with full warranty. Factory sealed.">
-<meta property="og:image" content="https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://www.barberworldnyc.com/brands/wahl.html">
-<meta name="twitter:title" content="Wahl Professional Barber Equipment | Barber World NYC">
-<meta name="twitter:description" content="Shop authentic Wahl professional equipment. Magic Clip, 5-Star Detailer with full warranty.">
-<meta name="twitter:image" content="https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png">
-
-<!-- Structured Data - Brand Page -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Wahl Professional Equipment",
-  "description": "Shop authentic Wahl professional barber equipment including Magic Clip, 5-Star Detailer, and Senior clippers. 100% genuine products with full manufacturer warranty.",
-  "url": "https://www.barberworldnyc.com/brands/wahl.html",
-  "brand": {
-    "@type": "Brand",
-    "name": "Wahl"
-  },
-  "provider": {
-    "@type": "Organization",
-    "name": "Barber World NYC",
-    "url": "https://www.barberworldnyc.com"
-  }
-}
-</script>
-
-<!-- Breadcrumb -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "https://www.barberworldnyc.com/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Wahl",
-      "item": "https://www.barberworldnyc.com/brands/wahl.html"
-    }
-  ]
-}
-</script>    
+    <title>Wahl Professional Barber Equipment | Clippers & Trimmers | Barber World NYC</title>
+    <meta name="title" content="Wahl Professional Barber Equipment | Clippers & Trimmers | Barber World NYC">
+    <meta name="description" content="Shop authentic Wahl professional barber equipment. Industry-leading clippers, trimmers & shavers with full manufacturer warranty. Trusted by barbers for over 100 years. Free shipping over $99.">
+    <meta name="keywords" content="Wahl, Wahl professional, Wahl clippers, Wahl trimmers, Wahl Magic Clip, Wahl Senior, professional barber clippers, authentic Wahl, Wahl equipment">
+    
+    <link rel="canonical" href="https://www.barberworldnyc.com/brands/wahl.html">
+    
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,22 +17,29 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <link rel="stylesheet" href="products.css">
+
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="products.css">
 </head>
-<body data-brand="wahl">
+<body data-brand="Wahl">
     
-    <!-- Notification Toast -->
-    <div class="notification-toast" id="notification-toast">
-        <i class="fas fa-check-circle"></i>
-        <span id="notification-message">Item added to cart!</span>
+    <!-- Modern Toast Notification -->
+    <div class="toast-notification" id="toast-notification">
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-text">
+                <div class="toast-title">Added to Cart</div>
+                <div class="toast-message" id="toast-message">Product added successfully</div>
+            </div>
+        </div>
+        <div class="toast-progress"></div>
     </div>
 
-    <!-- MODERN REDESIGNED HEADER -->
+    <!-- Header -->
     <header class="modern-header">
         <div class="header-container">
             <div class="logo-section">
@@ -144,13 +95,17 @@
                     <i class="fas fa-crown"></i>
                     <span>JRL</span>
                 </a>
-                <a href="wahl.html" class="mobile-nav-link">
+                <a href="wahl.html" class="mobile-nav-link active">
                     <i class="fas fa-trophy"></i>
                     <span>Wahl</span>
                 </a>
                 <a href="wmark.html" class="mobile-nav-link">
                     <i class="fas fa-gem"></i>
                     <span>W-Mark</span>
+                </a>
+                <a href="vgr.html" class="mobile-nav-link">
+                    <i class="fas fa-bolt"></i>
+                    <span>VGR</span>
                 </a>
                 <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
@@ -159,338 +114,302 @@
             </div>
         </nav>
         <div class="mobile-menu-footer">
-            <p>Need help? Contact us</p>
-            <a href="mailto:barberworldnyc@gmail.com" class="contact-link">
-                barberworldnyc@gmail.com
-            </a>
+            <p>Need help? <a href="tel:123-456-7890">Contact Us</a></p>
         </div>
     </div>
 
     <!-- LUXURY HERO SECTION -->
     <div class="luxury-hero">
+        <!-- Animated Particles -->
         <div class="hero-particles">
             <div class="particle"></div>
             <div class="particle"></div>
             <div class="particle"></div>
             <div class="particle"></div>
             <div class="particle"></div>
+            <div class="particle"></div>
         </div>
+        
+        <!-- Gradient Orbs -->
         <div class="hero-gradient-orb orb-1"></div>
         <div class="hero-gradient-orb orb-2"></div>
         <div class="hero-gradient-orb orb-3"></div>
         
         <div class="hero-content-wrapper">
+            <!-- Text Section -->
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
-                    5 Star Professional
+                    <i class="fas fa-trophy"></i>
+                    Professional Grade Equipment
                 </div>
+                
                 <h1 class="hero-title-luxury">
-                    <span class="brand-name">Wahl</span>
-                    <span class="pro-badge">PROFESSIONAL</span>
+                    <span class="brand-name">Wahl Professional</span>
+                    <span class="brand-tagline">100+ Years of Innovation</span>
                 </h1>
-                <p class="hero-subtitle-luxury">Industry-leading performance. Legendary reliability.</p>
+                
+                <p class="hero-subtitle-luxury">
+                    Legendary professional equipment trusted by barbers worldwide since 1919. 
+                    Experience the gold standard in professional grooming tools.
+                </p>
+                
+                <!-- Hero Stats -->
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number" id="product-count-hero">0</div>
-                        <div class="stat-label">Products</div>
+                        <div class="stat-number" id="product-count-hero">
+                            <span class="count-up">0</span>+
+                        </div>
+                        <div class="stat-label">Products Available</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <div class="stat-number">100+</div>
-                        <div class="stat-label">Years Legacy</div>
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Authentic</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <div class="stat-number">4.9★</div>
-                        <div class="stat-label">Rating</div>
+                        <div class="stat-number">
+                            <i class="fas fa-star"></i> 4.9
+                        </div>
+                        <div class="stat-label">Rated</div>
                     </div>
                 </div>
             </div>
             
+            <!-- Visual Section with Floating Product -->
             <div class="hero-visual-section">
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
-                    <img src="https://www.wahlpro.com/media/catalog/product/w/a/wahl_vapor_front.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600" alt="Featured Product" class="floating-product-img">
+                    <div class="card-reflection"></div>
+                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600" 
+                         alt="Wahl Professional Clipper" 
+                         class="floating-product-img">
+                    <div class="product-highlight">
+                        <i class="fas fa-trophy"></i>
+                        <span>Industry Leader</span>
+                    </div>
+                </div>
+                
+                <!-- Floating Feature Cards -->
+                <div class="floating-feature feature-1">
+                    <i class="fas fa-award"></i>
+                    <span>Since 1919</span>
+                </div>
+                <div class="floating-feature feature-2">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>USA Made</span>
+                </div>
+                <div class="floating-feature feature-3">
+                    <i class="fas fa-star"></i>
+                    <span>Premium</span>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- ACTIVE FILTERS BAR -->
-    <div class="active-filters-bar" id="active-filters-bar" style="display: none;">
-        <div class="container">
-            <div class="active-filters-content">
-                <span class="filters-label">Active Filters:</span>
-                <div class="active-filter-tags" id="active-filter-tags"></div>
-                <button class="clear-all-filters-btn" onclick="clearAllFilters()">
-                    <i class="fas fa-times"></i> Clear All
-                </button>
-            </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>Explore Products</span>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </div>
 
-    <!-- Main Container -->
-    <div class="premium-container">
-        
-        <!-- Products Wrapper -->
-        <div class="products-wrapper">
+    <!-- Products Showcase Section -->
+    <div class="products-showcase">
+        <!-- Header Controls -->
+        <div class="showcase-controls">
+            <div class="controls-left">
+                <button class="btn-icon" onclick="toggleFilters()" aria-label="Toggle Filters">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Filters</span>
+                </button>
+                <div class="results-count" id="results-count">
+                    Showing <span id="product-count">0</span> products
+                </div>
+            </div>
             
-            <!-- PREMIUM SIDEBAR FILTERS -->
-            <aside class="premium-sidebar" id="premium-sidebar">
-                <div class="sidebar-sticky">
-                    <div class="filters-header-premium">
-                        <div class="filter-icon-wrapper">
-                            <i class="fas fa-sliders-h"></i>
-                        </div>
-                        <div>
-                            <h3>Filters</h3>
-                            <p class="filter-subtitle">Refine your search</p>
-                        </div>
-                    </div>
+            <div class="controls-right">
+                <div class="view-switcher">
+                    <button class="view-btn active" data-view="grid" onclick="switchView('grid')">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" onclick="switchView('list')">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+                
+                <select class="sort-select" id="sort-select" onchange="applySorting()">
+                    <option value="featured">Featured</option>
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="name-asc">Name: A to Z</option>
+                    <option value="name-desc">Name: Z to A</option>
+                </select>
+            </div>
+        </div>
 
-                    <!-- Search -->
-                    <div class="filter-section">
-                        <div class="filter-section-header">
+        <!-- Active Filters Bar -->
+        <div class="active-filters" id="active-filters" style="display: none;">
+            <div class="active-filters-content">
+                <span class="filters-label">Active:</span>
+                <div class="filter-pills" id="filter-pills"></div>
+                <button class="clear-all-btn" onclick="clearAllFilters()">Clear All</button>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            
+            <!-- Sidebar Filters -->
+            <aside class="filters-sidebar" id="filters-sidebar">
+                <div class="sidebar-header">
+                    <h3>Filters</h3>
+                    <button class="close-filters" onclick="toggleFilters()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="sidebar-content">
+                    <!-- Search Filter -->
+                    <div class="filter-group">
+                        <div class="filter-group-header">
                             <i class="fas fa-search"></i>
                             <span>Search</span>
                         </div>
-                        <div class="search-wrapper">
-                            <input type="text" id="search-input" class="search-input-premium" placeholder="Search products..." oninput="applyFilters()">
-                            <i class="fas fa-search search-icon"></i>
+                        <div class="search-box">
+                            <input type="text" id="search-input" placeholder="Search products..." oninput="applyFilters()">
+                            <i class="fas fa-search"></i>
                         </div>
                     </div>
 
-                    <!-- Category Filters -->
-                    <div class="filter-section">
-                        <div class="filter-section-header">
-                            <i class="fas fa-th-large"></i>
-                            <span>Category</span>
-                        </div>
-                        <div class="filter-options-premium">
-                            <label class="filter-chip">
-                                <input type="radio" name="category" value="all" checked onchange="applyFilters()">
-                                <div class="chip-content">
-                                    <span class="chip-text">All Products</span>
-                                    <span class="chip-count" id="count-all">0</span>
-                                </div>
-                            </label>
-                            <label class="filter-chip">
-                                <input type="radio" name="category" value="Clipper" onchange="applyFilters()">
-                                <div class="chip-content">
-                                    <span class="chip-text">Clippers</span>
-                                    <span class="chip-count" id="count-clipper">0</span>
-                                </div>
-                            </label>
-                            <label class="filter-chip">
-                                <input type="radio" name="category" value="Trimmer" onchange="applyFilters()">
-                                <div class="chip-content">
-                                    <span class="chip-text">Trimmers</span>
-                                    <span class="chip-count" id="count-trimmer">0</span>
-                                </div>
-                            </label>
-                            <label class="filter-chip">
-                                <input type="radio" name="category" value="Shaver" onchange="applyFilters()">
-                                <div class="chip-content">
-                                    <span class="chip-text">Shavers</span>
-                                    <span class="chip-count" id="count-shaver">0</span>
-                                </div>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Price Range -->
-                    <div class="filter-section">
-                        <div class="filter-section-header">
-                            <i class="fas fa-dollar-sign"></i>
-                            <span>Price Range</span>
-                        </div>
-                        <div class="price-range-container">
-                            <div class="price-display">
-                                <span id="min-price-display">$0</span>
-                                <span id="max-price-display">$500</span>
+                    <!-- Category Filter -->
+                    <div class="filter-group">
+                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                            <div class="filter-title">
+                                <i class="fas fa-layer-group"></i>
+                                <span>Category</span>
                             </div>
-                            <input type="range" id="price-range" min="0" max="500" value="500" class="price-slider" oninput="updatePriceRange()">
-                            <div class="price-labels">
-                                <span>$0</span>
-                                <span>$500+</span>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" value="Clipper" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                <span>Clippers</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Trimmer" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                <span>Trimmers</span>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" value="Shaver" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                <span>Shavers</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div class="filter-group">
+                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                            <div class="filter-title">
+                                <i class="fas fa-dollar-sign"></i>
+                                <span>Price Range</span>
+                            </div>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="filter-options">
+                            <div class="price-inputs">
+                                <input type="number" id="price-min" placeholder="Min" oninput="applyFilters()">
+                                <span>to</span>
+                                <input type="number" id="price-max" placeholder="Max" oninput="applyFilters()">
                             </div>
                         </div>
                     </div>
 
-                    <!-- Quick Filters -->
-                    <div class="filter-section">
-                        <div class="filter-section-header">
-                            <i class="fas fa-bolt"></i>
-                            <span>Quick Filters</span>
-                        </div>
-                        <div class="quick-filters">
-                            <button class="quick-filter-btn" onclick="quickFilter('inStock')">
+                    <!-- Stock Filter -->
+                    <div class="filter-group">
+                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
+                            <div class="filter-title">
                                 <i class="fas fa-check-circle"></i>
-                                In Stock Only
-                            </button>
-                            <button class="quick-filter-btn" onclick="quickFilter('topRated')">
-                                <i class="fas fa-star"></i>
-                                Top Rated
-                            </button>
-                            <button class="quick-filter-btn" onclick="quickFilter('newArrivals')">
-                                <i class="fas fa-sparkles"></i>
-                                New Arrivals
-                            </button>
+                                <span>Availability</span>
+                            </div>
+                            <i class="fas fa-chevron-down toggle-icon"></i>
+                        </div>
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" id="in-stock-only" onchange="applyFilters()">
+                                <span class="checkmark"></span>
+                                <span>In Stock Only</span>
+                            </label>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Reset Button -->
-                    <button class="reset-filters-btn" onclick="clearAllFilters()">
-                        <i class="fas fa-redo"></i>
-                        Reset All Filters
-                    </button>
+                <!-- Mobile Apply Button -->
+                <div class="mobile-filter-actions">
+                    <button class="btn-apply-filters" onclick="toggleFilters()">Apply Filters</button>
                 </div>
             </aside>
 
-            <!-- PRODUCTS MAIN -->
-            <main class="products-main-premium">
-                
-                <!-- Mobile Filter Toggle -->
-                <button class="mobile-filter-toggle-premium" onclick="toggleMobileFilters()">
-                    <i class="fas fa-sliders-h"></i>
-                    <span>Filters & Sort</span>
-                    <span class="filter-count" id="mobile-filter-count">0</span>
-                </button>
-
-                <!-- Products Controls -->
-                <div class="products-controls">
-                    <div class="results-info">
-                        <h2 class="collection-title">Our Collection</h2>
-                        <p class="products-count-display" id="products-count">Loading...</p>
-                    </div>
-                    
-                    <div class="controls-right">
-                        <div class="view-toggle">
-                            <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
-                                <i class="fas fa-th"></i>
-                            </button>
-                            <button class="view-btn" data-view="list" onclick="changeView('list')">
-                                <i class="fas fa-list"></i>
-                            </button>
-                        </div>
-                        
-                        <div class="sort-dropdown">
-                            <select id="sort-select" class="sort-select-premium" onchange="applyFilters()">
-                                <option value="name-asc">Name (A-Z)</option>
-                                <option value="name-desc">Name (Z-A)</option>
-                                <option value="price-asc">Price: Low to High</option>
-                                <option value="price-desc">Price: High to Low</option>
-                                <option value="rating">Highest Rated</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Products Grid -->
-                <div class="products-grid-premium" id="products-grid" data-view="grid">
+            <!-- Products Grid -->
+            <main class="products-section">
+                <div class="products-grid" id="products-grid" data-view="grid">
                     <!-- Products will be loaded here -->
                 </div>
-
-                <!-- No Results -->
-                <div class="no-results-premium" id="no-results" style="display: none;">
-                    <div class="no-results-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>No products found</h3>
+                
+                <div class="loading-state" id="loading-state">
+                    <div class="loading-spinner"></div>
+                    <p>Loading products...</p>
+                </div>
+                
+                <div class="empty-state" id="empty-state" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No Products Found</h3>
                     <p>Try adjusting your filters or search terms</p>
-                    <button class="btn-reset-premium" onclick="clearAllFilters()">
-                        <i class="fas fa-redo"></i>
-                        Reset Filters
-                    </button>
+                    <button class="btn-reset" onclick="clearAllFilters()">Clear Filters</button>
                 </div>
-
             </main>
-
         </div>
     </div>
 
-    <!-- MOBILE FILTERS -->
-    <div class="mobile-filters-overlay" id="mobile-filters-overlay" onclick="toggleMobileFilters()"></div>
-    <div class="mobile-filters-panel-premium" id="mobile-filters-panel">
-        <div class="mobile-filters-header-premium">
-            <div>
-                <h3>Filters & Sorting</h3>
-                <p>Customize your view</p>
-            </div>
-            <button onclick="toggleMobileFilters()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        
-        <div class="mobile-filters-content-premium">
-            <!-- Sort -->
-            <div class="mobile-filter-group">
-                <label>Sort By</label>
-                <select class="mobile-select" id="mobile-sort-select" onchange="mobileSort()">
-                    <option value="name-asc">Name (A-Z)</option>
-                    <option value="name-desc">Name (Z-A)</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="rating">Highest Rated</option>
-                </select>
-            </div>
-            
-            <!-- Categories -->
-            <div class="mobile-filter-group">
-                <label>Category</label>
-                <div class="mobile-filter-pills">
-                    <button class="mobile-pill active" data-category="all" onclick="selectMobileCategory(this, 'all')">All</button>
-                    <button class="mobile-pill" data-category="Clipper" onclick="selectMobileCategory(this, 'Clipper')">Clippers</button>
-                    <button class="mobile-pill" data-category="Trimmer" onclick="selectMobileCategory(this, 'Trimmer')">Trimmers</button>
-                    <button class="mobile-pill" data-category="Shaver" onclick="selectMobileCategory(this, 'Shaver')">Shavers</button>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mobile-filters-footer-premium">
-            <button class="mobile-btn-clear" onclick="clearAllFilters()">Clear All</button>
-            <button class="mobile-btn-apply" onclick="toggleMobileFilters()">Apply Filters</button>
-        </div>
-    </div>
-
-    <!-- PRODUCT MODAL -->
-    <div class="luxury-modal" id="product-modal" onclick="closeProductModal(event)">
+    <!-- Product Modal -->
+    <div class="product-modal" id="product-modal" onclick="closeModal(event)">
         <div class="modal-backdrop"></div>
-        <div class="luxury-modal-content">
-            <button class="luxury-modal-close" onclick="closeProductModal()">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="modal-body-luxury" id="modal-body">
+            <div class="modal-body" id="modal-body">
                 <!-- Product details loaded here -->
             </div>
         </div>
     </div>
 
-    <!-- PREMIUM CART PANEL -->
-    <div class="cart-overlay-premium" id="cart-overlay" onclick="closeCart()"></div>
-    <div class="premium-cart-panel" id="cart-panel">
-        <div class="cart-header-premium">
+    <!-- Cart Panel -->
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
             <div>
                 <h3>Shopping Cart</h3>
-                <p class="cart-subtitle" id="cart-subtitle">0 items</p>
+                <p class="cart-count" id="cart-count">0 items</p>
             </div>
-            <button class="cart-close-premium" onclick="closeCart()">
+            <button class="cart-close" onclick="closeCart()">
                 <i class="fas fa-times"></i>
             </button>
         </div>
         
-        <div class="cart-items-premium" id="cart-items">
-            <div class="cart-empty-premium">
-                <div class="empty-cart-icon">
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <div class="empty-icon">
                     <i class="fas fa-shopping-bag"></i>
                 </div>
                 <p>Your cart is empty</p>
-                <span>Start adding some premium products!</span>
+                <span>Start shopping now!</span>
             </div>
         </div>
         
-        <div class="cart-footer-premium" id="cart-footer" style="display: none;">
+        <div class="cart-footer" id="cart-footer" style="display: none;">
             <div class="cart-summary">
                 <div class="summary-row">
                     <span>Subtotal</span>
@@ -501,14 +420,13 @@
                     <span id="cart-total">$0.00</span>
                 </div>
             </div>
-            <button class="btn-checkout-premium" onclick="proceedToCheckout()">
+            <button class="btn-checkout" onclick="proceedToCheckout()">
                 <i class="fas fa-lock"></i>
                 <span>Secure Checkout</span>
             </button>
         </div>
     </div>
 
-    <!-- Scripts -->
     <script src="products.js"></script>
 </body>
 </html>
