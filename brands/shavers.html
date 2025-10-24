@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Professional Shavers | Electric & Foil Shavers | Barber World NYC</title>
-    <meta name="title" content="Professional Shavers | Electric & Foil Shavers | Barber World NYC">
-    <meta name="description" content="Shop professional electric shavers and foil shavers from top brands. Get the closest, smoothest shave with premium barber-grade shavers. Free shipping over $99.">
-    <meta name="keywords" content="professional shavers, electric shavers, foil shavers, barber shavers, rotary shavers, close shave, professional grooming">
+    <title>Professional Shavers | Premium Barber Shavers | Barber World NYC</title>
+    <meta name="title" content="Professional Shavers | Premium Barber Shavers | Barber World NYC">
+    <meta name="description" content="Shop professional shavers from all top brands. BaBylissPRO, Wahl, JRL, StyleCraft and more. Smooth finishing with full warranty. Free shipping over $99.">
+    <meta name="keywords" content="professional shavers, barber shavers, cordless shavers, foil shavers, finishing shavers, rotary shavers">
     
-    <link rel="canonical" href="https://www.barberworldnyc.com/categories/shavers.html">
+    <link rel="canonical" href="https://www.barberworldnyc.com/brands/shavers.html">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,14 +17,13 @@
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
+    <link rel="stylesheet" href="products.css">
+
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="products.css">
 </head>
-<body data-category="Shaver">
+<body data-brand="shavers">
     
     <!-- Modern Toast Notification -->
     <div class="toast-notification" id="toast-notification">
@@ -137,18 +136,18 @@
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
-                    <i class="fas fa-certificate"></i>
-                    Professional Grade Equipment
+                    <i class="fas fa-spa"></i>
+                    Professional Shavers
                 </div>
                 
                 <h1 class="hero-title-luxury">
-                    <span class="brand-name">Professional Shavers</span>
-                    <span class="brand-tagline">The Closest Shave</span>
+                    <span class="brand-name">Shavers</span>
+                    <span class="brand-tagline">Smooth Finishing</span>
                 </h1>
                 
                 <p class="hero-subtitle-luxury">
-                    Premium electric and foil shavers from top brands. 
-                    Experience professional-grade grooming with cutting-edge technology.
+                    Premium professional shavers from top brands. 
+                    Perfect for ultra-smooth finishing, bald fades, and skin-close results.
                 </p>
                 
                 <!-- Hero Stats -->
@@ -157,7 +156,7 @@
                         <div class="stat-number" id="product-count-hero">
                             <span class="count-up">0</span>+
                         </div>
-                        <div class="stat-label">Products Available</div>
+                        <div class="stat-label">Shavers Available</div>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
@@ -179,73 +178,65 @@
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
                     <div class="card-reflection"></div>
-                    <img src="https://images.unsplash.com/photo-1621607512214-68297480165e?w=600" 
+                    <img src="https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-ca/default/dw5550376b/FXFS2B_straight.jpg?sw=1400&sh=1400&sm=fit" 
                          alt="Professional Shaver" 
-                         class="floating-product-img">
-                    <div class="product-highlight">
-                        <i class="fas fa-bolt"></i>
-                        <span>Professional Power</span>
-                    </div>
+                         class="floating-product-img"
+                         id="hero-product-img">
                 </div>
                 
-                <!-- Floating Feature Cards -->
-                <div class="floating-feature feature-1">
-                    <i class="fas fa-bolt"></i>
-                    <span>High Speed</span>
+                <!-- Floating Elements -->
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-shipping-fast"></i>
+                    Free Shipping
                 </div>
-                <div class="floating-feature feature-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Durable</span>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-certificate"></i>
+                    Verified
                 </div>
-                <div class="floating-feature feature-3">
-                    <i class="fas fa-star"></i>
-                    <span>Premium</span>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-box-open"></i>
+                    In Stock
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <span>Explore Products</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
-    <!-- Products Showcase Section -->
-    <div class="products-showcase">
-        <!-- Header Controls -->
-        <div class="showcase-controls">
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Filters & Controls Bar -->
+        <div class="controls-bar">
             <div class="controls-left">
-                <button class="btn-icon" onclick="toggleFilters()" aria-label="Toggle Filters">
+                <button class="filter-toggle-btn" onclick="toggleFilters()">
                     <i class="fas fa-sliders-h"></i>
                     <span>Filters</span>
                 </button>
-                <div class="results-count" id="results-count">
-                    Showing <span id="product-count">0</span> products
-                </div>
+                <div class="results-count" id="results-count">Loading products...</div>
             </div>
             
             <div class="controls-right">
                 <div class="view-switcher">
-                    <button class="view-btn active" data-view="grid" onclick="switchView('grid')">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')" title="Grid View">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button class="view-btn" data-view="list" onclick="switchView('list')">
+                    <button class="view-btn" data-view="list" onclick="changeView('list')" title="List View">
                         <i class="fas fa-list"></i>
                     </button>
                 </div>
                 
-                <select class="sort-select" id="sort-select" onchange="applySorting()">
-                    <option value="featured">Featured</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="name-asc">Name: A to Z</option>
-                    <option value="name-desc">Name: Z to A</option>
-                </select>
+                <div class="sort-dropdown">
+                    <select id="sort-select" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Active Filters Bar -->
+        <!-- Active Filters -->
         <div class="active-filters" id="active-filters" style="display: none;">
             <div class="active-filters-content">
                 <span class="filters-label">Active:</span>
@@ -273,36 +264,8 @@
                             <span>Search</span>
                         </div>
                         <div class="search-box">
-                            <input type="text" id="search-input" placeholder="Search products..." oninput="applyFilters()">
+                            <input type="text" id="search-input" placeholder="Search shavers..." oninput="applyFilters()">
                             <i class="fas fa-search"></i>
-                        </div>
-                    </div>
-
-                    <!-- Category Filter -->
-                    <div class="filter-group">
-                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-                            <div class="filter-title">
-                                <i class="fas fa-layer-group"></i>
-                                <span>Category</span>
-                            </div>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </div>
-                        <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" value="Clipper" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Clippers</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" value="Trimmer" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Trimmers</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" value="Shaver" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Shavers</span>
-                            </label>
                         </div>
                     </div>
 
