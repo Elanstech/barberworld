@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VGR Professional Barber Equipment | Clippers & Trimmers | Barber World NYC</title>
-    <meta name="title" content="VGR Professional Barber Equipment | Clippers & Trimmers | Barber World NYC">
-    <meta name="description" content="Shop authentic VGR professional barber equipment. High-performance clippers, trimmers & grooming tools with full manufacturer warranty. Trusted by professionals. Free shipping over $99.">
-    <meta name="keywords" content="VGR, VGR professional, VGR clippers, VGR trimmers, professional barber clippers, authentic VGR, VGR equipment">
+    <title>VGR Professional Barber Equipment | Premium Clippers & Trimmers | Barber World NYC</title>
+    <meta name="title" content="VGR Professional Barber Equipment | Premium Clippers & Trimmers | Barber World NYC">
+    <meta name="description" content="Shop authentic VGR professional barber equipment. Advanced technology clippers, trimmers & shavers with full manufacturer warranty. Innovation meets performance. Free shipping over $99.">
+    <meta name="keywords" content="VGR, VGR professional, VGR clippers, VGR trimmers, professional barber clippers, authentic VGR, VGR equipment, innovative clippers">
     
     <link rel="canonical" href="https://www.barberworldnyc.com/brands/vgr.html">
     
@@ -103,10 +103,6 @@
                     <i class="fas fa-gem"></i>
                     <span>W-Mark</span>
                 </a>
-                <a href="vgr.html" class="mobile-nav-link active">
-                    <i class="fas fa-bolt"></i>
-                    <span>VGR</span>
-                </a>
                 <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
                     <span>All Products</span>
@@ -140,18 +136,18 @@
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
-                    <i class="fas fa-bolt"></i>
-                    Professional Grade Equipment
+                    <i class="fas fa-rocket"></i>
+                    Innovative Technology
                 </div>
                 
                 <h1 class="hero-title-luxury">
-                    <span class="brand-name">VGR</span>
-                    <span class="brand-tagline">Professional Performance</span>
+                    <span class="brand-name">VGR Professional</span>
+                    <span class="brand-tagline">Innovation & Precision</span>
                 </h1>
                 
                 <p class="hero-subtitle-luxury">
-                    High-performance grooming tools designed for professionals. 
-                    Experience quality craftsmanship and innovative technology.
+                    Advanced professional equipment with innovative technology. 
+                    Experience cutting-edge performance and precision engineering.
                 </p>
                 
                 <!-- Hero Stats -->
@@ -170,7 +166,7 @@
                     <div class="stat-divider"></div>
                     <div class="stat-item">
                         <div class="stat-number">
-                            <i class="fas fa-star"></i> 4.8
+                            <i class="fas fa-star"></i> 4.6
                         </div>
                         <div class="stat-label">Rated</div>
                     </div>
@@ -182,73 +178,65 @@
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
                     <div class="card-reflection"></div>
-                    <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600" 
-                         alt="VGR Professional Tool" 
-                         class="floating-product-img">
-                    <div class="product-highlight">
-                        <i class="fas fa-bolt"></i>
-                        <span>High Performance</span>
-                    </div>
+                    <img src="https://m.media-amazon.com/images/I/61kGxBqTLyL._AC_SL1500_.jpg" 
+                         alt="VGR Professional Product" 
+                         class="floating-product-img"
+                         id="hero-product-img">
                 </div>
                 
-                <!-- Floating Feature Cards -->
-                <div class="floating-feature feature-1">
-                    <i class="fas fa-bolt"></i>
-                    <span>Powerful</span>
+                <!-- Floating Elements -->
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-shipping-fast"></i>
+                    Free Shipping
                 </div>
-                <div class="floating-feature feature-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Reliable</span>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-certificate"></i>
+                    Verified
                 </div>
-                <div class="floating-feature feature-3">
-                    <i class="fas fa-star"></i>
-                    <span>Quality</span>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-box-open"></i>
+                    In Stock
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <span>Explore Products</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
-    <!-- Products Showcase Section -->
-    <div class="products-showcase">
-        <!-- Header Controls -->
-        <div class="showcase-controls">
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Filters & Controls Bar -->
+        <div class="controls-bar">
             <div class="controls-left">
-                <button class="btn-icon" onclick="toggleFilters()" aria-label="Toggle Filters">
+                <button class="filter-toggle-btn" onclick="toggleFilters()">
                     <i class="fas fa-sliders-h"></i>
                     <span>Filters</span>
                 </button>
-                <div class="results-count" id="results-count">
-                    Showing <span id="product-count">0</span> products
-                </div>
+                <div class="results-count" id="results-count">Loading products...</div>
             </div>
             
             <div class="controls-right">
                 <div class="view-switcher">
-                    <button class="view-btn active" data-view="grid" onclick="switchView('grid')">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')" title="Grid View">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button class="view-btn" data-view="list" onclick="switchView('list')">
+                    <button class="view-btn" data-view="list" onclick="changeView('list')" title="List View">
                         <i class="fas fa-list"></i>
                     </button>
                 </div>
                 
-                <select class="sort-select" id="sort-select" onchange="applySorting()">
-                    <option value="featured">Featured</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="name-asc">Name: A to Z</option>
-                    <option value="name-desc">Name: Z to A</option>
-                </select>
+                <div class="sort-dropdown">
+                    <select id="sort-select" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Active Filters Bar -->
+        <!-- Active Filters -->
         <div class="active-filters" id="active-filters" style="display: none;">
             <div class="active-filters-content">
                 <span class="filters-label">Active:</span>
