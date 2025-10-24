@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateCartBadge();
     initializeEventListeners();
     initSmoothScroll();
+    initHeroAnimations();
     console.log('✨ Modern Shopping Experience Loaded!');
 });
 
@@ -774,6 +775,50 @@ function initializeEventListeners() {
             toggleMobileMenu();
         }
     });
+}
+
+// ==========================================
+// HERO ANIMATIONS
+// ==========================================
+
+function initHeroAnimations() {
+    // Animate product count
+    const countElement = document.querySelector('.count-up');
+    if (countElement && allProducts.length > 0) {
+        animateCountUp(countElement, 0, allProducts.length, 2000);
+    }
+    
+    // Update hero product count
+    const heroCount = document.getElementById('product-count-hero');
+    if (heroCount && allProducts.length > 0) {
+        animateCountUp(heroCount.querySelector('.count-up'), 0, allProducts.length, 2000);
+    }
+}
+
+function animateCountUp(element, start, end, duration) {
+    if (!element) return;
+    
+    const startTime = performance.now();
+    const range = end - start;
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Easing function for smooth animation
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const currentValue = Math.floor(start + (range * easeOutQuart));
+        
+        element.textContent = currentValue;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        } else {
+            element.textContent = end;
+        }
+    }
+    
+    requestAnimationFrame(update);
 }
 
 // ==========================================
