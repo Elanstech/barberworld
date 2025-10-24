@@ -103,10 +103,6 @@
                     <i class="fas fa-gem"></i>
                     <span>W-Mark</span>
                 </a>
-                <a href="vgr.html" class="mobile-nav-link">
-                    <i class="fas fa-bolt"></i>
-                    <span>VGR</span>
-                </a>
                 <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
                     <span>All Products</span>
@@ -182,69 +178,52 @@
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
                     <div class="card-reflection"></div>
-                    <img src="https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600" 
-                         alt="JRL Professional Tool" 
-                         class="floating-product-img">
-                    <div class="product-highlight">
+                    <img src="https://cdn.shopify.com/s/files/1/0568/2477/2374/files/2020-c-black_1024x1024.png?v=1654551088" 
+                         alt="JRL Professional Product" 
+                         class="product-image">
+                    <div class="floating-badge">
                         <i class="fas fa-crown"></i>
-                        <span>Elite Grade</span>
+                        <span>Premium</span>
                     </div>
                 </div>
                 
                 <!-- Floating Feature Cards -->
-                <div class="floating-feature feature-1">
-                    <i class="fas fa-bolt"></i>
-                    <span>10,000 RPM</span>
+                <div class="feature-float feature-1">
+                    <i class="fas fa-certificate"></i>
+                    <span>Authentic</span>
                 </div>
-                <div class="floating-feature feature-2">
-                    <i class="fas fa-award"></i>
-                    <span>Premium</span>
+                <div class="feature-float feature-2">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Warranty</span>
                 </div>
-                <div class="floating-feature feature-3">
-                    <i class="fas fa-crown"></i>
-                    <span>Elite</span>
+                <div class="feature-float feature-3">
+                    <i class="fas fa-shipping-fast"></i>
+                    <span>Free Shipping</span>
                 </div>
             </div>
         </div>
         
         <!-- Scroll Indicator -->
         <div class="scroll-indicator">
-            <span>Explore Products</span>
-            <i class="fas fa-chevron-down"></i>
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
         </div>
     </div>
 
-    <!-- Products Showcase Section -->
-    <div class="products-showcase">
-        <!-- Header Controls -->
-        <div class="showcase-controls">
-            <div class="controls-left">
-                <button class="btn-icon" onclick="toggleFilters()" aria-label="Toggle Filters">
-                    <i class="fas fa-sliders-h"></i>
+    <!-- Products Container -->
+    <div class="products-container">
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="results-info">
+                <h2 id="results-count">Loading products...</h2>
+            </div>
+            <div class="view-controls">
+                <button class="filter-toggle" onclick="toggleFilters()">
+                    <i class="fas fa-filter"></i>
                     <span>Filters</span>
                 </button>
-                <div class="results-count" id="results-count">
-                    Showing <span id="product-count">0</span> products
-                </div>
-            </div>
-            
-            <div class="controls-right">
-                <div class="view-switcher">
-                    <button class="view-btn active" data-view="grid" onclick="switchView('grid')">
-                        <i class="fas fa-th"></i>
-                    </button>
-                    <button class="view-btn" data-view="list" onclick="switchView('list')">
-                        <i class="fas fa-list"></i>
-                    </button>
-                </div>
-                
-                <select class="sort-select" id="sort-select" onchange="applySorting()">
-                    <option value="featured">Featured</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="name-asc">Name: A to Z</option>
-                    <option value="name-desc">Name: Z to A</option>
-                </select>
             </div>
         </div>
 
