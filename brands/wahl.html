@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahl Professional Barber Equipment | Clippers & Trimmers | Barber World NYC</title>
-    <meta name="title" content="Wahl Professional Barber Equipment | Clippers & Trimmers | Barber World NYC">
-    <meta name="description" content="Shop authentic Wahl professional barber equipment. Industry-leading clippers, trimmers & shavers with full manufacturer warranty. Trusted by barbers for over 100 years. Free shipping over $99.">
-    <meta name="keywords" content="Wahl, Wahl professional, Wahl clippers, Wahl trimmers, Wahl Magic Clip, Wahl Senior, professional barber clippers, authentic Wahl, Wahl equipment">
+    <title>Wahl Professional Barber Equipment | Premium Clippers & Trimmers | Barber World NYC</title>
+    <meta name="title" content="Wahl Professional Barber Equipment | Premium Clippers & Trimmers | Barber World NYC">
+    <meta name="description" content="Shop authentic Wahl professional barber equipment. Industry-leading clippers, trimmers & shavers with full manufacturer warranty. Trusted quality since 1919. Free shipping over $99.">
+    <meta name="keywords" content="Wahl, Wahl professional, Wahl clippers, Wahl trimmers, Wahl Magic Clip, professional barber clippers, authentic Wahl, Wahl equipment, Wahl Legend">
     
     <link rel="canonical" href="https://www.barberworldnyc.com/brands/wahl.html">
     
@@ -95,17 +95,13 @@
                     <i class="fas fa-crown"></i>
                     <span>JRL</span>
                 </a>
-                <a href="wahl.html" class="mobile-nav-link active">
+                <a href="wahl.html" class="mobile-nav-link">
                     <i class="fas fa-trophy"></i>
                     <span>Wahl</span>
                 </a>
                 <a href="wmark.html" class="mobile-nav-link">
                     <i class="fas fa-gem"></i>
                     <span>W-Mark</span>
-                </a>
-                <a href="vgr.html" class="mobile-nav-link">
-                    <i class="fas fa-bolt"></i>
-                    <span>VGR</span>
                 </a>
                 <a href="allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
@@ -141,17 +137,17 @@
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
                     <i class="fas fa-trophy"></i>
-                    Professional Grade Equipment
+                    Industry Leading Equipment
                 </div>
                 
                 <h1 class="hero-title-luxury">
                     <span class="brand-name">Wahl Professional</span>
-                    <span class="brand-tagline">100+ Years of Innovation</span>
+                    <span class="brand-tagline">Legendary Performance</span>
                 </h1>
                 
                 <p class="hero-subtitle-luxury">
-                    Legendary professional equipment trusted by barbers worldwide since 1919. 
-                    Experience the gold standard in professional grooming tools.
+                    Industry-leading professional equipment trusted since 1919. 
+                    Experience legendary quality, precision, and reliability in every cut.
                 </p>
                 
                 <!-- Hero Stats -->
@@ -182,73 +178,65 @@
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
                     <div class="card-reflection"></div>
-                    <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600" 
-                         alt="Wahl Professional Clipper" 
-                         class="floating-product-img">
-                    <div class="product-highlight">
-                        <i class="fas fa-trophy"></i>
-                        <span>Industry Leader</span>
-                    </div>
+                    <img src="https://wahlpro.com/on/demandware.static/-/Sites-wahl-us-Library/default/dw30d5f2b8/images/products/08148/hero/08148-hero-001.png" 
+                         alt="Wahl Professional Product" 
+                         class="floating-product-img"
+                         id="hero-product-img">
                 </div>
                 
-                <!-- Floating Feature Cards -->
-                <div class="floating-feature feature-1">
-                    <i class="fas fa-award"></i>
-                    <span>Since 1919</span>
+                <!-- Floating Elements -->
+                <div class="floating-badge badge-1">
+                    <i class="fas fa-shipping-fast"></i>
+                    Free Shipping
                 </div>
-                <div class="floating-feature feature-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>USA Made</span>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-certificate"></i>
+                    Verified
                 </div>
-                <div class="floating-feature feature-3">
-                    <i class="fas fa-star"></i>
-                    <span>Premium</span>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-box-open"></i>
+                    In Stock
                 </div>
             </div>
         </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <span>Explore Products</span>
-            <i class="fas fa-chevron-down"></i>
-        </div>
     </div>
 
-    <!-- Products Showcase Section -->
-    <div class="products-showcase">
-        <!-- Header Controls -->
-        <div class="showcase-controls">
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Filters & Controls Bar -->
+        <div class="controls-bar">
             <div class="controls-left">
-                <button class="btn-icon" onclick="toggleFilters()" aria-label="Toggle Filters">
+                <button class="filter-toggle-btn" onclick="toggleFilters()">
                     <i class="fas fa-sliders-h"></i>
                     <span>Filters</span>
                 </button>
-                <div class="results-count" id="results-count">
-                    Showing <span id="product-count">0</span> products
-                </div>
+                <div class="results-count" id="results-count">Loading products...</div>
             </div>
             
             <div class="controls-right">
                 <div class="view-switcher">
-                    <button class="view-btn active" data-view="grid" onclick="switchView('grid')">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')" title="Grid View">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button class="view-btn" data-view="list" onclick="switchView('list')">
+                    <button class="view-btn" data-view="list" onclick="changeView('list')" title="List View">
                         <i class="fas fa-list"></i>
                     </button>
                 </div>
                 
-                <select class="sort-select" id="sort-select" onchange="applySorting()">
-                    <option value="featured">Featured</option>
-                    <option value="price-asc">Price: Low to High</option>
-                    <option value="price-desc">Price: High to Low</option>
-                    <option value="name-asc">Name: A to Z</option>
-                    <option value="name-desc">Name: Z to A</option>
-                </select>
+                <div class="sort-dropdown">
+                    <select id="sort-select" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Active Filters Bar -->
+        <!-- Active Filters -->
         <div class="active-filters" id="active-filters" style="display: none;">
             <div class="active-filters-content">
                 <span class="filters-label">Active:</span>
