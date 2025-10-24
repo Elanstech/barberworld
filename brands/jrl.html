@@ -91,7 +91,7 @@
                     <i class="fas fa-star"></i>
                     <span>StyleCraft Gamma</span>
                 </a>
-                <a href="jrl.html" class="mobile-nav-link active">
+                <a href="jrl.html" class="mobile-nav-link">
                     <i class="fas fa-crown"></i>
                     <span>JRL</span>
                 </a>
@@ -180,54 +180,63 @@
                     <div class="card-reflection"></div>
                     <img src="https://cdn.shopify.com/s/files/1/0568/2477/2374/files/2020-c-black_1024x1024.png?v=1654551088" 
                          alt="JRL Professional Product" 
-                         class="product-image">
-                    <div class="floating-badge">
-                        <i class="fas fa-crown"></i>
-                        <span>Premium</span>
-                    </div>
+                         class="floating-product-img"
+                         id="hero-product-img">
                 </div>
                 
-                <!-- Floating Feature Cards -->
-                <div class="feature-float feature-1">
-                    <i class="fas fa-certificate"></i>
-                    <span>Authentic</span>
-                </div>
-                <div class="feature-float feature-2">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Warranty</span>
-                </div>
-                <div class="feature-float feature-3">
+                <!-- Floating Elements -->
+                <div class="floating-badge badge-1">
                     <i class="fas fa-shipping-fast"></i>
-                    <span>Free Shipping</span>
+                    Free Shipping
+                </div>
+                <div class="floating-badge badge-2">
+                    <i class="fas fa-certificate"></i>
+                    Verified
+                </div>
+                <div class="floating-badge badge-3">
+                    <i class="fas fa-box-open"></i>
+                    In Stock
                 </div>
             </div>
-        </div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-mouse">
-                <div class="scroll-wheel"></div>
-            </div>
-            <span>Scroll to explore</span>
         </div>
     </div>
 
-    <!-- Products Container -->
-    <div class="products-container">
-        <!-- Top Bar -->
-        <div class="top-bar">
-            <div class="results-info">
-                <h2 id="results-count">Loading products...</h2>
-            </div>
-            <div class="view-controls">
-                <button class="filter-toggle" onclick="toggleFilters()">
-                    <i class="fas fa-filter"></i>
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Filters & Controls Bar -->
+        <div class="controls-bar">
+            <div class="controls-left">
+                <button class="filter-toggle-btn" onclick="toggleFilters()">
+                    <i class="fas fa-sliders-h"></i>
                     <span>Filters</span>
                 </button>
+                <div class="results-count" id="results-count">Loading products...</div>
+            </div>
+            
+            <div class="controls-right">
+                <div class="view-switcher">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')" title="Grid View">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" onclick="changeView('list')" title="List View">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+                
+                <div class="sort-dropdown">
+                    <select id="sort-select" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
             </div>
         </div>
 
-        <!-- Active Filters Bar -->
+        <!-- Active Filters -->
         <div class="active-filters" id="active-filters" style="display: none;">
             <div class="active-filters-content">
                 <span class="filters-label">Active:</span>
