@@ -40,7 +40,7 @@ async function loadProducts() {
             case 'StyleCraft':
                 jsonFile = '../json/stylecraft-products.json';
                 break;
-            case 'monster':
+            case 'Monster':
                 jsonFile = '../json/monster-products.json';
                 break;
             case 'JRL':
