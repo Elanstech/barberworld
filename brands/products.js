@@ -40,6 +40,9 @@ async function loadProducts() {
             case 'StyleCraft':
                 jsonFile = '../json/stylecraft-products.json';
                 break;
+            case 'monster':
+                jsonFile = '../json/monster-products.json';
+                break;
             case 'JRL':
                 jsonFile = '../json/jrl-products.json';
                 break;
@@ -60,6 +63,9 @@ async function loadProducts() {
                 break;
             case 'shavers':
                 jsonFile = '../json/all-products-products.json';
+                break;
+            case 'combos':
+                jsonFile = '../json/combosets-products.json';
                 break;
             default:
                 jsonFile = '../json/all-products-products.json';
