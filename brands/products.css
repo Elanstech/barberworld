@@ -750,15 +750,9 @@ body.no-scroll {
     height: 85%;
     object-fit: contain;
     filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
-    animation: productRotate 20s linear infinite;
+    border-radius: 24px;
 }
 
-@keyframes productRotate {
-    from { transform: rotateZ(0deg); }
-    to { transform: rotateZ(360deg); }
-}
-
-/* Floating Badges */
 .floating-badge {
     position: absolute;
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
