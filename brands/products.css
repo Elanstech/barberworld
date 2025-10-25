@@ -1583,7 +1583,6 @@ body.no-scroll {
     background: linear-gradient(135deg, #fafafa 0%, #f5f5f5 100%);
     overflow: hidden;
     border-radius: var(--radius-lg);
-
 }
 
 .product-image {
@@ -1595,7 +1594,7 @@ body.no-scroll {
     object-fit: contain;
     padding: 2rem;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 5px;
+    border-radius: 16px;  /* ADD THIS */
 }
 
 .product-card:hover .product-image {
