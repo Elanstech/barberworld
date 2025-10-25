@@ -688,7 +688,7 @@ main {
 }
 
 .brand-image-card:active {
-    transform: scale(0.98);
+    transform: scale(1.00);
 }
 
 .coming-soon-card {
@@ -701,7 +701,7 @@ main {
     font-size: 1rem;
     font-weight: 700;
     color: var(--primary);
-    text-align: left;
+    text-align: center;
     line-height: 1.2;
 }
 
