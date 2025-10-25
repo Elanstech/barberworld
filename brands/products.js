@@ -96,6 +96,15 @@ function renderProducts() {
     const resultsCount = document.getElementById('results-count');
     const emptyState = document.getElementById('empty-state');
     
+    // Update hero product count
+    const heroCount = document.getElementById('product-count-hero');
+    if (heroCount) {
+        const countUpSpan = heroCount.querySelector('.count-up');
+        if (countUpSpan) {
+            countUpSpan.textContent = allProducts.length;
+        }
+    }
+    
     if (!grid) return;
     
     if (filteredProducts.length === 0) {
