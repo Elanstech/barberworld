@@ -528,5 +528,46 @@
     "rating": 4.6,
     "reviewCount": 392,
     "sku": "COREFX-SHAVER"
+  },
+  {
+    "id": 15,
+    "name": "BABYLISS PRO FXONE BLACKFX CLIPPER & TRIMMER BUNDLE - TOOLS ONLY",
+    "price": 180.00,
+    "brand": "Babyliss",
+    "slug": "babyliss-pro-fxone-blackfx-bundle",
+    "image": "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
+    "images": [
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_1.jpg?v=1732407545&width=1125",
+      "https://clippervault.com/cdn/shop/files/2_28b5eb33-ea28-4601-a3ed-b428c7d24e62.jpg?v=1731966138&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_4.jpg?v=1732407545&width=1125"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Premium BlackFX clipper and trimmer professional bundle",
+    "description": "The BaBylissPRO FXONE BlackFX Bundle combines a professional clipper and trimmer in a sleek black finish. This powerful duo is designed for complete grooming services, featuring Ferrari-designed motors and precision blades. Perfect for professional barbers who demand the best tools for cutting and detailing work. Tools-only package without charging accessories.",
+    "features": [
+      "FXONE BlackFX clipper included",
+      "FXONE BlackFX trimmer included",
+      "Ferrari-designed brushless motors",
+      "Premium all-metal housing",
+      "Precision fade blades",
+      "Lithium-ion batteries in both tools",
+      "Sleek matte black finish",
+      "Professional grade construction",
+      "Tools-only bundle"
+    ],
+    "specifications": {
+      "setIncludes": "BlackFX Clipper + BlackFX Trimmer",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "120 minutes",
+      "motors": "Ferrari-designed brushless (both)",
+      "batteries": "Lithium-ion (both)",
+      "voltage": "Dual voltage",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 178,
+    "sku": "FX1CTMBTO"
   }
 ]
