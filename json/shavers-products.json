@@ -1,7 +1,7 @@
 [
   {
     "id": 5,
-    "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Gold)",
+    "name": "BaBylissPRO\u00ae FOILFX02\u2122 Cord/Cordless Metal Double-Foil Shaver (Gold)",
     "price": 89.99,
     "brand": "Babyliss",
     "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-neon-clipper-fx829nylt",
@@ -13,7 +13,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Premium double-foil shaver with luxurious gold finish",
-    "description": "The BaBylissPRO® FOILFX02™ Gold Double-Foil Shaver delivers the closest, smoothest shave possible. Featuring dual independent suspension foils with titanium-coated blades, this shaver provides exceptional cutting performance. The luxurious gold finish adds professional style to your toolkit.",
+    "description": "The BaBylissPRO\u00ae FOILFX02\u2122 Gold Double-Foil Shaver delivers the closest, smoothest shave possible. Featuring dual independent suspension foils with titanium-coated blades, this shaver provides exceptional cutting performance. The luxurious gold finish adds professional style to your toolkit.",
     "features": [
       "Dual independent suspension foils",
       "Titanium-coated hypoallergenic blades",
@@ -39,7 +39,7 @@
   },
   {
     "id": 6,
-    "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Silver)",
+    "name": "BaBylissPRO\u00ae FOILFX02\u2122 Cord/Cordless Metal Double-Foil Shaver (Silver)",
     "price": 89.99,
     "brand": "Babyliss",
     "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-matte-black-clipper-fx829mblt",
@@ -51,7 +51,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Professional double-foil shaver with sleek silver finish",
-    "description": "The BaBylissPRO® FOILFX02™ Silver Double-Foil Shaver combines cutting-edge technology with timeless style. Dual suspension foils work independently to capture and cut hair at skin level for an ultra-smooth finish. Perfect for professional barbershops and personal grooming.",
+    "description": "The BaBylissPRO\u00ae FOILFX02\u2122 Silver Double-Foil Shaver combines cutting-edge technology with timeless style. Dual suspension foils work independently to capture and cut hair at skin level for an ultra-smooth finish. Perfect for professional barbershops and personal grooming.",
     "features": [
       "Dual independent suspension foils",
       "Titanium-coated hypoallergenic blades",
@@ -77,7 +77,7 @@
   },
   {
     "id": 7,
-    "name": "BaBylissPRO® FOILFX02™ Cord/Cordless Metal Double-Foil Shaver (Black)",
+    "name": "BaBylissPRO\u00ae FOILFX02\u2122 Cord/Cordless Metal Double-Foil Shaver (Black)",
     "price": 89.99,
     "brand": "Babyliss",
     "slug": "babylisspro-fxone-lo-pro-fx-limited-edition-tan-clipper-fx829sdlt",
@@ -89,7 +89,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Classic black double-foil shaver for professional results",
-    "description": "The BaBylissPRO® FOILFX02™ Black Double-Foil Shaver offers professional-grade performance in a sleek black finish. Dual independent foils deliver the smoothest shave possible, while the powerful motor ensures consistent results. Ideal for finishing work and creating clean lines.",
+    "description": "The BaBylissPRO\u00ae FOILFX02\u2122 Black Double-Foil Shaver offers professional-grade performance in a sleek black finish. Dual independent foils deliver the smoothest shave possible, while the powerful motor ensures consistent results. Ideal for finishing work and creating clean lines.",
     "features": [
       "Dual independent suspension foils",
       "Titanium-coated hypoallergenic blades",
@@ -126,7 +126,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Premium gold cordless shaver with UV sanitizing case",
-    "description": "The BaBylissPRO® UVFOIL Gold Shaver takes hygiene to the next level with an included UV sanitizing case. This premium double-foil shaver features independent suspension foils and a powerful motor for ultra-smooth results. The luxurious gold finish adds professional elegance.",
+    "description": "The BaBylissPRO\u00ae UVFOIL Gold Shaver takes hygiene to the next level with an included UV sanitizing case. This premium double-foil shaver features independent suspension foils and a powerful motor for ultra-smooth results. The luxurious gold finish adds professional elegance.",
     "features": [
       "UV sanitizing case included",
       "Dual independent foils",
@@ -164,7 +164,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Elegant rose gold shaver with UV sanitizing technology",
-    "description": "The BaBylissPRO® UVFOIL Rose Gold Shaver combines beauty with hygiene. Features an elegant rose gold finish and includes a UV sanitizing case that kills 99.9% of bacteria. Dual foils deliver an incredibly smooth shave, making it perfect for discerning professionals.",
+    "description": "The BaBylissPRO\u00ae UVFOIL Rose Gold Shaver combines beauty with hygiene. Features an elegant rose gold finish and includes a UV sanitizing case that kills 99.9% of bacteria. Dual foils deliver an incredibly smooth shave, making it perfect for discerning professionals.",
     "features": [
       "UV sanitizing case included",
       "Dual independent suspension foils",
@@ -202,7 +202,7 @@
     ],
     "category": "Shaver",
     "shortDescription": "Professional core performance double-foil shaver",
-    "description": "The BaBylissPRO® COREFX Professional Performance Double Foil Shaver delivers smooth, close shaves with dual independent foils. Perfect for finishing work and creating ultra-clean lines. Features a powerful motor and extended battery life for all-day professional use.",
+    "description": "The BaBylissPRO\u00ae COREFX Professional Performance Double Foil Shaver delivers smooth, close shaves with dual independent foils. Perfect for finishing work and creating ultra-clean lines. Features a powerful motor and extended battery life for all-day professional use.",
     "features": [
       "Dual independent foils",
       "Hypoallergenic titanium blades",
@@ -227,83 +227,50 @@
     "sku": "COREFX-SHAVER"
   },
   {
-    "id": 22,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-black-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy6.jpg",
+    "id": 31,
+    "name": "Monster Clippers Assassin Shaver",
+    "price": 29.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-assassin-shaver",
+    "image": "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250236737.jpg?pad_color=fff&v=1733970127&width=350",
     "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy10.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy2.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy9_2_.jpg"
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250335041.png?v=1733970133",
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250269505.png?v=1733970133"
     ],
     "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in sleek black finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in black combines powerful vector motor technology with dual independent foils for the smoothest shave possible. The full-metal housing provides durability and professional style, while the dual voltage capability makes it perfect for travel.",
+    "shortDescription": "Professional pocket-sized shaver with hypo-allergenic gold titanium foil",
+    "description": "The Assassin is a professional lightweight pocket-sized shaver with a powerful turbocharged motor running at 9,000 RPM. Its compact design makes it perfect for travel while maintaining professional-grade performance. The hypo-allergenic gold titanium foil delivers a bump-free shaving experience, ideal for sensitive skin. Fast charging lithium-ion battery provides 90 minutes of runtime with USB-C convenience.",
     "features": [
-      "Full metal housing in black",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage for travel",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless operation"
+      "Hypo-allergenic gold titanium foil for bump-free shaving",
+      "Turbocharged 9,000 RPM motor",
+      "Pocket-sized compact design",
+      "Perfect for travel",
+      "USB-C rechargeable",
+      "Fast charge function",
+      "Cord and cordless use",
+      "Lightweight construction",
+      "Velvet travel bag included"
     ],
     "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
+      "foil": "Hypo-allergenic gold titanium",
+      "motor": "Turbocharged 9,000 RPM",
       "battery": "Lithium-ion",
       "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
+      "chargeTime": "90 minutes",
+      "charging": "USB-C",
+      "operation": "Cord/cordless",
+      "design": "Pocket size, lightweight"
     },
+    "accessories": [
+      "Universal USB charger/adapter",
+      "Interchangeable plugs: EU, UK and UL/US",
+      "USB cable",
+      "Cleaning brush",
+      "Velvet travel bag"
+    ],
     "inStock": true,
     "rating": 4.7,
-    "reviewCount": 312,
-    "sku": "SC807B-BLACK"
-  },
-  {
-    "id": 23,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-pink-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_15_.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_11_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_13_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_12_.jpg"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in elegant pink finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in pink offers the same powerful performance as the black version with an elegant pink metal finish. Featuring dual independent foils and vector motor technology, this shaver delivers ultra-smooth results with professional style.",
-    "features": [
-      "Full metal housing in pink",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage capability",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless versatility"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 289,
-    "sku": "SC807B-PINK"
+    "reviewCount": 156,
+    "sku": "MC-ASSASSIN-SHAVER"
   }
 ]
