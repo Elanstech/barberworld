@@ -531,1295 +531,47 @@
   },
   {
     "id": 15,
-    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
-    "price": 199.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-2020c-b",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-20220c-b.jpg",
+    "name": "BABYLISS PRO FXONE BLACKFX CLIPPER & TRIMMER BUNDLE - TOOLS ONLY",
+    "price": 179.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-pro-fxone-blackfx-bundle",
+    "image": "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
     "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-1.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-3.jpg"
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_1.jpg?v=1732407545&width=1125",
+      "https://clippervault.com/cdn/shop/files/2_28b5eb33-ea28-4601-a3ed-b428c7d24e62.jpg?v=1731966138&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_4.jpg?v=1732407545&width=1125"
     ],
-    "category": "Clipper",
-    "shortDescription": "Professional cordless hair clipper with dual voltage capability",
-    "description": "The JRL ONYX Professional Cordless Hair Clipper in sleek black delivers exceptional cutting performance with its powerful rotary motor and precision-ground blades. Designed for professional barbers and stylists, this clipper features dual voltage capability for worldwide use. The ergonomic design ensures comfort during extended cutting sessions while maintaining consistent power throughout use.",
+    "category": "Combo Set",
+    "shortDescription": "Premium BlackFX clipper and trimmer professional bundle",
+    "description": "The BaBylissPRO FXONE BlackFX Bundle combines a professional clipper and trimmer in a sleek black finish. This powerful duo is designed for complete grooming services, featuring Ferrari-designed motors and precision blades. Perfect for professional barbers who demand the best tools for cutting and detailing work. Tools-only package without charging accessories.",
     "features": [
-      "Professional rotary motor for consistent power",
-      "Dual voltage 100-240V for worldwide use",
-      "Cordless operation for freedom of movement",
-      "Precision-ground stainless steel blades",
-      "Ergonomic grip design",
-      "Lithium-ion battery technology",
-      "2-hour runtime on single charge",
-      "Professional black finish"
+      "FXONE BlackFX clipper included",
+      "FXONE BlackFX trimmer included",
+      "Ferrari-designed brushless motors",
+      "Premium all-metal housing",
+      "Precision fade blades",
+      "Lithium-ion batteries in both tools",
+      "Sleek matte black finish",
+      "Professional grade construction",
+      "Tools-only bundle"
     ],
     "specifications": {
-      "motor": "Professional rotary motor",
-      "blade": "Precision stainless steel #FF2020",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.9 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Professional grade plastic"
+      "setIncludes": "BlackFX Clipper + BlackFX Trimmer",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "120 minutes",
+      "motors": "Ferrari-designed brushless (both)",
+      "batteries": "Lithium-ion (both)",
+      "voltage": "Dual voltage",
+      "finish": "Matte black"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 456,
-    "sku": "FF 2020C-B"
+    "rating": 4.9,
+    "reviewCount": 178,
+    "sku": "FX1CTMBTO"
   },
   {
     "id": 16,
-    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
-    "price": 199.99,
-    "brand": "JRL",
-    "slug": "jrl-ghost-2020c-b-w",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional cordless clipper in elegant white finish with dual voltage",
-    "description": "The JRL GHOST Professional Cordless Hair Clipper in pristine white combines cutting-edge technology with stunning aesthetics. This professional-grade clipper features the same powerful performance as the ONYX in a distinctive white finish. Perfect for barbers who want to make a statement while delivering exceptional cuts. The dual voltage capability ensures reliable performance worldwide.",
-    "features": [
-      "Professional rotary motor technology",
-      "Elegant white finish for distinctive style",
-      "Dual voltage 100-240V capability",
-      "Cordless freedom of movement",
-      "Precision-ground professional blades",
-      "Ergonomic lightweight design",
-      "Lithium-ion battery with long runtime",
-      "Premium white housing"
-    ],
-    "specifications": {
-      "motor": "Professional rotary motor",
-      "blade": "Precision stainless steel #2020",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.9 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Premium white finish"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 423,
-    "sku": "2020C-B-W"
-  },
-  {
-    "id": 17,
-    "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle #GH2401-2",
-    "price": 499.99,
-    "brand": "JRL",
-    "slug": "jrl-ghost2-bundle-gh2401-2",
-    "image": "https://wbbarber.com/cdn/shop/files/GH2024-Collection2_1400x1400.jpg?v=1758198831",
-    "images": [
-      "https://wbbarber.com/cdn/shop/files/Jrl-Ghost-Onyx-Shaver-White_600x800_930a3df3-b41f-449a-ba3b-ab2c650f066b_599x798.jpg?v=1758198831",
-      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Trimmer_600x800_2a6ca78c-090a-43a8-87cd-03c295f2b3db_599x798.png?v=1758198831",
-      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Clipper_600x800_fe017a88-e0cb-443f-b218-359d4a622715_599x798.png?v=1758198831"
-    ],
-    "category": "Combo Set",
-    "shortDescription": "Complete professional grooming bundle with clipper, trimmer, and shaver",
-    "description": "The JRL GHOST2 Bundle is the ultimate professional grooming collection, featuring three essential tools: a powerful clipper for bulk cutting, a precision trimmer for detailed work, and a smooth-finish shaver for ultra-clean results. This comprehensive set includes everything needed for complete haircuts and grooming services. Each tool features advanced motor technology and premium construction for reliable professional performance.",
-    "features": [
-      "Complete 3-tool professional bundle",
-      "GHOST2 Professional Clipper included",
-      "GHOST2 Precision Trimmer included",
-      "GHOST2 Smooth Shaver included",
-      "Dual voltage on all tools",
-      "Lithium-ion batteries in each device",
-      "Premium carrying case included",
-      "Professional charging accessories",
-      "Complete grooming solution"
-    ],
-    "specifications": {
-      "setIncludes": "Clipper + Trimmer + Shaver + Case + Accessories",
-      "clipperMotor": "Professional rotary motor",
-      "trimmerMotor": "High-speed precision motor",
-      "shaverMotor": "Rotary foil motor",
-      "clipperRuntime": "120 minutes",
-      "trimmerRuntime": "100 minutes",
-      "shaverRuntime": "90 minutes",
-      "voltage": "Dual voltage 100-240V",
-      "case": "Premium leather carrying case"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 678,
-    "sku": "GH2401-2"
-  },
-  {
-    "id": 18,
-    "name": "STYLECRAFT INSTINCT PROFESSIONAL VECTOR MOTOR CORDLESS CLIPPER",
-    "price": 199.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-clipper",
-    "image": "https://prostylingtools.com/cdn/shop/files/SC607M_MAIN_1000x.jpg?v=1716318086",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_blue_stand_600x.jpg?v=1716318086",
-      "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_blue_side_2_600x.jpg?v=1716318086",
-      "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_black_stand_600x.jpg?v=1716318086",
-      "https://prostylingtools.com/cdn/shop/products/12900_1000x.jpg?v=1716318086",
-      "https://prostylingtools.com/cdn/shop/files/sc607m_instinct_clipper_red_stand_600x.jpg?v=1716318086"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional vector motor cordless clipper with intuitive torque control",
-    "description": "The StyleCraft Instinct Professional Vector Motor Cordless Clipper features cutting-edge vector motor technology with intuitive torque control that automatically adjusts power based on hair density. This intelligent clipper delivers consistent performance across all hair types with exceptional runtime and precision-ground blades.",
-    "features": [
-      "Professional vector motor technology",
-      "Intuitive torque control system",
-      "Automatic power adjustment",
-      "Lithium-ion battery technology",
-      "DLC precision-ground fade blade",
-      "2.5-hour runtime",
-      "Cord/cordless operation",
-      "All-metal housing construction"
-    ],
-    "specifications": {
-      "motor": "Vector motor with torque control",
-      "blade": "DLC fade blade",
-      "battery": "Lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "9.5 oz",
-      "voltage": "Dual voltage",
-      "housing": "All-metal construction"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 567,
-    "sku": "SC-INSTINCT-CLIPPER"
-  },
-  {
-    "id": 19,
-    "name": "Stylecraft Pro Instinct Professional Vector Motor Trimmer with Intuitive Torque Control #SC407M (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-trimmer-sc407m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__5_.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__4_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Intelligent vector motor trimmer with automatic torque adjustment",
-    "description": "The StyleCraft Pro Instinct Trimmer combines vector motor technology with intuitive torque control for unmatched precision and power. This professional trimmer automatically adjusts its cutting power based on hair thickness, ensuring smooth, consistent results. Perfect for detailed work, outlining, and finishing.",
-    "features": [
-      "Vector motor with intuitive torque control",
-      "Automatic power adjustment technology",
-      "Dual voltage capability",
-      "DLC precision T-blade",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Ergonomic design",
-      "Zero-gap adjustable blade"
-    ],
-    "specifications": {
-      "motor": "Vector motor with torque control",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC407M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 489,
-    "sku": "SC407M"
-  },
-  {
-    "id": 20,
-    "name": "Stylecraft Professional Instinct-X Cordless Clipper",
-    "price": 199.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-x-clipper",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/7/s/7stylecraft100207.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc608m_instinctx_9_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc608m_instinctx_1_.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Advanced Instinct-X professional clipper with enhanced performance",
-    "description": "The StyleCraft Professional Instinct-X Cordless Clipper takes the legendary Instinct series to new heights. Featuring an upgraded vector motor and enhanced torque control system, this premium clipper delivers unmatched power and precision. The X series represents the pinnacle of StyleCraft engineering.",
-    "features": [
-      "Enhanced vector motor technology",
-      "Advanced torque control system",
-      "Premium all-metal construction",
-      "DLC precision fade blade",
-      "Extended 3-hour runtime",
-      "Rapid charging technology",
-      "Cord/cordless versatility",
-      "Professional-grade performance"
-    ],
-    "specifications": {
-      "motor": "Enhanced vector motor",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "150 minutes",
-      "weight": "9.8 oz",
-      "voltage": "Dual voltage",
-      "housing": "Premium metal construction"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 423,
-    "sku": "INSTINCT-X-CLIPPER"
-  },
-  {
-    "id": 21,
-    "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
-    "price": 164.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-edition-trimmer-sc410m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Metal edition trimmer with full metal housing and vector motor",
-    "description": "The StyleCraft Pro Metal Edition Instinct Trimmer features a premium full-metal housing for enhanced durability and professional aesthetics. This special edition combines the proven vector motor technology with luxury metal construction, making it a standout choice for discerning professionals.",
-    "features": [
-      "Full metal housing construction",
-      "Professional vector motor",
-      "Intuitive torque control",
-      "Premium metal finish",
-      "DLC precision blade",
-      "Extended runtime",
-      "Dual voltage capability",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "8.5 oz",
-      "voltage": "Dual voltage",
-      "model": "SC410M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 378,
-    "sku": "SC410M"
-  },
-  {
-    "id": 22,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-black-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy6.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy10.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy2.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy9_2_.jpg"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in sleek black finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in black combines powerful vector motor technology with dual independent foils for the smoothest shave possible. The full-metal housing provides durability and professional style, while the dual voltage capability makes it perfect for travel.",
-    "features": [
-      "Full metal housing in black",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage for travel",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless operation"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 312,
-    "sku": "SC807B-BLACK"
-  },
-  {
-    "id": 23,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-pink-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_15_.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_11_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_13_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_12_.jpg"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in elegant pink finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in pink offers the same powerful performance as the black version with an elegant pink metal finish. Featuring dual independent foils and vector motor technology, this shaver delivers ultra-smooth results with professional style.",
-    "features": [
-      "Full metal housing in pink",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage capability",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless versatility"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 289,
-    "sku": "SC807B-PINK"
-  },
-  {
-    "id": 24,
-    "name": "Stylecraft Pro SABER II Professional Metal Clipper with Digital Brushless EON Motor - Gold #SC617M (Dual Voltage)",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-ii-gold-sc617m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_2.png",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_2.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161755.png"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Premium gold clipper with digital brushless EON motor technology",
-    "description": "The StyleCraft Pro Saber II in gold represents the ultimate in professional clipper technology. Featuring the advanced digital brushless EON motor, this premium clipper delivers unmatched power, precision, and durability. The luxurious gold finish and full-metal construction make it a true masterpiece.",
-    "features": [
-      "Digital brushless EON motor",
-      "Full metal body construction",
-      "Luxurious gold finish",
-      "DLC precision fade blade",
-      "Dual voltage capability",
-      "Extended 3-hour runtime",
-      "Intelligent power management",
-      "Cord/cordless operation"
-    ],
-    "specifications": {
-      "motor": "Digital brushless EON",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC617M"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 645,
-    "sku": "SC617M-GOLD"
-  },
-  {
-    "id": 25,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-black",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_black.png",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
-    "description": "The Saber Professional Hair Trimmer features advanced digital brushless motor technology for exceptional power and precision. This professional-grade trimmer is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance.",
-    "features": [
-      "Digital brushless motor technology",
-      "Full metal body construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Cord/cordless operation",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.5 oz",
-      "voltage": "Dual voltage",
-      "housing": "Full metal body"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 523,
-    "sku": "SABER-TRIMMER-BLACK"
-  },
-  {
-    "id": 26,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-gold",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_stand_rev.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_rev_blade.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_horizontal.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/l/i/liquidgold_sabert2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Premium gold Saber trimmer with digital brushless motor",
-    "description": "The Gold Edition Saber Professional Trimmer combines the power of digital brushless motor technology with luxurious gold finish. This premium trimmer is perfect for professionals who demand the best in performance and style. The full metal construction ensures durability and professional elegance.",
-    "features": [
-      "Digital brushless motor",
-      "Luxurious gold finish",
-      "Full metal construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable blade",
-      "Extended runtime",
-      "Cord/cordless versatility",
-      "Premium professional grade"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage",
-      "finish": "Premium gold"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 412,
-    "sku": "SABER-TRIMMER-GOLD"
-  },
-  {
-    "id": 27,
-    "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-full-metal-sc403b",
-    "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
-    "images": [
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-403041_848x848.jpg?v=1743763255",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-943599_848x848.jpg?v=1743763254"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Full metal body professional trimmer with brushless motor",
-    "description": "The StyleCraft Saber Professional Trimmer in black features a complete metal body construction for maximum durability and professional aesthetics. Powered by a digital brushless motor, this trimmer delivers consistent power and precision for all your detailing needs.",
-    "features": [
-      "Full metal body construction",
-      "Digital brushless motor",
-      "Professional black finish",
-      "DLC precision blade",
-      "Cordless operation",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.6 oz",
-      "voltage": "Dual voltage",
-      "model": "SC403B"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 467,
-    "sku": "SC403B"
-  },
-  {
-    "id": 28,
-    "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-precision-saber-sc403bp",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Precision metal trimmer with brushless motor and dual voltage",
-    "description": "The StyleCraft Pro Precision Saber Metal Trimmer is engineered for ultimate precision work. Featuring a brushless motor and premium metal construction, this trimmer excels at detailed outlining, edging, and finishing. The dual voltage capability makes it perfect for professionals on the go.",
-    "features": [
-      "Precision-focused design",
-      "Brushless motor technology",
-      "Full metal construction",
-      "Dual voltage capability",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Extended runtime",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Brushless precision motor",
-      "blade": "DLC T-blade precision",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.4 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC403BP"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 391,
-    "sku": "SC403BP"
-  },
-  {
-    "id": 29,
-    "name": "Stylecraft X 360 Jeezy Professional IN2 Vector Motor Clipper with Full Metal Housing #SC614B",
-    "price": 249.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-360-jeezy-clipper-sc614b",
-    "image": "https://prostylingtools.com/cdn/shop/files/stylecraft182600_Light_2_1200x.jpg?v=1738776041",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182590_1200x.jpg?v=1738776041",
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182611_1200x.jpg?v=1738776041",
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182624_1200x.jpg?v=1738776041"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Limited edition 360 Jeezy collaboration clipper with IN2 vector motor",
-    "description": "The StyleCraft X 360 Jeezy Professional Clipper is an exclusive collaboration featuring the advanced IN2 vector motor technology. This limited edition clipper combines celebrity style with professional performance, featuring full metal housing and premium components for the ultimate cutting experience.",
-    "features": [
-      "Exclusive 360 Jeezy collaboration",
-      "IN2 vector motor technology",
-      "Full metal housing construction",
-      "Limited edition design",
-      "DLC precision fade blade",
-      "Extended 3-hour runtime",
-      "Professional performance",
-      "Collector's edition"
-    ],
-    "specifications": {
-      "motor": "IN2 vector motor",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.5 oz",
-      "voltage": "Dual voltage",
-      "model": "SC614B"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 756,
-    "sku": "SC614B"
-  },
-  {
-    "id": 30,
-    "name": "Stylecraft Pro METAL EDITION Instinct-X Professional Vector Motor Trimmer with Rear Metal Housing #SC411M (Dual Voltage)",
-    "price": 164.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-x-metal-sc411m",
-    "image": "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_main_lids_light_1200x.jpg?v=1729112505",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/InstinctXTrimmerXProblade_1200x.jpg?v=1729112474",
-      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604BLK-1_1200x.jpg?v=1729112612",
-      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604RED-1_1200x.jpg?v=1729112622",
-      "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_infog_1200x.jpg?v=1729112854"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Metal edition Instinct-X trimmer with rear metal housing",
-    "description": "The StyleCraft Pro Metal Edition Instinct-X Trimmer features enhanced rear metal housing for improved durability and professional style. Powered by the advanced vector motor with intuitive torque control, this trimmer delivers exceptional performance with premium metal construction throughout.",
-    "features": [
-      "Enhanced Instinct-X technology",
-      "Rear metal housing construction",
-      "Professional vector motor",
-      "Intuitive torque control",
-      "Dual voltage capability",
-      "DLC precision blade",
-      "Extended runtime",
-      "Premium metal finish"
-    ],
-    "specifications": {
-      "motor": "Vector motor with torque control",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "135 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC411M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 445,
-    "sku": "SC411M"
-  },
-  {
-    "id": 31,
-    "name": "VGR Hair Clipper Professional Hair Trimmer Electric Hair Cutting Machine Vector Motor Haircut 9000 RPM Clipper for Men V-015",
-    "price": 99.99,
-    "brand": "VGR",
-    "slug": "vgr-v015-clipper",
-    "image": "https://m.media-amazon.com/images/I/71xGLTjtd8L._AC_SY300_SX300_QL70_ML2_.jpg",
-    "images": [
-      "https://m.media-amazon.com/images/I/61mLwKPYo9L._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/71RntcJFdaL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/71w8qOn7eML._AC_SL1500_.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional vector motor clipper with 9000 RPM for precise haircuts",
-    "description": "The VGR V-015 Professional Hair Clipper features advanced vector motor technology delivering 9000 RPM of consistent cutting power. Designed for professional barbers and stylists, this electric hair cutting machine provides precision, reliability, and exceptional performance for all hair types. The ergonomic design ensures comfort during extended use.",
-    "features": [
-      "Professional vector motor technology",
-      "9000 RPM high-speed cutting",
-      "Precision-ground stainless steel blades",
-      "Cordless rechargeable operation",
-      "Ergonomic grip design",
-      "Multiple guide combs included",
-      "Long-lasting lithium-ion battery",
-      "Suitable for all hair types",
-      "Professional barbershop quality"
-    ],
-    "specifications": {
-      "motor": "Vector motor 9000 RPM",
-      "blade": "Stainless steel precision blade",
-      "battery": "Lithium-ion rechargeable",
-      "runtime": "180 minutes",
-      "chargeTime": "2.5 hours",
-      "weight": "9.8 oz",
-      "voltage": "110-240V dual voltage",
-      "accessories": "8 guide combs, cleaning brush, oil",
-      "model": "V-015"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 289,
-    "sku": "VGR-V015"
-  },
-  {
-    "id": 32,
-    "name": "VGR Hair Trimmers Professional Body Trimmer Vector Motor 10000RPM Hair Clippers Rechargeable Clippers Hair Trimmer for Men V-994",
-    "price": 99.99,
-    "brand": "VGR",
-    "slug": "vgr-v994-trimmer",
-    "image": "https://m.media-amazon.com/images/I/71rNwKBuFgL._AC_SL1500_.jpg",
-    "images": [
-      "https://m.media-amazon.com/images/I/711dd0rQTlL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/71aDPNhAB-L._AC_SL1500_.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
-    "description": "The VGR V-994 Professional Hair Trimmer combines powerful 10000RPM vector motor technology with versatile body grooming capabilities. Perfect for detailed hair trimming, body grooming, and precision work. This rechargeable trimmer offers professional-grade performance with exceptional runtime and multiple attachments for various grooming needs.",
-    "features": [
-      "Advanced vector motor 10000 RPM",
-      "Multi-purpose trimmer for hair and body",
-      "Professional precision T-blade",
-      "Rechargeable cordless design",
-      "Multiple trimming attachments included",
-      "Waterproof design for easy cleaning",
-      "Long-lasting battery performance",
-      "Quiet operation",
-      "Professional barbershop quality",
-      "Ergonomic lightweight design"
-    ],
-    "specifications": {
-      "motor": "Vector motor 10000 RPM",
-      "blade": "Precision T-blade stainless steel",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "200 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.5 oz",
-      "voltage": "110-240V dual voltage",
-      "waterproof": "IPX6 water-resistant",
-      "accessories": "5 guide combs, cleaning brush, USB cable",
-      "model": "V-994"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 342,
-    "sku": "VGR-V994"
-  },
-  {
-    "id": 33,
-    "name": "Wahl 5 Star Vapor Cord/Cordless Clipper #3026480 (Dual Voltage)",
-    "price": 164.99,
-    "brand": "Wahl",
-    "slug": "wahl-shaver-replacement-gold-foil-super-close",
-    "image": "https://www.wahlpro.com/media/catalog/product/w/a/wahl_vapor_front.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-side-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-blade-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-charge-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Premium 5 Star Vapor cord/cordless clipper with dual voltage",
-    "description": "The Wahl 5 Star Vapor Cord/Cordless Clipper represents the pinnacle of Wahl's engineering excellence. Featuring a powerful rotary motor and sleek, modern design, this professional clipper delivers exceptional cutting performance. The cord/cordless versatility and dual voltage capability make it perfect for professionals worldwide.",
-    "features": [
-      "Powerful rotary motor for consistent cutting",
-      "Cord/cordless operation for maximum flexibility",
-      "Dual voltage 110-240V for worldwide use",
-      "Premium 5 Star professional grade",
-      "Adjustable stainless steel blade",
-      "Lithium-ion battery technology",
-      "90-minute cordless runtime",
-      "Ergonomic lightweight design"
-    ],
-    "specifications": {
-      "motor": "High-performance rotary motor",
-      "blade": "Adjustable stainless steel #2161-400",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "70 minutes",
-      "weight": "8.8 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "3026480"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 612,
-    "sku": "3026480"
-  },
-  {
-"id": 34,
-    "name": "Wahl 5 Star Gold Cordless Magic Clip Clipper #8148-700 (Dual Voltage)",
-    "price": 149.99,
-    "brand": "Wahl",
-    "slug": "wahl-shaver-finale-replacement-super-close-gold-foil",
-    "image": "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-hero-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-sideview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-blades-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-lifestyle-clipperinstand-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Limited edition gold Magic Clip with premium fade blade",
-    "description": "The Wahl 5 Star Gold Cordless Magic Clip is a limited edition masterpiece featuring an elegant gold finish. This professional clipper combines the legendary Magic Clip performance with premium aesthetics. The fade blade and powerful motor make it ideal for precision cutting and fading techniques.",
-    "features": [
-      "Limited edition gold finish",
-      "5 Star professional grade",
-      "Stagger-tooth crunch blade for fades",
-      "Dual voltage capability",
-      "Lithium-ion battery technology",
-      "90-minute cordless runtime",
-      "Zero-overlap blade design",
-      "Premium professional quality"
-    ],
-    "specifications": {
-      "motor": "Electromagnetic motor",
-      "blade": "Stagger-tooth crunch blade #2161",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "70 minutes",
-      "weight": "8.5 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "8148-700"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 834,
-    "sku": "8148-700"
-  },
-  {
-    "id": 35,
-    "name": "Wahl 5 Star Cordless Magic Clip Clipper #8148 (Dual Voltage)",
-    "price": 99.99,
-    "brand": "Wahl",
-    "slug": "wahl-blade-3-hole-adjusto-lock-1005",
-    "image": "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-hero-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-sideview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-blades-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-topview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Classic 5 Star Magic Clip cordless clipper for professionals",
-    "description": "The Wahl 5 Star Cordless Magic Clip is the industry-standard professional clipper trusted by barbers worldwide. Featuring a powerful electromagnetic motor and the signature stagger-tooth crunch blade, this clipper excels at fades, blends, and all-around cutting. The cordless design provides ultimate freedom of movement.",
-    "features": [
-      "Industry-standard professional clipper",
-      "Powerful electromagnetic motor",
-      "Stagger-tooth crunch blade",
-      "Cordless freedom of movement",
-      "Dual voltage for travel",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "5 Star professional quality"
-    ],
-    "specifications": {
-      "motor": "Electromagnetic motor",
-      "blade": "Stagger-tooth crunch blade #2161",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "70 minutes",
-      "weight": "8.5 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "8148"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 1247,
-    "sku": "8148"
-  },
-  {
-    "id": 36,
-    "name": "Wahl 5 Star Cordless Senior Clipper #8504-400 (Dual Voltage)",
-    "price": 149.99,
-    "brand": "Wahl",
-    "slug": "wahl-clipper-oil",
-    "image": "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-hero.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-sideview.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-blades.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-topview.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Legendary 5 Star Senior clipper now cordless with premium blade",
-    "description": "The Wahl 5 Star Cordless Senior Clipper brings the legendary power of the corded Senior to a cordless platform. Known for its exceptional cutting power and precision blade, this clipper is a favorite among professionals. The cordless version maintains the same powerful performance with added mobility and dual voltage capability.",
-    "features": [
-      "Legendary Senior clipper performance",
-      "Powerful electromagnetic motor",
-      "Premium adjustable blade",
-      "Cordless convenience",
-      "Dual voltage 110-240V",
-      "Lithium-ion battery technology",
-      "70-minute cordless runtime",
-      "Professional 5 Star grade"
-    ],
-    "specifications": {
-      "motor": "V9000 electromagnetic motor",
-      "blade": "Premium adjustable #1005",
-      "battery": "Lithium-ion",
-      "runtime": "70 minutes",
-      "chargeTime": "60 minutes",
-      "weight": "9.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "8504-400"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 956,
-    "sku": "8504-400"
-  },
-  {
-    "id": 37,
-    "name": "Wahl Super Taper X Cord/Cordless Clipper #3026468 (Dual Voltage)",
-    "price": 99.99,
-    "brand": "Wahl",
-    "slug": "wahl-t-wide-adjustable-trimmer-blade",
-    "image": "https://www.wahlpro.com/media/catalog/product/3/0/3026468_supertaperx_hero.png?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/3/0/3026468_supertaperx_side.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/s/u/super-taper-x-slide-4.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/s/l/slide-5_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Next-generation Super Taper with cord/cordless versatility",
-    "description": "The Wahl Super Taper X represents the evolution of the iconic Super Taper clipper. Featuring both cord and cordless operation, this professional clipper delivers consistent power in any mode. The adjustable taper blade and powerful motor make it perfect for all-around cutting, blending, and tapering work.",
-    "features": [
-      "Next-generation Super Taper design",
-      "Cord/cordless operation",
-      "Adjustable taper blade",
-      "Powerful rotary motor",
-      "Dual voltage capability",
-      "Lithium-ion battery",
-      "80-minute cordless runtime",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "High-speed rotary motor",
-      "blade": "Adjustable taper blade",
-      "battery": "Lithium-ion",
-      "runtime": "80 minutes",
-      "chargeTime": "75 minutes",
-      "weight": "8.6 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "3026468"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 523,
-    "sku": "3026468"
-  },
-  {
-    "id": 38,
-    "name": "Wahl Cordless Barber Combo - 5 Star Cordless Magic Clip & Cordless Detailer Li #3025397",
-    "price": 209.99,
-    "brand": "Wahl",
-    "slug": "wahl-clini-clip-cleaner-disinfectant",
-    "image": "https://www.wahlpro.com/media/catalog/product/c/o/cordless-barber-combo-duo_1_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/u/n/untitled_design_41__1.png?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/b/l/blades-cordless-magic-clip_2_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/m/a/magic-clip-bulk-cut_1_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Combo Set",
-    "shortDescription": "Ultimate barber combo with Magic Clip clipper and Detailer trimmer",
-    "description": "The Wahl Cordless Barber Combo is the ultimate professional pairing, featuring the legendary 5 Star Cordless Magic Clip clipper and the precision Cordless Detailer Li trimmer. This combo provides everything needed for complete haircuts, from bulk removal and fading to detailed lining and finishing work. Both tools are cordless for maximum flexibility.",
-    "features": [
-      "5 Star Magic Clip clipper included",
-      "Cordless Detailer Li trimmer included",
-      "Complete professional setup",
-      "Both tools cordless",
-      "Lithium-ion batteries",
-      "Professional 5 Star grade",
-      "Perfect for all techniques",
-      "Premium storage case included"
-    ],
-    "specifications": {
-      "clipperMotor": "Electromagnetic motor",
-      "clipperBlade": "Stagger-tooth crunch blade",
-      "clipperRuntime": "90 minutes",
-      "trimmerMotor": "Rotary motor",
-      "trimmerBlade": "T-Wide blade",
-      "trimmerRuntime": "100 minutes",
-      "voltage": "Dual voltage",
-      "model": "3025397"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 1456,
-    "sku": "3025397"
-  },
-  {
-    "id": 39,
-    "name": "WAHL POWER STATION - MULTI-CHARGE 3 TOOLS AT ONCE",
-    "price": 49.99,
-    "brand": "Wahl",
-    "slug": "wahl-professional-vapor-le-cordless-clipper-limited-edition-3028320",
-    "image": "https://www.wahlpro.com/media/catalog/product/1/-/1-power-station-charging-stand.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-    "images": [
-      "https://www.wahlpro.com/media/catalog/product/2/-/2-power-station-usb-c-port.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/4/-/4-take-charge-in-more-ways-than-one-shop-wahl-power-station.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
-      "https://www.wahlpro.com/media/catalog/product/5/-/5-mix-and-match-the-tools-you-need-power-station.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
-    ],
-    "category": "Accessory",
-    "shortDescription": "Professional power station charges three tools simultaneously",
-    "description": "The Wahl Power Station is an essential accessory for any professional barbershop. This innovative charging station can charge up to three Wahl tools simultaneously, keeping your entire toolkit powered and ready. The sleek design organizes your workspace while the fast-charging technology minimizes downtime between clients.",
-    "features": [
-      "Charges 3 tools simultaneously",
-      "Compatible with most Wahl cordless tools",
-      "Fast-charging technology",
-      "Sleek professional design",
-      "Organizes workspace efficiently",
-      "LED charging indicators",
-      "Durable construction",
-      "Essential barbershop accessory"
-    ],
-    "specifications": {
-      "capacity": "3 tools simultaneously",
-      "compatibility": "Most Wahl cordless tools",
-      "charging": "Fast-charge technology",
-      "indicators": "LED status lights",
-      "dimensions": "12\" x 6\" x 4\"",
-      "weight": "2.8 lbs",
-      "power": "AC powered",
-      "warranty": "1 year manufacturer"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 724,
-    "sku": "POWER-STATION"
-  },
-  {
-    "id": 40,
-    "name": "WMARK NG-X1 Hair Clippers for Men 10000RPM Rechargeable Cordless Clipper with Magnetic 9V Motor",
-    "price": 99.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-x1-clipper",
-    "image": "https://m.media-amazon.com/images/I/51rP4xO1NYL._AC_SX679_.jpg",
-    "images": [
-      "https://m.media-amazon.com/images/I/515++uujGzL._AC_SX679_.jpg",
-      "https://m.media-amazon.com/images/I/51QNP-7T-nL._AC_SX679_.jpg",
-      "https://m.media-amazon.com/images/I/41AyrTxaA5L._AC_SX679_.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional cordless clipper with 10000RPM magnetic 9V motor",
-    "description": "The WMARK NG-X1 is a high-performance professional hair clipper featuring a powerful 10000RPM magnetic 9V motor. Designed for barbers and stylists who demand precision and reliability. The cordless design with Type-C charging provides ultimate flexibility, while the 3 replaceable skins allow for customization.",
-    "features": [
-      "10000RPM magnetic 9V motor for powerful cutting",
-      "Rechargeable cordless design for freedom of movement",
-      "3 replaceable skins for customization",
-      "Type-C fast charging technology",
-      "Professional-grade precision blades",
-      "Ergonomic design for comfortable use",
-      "Long-lasting battery life",
-      "Dual voltage capability"
-    ],
-    "specifications": {
-      "motor": "Magnetic 9V motor",
-      "speed": "10000 RPM",
-      "battery": "Lithium-ion rechargeable",
-      "charging": "Type-C fast charging",
-      "runtime": "120+ minutes",
-      "chargeTime": "2.5 hours",
-      "weight": "9.5 oz",
-      "voltage": "Dual voltage",
-      "model": "NG-X1"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 234,
-    "sku": "WMARK-NG-X1"
-  },
-  {
-    "id": 41,
-    "name": "WMARK NG-XT1 Vector Motor Detail Trimmer",
-    "price": 99.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-xt1-trimmer",
-    "image": "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1.jpg?v=1754754768&width=640",
-    "images": [
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_6.jpg?v=1754754794&width=640",
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640",
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Precision vector motor detail trimmer for professional finishing",
-    "description": "The WMARK NG-XT1 Vector Motor Detail Trimmer is engineered for precision detailing and finishing work. Featuring advanced vector motor technology, this trimmer delivers consistent power for clean lines, edge-ups, and intricate designs. Perfect for barbers who specialize in detailed work.",
-    "features": [
-      "Advanced vector motor technology",
-      "Precision T-blade for detailed work",
-      "Zero-gap adjustable blade",
-      "Cordless convenience with long runtime",
-      "Type-C fast charging",
-      "Lightweight ergonomic design",
-      "Professional-grade construction",
-      "Perfect for edge-ups and designs"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "blade": "Precision T-blade",
-      "battery": "Lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "6.8 oz",
-      "voltage": "Dual voltage",
-      "model": "NG-XT1"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 189,
-    "sku": "WMARK-NG-XT1"
-  },
-  {
-    "id": 42,
-    "name": "WMARK NG-8632KIT Rechargeable Hair Clipper Trimmer Kit",
-    "price": 124.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-8632kit",
-    "image": "https://i.ebayimg.com/images/g/ixUAAeSw6VFoCGSY/s-l1600.jpg",
-    "images": [
-      "https://i.ebayimg.com/images/g/3Y4AAeSwLzloCGVg/s-l1600.jpg",
-      "https://i.ebayimg.com/images/g/XrkAAeSw7FFoCGSX/s-l1600.jpg",
-      "https://i.ebayimg.com/images/g/KB0AAeSwQB9oCGSY/s-l1600.jpg"
-    ],
-    "category": "Combo Set",
-    "shortDescription": "Complete professional clipper and trimmer kit with accessories",
-    "description": "The WMARK NG-8632KIT is a comprehensive professional grooming kit that includes both a high-performance clipper and precision trimmer. This complete set comes with all the accessories you need for professional barbering, including multiple guide combs, cleaning tools, and a premium storage case.",
-    "features": [
-      "Professional clipper and trimmer combo",
-      "High-performance motors in both tools",
-      "Complete accessory kit included",
-      "Multiple guide combs for versatility",
-      "Rechargeable cordless operation",
-      "Type-C charging for both devices",
-      "Premium carrying case",
-      "Professional-grade blades"
-    ],
-    "specifications": {
-      "setIncludes": "Clipper + Trimmer + Accessories",
-      "clipperMotor": "High-torque motor",
-      "trimmerMotor": "Precision motor",
-      "battery": "Lithium-ion (both)",
-      "clipperRuntime": "120 minutes",
-      "trimmerRuntime": "150 minutes",
-      "charging": "Type-C",
-      "model": "NG-8632KIT"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 312,
-    "sku": "WMARK-NG-8632KIT"
-  },
-  {
-    "id": 43,
-    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Black",
-    "price": 99.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-xs1-black",
-    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2d7e6d2e967944d6b072cc8eccfbfaf6K.jpg_960x960q75.jpg_.avif",
-    "images": [
-      "https://ae-pic-a1.aliexpress-media.com/kf/S75a42159db59492e9bbe952b8a9ddaa3c.jpg_960x960q75.jpg_.avif"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Premium metal body clipper with vector motor - Black Edition",
-    "description": "The WMARK NG-XS1 Black Edition features a premium all-metal body construction with a powerful 10000RPM vector motor. This professional clipper is designed for barbers who demand both performance and style. The metal housing provides exceptional durability while the vector motor ensures consistent cutting power.",
-    "features": [
-      "Premium all-metal body construction",
-      "10000 RPM vector motor",
-      "Professional electric shaver technology",
-      "Perfect for bald fades and close cuts",
-      "Cordless rechargeable design",
-      "Type-C fast charging",
-      "Ergonomic metal grip",
-      "Long-lasting battery"
-    ],
-    "specifications": {
-      "motor": "Vector motor 10000 RPM",
-      "blade": "Professional fade blade",
-      "battery": "Lithium-ion",
-      "runtime": "140 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.2 oz",
-      "housing": "Full metal body",
-      "finish": "Black",
-      "model": "NG-XS1"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 267,
-    "sku": "WMARK-NG-XS1-BLK"
-  },
-  {
-    "id": 44,
-    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Red",
-    "price": 99.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-xs1-red",
-    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S140d7817c37e4fa89094ec7a4efe7543Z.jpg_960x960q75.jpg_.avif",
-    "images": [
-      "https://i5.walmartimages.com/seo/WMARK-NG-XS1-Professional-High-Speed-Hair-Shaver-10-000-RPM-Metal-Body-Electric-Shaver-for-Men-Shaver-for-Barber_0fc7d4aa-08d1-4125-a320-01c37ce60173.f2049be144eba843405f6cec0c8ad4a0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Premium metal body clipper with vector motor - Red Edition",
-    "description": "The WMARK NG-XS1 Red Edition stands out with its striking red metal finish while delivering the same exceptional performance. Featuring a 10000RPM vector motor and all-metal construction, this clipper combines professional-grade power with eye-catching style.",
-    "features": [
-      "Premium all-metal body in red",
-      "10000 RPM vector motor",
-      "Professional electric shaver technology",
-      "Perfect for bald fades and close cuts",
-      "Cordless rechargeable design",
-      "Type-C fast charging",
-      "Ergonomic metal grip",
-      "Long-lasting battery"
-    ],
-    "specifications": {
-      "motor": "Vector motor 10000 RPM",
-      "blade": "Professional fade blade",
-      "battery": "Lithium-ion",
-      "runtime": "140 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.2 oz",
-      "housing": "Full metal body",
-      "finish": "Red",
-      "model": "NG-XS1"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 245,
-    "sku": "WMARK-NG-XS1-RED"
-  },
-  {
-    "id": 45,
-    "name": "WMARK NG-SM003 Mini Fascia Gun Massage Device",
-    "price": 39.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-sm003-massage-gun",
-    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7ef59687e162440c8a909df4987a592fr.jpg_220x220q75.jpg_.avif",
-    "images": [
-      "https://ae-pic-a1.aliexpress-media.com/kf/S13e79063832f4fbd8d9f6eabfcccbd55s.jpg_220x220q75.jpg_.avif",
-      "https://ae-pic-a1.aliexpress-media.com/kf/S929751407a5d4241911deabd9d7fa11dA.jpg_220x220q75.jpg_.avif",
-      "https://ae-pic-a1.aliexpress-media.com/kf/S762858331ad74529a493016a8aee8decR.jpg_220x220q75.jpg_.avif"
-    ],
-    "category": "Accessory",
-    "shortDescription": "Portable mini fascia massage gun for muscle relaxation",
-    "description": "The WMARK NG-SM003 Mini Fascia Gun is a compact, portable massage device designed for barbers and stylists who spend long hours on their feet. This USB-rechargeable device helps relieve muscle tension in the neck, shoulders, and back. Perfect for quick relief between clients or at the end of a long day.",
-    "features": [
-      "Compact portable design",
-      "USB electric rechargeable",
-      "Multiple speed settings",
-      "Quiet operation for salon use",
-      "Interchangeable massage heads",
-      "Ergonomic grip design",
-      "Long battery life",
-      "Perfect for barbers and stylists"
-    ],
-    "specifications": {
-      "type": "Mini fascia massage gun",
-      "power": "USB rechargeable",
-      "speeds": "3 adjustable speeds",
-      "battery": "Built-in lithium battery",
-      "runtime": "4-6 hours",
-      "chargeTime": "2 hours",
-      "weight": "12 oz",
-      "noise": "Under 45dB",
-      "model": "NG-SM003"
-    },
-    "inStock": true,
-    "rating": 4.5,
-    "reviewCount": 156,
-    "sku": "WMARK-NG-SM003"
-  },
-  {
-    "id": 46,
-    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-trimmer-2020t-b",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020t-b.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-1.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-2.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional cordless trimmer with dual voltage for precision detailing",
-    "description": "The JRL ONYX Professional Cordless Hair Trimmer in sleek black is engineered for precision detailing and finishing work. Featuring a powerful motor and sharp T-blade, this trimmer excels at creating clean lines, edge-ups, and intricate designs. The dual voltage capability makes it perfect for professional use worldwide.",
-    "features": [
-      "Professional precision motor",
-      "Dual voltage 100-240V for worldwide use",
-      "Cordless operation for maximum flexibility",
-      "Sharp T-blade for detailed work",
-      "Ergonomic lightweight design",
-      "Lithium-ion battery technology",
-      "Extended runtime for all-day use",
-      "Professional black finish"
-    ],
-    "specifications": {
-      "motor": "High-speed precision motor",
-      "blade": "Professional T-blade #FF2020T",
-      "battery": "Lithium-ion",
-      "runtime": "100 minutes",
-      "chargeTime": "2 hours",
-      "weight": "6.5 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Professional grade plastic"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 287,
-    "sku": "FF 2020T-B"
-  },
-  {
-    "id": 47,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 5.5\"",
     "price": 49.99,
     "brand": "Barber World",
@@ -1858,7 +610,7 @@
     "sku": "BW-SCISSORS-55"
   },
   {
-    "id": 48,
+    "id": 17,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 6.0\"",
     "price": 49.99,
     "brand": "Barber World",
@@ -1897,7 +649,7 @@
     "sku": "BW-SCISSORS-60"
   },
   {
-    "id": 49,
+    "id": 18,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 7.0\"",
     "price": 49.99,
     "brand": "Barber World",
@@ -1936,7 +688,7 @@
     "sku": "BW-SCISSORS-70"
   },
   {
-    "id": 50,
+    "id": 19,
     "name": "Barber World Mini Professional Trimmer (Black)",
     "price": 49.99,
     "brand": "Barber World",
@@ -1980,7 +732,7 @@
     "sku": "BW-TRIMMER-BLACK"
   },
   {
-    "id": 51,
+    "id": 20,
     "name": "Barber World Mini Professional Trimmer (Silver)",
     "price": 49.99,
     "brand": "Barber World",
@@ -2024,7 +776,7 @@
     "sku": "BW-TRIMMER-SILVER"
   },
   {
-    "id": 52,
+    "id": 21,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Gold)",
     "price": 49.99,
     "brand": "Barber World",
@@ -2067,7 +819,7 @@
     "sku": "BW-AIRDUSTER-GOLD"
   },
   {
-    "id": 53,
+    "id": 22,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Multicolor)",
     "price": 49.99,
     "brand": "Barber World",
@@ -2108,5 +860,1145 @@
     "rating": 4.8,
     "reviewCount": 387,
     "sku": "BW-AIRDUSTER-MULTI"
+  },
+  {
+    "id": 23,
+    "name": "JRL ONYX Professional Cordless Hair Clipper - Black #FF 2020C-B (Dual Voltage)",
+    "price": 134.99,
+    "brand": "JRL",
+    "slug": "jrl-onyx-2020c-b",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-20220c-b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-3.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless hair clipper with dual voltage capability",
+    "description": "The JRL ONYX Professional Cordless Hair Clipper in sleek black delivers exceptional cutting performance with its powerful rotary motor and precision-ground blades. Designed for professional barbers and stylists, this clipper features dual voltage capability for worldwide use. The ergonomic design ensures comfort during extended cutting sessions while maintaining consistent power throughout use.",
+    "features": [
+      "Professional rotary motor for consistent power",
+      "Dual voltage 100-240V for worldwide use",
+      "Cordless operation for freedom of movement",
+      "Precision-ground stainless steel blades",
+      "Ergonomic grip design",
+      "Lithium-ion battery technology",
+      "2-hour runtime on single charge",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "motor": "Professional rotary motor",
+      "blade": "Precision stainless steel #FF2020",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.9 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Professional grade plastic"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 456,
+    "sku": "FF 2020C-B"
+  },
+  {
+    "id": 24,
+    "name": "JRL GHOST Professional Cordless Hair Clipper - White #2020C-B-W (Dual Voltage)",
+    "price": 134.99,
+    "brand": "JRL",
+    "slug": "jrl-ghost-2020c-b-w",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020c-b-w.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless clipper in elegant white finish with dual voltage",
+    "description": "The JRL GHOST Professional Cordless Hair Clipper in pristine white combines cutting-edge technology with stunning aesthetics. This professional-grade clipper features the same powerful performance as the ONYX in a distinctive white finish. Perfect for barbers who want to make a statement while delivering exceptional cuts. The dual voltage capability ensures reliable performance worldwide.",
+    "features": [
+      "Professional rotary motor technology",
+      "Elegant white finish for distinctive style",
+      "Dual voltage 100-240V capability",
+      "Cordless freedom of movement",
+      "Precision-ground professional blades",
+      "Ergonomic lightweight design",
+      "Lithium-ion battery with long runtime",
+      "Premium white housing"
+    ],
+    "specifications": {
+      "motor": "Professional rotary motor",
+      "blade": "Precision stainless steel #2020",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.9 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Premium white finish"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 423,
+    "sku": "2020C-B-W"
+  },
+  {
+    "id": 25,
+    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
+    "price": 114.99,
+    "brand": "JRL",
+    "slug": "jrl-onyx-trimmer-2020t-b",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020t-b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-2.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer with dual voltage for precision detailing",
+    "description": "The JRL ONYX Professional Cordless Hair Trimmer in sleek black is engineered for precision detailing and finishing work. Featuring a powerful motor and sharp T-blade, this trimmer excels at creating clean lines, edge-ups, and intricate designs. The dual voltage capability makes it perfect for professional use worldwide.",
+    "features": [
+      "Professional precision motor",
+      "Dual voltage 100-240V for worldwide use",
+      "Cordless operation for maximum flexibility",
+      "Sharp T-blade for detailed work",
+      "Ergonomic lightweight design",
+      "Lithium-ion battery technology",
+      "Extended runtime for all-day use",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Professional T-blade #FF2020T",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.5 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Professional grade plastic"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 287,
+    "sku": "FF 2020T-B"
+  },
+  {
+    "id": 26,
+    "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle #GH2401-2",
+    "price": 284.99,
+    "brand": "JRL",
+    "slug": "jrl-ghost2-bundle-gh2401-2",
+    "image": "https://wbbarber.com/cdn/shop/files/GH2024-Collection2_1400x1400.jpg?v=1758198831",
+    "images": [
+      "https://wbbarber.com/cdn/shop/files/Jrl-Ghost-Onyx-Shaver-White_600x800_930a3df3-b41f-449a-ba3b-ab2c650f066b_599x798.jpg?v=1758198831",
+      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Trimmer_600x800_2a6ca78c-090a-43a8-87cd-03c295f2b3db_599x798.png?v=1758198831",
+      "https://wbbarber.com/cdn/shop/files/JRL-Ghost-Onyx-Clipper_600x800_fe017a88-e0cb-443f-b218-359d4a622715_599x798.png?v=1758198831"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Complete professional grooming bundle with clipper, trimmer, and shaver",
+    "description": "The JRL GHOST2 Bundle is the ultimate professional grooming collection, featuring three essential tools: a powerful clipper for bulk cutting, a precision trimmer for detailed work, and a smooth-finish shaver for ultra-clean results. This comprehensive set includes everything needed for complete haircuts and grooming services. Each tool features advanced motor technology and premium construction for reliable professional performance.",
+    "features": [
+      "Complete 3-tool professional bundle",
+      "GHOST2 Professional Clipper included",
+      "GHOST2 Precision Trimmer included",
+      "GHOST2 Smooth Shaver included",
+      "Dual voltage on all tools",
+      "Lithium-ion batteries in each device",
+      "Premium carrying case included",
+      "Professional charging accessories",
+      "Complete grooming solution"
+    ],
+    "specifications": {
+      "setIncludes": "Clipper + Trimmer + Shaver + Case + Accessories",
+      "clipperMotor": "Professional rotary motor",
+      "trimmerMotor": "High-speed precision motor",
+      "shaverMotor": "Rotary foil motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "shaverRuntime": "90 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "case": "Premium leather carrying case"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 678,
+    "sku": "GH2401-2"
+  },
+  {
+    "id": 27,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Gold",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-gold-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in gold",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in stunning gold represents the pinnacle of luxury grooming tools. This exclusive collaboration merges JRL's professional expertise with Lamborghini's legendary design philosophy. Featuring both a powerful clipper and precision trimmer, this limited-edition set embodies Italian craftsmanship and automotive excellence. The luxurious gold finish and diamond-inspired design elements make this a collector's item and the ultimate professional statement piece.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Luxurious gold finish with premium aesthetics",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian design inspiration"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury gold with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 234,
+    "sku": "JRL-LAMBO-DIAMANTE-GOLD"
+  },
+  {
+    "id": 28,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Black",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-black-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in black",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in sophisticated black represents the ultimate fusion of automotive luxury and professional grooming excellence. This exclusive collaboration brings Lamborghini's iconic design language to JRL's proven professional performance. Featuring both a powerful clipper and precision trimmer in sleek black finish, this limited-edition set combines Italian sophistication with cutting-edge grooming technology. The Diamante series showcases premium materials and meticulous attention to detail worthy of the Lamborghini name.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Sophisticated black finish with luxury styling",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian automotive-inspired design"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury black with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 198,
+    "sku": "JRL-LAMBO-DIAMANTE-BLACK"
+  },
+  {
+    "id": 29,
+    "name": "Monster Clippers Cerberus Clipper - Vector Engine",
+    "price": 179.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-cerberus-clipper-vector-engine",
+    "image": "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446728001.png?pad_color=fff&v=1733970114&width=240",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446760769.png?pad_color=fff&v=1733970114&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446793537.png?pad_color=fff&v=1733970127&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-tondeuse-vector-motor-36153446826305.png?pad_color=fff&v=1733970127&width=940"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional clipper with intuitive vector motor technology and responsive torque control",
+    "description": "The Cerberus Clipper features revolutionary Vector Engine technology - the latest innovation in professional hair clippers. The intuitive torque control technology automatically increases power when resistance is detected, ensuring smooth cutting through thick hair without snags or pulls. Its compact 15cm design fits comfortably in your palm for precise control and effortless handling.",
+    "features": [
+      "Extremely powerful high torque VECTOR motor",
+      "Intuitive torque control technology",
+      "9,000 RPM for efficient cutting",
+      "Double DLC (Diamond-like carbon coated) Hybrid cutting blade",
+      "Metal custom click or freestyle lever",
+      "Metal bottom housing for reduced vibration and noise",
+      "Adjustable zero gap cutting blade",
+      "Cord and cordless operation",
+      "Compact size - 15 centimeter",
+      "Lightweight ergonomic design",
+      "Mini USB recharge",
+      "Multiple spare colored thumb parts and levers included",
+      "10 premium double magnetic cutting guides included"
+    ],
+    "specifications": {
+      "motor": "Vector motor with responsive torque control",
+      "rpm": "9,000 RPM",
+      "blade": "Double DLC Hybrid, adjustable zero gap",
+      "battery": "Lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "120 minutes",
+      "size": "15 cm (compact)",
+      "charging": "Mini USB",
+      "operation": "Cord/cordless",
+      "housing": "Metal bottom housing"
+    },
+    "accessories": [
+      "1 x AC adapter",
+      "1 x Charging stand",
+      "1 x Micro USB cable",
+      "1 x Mini screwdriver",
+      "1 x Small cleaning brush",
+      "1 x 10 cc clipper oil",
+      "Multiple spare thumb parts in different colours",
+      "Multiple spare levers in different colours",
+      "10 x Premium double magnetic cutting guides (#0.5-1.5mm, #1-3mm, #1.5-4.5mm, #2-6mm, #3-10mm, #4-13mm, #5-16mm, #6-19mm, #7-22mm, #8-25mm)"
+    ],
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 287,
+    "sku": "MC-CERBERUS-CLIPPER"
+  },
+  {
+    "id": 30,
+    "name": "Monster Clippers Cerberus Trimmer - Vector Engine",
+    "price": 164.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-cerberus-trimmer-vector-engine",
+    "image": "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445908801.png?pad_color=fff&v=1733970114&width=240",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445941569.png?pad_color=fff&v=1733970114&width=350",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445974337.png?pad_color=fff&v=1733970114&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153446007105.png?pad_color=fff&v=1733970114&width=720"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional trimmer with vector motor technology and extra wide T-shaped blade",
+    "description": "The Cerberus Trimmer brings Vector Motor technology to precision trimming work. With intuitive torque control that adapts to hair resistance, this trimmer delivers smooth, efficient cutting without snags. The extra wide T-shaped double DLC blade combined with 10,000 RPM power makes it perfect for detailed work, outlining, and finishing. Its compact 15cm design allows you to work closer to hair and skin with exceptional ease.",
+    "features": [
+      "Extremely powerful high torque VECTOR motor",
+      "Intuitive torque control technology",
+      "10,000 RPM for superior performance",
+      "Extra wide T-shaped double DLC cutting blades",
+      "Metal bottom housing for reduced vibration and noise",
+      "Adjustable zero gap cutting blade",
+      "Cord and cordless operation",
+      "Compact size - 15 centimeter",
+      "Lightweight ergonomic design",
+      "Mini USB recharge",
+      "Multiple spare colored top parts included"
+    ],
+    "specifications": {
+      "motor": "Vector motor with responsive torque control",
+      "rpm": "10,000 RPM",
+      "blade": "Extra wide T-shaped double DLC, adjustable zero gap",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "size": "15 cm (compact)",
+      "charging": "Mini USB",
+      "operation": "Cord/cordless",
+      "housing": "Metal bottom housing"
+    },
+    "accessories": [
+      "1 x AC adapter",
+      "1 x Charging stand",
+      "1 x Micro USB cable",
+      "1 x Mini screwdriver",
+      "1 x Small cleaning brush",
+      "1 x 10 cc Trimmer oil",
+      "Multiple spare top parts in different colours"
+    ],
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 213,
+    "sku": "MC-CERBERUS-TRIMMER"
+  },
+  {
+    "id": 31,
+    "name": "Monster Clippers Assassin Shaver",
+    "price": 29.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-assassin-shaver",
+    "image": "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250236737.jpg?pad_color=fff&v=1733970127&width=350",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250335041.png?v=1733970133",
+      "https://monsterclippers.com/cdn/shop/files/monsterclippers-assassin-shaver-39333250269505.png?v=1733970133"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Professional pocket-sized shaver with hypo-allergenic gold titanium foil",
+    "description": "The Assassin is a professional lightweight pocket-sized shaver with a powerful turbocharged motor running at 9,000 RPM. Its compact design makes it perfect for travel while maintaining professional-grade performance. The hypo-allergenic gold titanium foil delivers a bump-free shaving experience, ideal for sensitive skin. Fast charging lithium-ion battery provides 90 minutes of runtime with USB-C convenience.",
+    "features": [
+      "Hypo-allergenic gold titanium foil for bump-free shaving",
+      "Turbocharged 9,000 RPM motor",
+      "Pocket-sized compact design",
+      "Perfect for travel",
+      "USB-C rechargeable",
+      "Fast charge function",
+      "Cord and cordless use",
+      "Lightweight construction",
+      "Velvet travel bag included"
+    ],
+    "specifications": {
+      "foil": "Hypo-allergenic gold titanium",
+      "motor": "Turbocharged 9,000 RPM",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "90 minutes",
+      "charging": "USB-C",
+      "operation": "Cord/cordless",
+      "design": "Pocket size, lightweight"
+    },
+    "accessories": [
+      "Universal USB charger/adapter",
+      "Interchangeable plugs: EU, UK and UL/US",
+      "USB cable",
+      "Cleaning brush",
+      "Velvet travel bag"
+    ],
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 156,
+    "sku": "MC-ASSASSIN-SHAVER"
+  },
+  {
+    "id": 32,
+    "name": "VGR Hair Clipper Professional Hair Trimmer Electric Hair Cutting Machine Vector Motor Haircut 9000 RPM Clipper for Men V-015",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-v015-clipper",
+    "image": "https://m.media-amazon.com/images/I/71xGLTjtd8L._AC_SY300_SX300_QL70_ML2_.jpg",
+    "images": [
+      "",
+      "https://m.media-amazon.com/images/I/61mLwKPYo9L._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71RntcJFdaL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71w8qOn7eML._AC_SL1500_.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional vector motor clipper with 9000 RPM for precise haircuts",
+    "description": "The VGR V-015 Professional Hair Clipper features advanced vector motor technology delivering 9000 RPM of consistent cutting power. Designed for professional barbers and stylists, this electric hair cutting machine provides precision, reliability, and exceptional performance for all hair types. The ergonomic design ensures comfort during extended use.",
+    "features": [
+      "Professional vector motor technology",
+      "9000 RPM high-speed cutting",
+      "Precision-ground stainless steel blades",
+      "Cordless rechargeable operation",
+      "Ergonomic grip design",
+      "Multiple guide combs included",
+      "Long-lasting lithium-ion battery",
+      "Suitable for all hair types",
+      "Professional barbershop quality"
+    ],
+    "specifications": {
+      "motor": "Vector motor 9000 RPM",
+      "blade": "Stainless steel precision blade",
+      "battery": "Lithium-ion rechargeable",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "9.8 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "8 guide combs, cleaning brush, oil",
+      "model": "V-015"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 289,
+    "sku": "VGR-V015"
+  },
+  {
+    "id": 33,
+    "name": "VGR Hair Trimmers Professional Body Trimmer Vector Motor 10000RPM Hair Clippers Rechargeable Clippers Hair Trimmer for Men V-994",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-v994-trimmer",
+    "image": "https://m.media-amazon.com/images/I/71rNwKBuFgL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/711dd0rQTlL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71aDPNhAB-L._AC_SL1500_.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
+    "description": "The VGR V-994 Professional Hair Trimmer combines powerful 10000RPM vector motor technology with versatile body grooming capabilities. Perfect for detailed hair trimming, body grooming, and precision work. This rechargeable trimmer offers professional-grade performance with exceptional runtime and multiple attachments for various grooming needs.",
+    "features": [
+      "Advanced vector motor 10000 RPM",
+      "Multi-purpose trimmer for hair and body",
+      "Professional precision T-blade",
+      "Rechargeable cordless design",
+      "Multiple trimming attachments included",
+      "Waterproof design for easy cleaning",
+      "Long-lasting battery performance",
+      "Quiet operation",
+      "Professional barbershop quality",
+      "Ergonomic lightweight design"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Precision T-blade stainless steel",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "200 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.5 oz",
+      "voltage": "110-240V dual voltage",
+      "waterproof": "IPX6 water-resistant",
+      "accessories": "5 guide combs, cleaning brush, USB cable",
+      "model": "V-994"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 342,
+    "sku": "VGR-V994"
+  },
+  {
+    "id": 34,
+    "name": "VGR Professional Hair Clippers Rechargeable Clipper Electric Hair Clippers Adjustable Hair Clipper for Men",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-adjustable-clipper",
+    "image": "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+    "images": [
+      "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/32ea3999-692f-4258-8be2-2bccd7945799.7f8a56d5bd32bc3e8712469ad9cd6f3d.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/fd136a5b-472e-466b-99a5-e861fbbecd10.ca65f61ec3bb9f7fd750e8474619996c.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/35c5de1f-33ee-43fb-bc75-a0fe5e681764.16c7f9dc033a32fec9e044f7f1e6bac9.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional rechargeable clipper with adjustable cutting length",
+    "description": "VGR Professional Hair Clippers offer precision cutting with adjustable blade settings for versatile styling. This rechargeable electric hair clipper is designed for professional barbers and home use, featuring powerful motor performance and ergonomic design for comfortable handling during extended grooming sessions.",
+    "features": [
+      "Adjustable blade cutting lengths",
+      "Rechargeable cordless operation",
+      "Professional-grade motor",
+      "Ergonomic design for comfort",
+      "Precision cutting blades",
+      "Multiple guide combs included",
+      "Suitable for all hair types",
+      "Long battery runtime",
+      "Professional barbershop quality"
+    ],
+    "specifications": {
+      "motor": "High-performance motor",
+      "blade": "Adjustable stainless steel blade",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "10 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "Guide combs, cleaning brush, charger"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 156,
+    "sku": "VGR-ADJ-001"
+  },
+  {
+    "id": 35,
+    "name": "VGR Trimmer Professional Hair Cutting Machine Barber External Rotor Motor Cordless",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-rotor-trimmer",
+    "image": "https://i.ebayimg.com/images/g/ExIAAeSwv8xog6wm/s-l1600.jpg",
+    "images": [
+      "https://i.ebayimg.com/images/g/ExIAAeSwv8xog6wm/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/xqUAAeSwTidog6vL/s-l1600.png",
+      "https://i.ebayimg.com/images/g/vDAAAeSwGftog60G/s-l1600.png",
+      "https://i.ebayimg.com/images/g/rVAAAeSwNzdog62T/s-l1600.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional external rotor motor trimmer for precision cutting",
+    "description": "VGR Professional Trimmer with External Rotor Motor technology delivers exceptional cutting power and precision for professional barbers. This cordless hair cutting machine features advanced motor design for consistent performance, making it ideal for detailed trimming, outlining, and professional barbershop services.",
+    "features": [
+      "External rotor motor technology",
+      "Professional precision cutting",
+      "Cordless rechargeable design",
+      "Sharp stainless steel blades",
+      "Professional barbershop quality",
+      "Ergonomic lightweight design",
+      "Long-lasting battery",
+      "Quiet operation",
+      "Multiple trimming attachments"
+    ],
+    "specifications": {
+      "motor": "External rotor motor",
+      "blade": "Precision stainless steel blade",
+      "battery": "High-capacity rechargeable",
+      "runtime": "190 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "Guide combs, cleaning brush, USB cable"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 203,
+    "sku": "VGR-ROTOR-001"
+  },
+  {
+    "id": 36,
+    "name": "Wahl 5 Star Vapor Cord/Cordless Clipper #3026480 (Dual Voltage)",
+    "price": 164.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver-replacement-gold-foil-super-close",
+    "image": "https://www.wahlpro.com/media/catalog/product/w/a/wahl_vapor_front.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-side-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-blade-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/v/a/vapor-charge-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium 5 Star Vapor cord/cordless clipper with dual voltage",
+    "description": "The Wahl 5 Star Vapor Cord/Cordless Clipper represents the pinnacle of Wahl's engineering excellence. Featuring a powerful rotary motor and sleek, modern design, this professional clipper delivers exceptional cutting performance. The cord/cordless versatility and dual voltage capability make it perfect for professionals worldwide.",
+    "features": [
+      "Powerful rotary motor for consistent cutting",
+      "Cord/cordless operation for maximum flexibility",
+      "Dual voltage 110-240V for worldwide use",
+      "Premium 5 Star professional grade",
+      "Adjustable stainless steel blade",
+      "Lithium-ion battery technology",
+      "90-minute cordless runtime",
+      "Ergonomic lightweight design"
+    ],
+    "specifications": {
+      "motor": "High-performance rotary motor",
+      "blade": "Adjustable stainless steel #2161-400",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.8 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "3026480"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 612,
+    "sku": "3026480"
+  },
+  {
+    "id": 37,
+    "name": "Wahl 5 Star Gold Cordless Magic Clip Clipper #8148-700 (Dual Voltage)",
+    "price": 149.99,
+    "brand": "Wahl",
+    "slug": "wahl-shaver-finale-replacement-super-close-gold-foil",
+    "image": "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-hero-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-sideview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-blades-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/g/o/goldmagicclip-lifestyle-clipperinstand-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Limited edition gold Magic Clip with premium fade blade",
+    "description": "The Wahl 5 Star Gold Cordless Magic Clip is a limited edition masterpiece featuring an elegant gold finish. This professional clipper combines the legendary Magic Clip performance with premium aesthetics. The fade blade and powerful motor make it ideal for precision cutting and fading techniques.",
+    "features": [
+      "Limited edition gold finish",
+      "5 Star professional grade",
+      "Stagger-tooth crunch blade for fades",
+      "Dual voltage capability",
+      "Lithium-ion battery technology",
+      "90-minute cordless runtime",
+      "Zero-overlap blade design",
+      "Premium professional quality"
+    ],
+    "specifications": {
+      "motor": "Electromagnetic motor",
+      "blade": "Stagger-tooth crunch blade #2161",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.5 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8148-700"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 834,
+    "sku": "8148-700"
+  },
+  {
+    "id": 38,
+    "name": "Wahl 5 Star Cordless Magic Clip Clipper #8148 (Dual Voltage)",
+    "price": 99.99,
+    "brand": "Wahl",
+    "slug": "wahl-blade-3-hole-adjusto-lock-1005",
+    "image": "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-hero-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-sideview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-blades-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/c/o/cordlessmagicclip-topview-3000x3000-min.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Classic 5 Star Magic Clip cordless clipper for professionals",
+    "description": "The Wahl 5 Star Cordless Magic Clip is the industry-standard professional clipper trusted by barbers worldwide. Featuring a powerful electromagnetic motor and the signature stagger-tooth crunch blade, this clipper excels at fades, blends, and all-around cutting. The cordless design provides ultimate freedom of movement.",
+    "features": [
+      "Industry-standard professional clipper",
+      "Powerful electromagnetic motor",
+      "Stagger-tooth crunch blade",
+      "Cordless freedom of movement",
+      "Dual voltage for travel",
+      "Lithium-ion battery",
+      "90-minute runtime",
+      "5 Star professional quality"
+    ],
+    "specifications": {
+      "motor": "Electromagnetic motor",
+      "blade": "Stagger-tooth crunch blade #2161",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "70 minutes",
+      "weight": "8.5 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8148"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 1247,
+    "sku": "8148"
+  },
+  {
+    "id": 39,
+    "name": "Wahl 5 Star Cordless Senior Clipper #8504-400 (Dual Voltage)",
+    "price": 149.99,
+    "brand": "Wahl",
+    "slug": "wahl-clipper-oil",
+    "image": "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-hero.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-sideview.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-blades.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/5/s/5star-cordlesssenior-topview.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Legendary 5 Star Senior clipper now cordless with premium blade",
+    "description": "The Wahl 5 Star Cordless Senior Clipper brings the legendary power of the corded Senior to a cordless platform. Known for its exceptional cutting power and precision blade, this clipper is a favorite among professionals. The cordless version maintains the same powerful performance with added mobility and dual voltage capability.",
+    "features": [
+      "Legendary Senior clipper performance",
+      "Powerful electromagnetic motor",
+      "Premium adjustable blade",
+      "Cordless convenience",
+      "Dual voltage 110-240V",
+      "Lithium-ion battery technology",
+      "70-minute cordless runtime",
+      "Professional 5 Star grade"
+    ],
+    "specifications": {
+      "motor": "V9000 electromagnetic motor",
+      "blade": "Premium adjustable #1005",
+      "battery": "Lithium-ion",
+      "runtime": "70 minutes",
+      "chargeTime": "60 minutes",
+      "weight": "9.2 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "8504-400"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 956,
+    "sku": "8504-400"
+  },
+  {
+    "id": 40,
+    "name": "Wahl Super Taper X Cord/Cordless Clipper #3026468 (Dual Voltage)",
+    "price": 99.99,
+    "brand": "Wahl",
+    "slug": "wahl-t-wide-adjustable-trimmer-blade",
+    "image": "https://www.wahlpro.com/media/catalog/product/3/0/3026468_supertaperx_hero.png?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/3/0/3026468_supertaperx_side.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/s/u/super-taper-x-slide-4.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/s/l/slide-5_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Next-generation Super Taper with cord/cordless versatility",
+    "description": "The Wahl Super Taper X represents the evolution of the iconic Super Taper clipper. Featuring both cord and cordless operation, this professional clipper delivers consistent power in any mode. The adjustable taper blade and powerful motor make it perfect for all-around cutting, blending, and tapering work.",
+    "features": [
+      "Next-generation Super Taper design",
+      "Cord/cordless operation",
+      "Adjustable taper blade",
+      "Powerful rotary motor",
+      "Dual voltage capability",
+      "Lithium-ion battery",
+      "80-minute cordless runtime",
+      "Professional performance"
+    ],
+    "specifications": {
+      "motor": "High-speed rotary motor",
+      "blade": "Adjustable taper blade",
+      "battery": "Lithium-ion",
+      "runtime": "80 minutes",
+      "chargeTime": "75 minutes",
+      "weight": "8.6 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "3026468"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 523,
+    "sku": "3026468"
+  },
+  {
+    "id": 41,
+    "name": "Wahl Cordless Barber Combo - 5 Star Cordless Magic Clip & Cordless Detailer Li #3025397",
+    "price": 209.99,
+    "brand": "Wahl",
+    "slug": "wahl-clini-clip-cleaner-disinfectant",
+    "image": "https://www.wahlpro.com/media/catalog/product/c/o/cordless-barber-combo-duo_1_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/u/n/untitled_design_41__1.png?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/b/l/blades-cordless-magic-clip_2_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/m/a/magic-clip-bulk-cut_1_1.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Ultimate barber combo with Magic Clip clipper and Detailer trimmer",
+    "description": "The Wahl Cordless Barber Combo is the ultimate professional pairing, featuring the legendary 5 Star Cordless Magic Clip clipper and the precision Cordless Detailer Li trimmer. This combo provides everything needed for complete haircuts, from bulk removal and fading to detailed lining and finishing work. Both tools are cordless for maximum flexibility.",
+    "features": [
+      "5 Star Magic Clip clipper included",
+      "Cordless Detailer Li trimmer included",
+      "Complete professional setup",
+      "Both tools cordless",
+      "Lithium-ion batteries",
+      "Professional 5 Star grade",
+      "Perfect for all techniques",
+      "Premium storage case included"
+    ],
+    "specifications": {
+      "clipperMotor": "Electromagnetic motor",
+      "clipperBlade": "Stagger-tooth crunch blade",
+      "clipperRuntime": "90 minutes",
+      "trimmerMotor": "Rotary motor",
+      "trimmerBlade": "T-Wide blade",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage",
+      "model": "3025397"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 1456,
+    "sku": "3025397"
+  },
+  {
+    "id": 42,
+    "name": "WAHL POWER STATION - MULTI-CHARGE 3 TOOLS AT ONCE",
+    "price": 49.99,
+    "brand": "Wahl",
+    "slug": "wahl-professional-vapor-le-cordless-clipper-limited-edition-3028320",
+    "image": "https://www.wahlpro.com/media/catalog/product/1/-/1-power-station-charging-stand.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+    "images": [
+      "https://www.wahlpro.com/media/catalog/product/2/-/2-power-station-usb-c-port.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/4/-/4-take-charge-in-more-ways-than-one-shop-wahl-power-station.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600",
+      "https://www.wahlpro.com/media/catalog/product/5/-/5-mix-and-match-the-tools-you-need-power-station.jpg?optimize=medium&fit=bounds&height=600&width=600&canvas=600:600"
+    ],
+    "category": "Accessory",
+    "shortDescription": "Professional power station charges three tools simultaneously",
+    "description": "The Wahl Power Station is an essential accessory for any professional barbershop. This innovative charging station can charge up to three Wahl tools simultaneously, keeping your entire toolkit powered and ready. The sleek design organizes your workspace while the fast-charging technology minimizes downtime between clients.",
+    "features": [
+      "Charges 3 tools simultaneously",
+      "Compatible with most Wahl cordless tools",
+      "Fast-charging technology",
+      "Sleek professional design",
+      "Organizes workspace efficiently",
+      "LED charging indicators",
+      "Durable construction",
+      "Essential barbershop accessory"
+    ],
+    "specifications": {
+      "capacity": "3 tools simultaneously",
+      "compatibility": "Most Wahl cordless tools",
+      "charging": "Fast-charge technology",
+      "indicators": "LED status lights",
+      "dimensions": "12\" x 6\" x 4\"",
+      "weight": "2.8 lbs",
+      "power": "AC powered",
+      "warranty": "1 year manufacturer"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 724,
+    "sku": "POWER-STATION"
+  },
+  {
+    "id": 43,
+    "name": "WMARK NG-X1 Hair Clippers for Men 10000RPM Rechargeable Cordless Clipper with Magnetic 9V Motor",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-x1-clipper",
+    "image": "https://m.media-amazon.com/images/I/51rP4xO1NYL._AC_SX679_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/515++uujGzL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/51QNP-7T-nL._AC_SX679_.jpg",
+      "https://m.media-amazon.com/images/I/41AyrTxaA5L._AC_SX679_.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional cordless clipper with 10000RPM magnetic 9V motor",
+    "description": "The WMARK NG-X1 is a high-performance professional hair clipper featuring a powerful 10000RPM magnetic 9V motor. Designed for barbers and stylists who demand precision and reliability. The cordless design with Type-C charging provides ultimate flexibility, while the 3 replaceable skins allow for customization.",
+    "features": [
+      "10000RPM magnetic 9V motor for powerful cutting",
+      "Rechargeable cordless design for freedom of movement",
+      "3 replaceable skins for customization",
+      "Type-C fast charging technology",
+      "Professional-grade precision blades",
+      "Ergonomic design for comfortable use",
+      "Long-lasting battery life",
+      "Dual voltage capability"
+    ],
+    "specifications": {
+      "motor": "Magnetic 9V motor",
+      "speed": "10000 RPM",
+      "battery": "Lithium-ion rechargeable",
+      "charging": "Type-C fast charging",
+      "runtime": "120+ minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "9.5 oz",
+      "voltage": "Dual voltage",
+      "model": "NG-X1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 234,
+    "sku": "WMARK-NG-X1"
+  },
+  {
+    "id": 44,
+    "name": "WMARK NG-XT1 Vector Motor Detail Trimmer",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xt1-trimmer",
+    "image": "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1.jpg?v=1754754768&width=640",
+    "images": [
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_6.jpg?v=1754754794&width=640",
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640",
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Precision vector motor detail trimmer for professional finishing",
+    "description": "The WMARK NG-XT1 Vector Motor Detail Trimmer is engineered for precision detailing and finishing work. Featuring advanced vector motor technology, this trimmer delivers consistent power for clean lines, edge-ups, and intricate designs. Perfect for barbers who specialize in detailed work.",
+    "features": [
+      "Advanced vector motor technology",
+      "Precision T-blade for detailed work",
+      "Zero-gap adjustable blade",
+      "Cordless convenience with long runtime",
+      "Type-C fast charging",
+      "Lightweight ergonomic design",
+      "Professional-grade construction",
+      "Perfect for edge-ups and designs"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "blade": "Precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.8 oz",
+      "voltage": "Dual voltage",
+      "model": "NG-XT1"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "sku": "WMARK-NG-XT1"
+  },
+  {
+    "id": 45,
+    "name": "WMARK NG-8632KIT Rechargeable Hair Clipper Trimmer Kit",
+    "price": 124.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-8632kit",
+    "image": "https://i.ebayimg.com/images/g/ixUAAeSw6VFoCGSY/s-l1600.jpg",
+    "images": [
+      "https://i.ebayimg.com/images/g/3Y4AAeSwLzloCGVg/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/XrkAAeSw7FFoCGSX/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/KB0AAeSwQB9oCGSY/s-l1600.jpg"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Complete professional clipper and trimmer kit with accessories",
+    "description": "The WMARK NG-8632KIT is a comprehensive professional grooming kit that includes both a high-performance clipper and precision trimmer. This complete set comes with all the accessories you need for professional barbering, including multiple guide combs, cleaning tools, and a premium storage case.",
+    "features": [
+      "Professional clipper and trimmer combo",
+      "High-performance motors in both tools",
+      "Complete accessory kit included",
+      "Multiple guide combs for versatility",
+      "Rechargeable cordless operation",
+      "Type-C charging for both devices",
+      "Premium carrying case",
+      "Professional-grade blades"
+    ],
+    "specifications": {
+      "setIncludes": "Clipper + Trimmer + Accessories",
+      "clipperMotor": "High-torque motor",
+      "trimmerMotor": "Precision motor",
+      "battery": "Lithium-ion (both)",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "150 minutes",
+      "charging": "Type-C",
+      "model": "NG-8632KIT"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 312,
+    "sku": "WMARK-NG-8632KIT"
+  },
+  {
+    "id": 46,
+    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Black",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xs1-black",
+    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S2d7e6d2e967944d6b072cc8eccfbfaf6K.jpg_960x960q75.jpg_.avif",
+    "images": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/S75a42159db59492e9bbe952b8a9ddaa3c.jpg_960x960q75.jpg_.avif"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium metal body clipper with vector motor - Black Edition",
+    "description": "The WMARK NG-XS1 Black Edition features a premium all-metal body construction with a powerful 10000RPM vector motor. This professional clipper is designed for barbers who demand both performance and style. The metal housing provides exceptional durability while the vector motor ensures consistent cutting power.",
+    "features": [
+      "Premium all-metal body construction",
+      "10000 RPM vector motor",
+      "Professional electric shaver technology",
+      "Perfect for bald fades and close cuts",
+      "Cordless rechargeable design",
+      "Type-C fast charging",
+      "Ergonomic metal grip",
+      "Long-lasting battery"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Professional fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "140 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "housing": "Full metal body",
+      "finish": "Black",
+      "model": "NG-XS1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 267,
+    "sku": "WMARK-NG-XS1-BLK"
+  },
+  {
+    "id": 47,
+    "name": "WMARK NG-XS1 Vector Motor Metal Body Professional Clipper 10000 RPM - Red",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xs1-red",
+    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S140d7817c37e4fa89094ec7a4efe7543Z.jpg_960x960q75.jpg_.avif",
+    "images": [
+      "https://i5.walmartimages.com/seo/WMARK-NG-XS1-Professional-High-Speed-Hair-Shaver-10-000-RPM-Metal-Body-Electric-Shaver-for-Men-Shaver-for-Barber_0fc7d4aa-08d1-4125-a320-01c37ce60173.f2049be144eba843405f6cec0c8ad4a0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium metal body clipper with vector motor - Red Edition",
+    "description": "The WMARK NG-XS1 Red Edition stands out with its striking red metal finish while delivering the same exceptional performance. Featuring a 10000RPM vector motor and all-metal construction, this clipper combines professional-grade power with eye-catching style.",
+    "features": [
+      "Premium all-metal body in red",
+      "10000 RPM vector motor",
+      "Professional electric shaver technology",
+      "Perfect for bald fades and close cuts",
+      "Cordless rechargeable design",
+      "Type-C fast charging",
+      "Ergonomic metal grip",
+      "Long-lasting battery"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Professional fade blade",
+      "battery": "Lithium-ion",
+      "runtime": "140 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "housing": "Full metal body",
+      "finish": "Red",
+      "model": "NG-XS1"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 245,
+    "sku": "WMARK-NG-XS1-RED"
+  },
+  {
+    "id": 48,
+    "name": "WMARK NG-SM003 Mini Fascia Gun Massage Device",
+    "price": 39.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-sm003-massage-gun",
+    "image": "https://ae-pic-a1.aliexpress-media.com/kf/S7ef59687e162440c8a909df4987a592fr.jpg_220x220q75.jpg_.avif",
+    "images": [
+      "https://ae-pic-a1.aliexpress-media.com/kf/S13e79063832f4fbd8d9f6eabfcccbd55s.jpg_220x220q75.jpg_.avif",
+      "https://ae-pic-a1.aliexpress-media.com/kf/S929751407a5d4241911deabd9d7fa11dA.jpg_220x220q75.jpg_.avif",
+      "https://ae-pic-a1.aliexpress-media.com/kf/S762858331ad74529a493016a8aee8decR.jpg_220x220q75.jpg_.avif"
+    ],
+    "category": "Accessory",
+    "shortDescription": "Portable mini fascia massage gun for muscle relaxation",
+    "description": "The WMARK NG-SM003 Mini Fascia Gun is a compact, portable massage device designed for barbers and stylists who spend long hours on their feet. This USB-rechargeable device helps relieve muscle tension in the neck, shoulders, and back. Perfect for quick relief between clients or at the end of a long day.",
+    "features": [
+      "Compact portable design",
+      "USB electric rechargeable",
+      "Multiple speed settings",
+      "Quiet operation for salon use",
+      "Interchangeable massage heads",
+      "Ergonomic grip design",
+      "Long battery life",
+      "Perfect for barbers and stylists"
+    ],
+    "specifications": {
+      "type": "Mini fascia massage gun",
+      "power": "USB rechargeable",
+      "speeds": "3 adjustable speeds",
+      "battery": "Built-in lithium battery",
+      "runtime": "4-6 hours",
+      "chargeTime": "2 hours",
+      "weight": "12 oz",
+      "noise": "Under 45dB",
+      "model": "NG-SM003"
+    },
+    "inStock": true,
+    "rating": 4.5,
+    "reviewCount": 156,
+    "sku": "WMARK-NG-SM003"
+  },
+  {
+    "id": 49,
+    "name": "WMARK New Professional Hair Trimmer NG-7982",
+    "price": 49.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-7982-trimmer",
+    "image": "https://i.ebayimg.com/images/g/KKgAAeSw1JRoZ3ud/s-l1600.png",
+    "images": [
+      "https://i.ebayimg.com/images/g/ULoAAeSw2HtoZ3uf/s-l1600.png",
+      "https://i.ebayimg.com/images/g/Za4AAeSw8d9oZ3ug/s-l1600.png",
+      "https://i.ebayimg.com/images/g/kXkAAeSw-1BoZ3ug/s-l1600.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer for precision cutting and detailing",
+    "description": "The WMARK NG-7982 is a professional-grade hair trimmer designed for barbers who demand precision and versatility. Featuring a powerful motor and sharp blades, this cordless trimmer excels at detail work, line-ups, and beard trimming. Its ergonomic design and long battery life make it perfect for all-day use in busy barbershops.",
+    "features": [
+      "Professional precision trimmer",
+      "Powerful high-speed motor",
+      "Sharp stainless steel blades",
+      "Rechargeable cordless operation",
+      "Ergonomic lightweight design",
+      "Type-C fast charging",
+      "Long-lasting battery performance",
+      "Perfect for detail work and finishing"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Stainless steel precision blade",
+      "battery": "Lithium-ion rechargeable",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "7.2 oz",
+      "charging": "Type-C",
+      "voltage": "Dual voltage",
+      "model": "NG-7982"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 178,
+    "sku": "WMARK-NG-7982"
   }
 ]
