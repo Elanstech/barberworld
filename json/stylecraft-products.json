@@ -526,7 +526,7 @@
   {
     "id": 14,
     "name": "Gamma+ Italia Uno Shaver - Close-Cutting Shaver with No Irritation",
-    "price": 30.00,
+    "price": 29.99,
     "brand": "Gamma+",
     "slug": "gamma-italia-uno-shaver",
     "image": "https://target.scene7.com/is/image/Target/GUEST_2e7ae8b1-f854-40c4-a4c6-a3dbe6e78884?wid=1200&hei=1200&qlt=80",
@@ -573,7 +573,7 @@
   {
     "id": 15,
     "name": "Stylecraft Uno Shaver Blue - Stylecraft/Gamma+",
-    "price": 30.00,
+    "price": 29.99,
     "brand": "StyleCraft",
     "slug": "stylecraft-uno-shaver-blue",
     "image": "https://prostylingtools.com/cdn/shop/products/10522_12fd6e6b-d02d-4183-a672-cb7d7ba878fb_900x.jpg?v=1655539056",
@@ -617,7 +617,7 @@
   {
     "id": 16,
     "name": "StyleCraft Uno USB Rechargeable Single Foil Shaver - Red (SCUNOSFSR)",
-    "price": 30.00,
+    "price": 29.99,
     "brand": "StyleCraft",
     "slug": "stylecraft-uno-shaver-red",
     "image": "https://prostylingtools.com/cdn/shop/products/10533_ef65b1fa-d77c-4f1d-ac2d-f0a5b0aa4a04_900x.jpg?v=1655539064",
@@ -661,7 +661,7 @@
   {
     "id": 17,
     "name": "FLEX PROFESSIONAL HAIR TRIMMER WITH SUPER-TORQUE MOTOR",
-    "price": 120.00,
+    "price": 119.99,
     "brand": "StyleCraft",
     "slug": "stylecraft-flex-trimmer",
     "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc406m__main2.jpg",
@@ -703,7 +703,7 @@
   {
     "id": 18,
     "name": "FLEX PROFESSIONAL DOUBLE FOIL SHAVER WITH SUPER-TORQUE MOTOR",
-    "price": 50.00,
+    "price": 49.00,
     "brand": "StyleCraft",
     "slug": "stylecraft-flex-shaver",
     "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/s/c/sc-sc806b.jpg",
@@ -745,7 +745,7 @@
   {
     "id": 19,
     "name": "Gamma+ Boosted Super-Torque Modular Cordless Clipper #GP601M (Dual Voltage)",
-    "price": 125.00,
+    "price": 124.99,
     "brand": "Gamma+",
     "slug": "gamma-boosted-clipper-gp601m",
     "image": "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted_1_599x798.jpg?v=1649885466",
@@ -787,5 +787,135 @@
     "rating": 4.9,
     "reviewCount": 721,
     "sku": "GP601M"
+  },
+  {
+    "id": 20,
+    "name": "GAMMA+ SKIN CLIPPER",
+    "price": 79.99,
+    "brand": "Gamma+",
+    "slug": "gamma-skin-clipper",
+    "image": "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
+    "images": [
+      "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
+      "https://nosbarbersupply.com/cdn/shop/files/original_7ee6a310-a994-403e-a80f-f7285e9a6260.jpg?v=1718252301",
+      "https://nosbarbersupply.com/cdn/shop/files/original_8e3313b5-686f-47e6-b95e-fd86695efd31.jpg?v=1718252301"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Specialized skin clipper for ultra-close cutting and bald fades",
+    "description": "The Gamma+ Skin Clipper is specifically designed for ultra-close cutting and creating perfect bald fades. This specialized clipper features a unique blade configuration that cuts closer to the skin than traditional clippers, making it ideal for bald fades, skin tapers, and detailed scalp work. The powerful motor and precision engineering ensure smooth, irritation-free results.",
+    "features": [
+      "Specialized for bald fades and skin work",
+      "Ultra-close cutting blade configuration",
+      "Powerful professional motor",
+      "Designed for scalp detailing",
+      "Smooth irritation-free cutting",
+      "Cordless operation",
+      "Lithium-ion battery",
+      "Ergonomic grip design",
+      "Professional-grade construction",
+      "Perfect for skin tapers"
+    ],
+    "specifications": {
+      "motor": "High-performance professional",
+      "blade": "Specialized ultra-close blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "9.0 oz",
+      "voltage": "Dual voltage",
+      "specialty": "Bald fade & skin work"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 345,
+    "sku": "GP-SKIN-CLIPPER"
+  },
+  {
+    "id": 21,
+    "name": "Cyborg Clipper - Professional Metal Hair Clipper with Digital Brushless Motor",
+    "price": 79.99,
+    "brand": "Gamma+",
+    "slug": "gamma-cyborg-clipper",
+    "image": "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
+    "images": [
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_1_.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_3_4_retro_base_1_.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/p/h/photo_aug_18_11_51_44_am_1_.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional metal clipper with advanced digital brushless motor",
+    "description": "The Gamma+ Cyborg Clipper combines futuristic design with cutting-edge technology. Featuring a digital brushless motor and full metal construction, this professional clipper delivers exceptional power and precision for all hair types. The advanced motor technology ensures consistent performance with minimal maintenance and extended lifespan.",
+    "features": [
+      "Digital brushless motor technology",
+      "Full professional metal construction",
+      "Futuristic ergonomic design",
+      "DLC precision fade blade",
+      "Extended battery life",
+      "Minimal maintenance required",
+      "Cord/cordless operation",
+      "High-torque performance",
+      "Professional durability",
+      "Sleek modern aesthetics"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC precision fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "9.5 oz",
+      "voltage": "Dual voltage",
+      "housing": "Full metal construction"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 456,
+    "sku": "GP-CYBORG-CLIPPER"
+  },
+  {
+    "id": 22,
+    "name": "Gamma+ XCEED Professional IN2 Vector Motor Cordless Double Foil Shaver (GP803B)",
+    "price": 149.99,
+    "brand": "Gamma+",
+    "slug": "gamma-xceed-shaver-gp803b",
+    "image": "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-24T144216.711_1000x.png?v=1761331349",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-24T144216.711_1000x.png?v=1761331349",
+      "https://prostylingtools.com/cdn/shop/files/XceedShaver-GP803B-2000x2000-04_1000x.jpg?v=1761331349",
+      "https://prostylingtools.com/cdn/shop/files/XceedShaver-GP803B-2000x2000-12_1_1000x.jpg?v=1761331349",
+      "https://prostylingtools.com/cdn/shop/files/XceedShaver-GP803B-2000x2000-15_1000x.jpg?v=1761331349"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Professional double foil shaver with advanced IN2 vector motor",
+    "description": "The Gamma+ XCEED Professional Double Foil Shaver represents the pinnacle of shaving technology. Powered by the advanced IN2 vector motor, this professional shaver features dual independent foils for the closest, smoothest shave possible. The cutting-edge motor technology delivers consistent power while the hypoallergenic foils ensure comfortable shaving on even the most sensitive skin.",
+    "features": [
+      "Advanced IN2 vector motor technology",
+      "Dual independent suspension foils",
+      "Professional-grade performance",
+      "Hypoallergenic titanium foils",
+      "Ultra-smooth shaving results",
+      "Cordless operation",
+      "Extended battery runtime",
+      "Ergonomic professional design",
+      "Perfect for sensitive skin",
+      "Premium build quality",
+      "Zero irritation technology"
+    ],
+    "specifications": {
+      "motor": "IN2 vector motor",
+      "foils": "Dual independent suspension foils",
+      "blades": "Hypoallergenic titanium",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.8 oz",
+      "voltage": "Dual voltage",
+      "model": "GP803B"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 512,
+    "sku": "GP803B"
   }
 ]
