@@ -158,5 +158,95 @@
     "rating": 4.9,
     "reviewCount": 678,
     "sku": "GH2401-2"
+  },
+  {
+    "id": 18,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Gold",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-gold-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in gold",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in stunning gold represents the pinnacle of luxury grooming tools. This exclusive collaboration merges JRL's professional expertise with Lamborghini's legendary design philosophy. Featuring both a powerful clipper and precision trimmer, this limited-edition set embodies Italian craftsmanship and automotive excellence. The luxurious gold finish and diamond-inspired design elements make this a collector's item and the ultimate professional statement piece.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Luxurious gold finish with premium aesthetics",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian design inspiration"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury gold with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 234,
+    "sku": "JRL-LAMBO-DIAMANTE-GOLD"
+  },
+  {
+    "id": 19,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Black",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-black-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in black",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in sophisticated black represents the ultimate fusion of automotive luxury and professional grooming excellence. This exclusive collaboration brings Lamborghini's iconic design language to JRL's proven professional performance. Featuring both a powerful clipper and precision trimmer in sleek black finish, this limited-edition set combines Italian sophistication with cutting-edge grooming technology. The Diamante series showcases premium materials and meticulous attention to detail worthy of the Lamborghini name.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Sophisticated black finish with luxury styling",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian automotive-inspired design"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury black with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 198,
+    "sku": "JRL-LAMBO-DIAMANTE-BLACK"
   }
 ]
