@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "BaBylissPRO® GoldFX+ All Metal Lithium Outlining Trimmer FX787NG",
+    "name": "BaBylissPRO\u00ae GoldFX+ All Metal Lithium Outlining Trimmer FX787NG",
     "price": 109.99,
     "brand": "Babyliss",
     "slug": "babyliss-influencer-clipper-fx870ng",
@@ -13,7 +13,7 @@
     ],
     "category": "Trimmer",
     "shortDescription": "Premium all-metal lithium outlining trimmer with gold-tone finish",
-    "description": "The BaBylissPRO® GoldFX+ All Metal Lithium Outlining Trimmer features a sleek all-metal housing with luxurious gold-tone finish. Equipped with a high-performance brushless engine for ultimate precision and power, this trimmer delivers exceptional cutting performance for detailed work and outlining.",
+    "description": "The BaBylissPRO\u00ae GoldFX+ All Metal Lithium Outlining Trimmer features a sleek all-metal housing with luxurious gold-tone finish. Equipped with a high-performance brushless engine for ultimate precision and power, this trimmer delivers exceptional cutting performance for detailed work and outlining.",
     "features": [
       "High-performance brushless Ferrari-designed engine",
       "All-metal lithium housing with gold finish",
@@ -39,7 +39,7 @@
   },
   {
     "id": 3,
-    "name": "BaBylissPRO® X Tomb45® Wireless-Charging Trimmer",
+    "name": "BaBylissPRO\u00ae X Tomb45\u00ae Wireless-Charging Trimmer",
     "price": 139.99,
     "brand": "Babyliss",
     "slug": "babylisspro-tomb45-wireless-charging-clipper-fxt45c",
@@ -51,7 +51,7 @@
     ],
     "category": "Trimmer",
     "shortDescription": "Revolutionary wireless-charging trimmer with Tomb45 technology",
-    "description": "The BaBylissPRO® X Tomb45® Wireless-Charging Trimmer features groundbreaking wireless charging technology. Simply place on the charging dock for effortless power-up. This collaboration brings cutting-edge convenience to professional grooming with Ferrari-designed engine and precision-ground blades.",
+    "description": "The BaBylissPRO\u00ae X Tomb45\u00ae Wireless-Charging Trimmer features groundbreaking wireless charging technology. Simply place on the charging dock for effortless power-up. This collaboration brings cutting-edge convenience to professional grooming with Ferrari-designed engine and precision-ground blades.",
     "features": [
       "Revolutionary wireless charging technology",
       "Ferrari-designed high-torque brushless engine",
@@ -77,7 +77,7 @@
   },
   {
     "id": 13,
-    "name": "BABYLISSPRO® COREFX HAIR TRIMMER",
+    "name": "BABYLISSPRO\u00ae COREFX HAIR TRIMMER",
     "price": 94.99,
     "brand": "Babyliss",
     "slug": "babylisspro-rose-gold-fxone-trimmer",
@@ -89,7 +89,7 @@
     ],
     "category": "Trimmer",
     "shortDescription": "Professional core performance trimmer for precision detailing",
-    "description": "The BaBylissPRO® COREFX Professional Performance Trimmer is designed for precision detailing and outlining work. Features a powerful motor and precision-ground T-blade for clean lines and detailed work. Ideal for professional barbershops and experienced stylists.",
+    "description": "The BaBylissPRO\u00ae COREFX Professional Performance Trimmer is designed for precision detailing and outlining work. Features a powerful motor and precision-ground T-blade for clean lines and detailed work. Ideal for professional barbershops and experienced stylists.",
     "features": [
       "High-performance motor",
       "Precision-ground T-blade",
@@ -115,411 +115,6 @@
   },
   {
     "id": 19,
-    "name": "Stylecraft Pro Instinct Professional Vector Motor Trimmer with Intuitive Torque Control #SC407M (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-trimmer-sc407m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__5_.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__4_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Intelligent vector motor trimmer with automatic torque adjustment",
-    "description": "The StyleCraft Pro Instinct Trimmer combines vector motor technology with intuitive torque control for unmatched precision and power. This professional trimmer automatically adjusts its cutting power based on hair thickness, ensuring smooth, consistent results. Perfect for detailed work, outlining, and finishing.",
-    "features": [
-      "Vector motor with intuitive torque control",
-      "Automatic power adjustment technology",
-      "Dual voltage capability",
-      "DLC precision T-blade",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Ergonomic design",
-      "Zero-gap adjustable blade"
-    ],
-    "specifications": {
-      "motor": "Vector motor with torque control",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC407M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 489,
-    "sku": "SC407M"
-  },
-  {
-    "id": 21,
-    "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
-    "price": 164.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-edition-trimmer-sc410m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Metal edition trimmer with full metal housing and vector motor",
-    "description": "The StyleCraft Pro Metal Edition Instinct Trimmer features a premium full-metal housing for enhanced durability and professional aesthetics. This special edition combines the proven vector motor technology with luxury metal construction, making it a standout choice for discerning professionals.",
-    "features": [
-      "Full metal housing construction",
-      "Professional vector motor",
-      "Intuitive torque control",
-      "Premium metal finish",
-      "DLC precision blade",
-      "Extended runtime",
-      "Dual voltage capability",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "8.5 oz",
-      "voltage": "Dual voltage",
-      "model": "SC410M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 378,
-    "sku": "SC410M"
-  },
-  {
-    "id": 25,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-black",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_black.png",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
-    "description": "The Saber Professional Hair Trimmer features advanced digital brushless motor technology for exceptional power and precision. This professional-grade trimmer is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance.",
-    "features": [
-      "Digital brushless motor technology",
-      "Full metal body construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Cord/cordless operation",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.5 oz",
-      "voltage": "Dual voltage",
-      "housing": "Full metal body"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 523,
-    "sku": "SABER-TRIMMER-BLACK"
-  },
-  {
-    "id": 26,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-gold",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_stand_rev.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_rev_blade.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_horizontal.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/l/i/liquidgold_sabert2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Premium gold Saber trimmer with digital brushless motor",
-    "description": "The Gold Edition Saber Professional Trimmer combines the power of digital brushless motor technology with luxurious gold finish. This premium trimmer is perfect for professionals who demand the best in performance and style. The full metal construction ensures durability and professional elegance.",
-    "features": [
-      "Digital brushless motor",
-      "Luxurious gold finish",
-      "Full metal construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable blade",
-      "Extended runtime",
-      "Cord/cordless versatility",
-      "Premium professional grade"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage",
-      "finish": "Premium gold"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 412,
-    "sku": "SABER-TRIMMER-GOLD"
-  },
-  {
-    "id": 27,
-    "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-full-metal-sc403b",
-    "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
-    "images": [
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-403041_848x848.jpg?v=1743763255",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-943599_848x848.jpg?v=1743763254"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Full metal body professional trimmer with brushless motor",
-    "description": "The StyleCraft Saber Professional Trimmer in black features a complete metal body construction for maximum durability and professional aesthetics. Powered by a digital brushless motor, this trimmer delivers consistent power and precision for all your detailing needs.",
-    "features": [
-      "Full metal body construction",
-      "Digital brushless motor",
-      "Professional black finish",
-      "DLC precision blade",
-      "Cordless operation",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.6 oz",
-      "voltage": "Dual voltage",
-      "model": "SC403B"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 467,
-    "sku": "SC403B"
-  },
-  {
-    "id": 28,
-    "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-precision-saber-sc403bp",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Precision metal trimmer with brushless motor and dual voltage",
-    "description": "The StyleCraft Pro Precision Saber Metal Trimmer is engineered for ultimate precision work. Featuring a brushless motor and premium metal construction, this trimmer excels at detailed outlining, edging, and finishing. The dual voltage capability makes it perfect for professionals on the go.",
-    "features": [
-      "Precision-focused design",
-      "Brushless motor technology",
-      "Full metal construction",
-      "Dual voltage capability",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Extended runtime",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Brushless precision motor",
-      "blade": "DLC T-blade precision",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.4 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC403BP"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 391,
-    "sku": "SC403BP"
-  },
-  {
-    "id": 30,
-    "name": "Stylecraft Pro METAL EDITION Instinct-X Professional Vector Motor Trimmer with Rear Metal Housing #SC411M (Dual Voltage)",
-    "price": 164.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-instinct-x-metal-sc411m",
-    "image": "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_main_lids_light_1200x.jpg?v=1729112505",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/InstinctXTrimmerXProblade_1200x.jpg?v=1729112474",
-      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604BLK-1_1200x.jpg?v=1729112612",
-      "https://prostylingtools.com/cdn/shop/files/Stylecraft136604RED-1_1200x.jpg?v=1729112622",
-      "https://prostylingtools.com/cdn/shop/files/SC411M_InstinctXTrimmer_infog_1200x.jpg?v=1729112854"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Metal edition Instinct-X trimmer with rear metal housing",
-    "description": "The StyleCraft Pro Metal Edition Instinct-X Trimmer features enhanced rear metal housing for improved durability and professional style. Powered by the advanced vector motor with intuitive torque control, this trimmer delivers exceptional performance with premium metal construction throughout.",
-    "features": [
-      "Enhanced Instinct-X technology",
-      "Rear metal housing construction",
-      "Professional vector motor",
-      "Intuitive torque control",
-      "Dual voltage capability",
-      "DLC precision blade",
-      "Extended runtime",
-      "Premium metal finish"
-    ],
-    "specifications": {
-      "motor": "Vector motor with torque control",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "135 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC411M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 445,
-    "sku": "SC411M"
-  },
-  {
-    "id": 32,
-    "name": "VGR Hair Trimmers Professional Body Trimmer Vector Motor 10000RPM Hair Clippers Rechargeable Clippers Hair Trimmer for Men V-994",
-    "price": 99.99,
-    "brand": "VGR",
-    "slug": "vgr-v994-trimmer",
-    "image": "https://m.media-amazon.com/images/I/71rNwKBuFgL._AC_SL1500_.jpg",
-    "images": [
-      "https://m.media-amazon.com/images/I/711dd0rQTlL._AC_SL1500_.jpg",
-      "https://m.media-amazon.com/images/I/71aDPNhAB-L._AC_SL1500_.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
-    "description": "The VGR V-994 Professional Hair Trimmer combines powerful 10000RPM vector motor technology with versatile body grooming capabilities. Perfect for detailed hair trimming, body grooming, and precision work. This rechargeable trimmer offers professional-grade performance with exceptional runtime and multiple attachments for various grooming needs.",
-    "features": [
-      "Advanced vector motor 10000 RPM",
-      "Multi-purpose trimmer for hair and body",
-      "Professional precision T-blade",
-      "Rechargeable cordless design",
-      "Multiple trimming attachments included",
-      "Waterproof design for easy cleaning",
-      "Long-lasting battery performance",
-      "Quiet operation",
-      "Professional barbershop quality",
-      "Ergonomic lightweight design"
-    ],
-    "specifications": {
-      "motor": "Vector motor 10000 RPM",
-      "blade": "Precision T-blade stainless steel",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "200 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.5 oz",
-      "voltage": "110-240V dual voltage",
-      "waterproof": "IPX6 water-resistant",
-      "accessories": "5 guide combs, cleaning brush, USB cable",
-      "model": "V-994"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 342,
-    "sku": "VGR-V994"
-  },
-  {
-    "id": 41,
-    "name": "WMARK NG-XT1 Vector Motor Detail Trimmer",
-    "price": 99.99,
-    "brand": "WMARK",
-    "slug": "wmark-ng-xt1-trimmer",
-    "image": "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1.jpg?v=1754754768&width=640",
-    "images": [
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_6.jpg?v=1754754794&width=640",
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640",
-      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Precision vector motor detail trimmer for professional finishing",
-    "description": "The WMARK NG-XT1 Vector Motor Detail Trimmer is engineered for precision detailing and finishing work. Featuring advanced vector motor technology, this trimmer delivers consistent power for clean lines, edge-ups, and intricate designs. Perfect for barbers who specialize in detailed work.",
-    "features": [
-      "Advanced vector motor technology",
-      "Precision T-blade for detailed work",
-      "Zero-gap adjustable blade",
-      "Cordless convenience with long runtime",
-      "Type-C fast charging",
-      "Lightweight ergonomic design",
-      "Professional-grade construction",
-      "Perfect for edge-ups and designs"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "blade": "Precision T-blade",
-      "battery": "Lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "6.8 oz",
-      "voltage": "Dual voltage",
-      "model": "NG-XT1"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 189,
-    "sku": "WMARK-NG-XT1"
-  },
-  {
-    "id": 46,
-    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "JRL",
-    "slug": "jrl-onyx-trimmer-2020t-b",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020t-b.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-1.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-2.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional cordless trimmer with dual voltage for precision detailing",
-    "description": "The JRL ONYX Professional Cordless Hair Trimmer in sleek black is engineered for precision detailing and finishing work. Featuring a powerful motor and sharp T-blade, this trimmer excels at creating clean lines, edge-ups, and intricate designs. The dual voltage capability makes it perfect for professional use worldwide.",
-    "features": [
-      "Professional precision motor",
-      "Dual voltage 100-240V for worldwide use",
-      "Cordless operation for maximum flexibility",
-      "Sharp T-blade for detailed work",
-      "Ergonomic lightweight design",
-      "Lithium-ion battery technology",
-      "Extended runtime for all-day use",
-      "Professional black finish"
-    ],
-    "specifications": {
-      "motor": "High-speed precision motor",
-      "blade": "Professional T-blade #FF2020T",
-      "battery": "Lithium-ion",
-      "runtime": "100 minutes",
-      "chargeTime": "2 hours",
-      "weight": "6.5 oz",
-      "voltage": "Dual voltage 100-240V",
-      "housing": "Professional grade plastic"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 287,
-    "sku": "FF 2020T-B"
-  },
-  {
-    "id": 50,
     "name": "Barber World Mini Professional Trimmer (Black)",
     "price": 49.99,
     "brand": "Barber World",
@@ -563,7 +158,7 @@
     "sku": "BW-TRIMMER-BLACK"
   },
   {
-    "id": 51,
+    "id": 20,
     "name": "Barber World Mini Professional Trimmer (Silver)",
     "price": 49.99,
     "brand": "Barber World",
@@ -605,5 +200,265 @@
     "rating": 4.6,
     "reviewCount": 298,
     "sku": "BW-TRIMMER-SILVER"
+  },
+  {
+    "id": 25,
+    "name": "JRL ONYX Professional Cordless Hair Trimmer - Black #FF 2020T-B (Dual Voltage)",
+    "price": 114.99,
+    "brand": "JRL",
+    "slug": "jrl-onyx-trimmer-2020t-b",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-2020t-b.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-1.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b-2.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/f6e6b1e75ba80be48e3706c64e276ab2/j/r/jrl-ff-2020t-b.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer with dual voltage for precision detailing",
+    "description": "The JRL ONYX Professional Cordless Hair Trimmer in sleek black is engineered for precision detailing and finishing work. Featuring a powerful motor and sharp T-blade, this trimmer excels at creating clean lines, edge-ups, and intricate designs. The dual voltage capability makes it perfect for professional use worldwide.",
+    "features": [
+      "Professional precision motor",
+      "Dual voltage 100-240V for worldwide use",
+      "Cordless operation for maximum flexibility",
+      "Sharp T-blade for detailed work",
+      "Ergonomic lightweight design",
+      "Lithium-ion battery technology",
+      "Extended runtime for all-day use",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Professional T-blade #FF2020T",
+      "battery": "Lithium-ion",
+      "runtime": "100 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.5 oz",
+      "voltage": "Dual voltage 100-240V",
+      "housing": "Professional grade plastic"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 287,
+    "sku": "FF 2020T-B"
+  },
+  {
+    "id": 30,
+    "name": "Monster Clippers Cerberus Trimmer - Vector Engine",
+    "price": 164.99,
+    "brand": "Monster Clippers",
+    "slug": "monster-clippers-cerberus-trimmer-vector-engine",
+    "image": "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445908801.png?pad_color=fff&v=1733970114&width=240",
+    "images": [
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445941569.png?pad_color=fff&v=1733970114&width=350",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153445974337.png?pad_color=fff&v=1733970114&width=533",
+      "https://monsterclippers.com/cdn/shop/products/monsterclippers-cerberus-trimmer-vector-motor-36153446007105.png?pad_color=fff&v=1733970114&width=720"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional trimmer with vector motor technology and extra wide T-shaped blade",
+    "description": "The Cerberus Trimmer brings Vector Motor technology to precision trimming work. With intuitive torque control that adapts to hair resistance, this trimmer delivers smooth, efficient cutting without snags. The extra wide T-shaped double DLC blade combined with 10,000 RPM power makes it perfect for detailed work, outlining, and finishing. Its compact 15cm design allows you to work closer to hair and skin with exceptional ease.",
+    "features": [
+      "Extremely powerful high torque VECTOR motor",
+      "Intuitive torque control technology",
+      "10,000 RPM for superior performance",
+      "Extra wide T-shaped double DLC cutting blades",
+      "Metal bottom housing for reduced vibration and noise",
+      "Adjustable zero gap cutting blade",
+      "Cord and cordless operation",
+      "Compact size - 15 centimeter",
+      "Lightweight ergonomic design",
+      "Mini USB recharge",
+      "Multiple spare colored top parts included"
+    ],
+    "specifications": {
+      "motor": "Vector motor with responsive torque control",
+      "rpm": "10,000 RPM",
+      "blade": "Extra wide T-shaped double DLC, adjustable zero gap",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "120 minutes",
+      "size": "15 cm (compact)",
+      "charging": "Mini USB",
+      "operation": "Cord/cordless",
+      "housing": "Metal bottom housing"
+    },
+    "accessories": [
+      "1 x AC adapter",
+      "1 x Charging stand",
+      "1 x Micro USB cable",
+      "1 x Mini screwdriver",
+      "1 x Small cleaning brush",
+      "1 x 10 cc Trimmer oil",
+      "Multiple spare top parts in different colours"
+    ],
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 213,
+    "sku": "MC-CERBERUS-TRIMMER"
+  },
+  {
+    "id": 33,
+    "name": "VGR Hair Trimmers Professional Body Trimmer Vector Motor 10000RPM Hair Clippers Rechargeable Clippers Hair Trimmer for Men V-994",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-v994-trimmer",
+    "image": "https://m.media-amazon.com/images/I/71rNwKBuFgL._AC_SL1500_.jpg",
+    "images": [
+      "https://m.media-amazon.com/images/I/711dd0rQTlL._AC_SL1500_.jpg",
+      "https://m.media-amazon.com/images/I/71aDPNhAB-L._AC_SL1500_.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional vector motor trimmer with 10000RPM for body grooming",
+    "description": "The VGR V-994 Professional Hair Trimmer combines powerful 10000RPM vector motor technology with versatile body grooming capabilities. Perfect for detailed hair trimming, body grooming, and precision work. This rechargeable trimmer offers professional-grade performance with exceptional runtime and multiple attachments for various grooming needs.",
+    "features": [
+      "Advanced vector motor 10000 RPM",
+      "Multi-purpose trimmer for hair and body",
+      "Professional precision T-blade",
+      "Rechargeable cordless design",
+      "Multiple trimming attachments included",
+      "Waterproof design for easy cleaning",
+      "Long-lasting battery performance",
+      "Quiet operation",
+      "Professional barbershop quality",
+      "Ergonomic lightweight design"
+    ],
+    "specifications": {
+      "motor": "Vector motor 10000 RPM",
+      "blade": "Precision T-blade stainless steel",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "200 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.5 oz",
+      "voltage": "110-240V dual voltage",
+      "waterproof": "IPX6 water-resistant",
+      "accessories": "5 guide combs, cleaning brush, USB cable",
+      "model": "V-994"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 342,
+    "sku": "VGR-V994"
+  },
+  {
+    "id": 35,
+    "name": "VGR Trimmer Professional Hair Cutting Machine Barber External Rotor Motor Cordless",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-rotor-trimmer",
+    "image": "https://i.ebayimg.com/images/g/ExIAAeSwv8xog6wm/s-l1600.jpg",
+    "images": [
+      "https://i.ebayimg.com/images/g/ExIAAeSwv8xog6wm/s-l1600.jpg",
+      "https://i.ebayimg.com/images/g/xqUAAeSwTidog6vL/s-l1600.png",
+      "https://i.ebayimg.com/images/g/vDAAAeSwGftog60G/s-l1600.png",
+      "https://i.ebayimg.com/images/g/rVAAAeSwNzdog62T/s-l1600.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional external rotor motor trimmer for precision cutting",
+    "description": "VGR Professional Trimmer with External Rotor Motor technology delivers exceptional cutting power and precision for professional barbers. This cordless hair cutting machine features advanced motor design for consistent performance, making it ideal for detailed trimming, outlining, and professional barbershop services.",
+    "features": [
+      "External rotor motor technology",
+      "Professional precision cutting",
+      "Cordless rechargeable design",
+      "Sharp stainless steel blades",
+      "Professional barbershop quality",
+      "Ergonomic lightweight design",
+      "Long-lasting battery",
+      "Quiet operation",
+      "Multiple trimming attachments"
+    ],
+    "specifications": {
+      "motor": "External rotor motor",
+      "blade": "Precision stainless steel blade",
+      "battery": "High-capacity rechargeable",
+      "runtime": "190 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "Guide combs, cleaning brush, USB cable"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 203,
+    "sku": "VGR-ROTOR-001"
+  },
+  {
+    "id": 44,
+    "name": "WMARK NG-XT1 Vector Motor Detail Trimmer",
+    "price": 99.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-xt1-trimmer",
+    "image": "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1.jpg?v=1754754768&width=640",
+    "images": [
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_6.jpg?v=1754754794&width=640",
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640",
+      "https://www.jvbeautysupply.com/cdn/shop/files/NG-XT1_-_3.jpg?v=1754754794&width=640"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Precision vector motor detail trimmer for professional finishing",
+    "description": "The WMARK NG-XT1 Vector Motor Detail Trimmer is engineered for precision detailing and finishing work. Featuring advanced vector motor technology, this trimmer delivers consistent power for clean lines, edge-ups, and intricate designs. Perfect for barbers who specialize in detailed work.",
+    "features": [
+      "Advanced vector motor technology",
+      "Precision T-blade for detailed work",
+      "Zero-gap adjustable blade",
+      "Cordless convenience with long runtime",
+      "Type-C fast charging",
+      "Lightweight ergonomic design",
+      "Professional-grade construction",
+      "Perfect for edge-ups and designs"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "blade": "Precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "6.8 oz",
+      "voltage": "Dual voltage",
+      "model": "NG-XT1"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 189,
+    "sku": "WMARK-NG-XT1"
+  },
+  {
+    "id": 49,
+    "name": "WMARK New Professional Hair Trimmer NG-7982",
+    "price": 49.99,
+    "brand": "WMARK",
+    "slug": "wmark-ng-7982-trimmer",
+    "image": "https://i.ebayimg.com/images/g/KKgAAeSw1JRoZ3ud/s-l1600.png",
+    "images": [
+      "https://i.ebayimg.com/images/g/ULoAAeSw2HtoZ3uf/s-l1600.png",
+      "https://i.ebayimg.com/images/g/Za4AAeSw8d9oZ3ug/s-l1600.png",
+      "https://i.ebayimg.com/images/g/kXkAAeSw-1BoZ3ug/s-l1600.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional cordless trimmer for precision cutting and detailing",
+    "description": "The WMARK NG-7982 is a professional-grade hair trimmer designed for barbers who demand precision and versatility. Featuring a powerful motor and sharp blades, this cordless trimmer excels at detail work, line-ups, and beard trimming. Its ergonomic design and long battery life make it perfect for all-day use in busy barbershops.",
+    "features": [
+      "Professional precision trimmer",
+      "Powerful high-speed motor",
+      "Sharp stainless steel blades",
+      "Rechargeable cordless operation",
+      "Ergonomic lightweight design",
+      "Type-C fast charging",
+      "Long-lasting battery performance",
+      "Perfect for detail work and finishing"
+    ],
+    "specifications": {
+      "motor": "High-speed precision motor",
+      "blade": "Stainless steel precision blade",
+      "battery": "Lithium-ion rechargeable",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "7.2 oz",
+      "charging": "Type-C",
+      "voltage": "Dual voltage",
+      "model": "NG-7982"
+    },
+    "inStock": true,
+    "rating": 4.6,
+    "reviewCount": 178,
+    "sku": "WMARK-NG-7982"
   }
 ]
