@@ -1,7 +1,7 @@
 [
   {
     "id": 2,
-    "name": "BaBylissPRO® LimitedFX Silver Trimmer And Double-Foil Shaver Gift Set",
+    "name": "BaBylissPRO\u00ae LimitedFX Silver Trimmer And Double-Foil Shaver Gift Set",
     "price": 139.99,
     "brand": "Babyliss",
     "slug": "babylisspro-tomb45-trimmer",
@@ -13,7 +13,7 @@
     ],
     "category": "Combo Set",
     "shortDescription": "Limited edition silver trimmer and double-foil shaver professional set",
-    "description": "This exclusive BaBylissPRO® LimitedFX Silver Gift Set combines a premium outlining trimmer with a powerful double-foil shaver. Perfect for professionals seeking the ultimate grooming duo, this limited edition set features sleek silver metallic finish and includes everything needed for precision cutting and ultra-smooth finishing.",
+    "description": "This exclusive BaBylissPRO\u00ae LimitedFX Silver Gift Set combines a premium outlining trimmer with a powerful double-foil shaver. Perfect for professionals seeking the ultimate grooming duo, this limited edition set features sleek silver metallic finish and includes everything needed for precision cutting and ultra-smooth finishing.",
     "features": [
       "Premium outlining trimmer included",
       "Double-foil shaver for ultra-smooth finish",
@@ -37,9 +37,50 @@
     "sku": "LIMITEDFX-SILVER-SET"
   },
   {
-    "id": 17,
+    "id": 15,
+    "name": "BABYLISS PRO FXONE BLACKFX CLIPPER & TRIMMER BUNDLE - TOOLS ONLY",
+    "price": 179.99,
+    "brand": "Babyliss",
+    "slug": "babyliss-pro-fxone-blackfx-bundle",
+    "image": "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
+    "images": [
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_5.jpg?v=1732407544&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_1.jpg?v=1732407545&width=1125",
+      "https://clippervault.com/cdn/shop/files/2_28b5eb33-ea28-4601-a3ed-b428c7d24e62.jpg?v=1731966138&width=1125",
+      "https://clippervault.com/cdn/shop/files/Babyliss_Pro_FXONE_BlackFX_Clipper_Trimmer_Bundle_-_Tools_Only_FX1CTMBTO_4.jpg?v=1732407545&width=1125"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Premium BlackFX clipper and trimmer professional bundle",
+    "description": "The BaBylissPRO FXONE BlackFX Bundle combines a professional clipper and trimmer in a sleek black finish. This powerful duo is designed for complete grooming services, featuring Ferrari-designed motors and precision blades. Perfect for professional barbers who demand the best tools for cutting and detailing work. Tools-only package without charging accessories.",
+    "features": [
+      "FXONE BlackFX clipper included",
+      "FXONE BlackFX trimmer included",
+      "Ferrari-designed brushless motors",
+      "Premium all-metal housing",
+      "Precision fade blades",
+      "Lithium-ion batteries in both tools",
+      "Sleek matte black finish",
+      "Professional grade construction",
+      "Tools-only bundle"
+    ],
+    "specifications": {
+      "setIncludes": "BlackFX Clipper + BlackFX Trimmer",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "120 minutes",
+      "motors": "Ferrari-designed brushless (both)",
+      "batteries": "Lithium-ion (both)",
+      "voltage": "Dual voltage",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 178,
+    "sku": "FX1CTMBTO"
+  },
+  {
+    "id": 26,
     "name": "JRL GHOST2 Hair Clipper, Trimmer, Shaver Bundle #GH2401-2",
-    "price": 499.99,
+    "price": 284.99,
     "brand": "JRL",
     "slug": "jrl-ghost2-bundle-gh2401-2",
     "image": "https://wbbarber.com/cdn/shop/files/GH2024-Collection2_1400x1400.jpg?v=1758198831",
@@ -79,7 +120,97 @@
     "sku": "GH2401-2"
   },
   {
-    "id": 38,
+    "id": 27,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Gold",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-gold-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-6019265_2048x2048.jpg?v=1753300751",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in gold",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in stunning gold represents the pinnacle of luxury grooming tools. This exclusive collaboration merges JRL's professional expertise with Lamborghini's legendary design philosophy. Featuring both a powerful clipper and precision trimmer, this limited-edition set embodies Italian craftsmanship and automotive excellence. The luxurious gold finish and diamond-inspired design elements make this a collector's item and the ultimate professional statement piece.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Luxurious gold finish with premium aesthetics",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian design inspiration"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury gold with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 234,
+    "sku": "JRL-LAMBO-DIAMANTE-GOLD"
+  },
+  {
+    "id": 28,
+    "name": "JRL Professional X Lamborghini Diamante Cordless Clipper and Trimmer Combo - Black",
+    "price": 349.99,
+    "brand": "JRL",
+    "slug": "jrl-lamborghini-diamante-black-combo",
+    "image": "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+    "images": [
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-2663635_2048x2048.webp?v=1753300750",
+      "https://modernbarbersupply.com/cdn/shop/files/jrl-professional-x-lamborghini-diamante-cordless-clipper-and-trimmer-combo-preorder-7397181_2048x2048.webp?v=1754460175"
+    ],
+    "category": "Combo Set",
+    "shortDescription": "Luxury Lamborghini collaboration clipper and trimmer combo in black",
+    "description": "The JRL Professional X Lamborghini Diamante Cordless Combo in sophisticated black represents the ultimate fusion of automotive luxury and professional grooming excellence. This exclusive collaboration brings Lamborghini's iconic design language to JRL's proven professional performance. Featuring both a powerful clipper and precision trimmer in sleek black finish, this limited-edition set combines Italian sophistication with cutting-edge grooming technology. The Diamante series showcases premium materials and meticulous attention to detail worthy of the Lamborghini name.",
+    "features": [
+      "Exclusive JRL X Lamborghini collaboration",
+      "Sophisticated black finish with luxury styling",
+      "Diamante series limited edition design",
+      "Professional clipper for cutting included",
+      "Precision trimmer for detailing included",
+      "High-performance motors in both tools",
+      "Dual voltage 100-240V capability",
+      "Lithium-ion batteries for extended runtime",
+      "Premium packaging and presentation",
+      "Collector's edition quality",
+      "Hot item - Limited availability",
+      "Italian automotive-inspired design"
+    ],
+    "specifications": {
+      "setIncludes": "Diamante Clipper + Diamante Trimmer + Premium Case",
+      "clipperMotor": "High-performance professional rotary",
+      "trimmerMotor": "Precision high-speed motor",
+      "clipperRuntime": "120 minutes",
+      "trimmerRuntime": "100 minutes",
+      "voltage": "Dual voltage 100-240V",
+      "finish": "Luxury black with Lamborghini design",
+      "collaboration": "JRL X Lamborghini",
+      "edition": "Limited Edition Diamante Series"
+    },
+    "inStock": true,
+    "hotItem": true,
+    "rating": 4.9,
+    "reviewCount": 198,
+    "sku": "JRL-LAMBO-DIAMANTE-BLACK"
+  },
+  {
+    "id": 41,
     "name": "Wahl Cordless Barber Combo - 5 Star Cordless Magic Clip & Cordless Detailer Li #3025397",
     "price": 209.99,
     "brand": "Wahl",
@@ -119,7 +250,7 @@
     "sku": "3025397"
   },
   {
-    "id": 42,
+    "id": 45,
     "name": "WMARK NG-8632KIT Rechargeable Hair Clipper Trimmer Kit",
     "price": 124.99,
     "brand": "WMARK",
