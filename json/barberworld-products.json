@@ -79,6 +79,45 @@
   },
   {
     "id": 3,
+    "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 6.5\"",
+    "price": 49.99,
+    "brand": "Barber World",
+    "slug": "barber-world-japanese-steel-scissors-6-5",
+    "image": "../brbwrldimages/sis1.png",
+    "images": [
+      "../brbwrldimages/sis2.png",
+      "../brbwrldimages/sis3.png",
+      "../brbwrldimages/sis4.png"
+    ],
+    "category": "Scissors",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 6.0 inch",
+    "description": "The Barber World 6.0-inch Japanese steel scissors offer the perfect balance between precision and versatility. Ideal for both detailed work and general cutting, these professional-grade scissors feature ultra-sharp blades made from premium Japanese steel. The comfortable ergonomic design allows for hours of use without hand strain, making them perfect for busy barbers and stylists.",
+    "features": [
+      "Premium Japanese steel blades",
+      "6.0-inch blade length",
+      "Ergonomic offset handle design",
+      "Ultra-sharp convex edge",
+      "Professional barber quality",
+      "Adjustable pivot tension",
+      "Comfortable finger rest",
+      "Versatile for all cutting techniques"
+    ],
+    "specifications": {
+      "material": "Japanese Steel",
+      "bladeLength": "6.0 inches",
+      "totalLength": "6.0 inches",
+      "bladeType": "Convex edge",
+      "finish": "Polished silver",
+      "handleType": "Offset ergonomic",
+      "weight": "3.1 oz"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 245,
+    "sku": "BW-SCISSORS-60"
+  },
+  {
+    "id": 4,
     "name": "Barber World Professional Japanese Steel Hair Cutting Scissors 7.0\"",
     "price": 49.99,
     "brand": "Barber World",
@@ -117,7 +156,7 @@
     "sku": "BW-SCISSORS-70"
   },
   {
-    "id": 4,
+    "id": 5,
     "name": "Barber World Mini Professional Trimmer (Black)",
     "price": 49.99,
     "brand": "Barber World",
@@ -161,7 +200,7 @@
     "sku": "BW-TRIMMER-BLACK"
   },
   {
-    "id": 5,
+    "id": 6,
     "name": "Barber World Mini Professional Trimmer (Silver)",
     "price": 49.99,
     "brand": "Barber World",
@@ -205,7 +244,7 @@
     "sku": "BW-TRIMMER-SILVER"
   },
   {
-    "id": 6,
+    "id": 7,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Gold)",
     "price": 49.99,
     "brand": "Barber World",
@@ -248,7 +287,7 @@
     "sku": "BW-AIRDUSTER-GOLD"
   },
   {
-    "id": 7,
+    "id": 8,
     "name": "Barber World Air Duster - Multi-Function Portable Air Blow Dryer (Mirror Multicolor)",
     "price": 49.99,
     "brand": "Barber World",
