@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
     initializeWelcomeSection();
     initializeShippingBanner();
-    initializeQuizModal();
     initializeBackToTop();
     initializeFlashSaleBanner();
     initializeFloatingButton();
