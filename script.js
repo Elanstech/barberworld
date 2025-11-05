@@ -1,4 +1,7 @@
-// Enhanced Barber World Homepage JavaScript - Complete Version with Stripe & Flash Sale
+// ==========================================
+// ENHANCED BARBER WORLD - COMPLETE SCRIPT.JS
+// With redesigned carousel loading from ALL brand JSON files
+// ==========================================
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -14,6 +17,18 @@ let isCarouselAnimating = false;
 
 // Flash Sale Configuration
 const FLASH_SALE_END_DATE = new Date('2025-11-12T23:59:59').getTime();
+
+// All brand JSON file paths
+const ALL_BRAND_JSON_FILES = [
+    'json/babyliss-products.json',
+    'json/stylecraft-products.json',
+    'json/jrl-products.json',
+    'json/wahl-products.json',
+    'json/wmark-products.json',
+    'json/vgr-products.json',
+    'json/monster-products.json',
+    'json/barberworld-products.json'
+];
 
 // ==========================================
 // INITIALIZATION
@@ -51,145 +66,24 @@ function initializeEventListeners() {
     });
     
     window.addEventListener('cartUpdated', () => {
+        updateCartDisplay();
         updateCartBadge();
     });
-}
-
-function initializeAnimations() {
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
     
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('aos-animate');
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+            if (carouselProducts.length > 0) {
+                createCarouselIndicators();
+                updateCarouselPosition();
             }
-        });
-    }, observerOptions);
-    
-    document.querySelectorAll('[data-aos]').forEach(el => {
-        observer.observe(el);
+        }, 250);
     });
 }
 
 // ==========================================
-// WELCOME SECTION ANIMATION
-// ==========================================
-
-function initializeWelcomeSection() {
-    const welcomeSection = document.querySelector('.welcome-section');
-    const handwrittenPath = document.querySelector('.handwritten-path');
-    
-    if (!welcomeSection || !handwrittenPath) return;
-
-    const observerOptions = {
-        threshold: 0.3,
-        rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                handwrittenPath.style.animation = 'none';
-                void handwrittenPath.offsetWidth;
-                handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
-            }
-        });
-    }, observerOptions);
-
-    observer.observe(welcomeSection);
-
-    welcomeSection.style.opacity = '0';
-    welcomeSection.style.transform = 'translateY(20px)';
-    welcomeSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    
-    setTimeout(() => {
-        welcomeSection.style.opacity = '1';
-        welcomeSection.style.transform = 'translateY(0)';
-    }, 100);
-
-    welcomeSection.addEventListener('click', function() {
-        handwrittenPath.style.animation = 'none';
-        void handwrittenPath.offsetWidth;
-        handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
-    });
-}
-
-window.addEventListener('scroll', function() {
-    const welcomeSection = document.querySelector('.welcome-section');
-    if (!welcomeSection) return;
-    
-    const scrollPosition = window.scrollY;
-    const sectionTop = welcomeSection.offsetTop;
-    
-    if (scrollPosition > sectionTop + 200) {
-        welcomeSection.style.opacity = '0.7';
-    } else {
-        welcomeSection.style.opacity = '1';
-    }
-});
-
-// ==========================================
-// SHIPPING BANNER
-// ==========================================
-
-function initializeShippingBanner() {
-    const closeBannerBtn = document.querySelector('.close-banner');
-    const shippingBanner = document.querySelector('.shipping-banner');
-    
-    if (!closeBannerBtn || !shippingBanner) return;
-    
-    const bannerClosed = localStorage.getItem('shippingBannerClosed');
-    if (bannerClosed === 'true') {
-        shippingBanner.classList.add('hidden');
-    }
-    
-    closeBannerBtn.addEventListener('click', function() {
-        shippingBanner.classList.add('hidden');
-        localStorage.setItem('shippingBannerClosed', 'true');
-    });
-}
-
-// ==========================================
-// MOBILE MENU FUNCTIONALITY
-// ==========================================
-
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-overlay');
-    
-    if (menu) {
-        menu.classList.toggle('active');
-        
-        if (overlay) {
-            overlay.classList.toggle('active');
-        }
-        
-        if (menu.classList.contains('active')) {
-            document.body.classList.add('no-scroll');
-        } else {
-            document.body.classList.remove('no-scroll');
-        }
-    }
-}
-
-function closeMobileMenu() {
-    const menu = document.getElementById('mobile-menu');
-    const overlay = document.getElementById('mobile-overlay');
-    
-    if (menu) {
-        menu.classList.remove('active');
-        if (overlay) {
-            overlay.classList.remove('active');
-        }
-        document.body.classList.remove('no-scroll');
-    }
-}
-
-// ==========================================
-// FEATURED PRODUCTS CAROUSEL
+// REDESIGNED CAROUSEL - LOADS FROM ALL JSON FILES
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -200,26 +94,39 @@ async function loadFeaturedProducts() {
             loadingOverlay.classList.add('active');
         }
         
-        const response = await fetch('json/all-products-products.json');
+        // Fetch all brand JSON files in parallel
+        const fetchPromises = ALL_BRAND_JSON_FILES.map(file => 
+            fetch(file)
+                .then(res => res.ok ? res.json() : [])
+                .catch(err => {
+                    console.warn(`Could not load ${file}:`, err);
+                    return [];
+                })
+        );
         
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
+        const allBrandProducts = await Promise.all(fetchPromises);
         
-        allProducts = await response.json();
+        // Combine all products from all brands
+        allProducts = allBrandProducts.flat();
         
         if (!Array.isArray(allProducts) || allProducts.length === 0) {
             throw new Error('No products found');
         }
         
-        const shuffled = [...allProducts].sort(() => Math.random() - 0.5);
+        // Randomize and select 12 products for carousel
+        const shuffled = shuffleArray(allProducts);
         carouselProducts = shuffled.slice(0, 12);
         
         renderCarousel();
         createCarouselIndicators();
-        startCarouselAutoplay();
         
         await preloadCarouselImages();
+        
+        updateCarouselPosition();
+        startCarouselAutoplay();
+        setupCarouselEventListeners();
+        
+        console.log('✨ Carousel loaded with', carouselProducts.length, 'random products from all brands!');
         
     } catch (error) {
         console.error('Error loading products:', error);
@@ -233,14 +140,28 @@ async function loadFeaturedProducts() {
     }
 }
 
+// ==========================================
+// CAROUSEL UTILITY FUNCTIONS
+// ==========================================
+
+function shuffleArray(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+}
+
 function getProductImage(product) {
     if (product.images && Array.isArray(product.images) && product.images.length > 0) {
         return product.images[0];
     }
-    return product.image || 'placeholder.jpg';
+    return product.image || 'https://via.placeholder.com/400x400?text=No+Image';
 }
 
 function escapeHtml(text) {
+    if (!text) return '';
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
@@ -282,6 +203,10 @@ async function preloadCarouselImages() {
     });
 }
 
+// ==========================================
+// CAROUSEL RENDERING
+// ==========================================
+
 function renderCarousel() {
     const track = document.getElementById('carousel-track-new');
     if (!track) return;
@@ -294,7 +219,7 @@ function renderCarousel() {
             <div class="carousel-product-info">
                 <span class="carousel-product-brand">${escapeHtml(product.brand)}</span>
                 <h3 class="carousel-product-name">${truncateText(product.name, 60)}</h3>
-                <div class="carousel-product-price">$${product.price.toFixed(2)}</div>
+                <div class="carousel-product-price">${product.price.toFixed(2)}</div>
                 <button class="carousel-add-btn" onclick="event.stopPropagation(); addToCart(${product.id}, '${escapeHtml(product.brand)}')">
                     <i class="fas fa-shopping-bag"></i>
                     <span>Add to Cart</span>
@@ -319,8 +244,15 @@ function createCarouselIndicators() {
 }
 
 function getProductsPerPage() {
-    return window.innerWidth <= 768 ? 2 : 3;
+    if (window.innerWidth <= 480) return 1;
+    if (window.innerWidth <= 768) return 2;
+    if (window.innerWidth <= 1024) return 2;
+    return 3;
 }
+
+// ==========================================
+// CAROUSEL NAVIGATION
+// ==========================================
 
 function carouselNext() {
     if (isCarouselAnimating) return;
@@ -357,7 +289,7 @@ function updateCarouselPosition() {
     
     const productsPerPage = getProductsPerPage();
     const cardWidth = track.querySelector('.carousel-product-card')?.offsetWidth || 0;
-    const gap = 24;
+    const gap = window.innerWidth <= 768 ? 16 : 32;
     const offset = currentCarouselPage * productsPerPage * (cardWidth + gap);
     
     isCarouselAnimating = true;
@@ -369,8 +301,12 @@ function updateCarouselPosition() {
     
     setTimeout(() => {
         isCarouselAnimating = false;
-    }, 500);
+    }, 700);
 }
+
+// ==========================================
+// CAROUSEL AUTOPLAY
+// ==========================================
 
 function startCarouselAutoplay() {
     if (carouselAutoplayInterval) return;
@@ -392,20 +328,13 @@ function resetCarouselAutoplay() {
     startCarouselAutoplay();
 }
 
-const carousel = document.getElementById('products-carousel');
-if (carousel) {
-    carousel.addEventListener('mouseenter', stopCarouselAutoplay);
-    carousel.addEventListener('mouseleave', startCarouselAutoplay);
+function setupCarouselEventListeners() {
+    const carousel = document.getElementById('products-carousel');
+    if (carousel) {
+        carousel.addEventListener('mouseenter', stopCarouselAutoplay);
+        carousel.addEventListener('mouseleave', startCarouselAutoplay);
+    }
 }
-
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        createCarouselIndicators();
-        updateCarouselPosition();
-    }, 250);
-});
 
 function showCarouselError() {
     const track = document.getElementById('carousel-track-new');
@@ -445,13 +374,17 @@ function saveCart() {
 
 async function addToCart(productId, brandName) {
     try {
-        const response = await fetch('json/all-products-products.json');
-        if (!response.ok) {
-            throw new Error('Failed to load products');
-        }
+        // Find product in allProducts array (already loaded from all JSON files)
+        let product = allProducts.find(p => p.id === productId && p.brand === brandName);
         
-        const products = await response.json();
-        const product = products.find(p => p.id === productId && p.brand === brandName);
+        // If not found in allProducts, try loading from the legacy file
+        if (!product) {
+            const response = await fetch('json/all-products-products.json');
+            if (response.ok) {
+                const products = await response.json();
+                product = products.find(p => p.id === productId && p.brand === brandName);
+            }
+        }
         
         if (!product) {
             console.error('Product not found');
@@ -537,34 +470,32 @@ function updateCartBadge() {
 }
 
 function updateCartDisplay() {
-    const cartBody = document.getElementById('cart-body');
-    const cartEmpty = document.getElementById('cart-empty');
     const cartItems = document.getElementById('cart-items');
-    const cartFooter = document.getElementById('cart-footer');
     const cartTotal = document.getElementById('cart-total');
     
-    if (!cartBody || !cartEmpty || !cartItems || !cartFooter) return;
+    if (!cartItems) return;
     
     if (cart.length === 0) {
-        cartEmpty.style.display = 'flex';
-        cartItems.style.display = 'none';
-        cartFooter.style.display = 'none';
+        cartItems.innerHTML = `
+            <div class="empty-cart">
+                <i class="fas fa-shopping-bag"></i>
+                <p>Your cart is empty</p>
+                <button class="browse-btn" onclick="closeCart()">
+                    Continue Shopping
+                </button>
+            </div>
+        `;
+        if (cartTotal) cartTotal.textContent = '$0.00';
         return;
     }
     
-    cartEmpty.style.display = 'none';
-    cartItems.style.display = 'flex';
-    cartFooter.style.display = 'block';
-    
-    cartItems.innerHTML = cart.map((item, index) => `
-        <div class="cart-item" style="animation: slideInFromRight 0.4s cubic-bezier(0.4, 0, 0.2, 1) ${index * 0.1}s both;">
-            <div class="cart-item-image">
-                <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}">
-            </div>
-            <div class="cart-item-info">
-                <div class="cart-item-brand">${escapeHtml(item.brand)}</div>
-                <div class="cart-item-name">${truncateText(item.name, 50)}</div>
-                <div class="cart-item-price">$${item.price.toFixed(2)}</div>
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${escapeHtml(item.name)}">
+            <div class="cart-item-details">
+                <h4>${truncateText(item.name, 45)}</h4>
+                <p class="cart-item-brand">${escapeHtml(item.brand)}</p>
+                <p class="cart-item-price">$${item.price.toFixed(2)}</p>
                 <div class="cart-item-actions">
                     <div class="quantity-controls">
                         <button class="quantity-btn" onclick="updateCartQuantity(${item.id}, '${escapeHtml(item.brand)}', -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
@@ -617,7 +548,7 @@ function closeCart() {
 }
 
 // ==========================================
-// STRIPE CHECKOUT - COMPLETE INTEGRATION
+// STRIPE CHECKOUT
 // ==========================================
 
 async function checkout() {
@@ -625,101 +556,160 @@ async function checkout() {
         showNotification('Your cart is empty!', 'error');
         return;
     }
-    
-    const loadingOverlay = document.getElementById('loading-overlay');
-    if (loadingOverlay) {
-        loadingOverlay.classList.add('active');
+
+    const checkoutBtn = document.querySelector('.checkout-btn');
+    if (checkoutBtn) {
+        checkoutBtn.disabled = true;
+        checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
     }
-    
+
     try {
-        console.log('💳 Starting Stripe checkout process...');
-        
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
                 product_data: {
                     name: item.name,
-                    description: `${item.brand || 'Barber World'} - Professional Equipment`,
+                    description: item.brand,
+                    images: [item.image]
                 },
-                unit_amount: Math.round(item.price * 100),
+                unit_amount: Math.round(item.price * 100)
             },
-            quantity: item.quantity,
+            quantity: item.quantity
         }));
-        
-        console.log('📦 Line items prepared:', lineItems);
-        
-        const response = await fetch('/api/checkout', {
+
+        const response = await fetch('https://barberworld-stripe-backend.onrender.com/create-checkout-session', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ lineItems }),
+            body: JSON.stringify({
+                lineItems: lineItems,
+                successUrl: `${window.location.origin}/success.html`,
+                cancelUrl: `${window.location.origin}/`
+            })
         });
-        
-        console.log('📡 API Response status:', response.status);
-        
-        const data = await response.json();
-        console.log('📥 API Response data:', data);
-        
+
         if (!response.ok) {
-            throw new Error(data.message || data.error || 'Checkout failed');
+            const errorData = await response.json();
+            throw new Error(errorData.error || 'Failed to create checkout session');
         }
-        
-        if (data.sessionId) {
-            console.log('✅ Session ID received, redirecting to Stripe...');
-            const { error } = await stripe.redirectToCheckout({
-                sessionId: data.sessionId,
-            });
-            
-            if (error) {
-                throw new Error(error.message);
-            }
-        } else {
-            throw new Error('No session ID received from server');
+
+        const { sessionId } = await response.json();
+
+        const { error } = await stripe.redirectToCheckout({
+            sessionId: sessionId
+        });
+
+        if (error) {
+            throw error;
         }
-        
+
     } catch (error) {
-        console.error('❌ Checkout error:', error);
-        showNotification(`Checkout failed: ${error.message}`, 'error');
-    } finally {
-        if (loadingOverlay) {
-            loadingOverlay.classList.remove('active');
+        console.error('Checkout error:', error);
+        showNotification(error.message || 'Checkout failed. Please try again.', 'error');
+
+        if (checkoutBtn) {
+            checkoutBtn.disabled = false;
+            checkoutBtn.innerHTML = '<i class="fas fa-lock"></i> Secure Checkout';
         }
     }
 }
 
 // ==========================================
-// NOTIFICATIONS
+// MOBILE MENU
 // ==========================================
 
-function showNotification(message, type = 'success') {
-    const toast = document.getElementById('notification-toast');
-    const messageSpan = document.getElementById('notification-message');
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
     
-    if (!toast || !messageSpan) return;
+    if (menu) {
+        menu.classList.toggle('active');
+        
+        if (overlay) {
+            overlay.classList.toggle('active');
+        }
+        
+        if (menu.classList.contains('active')) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }
+}
+
+function closeMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
     
-    messageSpan.textContent = message;
-    toast.classList.add('show');
-    
-    setTimeout(() => {
-        toast.classList.remove('show');
-    }, 3000);
+    if (menu) {
+        menu.classList.remove('active');
+        if (overlay) {
+            overlay.classList.remove('active');
+        }
+        document.body.classList.remove('no-scroll');
+    }
 }
 
 // ==========================================
-// UTILITY FUNCTIONS
+// WELCOME SECTION ANIMATION
 // ==========================================
 
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
+function initializeWelcomeSection() {
+    const welcomeSection = document.querySelector('.welcome-section');
+    const handwrittenPath = document.querySelector('.handwritten-text path');
+    
+    if (!welcomeSection || !handwrittenPath) return;
+
+    welcomeSection.style.opacity = '0';
+    welcomeSection.style.transform = 'translateY(30px)';
+    welcomeSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    
+    setTimeout(() => {
+        welcomeSection.style.opacity = '1';
+        welcomeSection.style.transform = 'translateY(0)';
+    }, 100);
+
+    welcomeSection.addEventListener('click', function() {
+        handwrittenPath.style.animation = 'none';
+        void handwrittenPath.offsetWidth;
+        handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
+    });
+}
+
+window.addEventListener('scroll', function() {
+    const welcomeSection = document.querySelector('.welcome-section');
+    if (!welcomeSection) return;
+    
+    const scrollPosition = window.scrollY;
+    const sectionTop = welcomeSection.offsetTop;
+    
+    if (scrollPosition > sectionTop + 200) {
+        welcomeSection.style.opacity = '0.7';
+    } else {
+        welcomeSection.style.opacity = '1';
+    }
+});
+
+// ==========================================
+// SHIPPING BANNER
+// ==========================================
+
+function initializeShippingBanner() {
+    const closeBannerBtn = document.querySelector('.close-banner');
+    const shippingBanner = document.querySelector('.shipping-banner');
+    
+    if (!closeBannerBtn || !shippingBanner) return;
+    
+    const bannerClosed = localStorage.getItem('shippingBannerClosed');
+    if (bannerClosed === 'true') {
+        shippingBanner.classList.add('hidden');
+    }
+    
+    closeBannerBtn.addEventListener('click', function() {
+        shippingBanner.classList.add('hidden');
+        localStorage.setItem('shippingBannerClosed', 'true');
+    });
 }
 
 // ==========================================
@@ -748,7 +738,7 @@ function initializeBackToTop() {
 }
 
 // ==========================================
-// FLASH SALE BANNER & MODAL
+// FLASH SALE FUNCTIONALITY
 // ==========================================
 
 function initializeFlashSaleBanner() {
@@ -770,7 +760,6 @@ function initializeFloatingButton() {
     
     if (!floatBtn) return;
     
-    // Show button after banner is closed or after 5 seconds
     setTimeout(() => {
         const bannerClosed = localStorage.getItem('flashBannerClosed');
         if (bannerClosed === 'true') {
@@ -778,7 +767,6 @@ function initializeFloatingButton() {
         }
     }, 5000);
     
-    // Also show when banner is manually closed
     window.addEventListener('flashBannerClosed', () => {
         setTimeout(() => {
             floatBtn.style.display = 'flex';
@@ -833,34 +821,29 @@ function openFlashSaleModal() {
     document.body.classList.add('no-scroll');
 }
 
-function checkForFlashSaleURL() {
-    // Check if URL has flash sale parameter
-    const urlParams = new URLSearchParams(window.location.search);
-    const flashParam = urlParams.get('flash');
-    
-    // Also check hash fragment (for #flash-sale)
-    const hash = window.location.hash;
-    
-    if (flashParam === 'open' || hash === '#flash-sale') {
-        // Small delay to ensure everything is loaded
-        setTimeout(() => {
-            openFlashSaleModal();
-            
-            // Optional: Remove the parameter from URL without page reload
-            if (flashParam === 'open') {
-                const newURL = window.location.pathname + window.location.hash;
-                window.history.replaceState({}, document.title, newURL);
-            }
-        }, 500);
-    }
-}
-
 function closeFlashSaleModal() {
     const modal = document.getElementById('flashModal');
     if (!modal) return;
     
     modal.classList.remove('active');
     document.body.classList.remove('no-scroll');
+}
+
+function checkForFlashSaleURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const flashParam = urlParams.get('flash');
+    const hash = window.location.hash;
+    
+    if (flashParam === 'open' || hash === '#flash-sale') {
+        setTimeout(() => {
+            openFlashSaleModal();
+            
+            if (flashParam === 'open') {
+                const newURL = window.location.pathname + window.location.hash;
+                window.history.replaceState({}, document.title, newURL);
+            }
+        }, 500);
+    }
 }
 
 async function addFlashSaleToCart() {
@@ -908,3 +891,63 @@ function buyNowFlashSale() {
         openCart();
     }, 1000);
 }
+
+// ==========================================
+// ANIMATIONS & UTILITIES
+// ==========================================
+
+function initializeAnimations() {
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in-section').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+}
+
+function showNotification(message, type = 'success') {
+    const toast = document.getElementById('notification-toast');
+    const messageSpan = document.getElementById('notification-message');
+    
+    if (!toast || !messageSpan) return;
+    
+    messageSpan.textContent = message;
+    toast.classList.add('show');
+    
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
+
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// ==========================================
+// CONSOLE STYLING
+// ==========================================
+
+console.log('%c🚀 Barber World NYC', 'color: #d4af37; font-size: 24px; font-weight: bold;');
+console.log('%c✨ Enhanced with redesigned carousel loading from ALL brands', 'color: #666; font-size: 14px;');
