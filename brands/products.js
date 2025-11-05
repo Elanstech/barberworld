@@ -32,58 +32,83 @@ async function loadProducts() {
     try {
         showLoading();
         
-        let jsonFile = '';
-        switch(brand) {
-            case 'Babyliss':
-                jsonFile = '../json/babyliss-products.json';
-                break;
-            case 'StyleCraft':
-                jsonFile = '../json/stylecraft-products.json';
-                break;
-             case 'ourbrand':
-                jsonFile = '../json/barberworld-products.json';
-                break;
-            case 'Monster':
-                jsonFile = '../json/monster-products.json';
-                break;
-            case 'JRL':
-                jsonFile = '../json/jrl-products.json';
-                break;
-            case 'Wahl':
-                jsonFile = '../json/wahl-products.json';
-                break;
-            case 'WMark':
-                jsonFile = '../json/wmark-products.json';
-                break;
-            case 'VGR':
-                jsonFile = '../json/vgr-products.json';
-                break;
-            case 'clippers':
-                jsonFile = '../json/all-products-products.json';
-                break;
-            case 'trimmers':
-                jsonFile = '../json/all-products-products.json';
-                break;
-            case 'shavers':
-                jsonFile = '../json/all-products-products.json';
-                break;
-            case 'combos':
-                jsonFile = '../json/combosets-products.json';
-                break;
-            default:
-                jsonFile = '../json/all-products-products.json';
-        }
+        // Define all brand JSON files
+        const brandJsonFiles = [
+            '../json/babyliss-products.json',
+            '../json/stylecraft-products.json',
+            '../json/jrl-products.json',
+            '../json/wahl-products.json',
+            '../json/wmark-products.json',
+            '../json/vgr-products.json',
+            '../json/monster-products.json',
+            '../json/barberworld-products.json'
+        ];
         
-        const response = await fetch(jsonFile);
-        allProducts = await response.json();
-        
-        // Filter by category if needed
-        if (brand === 'clippers') {
-            allProducts = allProducts.filter(p => p.category === 'Clipper');
-        } else if (brand === 'trimmers') {
-            allProducts = allProducts.filter(p => p.category === 'Trimmer');
-        } else if (brand === 'shavers') {
-            allProducts = allProducts.filter(p => p.category === 'Shaver');
+        // Check if this is a page that needs ALL brand products
+        if (brand === 'clippers' || brand === 'trimmers' || brand === 'shavers' || brand === 'All Products') {
+            // Fetch from ALL brand JSON files
+            const fetchPromises = brandJsonFiles.map(file => 
+                fetch(file)
+                    .then(res => res.json())
+                    .catch(err => {
+                        console.warn(`Could not load ${file}:`, err);
+                        return []; // Return empty array if file doesn't exist
+                    })
+            );
+            
+            // Wait for all fetches to complete
+            const allBrandProducts = await Promise.all(fetchPromises);
+            
+            // Combine all products from all brands
+            allProducts = allBrandProducts.flat();
+            
+            // Filter by category if needed
+            if (brand === 'clippers') {
+                allProducts = allProducts.filter(p => p.category === 'Clipper');
+            } else if (brand === 'trimmers') {
+                allProducts = allProducts.filter(p => p.category === 'Trimmer');
+            } else if (brand === 'shavers') {
+                allProducts = allProducts.filter(p => p.category === 'Shaver');
+            }
+            // For 'All Products', no filtering needed - show everything
+            
+        } else {
+            // Logic for specific brand pages
+            let jsonFile = '';
+            switch(brand) {
+                case 'Babyliss':
+                    jsonFile = '../json/babyliss-products.json';
+                    break;
+                case 'StyleCraft':
+                    jsonFile = '../json/stylecraft-products.json';
+                    break;
+                case 'ourbrand':
+                    jsonFile = '../json/barberworld-products.json';
+                    break;
+                case 'Monster':
+                    jsonFile = '../json/monster-products.json';
+                    break;
+                case 'JRL':
+                    jsonFile = '../json/jrl-products.json';
+                    break;
+                case 'Wahl':
+                    jsonFile = '../json/wahl-products.json';
+                    break;
+                case 'WMark':
+                    jsonFile = '../json/wmark-products.json';
+                    break;
+                case 'VGR':
+                    jsonFile = '../json/vgr-products.json';
+                    break;
+                case 'combos':
+                    jsonFile = '../json/combosets-products.json';
+                    break;
+                default:
+                    jsonFile = '../json/all-products-products.json';
+            }
+            
+            const response = await fetch(jsonFile);
+            allProducts = await response.json();
         }
         
         filteredProducts = [...allProducts];
