@@ -161,343 +161,431 @@ main {
     transform: translateY(-50%) rotate(90deg);
 }
 
-/* ==========================================
-   FLASH SALE BANNER - COMPACT STYLES
-   ========================================== */
-
+/* Flash Sale Banner */
 .flash-sale-banner {
-    position: relative;
-    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-    padding: 1.5rem 2rem;
-    margin: 2rem 0;
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    cursor: pointer;
-    transition: var(--transition);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    animation: slideDown 0.5s ease-out;
 }
 
-.flash-sale-banner:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
-/* Animated Background Glow */
-.flash-bg-glow {
-    position: absolute;
-    top: -50%;
-    right: -10%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.2), transparent 70%);
-    border-radius: 50%;
-    animation: pulseGlow 6s ease-in-out infinite;
-    pointer-events: none;
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-@keyframes pulseGlow {
+.flash-icon {
+    font-size: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
     0%, 100% {
         transform: scale(1);
-        opacity: 0.5;
+        opacity: 1;
     }
     50% {
-        transform: scale(1.3);
+        transform: scale(1.2);
         opacity: 0.8;
     }
 }
 
-/* Pulse Ring Effect */
-.flash-pulse-ring {
+.banner-text {
+    font-size: 14px;
+    letter-spacing: 0.5px;
+}
+
+.banner-text strong {
+    color: #ffd700;
+    margin-right: 8px;
+}
+
+.price-badge {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 700;
+    margin-left: 10px;
+    font-size: 13px;
+}
+
+.price-badge .original-price {
+    text-decoration: line-through;
+    opacity: 0.7;
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.banner-timer {
+    font-family: 'Courier New', monospace;
+    font-weight: 700;
+    color: #ffd700;
+    font-size: 13px;
+}
+
+.banner-cta {
+    background: #fff;
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 24px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.banner-cta:hover {
+    background: #ffd700;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+}
+
+.banner-close {
+    position: absolute;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner-close:hover {
+    opacity: 1;
+}
+
+/* Flash Sale Modal */
+.flash-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10001;
+    animation: fadeIn 0.3s ease;
+}
+
+.flash-modal.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.flash-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+
+.flash-modal-content {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 100%;
-    height: 100%;
-    border: 2px solid var(--gold);
-    border-radius: var(--radius-lg);
-    opacity: 0;
-    animation: pulseRing 3s ease-in-out infinite;
-    pointer-events: none;
+    background: #fff;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideUp 0.4s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes pulseRing {
-    0% {
-        transform: translate(-50%, -50%) scale(0.95);
-        opacity: 0.6;
-    }
-    100% {
-        transform: translate(-50%, -50%) scale(1.05);
+@keyframes modalSlideUp {
+    from {
+        transform: translate(-50%, -40%);
         opacity: 0;
     }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
 }
 
-/* Container */
-.flash-banner-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* Left Side */
-.flash-banner-left {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex: 1;
-}
-
-.flash-bolt {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #f5f5f5;
+    border: none;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    animation: boltPulse 2s ease-in-out infinite;
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
+    transition: all 0.3s ease;
+    z-index: 10;
+    color: #333;
 }
 
-@keyframes boltPulse {
-    0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 4px 12px rgba(212, 175, 55, 0.4);
-    }
-    50% {
-        transform: scale(1.1);
-        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
-    }
+.modal-close:hover {
+    background: #ff4757;
+    color: #fff;
+    transform: rotate(90deg);
 }
 
-.flash-bolt i {
-    font-size: 1.5rem;
-    color: var(--primary);
-    animation: boltFlash 1.5s ease-in-out infinite;
+.modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
 }
 
-@keyframes boltFlash {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0.6;
-    }
+.modal-image {
+    position: relative;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 20px 0 0 20px;
 }
 
-.flash-banner-content {
+.modal-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 500px;
+}
+
+.sale-badge {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4);
+}
+
+.modal-details {
+    padding: 60px 40px 40px 40px;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 20px;
 }
 
-.flash-badge-small {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--primary);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 800;
+.flash-tag {
+    background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: 700;
     letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     width: fit-content;
 }
 
-.flash-banner-title {
-    font-size: 1.2rem;
-    font-weight: 800;
-    color: var(--white);
+.flash-tag span:last-child {
+    color: #ffd700;
+    font-family: 'Courier New', monospace;
+}
+
+.modal-details h2 {
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
     margin: 0;
+    color: #1a1a1a;
     line-height: 1.2;
 }
 
-.flash-banner-price {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+.product-subtitle {
+    color: #666;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: -10px 0 0 0;
+    font-weight: 500;
 }
 
-.flash-old-price {
-    font-size: 1rem;
-    color: rgba(255, 255, 255, 0.5);
+.price-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 10px 0;
+}
+
+.sale-price {
+    font-size: 36px;
+    font-weight: 700;
+    color: #ff4757;
+}
+
+.original-price-large {
+    font-size: 20px;
     text-decoration: line-through;
+    color: #999;
 }
 
-.flash-new-price {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    animation: priceGlow 2s ease-in-out infinite;
-}
-
-@keyframes priceGlow {
-    0%, 100% {
-        text-shadow: 0 0 8px rgba(212, 175, 55, 0.3);
-    }
-    50% {
-        text-shadow: 0 0 16px rgba(212, 175, 55, 0.6);
-    }
-}
-
-.flash-save {
-    background: linear-gradient(135deg, #10b981, #059669);
-    color: var(--white);
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
+.savings {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 12px;
     font-weight: 700;
-    letter-spacing: 0.5px;
 }
 
-/* Right Side - Timer */
-.flash-banner-right {
+.product-features {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.product-features li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+    color: #333;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+.product-features li:before {
+    content: "✓";
+    color: #2e7d32;
+    font-weight: 700;
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.modal-actions {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.flash-timer-label {
-    font-size: 0.75rem;
+.add-to-cart-btn,
+.buy-now-btn {
+    padding: 16px 32px;
+    border: none;
+    border-radius: 30px;
     font-weight: 700;
-    color: var(--gold);
+    font-size: 14px;
     letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
 }
 
-.flash-timer {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+.add-to-cart-btn {
+    background: #1a1a1a;
+    color: #fff;
 }
 
-.flash-time-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 0.5rem 0.75rem;
-    border-radius: var(--radius-sm);
-    min-width: 50px;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(212, 175, 55, 0.3);
+.add-to-cart-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
-.flash-time-box span:first-child {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--white);
-    line-height: 1;
+.buy-now-btn {
+    background: linear-gradient(135deg, #ff6b6b, #ff4757);
+    color: #fff;
 }
 
-.flash-time-label {
-    font-size: 0.65rem;
-    color: rgba(255, 255, 255, 0.6);
-    font-weight: 600;
-    margin-top: 0.25rem;
+.buy-now-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 71, 87, 0.4);
 }
 
-.flash-colon {
-    font-size: 1.5rem;
-    font-weight: 900;
-    color: var(--gold);
-    animation: blink 1s ease-in-out infinite;
-}
-
-@keyframes blink {
-    0%, 49%, 100% {
-        opacity: 1;
-    }
-    50%, 99% {
-        opacity: 0.3;
-    }
-}
-
-.flash-cta-text {
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: var(--white);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 0.25rem;
-    transition: var(--transition);
-}
-
-.flash-sale-banner:hover .flash-cta-text {
-    color: var(--gold);
-}
-
-.flash-cta-text i {
-    transition: var(--transition);
-}
-
-.flash-sale-banner:hover .flash-cta-text i {
-    transform: translateX(5px);
-}
-
-/* ==========================================
-   RESPONSIVE DESIGN
-   ========================================== */
-
+/* Responsive */
 @media (max-width: 768px) {
     .flash-sale-banner {
-        padding: 1rem;
+        padding: 10px 15px;
     }
-
-    .flash-banner-container {
-        flex-direction: column;
-        gap: 1rem;
-        text-align: center;
+    
+    .banner-content {
+        gap: 10px;
+        font-size: 12px;
     }
-
-    .flash-banner-left {
-        justify-content: center;
+    
+    .banner-cta {
+        padding: 6px 18px;
+        font-size: 11px;
     }
-
-    .flash-banner-title {
-        font-size: 1rem;
+    
+    .banner-close {
+        position: relative;
+        right: 0;
     }
-
-    .flash-new-price {
-        font-size: 1.25rem;
+    
+    .modal-grid {
+        grid-template-columns: 1fr;
     }
-
-    .flash-time-box {
-        min-width: 45px;
-        padding: 0.4rem 0.6rem;
+    
+    .modal-image {
+        border-radius: 20px 20px 0 0;
+        padding: 30px;
     }
-
-    .flash-time-box span:first-child {
-        font-size: 1.25rem;
+    
+    .modal-details {
+        padding: 30px 20px;
     }
-}
-
-@media (max-width: 480px) {
-    .flash-banner-left {
-        flex-direction: column;
-        gap: 0.75rem;
+    
+    .modal-details h2 {
+        font-size: 22px;
     }
-
-    .flash-banner-price {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-    .flash-time-box {
-        min-width: 40px;
-    }
-
-    .flash-bolt {
-        width: 40px;
-        height: 40px;
-    }
-
-    .flash-bolt i {
-        font-size: 1.2rem;
+    
+    .sale-price {
+        font-size: 28px;
     }
 }
 
