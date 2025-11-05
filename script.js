@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeQuizModal();
     initializeBackToTop();
     initializeFlashSaleBanner();
+    initializeFloatingButton();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -1135,7 +1136,6 @@ function initializeBackToTop() {
 
 function initializeFlashSaleBanner() {
     const flashBanner = document.getElementById('flashBanner');
-    const flashModal = document.getElementById('flashModal');
     
     if (!flashBanner) return;
     
@@ -1146,6 +1146,27 @@ function initializeFlashSaleBanner() {
     
     updateFlashSaleTimer();
     setInterval(updateFlashSaleTimer, 1000);
+}
+
+function initializeFloatingButton() {
+    const floatBtn = document.getElementById('flashFloatBtn');
+    
+    if (!floatBtn) return;
+    
+    // Show button after banner is closed or after 5 seconds
+    setTimeout(() => {
+        const bannerClosed = localStorage.getItem('flashBannerClosed');
+        if (bannerClosed === 'true') {
+            floatBtn.style.display = 'flex';
+        }
+    }, 5000);
+    
+    // Also show when banner is manually closed
+    window.addEventListener('flashBannerClosed', () => {
+        setTimeout(() => {
+            floatBtn.style.display = 'flex';
+        }, 500);
+    });
 }
 
 function updateFlashSaleTimer() {
@@ -1179,11 +1200,12 @@ function closeBanner() {
     const banner = document.getElementById('flashBanner');
     if (!banner) return;
     
-    banner.style.animation = 'slideDown 0.3s ease-out reverse';
+    banner.style.animation = 'slideDownCompact 0.3s ease reverse';
     setTimeout(() => {
         banner.style.display = 'none';
+        localStorage.setItem('flashBannerClosed', 'true');
+        window.dispatchEvent(new CustomEvent('flashBannerClosed'));
     }, 300);
-    localStorage.setItem('flashBannerClosed', 'true');
 }
 
 function openFlashSaleModal() {
@@ -1226,12 +1248,12 @@ async function addFlashSaleToCart() {
     
     const addBtn = document.querySelector('.add-to-cart-btn');
     if (addBtn) {
-        const originalText = addBtn.innerHTML;
-        addBtn.innerHTML = '<i class="fas fa-check"></i> ADDED TO CART';
+        const originalHTML = addBtn.innerHTML;
+        addBtn.innerHTML = '<i class="fas fa-check"></i> <span>ADDED TO CART</span>';
         addBtn.style.background = '#2e7d32';
         
         setTimeout(() => {
-            addBtn.innerHTML = originalText;
+            addBtn.innerHTML = originalHTML;
             addBtn.style.background = '#1a1a1a';
         }, 2000);
     }
