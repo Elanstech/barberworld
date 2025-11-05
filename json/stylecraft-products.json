@@ -37,8 +37,6 @@
       "housing": "All-metal construction"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 567,
     "sku": "SC-INSTINCT-CLIPPER"
   },
   {
@@ -47,11 +45,11 @@
     "price": 149.99,
     "brand": "StyleCraft",
     "slug": "stylecraft-instinct-trimmer-sc407m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__5_.jpg",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc407m__5_.jpg",
     "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__4_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc407m__3_.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc407m__4_.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
     ],
     "category": "Trimmer",
     "shortDescription": "Intelligent vector motor trimmer with automatic torque adjustment",
@@ -77,8 +75,6 @@
       "model": "SC407M"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 489,
     "sku": "SC407M"
   },
   {
@@ -87,11 +83,11 @@
     "price": 139.00,
     "brand": "StyleCraft",
     "slug": "stylecraft-instinct-x-clipper",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_x_lids.jpg",
     "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/7/s/7stylecraft100207.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc608m_instinctx_9_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc608m_instinctx_1_.jpg"
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/7/s/7stylecraft100207.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc608m_instinctx_9_.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc608m_instinctx_1_.jpg"
     ],
     "category": "Clipper",
     "shortDescription": "Advanced Instinct-X professional clipper with enhanced performance",
@@ -117,454 +113,7 @@
       "housing": "Premium metal construction"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 423,
     "sku": "INSTINCT-X-CLIPPER"
-  },
-  {
-    "id": 4,
-    "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
-    "price": 164.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-edition-trimmer-sc410m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Metal edition trimmer with full metal housing and vector motor",
-    "description": "The StyleCraft Pro Metal Edition Instinct Trimmer features a premium full-metal housing for enhanced durability and professional aesthetics. This special edition combines the proven vector motor technology with luxury metal construction, making it a standout choice for discerning professionals.",
-    "features": [
-      "Full metal housing construction",
-      "Professional vector motor",
-      "Intuitive torque control",
-      "Premium metal finish",
-      "DLC precision blade",
-      "Extended runtime",
-      "Dual voltage capability",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "8.5 oz",
-      "voltage": "Dual voltage",
-      "model": "SC410M"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 378,
-    "sku": "SC410M"
-  },
-  {
-    "id": 5,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-black-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy6.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy10.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy2.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraftw126221-66_copy9_2_.jpg"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in sleek black finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in black combines powerful vector motor technology with dual independent foils for the smoothest shave possible. The full-metal housing provides durability and professional style, while the dual voltage capability makes it perfect for travel.",
-    "features": [
-      "Full metal housing in black",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage for travel",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless operation"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 312,
-    "sku": "SC807B-BLACK"
-  },
-  {
-    "id": 6,
-    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807B (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-metal-shaver-pink-sc807b",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_15_.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_11_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_13_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_shaver_pink_12_.jpg"
-    ],
-    "category": "Shaver",
-    "shortDescription": "Metal edition professional shaver in elegant pink finish",
-    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in pink offers the same powerful performance as the black version with an elegant pink metal finish. Featuring dual independent foils and vector motor technology, this shaver delivers ultra-smooth results with professional style.",
-    "features": [
-      "Full metal housing in pink",
-      "Dual independent suspension foils",
-      "Professional vector motor",
-      "Hypoallergenic titanium blades",
-      "Dual voltage capability",
-      "Lithium-ion battery",
-      "90-minute runtime",
-      "Cord/cordless versatility"
-    ],
-    "specifications": {
-      "motor": "Vector motor",
-      "foils": "Dual independent suspension",
-      "blades": "Titanium hypoallergenic",
-      "battery": "Lithium-ion",
-      "runtime": "90 minutes",
-      "chargeTime": "2 hours",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC807B"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 289,
-    "sku": "SC807B-PINK"
-  },
-  {
-    "id": 7,
-    "name": "Stylecraft Pro SABER II Professional Metal Clipper with Digital Brushless EON Motor - Gold #SC617M (Dual Voltage)",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-ii-gold-sc617m",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_2.png",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_2.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161755.png"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Premium gold clipper with digital brushless EON motor technology",
-    "description": "The StyleCraft Pro Saber II in gold represents the ultimate in professional clipper technology. Featuring the advanced digital brushless EON motor, this premium clipper delivers unmatched power, precision, and durability. The luxurious gold finish and full-metal construction make it a true masterpiece.",
-    "features": [
-      "Digital brushless EON motor",
-      "Full metal body construction",
-      "Luxurious gold finish",
-      "DLC precision fade blade",
-      "Dual voltage capability",
-      "Extended 3-hour runtime",
-      "Intelligent power management",
-      "Cord/cordless operation"
-    ],
-    "specifications": {
-      "motor": "Digital brushless EON",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC617M"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 645,
-    "sku": "SC617M-GOLD"
-  },
-  {
-    "id": 8,
-    "name": "StyleCraft Limited Edition Saber II Cordless Digital Brushless Motor Trimmer - White #SC421W",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-ii-trimmer-white-sc421w",
-    "image": "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-14T142948.570_1000x.png?v=1760466634",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-14T143214.859_1000x.png?v=1760466748",
-      "https://prostylingtools.com/cdn/shop/files/SaberTrimmerWhite-SC421W-02-2000x2000_1000x.jpg?v=1760468895",
-      "https://prostylingtools.com/cdn/shop/files/SaberTrimmerWhite-SC421W-03-2000x2000_1000x.jpg?v=1760469052"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Limited edition white Saber II trimmer with digital brushless motor",
-    "description": "The StyleCraft Limited Edition Saber II Trimmer in white combines the power of digital brushless motor technology with a stunning white finish. This limited edition trimmer is perfect for professionals who demand exceptional performance and distinctive style. The advanced motor ensures long-lasting power and precision for detailed work.",
-    "features": [
-      "Digital brushless motor technology",
-      "Limited edition white finish",
-      "Full metal construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable blade",
-      "Extended runtime",
-      "Cord/cordless versatility",
-      "Professional performance",
-      "Collector's edition styling"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage",
-      "model": "SC421W",
-      "finish": "Limited edition white"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 287,
-    "sku": "SC421W"
-  },
-  {
-    "id": 9,
-    "name": "StyleCraft Limited Edition Saber II Cordless Digital Brushless Motor Clipper - White #SC619W",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-ii-clipper-white-sc619w",
-    "image": "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-01-2000x2000-ALT_1000x.jpg?v=1760469536",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-01-2000x2000_df7337f1-d28f-47a6-bb38-2b1684f643c7_1000x.jpg?v=1760469699",
-      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-02-2000x2000_1000x.jpg?v=1760470177",
-      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-03-2000x2000_1000x.jpg?v=1760470206"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Limited edition white Saber II clipper with digital brushless EON motor",
-    "description": "The StyleCraft Limited Edition Saber II Clipper in white represents the pinnacle of professional clipper design and performance. Featuring the advanced digital brushless EON motor and stunning white finish, this limited edition clipper delivers exceptional power and precision. The full-metal construction ensures durability while the exclusive white finish makes it a true collector's piece.",
-    "features": [
-      "Digital brushless EON motor",
-      "Limited edition white finish",
-      "Full metal body construction",
-      "DLC precision fade blade",
-      "Dual voltage capability",
-      "Extended 3-hour runtime",
-      "Intelligent power management",
-      "Cord/cordless operation",
-      "Collector's edition design"
-    ],
-    "specifications": {
-      "motor": "Digital brushless EON",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.2 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC619W",
-      "finish": "Limited edition white"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 342,
-    "sku": "SC619W"
-  },
-  {
-    "id": 10,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-black",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161766_black.png",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161731_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161790_black.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
-    "description": "The Saber Professional Hair Trimmer features advanced digital brushless motor technology for exceptional power and precision. This professional-grade trimmer is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance.",
-    "features": [
-      "Digital brushless motor technology",
-      "Full metal body construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Cord/cordless operation",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.5 oz",
-      "voltage": "Dual voltage",
-      "housing": "Full metal body"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 523,
-    "sku": "SABER-TRIMMER-BLACK"
-  },
-  {
-    "id": 11,
-    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-trimmer-gold",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_stand_rev.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_rev_blade.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_trimmer_horizontal.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/l/i/liquidgold_sabert2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Premium gold Saber trimmer with digital brushless motor",
-    "description": "The Gold Edition Saber Professional Trimmer combines the power of digital brushless motor technology with luxurious gold finish. This premium trimmer is perfect for professionals who demand the best in performance and style. The full metal construction ensures durability and professional elegance.",
-    "features": [
-      "Digital brushless motor",
-      "Luxurious gold finish",
-      "Full metal construction",
-      "DLC precision T-blade",
-      "Zero-gap adjustable blade",
-      "Extended runtime",
-      "Cord/cordless versatility",
-      "Premium professional grade"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC T-blade, zero-gap",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.8 oz",
-      "voltage": "Dual voltage",
-      "finish": "Premium gold"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 412,
-    "sku": "SABER-TRIMMER-GOLD"
-  },
-  {
-    "id": 12,
-    "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-saber-full-metal-sc403b",
-    "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
-    "images": [
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-403041_848x848.jpg?v=1743763255",
-      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-943599_848x848.jpg?v=1743763254"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Full metal body professional trimmer with brushless motor",
-    "description": "The StyleCraft Saber Professional Trimmer in black features a complete metal body construction for maximum durability and professional aesthetics. Powered by a digital brushless motor, this trimmer delivers consistent power and precision for all your detailing needs.",
-    "features": [
-      "Full metal body construction",
-      "Digital brushless motor",
-      "Professional black finish",
-      "DLC precision blade",
-      "Cordless operation",
-      "Lithium-ion battery",
-      "2-hour runtime",
-      "Zero-gap adjustable"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC precision blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "180 minutes",
-      "weight": "7.6 oz",
-      "voltage": "Dual voltage",
-      "model": "SC403B"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 467,
-    "sku": "SC403B"
-  },
-  {
-    "id": 13,
-    "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
-    "price": 149.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-precision-saber-sc403bp",
-    "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
-    "images": [
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
-      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-2.jpg"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Precision metal trimmer with brushless motor and dual voltage",
-    "description": "The StyleCraft Pro Precision Saber Metal Trimmer is engineered for ultimate precision work. Featuring a brushless motor and premium metal construction, this trimmer excels at detailed outlining, edging, and finishing. The dual voltage capability makes it perfect for professionals on the go.",
-    "features": [
-      "Precision-focused design",
-      "Brushless motor technology",
-      "Full metal construction",
-      "Dual voltage capability",
-      "DLC precision T-blade",
-      "Zero-gap adjustable",
-      "Extended runtime",
-      "Professional performance"
-    ],
-    "specifications": {
-      "motor": "Brushless precision motor",
-      "blade": "DLC T-blade precision",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "7.4 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "SC403BP"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 391,
-    "sku": "SC403BP"
-  },
-  {
-    "id": 14,
-    "name": "Stylecraft X 360 Jeezy Professional IN2 Vector Motor Clipper with Full Metal Housing #SC614B",
-    "price": 224.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-360-jeezy-clipper-sc614b",
-    "image": "https://prostylingtools.com/cdn/shop/files/stylecraft182600_Light_2_1200x.jpg?v=1738776041",
-    "images": [
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182590_1200x.jpg?v=1738776041",
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182611_1200x.jpg?v=1738776041",
-      "https://prostylingtools.com/cdn/shop/files/stylecraft182624_1200x.jpg?v=1738776041"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Limited edition 360 Jeezy collaboration clipper with IN2 vector motor",
-    "description": "The StyleCraft X 360 Jeezy Professional Clipper is an exclusive collaboration featuring the advanced IN2 vector motor technology. This limited edition clipper combines celebrity style with professional performance, featuring full metal housing and premium components for the ultimate cutting experience.",
-    "features": [
-      "Exclusive 360 Jeezy collaboration",
-      "IN2 vector motor technology",
-      "Full metal housing construction",
-      "Limited edition design",
-      "DLC precision fade blade",
-      "Extended 3-hour runtime",
-      "Professional performance",
-      "Collector's edition"
-    ],
-    "specifications": {
-      "motor": "IN2 vector motor",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.5 oz",
-      "voltage": "Dual voltage",
-      "model": "SC614B"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 756,
-    "sku": "SC614B"
   },
   {
     "id": 15,
@@ -603,8 +152,6 @@
       "model": "SC411M"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 445,
     "sku": "SC411M"
   },
   {
@@ -645,9 +192,595 @@
       "housing": "Complete all-metal construction"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 412,
     "sku": "SC-METAL-INSTINCT-CLIPPER"
+  },
+  {
+    "id": 4,
+    "name": "Stylecraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
+    "price": 164.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-metal-edition-trimmer-sc410m",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc410m_main.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_pink_front_view_in_base.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/s/c/sc410m_white_front_view_in_base.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Metal edition trimmer with full metal housing and vector motor",
+    "description": "The StyleCraft Pro Metal Edition Instinct Trimmer features a premium full-metal housing for enhanced durability and professional aesthetics. This special edition combines the proven vector motor technology with luxury metal construction, making it a standout choice for discerning professionals.",
+    "features": [
+      "Full metal housing construction",
+      "Professional vector motor",
+      "Intuitive torque control",
+      "Premium metal finish",
+      "DLC precision blade",
+      "Extended runtime",
+      "Dual voltage capability",
+      "Zero-gap adjustable"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "blade": "DLC precision blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "8.5 oz",
+      "voltage": "Dual voltage",
+      "model": "SC410M"
+    },
+    "inStock": true,
+    "sku": "SC410M"
+  },
+  {
+    "id": 7,
+    "name": "Stylecraft Pro SABER II Professional Metal Clipper with Digital Brushless EON Motor - Gold #SC617M (Dual Voltage)",
+    "price": 224.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-ii-gold-sc617m",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161766_2.png",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161731_2.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161790.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161755.png"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Premium gold clipper with digital brushless EON motor technology",
+    "description": "The StyleCraft Pro Saber II in gold represents the ultimate in professional clipper technology. Featuring the advanced digital brushless EON motor, this premium clipper delivers unmatched power, precision, and durability. The luxurious gold finish and full-metal construction make it a true masterpiece.",
+    "features": [
+      "Digital brushless EON motor",
+      "Full metal body construction",
+      "Luxurious gold finish",
+      "DLC precision fade blade",
+      "Dual voltage capability",
+      "Extended 3-hour runtime",
+      "Intelligent power management",
+      "Cord/cordless operation"
+    ],
+    "specifications": {
+      "motor": "Digital brushless EON",
+      "blade": "DLC fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "SC617M"
+    },
+    "inStock": true,
+    "sku": "SC617M-GOLD"
+  },
+  {
+    "id": 9,
+    "name": "StyleCraft Limited Edition Saber II Cordless Digital Brushless Motor Clipper - White #SC619W",
+    "price": 224.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-ii-clipper-white-sc619w",
+    "image": "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-01-2000x2000-ALT_1000x.jpg?v=1760469536",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-01-2000x2000_df7337f1-d28f-47a6-bb38-2b1684f643c7_1000x.jpg?v=1760469699",
+      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-02-2000x2000_1000x.jpg?v=1760470177",
+      "https://prostylingtools.com/cdn/shop/files/Saber2ClipperWhite-SC619W-03-2000x2000_1000x.jpg?v=1760470206"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Limited edition white Saber II clipper with digital brushless EON motor",
+    "description": "The StyleCraft Limited Edition Saber II Clipper in white represents the pinnacle of professional clipper design and performance. Featuring the advanced digital brushless EON motor and stunning white finish, this limited edition clipper delivers exceptional power and precision. The full-metal construction ensures durability while the exclusive white finish makes it a true collector's piece.",
+    "features": [
+      "Digital brushless EON motor",
+      "Limited edition white finish",
+      "Full metal body construction",
+      "DLC precision fade blade",
+      "Dual voltage capability",
+      "Extended 3-hour runtime",
+      "Intelligent power management",
+      "Cord/cordless operation",
+      "Collector's edition design"
+    ],
+    "specifications": {
+      "motor": "Digital brushless EON",
+      "blade": "DLC fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.2 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "SC619W",
+      "finish": "Limited edition white"
+    },
+    "inStock": true,
+    "sku": "SC619W"
+  },
+  {
+    "id": 8,
+    "name": "StyleCraft Limited Edition Saber II Cordless Digital Brushless Motor Trimmer - White #SC421W",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-ii-trimmer-white-sc421w",
+    "image": "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-14T142948.570_1000x.png?v=1760466634",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/files/Untitled-2025-10-14T143214.859_1000x.png?v=1760466748",
+      "https://prostylingtools.com/cdn/shop/files/SaberTrimmerWhite-SC421W-02-2000x2000_1000x.jpg?v=1760468895",
+      "https://prostylingtools.com/cdn/shop/files/SaberTrimmerWhite-SC421W-03-2000x2000_1000x.jpg?v=1760469052"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Limited edition white Saber II trimmer with digital brushless motor",
+    "description": "The StyleCraft Limited Edition Saber II Trimmer in white combines the power of digital brushless motor technology with a stunning white finish. This limited edition trimmer is perfect for professionals who demand exceptional performance and distinctive style. The advanced motor ensures long-lasting power and precision for detailed work.",
+    "features": [
+      "Digital brushless motor technology",
+      "Limited edition white finish",
+      "Full metal construction",
+      "DLC precision T-blade",
+      "Zero-gap adjustable blade",
+      "Extended runtime",
+      "Cord/cordless versatility",
+      "Professional performance",
+      "Collector's edition styling"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC T-blade, zero-gap",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.8 oz",
+      "voltage": "Dual voltage",
+      "model": "SC421W",
+      "finish": "Limited edition white"
+    },
+    "inStock": true,
+    "sku": "SC421W"
+  },
+  {
+    "id": 10,
+    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR",
+    "price": 224.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-trimmer-black",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161766_black.png",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161731_black.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161790_black.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraft161745_black_gold.png",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/a/saber_20_black_infog.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional Saber trimmer with digital brushless motor technology",
+    "description": "The Saber Professional Hair Trimmer features advanced digital brushless motor technology for exceptional power and precision. This professional-grade trimmer is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance.",
+    "features": [
+      "Digital brushless motor technology",
+      "Full metal body construction",
+      "DLC precision T-blade",
+      "Zero-gap adjustable",
+      "Lithium-ion battery",
+      "2-hour runtime",
+      "Cord/cordless operation",
+      "Professional performance"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC T-blade, zero-gap",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "7.5 oz",
+      "voltage": "Dual voltage",
+      "housing": "Full metal body"
+    },
+    "inStock": true,
+    "sku": "SABER-TRIMMER-BLACK"
+  },
+  {
+    "id": 11,
+    "name": "SABER PROFESSIONAL HAIR TRIMMER WITH DIGITAL BRUSHLESS MOTOR GOLD",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-trimmer-gold",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/a/saber_trimmer_stand_rev.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/a/saber_trimmer_rev_blade.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/a/saber_trimmer_horizontal.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/77308d5d0cd6539be793e6a351dbfe3c/l/i/liquidgold_sabert2.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Premium gold Saber trimmer with digital brushless motor",
+    "description": "The Gold Edition Saber Professional Trimmer combines the power of digital brushless motor technology with luxurious gold finish. This premium trimmer is perfect for professionals who demand the best in performance and style. The full metal construction ensures durability and professional elegance.",
+    "features": [
+      "Digital brushless motor",
+      "Luxurious gold finish",
+      "Full metal construction",
+      "DLC precision T-blade",
+      "Zero-gap adjustable blade",
+      "Extended runtime",
+      "Cord/cordless versatility",
+      "Premium professional grade"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC T-blade, zero-gap",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.8 oz",
+      "voltage": "Dual voltage",
+      "finish": "Premium gold"
+    },
+    "inStock": true,
+    "sku": "SABER-TRIMMER-GOLD"
+  },
+  {
+    "id": 12,
+    "name": "StyleCraft Saber Professional Full Metal Body Digital Brushless Motor Cordless Trimmer - Black SC403B",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-saber-full-metal-sc403b",
+    "image": "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-942872_848x848.png?v=1743763255",
+    "images": [
+      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-151384_848x848.jpg?v=1743763256",
+      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-403041_848x848.jpg?v=1743763255",
+      "https://certifiedclippers.com/cdn/shop/files/stylecraft-saber-professional-full-metal-body-digital-brushless-motor-cordless-trimmer-black-sc403btrimmer-943599_848x848.jpg?v=1743763254"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Full metal body professional trimmer with brushless motor",
+    "description": "The StyleCraft Saber Professional Trimmer in black features a complete metal body construction for maximum durability and professional aesthetics. Powered by a digital brushless motor, this trimmer delivers consistent power and precision for all your detailing needs.",
+    "features": [
+      "Full metal body construction",
+      "Digital brushless motor",
+      "Professional black finish",
+      "DLC precision blade",
+      "Cordless operation",
+      "Lithium-ion battery",
+      "2-hour runtime",
+      "Zero-gap adjustable"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC precision blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "180 minutes",
+      "weight": "7.6 oz",
+      "voltage": "Dual voltage",
+      "model": "SC403B"
+    },
+    "inStock": true,
+    "sku": "SC403B"
+  },
+  {
+    "id": 13,
+    "name": "Stylecraft Pro PRECISION Saber Metal Trimmer with Brushless Motor - Black #SC403BP (Dual Voltage)",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-precision-saber-sc403bp",
+    "image": "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-1.jpg",
+    "images": [
+      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp.jpg",
+      "https://www.barbersalon.com/media/catalog/product/cache/8e59b62a4261eecdd9d2fcd33d57eace/s/c/sc-sc403bp-2.jpg"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Precision metal trimmer with brushless motor and dual voltage",
+    "description": "The StyleCraft Pro Precision Saber Metal Trimmer is engineered for ultimate precision work. Featuring a brushless motor and premium metal construction, this trimmer excels at detailed outlining, edging, and finishing. The dual voltage capability makes it perfect for professionals on the go.",
+    "features": [
+      "Precision-focused design",
+      "Brushless motor technology",
+      "Full metal construction",
+      "Dual voltage capability",
+      "DLC precision T-blade",
+      "Zero-gap adjustable",
+      "Extended runtime",
+      "Professional performance"
+    ],
+    "specifications": {
+      "motor": "Brushless precision motor",
+      "blade": "DLC T-blade precision",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "7.4 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "SC403BP"
+    },
+    "inStock": true,
+    "sku": "SC403BP"
+  },
+  {
+    "id": 20,
+    "name": "FLEX PROFESSIONAL HAIR TRIMMER WITH SUPER-TORQUE MOTOR",
+    "price": 119.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-flex-trimmer",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc406m__main2.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/p/h/photo_aug_18_12_10_20_pm.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/f/l/flex_usb_charging.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/f/l/flex_blades.png"
+    ],
+    "category": "Trimmer",
+    "shortDescription": "Professional trimmer with super-torque motor for maximum power",
+    "description": "The FLEX Professional Hair Trimmer features a revolutionary super-torque motor that delivers unmatched cutting power for the most demanding professional applications. Engineered for precision detailing, outlining, and finishing work, this trimmer combines raw power with refined control for exceptional results on all hair types.",
+    "features": [
+      "Super-torque motor technology",
+      "Maximum cutting power",
+      "Professional-grade performance",
+      "DLC precision blade",
+      "Zero-gap adjustable",
+      "Extended battery life",
+      "Ergonomic design",
+      "Cord/cordless operation",
+      "All-metal construction",
+      "Professional durability"
+    ],
+    "specifications": {
+      "motor": "Super-torque motor",
+      "blade": "DLC precision T-blade",
+      "battery": "Lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "8.0 oz",
+      "voltage": "Dual voltage",
+      "housing": "All-metal body"
+    },
+    "inStock": true,
+    "sku": "FLEX-TRIMMER-120"
+  },
+  {
+    "id": 14,
+    "name": "Stylecraft X 360 Jeezy Professional IN2 Vector Motor Clipper with Full Metal Housing #SC614B",
+    "price": 224.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-360-jeezy-clipper-sc614b",
+    "image": "https://prostylingtools.com/cdn/shop/files/stylecraft182600_Light_2_1200x.jpg?v=1738776041",
+    "images": [
+      "https://prostylingtools.com/cdn/shop/files/stylecraft182590_1200x.jpg?v=1738776041",
+      "https://prostylingtools.com/cdn/shop/files/stylecraft182611_1200x.jpg?v=1738776041",
+      "https://prostylingtools.com/cdn/shop/files/stylecraft182624_1200x.jpg?v=1738776041"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Limited edition 360 Jeezy collaboration clipper with IN2 vector motor",
+    "description": "The StyleCraft X 360 Jeezy Professional Clipper is an exclusive collaboration featuring the advanced IN2 vector motor technology. This limited edition clipper combines celebrity style with professional performance, featuring full metal housing and premium components for the ultimate cutting experience.",
+    "features": [
+      "Exclusive 360 Jeezy collaboration",
+      "IN2 vector motor technology",
+      "Full metal housing construction",
+      "Limited edition design",
+      "DLC precision fade blade",
+      "Extended 3-hour runtime",
+      "Professional performance",
+      "Collector's edition"
+    ],
+    "specifications": {
+      "motor": "IN2 vector motor",
+      "blade": "DLC fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.5 oz",
+      "voltage": "Dual voltage",
+      "model": "SC614B"
+    },
+    "inStock": true,
+    "sku": "SC614B"
+  },
+  {
+    "id": 22,
+    "name": "Gamma+ Boosted Super-Torque Modular Cordless Clipper #GP601M (Dual Voltage)",
+    "price": 124.99,
+    "brand": "Gamma+",
+    "slug": "gamma-boosted-clipper-gp601m",
+    "image": "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted_1_599x798.jpg?v=1649885466",
+    "images": [
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-full_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted-red_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-gold-side_599x798.jpg?v=1649885466",
+      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-black_599x798.jpg?v=1649885466"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Modular super-torque clipper with dual voltage capability",
+    "description": "The Gamma+ Boosted Super-Torque Modular Cordless Clipper represents the next evolution in professional clipper technology. Featuring a revolutionary modular design with interchangeable components and a powerful super-torque motor, this clipper delivers exceptional cutting performance with the versatility professionals demand. The dual voltage capability makes it perfect for international use.",
+    "features": [
+      "Revolutionary modular design",
+      "Super-torque motor technology",
+      "Interchangeable components",
+      "Dual voltage 110-240V",
+      "DLC precision fade blade",
+      "Extended 3-hour runtime",
+      "Professional all-metal housing",
+      "Cord/cordless operation",
+      "Rapid charge technology",
+      "Customizable performance",
+      "International compatibility",
+      "Premium build quality"
+    ],
+    "specifications": {
+      "motor": "Super-torque modular",
+      "blade": "DLC fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2 hours",
+      "weight": "10.0 oz",
+      "voltage": "Dual voltage 110-240V",
+      "model": "GP601M",
+      "housing": "All-metal construction"
+    },
+    "inStock": true,
+    "sku": "GP601M"
+  },
+  {
+    "id": 23,
+    "name": "GAMMA+ SKIN CLIPPER",
+    "price": 79.99,
+    "brand": "Gamma+",
+    "slug": "gamma-skin-clipper",
+    "image": "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
+    "images": [
+      "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
+      "https://nosbarbersupply.com/cdn/shop/files/original_7ee6a310-a994-403e-a80f-f7285e9a6260.jpg?v=1718252301",
+      "https://nosbarbersupply.com/cdn/shop/files/original_8e3313b5-686f-47e6-b95e-fd86695efd31.jpg?v=1718252301"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Specialized skin clipper for ultra-close cutting and bald fades",
+    "description": "The Gamma+ Skin Clipper is specifically designed for ultra-close cutting and creating perfect bald fades. This specialized clipper features a unique blade configuration that cuts closer to the skin than traditional clippers, making it ideal for bald fades, skin tapers, and detailed scalp work. The powerful motor and precision engineering ensure smooth, irritation-free results.",
+    "features": [
+      "Specialized for bald fades and skin work",
+      "Ultra-close cutting blade configuration",
+      "Powerful professional motor",
+      "Designed for scalp detailing",
+      "Smooth irritation-free cutting",
+      "Cordless operation",
+      "Lithium-ion battery",
+      "Ergonomic grip design",
+      "Professional-grade construction",
+      "Perfect for skin tapers"
+    ],
+    "specifications": {
+      "motor": "High-performance professional",
+      "blade": "Specialized ultra-close blade",
+      "battery": "Lithium-ion",
+      "runtime": "120 minutes",
+      "chargeTime": "2 hours",
+      "weight": "9.0 oz",
+      "voltage": "Dual voltage",
+      "specialty": "Bald fade & skin work"
+    },
+    "inStock": true,
+    "sku": "GP-SKIN-CLIPPER"
+  },
+  {
+    "id": 24,
+    "name": "Cyborg Clipper - Professional Metal Hair Clipper with Digital Brushless Motor",
+    "price": 79.99,
+    "brand": "Gamma+",
+    "slug": "gamma-cyborg-clipper",
+    "image": "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
+    "images": [
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_1_.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_3_4_retro_base_1_.jpg",
+      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/p/h/photo_aug_18_11_51_44_am_1_.jpg"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional metal clipper with advanced digital brushless motor",
+    "description": "The Gamma+ Cyborg Clipper combines futuristic design with cutting-edge technology. Featuring a digital brushless motor and full metal construction, this professional clipper delivers exceptional power and precision for all hair types. The advanced motor technology ensures consistent performance with minimal maintenance and extended lifespan.",
+    "features": [
+      "Digital brushless motor technology",
+      "Full professional metal construction",
+      "Futuristic ergonomic design",
+      "DLC precision fade blade",
+      "Extended battery life",
+      "Minimal maintenance required",
+      "Cord/cordless operation",
+      "High-torque performance",
+      "Professional durability",
+      "Sleek modern aesthetics"
+    ],
+    "specifications": {
+      "motor": "Digital brushless",
+      "blade": "DLC precision fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "9.5 oz",
+      "voltage": "Dual voltage",
+      "housing": "Full metal construction"
+    },
+    "inStock": true,
+    "sku": "GP-CYBORG-CLIPPER"
+  },
+  {
+    "id": 5,
+    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B (Dual Voltage)",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-metal-shaver-black-sc807b",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy6.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy10.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy2.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy9_2_.jpg"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Metal edition professional shaver in sleek black finish",
+    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in black combines powerful vector motor technology with dual independent foils for the smoothest shave possible. The full-metal housing provides durability and professional style, while the dual voltage capability makes it perfect for travel.",
+    "features": [
+      "Full metal housing in black",
+      "Dual independent suspension foils",
+      "Professional vector motor",
+      "Hypoallergenic titanium blades",
+      "Dual voltage for travel",
+      "Lithium-ion battery",
+      "90-minute runtime",
+      "Cord/cordless operation"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "foils": "Dual independent suspension",
+      "blades": "Titanium hypoallergenic",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "2 hours",
+      "voltage": "Dual voltage 110-240V",
+      "model": "SC807B"
+    },
+    "inStock": true,
+    "sku": "SC807B-BLACK"
+  },
+  {
+    "id": 6,
+    "name": "Stylecraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807B (Dual Voltage)",
+    "price": 149.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-metal-shaver-pink-sc807b",
+    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_15_.jpg",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_11_.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_13_.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_12_.jpg"
+    ],
+    "category": "Shaver",
+    "shortDescription": "Metal edition professional shaver in elegant pink finish",
+    "description": "The StyleCraft Metal Edition Instinct Professional Shaver in pink offers the same powerful performance as the black version with an elegant pink metal finish. Featuring dual independent foils and vector motor technology, this shaver delivers ultra-smooth results with professional style.",
+    "features": [
+      "Full metal housing in pink",
+      "Dual independent suspension foils",
+      "Professional vector motor",
+      "Hypoallergenic titanium blades",
+      "Dual voltage capability",
+      "Lithium-ion battery",
+      "90-minute runtime",
+      "Cord/cordless versatility"
+    ],
+    "specifications": {
+      "motor": "Vector motor",
+      "foils": "Dual independent suspension",
+      "blades": "Titanium hypoallergenic",
+      "battery": "Lithium-ion",
+      "runtime": "90 minutes",
+      "chargeTime": "2 hours",
+      "voltage": "Dual voltage 110-240V",
+      "model": "SC807B"
+    },
+    "inStock": true,
+    "sku": "SC807B-PINK"
   },
   {
     "id": 17,
@@ -692,8 +825,6 @@
       "included": "Forged cutter, crunchy cutter, velvet bag, protective cap, USB charger, adapter"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 892,
     "sku": "GP-UNO-SHAVER"
   },
   {
@@ -736,8 +867,6 @@
       "voltage": "USB rechargeable"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 654,
     "sku": "SC-UNO-BLUE"
   },
   {
@@ -780,51 +909,7 @@
       "model": "SCUNOSFSR"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 623,
     "sku": "SCUNOSFSR"
-  },
-  {
-    "id": 20,
-    "name": "FLEX PROFESSIONAL HAIR TRIMMER WITH SUPER-TORQUE MOTOR",
-    "price": 119.99,
-    "brand": "StyleCraft",
-    "slug": "stylecraft-flex-trimmer",
-    "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc406m__main2.jpg",
-    "images": [
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/p/h/photo_aug_18_12_10_20_pm.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/f/l/flex_usb_charging.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/f/l/flex_blades.png"
-    ],
-    "category": "Trimmer",
-    "shortDescription": "Professional trimmer with super-torque motor for maximum power",
-    "description": "The FLEX Professional Hair Trimmer features a revolutionary super-torque motor that delivers unmatched cutting power for the most demanding professional applications. Engineered for precision detailing, outlining, and finishing work, this trimmer combines raw power with refined control for exceptional results on all hair types.",
-    "features": [
-      "Super-torque motor technology",
-      "Maximum cutting power",
-      "Professional-grade performance",
-      "DLC precision blade",
-      "Zero-gap adjustable",
-      "Extended battery life",
-      "Ergonomic design",
-      "Cord/cordless operation",
-      "All-metal construction",
-      "Professional durability"
-    ],
-    "specifications": {
-      "motor": "Super-torque motor",
-      "blade": "DLC precision T-blade",
-      "battery": "Lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "8.0 oz",
-      "voltage": "Dual voltage",
-      "housing": "All-metal body"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 512,
-    "sku": "FLEX-TRIMMER-120"
   },
   {
     "id": 21,
@@ -864,140 +949,7 @@
       "voltage": "Dual voltage"
     },
     "inStock": true,
-    "rating": 4.6,
-    "reviewCount": 387,
     "sku": "FLEX-SHAVER-50"
-  },
-  {
-    "id": 22,
-    "name": "Gamma+ Boosted Super-Torque Modular Cordless Clipper #GP601M (Dual Voltage)",
-    "price": 124.99,
-    "brand": "Gamma+",
-    "slug": "gamma-boosted-clipper-gp601m",
-    "image": "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted_1_599x798.jpg?v=1649885466",
-    "images": [
-      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-full_599x798.jpg?v=1649885466",
-      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-plus-boosted-red_599x798.jpg?v=1649885466",
-      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-gold-side_599x798.jpg?v=1649885466",
-      "https://www.vipbarbersupply.com/cdn/shop/products/gamma-boosted-black_599x798.jpg?v=1649885466"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Modular super-torque clipper with dual voltage capability",
-    "description": "The Gamma+ Boosted Super-Torque Modular Cordless Clipper represents the next evolution in professional clipper technology. Featuring a revolutionary modular design with interchangeable components and a powerful super-torque motor, this clipper delivers exceptional cutting performance with the versatility professionals demand. The dual voltage capability makes it perfect for international use.",
-    "features": [
-      "Revolutionary modular design",
-      "Super-torque motor technology",
-      "Interchangeable components",
-      "Dual voltage 110-240V",
-      "DLC precision fade blade",
-      "Extended 3-hour runtime",
-      "Professional all-metal housing",
-      "Cord/cordless operation",
-      "Rapid charge technology",
-      "Customizable performance",
-      "International compatibility",
-      "Premium build quality"
-    ],
-    "specifications": {
-      "motor": "Super-torque modular",
-      "blade": "DLC fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2 hours",
-      "weight": "10.0 oz",
-      "voltage": "Dual voltage 110-240V",
-      "model": "GP601M",
-      "housing": "All-metal construction"
-    },
-    "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 721,
-    "sku": "GP601M"
-  },
-  {
-    "id": 23,
-    "name": "GAMMA+ SKIN CLIPPER",
-    "price": 79.99,
-    "brand": "Gamma+",
-    "slug": "gamma-skin-clipper",
-    "image": "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
-    "images": [
-      "https://nosbarbersupply.com/cdn/shop/files/original_99047fa7-3d6e-4a0c-b777-3ded0f55c990.jpg?v=1718252302",
-      "https://nosbarbersupply.com/cdn/shop/files/original_7ee6a310-a994-403e-a80f-f7285e9a6260.jpg?v=1718252301",
-      "https://nosbarbersupply.com/cdn/shop/files/original_8e3313b5-686f-47e6-b95e-fd86695efd31.jpg?v=1718252301"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Specialized skin clipper for ultra-close cutting and bald fades",
-    "description": "The Gamma+ Skin Clipper is specifically designed for ultra-close cutting and creating perfect bald fades. This specialized clipper features a unique blade configuration that cuts closer to the skin than traditional clippers, making it ideal for bald fades, skin tapers, and detailed scalp work. The powerful motor and precision engineering ensure smooth, irritation-free results.",
-    "features": [
-      "Specialized for bald fades and skin work",
-      "Ultra-close cutting blade configuration",
-      "Powerful professional motor",
-      "Designed for scalp detailing",
-      "Smooth irritation-free cutting",
-      "Cordless operation",
-      "Lithium-ion battery",
-      "Ergonomic grip design",
-      "Professional-grade construction",
-      "Perfect for skin tapers"
-    ],
-    "specifications": {
-      "motor": "High-performance professional",
-      "blade": "Specialized ultra-close blade",
-      "battery": "Lithium-ion",
-      "runtime": "120 minutes",
-      "chargeTime": "2 hours",
-      "weight": "9.0 oz",
-      "voltage": "Dual voltage",
-      "specialty": "Bald fade & skin work"
-    },
-    "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 345,
-    "sku": "GP-SKIN-CLIPPER"
-  },
-  {
-    "id": 24,
-    "name": "Cyborg Clipper - Professional Metal Hair Clipper with Digital Brushless Motor",
-    "price": 79.99,
-    "brand": "Gamma+",
-    "slug": "gamma-cyborg-clipper",
-    "image": "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
-    "images": [
-      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_base_1.jpg",
-      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_fronte_1_.jpg",
-      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/c/y/cyborg_3_4_retro_base_1_.jpg",
-      "https://gammaplusna.com/pub/media/catalog/product/cache/63f3c8a2cba6caf333496bee9b194240/p/h/photo_aug_18_11_51_44_am_1_.jpg"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional metal clipper with advanced digital brushless motor",
-    "description": "The Gamma+ Cyborg Clipper combines futuristic design with cutting-edge technology. Featuring a digital brushless motor and full metal construction, this professional clipper delivers exceptional power and precision for all hair types. The advanced motor technology ensures consistent performance with minimal maintenance and extended lifespan.",
-    "features": [
-      "Digital brushless motor technology",
-      "Full professional metal construction",
-      "Futuristic ergonomic design",
-      "DLC precision fade blade",
-      "Extended battery life",
-      "Minimal maintenance required",
-      "Cord/cordless operation",
-      "High-torque performance",
-      "Professional durability",
-      "Sleek modern aesthetics"
-    ],
-    "specifications": {
-      "motor": "Digital brushless",
-      "blade": "DLC precision fade blade",
-      "battery": "High-capacity lithium-ion",
-      "runtime": "150 minutes",
-      "chargeTime": "2 hours",
-      "weight": "9.5 oz",
-      "voltage": "Dual voltage",
-      "housing": "Full metal construction"
-    },
-    "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 456,
-    "sku": "GP-CYBORG-CLIPPER"
   },
   {
     "id": 25,
@@ -1040,8 +992,6 @@
       "model": "GP803B"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 512,
     "sku": "GP803B"
   }
 ]
