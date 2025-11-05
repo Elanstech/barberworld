@@ -591,32 +591,35 @@
                 </div>
             </div>
             
-            <!-- Featured Products Carousel -->
-            <div class="section featured-section">
-                <div class="section-header">
-                    <h2 class="section-title">Featured Products</h2>
-                    <div class="carousel-controls">
-                        <button class="carousel-control-btn" onclick="carouselPrev()" aria-label="Previous">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-control-btn" onclick="carouselNext()" aria-label="Next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="products-carousel" id="products-carousel">
-                    <div class="carousel-track-container">
-                        <div class="carousel-track-new" id="carousel-track-new">
-                            <!-- Products will be dynamically loaded here -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="carousel-indicators" id="carousel-indicators"></div>
+<!-- MAIN PAGE CAROUSEL SECTION -->
+<section class="featured-products-section" id="featured-products">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-title-group">
+                <h2 class="section-title">Featured Products</h2>
+                <p class="section-subtitle">Premium tools from all our top brands</p>
             </div>
-        </section>
+            <div class="carousel-controls">
+                <button class="carousel-control-btn" onclick="carouselPrev()" aria-label="Previous">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-control-btn" onclick="carouselNext()" aria-label="Next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
 
+        <div class="products-carousel" id="products-carousel">
+            <div class="carousel-track-container">
+                <div class="carousel-track-new" id="carousel-track-new">
+                    <!-- Products loaded dynamically -->
+                </div>
+            </div>
+            <div class="carousel-indicators" id="carousel-indicators"></div>
+        </div>
+    </div>
+</section>
+            
         <!-- About Section -->
         <section class="about-section" id="about">
             <div class="about-hero">
