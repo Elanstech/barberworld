@@ -159,9 +159,7 @@ main {
 .close-banner:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-50%) rotate(90deg);
-}
-
-/* ==========================================
+}/* ==========================================
    COMPACT FLASH SALE BANNER & FLOATING BUTTON
    ========================================== */
 
@@ -476,45 +474,59 @@ main {
 /* Mobile Floating Button */
 @media (max-width: 768px) {
     .flash-sale-float-btn {
-        top: auto;
-        bottom: 80px;
-        right: 15px;
-        padding: 10px 16px;
-        gap: 10px;
+        top: 110px; /* Keep at top on mobile */
+        right: 10px;
+        padding: 10px 14px;
+        gap: 8px;
     }
     
     .float-icon {
-        font-size: 20px;
+        font-size: 18px;
     }
     
     .float-title {
-        font-size: 11px;
+        font-size: 10px;
+        letter-spacing: 1px;
     }
     
     .float-subtitle {
-        font-size: 10px;
+        font-size: 9px;
     }
     
     .float-badge {
-        font-size: 10px;
+        font-size: 9px;
         padding: 3px 8px;
     }
 }
 
 @media (max-width: 480px) {
     .flash-sale-float-btn {
-        bottom: 70px;
-        right: 10px;
+        top: 105px; /* Keep at top on small mobile */
+        right: 8px;
         padding: 8px 12px;
-        gap: 8px;
-    }
-    
-    .float-text {
-        display: none;
+        gap: 6px;
     }
     
     .float-icon {
-        font-size: 22px;
+        font-size: 16px;
+    }
+    
+    .float-text {
+        display: flex; /* Keep StyleCraft visible */
+    }
+    
+    .float-title {
+        font-size: 9px;
+        letter-spacing: 0.5px;
+    }
+    
+    .float-subtitle {
+        font-size: 8px;
+    }
+    
+    .float-badge {
+        font-size: 8px;
+        padding: 2px 6px;
     }
 }
 
