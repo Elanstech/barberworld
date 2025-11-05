@@ -210,105 +210,59 @@
     </button>
 </div>
 
-<!-- FLASH SALE -->
-<section class="flash-sale-section">
-    <div class="flash-sale-bg-effect"></div>
-    
-    <div class="flash-sale-container">
-        <!-- Flash Badge -->
-        <div class="flash-badge">
-            <i class="fas fa-bolt"></i>
-            <span>FLASH SALE</span>
+<!-- ==========================================
+     FLASH SALE BANNER - SIMPLE & CATCHY
+     Paste this where you want the banner
+     ========================================== -->
+
+<div class="flash-sale-banner" onclick="openFlashSaleModal()">
+    <div class="flash-banner-container">
+        <!-- Left: Flash Badge & Product -->
+        <div class="flash-banner-left">
+            <div class="flash-bolt">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div class="flash-banner-content">
+                <div class="flash-badge-small">FLASH SALE</div>
+                <h3 class="flash-banner-title">INSTINCT-X PROFESSIONAL CLIPPER</h3>
+                <div class="flash-banner-price">
+                    <span class="flash-old-price">$199</span>
+                    <span class="flash-new-price">$139.99</span>
+                    <span class="flash-save">SAVE 30%</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Sale Content -->
-        <div class="flash-sale-content">
-            <!-- Left Side - Product Image -->
-            <div class="flash-sale-image">
-                <div class="sale-percentage-badge">
-                    <span class="percentage-number">30%</span>
-                    <span class="percentage-text">OFF</span>
+        <!-- Right: Countdown Timer -->
+        <div class="flash-banner-right">
+            <div class="flash-timer-label">ENDS IN</div>
+            <div class="flash-timer">
+                <div class="flash-time-box">
+                    <span id="flash-hours">00</span>
+                    <span class="flash-time-label">H</span>
                 </div>
-                <img src="your-clipper-image.jpg" alt="INSTINCT-X Professional Hair Clipper" class="product-image">
-                <div class="pulse-ring"></div>
+                <span class="flash-colon">:</span>
+                <div class="flash-time-box">
+                    <span id="flash-minutes">00</span>
+                    <span class="flash-time-label">M</span>
+                </div>
+                <span class="flash-colon">:</span>
+                <div class="flash-time-box">
+                    <span id="flash-seconds">00</span>
+                    <span class="flash-time-label">S</span>
+                </div>
             </div>
-
-            <!-- Right Side - Sale Info -->
-            <div class="flash-sale-info">
-                <h2 class="flash-product-title">INSTINCT-X PROFESSIONAL HAIR CLIPPER</h2>
-                <p class="flash-product-subtitle">WITH IN2 VECTOR MOTOR</p>
-
-                <!-- Price Display -->
-                <div class="flash-price-container">
-                    <span class="original-price">$199.00</span>
-                    <span class="flash-price">$139.99</span>
-                    <span class="savings-badge">SAVE $59.01</span>
-                </div>
-
-                <!-- Countdown Timer -->
-                <div class="flash-countdown">
-                    <div class="countdown-label">
-                        <i class="fas fa-clock"></i>
-                        <span>OFFER ENDS IN</span>
-                    </div>
-                    <div class="countdown-timer">
-                        <div class="time-unit">
-                            <span class="time-value" id="hours">00</span>
-                            <span class="time-label">Hours</span>
-                        </div>
-                        <div class="time-separator">:</div>
-                        <div class="time-unit">
-                            <span class="time-value" id="minutes">00</span>
-                            <span class="time-label">Minutes</span>
-                        </div>
-                        <div class="time-separator">:</div>
-                        <div class="time-unit">
-                            <span class="time-value" id="seconds">00</span>
-                            <span class="time-label">Seconds</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Features List -->
-                <ul class="flash-features">
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>High-Performance IN2 Vector Motor</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Professional Grade Precision</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Premium Build Quality</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-check-circle"></i>
-                        <span>Free Shipping Included</span>
-                    </li>
-                </ul>
-
-                <!-- CTA Button -->
-                <button class="flash-cta-btn" onclick="addFlashSaleToCart()">
-                    <span class="btn-text">CLAIM THIS DEAL</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-
-                <!-- Stock Indicator -->
-                <div class="stock-indicator">
-                    <div class="stock-bar">
-                        <div class="stock-fill" style="width: 35%"></div>
-                    </div>
-                    <p class="stock-text">
-                        <i class="fas fa-fire"></i>
-                        <span>Only <strong>12 units</strong> left at this price!</span>
-                    </p>
-                </div>
+            <div class="flash-cta-text">
+                CLICK TO VIEW
+                <i class="fas fa-arrow-right"></i>
             </div>
         </div>
     </div>
-</section>
+    
+    <!-- Animated Background Effects -->
+    <div class="flash-bg-glow"></div>
+    <div class="flash-pulse-ring"></div>
+</div>
     
     <!-- MODERN REDESIGNED HEADER -->
     <header class="modern-header">
