@@ -1,4 +1,4 @@
-// Enhanced Barber World Homepage JavaScript - Complete Version with Stripe
+// Enhanced Barber World Homepage JavaScript - Complete Version with Stripe & Flash Sale
 
 // Stripe Configuration
 const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
@@ -11,6 +11,9 @@ let allProducts = [];
 let currentCarouselPage = 0;
 let carouselAutoplayInterval = null;
 let isCarouselAnimating = false;
+
+// Flash Sale Configuration
+const FLASH_SALE_END_DATE = new Date('2025-11-12T23:59:59').getTime();
 
 // ==========================================
 // INITIALIZATION
@@ -26,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeShippingBanner();
     initializeQuizModal();
     initializeBackToTop();
+    initializeFlashSaleBanner();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -34,6 +38,7 @@ function initializeEventListeners() {
         if (e.key === 'Escape') {
             closeMobileMenu();
             closeCart();
+            closeFlashSaleModal();
         }
     });
     
@@ -78,7 +83,6 @@ function initializeWelcomeSection() {
     
     if (!welcomeSection || !handwrittenPath) return;
 
-    // Intersection Observer for triggering animation when section is visible
     const observerOptions = {
         threshold: 0.3,
         rootMargin: '0px'
@@ -87,13 +91,8 @@ function initializeWelcomeSection() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Reset animation
                 handwrittenPath.style.animation = 'none';
-                
-                // Trigger reflow
                 void handwrittenPath.offsetWidth;
-                
-                // Restart animation
                 handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
             }
         });
@@ -101,7 +100,6 @@ function initializeWelcomeSection() {
 
     observer.observe(welcomeSection);
 
-    // Add a subtle fade-in for the entire section
     welcomeSection.style.opacity = '0';
     welcomeSection.style.transform = 'translateY(20px)';
     welcomeSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -111,7 +109,6 @@ function initializeWelcomeSection() {
         welcomeSection.style.transform = 'translateY(0)';
     }, 100);
 
-    // Replay animation on click
     welcomeSection.addEventListener('click', function() {
         handwrittenPath.style.animation = 'none';
         void handwrittenPath.offsetWidth;
@@ -119,7 +116,6 @@ function initializeWelcomeSection() {
     });
 }
 
-// Dynamic opacity change as you scroll past
 window.addEventListener('scroll', function() {
     const welcomeSection = document.querySelector('.welcome-section');
     if (!welcomeSection) return;
@@ -144,7 +140,6 @@ function initializeShippingBanner() {
     
     if (!closeBannerBtn || !shippingBanner) return;
     
-    // Check if banner was previously closed
     const bannerClosed = localStorage.getItem('shippingBannerClosed');
     if (bannerClosed === 'true') {
         shippingBanner.classList.add('hidden');
@@ -816,27 +811,22 @@ function initializeQuizModal() {
     
     if (!quizOverlay || !quizModal) return;
     
-    // Check if quiz was dismissed
     const quizDismissed = sessionStorage.getItem('quizDismissed');
     
-    // Show quiz after 3 seconds if not dismissed
     if (!quizDismissed) {
         setTimeout(() => {
             showQuizModal();
         }, 3000);
     }
     
-    // Start quiz button
     if (startQuizBtn) {
         startQuizBtn.addEventListener('click', startQuiz);
     }
     
-    // Close button
     if (closeQuizBtn) {
         closeQuizBtn.addEventListener('click', closeQuizModal);
     }
     
-    // Dismiss button
     if (dismissQuizBtn) {
         dismissQuizBtn.addEventListener('click', () => {
             closeQuizModal();
@@ -844,21 +834,18 @@ function initializeQuizModal() {
         });
     }
     
-    // Overlay click
     quizOverlay.addEventListener('click', (e) => {
         if (e.target === quizOverlay) {
             closeQuizModal();
         }
     });
     
-    // ESC key to close
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && quizModal.classList.contains('active')) {
             closeQuizModal();
         }
     });
     
-    // Setup quiz navigation
     setupQuizNavigation();
 }
 
@@ -903,10 +890,8 @@ function renderQuizStep() {
     const currentQuestion = quizQuestions[quizState.currentStep];
     const quizStepsContainer = document.getElementById('quiz-steps');
     
-    // Update progress dots
     updateProgressDots();
     
-    // Render current question
     quizStepsContainer.innerHTML = `
         <div class="quiz-step active">
             <div class="quiz-question">${currentQuestion.question}</div>
@@ -927,22 +912,18 @@ function renderQuizStep() {
         </div>
     `;
     
-    // Add click handlers to options
     document.querySelectorAll('.quiz-option').forEach(option => {
         option.addEventListener('click', () => {
             const value = option.dataset.value;
             quizState.answers[currentQuestion.id] = value;
             
-            // Update UI
             document.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
             option.classList.add('selected');
             
-            // Enable next button
             document.getElementById('quiz-next-btn').disabled = false;
         });
     });
     
-    // Update buttons
     const backBtn = document.getElementById('quiz-back-btn');
     const nextBtn = document.getElementById('quiz-next-btn');
     
@@ -979,7 +960,6 @@ function updateProgressDots() {
 function determineBrand() {
     const { usage, experience, budget, priority } = quizState.answers;
     
-    // Brand scoring logic
     let scores = {
         wahl: 0,
         stylecraft: 0,
@@ -987,7 +967,6 @@ function determineBrand() {
         ourbrand: 0
     };
     
-    // Usage scoring
     if (usage === 'professional') {
         scores.wahl += 3;
         scores.stylecraft += 3;
@@ -995,36 +974,33 @@ function determineBrand() {
     } else if (usage === 'personal') {
         scores.ourbrand += 3;
         scores.vgr += 2;
-    } else { // both
+    } else {
         scores.vgr += 3;
         scores.stylecraft += 2;
     }
     
-    // Experience scoring
     if (experience === 'expert') {
         scores.wahl += 3;
         scores.stylecraft += 3;
     } else if (experience === 'intermediate') {
         scores.vgr += 3;
         scores.stylecraft += 2;
-    } else { // beginner
+    } else {
         scores.ourbrand += 3;
         scores.vgr += 2;
     }
     
-    // Budget scoring
     if (budget === 'premium') {
         scores.stylecraft += 3;
         scores.wahl += 2;
     } else if (budget === 'mid') {
         scores.wahl += 3;
         scores.vgr += 2;
-    } else { // budget
+    } else {
         scores.vgr += 3;
         scores.ourbrand += 2;
     }
     
-    // Priority scoring
     if (priority === 'power') {
         scores.wahl += 2;
         scores.stylecraft += 2;
@@ -1032,11 +1008,10 @@ function determineBrand() {
         scores.vgr += 2;
     } else if (priority === 'durability') {
         scores.wahl += 2;
-    } else { // design
+    } else {
         scores.stylecraft += 2;
     }
     
-    // Find highest scoring brand
     let recommendedBrand = 'vgr';
     let highestScore = 0;
     
@@ -1058,11 +1033,9 @@ function showQuizResult() {
     const quizButtons = document.querySelector('.quiz-buttons');
     const progressContainer = document.getElementById('quiz-progress');
     
-    // Hide buttons and progress
     if (quizButtons) quizButtons.style.display = 'none';
     if (progressContainer) progressContainer.style.display = 'none';
     
-    // Show result
     quizStepsContainer.innerHTML = `
         <div class="quiz-result active">
             <div class="result-brand-logo">
@@ -1140,7 +1113,6 @@ function initializeBackToTop() {
     
     if (!backToTopBtn) return;
     
-    // Show/hide button based on scroll position
     window.addEventListener('scroll', debounce(() => {
         if (window.scrollY > 500) {
             backToTopBtn.classList.add('visible');
@@ -1149,11 +1121,129 @@ function initializeBackToTop() {
         }
     }, 100));
     
-    // Smooth scroll to top
     backToTopBtn.addEventListener('click', () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+}
+
+// ==========================================
+// FLASH SALE BANNER & MODAL
+// ==========================================
+
+function initializeFlashSaleBanner() {
+    const flashBanner = document.getElementById('flashBanner');
+    const flashModal = document.getElementById('flashModal');
+    
+    if (!flashBanner) return;
+    
+    const bannerClosed = localStorage.getItem('flashBannerClosed');
+    if (bannerClosed === 'true') {
+        flashBanner.style.display = 'none';
+    }
+    
+    updateFlashSaleTimer();
+    setInterval(updateFlashSaleTimer, 1000);
+}
+
+function updateFlashSaleTimer() {
+    const now = new Date().getTime();
+    const distance = FLASH_SALE_END_DATE - now;
+    
+    if (distance < 0) {
+        const bannerTimer = document.getElementById('bannerTimer');
+        const modalTimer = document.getElementById('modalTimer');
+        
+        if (bannerTimer) bannerTimer.textContent = 'SALE ENDED';
+        if (modalTimer) modalTimer.textContent = 'SALE ENDED';
+        return;
+    }
+    
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+    const timeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    
+    const bannerTimer = document.getElementById('bannerTimer');
+    const modalTimer = document.getElementById('modalTimer');
+    
+    if (bannerTimer) bannerTimer.textContent = timeString;
+    if (modalTimer) modalTimer.textContent = timeString;
+}
+
+function closeBanner() {
+    const banner = document.getElementById('flashBanner');
+    if (!banner) return;
+    
+    banner.style.animation = 'slideDown 0.3s ease-out reverse';
+    setTimeout(() => {
+        banner.style.display = 'none';
+    }, 300);
+    localStorage.setItem('flashBannerClosed', 'true');
+}
+
+function openFlashSaleModal() {
+    const modal = document.getElementById('flashModal');
+    if (!modal) return;
+    
+    modal.classList.add('active');
+    document.body.classList.add('no-scroll');
+}
+
+function closeFlashSaleModal() {
+    const modal = document.getElementById('flashModal');
+    if (!modal) return;
+    
+    modal.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+}
+
+async function addFlashSaleToCart() {
+    const flashSaleProduct = {
+        id: 999999,
+        name: 'INSTINCT-X PROFESSIONAL HAIR CLIPPER',
+        brand: 'StyleCraft',
+        price: 139.00,
+        originalPrice: 199.00,
+        image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg',
+        quantity: 1
+    };
+    
+    const existingItem = cart.find(item => item.id === flashSaleProduct.id);
+    
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push(flashSaleProduct);
+    }
+    
+    saveCart();
+    showNotification(`${flashSaleProduct.name} added to cart!`, 'success');
+    
+    const addBtn = document.querySelector('.add-to-cart-btn');
+    if (addBtn) {
+        const originalText = addBtn.innerHTML;
+        addBtn.innerHTML = '<i class="fas fa-check"></i> ADDED TO CART';
+        addBtn.style.background = '#2e7d32';
+        
+        setTimeout(() => {
+            addBtn.innerHTML = originalText;
+            addBtn.style.background = '#1a1a1a';
+        }, 2000);
+    }
+    
+    setTimeout(() => {
+        closeFlashSaleModal();
+    }, 1500);
+}
+
+function buyNowFlashSale() {
+    addFlashSaleToCart();
+    setTimeout(() => {
+        openCart();
+    }, 1000);
 }
