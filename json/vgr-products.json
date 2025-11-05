@@ -38,9 +38,47 @@
       "model": "V-015"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 289,
     "sku": "VGR-V015"
+  },
+  {
+    "id": 3,
+    "name": "VGR Professional Hair Clippers Rechargeable Clipper Electric Hair Clippers Adjustable Hair Clipper for Men",
+    "price": 99.99,
+    "brand": "VGR",
+    "slug": "vgr-adjustable-clipper",
+    "image": "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+    "images": [
+      "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/32ea3999-692f-4258-8be2-2bccd7945799.7f8a56d5bd32bc3e8712469ad9cd6f3d.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/fd136a5b-472e-466b-99a5-e861fbbecd10.ca65f61ec3bb9f7fd750e8474619996c.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
+      "https://i5.walmartimages.com/asr/35c5de1f-33ee-43fb-bc75-a0fe5e681764.16c7f9dc033a32fec9e044f7f1e6bac9.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Professional rechargeable clipper with adjustable cutting length",
+    "description": "VGR Professional Hair Clippers offer precision cutting with adjustable blade settings for versatile styling. This rechargeable electric hair clipper is designed for professional barbers and home use, featuring powerful motor performance and ergonomic design for comfortable handling during extended grooming sessions.",
+    "features": [
+      "Adjustable blade cutting lengths",
+      "Rechargeable cordless operation",
+      "Professional-grade motor",
+      "Ergonomic design for comfort",
+      "Precision cutting blades",
+      "Multiple guide combs included",
+      "Suitable for all hair types",
+      "Long battery runtime",
+      "Professional barbershop quality"
+    ],
+    "specifications": {
+      "motor": "High-performance motor",
+      "blade": "Adjustable stainless steel blade",
+      "battery": "Rechargeable lithium-ion",
+      "runtime": "180 minutes",
+      "chargeTime": "2.5 hours",
+      "weight": "10 oz",
+      "voltage": "110-240V dual voltage",
+      "accessories": "Guide combs, cleaning brush, charger"
+    },
+    "inStock": true,
+    "sku": "VGR-ADJ-001"
   },
   {
     "id": 2,
@@ -81,51 +119,7 @@
       "model": "V-994"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 342,
     "sku": "VGR-V994"
-  },
-  {
-    "id": 3,
-    "name": "VGR Professional Hair Clippers Rechargeable Clipper Electric Hair Clippers Adjustable Hair Clipper for Men",
-    "price": 99.99,
-    "brand": "VGR",
-    "slug": "vgr-adjustable-clipper",
-    "image": "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-    "images": [
-      "https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/32ea3999-692f-4258-8be2-2bccd7945799.7f8a56d5bd32bc3e8712469ad9cd6f3d.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/fd136a5b-472e-466b-99a5-e861fbbecd10.ca65f61ec3bb9f7fd750e8474619996c.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF",
-      "https://i5.walmartimages.com/asr/35c5de1f-33ee-43fb-bc75-a0fe5e681764.16c7f9dc033a32fec9e044f7f1e6bac9.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF"
-    ],
-    "category": "Clipper",
-    "shortDescription": "Professional rechargeable clipper with adjustable cutting length",
-    "description": "VGR Professional Hair Clippers offer precision cutting with adjustable blade settings for versatile styling. This rechargeable electric hair clipper is designed for professional barbers and home use, featuring powerful motor performance and ergonomic design for comfortable handling during extended grooming sessions.",
-    "features": [
-      "Adjustable blade cutting lengths",
-      "Rechargeable cordless operation",
-      "Professional-grade motor",
-      "Ergonomic design for comfort",
-      "Precision cutting blades",
-      "Multiple guide combs included",
-      "Suitable for all hair types",
-      "Long battery runtime",
-      "Professional barbershop quality"
-    ],
-    "specifications": {
-      "motor": "High-performance motor",
-      "blade": "Adjustable stainless steel blade",
-      "battery": "Rechargeable lithium-ion",
-      "runtime": "180 minutes",
-      "chargeTime": "2.5 hours",
-      "weight": "10 oz",
-      "voltage": "110-240V dual voltage",
-      "accessories": "Guide combs, cleaning brush, charger"
-    },
-    "inStock": true,
-    "rating": 4.6,
-    "reviewCount": 156,
-    "sku": "VGR-ADJ-001"
   },
   {
     "id": 4,
@@ -165,8 +159,6 @@
       "accessories": "Guide combs, cleaning brush, USB cable"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 203,
     "sku": "VGR-ROTOR-001"
   }
 ]
