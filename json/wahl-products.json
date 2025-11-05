@@ -35,8 +35,6 @@
       "model": "3026480"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 612,
     "sku": "3026480"
   },
   {
@@ -75,8 +73,6 @@
       "model": "8148-700"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 834,
     "sku": "8148-700"
   },
   {
@@ -115,8 +111,6 @@
       "model": "8148"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 1247,
     "sku": "8148"
   },
   {
@@ -155,8 +149,6 @@
       "model": "8504-400"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 956,
     "sku": "8504-400"
   },
   {
@@ -195,8 +187,6 @@
       "model": "3026468"
     },
     "inStock": true,
-    "rating": 4.7,
-    "reviewCount": 523,
     "sku": "3026468"
   },
   {
@@ -235,8 +225,6 @@
       "model": "3025397"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 1456,
     "sku": "3025397"
   },
   {
@@ -275,8 +263,6 @@
       "warranty": "1 year manufacturer"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 724,
     "sku": "POWER-STATION"
   }
 ]
