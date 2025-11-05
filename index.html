@@ -210,38 +210,33 @@
     </button>
 </div>
     
-<!-- Flash Sale Banner - Add after shipping banner -->
-<div class="flash-sale-banner" id="flashBanner">
-    <div class="flash-glow"></div>
-    <div class="banner-container">
-        <div class="banner-left">
-            <span class="flash-icon">⚡</span>
-            <div class="banner-text-content">
-                <span class="flash-label">FLASH SALE</span>
-                <span class="product-name">INSTINCT-X Professional Clipper</span>
-            </div>
+<!-- Add this HTML after the shipping banner in your index.html -->
+
+<!-- Compact Flash Sale Banner -->
+<div class="flash-sale-compact-banner" id="flashBanner">
+    <div class="compact-banner-content">
+        <span class="compact-flash-icon">⚡</span>
+        <div class="compact-text">
+            <strong>FLASH SALE:</strong> INSTINCT-X Clipper 
+            <span class="compact-price">$139 <del>$199</del></span>
         </div>
-        <div class="banner-center">
-            <div class="price-display">
-                <span class="sale-price">$139</span>
-                <span class="original-price">$199</span>
-            </div>
-            <div class="timer-display">
-                <i class="fas fa-clock"></i>
-                <span id="bannerTimer">Loading...</span>
-            </div>
-        </div>
-        <div class="banner-right">
-            <button class="banner-cta" onclick="openFlashSaleModal()">
-                <span>SHOP NOW</span>
-                <i class="fas fa-arrow-right"></i>
-            </button>
+        <span class="compact-timer" id="bannerTimer">0d 0h 0m 0s</span>
+        <button class="compact-cta" onclick="openFlashSaleModal()">SHOP</button>
+    </div>
+    <button class="compact-close" onclick="closeBanner()">&times;</button>
+</div>
+
+<!-- Floating Flash Sale Button -->
+<button class="flash-sale-float-btn" id="flashFloatBtn" onclick="openFlashSaleModal()">
+    <div class="float-btn-content">
+        <span class="float-icon">⚡</span>
+        <div class="float-text">
+            <span class="float-title">FLASH SALE</span>
+            <span class="float-subtitle">StyleCraft</span>
         </div>
     </div>
-    <button class="banner-close" onclick="closeBanner()" aria-label="Close banner">
-        <i class="fas fa-times"></i>
-    </button>
-</div>
+    <div class="float-badge">-30%</div>
+</button>
 
 <!-- Flash Sale Modal -->
 <div class="flash-modal" id="flashModal">
@@ -262,7 +257,7 @@
                 <div class="flash-tag">
                     <span class="flash-icon">⚡</span>
                     <span>FLASH SALE ENDS IN:</span>
-                    <span class="timer-highlight" id="modalTimer">Loading...</span>
+                    <span class="timer-highlight" id="modalTimer">0d 0h 0m 0s</span>
                 </div>
                 <h2>INSTINCT-X PROFESSIONAL HAIR CLIPPER</h2>
                 <p class="product-subtitle">WITH IN2 VECTOR MOTOR</p>
