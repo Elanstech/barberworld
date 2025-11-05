@@ -162,6 +162,659 @@ main {
 }
 
 /* ==========================================
+   FLASH SALE SECTION - STYLES
+   Modern, Minimalistic, Smooth Animations
+   ========================================== */
+
+.flash-sale-section {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    padding: 4rem 2rem;
+    overflow: hidden;
+    margin: 3rem 0;
+}
+
+/* Animated Background Effect */
+.flash-sale-bg-effect {
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.15), transparent 70%);
+    border-radius: 50%;
+    animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.6;
+    }
+    50% {
+        transform: translate(-50px, 50px) scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Container */
+.flash-sale-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+/* Flash Badge */
+.flash-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+    color: var(--primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    margin-bottom: 2rem;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+    animation: flashPulse 2s ease-in-out infinite;
+}
+
+@keyframes flashPulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 12px 32px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.flash-badge i {
+    font-size: 1.2rem;
+    animation: boltFlash 1.5s ease-in-out infinite;
+}
+
+@keyframes boltFlash {
+    0%, 100% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    50% {
+        opacity: 0.7;
+        transform: rotate(-15deg);
+    }
+}
+
+/* Main Content Grid */
+.flash-sale-content {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    padding: 3rem;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.8s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Product Image Section */
+.flash-sale-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.sale-percentage-badge {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 24px rgba(220, 53, 69, 0.4);
+    z-index: 10;
+    animation: spinBadge 20s linear infinite, bounce 2s ease-in-out infinite;
+}
+
+@keyframes spinBadge {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.percentage-number {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+}
+
+.percentage-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 1px;
+}
+
+.product-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.2));
+}
+
+/* Pulse Ring Effect */
+.pulse-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: pulseRing 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes pulseRing {
+    0% {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0.8;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Sale Info Section */
+.flash-sale-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.flash-product-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+}
+
+.flash-product-subtitle {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: -0.5rem;
+}
+
+/* Price Container */
+.flash-price-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--border);
+    border-bottom: 2px solid var(--border);
+}
+
+.original-price {
+    font-size: 1.5rem;
+    color: var(--gray-600);
+    text-decoration: line-through;
+    font-weight: 600;
+}
+
+.flash-price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--gold);
+    animation: priceGlow 2s ease-in-out infinite;
+}
+
+@keyframes priceGlow {
+    0%, 100% {
+        text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.6);
+    }
+}
+
+.savings-badge {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+/* Countdown Timer */
+.flash-countdown {
+    background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+    padding: 1.5rem;
+    border-radius: var(--radius-lg);
+    border: 2px solid var(--border);
+}
+
+.countdown-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.countdown-label i {
+    color: var(--gold);
+    animation: tickTock 1s ease-in-out infinite;
+}
+
+@keyframes tickTock {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
+}
+
+.countdown-timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.time-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white);
+    padding: 1rem 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    min-width: 80px;
+    transition: var(--transition);
+}
+
+.time-unit:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.time-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1;
+}
+
+.time-label {
+    font-size: 0.75rem;
+    color: var(--gray-600);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 0.25rem;
+}
+
+.time-separator {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--gold);
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+    0%, 49%, 100% {
+        opacity: 1;
+    }
+    50%, 99% {
+        opacity: 0.3;
+    }
+}
+
+/* Features List */
+.flash-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.flash-features li {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: var(--primary);
+    animation: slideInLeft 0.6s ease backwards;
+}
+
+.flash-features li:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.flash-features li:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.flash-features li:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.flash-features li:nth-child(4) {
+    animation-delay: 0.4s;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.flash-features i {
+    color: var(--gold);
+    font-size: 1.2rem;
+}
+
+/* CTA Button */
+.flash-cta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+    color: var(--primary);
+    border: none;
+    padding: 1.25rem 2.5rem;
+    border-radius: var(--radius-lg);
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.4);
+    position: relative;
+    overflow: hidden;
+}
+
+.flash-cta-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.flash-cta-btn:hover::before {
+    left: 100%;
+}
+
+.flash-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.6);
+}
+
+.flash-cta-btn:active {
+    transform: translateY(-1px);
+}
+
+.flash-cta-btn i {
+    transition: var(--transition);
+}
+
+.flash-cta-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Stock Indicator */
+.stock-indicator {
+    background: linear-gradient(135deg, #fff5e6, #fffbf0);
+    padding: 1rem;
+    border-radius: var(--radius);
+    border: 2px solid #ffe8b3;
+}
+
+.stock-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--border);
+    border-radius: 50px;
+    overflow: hidden;
+    margin-bottom: 0.75rem;
+}
+
+.stock-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #dc3545, #ff6b6b);
+    border-radius: 50px;
+    animation: fillBar 2s ease-out;
+}
+
+@keyframes fillBar {
+    from {
+        width: 0;
+    }
+}
+
+.stock-text {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.stock-text i {
+    color: #dc3545;
+    animation: fireFlicker 1.5s ease-in-out infinite;
+}
+
+@keyframes fireFlicker {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.1);
+    }
+}
+
+.stock-text strong {
+    color: #dc3545;
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .flash-sale-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem;
+    }
+
+    .flash-sale-image {
+        order: -1;
+    }
+
+    .product-image {
+        max-width: 300px;
+    }
+
+    .flash-product-title {
+        font-size: 2rem;
+    }
+
+    .flash-price {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .flash-sale-section {
+        padding: 2rem 1rem;
+    }
+
+    .flash-sale-content {
+        padding: 1.5rem;
+    }
+
+    .flash-product-title {
+        font-size: 1.75rem;
+    }
+
+    .flash-product-subtitle {
+        font-size: 1rem;
+    }
+
+    .flash-price {
+        font-size: 2rem;
+    }
+
+    .original-price {
+        font-size: 1.2rem;
+    }
+
+    .countdown-timer {
+        gap: 0.5rem;
+    }
+
+    .time-unit {
+        padding: 0.75rem 1rem;
+        min-width: 70px;
+    }
+
+    .time-value {
+        font-size: 1.5rem;
+    }
+
+    .time-label {
+        font-size: 0.65rem;
+    }
+
+    .flash-cta-btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
+
+    .sale-percentage-badge {
+        width: 70px;
+        height: 70px;
+    }
+
+    .percentage-number {
+        font-size: 1.5rem;
+    }
+
+    .percentage-text {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .flash-badge {
+        font-size: 0.8rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .flash-product-title {
+        font-size: 1.5rem;
+    }
+
+    .flash-price-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .countdown-timer {
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .time-separator {
+        display: none;
+    }
+
+    .product-image {
+        max-width: 250px;
+    }
+}
+
+/* ==========================================
    HEADER
    ========================================== */
 
