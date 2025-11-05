@@ -209,35 +209,60 @@
         <i class="fas fa-times"></i>
     </button>
 </div>
-
-<!-- Flash Sale Banner -->
+    
+<!-- Flash Sale Banner - Add after shipping banner -->
 <div class="flash-sale-banner" id="flashBanner">
-    <div class="banner-content">
-        <span class="flash-icon">⚡</span>
-        <span class="banner-text">
-            <strong>FLASH SALE:</strong> INSTINCT-X Professional Clipper 
-            <span class="price-badge">$139 <span class="original-price">$199</span></span>
-        </span>
-        <span class="banner-timer" id="bannerTimer"></span>
-        <button class="banner-cta" onclick="openFlashSaleModal()">SHOP NOW</button>
+    <div class="flash-glow"></div>
+    <div class="banner-container">
+        <div class="banner-left">
+            <span class="flash-icon">⚡</span>
+            <div class="banner-text-content">
+                <span class="flash-label">FLASH SALE</span>
+                <span class="product-name">INSTINCT-X Professional Clipper</span>
+            </div>
+        </div>
+        <div class="banner-center">
+            <div class="price-display">
+                <span class="sale-price">$139</span>
+                <span class="original-price">$199</span>
+            </div>
+            <div class="timer-display">
+                <i class="fas fa-clock"></i>
+                <span id="bannerTimer">Loading...</span>
+            </div>
+        </div>
+        <div class="banner-right">
+            <button class="banner-cta" onclick="openFlashSaleModal()">
+                <span>SHOP NOW</span>
+                <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
     </div>
-    <button class="banner-close" onclick="closeBanner()">&times;</button>
+    <button class="banner-close" onclick="closeBanner()" aria-label="Close banner">
+        <i class="fas fa-times"></i>
+    </button>
 </div>
 
 <!-- Flash Sale Modal -->
 <div class="flash-modal" id="flashModal">
     <div class="flash-modal-overlay" onclick="closeFlashSaleModal()"></div>
     <div class="flash-modal-content">
-        <button class="modal-close" onclick="closeFlashSaleModal()">&times;</button>
+        <button class="modal-close" onclick="closeFlashSaleModal()" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="modal-grid">
             <div class="modal-image">
-                <div class="sale-badge">-30% OFF</div>
+                <div class="sale-badge">
+                    <span class="badge-text">-30% OFF</span>
+                    <div class="badge-shine"></div>
+                </div>
                 <img src="https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg" alt="Instinct-X Clipper">
             </div>
             <div class="modal-details">
                 <div class="flash-tag">
                     <span class="flash-icon">⚡</span>
-                    FLASH SALE ENDS IN: <span id="modalTimer"></span>
+                    <span>FLASH SALE ENDS IN:</span>
+                    <span class="timer-highlight" id="modalTimer">Loading...</span>
                 </div>
                 <h2>INSTINCT-X PROFESSIONAL HAIR CLIPPER</h2>
                 <p class="product-subtitle">WITH IN2 VECTOR MOTOR</p>
@@ -254,10 +279,12 @@
                 </ul>
                 <div class="modal-actions">
                     <button class="add-to-cart-btn" onclick="addFlashSaleToCart()">
-                        ADD TO CART - $139.00
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>ADD TO CART - $139.00</span>
                     </button>
                     <button class="buy-now-btn" onclick="buyNowFlashSale()">
-                        BUY NOW
+                        <i class="fas fa-bolt"></i>
+                        <span>BUY NOW</span>
                     </button>
                 </div>
             </div>
