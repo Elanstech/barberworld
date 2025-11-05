@@ -35,8 +35,6 @@
       "housing": "Professional grade plastic"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 456,
     "sku": "FF 2020C-B"
   },
   {
@@ -73,8 +71,6 @@
       "housing": "Premium white finish"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 423,
     "sku": "2020C-B-W"
   },
   {
@@ -113,8 +109,6 @@
       "housing": "Professional grade plastic"
     },
     "inStock": true,
-    "rating": 4.8,
-    "reviewCount": 287,
     "sku": "FF 2020T-B"
   },
   {
@@ -155,8 +149,6 @@
       "case": "Premium leather carrying case"
     },
     "inStock": true,
-    "rating": 4.9,
-    "reviewCount": 678,
     "sku": "GH2401-2"
   },
   {
@@ -200,8 +192,6 @@
     },
     "inStock": true,
     "hotItem": true,
-    "rating": 4.9,
-    "reviewCount": 234,
     "sku": "JRL-LAMBO-DIAMANTE-GOLD"
   },
   {
@@ -245,8 +235,6 @@
     },
     "inStock": true,
     "hotItem": true,
-    "rating": 4.9,
-    "reviewCount": 198,
     "sku": "JRL-LAMBO-DIAMANTE-BLACK"
   }
 ]
