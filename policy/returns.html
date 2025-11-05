@@ -49,7 +49,7 @@
             color: #333;
             margin-bottom: 0.75rem;
         }
-        .policy-section ul {
+        .policy-section ul, .policy-section ol {
             padding-left: 1.5rem;
         }
         .highlight-box {
@@ -82,32 +82,6 @@
             background: var(--gold);
             transform: translateX(-5px);
         }
-        .steps-list {
-            counter-reset: step-counter;
-            list-style: none;
-            padding-left: 0;
-        }
-        .steps-list li {
-            counter-increment: step-counter;
-            padding-left: 3rem;
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-        .steps-list li::before {
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 2rem;
-            height: 2rem;
-            background: var(--gold);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -118,161 +92,93 @@
         </a>
         
         <div class="policy-header">
-            <h1><i class="fas fa-undo-alt"></i> Return & Refund Policy</h1>
+            <h1><i class="fas fa-undo-alt"></i> Return Policy</h1>
             <p class="last-updated">Last Updated: January 2024</p>
         </div>
 
-        <div class="highlight-box">
-            <strong><i class="fas fa-clock"></i> 30-Day Return Window</strong>
-            <p>We offer a 30-day return policy on most items. Returns must be initiated within 30 days of delivery.</p>
+        <div class="warning-box">
+            <strong><i class="fas fa-exclamation-triangle"></i> ALL SALES ARE FINAL</strong>
+            <p>Due to high order volumes, we are unable to accept returns or exchanges. All unauthorized returns will incur a 45% restocking fee.</p>
         </div>
 
         <div class="policy-section">
-            <h2><i class="fas fa-check-circle"></i> Return Eligibility</h2>
-            <p>To be eligible for a return, items must meet the following conditions:</p>
+            <h2><i class="fas fa-info-circle"></i> Our Return Policy</h2>
+            <p><strong>ALL SALES ARE FINAL.</strong> Barber World does not accept returns or exchanges on products purchased from our site.</p>
+            
+            <div class="highlight-box">
+                <p><strong>However, we handle each case individually.</strong> We may replace or refund products if they arrive damaged, defective, or if you receive incorrect items.</p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-check-circle"></i> Exceptions to Our Policy</h2>
+            <p>We may accept returns and provide replacements or refunds in the following cases:</p>
             <ul>
-                <li>Item must be unused and in the same condition as received</li>
-                <li>Must be in original packaging with all accessories and documentation</li>
-                <li>Must include original purchase receipt or proof of purchase</li>
-                <li>Must not show signs of wear, use, or damage</li>
-                <li>All protective films and seals must be intact</li>
+                <li><strong>Physical damage:</strong> Container damage, bottle defects, or defects in the label or product appearance</li>
+                <li><strong>Incorrect items:</strong> You received the wrong product</li>
             </ul>
         </div>
 
         <div class="policy-section">
-            <h2><i class="fas fa-times-circle"></i> Non-Returnable Items</h2>
+            <h2><i class="fas fa-list-ol"></i> How to Request a Return</h2>
+            <p>To qualify for a replacement or refund, you must:</p>
+            <ol>
+                <li><strong>Contact us within 2 days</strong> of receiving your shipment</li>
+                <li><strong>Provide clear photos</strong> of the damaged, defective, or incorrect items</li>
+                <li><strong>Wait for authorization:</strong> Do not ship items back without our approval</li>
+            </ol>
+            
+            <p>For incorrect items, we will provide a free return label via email. Once the unused, incorrect items are returned to us, we will send out the correct items or issue a refund. <strong>Refunds will only be issued once the returned items are received.</strong></p>
+            
+            <div class="highlight-box">
+                <p><i class="fas fa-envelope"></i> For help processing a return, email us at <a href="mailto:barberworldnyc@gmail.com" style="color: var(--gold); font-weight: 600;">barberworldnyc@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="policy-section">
+            <h2><i class="fas fa-times-circle"></i> Unauthorized Returns</h2>
             <div class="warning-box">
-                <p><strong>For hygiene and safety reasons, the following items cannot be returned:</strong></p>
-            </div>
-            <ul>
-                <li>Opened or used grooming products</li>
-                <li>Items with broken seals or missing protective films</li>
-                <li>Customized or personalized items</li>
-                <li>Sale or clearance items marked as "Final Sale"</li>
-                <li>Items purchased more than 30 days ago</li>
-                <li>Items without original packaging or missing parts</li>
-            </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2><i class="fas fa-list-ol"></i> How to Return an Item</h2>
-            <p>Follow these simple steps to return your item:</p>
-            <ul class="steps-list">
-                <li>Contact us at barberworldnyc@gmail.com with your order number and reason for return</li>
-                <li>Wait for our team to approve your return request (usually within 24 hours)</li>
-                <li>Receive return shipping instructions and authorization number</li>
-                <li>Securely pack the item in its original packaging</li>
-                <li>Ship the item using the provided return label or your preferred carrier</li>
-                <li>Keep your tracking number for your records</li>
-            </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2><i class="fas fa-dollar-sign"></i> Refunds</h2>
-            <p>Once your return is received and inspected, we will:</p>
-            <ul>
-                <li>Send you an email confirming receipt of your returned item</li>
-                <li>Inspect the item (1-2 business days)</li>
-                <li>Process your refund if approved (3-5 business days)</li>
-                <li>Issue refund to your original payment method</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <p><strong>Refund Timeline:</strong> Please allow 5-10 business days for the refund to appear in your account after processing. Some banks and credit card companies may take additional time.</p>
-            </div>
-
-            <p><strong>Refund Amounts:</strong></p>
-            <ul>
-                <li>Original purchase price will be refunded</li>
-                <li>Original shipping costs are non-refundable</li>
-                <li>Return shipping costs are the customer's responsibility unless the item is defective or we made an error</li>
-            </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2><i class="fas fa-exchange-alt"></i> Exchanges</h2>
-            <p>We accept exchanges for:</p>
-            <ul>
-                <li>Different color or model of the same product</li>
-                <li>Size or variant changes (if applicable)</li>
-                <li>Defective or damaged items</li>
-            </ul>
-            <p>To initiate an exchange, contact us with your order number and the item you'd like to exchange. We'll guide you through the process.</p>
-        </div>
-
-        <div class="policy-section">
-            <h2><i class="fas fa-tools"></i> Defective or Damaged Items</h2>
-            <p>If you receive a defective or damaged item:</p>
-            <ul>
-                <li>Contact us immediately (within 48 hours of delivery)</li>
-                <li>Provide photos of the damage or defect</li>
-                <li>We will arrange for free return shipping</li>
-                <li>Choose between a replacement or full refund</li>
-                <li>Expedited replacement shipping at no additional cost</li>
-            </ul>
-            
-            <div class="highlight-box">
-                <p><i class="fas fa-camera"></i> <strong>Photo Documentation:</strong> Clear photos help us process your claim faster and may be required for manufacturer warranty claims.</p>
+                <p><strong>Important:</strong> Returns shipped without prior authorization will incur a 45% restocking fee. Always contact us before returning any items.</p>
             </div>
         </div>
 
         <div class="policy-section">
-            <h2><i class="fas fa-truck-loading"></i> Return Shipping</h2>
-            <p><strong>Customer Responsibility:</strong></p>
+            <h2><i class="fas fa-tools"></i> Damaged or Defective Items</h2>
             <ul>
-                <li>You are responsible for return shipping costs unless the item is defective</li>
-                <li>We recommend using a trackable shipping service</li>
-                <li>We recommend purchasing shipping insurance for items over $100</li>
-                <li>We are not responsible for items lost in return transit</li>
-            </ul>
-            
-            <p><strong>Our Responsibility:</strong></p>
-            <ul>
-                <li>We provide prepaid return labels for defective items</li>
-                <li>We cover return shipping for our errors</li>
-                <li>We provide return authorization numbers</li>
+                <li><strong>Shipping damage:</strong> May be covered under shipping insurance. Contact us at <a href="mailto:barberworldnyc@gmail.com" style="color: var(--gold);">barberworldnyc@gmail.com</a> for assistance.</li>
+                <li><strong>Manufacturing defects:</strong> Require a claim with the manufacturer under warranty. See our <a href="warranty.html" style="color: var(--gold);">Warranty Page</a> for details.</li>
+                <li><strong>Barber World-branded items:</strong> Contact us directly and we'll assist with the return or replacement process.</li>
             </ul>
         </div>
 
         <div class="policy-section">
-            <h2><i class="fas fa-ban"></i> Restocking Fees</h2>
-            <p>Barber World does not charge restocking fees for standard returns. However, the following situations may incur fees:</p>
+            <h2><i class="fas fa-ban"></i> Order Cancellations</h2>
+            <p><strong>Effective January 15, 2025:</strong></p>
             <ul>
-                <li>Items returned without authorization: 15% restocking fee</li>
-                <li>Items missing original packaging: 20% restocking fee</li>
-                <li>Items showing signs of use: Return may be denied</li>
+                <li>Orders can be canceled before packing for fulfillment - <strong>store credit only</strong></li>
+                <li>Cancel or edit your order using the link in your confirmation email</li>
+                <li>Once packed, orders cannot be canceled</li>
+                <li>Preorder cancellations receive store credit only</li>
             </ul>
         </div>
 
         <div class="policy-section">
-            <h2><i class="fas fa-calendar-times"></i> Late or Missing Refunds</h2>
-            <p>If you haven't received your refund yet:</p>
+            <h2><i class="fas fa-truck"></i> Lost, Damaged, or Stolen Orders</h2>
             <ul>
-                <li>Check your bank account again (processing can take time)</li>
-                <li>Contact your credit card company (it may take time to post)</li>
-                <li>Contact your bank (processing time varies)</li>
-                <li>If you've done all of this and still haven't received your refund, contact us at barberworldnyc@gmail.com</li>
+                <li><strong>Route Protection purchased:</strong> File a claim at <a href="https://claims.route.com" target="_blank" style="color: var(--gold);">Route Protection Claims</a> with your order number and email</li>
+                <li><strong>No Route Protection:</strong> Coverage up to $200 may be available from the shipping carrier. Contact us and we'll file a claim for you.</li>
             </ul>
-        </div>
-
-        <div class="policy-section">
-            <h2><i class="fas fa-shield-alt"></i> Warranty vs. Returns</h2>
-            <div class="highlight-box">
-                <p><strong>Important:</strong> Our 30-day return policy is separate from manufacturer warranties. For warranty claims or technical issues that arise after 30 days, please refer to the manufacturer's warranty included with your product.</p>
-                <p>We're happy to assist you with the warranty claim process - just contact us for guidance.</p>
-            </div>
         </div>
 
         <div class="policy-section">
             <h2><i class="fas fa-envelope"></i> Contact Us</h2>
-            <p>Have questions about returns or need to initiate a return?</p>
-            <p><strong>Email:</strong> barberworldnyc@gmail.com</p>
-            <p><strong>Subject Line:</strong> Please include "Return Request" and your order number</p>
+            <p>Have questions about returns or need assistance?</p>
+            <p><strong>Email:</strong> <a href="mailto:barberworldnyc@gmail.com" style="color: var(--gold); font-weight: 600;">barberworldnyc@gmail.com</a></p>
             <p><strong>Response Time:</strong> We typically respond within 24 hours (Monday-Friday)</p>
         </div>
 
         <div class="policy-section">
-            <p><em>Barber World reserves the right to refuse returns that do not meet the eligibility criteria. This policy is subject to change without notice. Please refer to our website for the most current version.</em></p>
+            <p><em>Barber World reserves the right to refuse returns that do not meet the eligibility criteria. This policy is subject to change without notice. By making a purchase, you agree to these terms.</em></p>
         </div>
     </div>
 </body>
