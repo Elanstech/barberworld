@@ -107,7 +107,7 @@ class FlashSaleBanner {
             brand: 'StyleCraft',
             price: 130.00,
             originalPrice: 185.00,
-            image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg'
+            image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg'
         };
         
         this.init();
