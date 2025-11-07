@@ -1,6 +1,6 @@
 // ==========================================
-// ENHANCED BARBER WORLD - COMPLETE SCRIPT.JS
-// With redesigned carousel loading from ALL brand JSON files
+// BARBER WORLD - COMPLETE SCRIPT.JS
+// With Flash Sale Banner Integration
 // ==========================================
 
 // Stripe Configuration
@@ -40,12 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
     loadFeaturedProducts();
     initializeAnimations();
     initializeEventListeners();
-    initializeWelcomeSection();
     initializeShippingBanner();
     initializeBackToTop();
     initializeFlashSaleBanner();
-    initializeFloatingButton();
-    checkForFlashSaleURL();
     console.log('🚀 Barber World Enhanced Homepage Loaded');
 });
 
@@ -54,7 +51,6 @@ function initializeEventListeners() {
         if (e.key === 'Escape') {
             closeMobileMenu();
             closeCart();
-            closeFlashSaleModal();
         }
     });
     
@@ -83,7 +79,332 @@ function initializeEventListeners() {
 }
 
 // ==========================================
-// REDESIGNED CAROUSEL - LOADS FROM ALL JSON FILES
+// FLASH SALE BANNER
+// ==========================================
+
+class FlashSaleBanner {
+    constructor() {
+        this.banner = document.getElementById('flashSaleBanner');
+        this.closeBtn = document.getElementById('flashCloseBtn');
+        this.track = document.getElementById('flashProductsTrack');
+        this.prevBtn = document.getElementById('flashPrev');
+        this.nextBtn = document.getElementById('flashNext');
+        this.addCartBtn = document.getElementById('flashAddCartBtn');
+        
+        this.hoursEl = document.getElementById('hoursValue');
+        this.minutesEl = document.getElementById('minutesValue');
+        this.secondsEl = document.getElementById('secondsValue');
+        
+        this.scrollAmount = 220;
+        this.saleEndTime = this.getSaleEndTime();
+        this.timerInterval = null;
+        this.selectedProduct = null;
+        
+        this.flashProducts = [];
+        
+        this.init();
+    }
+    
+    init() {
+        if (!this.banner) return;
+        
+        console.log('⚡ Initializing Flash Sale Banner');
+        
+        this.loadFlashProducts();
+        this.startTimer();
+        this.attachEventListeners();
+        
+        console.log('✅ Flash Sale Banner initialized');
+    }
+    
+    getSaleEndTime() {
+        const now = new Date();
+        const endTime = new Date(now.getTime() + (24 * 60 * 60 * 1000));
+        return endTime;
+    }
+    
+    startTimer() {
+        this.updateTimer();
+        
+        this.timerInterval = setInterval(() => {
+            this.updateTimer();
+        }, 1000);
+    }
+    
+    updateTimer() {
+        const now = new Date();
+        const difference = this.saleEndTime - now;
+        
+        if (difference <= 0) {
+            this.hideBanner();
+            clearInterval(this.timerInterval);
+            return;
+        }
+        
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+        
+        if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
+        if (this.minutesEl) this.minutesEl.textContent = String(minutes).padStart(2, '0');
+        if (this.secondsEl) this.secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+    
+    async loadFlashProducts() {
+        if (!this.track) return;
+        
+        // Wait for allProducts to be loaded
+        let attempts = 0;
+        while (allProducts.length === 0 && attempts < 50) {
+            await new Promise(resolve => setTimeout(resolve, 100));
+            attempts++;
+        }
+        
+        if (allProducts.length > 0) {
+            // Get random 6 products from all products
+            const shuffled = shuffleArray([...allProducts]);
+            this.flashProducts = shuffled.slice(0, 6).map(product => ({
+                ...product,
+                originalPrice: Math.round(product.price * 1.3), // 30% discount
+                discount: 30
+            }));
+        } else {
+            // Fallback to hardcoded products
+            this.flashProducts = [
+                {
+                    id: 1,
+                    name: 'Professional Clipper',
+                    brand: 'StyleCraft',
+                    originalPrice: 150,
+                    price: 105,
+                    discount: 30,
+                    image: 'https://www.barberdepots.com/wp-content/uploads/2023/01/stylecraft-instinct-clipper-sc607m-blue-cover-on-stand.webp'
+                },
+                {
+                    id: 2,
+                    name: 'Trimmer Pro',
+                    brand: 'BaBylissPRO',
+                    originalPrice: 120,
+                    price: 84,
+                    discount: 30,
+                    image: 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw594b01df/images/large/SBS-008819.jpg?sw=750&sh=750&sfrm=png'
+                },
+                {
+                    id: 3,
+                    name: 'Shaver Elite',
+                    brand: 'Wahl',
+                    originalPrice: 100,
+                    price: 70,
+                    discount: 30,
+                    image: 'https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png'
+                },
+                {
+                    id: 4,
+                    name: 'Fresh Fade',
+                    brand: 'JRL',
+                    originalPrice: 180,
+                    price: 126,
+                    discount: 30,
+                    image: 'https://m.media-amazon.com/images/I/51f7yv8H2-L._UF1000,1000_QL80_.jpg'
+                },
+                {
+                    id: 5,
+                    name: 'Power Clipper',
+                    brand: 'Monster',
+                    originalPrice: 140,
+                    price: 98,
+                    discount: 30,
+                    image: 'https://uniquebarbersupplies.com/cdn/shop/files/Sintitulo-11_1080x.png?v=1754378536'
+                },
+                {
+                    id: 6,
+                    name: 'Premium Trimmer',
+                    brand: 'W-Mark',
+                    originalPrice: 110,
+                    price: 77,
+                    discount: 30,
+                    image: 'https://ae01.alicdn.com/kf/Sb6617777eac647768f96d0c28a856251V.jpg'
+                }
+            ];
+        }
+        
+        this.renderProducts();
+    }
+    
+    renderProducts() {
+        if (!this.track) return;
+        
+        this.track.innerHTML = '';
+        
+        this.flashProducts.forEach((product, index) => {
+            const card = this.createProductCard(product, index);
+            this.track.appendChild(card);
+        });
+        
+        this.updateNavButtons();
+    }
+    
+    createProductCard(product, index) {
+        const card = document.createElement('div');
+        card.className = 'flash-product-card';
+        card.setAttribute('data-product-index', index);
+        
+        const imageUrl = getProductImage(product);
+        
+        card.innerHTML = `
+            <div class="flash-product-image">
+                <img src="${imageUrl}" alt="${escapeHtml(product.name)}">
+            </div>
+            <div class="flash-product-info">
+                <h4 class="flash-product-name">${truncateText(product.name, 25)}</h4>
+                <div class="flash-product-price">
+                    <span class="flash-original-price">$${product.originalPrice || Math.round(product.price * 1.3)}</span>
+                    <span class="flash-sale-price">$${product.price.toFixed(2)}</span>
+                    <span class="flash-discount-badge">${product.discount || 30}% OFF</span>
+                </div>
+            </div>
+        `;
+        
+        card.addEventListener('click', () => {
+            this.selectProduct(index);
+        });
+        
+        return card;
+    }
+    
+    selectProduct(index) {
+        this.selectedProduct = this.flashProducts[index];
+        
+        // Remove previous selection
+        const cards = this.track.querySelectorAll('.flash-product-card');
+        cards.forEach(card => card.style.border = 'none');
+        
+        // Highlight selected card
+        cards[index].style.border = '2px solid #D4AF37';
+        
+        console.log('Selected product:', this.selectedProduct);
+    }
+    
+    attachEventListeners() {
+        if (this.closeBtn) {
+            this.closeBtn.addEventListener('click', () => {
+                this.hideBanner();
+            });
+        }
+        
+        if (this.prevBtn) {
+            this.prevBtn.addEventListener('click', () => {
+                this.scrollProducts(-1);
+            });
+        }
+        
+        if (this.nextBtn) {
+            this.nextBtn.addEventListener('click', () => {
+                this.scrollProducts(1);
+            });
+        }
+        
+        if (this.addCartBtn) {
+            this.addCartBtn.addEventListener('click', () => {
+                this.addSelectedToCart();
+            });
+        }
+        
+        if (this.track) {
+            this.track.addEventListener('scroll', () => {
+                this.updateNavButtons();
+            });
+        }
+        
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                this.updateNavButtons();
+            }, 250);
+        });
+    }
+    
+    scrollProducts(direction) {
+        if (!this.track) return;
+        
+        const scrollAmount = this.scrollAmount * direction;
+        this.track.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+        });
+    }
+    
+    updateNavButtons() {
+        if (!this.track || !this.prevBtn || !this.nextBtn) return;
+        
+        const isAtStart = this.track.scrollLeft <= 0;
+        const isAtEnd = this.track.scrollLeft >= (this.track.scrollWidth - this.track.clientWidth - 5);
+        
+        this.prevBtn.disabled = isAtStart;
+        this.nextBtn.disabled = isAtEnd;
+    }
+    
+    async addSelectedToCart() {
+        if (!this.selectedProduct) {
+            // If no product selected, select the first one
+            this.selectedProduct = this.flashProducts[0];
+        }
+        
+        const product = this.selectedProduct;
+        
+        // Add to cart
+        const existingItem = cart.find(item => item.id === product.id && item.brand === product.brand);
+        
+        if (existingItem) {
+            existingItem.quantity++;
+        } else {
+            cart.push({
+                id: product.id,
+                name: product.name,
+                price: product.price,
+                image: getProductImage(product),
+                brand: product.brand,
+                quantity: 1
+            });
+        }
+        
+        saveCart();
+        showNotification(`${truncateText(product.name, 40)} added to cart!`, 'success');
+        
+        // Visual feedback
+        if (this.addCartBtn) {
+            const originalText = this.addCartBtn.innerHTML;
+            this.addCartBtn.innerHTML = '<i class="fas fa-check"></i> <span>Added!</span>';
+            this.addCartBtn.style.background = '#2e7d32';
+            
+            setTimeout(() => {
+                this.addCartBtn.innerHTML = originalText;
+                this.addCartBtn.style.background = '';
+            }, 2000);
+        }
+    }
+    
+    hideBanner() {
+        if (this.banner) {
+            this.banner.classList.add('hidden');
+            if (this.timerInterval) {
+                clearInterval(this.timerInterval);
+            }
+            
+            setTimeout(() => {
+                this.banner.style.display = 'none';
+            }, 300);
+        }
+    }
+}
+
+function initializeFlashSaleBanner() {
+    new FlashSaleBanner();
+}
+
+// ==========================================
+// CAROUSEL - LOADS FROM ALL JSON FILES
 // ==========================================
 
 async function loadFeaturedProducts() {
@@ -374,7 +695,7 @@ function saveCart() {
 
 async function addToCart(productId, brandName) {
     try {
-        // Find product in allProducts array (already loaded from all JSON files)
+        // Find product in allProducts array
         let product = allProducts.find(p => p.id === productId && p.brand === brandName);
         
         // If not found in allProducts, try loading from the legacy file
@@ -477,12 +798,10 @@ function updateCartDisplay() {
     
     if (cart.length === 0) {
         cartItems.innerHTML = `
-            <div class="empty-cart">
+            <div class="cart-empty">
                 <i class="fas fa-shopping-bag"></i>
                 <p>Your cart is empty</p>
-                <button class="browse-btn" onclick="closeCart()">
-                    Continue Shopping
-                </button>
+                <span>Add some products to get started!</span>
             </div>
         `;
         if (cartTotal) cartTotal.textContent = '$0.00';
@@ -652,46 +971,6 @@ function closeMobileMenu() {
 }
 
 // ==========================================
-// WELCOME SECTION ANIMATION
-// ==========================================
-
-function initializeWelcomeSection() {
-    const welcomeSection = document.querySelector('.welcome-section');
-    const handwrittenPath = document.querySelector('.handwritten-text path');
-    
-    if (!welcomeSection || !handwrittenPath) return;
-
-    welcomeSection.style.opacity = '0';
-    welcomeSection.style.transform = 'translateY(30px)';
-    welcomeSection.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    
-    setTimeout(() => {
-        welcomeSection.style.opacity = '1';
-        welcomeSection.style.transform = 'translateY(0)';
-    }, 100);
-
-    welcomeSection.addEventListener('click', function() {
-        handwrittenPath.style.animation = 'none';
-        void handwrittenPath.offsetWidth;
-        handwrittenPath.style.animation = 'draw 3s ease-in-out forwards, fillTextGold 0.8s ease-in forwards 3.3s';
-    });
-}
-
-window.addEventListener('scroll', function() {
-    const welcomeSection = document.querySelector('.welcome-section');
-    if (!welcomeSection) return;
-    
-    const scrollPosition = window.scrollY;
-    const sectionTop = welcomeSection.offsetTop;
-    
-    if (scrollPosition > sectionTop + 200) {
-        welcomeSection.style.opacity = '0.7';
-    } else {
-        welcomeSection.style.opacity = '1';
-    }
-});
-
-// ==========================================
 // SHIPPING BANNER
 // ==========================================
 
@@ -738,161 +1017,6 @@ function initializeBackToTop() {
 }
 
 // ==========================================
-// FLASH SALE FUNCTIONALITY
-// ==========================================
-
-function initializeFlashSaleBanner() {
-    const flashBanner = document.getElementById('flashBanner');
-    
-    if (!flashBanner) return;
-    
-    const bannerClosed = localStorage.getItem('flashBannerClosed');
-    if (bannerClosed === 'true') {
-        flashBanner.style.display = 'none';
-    }
-    
-    updateFlashSaleTimer();
-    setInterval(updateFlashSaleTimer, 1000);
-}
-
-function initializeFloatingButton() {
-    const floatBtn = document.getElementById('flashFloatBtn');
-    
-    if (!floatBtn) return;
-    
-    setTimeout(() => {
-        const bannerClosed = localStorage.getItem('flashBannerClosed');
-        if (bannerClosed === 'true') {
-            floatBtn.style.display = 'flex';
-        }
-    }, 5000);
-    
-    window.addEventListener('flashBannerClosed', () => {
-        setTimeout(() => {
-            floatBtn.style.display = 'flex';
-        }, 500);
-    });
-}
-
-function updateFlashSaleTimer() {
-    const now = new Date().getTime();
-    const distance = FLASH_SALE_END_DATE - now;
-    
-    if (distance < 0) {
-        const bannerTimer = document.getElementById('bannerTimer');
-        const modalTimer = document.getElementById('modalTimer');
-        
-        if (bannerTimer) bannerTimer.textContent = 'SALE ENDED';
-        if (modalTimer) modalTimer.textContent = 'SALE ENDED';
-        return;
-    }
-    
-    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    const timeString = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    
-    const bannerTimer = document.getElementById('bannerTimer');
-    const modalTimer = document.getElementById('modalTimer');
-    
-    if (bannerTimer) bannerTimer.textContent = timeString;
-    if (modalTimer) modalTimer.textContent = timeString;
-}
-
-function closeBanner() {
-    const banner = document.getElementById('flashBanner');
-    if (!banner) return;
-    
-    banner.style.animation = 'slideDownCompact 0.3s ease reverse';
-    setTimeout(() => {
-        banner.style.display = 'none';
-        localStorage.setItem('flashBannerClosed', 'true');
-        window.dispatchEvent(new CustomEvent('flashBannerClosed'));
-    }, 300);
-}
-
-function openFlashSaleModal() {
-    const modal = document.getElementById('flashModal');
-    if (!modal) return;
-    
-    modal.classList.add('active');
-    document.body.classList.add('no-scroll');
-}
-
-function closeFlashSaleModal() {
-    const modal = document.getElementById('flashModal');
-    if (!modal) return;
-    
-    modal.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-}
-
-function checkForFlashSaleURL() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const flashParam = urlParams.get('flash');
-    const hash = window.location.hash;
-    
-    if (flashParam === 'open' || hash === '#flash-sale') {
-        setTimeout(() => {
-            openFlashSaleModal();
-            
-            if (flashParam === 'open') {
-                const newURL = window.location.pathname + window.location.hash;
-                window.history.replaceState({}, document.title, newURL);
-            }
-        }, 500);
-    }
-}
-
-async function addFlashSaleToCart() {
-    const flashSaleProduct = {
-        id: 999999,
-        name: 'INSTINCT-X PROFESSIONAL HAIR CLIPPER',
-        brand: 'StyleCraft',
-        price: 139.00,
-        originalPrice: 199.00,
-        image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg',
-        quantity: 1
-    };
-    
-    const existingItem = cart.find(item => item.id === flashSaleProduct.id);
-    
-    if (existingItem) {
-        existingItem.quantity += 1;
-    } else {
-        cart.push(flashSaleProduct);
-    }
-    
-    saveCart();
-    showNotification(`${flashSaleProduct.name} added to cart!`, 'success');
-    
-    const addBtn = document.querySelector('.add-to-cart-btn');
-    if (addBtn) {
-        const originalHTML = addBtn.innerHTML;
-        addBtn.innerHTML = '<i class="fas fa-check"></i> <span>ADDED TO CART</span>';
-        addBtn.style.background = '#2e7d32';
-        
-        setTimeout(() => {
-            addBtn.innerHTML = originalHTML;
-            addBtn.style.background = '#1a1a1a';
-        }, 2000);
-    }
-    
-    setTimeout(() => {
-        closeFlashSaleModal();
-    }, 1500);
-}
-
-function buyNowFlashSale() {
-    addFlashSaleToCart();
-    setTimeout(() => {
-        openCart();
-    }, 1000);
-}
-
-// ==========================================
 // ANIMATIONS & UTILITIES
 // ==========================================
 
@@ -921,11 +1045,10 @@ function initializeAnimations() {
 
 function showNotification(message, type = 'success') {
     const toast = document.getElementById('notification-toast');
-    const messageSpan = document.getElementById('notification-message');
     
-    if (!toast || !messageSpan) return;
+    if (!toast) return;
     
-    messageSpan.textContent = message;
+    toast.textContent = message;
     toast.classList.add('show');
     
     setTimeout(() => {
@@ -950,4 +1073,4 @@ function debounce(func, wait) {
 // ==========================================
 
 console.log('%c🚀 Barber World NYC', 'color: #d4af37; font-size: 24px; font-weight: bold;');
-console.log('%c✨ Enhanced with redesigned carousel loading from ALL brands', 'color: #666; font-size: 14px;');
+console.log('%c✨ Enhanced with Flash Sale Banner', 'color: #666; font-size: 14px;');
