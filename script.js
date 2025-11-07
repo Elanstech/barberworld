@@ -79,24 +79,25 @@ function initializeEventListeners() {
 }
 
 // ==========================================
-// FLASH SALE BANNER
-// ==========================================
-
-// ==========================================
-// FLASH SALE BANNER - Single Product
+// SLIM FLASH SALE BANNER + MODAL
 // ==========================================
 
 class FlashSaleBanner {
     constructor() {
         this.banner = document.getElementById('flashSaleBanner');
         this.closeBtn = document.getElementById('flashCloseBtn');
+        this.viewDetailsBtn = document.getElementById('flashViewDetailsBtn');
         this.addCartBtn = document.getElementById('flashAddCartBtn');
+        this.modal = document.getElementById('flashModal');
+        this.modalAddCartBtn = document.getElementById('flashModalAddCartBtn');
         
+        this.daysEl = document.getElementById('daysValue');
         this.hoursEl = document.getElementById('hoursValue');
         this.minutesEl = document.getElementById('minutesValue');
         this.secondsEl = document.getElementById('secondsValue');
         
-        this.saleEndTime = this.getSaleEndTime();
+        // Sale ends Nov 12, 2025 at 11:59 PM
+        this.saleEndTime = new Date('2025-11-12T23:59:59').getTime();
         this.timerInterval = null;
         
         // Featured Product Details
@@ -106,8 +107,7 @@ class FlashSaleBanner {
             brand: 'StyleCraft',
             price: 130.00,
             originalPrice: 185.00,
-            image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg',
-            description: 'Enhanced vector motor • Premium metal construction • 3-hour runtime'
+            image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg'
         };
         
         this.init();
@@ -124,12 +124,6 @@ class FlashSaleBanner {
         console.log('✅ Flash Sale Banner initialized');
     }
     
-    getSaleEndTime() {
-        const now = new Date();
-        const endTime = new Date(now.getTime() + (24 * 60 * 60 * 1000)); // 24 hours from now
-        return endTime;
-    }
-    
     startTimer() {
         this.updateTimer();
         
@@ -139,7 +133,7 @@ class FlashSaleBanner {
     }
     
     updateTimer() {
-        const now = new Date();
+        const now = new Date().getTime();
         const difference = this.saleEndTime - now;
         
         if (difference <= 0) {
@@ -148,10 +142,12 @@ class FlashSaleBanner {
             return;
         }
         
-        const hours = Math.floor(difference / (1000 * 60 * 60));
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((difference % (1000 * 60)) / 1000);
         
+        if (this.daysEl) this.daysEl.textContent = String(days);
         if (this.hoursEl) this.hoursEl.textContent = String(hours).padStart(2, '0');
         if (this.minutesEl) this.minutesEl.textContent = String(minutes).padStart(2, '0');
         if (this.secondsEl) this.secondsEl.textContent = String(seconds).padStart(2, '0');
@@ -164,10 +160,44 @@ class FlashSaleBanner {
             });
         }
         
+        if (this.viewDetailsBtn) {
+            this.viewDetailsBtn.addEventListener('click', () => {
+                this.openModal();
+            });
+        }
+        
         if (this.addCartBtn) {
             this.addCartBtn.addEventListener('click', () => {
                 this.addToCart();
             });
+        }
+        
+        if (this.modalAddCartBtn) {
+            this.modalAddCartBtn.addEventListener('click', () => {
+                this.addToCart();
+                this.closeModal();
+            });
+        }
+        
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && this.modal && this.modal.classList.contains('active')) {
+                this.closeModal();
+            }
+        });
+    }
+    
+    openModal() {
+        if (this.modal) {
+            this.modal.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+    }
+    
+    closeModal() {
+        if (this.modal) {
+            this.modal.classList.remove('active');
+            document.body.classList.remove('no-scroll');
         }
     }
     
@@ -194,16 +224,17 @@ class FlashSaleBanner {
         showNotification(`${product.name} added to cart!`, 'success');
         
         // Visual feedback on button
-        if (this.addCartBtn) {
-            const originalHTML = this.addCartBtn.innerHTML;
-            this.addCartBtn.innerHTML = '<i class="fas fa-check"></i> <span>Added to Cart!</span>';
-            this.addCartBtn.style.background = 'linear-gradient(135deg, #2e7d32, #43a047)';
+        const buttons = [this.addCartBtn, this.modalAddCartBtn].filter(btn => btn);
+        buttons.forEach(btn => {
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-check"></i> <span>Added!</span>';
+            btn.style.background = 'linear-gradient(135deg, #2e7d32, #43a047)';
             
             setTimeout(() => {
-                this.addCartBtn.innerHTML = originalHTML;
-                this.addCartBtn.style.background = '';
+                btn.innerHTML = originalHTML;
+                btn.style.background = '';
             }, 2000);
-        }
+        });
     }
     
     hideBanner() {
@@ -217,6 +248,15 @@ class FlashSaleBanner {
                 this.banner.style.display = 'none';
             }, 300);
         }
+    }
+}
+
+// Global functions for modal
+function closeFlashModal() {
+    const modal = document.getElementById('flashModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
     }
 }
 
