@@ -210,63 +210,65 @@
     </button>
 </div>
 
-<!-- Floating Flash Sale Button -->
-<button class="flash-sale-float-btn" id="flashFloatBtn" onclick="openFlashSaleModal()">
-    <div class="float-btn-content">
-        <span class="float-icon">⚡</span>
-        <div class="float-text">
-            <span class="float-title">FLASH SALE</span>
-            <span class="float-subtitle">StyleCraft</span>
+<!-- FLASH SALE BANNER -->
+<div class="flash-sale-banner" id="flashSaleBanner">
+    <button class="flash-close-btn" id="flashCloseBtn" aria-label="Close flash sale banner">
+        <i class="fas fa-times"></i>
+    </button>
+    
+    <div class="flash-banner-container">
+        <!-- Flash Sale Header -->
+        <div class="flash-header">
+            <div class="flash-icon">
+                <i class="fas fa-bolt"></i>
+            </div>
+            <div class="flash-title-group">
+                <h3 class="flash-title">Flash Sale</h3>
+                <p class="flash-subtitle">Limited Time Offers</p>
+            </div>
+            <div class="flash-timer" id="flashTimer">
+                <div class="timer-segment">
+                    <span class="timer-value" id="hoursValue">00</span>
+                    <span class="timer-label">Hours</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-segment">
+                    <span class="timer-value" id="minutesValue">00</span>
+                    <span class="timer-label">Minutes</span>
+                </div>
+                <span class="timer-separator">:</span>
+                <div class="timer-segment">
+                    <span class="timer-value" id="secondsValue">00</span>
+                    <span class="timer-label">Seconds</span>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="float-badge">-30%</div>
-</button>
 
-<!-- Flash Sale Modal -->
-<div class="flash-modal" id="flashModal">
-    <div class="flash-modal-overlay" onclick="closeFlashSaleModal()"></div>
-    <div class="flash-modal-content">
-        <button class="modal-close" onclick="closeFlashSaleModal()" aria-label="Close modal">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="modal-grid">
-            <div class="modal-image">
-                <div class="sale-badge">
-                    <span class="badge-text">-30% OFF</span>
-                    <div class="badge-shine"></div>
-                </div>
-                <img src="https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg" alt="Instinct-X Clipper">
+        <!-- Flash Sale Products Carousel -->
+        <div class="flash-products-wrapper">
+            <button class="flash-nav flash-prev" id="flashPrev" aria-label="Previous product">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <div class="flash-products-track" id="flashProductsTrack">
+                <!-- Products will be dynamically loaded -->
             </div>
-            <div class="modal-details">
-                <div class="flash-tag">
-                    <span class="flash-icon">⚡</span>
-                    <span>FLASH SALE ENDS IN:</span>
-                    <span class="timer-highlight" id="modalTimer">0d 0h 0m 0s</span>
-                </div>
-                <h2>INSTINCT-X PROFESSIONAL HAIR CLIPPER</h2>
-                <p class="product-subtitle">WITH IN2 VECTOR MOTOR</p>
-                <div class="price-section">
-                    <span class="sale-price">$139.00</span>
-                    <span class="original-price-large">$199.00</span>
-                    <span class="savings">Save $60</span>
-                </div>
-                <ul class="product-features">
-                    <li>IN2 Vector Motor Technology</li>
-                    <li>Professional Grade Performance</li>
-                    <li>Precision Cutting System</li>
-                    <li>Ergonomic Design</li>
-                </ul>
-                <div class="modal-actions">
-                    <button class="add-to-cart-btn" onclick="addFlashSaleToCart()">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>ADD TO CART - $139.00</span>
-                    </button>
-                    <button class="buy-now-btn" onclick="buyNowFlashSale()">
-                        <i class="fas fa-bolt"></i>
-                        <span>BUY NOW</span>
-                    </button>
-                </div>
-            </div>
+            
+            <button class="flash-nav flash-next" id="flashNext" aria-label="Next product">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <!-- Flash Sale Actions -->
+        <div class="flash-actions">
+            <a href="htmls/services.html" class="flash-btn flash-view-more">
+                <span>View More</span>
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <a href="htmls/contact.html" class="flash-btn flash-book-now">
+                <span>Book Now</span>
+                <i class="fas fa-calendar-check"></i>
+            </a>
         </div>
     </div>
 </div>
