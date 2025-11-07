@@ -82,25 +82,33 @@ function initializeEventListeners() {
 // FLASH SALE BANNER
 // ==========================================
 
+// ==========================================
+// FLASH SALE BANNER - Single Product
+// ==========================================
+
 class FlashSaleBanner {
     constructor() {
         this.banner = document.getElementById('flashSaleBanner');
         this.closeBtn = document.getElementById('flashCloseBtn');
-        this.track = document.getElementById('flashProductsTrack');
-        this.prevBtn = document.getElementById('flashPrev');
-        this.nextBtn = document.getElementById('flashNext');
         this.addCartBtn = document.getElementById('flashAddCartBtn');
         
         this.hoursEl = document.getElementById('hoursValue');
         this.minutesEl = document.getElementById('minutesValue');
         this.secondsEl = document.getElementById('secondsValue');
         
-        this.scrollAmount = 220;
         this.saleEndTime = this.getSaleEndTime();
         this.timerInterval = null;
-        this.selectedProduct = null;
         
-        this.flashProducts = [];
+        // Featured Product Details
+        this.featuredProduct = {
+            id: 99999,
+            name: 'StyleCraft Professional Instinct-X Cordless Clipper',
+            brand: 'StyleCraft',
+            price: 130.00,
+            originalPrice: 185.00,
+            image: 'https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg',
+            description: 'Enhanced vector motor • Premium metal construction • 3-hour runtime'
+        };
         
         this.init();
     }
@@ -110,7 +118,6 @@ class FlashSaleBanner {
         
         console.log('⚡ Initializing Flash Sale Banner');
         
-        this.loadFlashProducts();
         this.startTimer();
         this.attachEventListeners();
         
@@ -119,7 +126,7 @@ class FlashSaleBanner {
     
     getSaleEndTime() {
         const now = new Date();
-        const endTime = new Date(now.getTime() + (24 * 60 * 60 * 1000));
+        const endTime = new Date(now.getTime() + (24 * 60 * 60 * 1000)); // 24 hours from now
         return endTime;
     }
     
@@ -150,141 +157,6 @@ class FlashSaleBanner {
         if (this.secondsEl) this.secondsEl.textContent = String(seconds).padStart(2, '0');
     }
     
-    async loadFlashProducts() {
-        if (!this.track) return;
-        
-        // Wait for allProducts to be loaded
-        let attempts = 0;
-        while (allProducts.length === 0 && attempts < 50) {
-            await new Promise(resolve => setTimeout(resolve, 100));
-            attempts++;
-        }
-        
-        if (allProducts.length > 0) {
-            // Get random 6 products from all products
-            const shuffled = shuffleArray([...allProducts]);
-            this.flashProducts = shuffled.slice(0, 6).map(product => ({
-                ...product,
-                originalPrice: Math.round(product.price * 1.3), // 30% discount
-                discount: 30
-            }));
-        } else {
-            // Fallback to hardcoded products
-            this.flashProducts = [
-                {
-                    id: 1,
-                    name: 'Professional Clipper',
-                    brand: 'StyleCraft',
-                    originalPrice: 150,
-                    price: 105,
-                    discount: 30,
-                    image: 'https://www.barberdepots.com/wp-content/uploads/2023/01/stylecraft-instinct-clipper-sc607m-blue-cover-on-stand.webp'
-                },
-                {
-                    id: 2,
-                    name: 'Trimmer Pro',
-                    brand: 'BaBylissPRO',
-                    originalPrice: 120,
-                    price: 84,
-                    discount: 30,
-                    image: 'https://www.sallybeauty.com/dw/image/v2/BCSM_PRD/on/demandware.static/-/Sites-SBS-SallyBeautySupply/default/dw594b01df/images/large/SBS-008819.jpg?sw=750&sh=750&sfrm=png'
-                },
-                {
-                    id: 3,
-                    name: 'Shaver Elite',
-                    brand: 'Wahl',
-                    originalPrice: 100,
-                    price: 70,
-                    discount: 30,
-                    image: 'https://salon-evo.com/wp-content/uploads/2023/10/Untitled-design-10.png'
-                },
-                {
-                    id: 4,
-                    name: 'Fresh Fade',
-                    brand: 'JRL',
-                    originalPrice: 180,
-                    price: 126,
-                    discount: 30,
-                    image: 'https://m.media-amazon.com/images/I/51f7yv8H2-L._UF1000,1000_QL80_.jpg'
-                },
-                {
-                    id: 5,
-                    name: 'Power Clipper',
-                    brand: 'Monster',
-                    originalPrice: 140,
-                    price: 98,
-                    discount: 30,
-                    image: 'https://uniquebarbersupplies.com/cdn/shop/files/Sintitulo-11_1080x.png?v=1754378536'
-                },
-                {
-                    id: 6,
-                    name: 'Premium Trimmer',
-                    brand: 'W-Mark',
-                    originalPrice: 110,
-                    price: 77,
-                    discount: 30,
-                    image: 'https://ae01.alicdn.com/kf/Sb6617777eac647768f96d0c28a856251V.jpg'
-                }
-            ];
-        }
-        
-        this.renderProducts();
-    }
-    
-    renderProducts() {
-        if (!this.track) return;
-        
-        this.track.innerHTML = '';
-        
-        this.flashProducts.forEach((product, index) => {
-            const card = this.createProductCard(product, index);
-            this.track.appendChild(card);
-        });
-        
-        this.updateNavButtons();
-    }
-    
-    createProductCard(product, index) {
-        const card = document.createElement('div');
-        card.className = 'flash-product-card';
-        card.setAttribute('data-product-index', index);
-        
-        const imageUrl = getProductImage(product);
-        
-        card.innerHTML = `
-            <div class="flash-product-image">
-                <img src="${imageUrl}" alt="${escapeHtml(product.name)}">
-            </div>
-            <div class="flash-product-info">
-                <h4 class="flash-product-name">${truncateText(product.name, 25)}</h4>
-                <div class="flash-product-price">
-                    <span class="flash-original-price">$${product.originalPrice || Math.round(product.price * 1.3)}</span>
-                    <span class="flash-sale-price">$${product.price.toFixed(2)}</span>
-                    <span class="flash-discount-badge">${product.discount || 30}% OFF</span>
-                </div>
-            </div>
-        `;
-        
-        card.addEventListener('click', () => {
-            this.selectProduct(index);
-        });
-        
-        return card;
-    }
-    
-    selectProduct(index) {
-        this.selectedProduct = this.flashProducts[index];
-        
-        // Remove previous selection
-        const cards = this.track.querySelectorAll('.flash-product-card');
-        cards.forEach(card => card.style.border = 'none');
-        
-        // Highlight selected card
-        cards[index].style.border = '2px solid #D4AF37';
-        
-        console.log('Selected product:', this.selectedProduct);
-    }
-    
     attachEventListeners() {
         if (this.closeBtn) {
             this.closeBtn.addEventListener('click', () => {
@@ -292,69 +164,18 @@ class FlashSaleBanner {
             });
         }
         
-        if (this.prevBtn) {
-            this.prevBtn.addEventListener('click', () => {
-                this.scrollProducts(-1);
-            });
-        }
-        
-        if (this.nextBtn) {
-            this.nextBtn.addEventListener('click', () => {
-                this.scrollProducts(1);
-            });
-        }
-        
         if (this.addCartBtn) {
             this.addCartBtn.addEventListener('click', () => {
-                this.addSelectedToCart();
+                this.addToCart();
             });
         }
-        
-        if (this.track) {
-            this.track.addEventListener('scroll', () => {
-                this.updateNavButtons();
-            });
-        }
-        
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                this.updateNavButtons();
-            }, 250);
-        });
     }
     
-    scrollProducts(direction) {
-        if (!this.track) return;
+    addToCart() {
+        const product = this.featuredProduct;
         
-        const scrollAmount = this.scrollAmount * direction;
-        this.track.scrollBy({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }
-    
-    updateNavButtons() {
-        if (!this.track || !this.prevBtn || !this.nextBtn) return;
-        
-        const isAtStart = this.track.scrollLeft <= 0;
-        const isAtEnd = this.track.scrollLeft >= (this.track.scrollWidth - this.track.clientWidth - 5);
-        
-        this.prevBtn.disabled = isAtStart;
-        this.nextBtn.disabled = isAtEnd;
-    }
-    
-    async addSelectedToCart() {
-        if (!this.selectedProduct) {
-            // If no product selected, select the first one
-            this.selectedProduct = this.flashProducts[0];
-        }
-        
-        const product = this.selectedProduct;
-        
-        // Add to cart
-        const existingItem = cart.find(item => item.id === product.id && item.brand === product.brand);
+        // Check if product already in cart
+        const existingItem = cart.find(item => item.id === product.id);
         
         if (existingItem) {
             existingItem.quantity++;
@@ -363,23 +184,23 @@ class FlashSaleBanner {
                 id: product.id,
                 name: product.name,
                 price: product.price,
-                image: getProductImage(product),
+                image: product.image,
                 brand: product.brand,
                 quantity: 1
             });
         }
         
         saveCart();
-        showNotification(`${truncateText(product.name, 40)} added to cart!`, 'success');
+        showNotification(`${product.name} added to cart!`, 'success');
         
-        // Visual feedback
+        // Visual feedback on button
         if (this.addCartBtn) {
-            const originalText = this.addCartBtn.innerHTML;
-            this.addCartBtn.innerHTML = '<i class="fas fa-check"></i> <span>Added!</span>';
-            this.addCartBtn.style.background = '#2e7d32';
+            const originalHTML = this.addCartBtn.innerHTML;
+            this.addCartBtn.innerHTML = '<i class="fas fa-check"></i> <span>Added to Cart!</span>';
+            this.addCartBtn.style.background = 'linear-gradient(135deg, #2e7d32, #43a047)';
             
             setTimeout(() => {
-                this.addCartBtn.innerHTML = originalText;
+                this.addCartBtn.innerHTML = originalHTML;
                 this.addCartBtn.style.background = '';
             }, 2000);
         }
