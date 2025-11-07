@@ -757,7 +757,7 @@ async function checkout() {
             quantity: item.quantity
         }));
 
-        const response = await fetch('https://barberworld-stripe-backend.onrender.com/create-checkout-session', {
+        const response = await fetch('/api/checkout', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
