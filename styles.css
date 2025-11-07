@@ -177,22 +177,21 @@ main {
 }
 
 /* ============================================
-   FLASH SALE BANNER - Single Product Feature
+   SLIM FLASH SALE BANNER
    ============================================ */
-.flash-sale-banner {
+.flash-sale-banner-slim {
     position: sticky;
     top: 120px;
     left: 0;
     right: 0;
     z-index: 999;
     background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #d4af37 100%);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     animation: flashSlideDown 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.flash-sale-banner.hidden {
+.flash-sale-banner-slim.hidden {
     transform: translateY(-100%);
     opacity: 0;
     pointer-events: none;
@@ -209,18 +208,19 @@ main {
     }
 }
 
-.flash-close-btn {
+.flash-close-btn-slim {
     position: absolute;
-    top: 15px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 28px;
+    height: 28px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
     color: white;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
     display: flex;
@@ -229,447 +229,591 @@ main {
     z-index: 10;
 }
 
-.flash-close-btn:hover {
+.flash-close-btn-slim:hover {
     background: rgba(255, 255, 255, 0.2);
-    transform: rotate(90deg);
+    transform: translateY(-50%) rotate(90deg);
 }
 
-.flash-banner-container {
+.flash-banner-slim-container {
     max-width: 1600px;
     margin: 0 auto;
-    padding: 20px 60px 20px 30px;
+    padding: 12px 50px 12px 20px;
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 30px;
+    justify-content: space-between;
 }
 
-/* Flash Header */
-.flash-header {
+/* Flash Info */
+.flash-info-slim {
     display: flex;
     align-items: center;
-    gap: 20px;
-    min-width: 420px;
+    gap: 12px;
 }
 
-.flash-icon {
-    width: 50px;
-    height: 50px;
+.flash-icon-slim {
+    width: 36px;
+    height: 36px;
     background: linear-gradient(135deg, #D4AF37, #FFD700);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 1rem;
     color: #1C1C1C;
     animation: flashPulse 2s ease-in-out infinite;
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+    flex-shrink: 0;
 }
 
 @keyframes flashPulse {
     0%, 100% {
         transform: scale(1);
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
     }
     50% {
         transform: scale(1.1);
-        box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
     }
 }
 
-.flash-title-group {
-    min-width: 140px;
+.flash-text-slim {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
 }
 
-.flash-title {
+.flash-title-slim {
     font-family: 'Inter', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: white;
-    margin: 0 0 4px;
+    margin: 0;
     letter-spacing: 0.5px;
+    line-height: 1;
 }
 
-.flash-subtitle {
+.flash-date-slim {
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: rgba(255, 255, 255, 0.8);
     margin: 0;
     font-weight: 400;
 }
 
-/* Flash Timer */
-.flash-timer {
+/* Timer */
+.flash-timer-slim {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
     background: rgba(0, 0, 0, 0.3);
-    padding: 10px 18px;
+    padding: 8px 14px;
     border-radius: 50px;
     backdrop-filter: blur(10px);
 }
 
-.timer-segment {
+.timer-segment-slim {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-width: 48px;
+    min-width: 32px;
 }
 
-.timer-value {
+.timer-value-slim {
     font-family: 'Inter', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: #D4AF37;
     line-height: 1;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.timer-label {
+.timer-label-slim {
     font-family: 'Inter', sans-serif;
-    font-size: 0.65rem;
+    font-size: 0.55rem;
     color: rgba(255, 255, 255, 0.7);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-top: 4px;
+    letter-spacing: 0.3px;
+    margin-top: 2px;
 }
 
-.timer-separator {
-    font-size: 1.5rem;
+.timer-separator-slim {
+    font-size: 1.1rem;
     color: rgba(255, 255, 255, 0.5);
     font-weight: 300;
-    margin: 0 4px;
+    margin: 0 2px;
 }
 
-/* Featured Product */
-.flash-featured-product {
-    flex: 1;
+/* Actions */
+.flash-actions-slim {
     display: flex;
-    align-items: center;
-    gap: 25px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-    transition: all 0.3s ease;
-}
-
-.flash-featured-product:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-}
-
-.flash-product-image-large {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    border-radius: 15px;
-    background: #f8f9fa;
-    overflow: hidden;
+    gap: 10px;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
 }
 
-.flash-product-image-large img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-}
-
-.flash-discount-badge-large {
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.75rem;
-    font-weight: 700;
-    padding: 6px 12px;
-    border-radius: 20px;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 12px rgba(238, 90, 111, 0.4);
-}
-
-.flash-product-details {
-    flex: 1;
-    min-width: 0;
-}
-
-.flash-product-brand-tag {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
-    color: white;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-}
-
-.flash-product-title {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--primary);
-    margin: 0 0 10px;
-    line-height: 1.3;
-}
-
-.flash-product-pricing {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 8px;
-}
-
-.flash-original-price-large {
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    color: #999;
-    text-decoration: line-through;
-}
-
-.flash-sale-price-large {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.8rem;
-    font-weight: 900;
-    color: #D4AF37;
-    letter-spacing: -0.5px;
-}
-
-.flash-savings {
-    background: rgba(212, 175, 55, 0.15);
-    color: #D4AF37;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    padding: 4px 10px;
-    border-radius: 12px;
-}
-
-.flash-product-tagline {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
-    color: #666;
-    line-height: 1.4;
-    margin: 0;
-}
-
-/* Flash Actions */
-.flash-actions {
-    display: flex;
-    gap: 12px;
-    min-width: 280px;
-    flex-direction: column;
-}
-
-.flash-btn {
+.flash-btn-slim {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     font-family: 'Inter', sans-serif;
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 700;
-    padding: 12px 24px;
+    padding: 10px 20px;
     border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     border: none;
     cursor: pointer;
     white-space: nowrap;
 }
 
-.flash-view-more {
+.flash-view-btn {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.flash-view-more:hover {
+.flash-view-btn:hover {
     background: rgba(255, 255, 255, 0.25);
-    transform: translateX(3px);
 }
 
-.flash-add-cart {
+.flash-cart-btn {
     background: linear-gradient(135deg, #D4AF37, #FFD700);
     color: #1C1C1C;
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
-.flash-add-cart:hover {
+.flash-cart-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Responsive Design */
-@media (max-width: 1400px) {
-    .flash-banner-container {
-        padding: 18px 50px 18px 25px;
-        gap: 30px;
-    }
-
-    .flash-header {
-        min-width: 380px;
-    }
-
-    .flash-actions {
-        min-width: 250px;
-    }
+/* ============================================
+   FLASH SALE MODAL
+   ============================================ */
+.flash-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-@media (max-width: 1200px) {
-    .flash-banner-container {
-        flex-wrap: wrap;
-        padding: 20px 50px 20px 25px;
-    }
+.flash-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
 
-    .flash-header {
-        width: 100%;
-        justify-content: space-between;
-        min-width: unset;
-    }
+.flash-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+}
 
-    .flash-featured-product {
-        width: 100%;
-        order: 2;
-    }
+.flash-modal-content {
+    position: relative;
+    max-width: 1100px;
+    max-height: 90vh;
+    background: white;
+    border-radius: 24px;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    margin: 20px;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
 
-    .flash-actions {
-        width: 100%;
-        flex-direction: row;
-        min-width: unset;
-        justify-content: center;
-        order: 3;
+.flash-modal.active .flash-modal-content {
+    transform: scale(1);
+}
+
+.flash-modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    border-radius: 50%;
+    color: #333;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.flash-modal-close:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.flash-modal-grid {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 0;
+}
+
+.flash-modal-image {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.flash-modal-badge {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(238, 90, 111, 0.4);
+}
+
+.flash-modal-image img {
+    width: 100%;
+    height: auto;
+    max-width: 350px;
+    object-fit: contain;
+}
+
+.flash-modal-details {
+    padding: 3rem;
+    overflow-y: auto;
+}
+
+.flash-modal-brand {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+
+.flash-modal-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+}
+
+.flash-modal-stock {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #2e7d32;
+    font-weight: 600;
+    margin: 0 0 1.5rem;
+}
+
+.flash-modal-pricing {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.flash-modal-original {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.3rem;
+    color: #999;
+    text-decoration: line-through;
+}
+
+.flash-modal-sale {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #D4AF37;
+    letter-spacing: -1px;
+}
+
+.flash-modal-save {
+    background: rgba(212, 175, 55, 0.15);
+    color: #D4AF37;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 20px;
+}
+
+.flash-modal-intro {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin: 0 0 2rem;
+}
+
+.flash-modal-features,
+.flash-modal-specs {
+    margin-bottom: 2rem;
+}
+
+.flash-modal-features h3,
+.flash-modal-specs h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 0 0 1rem;
+}
+
+.flash-modal-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+}
+
+.flash-modal-features li {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.flash-modal-features li i {
+    color: #D4AF37;
+    font-size: 0.8rem;
+}
+
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.spec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.spec-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #999;
+    letter-spacing: 0.5px;
+}
+
+.spec-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.flash-modal-actions {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #f0f0f0;
+}
+
+.flash-modal-cart-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+    color: white;
+    border: none;
+    border-radius: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+}
+
+.flash-modal-cart-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(212, 175, 55, 0.4);
+}
+
+/* ============================================
+   RESPONSIVE - SLIM BANNER
+   ============================================ */
+@media (max-width: 1024px) {
+    .flash-banner-slim-container {
+        gap: 20px;
+    }
+    
+    .flash-timer-slim {
+        padding: 6px 12px;
+    }
+    
+    .timer-segment-slim {
+        min-width: 28px;
     }
 }
 
 @media (max-width: 768px) {
-    .flash-sale-banner {
+    .flash-sale-banner-slim {
         top: 80px;
     }
-
-    .flash-banner-container {
-        padding: 15px 45px 15px 20px;
+    
+    .flash-banner-slim-container {
+        padding: 10px 45px 10px 15px;
         gap: 15px;
-    }
-
-    .flash-header {
         flex-wrap: wrap;
-        gap: 15px;
     }
-
-    .flash-title {
-        font-size: 1.2rem;
+    
+    .flash-info-slim {
+        gap: 10px;
     }
-
-    .flash-subtitle {
-        font-size: 0.75rem;
+    
+    .flash-icon-slim {
+        width: 32px;
+        height: 32px;
+        font-size: 0.9rem;
     }
-
-    .flash-timer {
-        padding: 8px 14px;
-        gap: 6px;
-    }
-
-    .timer-segment {
-        min-width: 40px;
-    }
-
-    .timer-value {
-        font-size: 1.3rem;
-    }
-
-    .timer-label {
-        font-size: 0.6rem;
-    }
-
-    .flash-featured-product {
-        padding: 12px;
-        gap: 15px;
-    }
-
-    .flash-product-image-large {
-        width: 90px;
-        height: 90px;
-    }
-
-    .flash-product-title {
+    
+    .flash-title-slim {
         font-size: 1rem;
     }
-
-    .flash-sale-price-large {
+    
+    .flash-date-slim {
+        font-size: 0.7rem;
+    }
+    
+    .flash-timer-slim {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .flash-actions-slim {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .flash-btn-slim {
+        flex: 1;
+        font-size: 0.8rem;
+        padding: 9px 16px;
+    }
+    
+    .flash-modal-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .flash-modal-image {
+        padding: 2rem;
+    }
+    
+    .flash-modal-details {
+        padding: 2rem;
+    }
+    
+    .flash-modal-title {
         font-size: 1.5rem;
     }
-
-    .flash-actions {
-        flex-direction: column;
+    
+    .flash-modal-sale {
+        font-size: 2rem;
     }
-
-    .flash-btn {
-        width: 100%;
+    
+    .flash-modal-features ul {
+        grid-template-columns: 1fr;
     }
-
-    .flash-close-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 0.8rem;
-        top: 10px;
-        right: 15px;
+    
+    .specs-grid {
+        grid-template-columns: 1fr;
     }
 }
 
 @media (max-width: 480px) {
-    .flash-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+    .flash-icon-slim {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
     }
-
-    .flash-title {
-        font-size: 1.1rem;
-    }
-
-    .flash-subtitle {
-        font-size: 0.7rem;
-    }
-
-    .timer-value {
-        font-size: 1.1rem;
-    }
-
-    .timer-label {
-        font-size: 0.55rem;
-    }
-
-    .flash-product-image-large {
-        width: 80px;
-        height: 80px;
-    }
-
-    .flash-product-title {
+    
+    .flash-title-slim {
         font-size: 0.9rem;
     }
-
-    .flash-sale-price-large {
-        font-size: 1.3rem;
+    
+    .timer-value-slim {
+        font-size: 1rem;
     }
-
-    .flash-product-tagline {
+    
+    .timer-label-slim {
+        font-size: 0.5rem;
+    }
+    
+    .flash-btn-slim {
         font-size: 0.75rem;
+        padding: 8px 14px;
     }
-
-    .flash-btn {
-        font-size: 0.85rem;
-        padding: 10px 20px;
+    
+    .flash-btn-slim span {
+        display: none;
+    }
+    
+    .flash-btn-slim i {
+        margin: 0;
+    }
+    
+    .flash-modal-content {
+        margin: 10px;
+        border-radius: 16px;
+    }
+    
+    .flash-modal-image {
+        padding: 1.5rem;
+    }
+    
+    .flash-modal-details {
+        padding: 1.5rem;
+    }
+    
+    .flash-modal-title {
+        font-size: 1.3rem;
     }
 }
 
