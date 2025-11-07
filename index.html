@@ -231,68 +231,149 @@
         </div>
     </header>
 
-<!-- FLASH SALE BANNER - Directly below header -->
-<div class="flash-sale-banner" id="flashSaleBanner">
-    <button class="flash-close-btn" id="flashCloseBtn" aria-label="Close flash sale banner">
+<!-- SLIM FLASH SALE BANNER - Directly below header -->
+<div class="flash-sale-banner-slim" id="flashSaleBanner">
+    <button class="flash-close-btn-slim" id="flashCloseBtn" aria-label="Close flash sale banner">
         <i class="fas fa-times"></i>
     </button>
     
-    <div class="flash-banner-container">
-        <!-- Flash Sale Header -->
-        <div class="flash-header">
-            <div class="flash-icon">
+    <div class="flash-banner-slim-container">
+        <!-- Flash Icon & Title -->
+        <div class="flash-info-slim">
+            <div class="flash-icon-slim">
                 <i class="fas fa-bolt"></i>
             </div>
-            <div class="flash-title-group">
-                <h3 class="flash-title">Flash Sale</h3>
-                <p class="flash-subtitle">Limited Time Offer</p>
-            </div>
-            <div class="flash-timer" id="flashTimer">
-                <div class="timer-segment">
-                    <span class="timer-value" id="hoursValue">00</span>
-                    <span class="timer-label">Hours</span>
-                </div>
-                <span class="timer-separator">:</span>
-                <div class="timer-segment">
-                    <span class="timer-value" id="minutesValue">00</span>
-                    <span class="timer-label">Minutes</span>
-                </div>
-                <span class="timer-separator">:</span>
-                <div class="timer-segment">
-                    <span class="timer-value" id="secondsValue">00</span>
-                    <span class="timer-label">Seconds</span>
-                </div>
+            <div class="flash-text-slim">
+                <h3 class="flash-title-slim">Flash Sale</h3>
+                <p class="flash-date-slim">Until Wed, Nov 12</p>
             </div>
         </div>
 
-        <!-- Featured Product -->
-        <div class="flash-featured-product">
-            <div class="flash-product-image-large">
-                <img src="https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg" alt="StyleCraft Instinct-X Clipper">
-                <div class="flash-discount-badge-large">30% OFF</div>
+        <!-- Timer -->
+        <div class="flash-timer-slim" id="flashTimer">
+            <div class="timer-segment-slim">
+                <span class="timer-value-slim" id="daysValue">0</span>
+                <span class="timer-label-slim">Days</span>
             </div>
-            <div class="flash-product-details">
-                <span class="flash-product-brand-tag">StyleCraft Professional</span>
-                <h3 class="flash-product-title">Instinct-X Cordless Clipper</h3>
-                <div class="flash-product-pricing">
-                    <span class="flash-original-price-large">$185.00</span>
-                    <span class="flash-sale-price-large">$130.00</span>
-                    <span class="flash-savings">Save $55</span>
-                </div>
-                <p class="flash-product-tagline">Enhanced vector motor • Premium metal construction • 3-hour runtime</p>
+            <span class="timer-separator-slim">:</span>
+            <div class="timer-segment-slim">
+                <span class="timer-value-slim" id="hoursValue">00</span>
+                <span class="timer-label-slim">Hrs</span>
+            </div>
+            <span class="timer-separator-slim">:</span>
+            <div class="timer-segment-slim">
+                <span class="timer-value-slim" id="minutesValue">00</span>
+                <span class="timer-label-slim">Min</span>
+            </div>
+            <span class="timer-separator-slim">:</span>
+            <div class="timer-segment-slim">
+                <span class="timer-value-slim" id="secondsValue">00</span>
+                <span class="timer-label-slim">Sec</span>
             </div>
         </div>
 
-        <!-- Flash Sale Actions -->
-        <div class="flash-actions">
-            <a href="brands/stylecraft.html" class="flash-btn flash-view-more">
+        <!-- Actions -->
+        <div class="flash-actions-slim">
+            <button class="flash-btn-slim flash-view-btn" id="flashViewDetailsBtn">
                 <span>View Details</span>
-                <i class="fas fa-arrow-right"></i>
-            </a>
-            <button class="flash-btn flash-add-cart" id="flashAddCartBtn">
+                <i class="fas fa-eye"></i>
+            </button>
+            <button class="flash-btn-slim flash-cart-btn" id="flashAddCartBtn">
                 <span>Add to Cart</span>
                 <i class="fas fa-shopping-cart"></i>
             </button>
+        </div>
+    </div>
+</div>
+
+<!-- FLASH SALE MODAL -->
+<div class="flash-modal" id="flashModal">
+    <div class="flash-modal-overlay" onclick="closeFlashModal()"></div>
+    <div class="flash-modal-content">
+        <button class="flash-modal-close" onclick="closeFlashModal()" aria-label="Close modal">
+            <i class="fas fa-times"></i>
+        </button>
+        
+        <div class="flash-modal-grid">
+            <!-- Product Image -->
+            <div class="flash-modal-image">
+                <div class="flash-modal-badge">30% OFF</div>
+                <img src="https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e68/i/n/instinct_x_lids.jpg" alt="StyleCraft Instinct-X Clipper">
+            </div>
+            
+            <!-- Product Details -->
+            <div class="flash-modal-details">
+                <span class="flash-modal-brand">StyleCraft Professional</span>
+                <h2 class="flash-modal-title">Instinct-X Cordless Clipper</h2>
+                <p class="flash-modal-stock">✓ In Stock & Ready to Ship</p>
+                
+                <div class="flash-modal-pricing">
+                    <span class="flash-modal-original">$185.00</span>
+                    <span class="flash-modal-sale">$130.00</span>
+                    <span class="flash-modal-save">Save $55</span>
+                </div>
+                
+                <p class="flash-modal-intro">Advanced Instinct-X professional clipper with enhanced performance. The StyleCraft Professional Instinct-X Cordless Clipper takes the legendary Instinct series to new heights.</p>
+                
+                <div class="flash-modal-features">
+                    <h3>Key Features</h3>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Enhanced vector motor technology</li>
+                        <li><i class="fas fa-check"></i> Advanced torque control system</li>
+                        <li><i class="fas fa-check"></i> Premium all-metal construction</li>
+                        <li><i class="fas fa-check"></i> DLC precision fade blade</li>
+                        <li><i class="fas fa-check"></i> Extended 3-hour runtime</li>
+                        <li><i class="fas fa-check"></i> Rapid charging technology</li>
+                        <li><i class="fas fa-check"></i> Cord/cordless versatility</li>
+                        <li><i class="fas fa-check"></i> Professional-grade performance</li>
+                    </ul>
+                </div>
+                
+                <div class="flash-modal-specs">
+                    <h3>Specifications</h3>
+                    <div class="specs-grid">
+                        <div class="spec-item">
+                            <span class="spec-label">Motor</span>
+                            <span class="spec-value">Enhanced vector motor</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Blade</span>
+                            <span class="spec-value">DLC fade blade</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Battery</span>
+                            <span class="spec-value">High-capacity lithium-ion</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Runtime</span>
+                            <span class="spec-value">180 minutes</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Charge Time</span>
+                            <span class="spec-value">150 minutes</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Weight</span>
+                            <span class="spec-value">9.8 oz</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Voltage</span>
+                            <span class="spec-value">Dual voltage</span>
+                        </div>
+                        <div class="spec-item">
+                            <span class="spec-label">Housing</span>
+                            <span class="spec-value">Premium metal construction</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flash-modal-actions">
+                    <button class="flash-modal-cart-btn" id="flashModalAddCartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Add to Cart - $130.00</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
