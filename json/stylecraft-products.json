@@ -401,7 +401,7 @@
   },
   {
     "id": 10,
-    "name": "StyleCraft Saber Professional Hair Trimmer with Digital Brushless Motor - Black",
+    "name": "StyleCraft Saber Professional Hair Clipper with Digital Brushless Motor - Black",
     "price": 224.99,
     "brand": "StyleCraft",
     "slug": "stylecraft-saber-trimmer-black",
@@ -412,9 +412,9 @@
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/t/stylecraft161745_black_gold.png",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/a/saber_20_black_infog.jpg"
     ],
-    "category": "Trimmer",
-    "shortDescription": "Professional Saber trimmer with digital brushless motor technology and full metal construction",
-    "description": "The Saber Professional Hair Trimmer features advanced digital brushless motor technology for exceptional power and precision. This professional-grade trimmer is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance, while the full metal body provides durability.",
+    "category": "Clipper",
+    "shortDescription": "Professional Saber Clipper with digital brushless motor technology and full metal construction",
+    "description": "The Saber Professional Hair Clipper features advanced digital brushless motor technology for exceptional power and precision. This professional-grade clipper is designed for detailed work, outlining, and finishing touches. The brushless motor ensures long-lasting performance and reduced maintenance, while the full metal body provides durability.",
     "features": [
       "Digital brushless motor technology",
       "Full metal body construction",
