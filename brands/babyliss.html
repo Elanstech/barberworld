@@ -3,162 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaBylissPRO Professional Clippers & Trimmers | Barber World NYC</title>
-    <meta name="description" content="Shop authentic BaBylissPRO professional barber equipment. GoldFX+, LithiumFX, FOILFX02 & more. Factory sealed with full warranty. Free shipping over $99. Trusted by barbers worldwide.">
-    <meta name="keywords" content="BaBylissPRO, BaByliss GoldFX, LithiumFX clipper, FOILFX02 shaver, professional barber clippers, authentic BaBylissPRO NYC">
+    <title>BaBylissPRO Professional Equipment | Barber World NYC</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Shop authentic BaBylissPRO professional barber equipment. Premium clippers, trimmers, and shavers. Factory sealed. Free shipping on orders over $100.">
+    <meta name="keywords" content="BaBylissPRO, professional clippers, barber equipment, hair clippers, trimmers, shavers, Barber World NYC">
     
     <!-- Open Graph -->
-    <meta property="og:type" content="website">
     <meta property="og:title" content="BaBylissPRO Professional Equipment | Barber World NYC">
-    <meta property="og:description" content="Authentic BaBylissPRO professional tools. Factory sealed. Free shipping over $99.">
-    <meta property="og:image" content="https://www.barberworldnyc.com/images/babyliss-og.jpg">
-    <meta property="og:url" content="https://www.barberworldnyc.com/brands/babyliss.html">
-    
-    <!-- Canonical -->
-    <link rel="canonical" href="https://www.barberworldnyc.com/brands/babyliss.html">
-    
-    <!-- Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://js.stripe.com">
+    <meta property="og:description" content="Shop authentic BaBylissPRO professional barber equipment">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.barberworldnyc.com/logofooter.png">
     
     <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Stylesheet -->
-    <link rel="stylesheet" href="products.css">
+    <!-- Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16"></script>
     
     <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/" async></script>
+    <script src="https://js.stripe.com/v3/"></script>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17668713996"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'AW-17668713996');
-    </script>
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "CollectionPage",
-        "name": "BaBylissPRO Professional Equipment",
-        "description": "Shop authentic BaBylissPRO professional barber tools and equipment",
-        "url": "https://www.barberworldnyc.com/brands/babyliss.html",
-        "provider": {
-            "@type": "Organization",
-            "name": "Barber World NYC",
-            "url": "https://www.barberworldnyc.com",
-            "logo": "https://www.barberworldnyc.com/logofooter.png"
-        }
-    }
-    </script>
+    <!-- Styles -->
+    <link rel="stylesheet" href="babyliss-redesign.css">
 </head>
-<body data-brand="Babyliss">
+<body data-brand="babyliss">
     
-    <!-- Ultra Modern Header with Mega Menu -->
+    <!-- Ultra Modern Header -->
     <header class="ultra-header">
         <div class="header-wrapper">
             <!-- Logo -->
             <div class="logo-container">
-                <img src="../logofooter.png" alt="Barber World NYC" class="site-logo" onclick="window.location.href='../index.html'">
+                <a href="/">
+                    <img src="../logofooter.png" alt="Barber World NYC" class="site-logo">
+                </a>
             </div>
             
-            <!-- Desktop Mega Navigation -->
-            <nav class="mega-nav">
-                <div class="mega-item">
-                    <button class="mega-trigger">
-                        <span>Shop All Brands</span>
+            <!-- Navigation -->
+            <nav class="main-nav">
+                <!-- Home Link -->
+                <a href="/" class="nav-link home-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                
+                <!-- Brands Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <i class="fas fa-store"></i>
+                        <span>Shop by Brands</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mega-dropdown">
-                        <div class="mega-content">
-                            <div class="mega-grid">
-                                <a href="ourbrand.html" class="brand-card featured">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-star"></i>
-                                    </div>
-                                    <h3>Our Brand</h3>
-                                    <p>Premium house collection</p>
-                                </a>
-                                <a href="babyliss.html" class="brand-card active">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-crown"></i>
-                                    </div>
-                                    <h3>BaBylissPRO</h3>
-                                    <p>Professional excellence</p>
-                                </a>
-                                <a href="stylecraft.html" class="brand-card">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-cut"></i>
-                                    </div>
-                                    <h3>StyleCraft & Gamma+</h3>
-                                    <p>Innovation & precision</p>
-                                </a>
-                                <a href="jrl.html" class="brand-card">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-gem"></i>
-                                    </div>
-                                    <h3>JRL</h3>
-                                    <p>Premium performance</p>
-                                </a>
-                                <a href="wahl.html" class="brand-card">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-trophy"></i>
-                                    </div>
-                                    <h3>Wahl</h3>
-                                    <p>Industry standard</p>
-                                </a>
-                                <a href="wmark.html" class="brand-card">
-                                    <div class="brand-icon">
-                                        <i class="fas fa-bolt"></i>
-                                    </div>
-                                    <h3>W-Mark</h3>
-                                    <p>Professional tools</p>
-                                </a>
-                            </div>
-                            <div class="mega-footer">
-                                <a href="allproducts.html" class="view-all-btn">
-                                    <i class="fas fa-th"></i>
-                                    View All Products
-                                </a>
-                            </div>
+                    <div class="dropdown-menu brands-menu">
+                        <div class="brands-grid">
+                            <a href="babyliss.html" class="brand-item active">
+                                <i class="fas fa-star"></i>
+                                <span>BaBylissPRO</span>
+                            </a>
+                            <a href="stylecraft.html" class="brand-item">
+                                <i class="fas fa-bolt"></i>
+                                <span>StyleCraft</span>
+                            </a>
+                            <a href="jrl.html" class="brand-item">
+                                <i class="fas fa-crown"></i>
+                                <span>JRL</span>
+                            </a>
+                            <a href="wahl.html" class="brand-item">
+                                <i class="fas fa-shield-alt"></i>
+                                <span>Wahl</span>
+                            </a>
+                            <a href="wmark.html" class="brand-item">
+                                <i class="fas fa-gem"></i>
+                                <span>Wmark</span>
+                            </a>
+                            <a href="vgr.html" class="brand-item">
+                                <i class="fas fa-fire"></i>
+                                <span>VGR</span>
+                            </a>
+                            <a href="monster.html" class="brand-item">
+                                <i class="fas fa-dragon"></i>
+                                <span>Monster</span>
+                            </a>
+                            <a href="ourbrand.html" class="brand-item">
+                                <i class="fas fa-certificate"></i>
+                                <span>Barber World</span>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="mega-item">
-                    <button class="mega-trigger">
+                <!-- Categories Dropdown -->
+                <div class="nav-dropdown">
+                    <button class="nav-link dropdown-trigger">
+                        <i class="fas fa-th-large"></i>
                         <span>Categories</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
-                    <div class="mega-dropdown">
-                        <div class="mega-content categories">
-                            <div class="category-column">
-                                <h3>Cutting Tools</h3>
-                                <a href="#"><i class="fas fa-scissors"></i> Hair Clippers</a>
-                                <a href="#"><i class="fas fa-cut"></i> Hair Trimmers</a>
-                                <a href="#"><i class="fas fa-razor"></i> Shavers</a>
-                            </div>
-                            <div class="category-column">
-                                <h3>Accessories</h3>
-                                <a href="#"><i class="fas fa-battery-full"></i> Batteries</a>
-                                <a href="#"><i class="fas fa-bolt"></i> Chargers</a>
-                                <a href="#"><i class="fas fa-cog"></i> Parts</a>
-                            </div>
-                            <div class="category-column">
-                                <h3>Special Deals</h3>
-                                <a href="#" class="deal-link"><i class="fas fa-fire"></i> Hot Deals</a>
-                                <a href="#" class="deal-link"><i class="fas fa-percentage"></i> Clearance</a>
-                                <a href="#" class="bundle-link"><i class="fas fa-box"></i> Bundles</a>
-                            </div>
-                        </div>
+                    <div class="dropdown-menu categories-menu">
+                        <a href="clippers.html" class="category-item">
+                            <i class="fas fa-cut"></i>
+                            <span>Clippers</span>
+                        </a>
+                        <a href="trimmers.html" class="category-item">
+                            <i class="fas fa-scissors"></i>
+                            <span>Trimmers</span>
+                        </a>
+                        <a href="shavers.html" class="category-item">
+                            <i class="fas fa-razor-blade"></i>
+                            <span>Shavers</span>
+                        </a>
+                        <a href="combos.html" class="category-item">
+                            <i class="fas fa-box-open"></i>
+                            <span>Combos</span>
+                        </a>
+                        <a href="allproducts.html" class="category-item featured">
+                            <i class="fas fa-th"></i>
+                            <span>All Products</span>
+                        </a>
                     </div>
                 </div>
             </nav>
@@ -178,10 +144,10 @@
             </div>
         </div>
         
-        <!-- Search Bar -->
+        <!-- Search Overlay -->
         <div class="search-overlay" id="searchOverlay">
             <div class="search-container">
-                <input type="text" placeholder="Search for clippers, trimmers, shavers..." class="search-input" id="searchInput">
+                <input type="text" placeholder="Search for products..." class="search-input" id="searchInput">
                 <button class="search-close" onclick="toggleSearch()">
                     <i class="fas fa-times"></i>
                 </button>
@@ -189,65 +155,53 @@
         </div>
     </header>
     
-    <!-- Minimalist Brand Welcome -->
-    <section class="brand-hero">
-        <div class="hero-container">
-            <div class="hero-badge">
+    <!-- Typed.js Brand Title -->
+    <section class="brand-title-section">
+        <div class="brand-title-container">
+            <div class="title-badge">
                 <i class="fas fa-crown"></i>
                 <span>Professional Excellence</span>
             </div>
-            <h1>BaBylissPRO</h1>
-            <p>Precision engineered for the modern barber. Factory sealed. Full warranty.</p>
-            <div class="hero-stats">
-                <div class="stat">
-                    <i class="fas fa-box"></i>
-                    <span><strong id="productCount">24</strong> Products</span>
-                </div>
-                <div class="stat">
-                    <i class="fas fa-truck"></i>
-                    <span>Free Shipping <strong>$99+</strong></span>
-                </div>
-                <div class="stat">
-                    <i class="fas fa-shield-alt"></i>
-                    <span><strong>100%</strong> Authentic</span>
-                </div>
-            </div>
+            <h1 class="brand-typed-title">
+                <span id="typed-text"></span>
+            </h1>
+            <p class="brand-subtitle">Precision engineered for the modern barber. Factory sealed.</p>
         </div>
     </section>
     
-    <!-- Trust Indicators -->
+    <!-- Trust Bar -->
     <div class="trust-bar">
         <div class="trust-item">
+            <i class="fas fa-shield-alt"></i>
+            <span>100% Authentic</span>
+        </div>
+        <div class="trust-item">
+            <i class="fas fa-truck"></i>
+            <span>Free Shipping $100+</span>
+        </div>
+        <div class="trust-item">
             <i class="fas fa-certificate"></i>
-            <span>Authorized Dealer</span>
+            <span>Factory Sealed</span>
         </div>
         <div class="trust-item">
-            <i class="fas fa-award"></i>
-            <span>Factory Warranty</span>
-        </div>
-        <div class="trust-item">
-            <i class="fas fa-shipping-fast"></i>
-            <span>Same Day Dispatch</span>
-        </div>
-        <div class="trust-item">
-            <i class="fas fa-lock"></i>
-            <span>Secure Checkout</span>
+            <i class="fas fa-headset"></i>
+            <span>Expert Support</span>
         </div>
     </div>
     
-    <!-- Main Container -->
+    <!-- Main Products Section -->
     <main class="products-main">
         <div class="container">
             <!-- Controls Bar -->
             <div class="controls-wrapper">
                 <div class="controls-left">
                     <button class="filter-btn" onclick="toggleFilters()">
-                        <i class="fas fa-filter"></i>
+                        <i class="fas fa-sliders-h"></i>
                         <span>Filters</span>
                     </button>
-                    <span class="result-count">
-                        <span id="resultCount">24</span> Products
-                    </span>
+                    <div class="result-count">
+                        Showing <span id="resultCount">0</span> products
+                    </div>
                 </div>
                 
                 <div class="controls-right">
@@ -272,57 +226,70 @@
             
             <!-- Layout with Filters & Products -->
             <div class="products-layout">
-                <!-- Advanced Filters Sidebar -->
+                <!-- Sleek Filters Sidebar -->
                 <aside class="filters-panel" id="filtersPanel">
                     <div class="filters-header">
-                        <h3>Refine Results</h3>
+                        <h3><i class="fas fa-filter"></i> Refine Results</h3>
                         <button class="filters-close" onclick="toggleFilters()">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
                     
-                    <div class="filter-section">
-                        <h4>Categories</h4>
-                        <label class="filter-option">
-                            <input type="checkbox" value="clipper">
-                            <span class="checkbox"></span>
-                            <span>Hair Clippers</span>
-                            <span class="count">(8)</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="trimmer">
-                            <span class="checkbox"></span>
-                            <span>Trimmers</span>
-                            <span class="count">(10)</span>
-                        </label>
-                        <label class="filter-option">
-                            <input type="checkbox" value="shaver">
-                            <span class="checkbox"></span>
-                            <span>Shavers</span>
-                            <span class="count">(6)</span>
-                        </label>
-                    </div>
-                    
-                    <div class="filter-section">
-                        <h4>Price Range</h4>
-                        <div class="price-range">
-                            <input type="number" placeholder="Min" class="price-input" id="priceMin">
-                            <span>to</span>
-                            <input type="number" placeholder="Max" class="price-input" id="priceMax">
+                    <div class="filters-body">
+                        <!-- Category Filters -->
+                        <div class="filter-group">
+                            <h4 class="filter-title">Category</h4>
+                            <div class="filter-options">
+                                <label class="filter-option">
+                                    <input type="checkbox" value="clipper" onchange="applyFilters()">
+                                    <span class="option-check"></span>
+                                    <span class="option-label">Hair Clippers</span>
+                                    <span class="option-count">(8)</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="trimmer" onchange="applyFilters()">
+                                    <span class="option-check"></span>
+                                    <span class="option-label">Trimmers</span>
+                                    <span class="option-count">(10)</span>
+                                </label>
+                                <label class="filter-option">
+                                    <input type="checkbox" value="shaver" onchange="applyFilters()">
+                                    <span class="option-check"></span>
+                                    <span class="option-label">Shavers</span>
+                                    <span class="option-count">(6)</span>
+                                </label>
+                            </div>
                         </div>
-                        <button class="apply-price">Apply</button>
+                        
+                        <!-- Price Range -->
+                        <div class="filter-group">
+                            <h4 class="filter-title">Price Range</h4>
+                            <div class="price-range">
+                                <input type="number" placeholder="Min" class="price-input" id="priceMin">
+                                <span class="price-separator">–</span>
+                                <input type="number" placeholder="Max" class="price-input" id="priceMax">
+                            </div>
+                            <button class="apply-price-btn" onclick="applyPriceFilter()">
+                                <i class="fas fa-check"></i> Apply
+                            </button>
+                        </div>
+                        
+                        <!-- Availability -->
+                        <div class="filter-group">
+                            <h4 class="filter-title">Availability</h4>
+                            <label class="filter-option">
+                                <input type="checkbox" checked onchange="applyFilters()">
+                                <span class="option-check"></span>
+                                <span class="option-label">In Stock Only</span>
+                            </label>
+                        </div>
                     </div>
                     
-                    <div class="filter-section">
-                        <h4>Availability</h4>
-                        <label class="filter-option">
-                            <input type="checkbox" checked>
-                            <span class="checkbox"></span>
-                            <span>In Stock Only</span>
-                        </label>
+                    <div class="filters-footer">
+                        <button class="clear-filters-btn" onclick="clearAllFilters()">
+                            <i class="fas fa-redo"></i> Clear All
+                        </button>
                     </div>
-                    
-                    <button class="clear-filters">Clear All Filters</button>
                 </aside>
                 
                 <!-- Products Grid -->
@@ -336,90 +303,38 @@
                         <div class="spinner"></div>
                         <p>Loading products...</p>
                     </div>
+                    
+                    <!-- Empty State -->
+                    <div class="empty-state" id="emptyState" style="display: none;">
+                        <i class="fas fa-search"></i>
+                        <h3>No Products Found</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn-reset" onclick="clearAllFilters()">Clear Filters</button>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     
-    <!-- Ultra Modern Product Modal -->
+    <!-- Product Modal -->
     <div class="product-modal" id="productModal">
         <div class="modal-overlay" onclick="closeModal()"></div>
-        <div class="modal-content">
+        <div class="modal-content" id="modalContent">
             <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            
-            <div class="modal-body">
-                <div class="modal-images">
-                    <div class="image-gallery">
-                        <div class="main-image-container">
-                            <img src="" alt="" class="main-image" id="modalMainImage">
-                            <div class="image-zoom" id="imageZoom"></div>
-                        </div>
-                        <div class="thumbnail-carousel" id="thumbnailCarousel">
-                            <!-- Thumbnails will be added dynamically -->
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="modal-details">
-                    <div class="modal-header">
-                        <span class="modal-brand">BaBylissPRO</span>
-                        <h2 class="modal-title" id="modalTitle"></h2>
-                        <div class="modal-rating">
-                            <div class="stars" id="modalStars"></div>
-                            <span class="review-count" id="modalReviews"></span>
-                        </div>
-                    </div>
-                    
-                    <div class="modal-price">
-                        <span class="price-currency">$</span>
-                        <span class="price-amount" id="modalPrice"></span>
-                    </div>
-                    
-                    <div class="modal-description" id="modalDescription"></div>
-                    
-                    <div class="modal-features" id="modalFeatures">
-                        <h3>Key Features</h3>
-                        <ul id="featuresList"></ul>
-                    </div>
-                    
-                    <div class="modal-actions">
-                        <div class="quantity-selector">
-                            <button onclick="decreaseQty()">-</button>
-                            <input type="number" value="1" min="1" id="modalQty">
-                            <button onclick="increaseQty()">+</button>
-                        </div>
-                        <button class="add-to-cart-btn" id="modalAddToCart">
-                            <i class="fas fa-shopping-bag"></i>
-                            Add to Cart
-                        </button>
-                    </div>
-                    
-                    <div class="modal-badges">
-                        <div class="badge">
-                            <i class="fas fa-truck"></i>
-                            Free shipping $99+
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-shield-alt"></i>
-                            Authentic Product
-                        </div>
-                        <div class="badge">
-                            <i class="fas fa-undo"></i>
-                            30-Day Returns
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Modal content will be populated dynamically -->
         </div>
     </div>
     
-    <!-- Ultra Modern Cart Sidebar -->
+    <!-- Cart Sidebar -->
     <div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
     <div class="cart-sidebar" id="cartSidebar">
         <div class="cart-header">
-            <h2>Shopping Cart</h2>
+            <div>
+                <h3>Shopping Cart</h3>
+                <p class="cart-item-count" id="cartItemCount">0 items</p>
+            </div>
             <button class="cart-close" onclick="closeCart()">
                 <i class="fas fa-times"></i>
             </button>
@@ -427,32 +342,32 @@
         
         <div class="cart-body" id="cartBody">
             <div class="cart-empty" id="cartEmpty">
-                <i class="fas fa-shopping-bag"></i>
+                <div class="empty-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
                 <p>Your cart is empty</p>
-                <button onclick="closeCart()">Continue Shopping</button>
+                <span>Start shopping now!</span>
             </div>
-            
-            <div class="cart-items" id="cartItems">
-                <!-- Cart items will be added dynamically -->
+            <div class="cart-items" id="cartItems" style="display: none;">
+                <!-- Cart items will be populated here -->
             </div>
         </div>
         
-        <div class="cart-footer" id="cartFooter" style="display:none;">
-            <div class="cart-subtotal">
-                <span>Subtotal</span>
-                <span id="cartSubtotal">$0.00</span>
+        <div class="cart-footer" id="cartFooter" style="display: none;">
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
             </div>
-            <p class="cart-shipping">Shipping & taxes calculated at checkout</p>
-            <button class="checkout-btn" onclick="proceedToCheckout()">
+            <button class="btn-checkout" onclick="proceedToCheckout()">
                 <i class="fas fa-lock"></i>
-                Secure Checkout
+                <span>Secure Checkout</span>
             </button>
-            <div class="payment-methods">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Stripe_Logo%2C_revised_2016.svg" alt="Stripe">
-                <i class="fab fa-cc-visa"></i>
-                <i class="fab fa-cc-mastercard"></i>
-                <i class="fab fa-cc-amex"></i>
-            </div>
         </div>
     </div>
     
@@ -460,7 +375,7 @@
     <div class="toast" id="toast">
         <div class="toast-content">
             <i class="fas fa-check-circle"></i>
-            <span id="toastMessage">Added to cart</span>
+            <span id="toastMessage"></span>
         </div>
     </div>
     
@@ -473,17 +388,18 @@
             </button>
         </div>
         <nav class="mobile-nav">
-            <a href="../index.html"><i class="fas fa-home"></i> Home</a>
-            <a href="ourbrand.html"><i class="fas fa-star"></i> Our Brand</a>
-            <a href="babyliss.html" class="active"><i class="fas fa-crown"></i> BaBylissPRO</a>
-            <a href="stylecraft.html"><i class="fas fa-cut"></i> StyleCraft & Gamma+</a>
-            <a href="jrl.html"><i class="fas fa-gem"></i> JRL</a>
-            <a href="wahl.html"><i class="fas fa-trophy"></i> Wahl</a>
-            <a href="wmark.html"><i class="fas fa-bolt"></i> W-Mark</a>
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="babyliss.html" class="active"><i class="fas fa-star"></i> BaBylissPRO</a>
+            <a href="stylecraft.html"><i class="fas fa-bolt"></i> StyleCraft</a>
+            <a href="jrl.html"><i class="fas fa-crown"></i> JRL</a>
+            <a href="wahl.html"><i class="fas fa-shield-alt"></i> Wahl</a>
+            <a href="clippers.html"><i class="fas fa-cut"></i> Clippers</a>
+            <a href="trimmers.html"><i class="fas fa-scissors"></i> Trimmers</a>
+            <a href="shavers.html"><i class="fas fa-razor-blade"></i> Shavers</a>
             <a href="allproducts.html"><i class="fas fa-th"></i> All Products</a>
         </nav>
     </div>
     
-    <script src="products.js"></script>
+    <script src="babyliss-redesign.js"></script>
 </body>
 </html>
