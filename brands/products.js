@@ -31,19 +31,69 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================
-// TYPED.JS INITIALIZATION
+// CUSTOM TYPING ANIMATION
 // ==========================================
 
 function initTypedJS() {
-    new Typed('#typed-text', {
-        strings: ['BaBylissPRO', 'Professional Excellence', 'Factory Sealed', 'Barber Quality'],
-        typeSpeed: 80,
-        backSpeed: 50,
-        backDelay: 2000,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|'
-    });
+    const element = document.getElementById('typed-text');
+    if (!element) return;
+    
+    // Get brand name from data attribute
+    const brandName = document.body.dataset.brand || 'BaBylissPRO';
+    
+    // Brand-specific strings
+    const brandStrings = {
+        'Babyliss': ['BaBylissPRO', 'Professional Excellence', 'Factory Sealed', 'Barber Quality'],
+        'stylecraft': ['StyleCraft', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
+        'jrl': ['JRL', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
+        'wahl': ['Wahl', 'Professional Excellence', 'Factory Sealed', 'Trusted Quality'],
+        'wmark': ['Wmark', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
+        'vgr': ['VGR', 'Professional Excellence', 'Factory Sealed', 'Quality Tools'],
+        'monster': ['Monster', 'Professional Excellence', 'Factory Sealed', 'Beast Mode'],
+        'ourbrand': ['Barber World', 'Professional Excellence', 'Factory Sealed', 'House Brand'],
+        'clippers': ['Professional Clippers', 'Precision Cutting', 'Factory Sealed', 'Barber Quality'],
+        'trimmers': ['Professional Trimmers', 'Precision Detailing', 'Factory Sealed', 'Barber Quality'],
+        'shavers': ['Professional Shavers', 'Smooth Finish', 'Factory Sealed', 'Barber Quality'],
+        'combos': ['Combo Sets', 'Complete Kits', 'Factory Sealed', 'Best Value'],
+        'All Products': ['All Products', 'Complete Collection', 'Factory Sealed', 'Shop Everything']
+    };
+    
+    const strings = brandStrings[brandName] || brandStrings['Babyliss'];
+    let stringIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 100;
+    
+    function type() {
+        const currentString = strings[stringIndex];
+        
+        if (isDeleting) {
+            element.textContent = currentString.substring(0, charIndex - 1);
+            charIndex--;
+            typingSpeed = 50;
+        } else {
+            element.textContent = currentString.substring(0, charIndex + 1);
+            charIndex++;
+            typingSpeed = 100;
+        }
+        
+        // Add cursor
+        element.innerHTML = element.textContent + '<span style="color: var(--gold); animation: blink 1s infinite;">|</span>';
+        
+        if (!isDeleting && charIndex === currentString.length) {
+            // Pause at end of string
+            typingSpeed = 2000;
+            isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+            isDeleting = false;
+            stringIndex = (stringIndex + 1) % strings.length;
+            typingSpeed = 500;
+        }
+        
+        setTimeout(type, typingSpeed);
+    }
+    
+    type();
 }
 
 // ==========================================
@@ -54,15 +104,84 @@ async function loadProducts() {
     try {
         showLoading(true);
         
-        const brand = document.body.dataset.brand || 'babyliss';
+        const brand = document.body.dataset.brand || 'Babyliss';
         
-        const response = await fetch(`https://www.barberworldnyc.com/brands/products/${brand}.json`);
+        // Define all brand JSON files
+        const brandJsonFiles = [
+            '../json/babyliss-products.json',
+            '../json/stylecraft-products.json',
+            '../json/jrl-products.json',
+            '../json/wahl-products.json',
+            '../json/wmark-products.json',
+            '../json/vgr-products.json',
+            '../json/monster-products.json',
+            '../json/barberworld-products.json'
+        ];
         
-        if (!response.ok) throw new Error('Failed to load products');
+        // Check if this is a category page or all products page
+        if (brand === 'clippers' || brand === 'trimmers' || brand === 'shavers' || brand === 'All Products' || brand.toLowerCase() === 'combos') {
+            // Load all brand files for category/all products pages
+            const fetchPromises = brandJsonFiles.map(file => 
+                fetch(file)
+                    .then(res => res.json())
+                    .catch(err => {
+                        console.warn(`Could not load ${file}:`, err);
+                        return [];
+                    })
+            );
+            
+            const allBrandProducts = await Promise.all(fetchPromises);
+            products = allBrandProducts.flat();
+            
+            // Filter by category if needed
+            if (brand === 'clippers') {
+                products = products.filter(p => p.category && p.category.toLowerCase() === 'clipper');
+            } else if (brand === 'trimmers') {
+                products = products.filter(p => p.category && p.category.toLowerCase() === 'trimmer');
+            } else if (brand === 'shavers') {
+                products = products.filter(p => p.category && p.category.toLowerCase() === 'shaver');
+            } else if (brand.toLowerCase() === 'combos') {
+                const comboResponse = await fetch('../json/combosets-products.json');
+                products = await comboResponse.json();
+            }
+        } else {
+            // Load brand-specific JSON
+            let jsonFile;
+            switch(brand.toLowerCase()) {
+                case 'babyliss':
+                    jsonFile = '../json/babyliss-products.json';
+                    break;
+                case 'stylecraft':
+                    jsonFile = '../json/stylecraft-products.json';
+                    break;
+                case 'jrl':
+                    jsonFile = '../json/jrl-products.json';
+                    break;
+                case 'wahl':
+                    jsonFile = '../json/wahl-products.json';
+                    break;
+                case 'wmark':
+                    jsonFile = '../json/wmark-products.json';
+                    break;
+                case 'vgr':
+                    jsonFile = '../json/vgr-products.json';
+                    break;
+                case 'monster':
+                    jsonFile = '../json/monster-products.json';
+                    break;
+                case 'barber world':
+                case 'ourbrand':
+                    jsonFile = '../json/barberworld-products.json';
+                    break;
+                default:
+                    jsonFile = '../json/babyliss-products.json';
+            }
+            
+            const response = await fetch(jsonFile);
+            products = await response.json();
+        }
         
-        products = await response.json();
         filteredProducts = [...products];
-        
         renderProducts();
         updateResultCount();
         showLoading(false);
@@ -124,20 +243,21 @@ function renderProducts() {
                 <img src="${product.image}" alt="${product.name}" class="product-image" 
                      onerror="this.src='../images/placeholder.jpg'">
                 <button class="add-to-cart-plus" onclick="addToCart(${product.id}, event)" 
-                        ${product.stock === 0 ? 'disabled' : ''}>
+                        ${product.stock === 0 ? 'disabled' : ''}
+                        title="Add to cart">
                     <i class="fas fa-plus"></i>
                 </button>
             </div>
             
             <div class="product-details">
-                <div class="product-brand">BaBylissPRO</div>
+                <div class="product-brand">${product.brand || 'BaBylissPRO'}</div>
                 <h3 class="product-name">${product.name}</h3>
                 
                 <div class="product-rating">
                     <div class="stars">
                         ${generateStars(product.rating || 5)}
                     </div>
-                    <span class="review-count">(${product.reviews || 0} reviews)</span>
+                    ${product.reviews ? `<span class="review-count">(${product.reviews})</span>` : ''}
                 </div>
                 
                 <div class="product-price">
@@ -227,7 +347,7 @@ function openProductModal(productId) {
                     <span style="display: inline-block; padding: 0.5rem 1rem; background: rgba(212, 175, 55, 0.1); 
                                  color: var(--gold); border-radius: var(--radius-xl); font-size: 0.85rem; 
                                  font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        BaBylissPRO
+                        ${product.brand || 'BaBylissPRO'}
                     </span>
                 </div>
                 
@@ -239,9 +359,11 @@ function openProductModal(productId) {
                     <div class="stars" style="display: flex; gap: 0.25rem;">
                         ${generateStars(product.rating || 5)}
                     </div>
-                    <span style="color: var(--gray-600); font-size: 0.95rem;">
-                        (${product.reviews || 0} reviews)
-                    </span>
+                    ${product.reviews ? `
+                        <span style="color: var(--gray-600); font-size: 0.95rem;">
+                            (${product.reviews} ${product.reviews === 1 ? 'review' : 'reviews'})
+                        </span>
+                    ` : ''}
                 </div>
                 
                 <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 2rem;">
@@ -370,7 +492,7 @@ function addToCartFromModal(productId) {
             price: product.price,
             image: product.image,
             quantity: quantity,
-            brand: 'BaBylissPRO'
+            brand: product.brand || document.body.dataset.brand || 'BaBylissPRO'
         });
     }
     
@@ -409,7 +531,7 @@ function addToCart(productId, event) {
             price: product.price,
             image: product.image,
             quantity: 1,
-            brand: 'BaBylissPRO'
+            brand: product.brand || document.body.dataset.brand || 'BaBylissPRO'
         });
     }
     
