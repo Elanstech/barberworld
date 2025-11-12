@@ -1,5 +1,5 @@
 // ==========================================
-// ULTRA-MODERN PRODUCTS PAGE 2025
+// ULTRA-MODERN BABYLISSPRO REDESIGN 2025
 // Barber World NYC - Complete Functionality
 // ==========================================
 
@@ -9,7 +9,7 @@ const stripe = Stripe('pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28
 // Global Variables
 let products = [];
 let filteredProducts = [];
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let cart = JSON.parse(localStorage.getItem('barber_cart')) || [];
 let currentView = 'grid';
 let currentSort = 'featured';
 let currentFilters = {
@@ -18,36 +18,32 @@ let currentFilters = {
     maxPrice: Infinity,
     inStockOnly: true
 };
-let currentModalProduct = null;
-let autoScrollInterval = null;
 
 // ==========================================
 // INITIALIZATION
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadCart();
+    initTypedJS();
     loadProducts();
     updateCartCount();
     setupEventListeners();
-    setupFiltersPanel();
-    initializeAnimations();
 });
 
 // ==========================================
-// CART PERSISTENCE
+// TYPED.JS INITIALIZATION
 // ==========================================
 
-function loadCart() {
-    const savedCart = localStorage.getItem('barber_cart');
-    if (savedCart) {
-        try {
-            cart = JSON.parse(savedCart);
-        } catch (e) {
-            console.error('Error loading cart:', e);
-            cart = [];
-        }
-    }
+function initTypedJS() {
+    new Typed('#typed-text', {
+        strings: ['BaBylissPRO', 'Professional Excellence', 'Factory Sealed', 'Barber Quality'],
+        typeSpeed: 80,
+        backSpeed: 50,
+        backDelay: 2000,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|'
+    });
 }
 
 // ==========================================
@@ -58,321 +54,336 @@ async function loadProducts() {
     try {
         showLoading(true);
         
-        // Get brand from body data attribute
-        const brand = document.body.dataset.brand || 'Babyliss';
+        const brand = document.body.dataset.brand || 'babyliss';
         
-        // Define all brand JSON files
-        const brandJsonFiles = [
-            '../json/babyliss-products.json',
-            '../json/stylecraft-products.json',
-            '../json/jrl-products.json',
-            '../json/wahl-products.json',
-            '../json/wmark-products.json',
-            '../json/vgr-products.json',
-            '../json/monster-products.json',
-            '../json/barberworld-products.json'
-        ];
+        const response = await fetch(`https://www.barberworldnyc.com/brands/products/${brand}.json`);
         
-        // Check if this is a category page or all products page
-        if (brand === 'clippers' || brand === 'trimmers' || brand === 'shavers' || brand === 'All Products') {
-            // Load all brand files for category/all products pages
-            const fetchPromises = brandJsonFiles.map(file => 
-                fetch(file)
-                    .then(res => res.json())
-                    .catch(err => {
-                        console.warn(`Could not load ${file}:`, err);
-                        return [];
-                    })
-            );
-            
-            const allBrandProducts = await Promise.all(fetchPromises);
-            products = allBrandProducts.flat();
-            
-            // Filter by category if needed
-            if (brand === 'clippers') {
-                products = products.filter(p => p.category === 'Clipper');
-            } else if (brand === 'trimmers') {
-                products = products.filter(p => p.category === 'Trimmer');
-            } else if (brand === 'shavers') {
-                products = products.filter(p => p.category === 'Shaver');
-            }
-        } else {
-            // Load brand-specific JSON
-            let jsonFile;
-            switch(brand.toLowerCase()) {
-                case 'babyliss':
-                    jsonFile = '../json/babyliss-products.json';
-                    break;
-                case 'stylecraft':
-                    jsonFile = '../json/stylecraft-products.json';
-                    break;
-                case 'jrl':
-                    jsonFile = '../json/jrl-products.json';
-                    break;
-                case 'wahl':
-                    jsonFile = '../json/wahl-products.json';
-                    break;
-                case 'wmark':
-                    jsonFile = '../json/wmark-products.json';
-                    break;
-                case 'vgr':
-                    jsonFile = '../json/vgr-products.json';
-                    break;
-                case 'monster':
-                    jsonFile = '../json/monster-products.json';
-                    break;
-                case 'barber world':
-                case 'ourbrand':
-                    jsonFile = '../json/barberworld-products.json';
-                    break;
-                case 'combos':
-                    jsonFile = '../json/combosets-products.json';
-                    break;
-                default:
-                    // Default to babyliss if brand not recognized
-                    jsonFile = '../json/babyliss-products.json';
-            }
-            
-            const response = await fetch(jsonFile);
-            products = await response.json();
-        }
+        if (!response.ok) throw new Error('Failed to load products');
         
-        // Initialize filtered products
+        products = await response.json();
         filteredProducts = [...products];
         
-        // Apply initial filters and sort
-        applyFilters();
-        sortProducts(currentSort);
-        
-        // Update UI
-        updateProductCount();
-        updateFilterCounts();
+        renderProducts();
+        updateResultCount();
+        showLoading(false);
         
     } catch (error) {
         console.error('Error loading products:', error);
-        showError('Failed to load products. Please try again.');
-    } finally {
+        showEmptyState();
         showLoading(false);
     }
 }
 
+function showLoading(show) {
+    const spinner = document.getElementById('loadingSpinner');
+    const grid = document.getElementById('productsGrid');
+    
+    if (spinner) spinner.style.display = show ? 'flex' : 'none';
+    if (grid) grid.style.display = show ? 'none' : 'grid';
+}
+
+function showEmptyState() {
+    const emptyState = document.getElementById('emptyState');
+    const grid = document.getElementById('productsGrid');
+    
+    if (emptyState) emptyState.style.display = 'flex';
+    if (grid) grid.style.display = 'none';
+}
+
+function hideEmptyState() {
+    const emptyState = document.getElementById('emptyState');
+    const grid = document.getElementById('productsGrid');
+    
+    if (emptyState) emptyState.style.display = 'none';
+    if (grid) grid.style.display = 'grid';
+}
+
 // ==========================================
-// PRODUCT RENDERING
+// RENDER PRODUCTS
 // ==========================================
 
 function renderProducts() {
     const grid = document.getElementById('productsGrid');
     if (!grid) return;
     
-    grid.innerHTML = '';
-    grid.className = `products-grid ${currentView === 'list' ? 'list-view' : ''}`;
-    
     if (filteredProducts.length === 0) {
-        grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-600); margin-bottom: 1rem; display: block;"></i>
-                <h3>No products found</h3>
-                <p style="color: var(--gray-600); margin-top: 0.5rem;">Try adjusting your filters</p>
-            </div>
-        `;
+        showEmptyState();
         return;
     }
     
-    filteredProducts.forEach((product, index) => {
-        const card = createProductCard(product, index);
-        grid.appendChild(card);
-    });
+    hideEmptyState();
     
-    // Animate cards on load
-    animateProductCards();
-}
-
-function createProductCard(product, index) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.style.animationDelay = `${index * 0.05}s`;
-    
-    const discount = product.originalPrice ? 
-        Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) : 0;
-    
-    // Get the brand name from the product
-    const productBrand = product.brand || 'BaBylissPRO';
-    
-    card.innerHTML = `
-        ${discount > 0 ? `<div class="product-badge">-${discount}%</div>` : ''}
-        <div class="product-quickview" onclick="openModal(${product.id})">
-            <i class="fas fa-eye"></i>
-        </div>
-        <div class="product-image-wrapper" onclick="openModal(${product.id})">
-            <img src="${product.image || '../images/placeholder.jpg'}" 
-                 alt="${product.name}" 
-                 class="product-image"
-                 loading="lazy"
-                 onerror="this.src='../images/placeholder.jpg'">
-        </div>
-        <div class="product-details">
-            <div class="product-brand">${productBrand.toUpperCase()}</div>
-            <h3 class="product-name">${product.name}</h3>
-            <div class="product-rating">
-                <div class="stars">
-                    ${generateStars(product.rating || 4.5)}
-                </div>
-                <span class="rating-count">(${product.reviewCount || 0})</span>
+    grid.innerHTML = filteredProducts.map(product => `
+        <div class="product-card" data-product-id="${product.id}">
+            ${product.stock > 0 ? 
+                '<div class="stock-badge">In Stock</div>' : 
+                '<div class="stock-badge out-of-stock">Out of Stock</div>'
+            }
+            
+            <div class="product-image-wrapper">
+                <img src="${product.image}" alt="${product.name}" class="product-image" 
+                     onerror="this.src='../images/placeholder.jpg'">
+                <button class="add-to-cart-plus" onclick="addToCart(${product.id}, event)" 
+                        ${product.stock === 0 ? 'disabled' : ''}>
+                    <i class="fas fa-plus"></i>
+                </button>
             </div>
-            <div class="product-footer">
-                <div class="product-price">${product.price.toFixed(2)}</div>
-                <button class="add-to-cart" onclick="addToCart(${product.id}, event)">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Add</span>
+            
+            <div class="product-details">
+                <div class="product-brand">BaBylissPRO</div>
+                <h3 class="product-name">${product.name}</h3>
+                
+                <div class="product-rating">
+                    <div class="stars">
+                        ${generateStars(product.rating || 5)}
+                    </div>
+                    <span class="review-count">(${product.reviews || 0} reviews)</span>
+                </div>
+                
+                <div class="product-price">
+                    <span class="currency">$</span>${product.price.toFixed(2)}
+                </div>
+                
+                <button class="view-more-btn" onclick="openProductModal(${product.id})">
+                    <i class="fas fa-eye"></i>
+                    <span>View More</span>
                 </button>
             </div>
         </div>
-    `;
-    
-    return card;
+    `).join('');
 }
 
 function generateStars(rating) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
-    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-    
     let stars = '';
+    
     for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="fas fa-star star"></i>';
+        stars += '<i class="fas fa-star"></i>';
     }
+    
     if (hasHalfStar) {
-        stars += '<i class="fas fa-star-half-alt star"></i>';
+        stars += '<i class="fas fa-star-half-alt"></i>';
     }
+    
+    const emptyStars = 5 - Math.ceil(rating);
     for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="far fa-star star empty"></i>';
+        stars += '<i class="far fa-star"></i>';
     }
+    
     return stars;
 }
 
+function updateResultCount() {
+    const countElement = document.getElementById('resultCount');
+    if (countElement) {
+        countElement.textContent = filteredProducts.length;
+    }
+}
+
 // ==========================================
-// MODAL FUNCTIONALITY
+// PRODUCT MODAL
 // ==========================================
 
-function openModal(productId) {
+function openProductModal(productId) {
     const product = products.find(p => p.id === productId);
     if (!product) return;
     
-    currentModalProduct = product;
     const modal = document.getElementById('productModal');
+    const modalContent = document.getElementById('modalContent');
     
-    // Update modal content
-    document.getElementById('modalTitle').textContent = product.name;
-    document.getElementById('modalPrice').textContent = product.price.toFixed(2);
-    document.getElementById('modalDescription').textContent = product.description || 
-        'Professional-grade equipment designed for excellence.';
-    document.getElementById('modalStars').innerHTML = generateStars(product.rating || 4.5);
-    document.getElementById('modalReviews').textContent = `(${product.reviewCount || 0} reviews)`;
+    const images = product.images || [product.image];
     
-    // Update main image
-    const mainImage = document.getElementById('modalMainImage');
-    mainImage.src = product.image || '../images/placeholder.jpg';
-    mainImage.alt = product.name;
-    mainImage.onerror = function() { this.src = '../images/placeholder.jpg'; };
-    
-    // Create thumbnail carousel with auto-scroll on hover
-    const images = [product.image, ...(product.images || [])].filter(Boolean);
-    const carousel = document.getElementById('thumbnailCarousel');
-    carousel.innerHTML = '';
-    
-    images.forEach((img, index) => {
-        const thumb = document.createElement('div');
-        thumb.className = `thumbnail ${index === 0 ? 'active' : ''}`;
-        thumb.innerHTML = `<img src="${img}" alt="${product.name}">`;
-        thumb.onclick = () => {
-            mainImage.src = img;
-            document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-            thumb.classList.add('active');
-        };
+    modalContent.innerHTML = `
+        <button class="modal-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+        </button>
         
-        // Auto-scroll on hover
-        thumb.onmouseenter = () => {
-            if (images.length > 1) {
-                startAutoScroll(images, mainImage);
-            }
-        };
-        
-        thumb.onmouseleave = () => {
-            stopAutoScroll();
-        };
-        
-        carousel.appendChild(thumb);
-    });
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem;">
+            <!-- Product Images -->
+            <div>
+                <div style="margin-bottom: 1rem; background: var(--gray-50); border-radius: var(--radius-lg); overflow: hidden;">
+                    <img id="modalMainImage" src="${images[0]}" alt="${product.name}" 
+                         style="width: 100%; height: 500px; object-fit: contain; padding: 2rem;">
+                </div>
+                ${images.length > 1 ? `
+                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                        ${images.map((img, index) => `
+                            <img src="${img}" alt="Thumbnail ${index + 1}" 
+                                 onclick="changeModalImage('${img}')"
+                                 style="width: 80px; height: 80px; object-fit: contain; border: 2px solid var(--border); 
+                                        border-radius: var(--radius-sm); cursor: pointer; padding: 0.5rem; background: var(--gray-50);
+                                        transition: all 0.3s;"
+                                 onmouseover="this.style.borderColor='var(--gold)'"
+                                 onmouseout="this.style.borderColor='var(--border)'">
+                        `).join('')}
+                    </div>
+                ` : ''}
+            </div>
+            
+            <!-- Product Info -->
+            <div style="max-height: 600px; overflow-y: auto; padding-right: 1rem;">
+                <div style="margin-bottom: 1rem;">
+                    <span style="display: inline-block; padding: 0.5rem 1rem; background: rgba(212, 175, 55, 0.1); 
+                                 color: var(--gold); border-radius: var(--radius-xl); font-size: 0.85rem; 
+                                 font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
+                        BaBylissPRO
+                    </span>
+                </div>
+                
+                <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3;">
+                    ${product.name}
+                </h2>
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div class="stars" style="display: flex; gap: 0.25rem;">
+                        ${generateStars(product.rating || 5)}
+                    </div>
+                    <span style="color: var(--gray-600); font-size: 0.95rem;">
+                        (${product.reviews || 0} reviews)
+                    </span>
+                </div>
+                
+                <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 2rem;">
+                    <span style="font-size: 1.5rem; color: var(--gray-600);">$</span>${product.price.toFixed(2)}
+                </div>
+                
+                <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border);">
+                    <p style="color: var(--gray-600); line-height: 1.8; font-size: 1rem;">
+                        ${product.description || 'Premium professional barber equipment designed for excellence. Factory sealed and authentic.'}
+                    </p>
+                </div>
+                
+                ${product.features ? `
+                    <div style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; 
+                                   text-transform: uppercase; letter-spacing: 0.5px;">
+                            Key Features
+                        </h3>
+                        <ul style="list-style: none; padding: 0;">
+                            ${product.features.map(feature => `
+                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; 
+                                           margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); 
+                                           border-radius: var(--radius-sm);">
+                                    <i class="fas fa-check-circle" style="color: var(--gold); font-size: 1.25rem; 
+                                                                           flex-shrink: 0; margin-top: 0.15rem;"></i>
+                                    <span style="font-size: 0.95rem; line-height: 1.6;">${feature}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                ` : ''}
+                
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
+                    <label style="font-weight: 600;">Quantity:</label>
+                    <div style="display: flex; align-items: center; gap: 0.5rem; border: 2px solid var(--border); 
+                                border-radius: var(--radius-sm); padding: 0.5rem;">
+                        <button onclick="decreaseModalQty()" 
+                                style="width: 40px; height: 40px; background: none; border: none; 
+                                       font-size: 1.25rem; cursor: pointer; font-weight: 700;">-</button>
+                        <input type="number" id="modalQty" value="1" min="1" max="${product.stock}" 
+                               style="width: 60px; text-align: center; border: none; font-size: 1.25rem; 
+                                      font-weight: 700; outline: none;">
+                        <button onclick="increaseModalQty(${product.stock})" 
+                                style="width: 40px; height: 40px; background: none; border: none; 
+                                       font-size: 1.25rem; cursor: pointer; font-weight: 700;">+</button>
+                    </div>
+                </div>
+                
+                <button onclick="addToCartFromModal(${product.id})" 
+                        ${product.stock === 0 ? 'disabled' : ''}
+                        style="width: 100%; padding: 1.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); 
+                               color: var(--white); border: none; border-radius: var(--radius-sm); 
+                               font-size: 1.25rem; font-weight: 700; cursor: pointer; transition: all 0.3s;
+                               display: flex; align-items: center; justify-content: center; gap: 1rem;
+                               ${product.stock === 0 ? 'opacity: 0.5; cursor: not-allowed;' : ''}"
+                        onmouseover="if(${product.stock} > 0) this.style.transform='scale(1.02)'"
+                        onmouseout="this.style.transform='scale(1)'">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}</span>
+                </button>
+                
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
+                    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-shield-alt" style="color: var(--gold);"></i>
+                            <span style="font-size: 0.9rem; font-weight: 600;">100% Authentic</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-certificate" style="color: var(--gold);"></i>
+                            <span style="font-size: 0.9rem; font-weight: 600;">Factory Sealed</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-truck" style="color: var(--gold);"></i>
+                            <span style="font-size: 0.9rem; font-weight: 600;">Free Shipping $100+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
     
-    // Update features
-    const featuresList = document.getElementById('featuresList');
-    const features = product.features || [
-        'Professional-grade motor',
-        'Precision cutting blades',
-        'Ergonomic design',
-        'Full manufacturer warranty'
-    ];
-    
-    featuresList.innerHTML = features.map(f => `<li>${f}</li>`).join('');
-    
-    // Reset quantity
-    document.getElementById('modalQty').value = 1;
-    
-    // Update add to cart button
-    document.getElementById('modalAddToCart').onclick = () => {
-        const qty = parseInt(document.getElementById('modalQty').value);
-        for (let i = 0; i < qty; i++) {
-            addToCart(productId);
-        }
-        closeModal();
-    };
-    
-    // Show modal
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
+}
+
+function changeModalImage(imageSrc) {
+    const mainImage = document.getElementById('modalMainImage');
+    if (mainImage) {
+        mainImage.style.opacity = '0';
+        setTimeout(() => {
+            mainImage.src = imageSrc;
+            mainImage.style.opacity = '1';
+        }, 150);
+    }
+}
+
+function increaseModalQty(maxStock) {
+    const input = document.getElementById('modalQty');
+    if (input && parseInt(input.value) < maxStock) {
+        input.value = parseInt(input.value) + 1;
+    }
+}
+
+function decreaseModalQty() {
+    const input = document.getElementById('modalQty');
+    if (input && parseInt(input.value) > 1) {
+        input.value = parseInt(input.value) - 1;
+    }
+}
+
+function addToCartFromModal(productId) {
+    const qtyInput = document.getElementById('modalQty');
+    const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+    
+    const product = products.find(p => p.id === productId);
+    if (!product) return;
+    
+    const existingItem = cart.find(item => item.id === productId);
+    
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image,
+            quantity: quantity,
+            brand: 'BaBylissPRO'
+        });
+    }
+    
+    saveCart();
+    updateCartCount();
+    showToast(`${product.name} added to cart`);
+    closeModal();
 }
 
 function closeModal() {
     const modal = document.getElementById('productModal');
     modal.classList.remove('active');
     document.body.classList.remove('no-scroll');
-    stopAutoScroll();
-    currentModalProduct = null;
-}
-
-function startAutoScroll(images, mainImage) {
-    let currentIndex = 0;
-    stopAutoScroll();
-    
-    autoScrollInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % images.length;
-        mainImage.src = images[currentIndex];
-        
-        // Update active thumbnail
-        document.querySelectorAll('.thumbnail').forEach((t, i) => {
-            t.classList.toggle('active', i === currentIndex);
-        });
-    }, 2000);
-}
-
-function stopAutoScroll() {
-    if (autoScrollInterval) {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = null;
-    }
-}
-
-function increaseQty() {
-    const input = document.getElementById('modalQty');
-    input.value = parseInt(input.value) + 1;
-}
-
-function decreaseQty() {
-    const input = document.getElementById('modalQty');
-    const current = parseInt(input.value);
-    if (current > 1) {
-        input.value = current - 1;
-    }
 }
 
 // ==========================================
@@ -385,7 +396,7 @@ function addToCart(productId, event) {
     }
     
     const product = products.find(p => p.id === productId);
-    if (!product) return;
+    if (!product || product.stock === 0) return;
     
     const existingItem = cart.find(item => item.id === productId);
     
@@ -398,7 +409,7 @@ function addToCart(productId, event) {
             price: product.price,
             image: product.image,
             quantity: 1,
-            brand: product.brand || 'BaBylissPRO'
+            brand: 'BaBylissPRO'
         });
     }
     
@@ -406,19 +417,108 @@ function addToCart(productId, event) {
     updateCartCount();
     showToast(`${product.name} added to cart`);
     
-    // Animate the button
     if (event) {
         const button = event.currentTarget;
-        button.classList.add('added');
-        setTimeout(() => button.classList.remove('added'), 600);
+        button.style.transform = 'scale(1.3) rotate(180deg)';
+        setTimeout(() => {
+            button.style.transform = 'scale(1)';
+        }, 300);
     }
 }
 
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    saveCart();
-    updateCartCount();
+function saveCart() {
+    localStorage.setItem('barber_cart', JSON.stringify(cart));
+}
+
+function updateCartCount() {
+    const count = cart.reduce((total, item) => total + item.quantity, 0);
+    const countElements = document.querySelectorAll('.cart-count, #cart-count');
+    
+    countElements.forEach(element => {
+        element.textContent = count;
+        element.style.display = count > 0 ? 'flex' : 'none';
+    });
+}
+
+function openCart() {
+    const overlay = document.getElementById('cartOverlay');
+    const sidebar = document.getElementById('cartSidebar');
+    
+    if (overlay) overlay.classList.add('active');
+    if (sidebar) sidebar.classList.add('active');
+    document.body.classList.add('no-scroll');
+    
     updateCartDisplay();
+}
+
+function closeCart() {
+    const overlay = document.getElementById('cartOverlay');
+    const sidebar = document.getElementById('cartSidebar');
+    
+    if (overlay) overlay.classList.remove('active');
+    if (sidebar) sidebar.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+}
+
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cartItems');
+    const cartEmpty = document.getElementById('cartEmpty');
+    const cartFooter = document.getElementById('cartFooter');
+    
+    if (cart.length === 0) {
+        if (cartItems) cartItems.style.display = 'none';
+        if (cartEmpty) cartEmpty.style.display = 'flex';
+        if (cartFooter) cartFooter.style.display = 'none';
+    } else {
+        if (cartItems) {
+            cartItems.style.display = 'block';
+            cartItems.innerHTML = cart.map(item => `
+                <div style="display: flex; gap: 1rem; background: var(--gray-50); border-radius: var(--radius); 
+                            padding: 1rem; margin-bottom: 1rem;">
+                    <div style="width: 80px; height: 80px; border-radius: var(--radius-sm); overflow: hidden; 
+                                flex-shrink: 0; background: var(--white);">
+                        <img src="${item.image}" alt="${item.name}" 
+                             style="width: 100%; height: 100%; object-fit: contain; padding: 0.5rem;">
+                    </div>
+                    <div style="flex: 1;">
+                        <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; 
+                                    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
+                            ${item.name}
+                        </div>
+                        <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
+                            $${(item.price * item.quantity).toFixed(2)}
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.75rem;">
+                            <div style="display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); 
+                                        border-radius: var(--radius-sm); padding: 0.25rem;">
+                                <button onclick="updateCartQuantity(${item.id}, -1)" 
+                                        style="width: 24px; height: 24px; background: none; border: none; 
+                                               cursor: pointer; font-weight: 700;">-</button>
+                                <span style="min-width: 30px; text-align: center; font-weight: 600;">${item.quantity}</span>
+                                <button onclick="updateCartQuantity(${item.id}, 1)" 
+                                        style="width: 24px; height: 24px; background: none; border: none; 
+                                               cursor: pointer; font-weight: 700;">+</button>
+                            </div>
+                            <button onclick="removeFromCart(${item.id})" 
+                                    style="background: none; border: none; color: var(--danger); cursor: pointer; 
+                                           font-size: 0.85rem; font-weight: 600;">
+                                Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        if (cartEmpty) cartEmpty.style.display = 'none';
+        if (cartFooter) cartFooter.style.display = 'block';
+        
+        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const subtotalElement = document.getElementById('cartSubtotal');
+        const totalElement = document.getElementById('cartTotal');
+        
+        if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
+        if (totalElement) totalElement.textContent = `$${subtotal.toFixed(2)}`;
+    }
 }
 
 function updateCartQuantity(productId, change) {
@@ -436,142 +536,50 @@ function updateCartQuantity(productId, change) {
     }
 }
 
-function saveCart() {
-    localStorage.setItem('barber_cart', JSON.stringify(cart));
-}
-
-function updateCartCount() {
-    const count = cart.reduce((total, item) => total + item.quantity, 0);
-    const countElement = document.getElementById('cart-count');
-    if (countElement) {
-        countElement.textContent = count;
-        countElement.style.display = count > 0 ? 'flex' : 'none';
-    }
-}
-
-function updateCartDisplay() {
-    const cartItems = document.getElementById('cartItems');
-    const cartEmpty = document.getElementById('cartEmpty');
-    const cartFooter = document.getElementById('cartFooter');
-    
-    if (cart.length === 0) {
-        cartItems.style.display = 'none';
-        cartEmpty.style.display = 'block';
-        cartFooter.style.display = 'none';
-    } else {
-        cartItems.style.display = 'block';
-        cartEmpty.style.display = 'none';
-        cartFooter.style.display = 'block';
-        
-        cartItems.innerHTML = cart.map(item => `
-            <div class="cart-item">
-                <div class="cart-item-image">
-                    <img src="${item.image}" alt="${item.name}" onerror="this.src='../images/placeholder.jpg'">
-                </div>
-                <div class="cart-item-details">
-                    <div class="cart-item-name">${item.name}</div>
-                    <div class="cart-item-price">${(item.price * item.quantity).toFixed(2)}</div>
-                    <div class="cart-item-actions">
-                        <div class="cart-quantity">
-                            <button onclick="updateCartQuantity(${item.id}, -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${item.id}, 1)">+</button>
-                        </div>
-                        <button class="cart-remove" onclick="removeFromCart(${item.id})">
-                            Remove
-                        </button>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-        
-        // Update subtotal
-        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-    }
-}
-
-function openCart() {
-    document.getElementById('cartOverlay').classList.add('active');
-    document.getElementById('cartSidebar').classList.add('active');
-    document.body.classList.add('no-scroll');
+function removeFromCart(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
+    updateCartCount();
     updateCartDisplay();
 }
 
-function closeCart() {
-    document.getElementById('cartOverlay').classList.remove('active');
-    document.getElementById('cartSidebar').classList.remove('active');
-    document.body.classList.remove('no-scroll');
-}
-
-// ==========================================
-// STRIPE CHECKOUT
-// ==========================================
-
 async function proceedToCheckout() {
-    if (cart.length === 0) {
-        showToast('Your cart is empty');
-        return;
-    }
-    
-    const checkoutBtn = document.querySelector('.checkout-btn');
-    const originalHTML = checkoutBtn.innerHTML;
+    if (cart.length === 0) return;
     
     try {
-        // Update button state
-        checkoutBtn.disabled = true;
-        checkoutBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-        
-        // Prepare line items for Stripe
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
                 product_data: {
                     name: item.name,
-                    description: item.brand || 'Professional Equipment',
-                    images: item.image ? [item.image] : []
+                    images: [item.image]
                 },
                 unit_amount: Math.round(item.price * 100)
             },
             quantity: item.quantity
         }));
         
-        // Call your API endpoint
-        const response = await fetch('/api/checkout', {
+        const response = await fetch('https://www.barberworldnyc.com/api/create-checkout-session', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ 
-                lineItems: lineItems,
-                successUrl: `${window.location.origin}/success.html`,
-                cancelUrl: `${window.location.origin}/`
-            })
+            body: JSON.stringify({ lineItems })
         });
-        
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to create checkout session');
-        }
         
         const session = await response.json();
         
-        // Redirect to Stripe Checkout
         const result = await stripe.redirectToCheckout({
-            sessionId: session.sessionId || session.id
+            sessionId: session.id
         });
         
         if (result.error) {
-            throw new Error(result.error.message);
+            console.error(result.error.message);
+            showToast('Checkout error. Please try again.');
         }
-        
     } catch (error) {
         console.error('Checkout error:', error);
-        showToast('Checkout failed. Please try again.');
-        
-        // Restore button
-        checkoutBtn.disabled = false;
-        checkoutBtn.innerHTML = originalHTML;
+        showToast('Checkout error. Please try again.');
     }
 }
 
@@ -579,84 +587,58 @@ async function proceedToCheckout() {
 // FILTERS & SORTING
 // ==========================================
 
-function setupFiltersPanel() {
-    // Category checkboxes
-    document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            if (checkbox.value) {
-                if (checkbox.checked) {
-                    currentFilters.categories.push(checkbox.value);
-                } else {
-                    currentFilters.categories = currentFilters.categories.filter(c => c !== checkbox.value);
-                }
-            }
-            applyFilters();
-        });
-    });
-    
-    // Price range
-    document.querySelector('.apply-price')?.addEventListener('click', () => {
-        const minInput = document.getElementById('priceMin');
-        const maxInput = document.getElementById('priceMax');
-        
-        currentFilters.minPrice = parseFloat(minInput.value) || 0;
-        currentFilters.maxPrice = parseFloat(maxInput.value) || Infinity;
-        
-        applyFilters();
-    });
-    
-    // Clear filters
-    document.querySelector('.clear-filters')?.addEventListener('click', () => {
-        currentFilters = {
-            categories: [],
-            minPrice: 0,
-            maxPrice: Infinity,
-            inStockOnly: true
-        };
-        
-        // Reset UI
-        document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(cb => {
-            cb.checked = cb.id === 'inStockOnly';
-        });
-        document.getElementById('priceMin').value = '';
-        document.getElementById('priceMax').value = '';
-        
-        applyFilters();
-    });
+function toggleFilters() {
+    const panel = document.getElementById('filtersPanel');
+    if (panel) {
+        panel.classList.toggle('active');
+    }
 }
 
 function applyFilters() {
-    filteredProducts = products.filter(product => {
-        // Category filter
-        if (currentFilters.categories.length > 0) {
-            const productCategory = product.category?.toLowerCase() || '';
-            const matchesCategory = currentFilters.categories.some(cat => 
-                productCategory.includes(cat)
-            );
-            if (!matchesCategory) return false;
+    const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
+    const categories = [];
+    
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked && checkbox.value && checkbox.value !== 'on') {
+            categories.push(checkbox.value);
         }
-        
-        // Price filter
-        if (product.price < currentFilters.minPrice || product.price > currentFilters.maxPrice) {
-            return false;
-        }
-        
-        // Stock filter
-        if (currentFilters.inStockOnly && product.inStock === false) {
-            return false;
-        }
-        
-        return true;
     });
     
-    renderProducts();
-    updateProductCount();
+    currentFilters.categories = categories;
+    
+    filterProducts();
 }
 
-function sortProducts(sortBy) {
-    currentSort = sortBy;
+function applyPriceFilter() {
+    const minPrice = parseFloat(document.getElementById('priceMin')?.value) || 0;
+    const maxPrice = parseFloat(document.getElementById('priceMax')?.value) || Infinity;
     
-    switch(sortBy) {
+    currentFilters.minPrice = minPrice;
+    currentFilters.maxPrice = maxPrice;
+    
+    filterProducts();
+}
+
+function filterProducts() {
+    filteredProducts = products.filter(product => {
+        const categoryMatch = currentFilters.categories.length === 0 || 
+                            currentFilters.categories.includes(product.category?.toLowerCase());
+        
+        const priceMatch = product.price >= currentFilters.minPrice && 
+                          product.price <= currentFilters.maxPrice;
+        
+        const stockMatch = !currentFilters.inStockOnly || product.stock > 0;
+        
+        return categoryMatch && priceMatch && stockMatch;
+    });
+    
+    sortProducts(currentSort);
+}
+
+function sortProducts(sortType) {
+    currentSort = sortType;
+    
+    switch(sortType) {
         case 'price-low':
             filteredProducts.sort((a, b) => a.price - b.price);
             break;
@@ -669,97 +651,74 @@ function sortProducts(sortBy) {
         case 'rating':
             filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
             break;
-        case 'featured':
         default:
-            // Keep original order
-            break;
+            filteredProducts.sort((a, b) => (b.featured || 0) - (a.featured || 0));
     }
     
     renderProducts();
+    updateResultCount();
+}
+
+function clearAllFilters() {
+    currentFilters = {
+        categories: [],
+        minPrice: 0,
+        maxPrice: Infinity,
+        inStockOnly: true
+    };
+    
+    document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
+        if (checkbox.value && checkbox.value !== 'on') {
+            checkbox.checked = false;
+        }
+    });
+    
+    const priceMin = document.getElementById('priceMin');
+    const priceMax = document.getElementById('priceMax');
+    if (priceMin) priceMin.value = '';
+    if (priceMax) priceMax.value = '';
+    
+    filteredProducts = [...products];
+    renderProducts();
+    updateResultCount();
 }
 
 function setView(view) {
     currentView = view;
+    const grid = document.getElementById('productsGrid');
+    const buttons = document.querySelectorAll('.view-btn');
     
-    // Update buttons
-    document.querySelectorAll('.view-btn').forEach(btn => {
-        btn.classList.remove('active');
-    });
-    event.target.closest('.view-btn').classList.add('active');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
     
-    renderProducts();
-}
-
-function toggleFilters() {
-    const panel = document.getElementById('filtersPanel');
-    panel.classList.toggle('hidden');
-    
-    // On mobile, add overlay
-    if (window.innerWidth <= 768) {
-        panel.classList.toggle('active');
-        if (panel.classList.contains('active')) {
-            const overlay = document.createElement('div');
-            overlay.className = 'filters-overlay';
-            overlay.onclick = toggleFilters;
-            document.body.appendChild(overlay);
-            document.body.classList.add('no-scroll');
+    if (grid) {
+        if (view === 'list') {
+            grid.classList.add('list-view');
         } else {
-            document.querySelector('.filters-overlay')?.remove();
-            document.body.classList.remove('no-scroll');
+            grid.classList.remove('list-view');
         }
     }
 }
 
 // ==========================================
-// SEARCH FUNCTIONALITY
+// NAVIGATION & UI
 // ==========================================
 
 function toggleSearch() {
     const overlay = document.getElementById('searchOverlay');
-    overlay.classList.toggle('active');
-    
-    if (overlay.classList.contains('active')) {
-        document.getElementById('searchInput').focus();
+    if (overlay) {
+        overlay.classList.toggle('active');
+        if (overlay.classList.contains('active')) {
+            const input = document.getElementById('searchInput');
+            setTimeout(() => input?.focus(), 100);
+        }
     }
 }
-
-document.getElementById('searchInput')?.addEventListener('input', (e) => {
-    const query = e.target.value.toLowerCase();
-    
-    if (query.length > 2) {
-        filteredProducts = products.filter(product => 
-            product.name.toLowerCase().includes(query) ||
-            product.description?.toLowerCase().includes(query)
-        );
-        renderProducts();
-    } else if (query.length === 0) {
-        applyFilters();
-    }
-});
-
-// ==========================================
-// MOBILE MENU
-// ==========================================
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('active');
-    
-    if (menu.classList.contains('active')) {
-        document.body.classList.add('no-scroll');
-    } else {
-        document.body.classList.remove('no-scroll');
-    }
-}
-
-// ==========================================
-// UI HELPERS
-// ==========================================
-
-function showLoading(show) {
-    const spinner = document.getElementById('loadingSpinner');
-    if (spinner) {
-        spinner.classList.toggle('active', show);
+    if (menu) {
+        menu.classList.toggle('active');
     }
 }
 
@@ -777,112 +736,40 @@ function showToast(message) {
     }
 }
 
-function showError(message) {
-    const grid = document.getElementById('productsGrid');
-    if (grid) {
-        grid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--danger); margin-bottom: 1rem; display: block;"></i>
-                <h3>Oops! Something went wrong</h3>
-                <p style="color: var(--gray-600); margin-top: 0.5rem;">${message}</p>
-                <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.75rem 2rem; background: var(--primary); color: white; border: none; border-radius: var(--radius-sm); cursor: pointer;">
-                    Try Again
-                </button>
-            </div>
-        `;
-    }
-}
-
-function updateProductCount() {
-    const count = document.getElementById('resultCount');
-    const productCount = document.getElementById('productCount');
-    
-    if (count) count.textContent = filteredProducts.length;
-    if (productCount) productCount.textContent = products.length;
-}
-
-function updateFilterCounts() {
-    // Update category counts
-    const categories = ['clipper', 'trimmer', 'shaver'];
-    categories.forEach(cat => {
-        const count = products.filter(p => 
-            p.category?.toLowerCase().includes(cat)
-        ).length;
-        
-        const label = document.querySelector(`input[value="${cat}"]`)?.parentElement.querySelector('.count');
-        if (label) {
-            label.textContent = `(${count})`;
-        }
-    });
-}
-
-// ==========================================
-// ANIMATIONS
-// ==========================================
-
-function animateProductCards() {
-    const cards = document.querySelectorAll('.product-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        
-        setTimeout(() => {
-            card.style.transition = 'all 0.5s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 50);
-    });
-}
-
-function initializeAnimations() {
-    // Intersection Observer for scroll animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1 });
-    
-    // Observe product cards
-    document.querySelectorAll('.product-card').forEach(card => {
-        observer.observe(card);
-    });
-}
-
 // ==========================================
 // EVENT LISTENERS
 // ==========================================
 
 function setupEventListeners() {
-    // Modal close on overlay click
-    document.querySelector('.modal-overlay')?.addEventListener('click', closeModal);
-    
-    // Cart close on overlay click
-    document.getElementById('cartOverlay')?.addEventListener('click', closeCart);
-    
-    // Escape key handlers
+    // Close modals on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             closeModal();
             closeCart();
-            toggleSearch();
+            const searchOverlay = document.getElementById('searchOverlay');
+            if (searchOverlay?.classList.contains('active')) {
+                toggleSearch();
+            }
         }
     });
     
-    // Scroll to top on logo click
-    document.querySelector('.site-logo')?.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-    
-    // Prevent form submissions
-    document.querySelectorAll('form').forEach(form => {
-        form.addEventListener('submit', (e) => e.preventDefault());
-    });
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase();
+            
+            if (query === '') {
+                filteredProducts = [...products];
+            } else {
+                filteredProducts = products.filter(product => 
+                    product.name.toLowerCase().includes(query) ||
+                    (product.description && product.description.toLowerCase().includes(query))
+                );
+            }
+            
+            renderProducts();
+            updateResultCount();
+        });
+    }
 }
-
-// ==========================================
-// INITIALIZATION COMPLETE
-// ==========================================
-
-console.log('Barber World Products Page - Ready');
