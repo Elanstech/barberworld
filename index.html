@@ -230,153 +230,6 @@
             </div>
         </div>
     </header>
-
-<!-- SLIM FLASH SALE BANNER - Directly below header -->
-<div class="flash-sale-banner-slim" id="flashSaleBanner">
-    <button class="flash-close-btn-slim" id="flashCloseBtn" aria-label="Close flash sale banner">
-        <i class="fas fa-times"></i>
-    </button>
-    
-    <div class="flash-banner-slim-container">
-        <!-- Flash Icon & Title -->
-        <div class="flash-info-slim">
-            <div class="flash-icon-slim">
-                <i class="fas fa-bolt"></i>
-            </div>
-            <div class="flash-text-slim">
-                <h3 class="flash-title-slim">Flash Sale</h3>
-                <p class="flash-date-slim">Until Wed, Nov 12</p>
-            </div>
-        </div>
-
-        <!-- Timer -->
-        <div class="flash-timer-slim" id="flashTimer">
-            <div class="timer-segment-slim">
-                <span class="timer-value-slim" id="daysValue">0</span>
-                <span class="timer-label-slim">Days</span>
-            </div>
-            <span class="timer-separator-slim">:</span>
-            <div class="timer-segment-slim">
-                <span class="timer-value-slim" id="hoursValue">00</span>
-                <span class="timer-label-slim">Hrs</span>
-            </div>
-            <span class="timer-separator-slim">:</span>
-            <div class="timer-segment-slim">
-                <span class="timer-value-slim" id="minutesValue">00</span>
-                <span class="timer-label-slim">Min</span>
-            </div>
-            <span class="timer-separator-slim">:</span>
-            <div class="timer-segment-slim">
-                <span class="timer-value-slim" id="secondsValue">00</span>
-                <span class="timer-label-slim">Sec</span>
-            </div>
-        </div>
-
-        <!-- Actions -->
-        <div class="flash-actions-slim">
-            <button class="flash-btn-slim flash-view-btn" id="flashViewDetailsBtn">
-                <span>View Details</span>
-                <i class="fas fa-eye"></i>
-            </button>
-            <button class="flash-btn-slim flash-cart-btn" id="flashAddCartBtn">
-                <span>Add to Cart</span>
-                <i class="fas fa-shopping-cart"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-<!-- FLASH SALE MODAL -->
-<div class="flash-modal" id="flashModal">
-    <div class="flash-modal-overlay" onclick="closeFlashModal()"></div>
-    <div class="flash-modal-content">
-        <button class="flash-modal-close" onclick="closeFlashModal()" aria-label="Close modal">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div class="flash-modal-grid">
-            <!-- Product Image -->
-            <div class="flash-modal-image">
-                <div class="flash-modal-badge">30% OFF</div>
-                <img src="https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_x_lids.jpg" alt="StyleCraft Instinct-X Clipper">
-            </div>
-            
-            <!-- Product Details -->
-            <div class="flash-modal-details">
-                <span class="flash-modal-brand">StyleCraft Professional</span>
-                <h2 class="flash-modal-title">Instinct-X Cordless Clipper</h2>
-                <p class="flash-modal-stock">✓ In Stock & Ready to Ship</p>
-                
-                <div class="flash-modal-pricing">
-                    <span class="flash-modal-original">$185.00</span>
-                    <span class="flash-modal-sale">$130.00</span>
-                    <span class="flash-modal-save">Save $55</span>
-                </div>
-                
-                <p class="flash-modal-intro">Advanced Instinct-X professional clipper with enhanced performance. The StyleCraft Professional Instinct-X Cordless Clipper takes the legendary Instinct series to new heights.</p>
-                
-                <div class="flash-modal-features">
-                    <h3>Key Features</h3>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Enhanced vector motor technology</li>
-                        <li><i class="fas fa-check"></i> Advanced torque control system</li>
-                        <li><i class="fas fa-check"></i> Premium all-metal construction</li>
-                        <li><i class="fas fa-check"></i> DLC precision fade blade</li>
-                        <li><i class="fas fa-check"></i> Extended 3-hour runtime</li>
-                        <li><i class="fas fa-check"></i> Rapid charging technology</li>
-                        <li><i class="fas fa-check"></i> Cord/cordless versatility</li>
-                        <li><i class="fas fa-check"></i> Professional-grade performance</li>
-                    </ul>
-                </div>
-                
-                <div class="flash-modal-specs">
-                    <h3>Specifications</h3>
-                    <div class="specs-grid">
-                        <div class="spec-item">
-                            <span class="spec-label">Motor</span>
-                            <span class="spec-value">Enhanced vector motor</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Blade</span>
-                            <span class="spec-value">DLC fade blade</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Battery</span>
-                            <span class="spec-value">High-capacity lithium-ion</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Runtime</span>
-                            <span class="spec-value">180 minutes</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Charge Time</span>
-                            <span class="spec-value">150 minutes</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Weight</span>
-                            <span class="spec-value">9.8 oz</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Voltage</span>
-                            <span class="spec-value">Dual voltage</span>
-                        </div>
-                        <div class="spec-item">
-                            <span class="spec-label">Housing</span>
-                            <span class="spec-value">Premium metal construction</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flash-modal-actions">
-                    <button class="flash-modal-cart-btn" id="flashModalAddCartBtn">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span>Add to Cart - $130.00</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
     
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
@@ -428,6 +281,10 @@
                 <a href="brands/allproducts.html" class="mobile-nav-link">
                     <i class="fas fa-th"></i>
                     <span>All Products</span>
+                </a>
+                <a href="brands/capes.html" class="mobile-nav-link">
+                    <i class="fas fa-th"></i>
+                    <span>Barber Capes</span>
                 </a>
             </div>
         </nav>
@@ -577,6 +434,13 @@
 
                     <div class="brand-image-card" onclick="window.location.href='brands/vgr.html'">
                         <div class="brand-image-name">VGR</div>
+                        <div class="brand-image-products single">
+                            <img src="https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="VGR">
+                        </div>
+                    </div>
+                    
+                    <div class="brand-image-card" onclick="window.location.href='brands/capes.html'">
+                        <div class="brand-image-name">Barber Capes</div>
                         <div class="brand-image-products single">
                             <img src="https://i5.walmartimages.com/seo/VGR-Professional-Hair-Clippers-Rechargeable-Clipper-Electric-Hair-Clippers-Adjustable-Hair-Clipper-for-Men_67e2167c-4e1a-4912-8e3b-e45bcf418639.aea4c7d4088e7794ce7ef22d465076d0.jpeg?odnHeight=2000&odnWidth=2000&odnBg=FFFFFF" alt="VGR">
                         </div>
