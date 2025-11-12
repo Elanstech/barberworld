@@ -366,13 +366,12 @@ body.no-scroll {
 }
 
 /* ==========================================
-   TYPED.JS BRAND TITLE SECTION
+   SLIM BRAND TITLE
    ========================================== */
 
 .brand-title-section {
     background: linear-gradient(135deg, var(--primary) 0%, #1a1a1a 100%);
-    padding: 4rem 2rem;
-    text-align: center;
+    padding: 2rem 2rem 1.5rem 2rem;
     border-bottom: 2px solid var(--gold);
     position: relative;
     overflow: hidden;
@@ -385,7 +384,7 @@ body.no-scroll {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
     animation: glow 3s ease-in-out infinite;
 }
 
@@ -395,52 +394,23 @@ body.no-scroll {
 }
 
 .brand-title-container {
-    max-width: 1200px;
+    max-width: 1600px;
     margin: 0 auto;
     position: relative;
     z-index: 1;
 }
 
-.title-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: rgba(212, 175, 55, 0.2);
-    color: var(--gold);
-    padding: 0.5rem 1.5rem;
-    border-radius: var(--radius-xl);
-    font-size: 0.85rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 2rem;
-    animation: fadeInDown 0.8s ease;
-}
-
-@keyframes fadeInDown {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 .brand-typed-title {
-    font-size: 4rem;
+    font-size: 2.5rem;
     font-weight: 900;
     background: linear-gradient(135deg, var(--white) 0%, var(--gold) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 1.5rem;
-    letter-spacing: -2px;
-    min-height: 5rem;
+    letter-spacing: -1px;
+    min-height: 3.5rem;
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .brand-subtitle {
@@ -1494,12 +1464,12 @@ body.no-scroll {
     }
     
     .brand-typed-title {
-        font-size: 2.5rem;
-        min-height: 3.5rem;
+        font-size: 1.75rem;
+        min-height: 2.5rem;
     }
     
     .brand-title-section {
-        padding: 3rem 1rem;
+        padding: 1.5rem 1rem 1rem 1rem;
     }
     
     .trust-bar {
@@ -1528,8 +1498,12 @@ body.no-scroll {
 
 @media (max-width: 480px) {
     .brand-typed-title {
-        font-size: 2rem;
-        min-height: 3rem;
+        font-size: 1.5rem;
+        min-height: 2rem;
+    }
+    
+    .brand-title-section {
+        padding: 1rem;
     }
     
     .controls-wrapper {
