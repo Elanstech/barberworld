@@ -1,220 +1,375 @@
-// ==========================================
-// ULTRA-MODERN BABYLISSPRO REDESIGN 2025
-// Barber World NYC - Complete Functionality
-// ==========================================
+/* ==========================================
+   LUXURY PREMIUM SHOPPING EXPERIENCE ENGINE
+   Advanced Features, Smart Filtering, Smooth Animations
+   ========================================== */
 
-// Initialize Stripe
-const stripe = Stripe('pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA');
+// Stripe Configuration
+const STRIPE_PUBLIC_KEY = 'pk_live_51SBkTC180Qgk23qGQhs7CN7k6C3YrNPPjE7PTmBnRnchwB28lpubKJA2D5ZZt8adQArpHjYx5ToqgD3157jd5jqb00KzdTTaIA';
+const stripe = Stripe(STRIPE_PUBLIC_KEY);
 
-// Global Variables
-let products = [];
+// Global State
+let allProducts = [];
 let filteredProducts = [];
-let cart = JSON.parse(localStorage.getItem('barber_cart')) || [];
-let currentView = 'grid';
-let currentSort = 'featured';
+let cart = [];
 let currentFilters = {
-    categories: [],
-    minPrice: 0,
-    maxPrice: Infinity,
-    inStockOnly: true
+    search: '',
+    category: 'all',
+    priceMax: 500,
+    sort: 'name-asc',
+    quickFilter: null
 };
+let currentView = 'grid';
 
 // ==========================================
 // INITIALIZATION
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    initTypedJS();
-    loadProducts();
-    updateCartCount();
-    setupEventListeners();
+    const brand = document.body.getAttribute('data-brand');
+    loadProducts(brand);
+    loadCart();
+    updateCartBadge();
+    initializeEventListeners();
+    initializeScrollEffects();
+    console.log('✨ Luxury Shopping Experience Loaded!');
 });
 
-// ==========================================
-// CUSTOM TYPING ANIMATION
-// ==========================================
+function initializeEventListeners() {
+    // Close mobile menu on outside click
+    document.addEventListener('click', (e) => {
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuBtn = document.querySelector('.action-btn.mobile-only');
+        
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+            if (!mobileMenu.contains(e.target) && menuBtn && !menuBtn.contains(e.target)) {
+                toggleMobileMenu();
+            }
+        }
+    });
+    
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeProductModal();
+            closeCart();
+            const mobileFilters = document.getElementById('mobile-filters-panel');
+            if (mobileFilters && mobileFilters.classList.contains('active')) {
+                toggleMobileFilters();
+            }
+        }
+    });
+}
 
-function initTypedJS() {
-    const element = document.getElementById('typed-text');
-    if (!element) return;
-    
-    // Get brand name from data attribute
-    const brandName = document.body.dataset.brand || 'BaBylissPRO';
-    
-    // Brand-specific strings
-    const brandStrings = {
-        'Babyliss': ['BaBylissPRO', 'Professional Excellence', 'Factory Sealed', 'Barber Quality'],
-        'stylecraft': ['StyleCraft', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
-        'jrl': ['JRL', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
-        'wahl': ['Wahl', 'Professional Excellence', 'Factory Sealed', 'Trusted Quality'],
-        'wmark': ['Wmark', 'Professional Excellence', 'Factory Sealed', 'Premium Quality'],
-        'vgr': ['VGR', 'Professional Excellence', 'Factory Sealed', 'Quality Tools'],
-        'monster': ['Monster', 'Professional Excellence', 'Factory Sealed', 'Beast Mode'],
-        'ourbrand': ['Barber World', 'Professional Excellence', 'Factory Sealed', 'House Brand'],
-        'clippers': ['Professional Clippers', 'Precision Cutting', 'Factory Sealed', 'Barber Quality'],
-        'trimmers': ['Professional Trimmers', 'Precision Detailing', 'Factory Sealed', 'Barber Quality'],
-        'shavers': ['Professional Shavers', 'Smooth Finish', 'Factory Sealed', 'Barber Quality'],
-        'combos': ['Combo Sets', 'Complete Kits', 'Factory Sealed', 'Best Value'],
-        'All Products': ['All Products', 'Complete Collection', 'Factory Sealed', 'Shop Everything']
+function initializeScrollEffects() {
+    // Smooth scroll animations for product cards
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
     
-    const strings = brandStrings[brandName] || brandStrings['Babyliss'];
-    let stringIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    let typingSpeed = 100;
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, observerOptions);
     
-    function type() {
-        const currentString = strings[stringIndex];
-        
-        if (isDeleting) {
-            element.textContent = currentString.substring(0, charIndex - 1);
-            charIndex--;
-            typingSpeed = 50;
-        } else {
-            element.textContent = currentString.substring(0, charIndex + 1);
-            charIndex++;
-            typingSpeed = 100;
-        }
-        
-        // Add cursor
-        element.innerHTML = element.textContent + '<span style="color: var(--gold); animation: blink 1s infinite;">|</span>';
-        
-        if (!isDeleting && charIndex === currentString.length) {
-            // Pause at end of string
-            typingSpeed = 2000;
-            isDeleting = true;
-        } else if (isDeleting && charIndex === 0) {
-            isDeleting = false;
-            stringIndex = (stringIndex + 1) % strings.length;
-            typingSpeed = 500;
-        }
-        
-        setTimeout(type, typingSpeed);
-    }
-    
-    type();
+    // Observe product cards when they're added
+    setTimeout(() => {
+        document.querySelectorAll('.product-card-premium').forEach(card => {
+            observer.observe(card);
+        });
+    }, 500);
 }
 
 // ==========================================
-// PRODUCT LOADING
+// LOAD PRODUCTS FROM JSON
 // ==========================================
 
-async function loadProducts() {
+async function loadProducts(brand) {
     try {
-        showLoading(true);
+        const grid = document.getElementById('products-grid');
+        const countEl = document.getElementById('products-count');
         
-        const brand = document.body.dataset.brand || 'Babyliss';
+        grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 80px; height: 80px; border: 5px solid var(--gold); border-top-color: transparent; border-radius: 50%; margin: 0 auto 2rem; animation: spin 1s linear infinite;"></div>
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Loading Premium Collection</h3>
+                <p style="color: var(--gray-600); font-weight: 500;">Preparing something amazing for you...</p>
+            </div>
+        `;
         
-        // Define all brand JSON files
-        const brandJsonFiles = [
-            '../json/babyliss-products.json',
-            '../json/stylecraft-products.json',
-            '../json/jrl-products.json',
-            '../json/wahl-products.json',
-            '../json/wmark-products.json',
-            '../json/vgr-products.json',
-            '../json/monster-products.json',
-            '../json/barberworld-products.json'
-        ];
+        const jsonFile = `../json/${brand}-products.json`;
+        const response = await fetch(jsonFile);
         
-        // Check if this is a category page or all products page
-        if (brand === 'clippers' || brand === 'trimmers' || brand === 'shavers' || brand === 'All Products' || brand.toLowerCase() === 'combos') {
-            // Load all brand files for category/all products pages
-            const fetchPromises = brandJsonFiles.map(file => 
-                fetch(file)
-                    .then(res => res.json())
-                    .catch(err => {
-                        console.warn(`Could not load ${file}:`, err);
-                        return [];
-                    })
-            );
-            
-            const allBrandProducts = await Promise.all(fetchPromises);
-            products = allBrandProducts.flat();
-            
-            // Filter by category if needed
-            if (brand === 'clippers') {
-                products = products.filter(p => p.category && p.category.toLowerCase() === 'clipper');
-            } else if (brand === 'trimmers') {
-                products = products.filter(p => p.category && p.category.toLowerCase() === 'trimmer');
-            } else if (brand === 'shavers') {
-                products = products.filter(p => p.category && p.category.toLowerCase() === 'shaver');
-            } else if (brand.toLowerCase() === 'combos') {
-                const comboResponse = await fetch('../json/combosets-products.json');
-                products = await comboResponse.json();
-            }
-        } else {
-            // Load brand-specific JSON
-            let jsonFile;
-            switch(brand.toLowerCase()) {
-                case 'babyliss':
-                    jsonFile = '../json/babyliss-products.json';
-                    break;
-                case 'stylecraft':
-                    jsonFile = '../json/stylecraft-products.json';
-                    break;
-                case 'jrl':
-                    jsonFile = '../json/jrl-products.json';
-                    break;
-                case 'wahl':
-                    jsonFile = '../json/wahl-products.json';
-                    break;
-                case 'wmark':
-                    jsonFile = '../json/wmark-products.json';
-                    break;
-                case 'vgr':
-                    jsonFile = '../json/vgr-products.json';
-                    break;
-                case 'monster':
-                    jsonFile = '../json/monster-products.json';
-                    break;
-                case 'barber world':
-                case 'ourbrand':
-                    jsonFile = '../json/barberworld-products.json';
-                    break;
-                default:
-                    jsonFile = '../json/babyliss-products.json';
-            }
-            
-            const response = await fetch(jsonFile);
-            products = await response.json();
-        }
+        if (!response.ok) throw new Error('Failed to load products');
         
-        filteredProducts = [...products];
-        renderProducts();
-        updateResultCount();
-        showLoading(false);
+        allProducts = await response.json();
+        filteredProducts = [...allProducts];
+        
+        updateProductCounts();
+        updateHeroStats();
+        applyFilters();
+        
+        console.log(`✅ Loaded ${allProducts.length} premium products`);
         
     } catch (error) {
-        console.error('Error loading products:', error);
-        showEmptyState();
-        showLoading(false);
+        console.error('❌ Error loading products:', error);
+        const grid = document.getElementById('products-grid');
+        grid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 6rem 2rem;">
+                <div style="width: 100px; height: 100px; background: rgba(212, 175, 55, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--gold);"></i>
+                </div>
+                <h3 style="color: var(--primary); font-weight: 800; margin-bottom: 0.5rem;">Unable to Load Products</h3>
+                <p style="color: var(--gray-600); margin-bottom: 2rem;">Please refresh the page or try again later.</p>
+                <button onclick="location.reload()" style="padding: 1rem 2rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); color: white; border: none; border-radius: 50px; font-weight: 700; cursor: pointer;">Refresh Page</button>
+            </div>
+        `;
     }
 }
 
-function showLoading(show) {
-    const spinner = document.getElementById('loadingSpinner');
-    const grid = document.getElementById('productsGrid');
+// ==========================================
+// FILTER & SORT SYSTEM
+// ==========================================
+
+function applyFilters() {
+    // Get filter values
+    const searchValue = document.getElementById('search-input')?.value.toLowerCase() || '';
+    const categoryValue = document.querySelector('input[name="category"]:checked')?.value || 'all';
+    const priceValue = parseInt(document.getElementById('price-range')?.value || 500);
+    const sortValue = document.getElementById('sort-select')?.value || 'name-asc';
     
-    if (spinner) spinner.style.display = show ? 'flex' : 'none';
-    if (grid) grid.style.display = show ? 'none' : 'grid';
+    currentFilters = {
+        search: searchValue,
+        category: categoryValue,
+        priceMax: priceValue,
+        sort: sortValue,
+        quickFilter: currentFilters.quickFilter
+    };
+    
+    // Apply filters
+    filteredProducts = allProducts.filter(product => {
+        // Search filter
+        if (searchValue && !product.name.toLowerCase().includes(searchValue)) {
+            return false;
+        }
+        
+        // Category filter
+        if (categoryValue !== 'all' && product.category !== categoryValue) {
+            return false;
+        }
+        
+        // Price filter
+        if (product.price > priceValue) {
+            return false;
+        }
+        
+        // Quick filters
+        if (currentFilters.quickFilter === 'inStock' && product.inStock === false) {
+            return false;
+        }
+        if (currentFilters.quickFilter === 'topRated' && (!product.rating || product.rating < 4.5)) {
+            return false;
+        }
+        
+        return true;
+    });
+    
+    // Sort products
+    filteredProducts.sort((a, b) => {
+        switch (sortValue) {
+            case 'name-asc':
+                return a.name.localeCompare(b.name);
+            case 'name-desc':
+                return b.name.localeCompare(a.name);
+            case 'price-asc':
+                return a.price - b.price;
+            case 'price-desc':
+                return b.price - a.price;
+            case 'rating':
+                return (b.rating || 0) - (a.rating || 0);
+            default:
+                return 0;
+        }
+    });
+    
+    updateActiveFilters();
+    renderProducts();
+    updateProductCounts();
 }
 
-function showEmptyState() {
-    const emptyState = document.getElementById('emptyState');
-    const grid = document.getElementById('productsGrid');
+function updateActiveFilters() {
+    const activeFiltersBar = document.getElementById('active-filters-bar');
+    const activeFilterTags = document.getElementById('active-filter-tags');
     
-    if (emptyState) emptyState.style.display = 'flex';
-    if (grid) grid.style.display = 'none';
+    if (!activeFiltersBar || !activeFilterTags) return;
+    
+    const tags = [];
+    
+    if (currentFilters.search) {
+        tags.push({ type: 'search', label: `Search: "${currentFilters.search}"` });
+    }
+    
+    if (currentFilters.category !== 'all') {
+        tags.push({ type: 'category', label: `Category: ${currentFilters.category}` });
+    }
+    
+    if (currentFilters.priceMax < 500) {
+        tags.push({ type: 'price', label: `Under $${currentFilters.priceMax}` });
+    }
+    
+    if (currentFilters.quickFilter) {
+        const labels = {
+            inStock: 'In Stock Only',
+            topRated: 'Top Rated',
+            newArrivals: 'New Arrivals'
+        };
+        tags.push({ type: 'quick', label: labels[currentFilters.quickFilter] });
+    }
+    
+    if (tags.length > 0) {
+        activeFiltersBar.style.display = 'block';
+        activeFilterTags.innerHTML = tags.map(tag => `
+            <div class="filter-tag">
+                ${escapeHtml(tag.label)}
+                <button onclick="removeFilter('${tag.type}')">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `).join('');
+    } else {
+        activeFiltersBar.style.display = 'none';
+    }
 }
 
-function hideEmptyState() {
-    const emptyState = document.getElementById('emptyState');
-    const grid = document.getElementById('productsGrid');
+function removeFilter(type) {
+    switch (type) {
+        case 'search':
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) searchInput.value = '';
+            break;
+        case 'category':
+            const allCategoryRadio = document.querySelector('input[name="category"][value="all"]');
+            if (allCategoryRadio) allCategoryRadio.checked = true;
+            break;
+        case 'price':
+            const priceRange = document.getElementById('price-range');
+            if (priceRange) priceRange.value = 500;
+            updatePriceRange();
+            break;
+        case 'quick':
+            currentFilters.quickFilter = null;
+            document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            break;
+    }
+    applyFilters();
+}
+
+function clearAllFilters() {
+    // Reset search
+    const searchInput = document.getElementById('search-input');
+    if (searchInput) searchInput.value = '';
     
-    if (emptyState) emptyState.style.display = 'none';
-    if (grid) grid.style.display = 'grid';
+    // Reset category
+    const allCategoryRadio = document.querySelector('input[name="category"][value="all"]');
+    if (allCategoryRadio) allCategoryRadio.checked = true;
+    
+    // Reset price
+    const priceRange = document.getElementById('price-range');
+    if (priceRange) {
+        priceRange.value = 500;
+        updatePriceRange();
+    }
+    
+    // Reset sort
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'name-asc';
+    
+    // Reset quick filters
+    currentFilters.quickFilter = null;
+    document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Reset mobile filters
+    document.querySelectorAll('.mobile-pill').forEach(pill => {
+        pill.classList.remove('active');
+        if (pill.dataset.category === 'all') {
+            pill.classList.add('active');
+        }
+    });
+    
+    applyFilters();
+}
+
+function updateProductCounts() {
+    if (allProducts.length === 0) return;
+    
+    // Count by category
+    const counts = {
+        all: allProducts.length,
+        Clipper: allProducts.filter(p => p.category === 'Clipper').length,
+        Trimmer: allProducts.filter(p => p.category === 'Trimmer').length,
+        Shaver: allProducts.filter(p => p.category === 'Shaver').length
+    };
+    
+    // Update count badges
+    Object.keys(counts).forEach(key => {
+        const badge = document.getElementById(`count-${key.toLowerCase()}`);
+        if (badge) badge.textContent = counts[key];
+    });
+}
+
+function updateHeroStats() {
+    const heroCount = document.getElementById('product-count-hero');
+    if (heroCount) {
+        heroCount.textContent = allProducts.length;
+    }
+}
+
+function updatePriceRange() {
+    const slider = document.getElementById('price-range');
+    const minDisplay = document.getElementById('min-price-display');
+    const maxDisplay = document.getElementById('max-price-display');
+    
+    if (!slider) return;
+    
+    const value = parseInt(slider.value);
+    
+    if (minDisplay) minDisplay.textContent = '$0';
+    if (maxDisplay) maxDisplay.textContent = value >= 500 ? '$500+' : `$${value}`;
+    
+    // Update slider gradient
+    const percentage = (value / 500) * 100;
+    slider.style.setProperty('--slider-value', `${percentage}%`);
+    
+    applyFilters();
+}
+
+function quickFilter(type) {
+    // Toggle quick filter
+    if (currentFilters.quickFilter === type) {
+        currentFilters.quickFilter = null;
+    } else {
+        currentFilters.quickFilter = type;
+    }
+    
+    // Update button states
+    document.querySelectorAll('.quick-filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    if (currentFilters.quickFilter) {
+        const activeBtn = document.querySelector(`.quick-filter-btn[onclick="quickFilter('${type}')"]`);
+        if (activeBtn) activeBtn.classList.add('active');
+    }
+    
+    applyFilters();
 }
 
 // ==========================================
@@ -222,83 +377,101 @@ function hideEmptyState() {
 // ==========================================
 
 function renderProducts() {
-    const grid = document.getElementById('productsGrid');
+    const grid = document.getElementById('products-grid');
+    const noResults = document.getElementById('no-results');
+    const countEl = document.getElementById('products-count');
+    
     if (!grid) return;
     
     if (filteredProducts.length === 0) {
-        showEmptyState();
+        grid.style.display = 'none';
+        if (noResults) noResults.style.display = 'block';
+        if (countEl) countEl.textContent = 'No products found';
         return;
     }
     
-    hideEmptyState();
+    grid.style.display = 'grid';
+    if (noResults) noResults.style.display = 'none';
     
-    grid.innerHTML = filteredProducts.map(product => `
-        <div class="product-card" data-product-id="${product.id}">
-            ${product.stock > 0 ? 
-                '<div class="stock-badge">In Stock</div>' : 
-                '<div class="stock-badge out-of-stock">Out of Stock</div>'
-            }
-            
-            <div class="product-image-wrapper">
-                <img src="${product.image}" alt="${product.name}" class="product-image" 
-                     onerror="this.src='../images/placeholder.jpg'">
-                <button class="add-to-cart-plus" onclick="addToCart(${product.id}, event)" 
-                        ${product.stock === 0 ? 'disabled' : ''}
-                        title="Add to cart">
-                    <i class="fas fa-plus"></i>
-                </button>
+    if (countEl) {
+        countEl.innerHTML = `Showing <strong>${filteredProducts.length}</strong> of <strong>${allProducts.length}</strong> products`;
+    }
+    
+    grid.innerHTML = filteredProducts.map((product, index) => `
+        <div class="product-card-premium" onclick="openProductModal(${product.id})" style="animation-delay: ${index * 0.05}s">
+            <div class="product-image-container">
+                ${product.inStock !== false ? 
+                    '<div class="product-stock-badge-premium">In Stock</div>' : 
+                    '<div class="product-stock-badge-premium out-of-stock">Out of Stock</div>'
+                }
+                <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" class="product-image-premium" loading="lazy">
+                <div class="product-actions-overlay">
+                    <button class="action-btn-premium" onclick="event.stopPropagation(); openProductModal(${product.id});" title="Quick View">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                    <button class="action-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});" title="Add to Cart">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
             </div>
-            
-            <div class="product-details">
-                <div class="product-brand">${product.brand || 'BaBylissPRO'}</div>
-                <h3 class="product-name">${product.name}</h3>
-                
-                <div class="product-rating">
-                    <div class="stars">
-                        ${generateStars(product.rating || 5)}
+            <div class="product-info-premium">
+                ${product.category ? `<div class="product-category-badge">${escapeHtml(product.category)}</div>` : ''}
+                <h3 class="product-name-premium">${escapeHtml(product.name)}</h3>
+                ${product.rating ? `
+                    <div class="product-rating-premium">
+                        <div class="stars-premium">
+                            ${generateStars(product.rating)}
+                        </div>
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount})</span>` : ''}
                     </div>
-                    ${product.reviews ? `<span class="review-count">(${product.reviews})</span>` : ''}
+                ` : ''}
+                <div class="product-footer">
+                    <div class="product-price-premium">$${product.price.toFixed(2)}</div>
+                    <button class="add-to-cart-btn-premium" onclick="event.stopPropagation(); addToCart(${product.id});">
+                        <i class="fas fa-shopping-bag"></i>
+                    </button>
                 </div>
-                
-                <div class="product-price">
-                    <span class="currency">$</span>${product.price.toFixed(2)}
-                </div>
-                
-                <button class="view-more-btn" onclick="openProductModal(${product.id})">
-                    <i class="fas fa-eye"></i>
-                    <span>View More</span>
-                </button>
             </div>
         </div>
     `).join('');
+    
+    // Re-initialize scroll effects for new products
+    initializeScrollEffects();
 }
 
 function generateStars(rating) {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 >= 0.5;
-    let stars = '';
+    let starsHTML = '';
     
-    for (let i = 0; i < fullStars; i++) {
-        stars += '<i class="fas fa-star"></i>';
+    for (let i = 0; i < 5; i++) {
+        if (i < fullStars) {
+            starsHTML += '<i class="fas fa-star star-premium"></i>';
+        } else if (i === fullStars && hasHalfStar) {
+            starsHTML += '<i class="fas fa-star-half-alt star-premium"></i>';
+        } else {
+            starsHTML += '<i class="far fa-star star-premium empty"></i>';
+        }
     }
     
-    if (hasHalfStar) {
-        stars += '<i class="fas fa-star-half-alt"></i>';
-    }
-    
-    const emptyStars = 5 - Math.ceil(rating);
-    for (let i = 0; i < emptyStars; i++) {
-        stars += '<i class="far fa-star"></i>';
-    }
-    
-    return stars;
+    return starsHTML;
 }
 
-function updateResultCount() {
-    const countElement = document.getElementById('resultCount');
-    if (countElement) {
-        countElement.textContent = filteredProducts.length;
+function changeView(view) {
+    currentView = view;
+    const grid = document.getElementById('products-grid');
+    const viewBtns = document.querySelectorAll('.view-btn');
+    
+    if (grid) {
+        grid.setAttribute('data-view', view);
     }
+    
+    viewBtns.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.dataset.view === view) {
+            btn.classList.add('active');
+        }
+    });
 }
 
 // ==========================================
@@ -306,141 +479,96 @@ function updateResultCount() {
 // ==========================================
 
 function openProductModal(productId) {
-    const product = products.find(p => p.id === productId);
+    const product = allProducts.find(p => p.id === productId);
     if (!product) return;
     
-    const modal = document.getElementById('productModal');
-    const modalContent = document.getElementById('modalContent');
+    const modal = document.getElementById('product-modal');
+    const modalBody = document.getElementById('modal-body');
     
-    const images = product.images || [product.image];
+    if (!modal || !modalBody) return;
     
-    modalContent.innerHTML = `
-        <button class="modal-close" onclick="closeModal()">
-            <i class="fas fa-times"></i>
-        </button>
-        
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 2rem;">
-            <!-- Product Images -->
-            <div>
-                <div style="margin-bottom: 1rem; background: var(--gray-50); border-radius: var(--radius-lg); overflow: hidden;">
-                    <img id="modalMainImage" src="${images[0]}" alt="${product.name}" 
-                         style="width: 100%; height: 500px; object-fit: contain; padding: 2rem;">
+    const images = product.images && product.images.length > 0 ? 
+        [product.image, ...product.images] : [product.image];
+    
+    modalBody.innerHTML = `
+        <div class="modal-grid-luxury">
+            <div class="modal-images-luxury">
+                <div class="modal-main-image-container">
+                    <img id="modal-main-image" src="${escapeHtml(images[0])}" alt="${escapeHtml(product.name)}" class="modal-main-image-luxury">
                 </div>
                 ${images.length > 1 ? `
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        ${images.map((img, index) => `
-                            <img src="${img}" alt="Thumbnail ${index + 1}" 
-                                 onclick="changeModalImage('${img}')"
-                                 style="width: 80px; height: 80px; object-fit: contain; border: 2px solid var(--border); 
-                                        border-radius: var(--radius-sm); cursor: pointer; padding: 0.5rem; background: var(--gray-50);
-                                        transition: all 0.3s;"
-                                 onmouseover="this.style.borderColor='var(--gold)'"
-                                 onmouseout="this.style.borderColor='var(--border)'">
+                    <div class="modal-thumbnails-luxury">
+                        ${images.map((img, idx) => `
+                            <img src="${escapeHtml(img)}" 
+                                 alt="${escapeHtml(product.name)}" 
+                                 class="modal-thumbnail-luxury ${idx === 0 ? 'active' : ''}" 
+                                 onclick="changeModalImage('${escapeHtml(img)}', this)">
                         `).join('')}
                     </div>
                 ` : ''}
             </div>
             
-            <!-- Product Info -->
-            <div style="max-height: 600px; overflow-y: auto; padding-right: 1rem;">
-                <div style="margin-bottom: 1rem;">
-                    <span style="display: inline-block; padding: 0.5rem 1rem; background: rgba(212, 175, 55, 0.1); 
-                                 color: var(--gold); border-radius: var(--radius-xl); font-size: 0.85rem; 
-                                 font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">
-                        ${product.brand || 'BaBylissPRO'}
-                    </span>
-                </div>
+            <div class="modal-details-luxury">
+                <h2>${escapeHtml(product.name)}</h2>
                 
-                <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem; line-height: 1.3;">
-                    ${product.name}
-                </h2>
-                
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
-                    <div class="stars" style="display: flex; gap: 0.25rem;">
-                        ${generateStars(product.rating || 5)}
+                ${product.rating ? `
+                    <div class="product-rating-premium" style="margin-bottom: 1.5rem;">
+                        <div class="stars-premium">
+                            ${generateStars(product.rating)}
+                        </div>
+                        ${product.reviewCount ? `<span class="review-count-premium">(${product.reviewCount} reviews)</span>` : ''}
                     </div>
-                    ${product.reviews ? `
-                        <span style="color: var(--gray-600); font-size: 0.95rem;">
-                            (${product.reviews} ${product.reviews === 1 ? 'review' : 'reviews'})
-                        </span>
-                    ` : ''}
-                </div>
+                ` : ''}
                 
-                <div style="font-size: 2.5rem; font-weight: 900; color: var(--primary); margin-bottom: 2rem;">
-                    <span style="font-size: 1.5rem; color: var(--gray-600);">$</span>${product.price.toFixed(2)}
-                </div>
+                <div class="modal-price-luxury">$${product.price.toFixed(2)}</div>
                 
-                <div style="margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 2px solid var(--border);">
-                    <p style="color: var(--gray-600); line-height: 1.8; font-size: 1rem;">
-                        ${product.description || 'Premium professional barber equipment designed for excellence. Factory sealed and authentic.'}
-                    </p>
-                </div>
+                ${product.inStock !== false ? 
+                    '<div class="modal-stock-luxury"><i class="fas fa-check-circle"></i> In Stock & Ready to Ship</div>' : 
+                    '<div class="modal-stock-luxury" style="background: rgba(220, 53, 69, 0.1); color: #dc3545; border-color: #dc3545;"><i class="fas fa-times-circle"></i> Currently Out of Stock</div>'
+                }
                 
-                ${product.features ? `
-                    <div style="margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; 
-                                   text-transform: uppercase; letter-spacing: 0.5px;">
-                            Key Features
-                        </h3>
-                        <ul style="list-style: none; padding: 0;">
+                ${product.shortDescription ? `
+                    <p style="color: var(--gray-600); margin-bottom: 2rem; line-height: 1.9; font-size: 1.05rem;">${escapeHtml(product.shortDescription)}</p>
+                ` : ''}
+                
+                ${product.description ? `
+                    <div class="modal-description-luxury">
+                        ${escapeHtml(product.description)}
+                    </div>
+                ` : ''}
+                
+                ${product.features && product.features.length > 0 ? `
+                    <div class="modal-features-luxury">
+                        <h4><i class="fas fa-sparkles" style="color: var(--gold); margin-right: 0.5rem;"></i>Key Features</h4>
+                        <ul>
                             ${product.features.map(feature => `
-                                <li style="display: flex; align-items: flex-start; gap: 0.75rem; 
-                                           margin-bottom: 1rem; padding: 1rem; background: var(--gray-50); 
-                                           border-radius: var(--radius-sm);">
-                                    <i class="fas fa-check-circle" style="color: var(--gold); font-size: 1.25rem; 
-                                                                           flex-shrink: 0; margin-top: 0.15rem;"></i>
-                                    <span style="font-size: 0.95rem; line-height: 1.6;">${feature}</span>
+                                <li>
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>${escapeHtml(feature)}</span>
                                 </li>
                             `).join('')}
                         </ul>
                     </div>
                 ` : ''}
                 
-                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 2rem;">
-                    <label style="font-weight: 600;">Quantity:</label>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; border: 2px solid var(--border); 
-                                border-radius: var(--radius-sm); padding: 0.5rem;">
-                        <button onclick="decreaseModalQty()" 
-                                style="width: 40px; height: 40px; background: none; border: none; 
-                                       font-size: 1.25rem; cursor: pointer; font-weight: 700;">-</button>
-                        <input type="number" id="modalQty" value="1" min="1" max="${product.stock}" 
-                               style="width: 60px; text-align: center; border: none; font-size: 1.25rem; 
-                                      font-weight: 700; outline: none;">
-                        <button onclick="increaseModalQty(${product.stock})" 
-                                style="width: 40px; height: 40px; background: none; border: none; 
-                                       font-size: 1.25rem; cursor: pointer; font-weight: 700;">+</button>
+                ${product.specifications ? `
+                    <div class="modal-specs-luxury">
+                        <h4><i class="fas fa-cog" style="color: var(--gold); margin-right: 0.5rem;"></i>Specifications</h4>
+                        <div class="specs-grid-luxury">
+                            ${Object.entries(product.specifications).map(([key, value]) => `
+                                <div class="spec-item-luxury">
+                                    <div class="spec-label-luxury">${escapeHtml(key)}</div>
+                                    <div class="spec-value-luxury">${escapeHtml(String(value))}</div>
+                                </div>
+                            `).join('')}
+                        </div>
                     </div>
-                </div>
+                ` : ''}
                 
-                <button onclick="addToCartFromModal(${product.id})" 
-                        ${product.stock === 0 ? 'disabled' : ''}
-                        style="width: 100%; padding: 1.5rem; background: linear-gradient(135deg, var(--gold), var(--gold-hover)); 
-                               color: var(--white); border: none; border-radius: var(--radius-sm); 
-                               font-size: 1.25rem; font-weight: 700; cursor: pointer; transition: all 0.3s;
-                               display: flex; align-items: center; justify-content: center; gap: 1rem;
-                               ${product.stock === 0 ? 'opacity: 0.5; cursor: not-allowed;' : ''}"
-                        onmouseover="if(${product.stock} > 0) this.style.transform='scale(1.02)'"
-                        onmouseout="this.style.transform='scale(1)'">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span>${product.stock === 0 ? 'Out of Stock' : 'Add to Cart'}</span>
+                <button class="modal-add-to-cart-luxury" onclick="addToCart(${product.id}); closeProductModal();">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Add to Cart - $${product.price.toFixed(2)}</span>
                 </button>
-                
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 2px solid var(--border);">
-                    <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-shield-alt" style="color: var(--gold);"></i>
-                            <span style="font-size: 0.9rem; font-weight: 600;">100% Authentic</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-certificate" style="color: var(--gold);"></i>
-                            <span style="font-size: 0.9rem; font-weight: 600;">Factory Sealed</span>
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.5rem;">
-                            <i class="fas fa-truck" style="color: var(--gold);"></i>
-                            <span style="font-size: 0.9rem; font-weight: 600;">Free Shipping $100+</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     `;
@@ -449,202 +577,154 @@ function openProductModal(productId) {
     document.body.classList.add('no-scroll');
 }
 
-function changeModalImage(imageSrc) {
-    const mainImage = document.getElementById('modalMainImage');
+function closeProductModal(event) {
+    if (event && event.target.id !== 'product-modal' && !event.target.classList.contains('luxury-modal-close')) return;
+    
+    const modal = document.getElementById('product-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+}
+
+function changeModalImage(imageSrc, thumbnail) {
+    const mainImage = document.getElementById('modal-main-image');
     if (mainImage) {
         mainImage.style.opacity = '0';
+        mainImage.style.transform = 'scale(0.95)';
+        
         setTimeout(() => {
             mainImage.src = imageSrc;
             mainImage.style.opacity = '1';
-        }, 150);
+            mainImage.style.transform = 'scale(1)';
+        }, 200);
     }
+    
+    document.querySelectorAll('.modal-thumbnail-luxury').forEach(thumb => {
+        thumb.classList.remove('active');
+    });
+    thumbnail.classList.add('active');
 }
 
-function increaseModalQty(maxStock) {
-    const input = document.getElementById('modalQty');
-    if (input && parseInt(input.value) < maxStock) {
-        input.value = parseInt(input.value) + 1;
-    }
-}
+// ==========================================
+// MOBILE FILTERS
+// ==========================================
 
-function decreaseModalQty() {
-    const input = document.getElementById('modalQty');
-    if (input && parseInt(input.value) > 1) {
-        input.value = parseInt(input.value) - 1;
-    }
-}
-
-function addToCartFromModal(productId) {
-    const qtyInput = document.getElementById('modalQty');
-    const quantity = qtyInput ? parseInt(qtyInput.value) : 1;
+function toggleMobileFilters() {
+    const overlay = document.getElementById('mobile-filters-overlay');
+    const panel = document.getElementById('mobile-filters-panel');
     
-    const product = products.find(p => p.id === productId);
-    if (!product) return;
+    if (!overlay || !panel) return;
     
-    const existingItem = cart.find(item => item.id === productId);
-    
-    if (existingItem) {
-        existingItem.quantity += quantity;
+    if (panel.classList.contains('active')) {
+        panel.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
     } else {
-        cart.push({
-            id: product.id,
-            name: product.name,
-            price: product.price,
-            image: product.image,
-            quantity: quantity,
-            brand: product.brand || document.body.dataset.brand || 'BaBylissPRO'
-        });
+        panel.classList.add('active');
+        overlay.classList.add('active');
+        document.body.classList.add('no-scroll');
     }
-    
-    saveCart();
-    updateCartCount();
-    showToast(`${product.name} added to cart`);
-    closeModal();
 }
 
-function closeModal() {
-    const modal = document.getElementById('productModal');
-    modal.classList.remove('active');
-    document.body.classList.remove('no-scroll');
+function selectMobileCategory(button, category) {
+    // Update visual state
+    document.querySelectorAll('.mobile-pill[data-category]').forEach(pill => {
+        pill.classList.remove('active');
+    });
+    button.classList.add('active');
+    
+    // Update desktop radio
+    const radio = document.querySelector(`input[name="category"][value="${category}"]`);
+    if (radio) radio.checked = true;
+    
+    applyFilters();
+}
+
+function mobileSort() {
+    const mobileSelect = document.getElementById('mobile-sort-select');
+    const desktopSelect = document.getElementById('sort-select');
+    
+    if (mobileSelect && desktopSelect) {
+        desktopSelect.value = mobileSelect.value;
+        applyFilters();
+    }
+}
+
+// ==========================================
+// MOBILE MENU
+// ==========================================
+
+function toggleMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    if (menu) {
+        menu.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }
 }
 
 // ==========================================
 // CART MANAGEMENT
 // ==========================================
 
-function addToCart(productId, event) {
-    if (event) {
-        event.stopPropagation();
+function loadCart() {
+    const savedCart = localStorage.getItem('barberworld_cart');
+    if (savedCart) {
+        try {
+            cart = JSON.parse(savedCart);
+        } catch (e) {
+            cart = [];
+        }
     }
-    
-    const product = products.find(p => p.id === productId);
-    if (!product || product.stock === 0) return;
+}
+
+function saveCart() {
+    localStorage.setItem('barberworld_cart', JSON.stringify(cart));
+    updateCartDisplay();
+    updateCartBadge();
+}
+
+function addToCart(productId) {
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) return;
     
     const existingItem = cart.find(item => item.id === productId);
     
     if (existingItem) {
         existingItem.quantity++;
     } else {
+        const productImages = product.images && product.images.length > 0 ? 
+            [product.image, ...product.images] : [product.image];
+        
         cart.push({
             id: product.id,
             name: product.name,
             price: product.price,
-            image: product.image,
-            quantity: 1,
-            brand: product.brand || document.body.dataset.brand || 'BaBylissPRO'
+            image: productImages[0],
+            quantity: 1
         });
     }
     
     saveCart();
-    updateCartCount();
-    showToast(`${product.name} added to cart`);
-    
-    if (event) {
-        const button = event.currentTarget;
-        button.style.transform = 'scale(1.3) rotate(180deg)';
-        setTimeout(() => {
-            button.style.transform = 'scale(1)';
-        }, 300);
-    }
+    showNotification(`${product.name} added to cart!`);
 }
 
-function saveCart() {
-    localStorage.setItem('barber_cart', JSON.stringify(cart));
-}
-
-function updateCartCount() {
-    const count = cart.reduce((total, item) => total + item.quantity, 0);
-    const countElements = document.querySelectorAll('.cart-count, #cart-count');
+function removeFromCart(productId) {
+    const product = cart.find(item => item.id === productId);
+    cart = cart.filter(item => item.id !== productId);
+    saveCart();
     
-    countElements.forEach(element => {
-        element.textContent = count;
-        element.style.display = count > 0 ? 'flex' : 'none';
-    });
-}
-
-function openCart() {
-    const overlay = document.getElementById('cartOverlay');
-    const sidebar = document.getElementById('cartSidebar');
-    
-    if (overlay) overlay.classList.add('active');
-    if (sidebar) sidebar.classList.add('active');
-    document.body.classList.add('no-scroll');
-    
-    updateCartDisplay();
-}
-
-function closeCart() {
-    const overlay = document.getElementById('cartOverlay');
-    const sidebar = document.getElementById('cartSidebar');
-    
-    if (overlay) overlay.classList.remove('active');
-    if (sidebar) sidebar.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-}
-
-function updateCartDisplay() {
-    const cartItems = document.getElementById('cartItems');
-    const cartEmpty = document.getElementById('cartEmpty');
-    const cartFooter = document.getElementById('cartFooter');
-    
-    if (cart.length === 0) {
-        if (cartItems) cartItems.style.display = 'none';
-        if (cartEmpty) cartEmpty.style.display = 'flex';
-        if (cartFooter) cartFooter.style.display = 'none';
-    } else {
-        if (cartItems) {
-            cartItems.style.display = 'block';
-            cartItems.innerHTML = cart.map(item => `
-                <div style="display: flex; gap: 1rem; background: var(--gray-50); border-radius: var(--radius); 
-                            padding: 1rem; margin-bottom: 1rem;">
-                    <div style="width: 80px; height: 80px; border-radius: var(--radius-sm); overflow: hidden; 
-                                flex-shrink: 0; background: var(--white);">
-                        <img src="${item.image}" alt="${item.name}" 
-                             style="width: 100%; height: 100%; object-fit: contain; padding: 0.5rem;">
-                    </div>
-                    <div style="flex: 1;">
-                        <div style="font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; 
-                                    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                            ${item.name}
-                        </div>
-                        <div style="font-size: 1.1rem; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem;">
-                            $${(item.price * item.quantity).toFixed(2)}
-                        </div>
-                        <div style="display: flex; align-items: center; gap: 0.75rem;">
-                            <div style="display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); 
-                                        border-radius: var(--radius-sm); padding: 0.25rem;">
-                                <button onclick="updateCartQuantity(${item.id}, -1)" 
-                                        style="width: 24px; height: 24px; background: none; border: none; 
-                                               cursor: pointer; font-weight: 700;">-</button>
-                                <span style="min-width: 30px; text-align: center; font-weight: 600;">${item.quantity}</span>
-                                <button onclick="updateCartQuantity(${item.id}, 1)" 
-                                        style="width: 24px; height: 24px; background: none; border: none; 
-                                               cursor: pointer; font-weight: 700;">+</button>
-                            </div>
-                            <button onclick="removeFromCart(${item.id})" 
-                                    style="background: none; border: none; color: var(--danger); cursor: pointer; 
-                                           font-size: 0.85rem; font-weight: 600;">
-                                Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-        if (cartEmpty) cartEmpty.style.display = 'none';
-        if (cartFooter) cartFooter.style.display = 'block';
-        
-        const subtotal = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
-        const subtotalElement = document.getElementById('cartSubtotal');
-        const totalElement = document.getElementById('cartTotal');
-        
-        if (subtotalElement) subtotalElement.textContent = `$${subtotal.toFixed(2)}`;
-        if (totalElement) totalElement.textContent = `$${subtotal.toFixed(2)}`;
+    if (product) {
+        showNotification(`${product.name} removed from cart`);
     }
 }
 
 function updateCartQuantity(productId, change) {
-    const item = cart.find(i => i.id === productId);
+    const item = cart.find(item => item.id === productId);
     if (!item) return;
     
     item.quantity += change;
@@ -653,283 +733,188 @@ function updateCartQuantity(productId, change) {
         removeFromCart(productId);
     } else {
         saveCart();
-        updateCartCount();
-        updateCartDisplay();
     }
 }
 
-function removeFromCart(productId) {
-    cart = cart.filter(item => item.id !== productId);
-    saveCart();
-    updateCartCount();
-    updateCartDisplay();
+function updateCartBadge() {
+    const badge = document.getElementById('cart-badge');
+    if (badge) {
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
 }
 
+function updateCartDisplay() {
+    const cartItems = document.getElementById('cart-items');
+    const cartFooter = document.getElementById('cart-footer');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartTotal = document.getElementById('cart-total');
+    const cartSubtitle = document.getElementById('cart-subtitle');
+    
+    if (!cartItems) return;
+    
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
+    if (cartSubtitle) {
+        cartSubtitle.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'items'}`;
+    }
+    
+    if (cart.length === 0) {
+        cartItems.innerHTML = `
+            <div class="cart-empty-premium">
+                <div class="empty-cart-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <p>Your cart is empty</p>
+                <span>Start adding some premium products!</span>
+            </div>
+        `;
+        if (cartFooter) cartFooter.style.display = 'none';
+        return;
+    }
+    
+    if (cartFooter) cartFooter.style.display = 'block';
+    
+    cartItems.innerHTML = cart.map((item, index) => `
+        <div class="cart-item-premium" style="animation-delay: ${index * 0.1}s">
+            <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}" class="cart-item-image-premium">
+            <div class="cart-item-details-premium">
+                <div class="cart-item-name-premium">${escapeHtml(item.name)}</div>
+                <div class="cart-item-price-premium">$${item.price.toFixed(2)}</div>
+                <div class="cart-item-actions-premium">
+                    <button class="qty-btn-premium" onclick="updateCartQuantity(${item.id}, -1)" ${item.quantity <= 1 ? 'disabled' : ''}>
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <span class="qty-display-premium">${item.quantity}</span>
+                    <button class="qty-btn-premium" onclick="updateCartQuantity(${item.id}, 1)">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    <button class="remove-btn-premium" onclick="removeFromCart(${item.id})" title="Remove from cart">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `).join('');
+    
+    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    if (cartSubtotal) cartSubtotal.textContent = `$${total.toFixed(2)}`;
+    if (cartTotal) cartTotal.textContent = `$${total.toFixed(2)}`;
+}
+
+function openCart() {
+    const cartPanel = document.getElementById('cart-panel');
+    const cartOverlay = document.getElementById('cart-overlay');
+    
+    if (cartPanel && cartOverlay) {
+        updateCartDisplay();
+        cartPanel.classList.add('active');
+        cartOverlay.classList.add('active');
+        document.body.classList.add('no-scroll');
+    }
+}
+
+function closeCart() {
+    const cartPanel = document.getElementById('cart-panel');
+    const cartOverlay = document.getElementById('cart-overlay');
+    
+    if (cartPanel && cartOverlay) {
+        cartPanel.classList.remove('active');
+        cartOverlay.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+}
+
+// ==========================================
+// CHECKOUT
+// ==========================================
+
 async function proceedToCheckout() {
-    if (cart.length === 0) return;
+    if (cart.length === 0) {
+        showNotification('Your cart is empty!');
+        return;
+    }
     
     try {
+        showNotification('Processing checkout...');
+        
         const lineItems = cart.map(item => ({
             price_data: {
                 currency: 'usd',
                 product_data: {
                     name: item.name,
-                    images: [item.image]
+                    images: item.image ? [item.image] : []
                 },
                 unit_amount: Math.round(item.price * 100)
             },
             quantity: item.quantity
         }));
         
-        const response = await fetch('https://www.barberworldnyc.com/api/create-checkout-session', {
+        const response = await fetch('https://barber-world-stripe.vercel.app/create-checkout-session', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             },
             body: JSON.stringify({ lineItems })
         });
         
-        const session = await response.json();
+        const data = await response.json();
         
-        const result = await stripe.redirectToCheckout({
-            sessionId: session.id
-        });
-        
-        if (result.error) {
-            console.error(result.error.message);
-            showToast('Checkout error. Please try again.');
+        if (!response.ok) {
+            throw new Error(data.message || 'Checkout failed');
         }
+        
+        if (data.url) {
+            window.location.href = data.url;
+        } else {
+            throw new Error('No checkout URL received');
+        }
+        
     } catch (error) {
-        console.error('Checkout error:', error);
-        showToast('Checkout error. Please try again.');
+        console.error('❌ Checkout error:', error);
+        showNotification('Checkout failed. Please try again.');
     }
 }
 
 // ==========================================
-// FILTERS & SORTING
+// NOTIFICATIONS
 // ==========================================
 
-function toggleFiltersPanel() {
-    const panel = document.getElementById('filtersPanel');
-    const overlay = document.getElementById('filtersOverlay');
+function showNotification(message) {
+    const toast = document.getElementById('notification-toast');
+    const messageEl = document.getElementById('notification-message');
     
-    if (panel && overlay) {
-        const isActive = panel.classList.contains('active');
-        
-        if (isActive) {
-            panel.classList.remove('active');
-            overlay.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        } else {
-            panel.classList.add('active');
-            overlay.classList.add('active');
-            document.body.classList.add('no-scroll');
-        }
-    }
-}
-
-function toggleCategoryFilter(button, category) {
-    button.classList.toggle('active');
-    
-    const index = currentFilters.categories.indexOf(category);
-    if (index > -1) {
-        currentFilters.categories.splice(index, 1);
-    } else {
-        currentFilters.categories.push(category);
-    }
-    
-    filterProducts();
-    updateClearFiltersButton();
-}
-
-function updateClearFiltersButton() {
-    const clearBtn = document.querySelector('.clear-filters-pill');
-    if (clearBtn) {
-        const hasActiveFilters = currentFilters.categories.length > 0 || 
-                                 currentFilters.minPrice > 0 || 
-                                 currentFilters.maxPrice < Infinity;
-        clearBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
-    }
-}
-
-function applyFilters() {
-    const inStockCheckbox = document.getElementById('inStockOnly');
-    if (inStockCheckbox) {
-        currentFilters.inStockOnly = inStockCheckbox.checked;
-    }
-    
-    filterProducts();
-}
-
-function applyPriceFilter() {
-    const minPrice = parseFloat(document.getElementById('priceMin')?.value) || 0;
-    const maxPrice = parseFloat(document.getElementById('priceMax')?.value) || Infinity;
-    
-    currentFilters.minPrice = minPrice;
-    currentFilters.maxPrice = maxPrice;
-    
-    filterProducts();
-    updateClearFiltersButton();
-}
-
-function filterProducts() {
-    filteredProducts = products.filter(product => {
-        const categoryMatch = currentFilters.categories.length === 0 || 
-                            currentFilters.categories.some(cat => 
-                                product.category?.toLowerCase() === cat.toLowerCase()
-                            );
-        
-        const priceMatch = product.price >= currentFilters.minPrice && 
-                          product.price <= currentFilters.maxPrice;
-        
-        const stockMatch = !currentFilters.inStockOnly || product.stock > 0;
-        
-        return categoryMatch && priceMatch && stockMatch;
-    });
-    
-    sortProducts(currentSort);
-}
-
-function sortProducts(sortType) {
-    currentSort = sortType;
-    
-    switch(sortType) {
-        case 'price-low':
-            filteredProducts.sort((a, b) => a.price - b.price);
-            break;
-        case 'price-high':
-            filteredProducts.sort((a, b) => b.price - a.price);
-            break;
-        case 'name':
-            filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
-            break;
-        case 'rating':
-            filteredProducts.sort((a, b) => (b.rating || 0) - (a.rating || 0));
-            break;
-        default:
-            filteredProducts.sort((a, b) => (b.featured || 0) - (a.featured || 0));
-    }
-    
-    renderProducts();
-    updateResultCount();
-}
-
-function clearAllFilters() {
-    currentFilters = {
-        categories: [],
-        minPrice: 0,
-        maxPrice: Infinity,
-        inStockOnly: true
-    };
-    
-    // Clear pill filters
-    document.querySelectorAll('.filter-pill[data-category]').forEach(pill => {
-        pill.classList.remove('active');
-    });
-    
-    // Clear price inputs
-    const priceMin = document.getElementById('priceMin');
-    const priceMax = document.getElementById('priceMax');
-    if (priceMin) priceMin.value = '';
-    if (priceMax) priceMax.value = '';
-    
-    // Reset in stock checkbox
-    const inStockCheckbox = document.getElementById('inStockOnly');
-    if (inStockCheckbox) inStockCheckbox.checked = true;
-    
-    filteredProducts = [...products];
-    renderProducts();
-    updateResultCount();
-    updateClearFiltersButton();
-}
-
-function setView(view) {
-    currentView = view;
-    const grid = document.getElementById('productsGrid');
-    const buttons = document.querySelectorAll('.view-btn');
-    
-    buttons.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active');
-    
-    if (grid) {
-        if (view === 'list') {
-            grid.classList.add('list-view');
-        } else {
-            grid.classList.remove('list-view');
-        }
-    }
-}
-
-// ==========================================
-// NAVIGATION & UI
-// ==========================================
-
-function toggleSearch() {
-    const overlay = document.getElementById('searchOverlay');
-    if (overlay) {
-        overlay.classList.toggle('active');
-        if (overlay.classList.contains('active')) {
-            const input = document.getElementById('searchInput');
-            setTimeout(() => input?.focus(), 100);
-        }
-    }
-}
-
-function toggleMobileMenu() {
-    const menu = document.getElementById('mobileMenu');
-    if (menu) {
-        menu.classList.toggle('active');
-    }
-}
-
-function showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
-    
-    if (toast && toastMessage) {
-        toastMessage.textContent = message;
-        toast.classList.add('active');
+    if (toast && messageEl) {
+        messageEl.textContent = message;
+        toast.classList.add('show');
         
         setTimeout(() => {
-            toast.classList.remove('active');
-        }, 3000);
+            toast.classList.remove('show');
+        }, 3500);
     }
 }
 
 // ==========================================
-// EVENT LISTENERS
+// UTILITY FUNCTIONS
 // ==========================================
 
-function setupEventListeners() {
-    // Close modals on escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            closeModal();
-            closeCart();
-            const searchOverlay = document.getElementById('searchOverlay');
-            if (searchOverlay?.classList.contains('active')) {
-                toggleSearch();
-            }
-        }
-    });
-    
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            const query = e.target.value.toLowerCase();
-            
-            if (query === '') {
-                filteredProducts = [...products];
-            } else {
-                filteredProducts = products.filter(product => 
-                    product.name.toLowerCase().includes(query) ||
-                    (product.description && product.description.toLowerCase().includes(query))
-                );
-            }
-            
-            renderProducts();
-            updateResultCount();
-        });
-    }
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
+
+// ==========================================
+// ADD NECESSARY ANIMATIONS
+// ==========================================
+
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes spin {
+        to { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+console.log('✨ Luxury Premium Shopping Experience Ready!');
