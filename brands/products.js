@@ -709,24 +709,54 @@ async function proceedToCheckout() {
 // FILTERS & SORTING
 // ==========================================
 
-function toggleFilters() {
+function toggleFiltersPanel() {
     const panel = document.getElementById('filtersPanel');
-    if (panel) {
-        panel.classList.toggle('active');
+    const overlay = document.getElementById('filtersOverlay');
+    
+    if (panel && overlay) {
+        const isActive = panel.classList.contains('active');
+        
+        if (isActive) {
+            panel.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.classList.remove('no-scroll');
+        } else {
+            panel.classList.add('active');
+            overlay.classList.add('active');
+            document.body.classList.add('no-scroll');
+        }
+    }
+}
+
+function toggleCategoryFilter(button, category) {
+    button.classList.toggle('active');
+    
+    const index = currentFilters.categories.indexOf(category);
+    if (index > -1) {
+        currentFilters.categories.splice(index, 1);
+    } else {
+        currentFilters.categories.push(category);
+    }
+    
+    filterProducts();
+    updateClearFiltersButton();
+}
+
+function updateClearFiltersButton() {
+    const clearBtn = document.querySelector('.clear-filters-pill');
+    if (clearBtn) {
+        const hasActiveFilters = currentFilters.categories.length > 0 || 
+                                 currentFilters.minPrice > 0 || 
+                                 currentFilters.maxPrice < Infinity;
+        clearBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
     }
 }
 
 function applyFilters() {
-    const checkboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
-    const categories = [];
-    
-    checkboxes.forEach(checkbox => {
-        if (checkbox.checked && checkbox.value && checkbox.value !== 'on') {
-            categories.push(checkbox.value);
-        }
-    });
-    
-    currentFilters.categories = categories;
+    const inStockCheckbox = document.getElementById('inStockOnly');
+    if (inStockCheckbox) {
+        currentFilters.inStockOnly = inStockCheckbox.checked;
+    }
     
     filterProducts();
 }
@@ -739,12 +769,15 @@ function applyPriceFilter() {
     currentFilters.maxPrice = maxPrice;
     
     filterProducts();
+    updateClearFiltersButton();
 }
 
 function filterProducts() {
     filteredProducts = products.filter(product => {
         const categoryMatch = currentFilters.categories.length === 0 || 
-                            currentFilters.categories.includes(product.category?.toLowerCase());
+                            currentFilters.categories.some(cat => 
+                                product.category?.toLowerCase() === cat.toLowerCase()
+                            );
         
         const priceMatch = product.price >= currentFilters.minPrice && 
                           product.price <= currentFilters.maxPrice;
@@ -789,20 +822,25 @@ function clearAllFilters() {
         inStockOnly: true
     };
     
-    document.querySelectorAll('.filter-option input[type="checkbox"]').forEach(checkbox => {
-        if (checkbox.value && checkbox.value !== 'on') {
-            checkbox.checked = false;
-        }
+    // Clear pill filters
+    document.querySelectorAll('.filter-pill[data-category]').forEach(pill => {
+        pill.classList.remove('active');
     });
     
+    // Clear price inputs
     const priceMin = document.getElementById('priceMin');
     const priceMax = document.getElementById('priceMax');
     if (priceMin) priceMin.value = '';
     if (priceMax) priceMax.value = '';
     
+    // Reset in stock checkbox
+    const inStockCheckbox = document.getElementById('inStockOnly');
+    if (inStockCheckbox) inStockCheckbox.checked = true;
+    
     filteredProducts = [...products];
     renderProducts();
     updateResultCount();
+    updateClearFiltersButton();
 }
 
 function setView(view) {
