@@ -169,17 +169,12 @@
         </div>
     </header>
     
-    <!-- Typed Brand Title -->
+    <!-- Slim Brand Title -->
     <section class="brand-title-section">
         <div class="brand-title-container">
-            <div class="title-badge">
-                <i class="fas fa-crown"></i>
-                <span>Professional Excellence</span>
-            </div>
             <h1 class="brand-typed-title">
                 <span id="typed-text"></span>
             </h1>
-            <p class="brand-subtitle">Precision engineered for the modern barber. Factory sealed.</p>
         </div>
     </section>
     
@@ -238,43 +233,39 @@
                 </div>
             </div>
             
+            <!-- Pill-Style Filters -->
+            <div class="filter-pills-container">
+                <button class="filter-pill" onclick="toggleFiltersPanel()">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>All Filters</span>
+                </button>
+                <button class="filter-pill" data-category="clipper" onclick="toggleCategoryFilter(this, 'clipper')">
+                    Hair Clippers
+                </button>
+                <button class="filter-pill" data-category="trimmer" onclick="toggleCategoryFilter(this, 'trimmer')">
+                    Trimmers
+                </button>
+                <button class="filter-pill" data-category="shaver" onclick="toggleCategoryFilter(this, 'shaver')">
+                    Shavers
+                </button>
+                <button class="filter-pill clear-filters-pill" onclick="clearAllFilters()" style="display: none;">
+                    <i class="fas fa-times"></i>
+                    Clear All
+                </button>
+            </div>
+            
             <!-- Layout with Filters & Products -->
             <div class="products-layout">
-                <!-- Sleek Filters Sidebar -->
+                <!-- Filters Panel (Hidden by default) -->
                 <aside class="filters-panel" id="filtersPanel">
                     <div class="filters-header">
                         <h3><i class="fas fa-filter"></i> Refine Results</h3>
-                        <button class="filters-close" onclick="toggleFilters()">
+                        <button class="filters-close" onclick="toggleFiltersPanel()">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
                     
                     <div class="filters-body">
-                        <!-- Category Filters -->
-                        <div class="filter-group">
-                            <h4 class="filter-title">Category</h4>
-                            <div class="filter-options">
-                                <label class="filter-option">
-                                    <input type="checkbox" value="clipper" onchange="applyFilters()">
-                                    <span class="option-check"></span>
-                                    <span class="option-label">Hair Clippers</span>
-                                    <span class="option-count">(8)</span>
-                                </label>
-                                <label class="filter-option">
-                                    <input type="checkbox" value="trimmer" onchange="applyFilters()">
-                                    <span class="option-check"></span>
-                                    <span class="option-label">Trimmers</span>
-                                    <span class="option-count">(10)</span>
-                                </label>
-                                <label class="filter-option">
-                                    <input type="checkbox" value="shaver" onchange="applyFilters()">
-                                    <span class="option-check"></span>
-                                    <span class="option-label">Shavers</span>
-                                    <span class="option-count">(6)</span>
-                                </label>
-                            </div>
-                        </div>
-                        
                         <!-- Price Range -->
                         <div class="filter-group">
                             <h4 class="filter-title">Price Range</h4>
@@ -292,16 +283,28 @@
                         <div class="filter-group">
                             <h4 class="filter-title">Availability</h4>
                             <label class="filter-option">
-                                <input type="checkbox" checked onchange="applyFilters()">
+                                <input type="checkbox" id="inStockOnly" checked onchange="applyFilters()">
                                 <span class="option-check"></span>
                                 <span class="option-label">In Stock Only</span>
                             </label>
                         </div>
+                        
+                        <!-- Sort By (in filters panel on mobile) -->
+                        <div class="filter-group mobile-sort">
+                            <h4 class="filter-title">Sort By</h4>
+                            <select class="sort-select-mobile" onchange="sortProducts(this.value)">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="name">Name: A-Z</option>
+                                <option value="rating">Best Rated</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="filters-footer">
-                        <button class="clear-filters-btn" onclick="clearAllFilters()">
-                            <i class="fas fa-redo"></i> Clear All
+                        <button class="apply-filters-btn" onclick="toggleFiltersPanel()">
+                            <i class="fas fa-check"></i> Apply Filters
                         </button>
                     </div>
                 </aside>
