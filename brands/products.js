@@ -708,7 +708,7 @@ async function checkout() {
     }
     
     try {
-        const response = await fetch('/api/create-checkout-session', {
+        const response = await fetch('..//api/checkout.js', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
