@@ -45,7 +45,7 @@ async function loadProducts() {
         showLoading();
         
         // Determine if we need to load from all JSON files or just one
-        const needsAllProducts = ['clippers', 'trimmers', 'shavers', 'All Products'].includes(brand);
+        const needsAllProducts = ['clippers', 'trimmers', 'shavers', 'combos', 'All Products'].includes(brand);
         
         if (needsAllProducts) {
             // Load from ALL brand JSON files (like the homepage carousel does)
@@ -77,6 +77,9 @@ async function loadProducts() {
             } else if (brand === 'shavers') {
                 filteredProducts = allProducts.filter(p => p.category === 'Shaver');
                 console.log(`🪒 Filtered to ${filteredProducts.length} shavers`);
+            } else if (brand === 'combos') {
+                filteredProducts = allProducts.filter(p => p.category === 'Combo Set');
+                console.log(`📦 Filtered to ${filteredProducts.length} combo sets`);
             } else {
                 // All Products page - show everything
                 filteredProducts = [...allProducts];
@@ -110,9 +113,6 @@ async function loadProducts() {
                     break;
                 case 'VGR':
                     jsonFile = '../json/vgr-products.json';
-                    break;
-                case 'combos':
-                    jsonFile = '../json/combosets-products.json';
                     break;
                 default:
                     jsonFile = '../json/babyliss-products.json';
@@ -239,6 +239,9 @@ function applyFilters() {
     } else if (brand === 'shavers') {
         // For shavers page, always start with only shavers
         baseProducts = allProducts.filter(p => p.category === 'Shaver');
+    } else if (brand === 'combos') {
+        // For combos page, always start with only combo sets
+        baseProducts = allProducts.filter(p => p.category === 'Combo Set');
     } else {
         // For All Products or brand pages, start with all products
         baseProducts = [...allProducts];
