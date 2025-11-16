@@ -1,6 +1,6 @@
 // ==========================================
-// BARBER WORLD - MODERN PRODUCTS PAGE V2
-// Updated for New Filter & Modal Design
+// BARBER WORLD - PREMIUM PRODUCTS PAGE
+// Complete Modern Redesign with Enhanced UX
 // ==========================================
 
 // Stripe Configuration
@@ -17,6 +17,18 @@ let currentModalTab = 'features';
 // Get brand from body data attribute
 const brandName = document.body.dataset.brand || 'Babyliss';
 
+// Brand name mappings
+const brandDisplayNames = {
+    'Babyliss': 'BaBylissPRO',
+    'StyleCraft': 'StyleCraft Gamma',
+    'JRL': 'JRL Professional',
+    'Wahl': 'Wahl Professional',
+    'W-Mark': 'W-Mark',
+    'VGR': 'VGR Professional',
+    'Monster': 'Monster Clippers',
+    'OurBrand': 'Barber World'
+};
+
 // ==========================================
 // INITIALIZATION
 // ==========================================
@@ -26,9 +38,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
     loadProducts();
     initializeEventListeners();
-    animateHeroStats();
-    
-    console.log(`🚀 Modern ${brandName} Products Page V2 Loaded`);
+    initializeTypewriter();
+
+    console.log(`🚀 Premium ${brandName} Products Page Loaded`);
 });
 
 function initializeEventListeners() {
@@ -41,7 +53,7 @@ function initializeEventListeners() {
             closeCart();
         }
     });
-    
+
     // Storage sync
     window.addEventListener('storage', (e) => {
         if (e.key === 'barber_cart') {
@@ -52,6 +64,32 @@ function initializeEventListeners() {
 }
 
 // ==========================================
+// TYPEWRITER EFFECT FOR HERO
+// ==========================================
+
+function initializeTypewriter() {
+    const typingElement = document.getElementById('typing-brand');
+    if (!typingElement) return;
+
+    const displayName = brandDisplayNames[brandName] || brandName;
+    const text = displayName;
+    let index = 0;
+
+    typingElement.textContent = '';
+
+    function type() {
+        if (index < text.length) {
+            typingElement.textContent += text.charAt(index);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+
+    // Start typing after a short delay
+    setTimeout(type, 300);
+}
+
+// ==========================================
 // PRODUCT LOADING
 // ==========================================
 
@@ -59,12 +97,12 @@ async function loadProducts() {
     const loadingState = document.getElementById('loading-state');
     const productsGrid = document.getElementById('products-grid');
     const emptyState = document.getElementById('empty-state');
-    
+
     try {
         if (loadingState) loadingState.style.display = 'flex';
         if (productsGrid) productsGrid.innerHTML = '';
         if (emptyState) emptyState.style.display = 'none';
-        
+
         const brandFiles = {
             'Babyliss': 'babyliss-products.json',
             'StyleCraft': 'stylecraft-products.json',
@@ -75,27 +113,26 @@ async function loadProducts() {
             'Monster': 'monster-products.json',
             'OurBrand': 'barberworld-products.json'
         };
-        
+
         const jsonFile = brandFiles[brandName] || 'babyliss-products.json';
         const response = await fetch(`../json/${jsonFile}`);
-        
+
         if (!response.ok) {
             throw new Error(`Failed to load products: ${response.statusText}`);
         }
-        
+
         const products = await response.json();
-        
+
         if (!Array.isArray(products) || products.length === 0) {
             throw new Error('No products found');
         }
-        
+
         allProducts = products;
         filteredProducts = [...allProducts];
-        
+
         renderProducts();
         updateResultsCount();
-        updateHeroProductImage();
-        
+
     } catch (error) {
         console.error('Error loading products:', error);
         showEmptyState();
@@ -105,31 +142,31 @@ async function loadProducts() {
 }
 
 // ==========================================
-// PRODUCT RENDERING
+// PRODUCT RENDERING WITH PAYMENT BADGES
 // ==========================================
 
 function renderProducts() {
     const productsGrid = document.getElementById('products-grid');
     const emptyState = document.getElementById('empty-state');
-    
+
     if (!productsGrid) return;
-    
+
     if (filteredProducts.length === 0) {
         showEmptyState();
         return;
     }
-    
+
     if (emptyState) emptyState.style.display = 'none';
-    
+
     productsGrid.innerHTML = filteredProducts.map((product, index) => `
         <div class="product-card" onclick="openProductModal(${product.id})">
             <div class="product-image-wrapper">
-                <img src="${getProductImage(product)}" 
-                     alt="${escapeHtml(product.name)}" 
-                     class="product-image" 
+                <img src="${getProductImage(product)}"
+                     alt="${escapeHtml(product.name)}"
+                     class="product-image"
                      loading="lazy">
-                <button class="add-quick-btn" 
-                        onclick="event.stopPropagation(); quickAddToCart(${product.id})" 
+                <button class="add-quick-btn"
+                        onclick="event.stopPropagation(); quickAddToCart(${product.id})"
                         title="Add to cart">
                     <i class="fas fa-plus"></i>
                 </button>
@@ -138,6 +175,10 @@ function renderProducts() {
                 <h3 class="product-name">${truncateText(product.name, 60)}</h3>
                 <div class="product-footer">
                     <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="payment-badges">
+                        <span class="payment-badge klarna">Klarna</span>
+                        <span class="payment-badge afterpay">Afterpay</span>
+                    </div>
                     <span class="stock-badge ${product.inStock ? '' : 'out-of-stock'}">
                         <i class="fas ${product.inStock ? 'fa-check' : 'fa-times'}"></i>
                         ${product.inStock ? 'In Stock' : 'Out of Stock'}
@@ -151,13 +192,13 @@ function renderProducts() {
 function showEmptyState() {
     const emptyState = document.getElementById('empty-state');
     const productsGrid = document.getElementById('products-grid');
-    
+
     if (emptyState) emptyState.style.display = 'flex';
     if (productsGrid) productsGrid.innerHTML = '';
 }
 
 // ==========================================
-// NEW FILTERS SYSTEM
+// FILTERS SYSTEM
 // ==========================================
 
 function applyFilters() {
@@ -166,30 +207,30 @@ function applyFilters() {
     const priceMax = parseFloat(document.getElementById('price-max')?.value) || Infinity;
     const inStockOnly = document.getElementById('stock-toggle-input')?.checked || false;
     const sortBy = document.getElementById('sort-select')?.value || 'featured';
-    
+
     // Get selected categories from chips
     const selectedCategories = [];
     document.querySelectorAll('.category-chip.active').forEach(chip => {
         selectedCategories.push(chip.dataset.category);
     });
-    
+
     // Filter products
     filteredProducts = allProducts.filter(product => {
-        const matchesSearch = !searchQuery || 
+        const matchesSearch = !searchQuery ||
             product.name.toLowerCase().includes(searchQuery) ||
             (product.description && product.description.toLowerCase().includes(searchQuery));
-        
+
         const matchesPrice = product.price >= priceMin && product.price <= priceMax;
         const matchesStock = !inStockOnly || product.inStock;
-        const matchesCategory = selectedCategories.length === 0 || 
+        const matchesCategory = selectedCategories.length === 0 ||
             selectedCategories.includes(product.category);
-        
+
         return matchesSearch && matchesPrice && matchesStock && matchesCategory;
     });
-    
+
     // Sort products
     sortProducts(sortBy);
-    
+
     // Update UI
     renderProducts();
     updateResultsCount();
@@ -206,7 +247,7 @@ function toggleCategory(category) {
 function toggleStockFilter() {
     const toggle = document.getElementById('stock-toggle');
     const input = document.getElementById('stock-toggle-input');
-    
+
     if (toggle && input) {
         input.checked = !input.checked;
         toggle.classList.toggle('active', input.checked);
@@ -219,7 +260,7 @@ function clearAllFilters() {
     if (document.getElementById('search-input')) {
         document.getElementById('search-input').value = '';
     }
-    
+
     // Clear price
     if (document.getElementById('price-min')) {
         document.getElementById('price-min').value = '';
@@ -227,12 +268,12 @@ function clearAllFilters() {
     if (document.getElementById('price-max')) {
         document.getElementById('price-max').value = '';
     }
-    
+
     // Clear categories
     document.querySelectorAll('.category-chip').forEach(chip => {
         chip.classList.remove('active');
     });
-    
+
     // Clear stock
     const stockToggle = document.getElementById('stock-toggle');
     const stockInput = document.getElementById('stock-toggle-input');
@@ -240,12 +281,12 @@ function clearAllFilters() {
         stockInput.checked = false;
         stockToggle.classList.remove('active');
     }
-    
+
     // Reset sort
     if (document.getElementById('sort-select')) {
         document.getElementById('sort-select').value = 'featured';
     }
-    
+
     applyFilters();
 }
 
@@ -270,11 +311,6 @@ function updateResultsCount() {
     if (resultsCount) {
         const count = filteredProducts.length;
         resultsCount.textContent = `${count} product${count !== 1 ? 's' : ''} found`;
-    }
-    
-    const heroCount = document.getElementById('product-count-hero');
-    if (heroCount) {
-        animateNumber(heroCount.querySelector('.count-up'), allProducts.length);
     }
 }
 
@@ -306,12 +342,12 @@ function applyMobileFilters() {
 
 function changeView(view) {
     currentView = view;
-    
+
     const viewBtns = document.querySelectorAll('.view-btn');
     viewBtns.forEach(btn => {
         btn.classList.toggle('active', btn.dataset.view === view);
     });
-    
+
     const productsGrid = document.getElementById('products-grid');
     if (productsGrid) {
         productsGrid.setAttribute('data-view', view);
@@ -319,22 +355,22 @@ function changeView(view) {
 }
 
 // ==========================================
-// NEW SLIDE-UP MODAL
+// PREMIUM PRODUCT MODAL
 // ==========================================
 
 function openProductModal(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
-    
+
     const modal = document.getElementById('product-modal');
-    const modalBody = document.getElementById('modal-body');
-    
+    const modalBody = modal?.querySelector('.modal-body');
+
     if (!modal || !modalBody) return;
-    
-    const images = product.images && product.images.length > 0 
-        ? [product.image, ...product.images] 
+
+    const images = product.images && product.images.length > 0
+        ? [product.image, ...product.images]
         : [product.image];
-    
+
     modalBody.innerHTML = `
         <div class="modal-header-section">
             <h2>${escapeHtml(product.name)}</h2>
@@ -346,15 +382,15 @@ function openProductModal(productId) {
                 </div>
             </div>
         </div>
-        
+
         <div class="modal-content-section">
             <div class="modal-image-gallery">
                 ${images.length > 1 ? `
                     <div class="modal-thumbnails">
                         ${images.map((img, idx) => `
-                            <img src="${img}" 
-                                 alt="${escapeHtml(product.name)}" 
-                                 class="modal-thumbnail ${idx === 0 ? 'active' : ''}" 
+                            <img src="${img}"
+                                 alt="${escapeHtml(product.name)}"
+                                 class="modal-thumbnail ${idx === 0 ? 'active' : ''}"
                                  onclick="changeModalImage('${img}', this)">
                         `).join('')}
                     </div>
@@ -363,11 +399,11 @@ function openProductModal(productId) {
                     <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
                 </div>
             </div>
-            
+
             ${product.description ? `
                 <p class="modal-description">${escapeHtml(product.description)}</p>
             ` : ''}
-            
+
             ${(product.features && product.features.length > 0) || product.specifications ? `
                 <div class="modal-tabs">
                     ${product.features && product.features.length > 0 ? `
@@ -381,7 +417,7 @@ function openProductModal(productId) {
                         </button>
                     ` : ''}
                 </div>
-                
+
                 ${product.features && product.features.length > 0 ? `
                     <div class="modal-tab-content ${currentModalTab === 'features' ? 'active' : ''}" id="features-content">
                         <div class="modal-features">
@@ -393,7 +429,7 @@ function openProductModal(productId) {
                         </div>
                     </div>
                 ` : ''}
-                
+
                 ${product.specifications ? `
                     <div class="modal-tab-content ${currentModalTab === 'specs' || !product.features ? 'active' : ''}" id="specs-content">
                         <div class="specs-grid">
@@ -408,7 +444,7 @@ function openProductModal(productId) {
                 ` : ''}
             ` : ''}
         </div>
-        
+
         <div class="modal-actions">
             <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
                 <i class="fas fa-shopping-bag"></i>
@@ -416,7 +452,7 @@ function openProductModal(productId) {
             </button>
         </div>
     `;
-    
+
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
     currentModalTab = 'features';
@@ -424,13 +460,13 @@ function openProductModal(productId) {
 
 function switchModalTab(tab) {
     currentModalTab = tab;
-    
+
     // Update tab buttons
     document.querySelectorAll('.modal-tab').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.closest('.modal-tab').classList.add('active');
-    
+
     // Update tab content
     document.querySelectorAll('.modal-tab-content').forEach(content => {
         content.classList.remove('active');
@@ -443,7 +479,7 @@ function changeModalImage(imageSrc, thumbnail) {
     if (mainImg) {
         mainImg.src = imageSrc;
     }
-    
+
     document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
         thumb.classList.remove('active');
     });
@@ -454,7 +490,7 @@ function changeModalImage(imageSrc, thumbnail) {
 
 function closeModal(event) {
     if (event && event.target !== event.currentTarget) return;
-    
+
     const modal = document.getElementById('product-modal');
     if (modal) {
         modal.classList.remove('active');
@@ -490,9 +526,9 @@ function saveCart() {
 function quickAddToCart(productId) {
     const product = allProducts.find(p => p.id === productId);
     if (!product) return;
-    
+
     const existingItem = cart.find(item => item.id === productId && item.brand === brandName);
-    
+
     if (existingItem) {
         existingItem.quantity++;
     } else {
@@ -505,7 +541,7 @@ function quickAddToCart(productId) {
             quantity: 1
         });
     }
-    
+
     saveCart();
     showToast(`${truncateText(product.name, 30)} added to cart!`);
 }
@@ -513,14 +549,14 @@ function quickAddToCart(productId) {
 function updateCartQuantity(productId, change) {
     const item = cart.find(i => i.id === productId && i.brand === brandName);
     if (!item) return;
-    
+
     item.quantity += change;
-    
+
     if (item.quantity <= 0) {
         removeFromCart(productId);
         return;
     }
-    
+
     saveCart();
 }
 
@@ -528,7 +564,7 @@ function removeFromCart(productId) {
     const product = cart.find(item => item.id === productId && item.brand === brandName);
     cart = cart.filter(item => !(item.id === productId && item.brand === brandName));
     saveCart();
-    
+
     if (product) {
         showToast(`${truncateText(product.name, 30)} removed`);
     }
@@ -543,7 +579,7 @@ function updateCartUI() {
 function updateCartBadge() {
     const badge = document.getElementById('cart-badge');
     if (!badge) return;
-    
+
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     badge.textContent = totalItems;
     badge.style.display = totalItems > 0 ? 'flex' : 'none';
@@ -552,15 +588,15 @@ function updateCartBadge() {
 function updateCartItems() {
     const cartItemsDiv = document.getElementById('cart-items');
     const cartCount = document.getElementById('cart-count');
-    
+
     if (!cartItemsDiv) return;
-    
+
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    
+
     if (cartCount) {
         cartCount.textContent = `${totalItems} item${totalItems !== 1 ? 's' : ''}`;
     }
-    
+
     if (cart.length === 0) {
         cartItemsDiv.innerHTML = `
             <div class="cart-empty">
@@ -573,7 +609,7 @@ function updateCartItems() {
         `;
         return;
     }
-    
+
     cartItemsDiv.innerHTML = cart.map(item => `
         <div class="cart-item">
             <img src="${item.image}" alt="${escapeHtml(item.name)}" class="cart-item-image">
@@ -601,18 +637,18 @@ function updateCartFooter() {
     const cartFooter = document.getElementById('cart-footer');
     const subtotalSpan = document.getElementById('cart-subtotal');
     const totalSpan = document.getElementById('cart-total');
-    
+
     if (!cartFooter) return;
-    
+
     if (cart.length === 0) {
         cartFooter.style.display = 'none';
         return;
     }
-    
+
     cartFooter.style.display = 'block';
-    
+
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    
+
     if (subtotalSpan) subtotalSpan.textContent = `$${subtotal.toFixed(2)}`;
     if (totalSpan) totalSpan.textContent = `$${subtotal.toFixed(2)}`;
 }
@@ -620,7 +656,7 @@ function updateCartFooter() {
 function openCart() {
     const cartPanel = document.getElementById('cart-panel');
     const cartOverlay = document.getElementById('cart-overlay');
-    
+
     if (cartPanel) {
         updateCartUI();
         cartPanel.classList.add('active');
@@ -634,7 +670,7 @@ function openCart() {
 function closeCart() {
     const cartPanel = document.getElementById('cart-panel');
     const cartOverlay = document.getElementById('cart-overlay');
-    
+
     if (cartPanel) cartPanel.classList.remove('active');
     if (cartOverlay) cartOverlay.classList.remove('active');
     document.body.classList.remove('no-scroll');
@@ -701,7 +737,7 @@ async function proceedToCheckout() {
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-overlay');
-    
+
     if (menu) {
         menu.classList.toggle('active');
     }
@@ -713,46 +749,9 @@ function toggleMobileMenu() {
 function closeMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('mobile-overlay');
-    
+
     if (menu) menu.classList.remove('active');
     if (overlay) overlay.classList.remove('active');
-}
-
-// ==========================================
-// HERO ANIMATIONS
-// ==========================================
-
-function animateHeroStats() {
-    const heroCount = document.getElementById('product-count-hero');
-    if (heroCount) {
-        const countUp = heroCount.querySelector('.count-up');
-        if (countUp) {
-            animateNumber(countUp, allProducts.length || 15);
-        }
-    }
-}
-
-function animateNumber(element, target, duration = 2000) {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current);
-    }, 16);
-}
-
-function updateHeroProductImage() {
-    const heroImg = document.getElementById('hero-product-img');
-    if (heroImg && allProducts.length > 0) {
-        const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
-        heroImg.src = getProductImage(randomProduct);
-    }
 }
 
 // ==========================================
@@ -761,15 +760,15 @@ function updateHeroProductImage() {
 
 function showToast(message) {
     const toast = document.getElementById('toast-notification');
-    const toastMessage = document.getElementById('toast-message');
-    
+    const toastMessage = toast?.querySelector('.toast-message');
+
     if (!toast || !toastMessage) return;
-    
+
     toastMessage.textContent = message;
     toast.classList.remove('show', 'hiding');
-    
+
     setTimeout(() => toast.classList.add('show'), 10);
-    
+
     setTimeout(() => {
         toast.classList.add('hiding');
         setTimeout(() => toast.classList.remove('show', 'hiding'), 500);
@@ -806,5 +805,5 @@ function formatSpecLabel(key) {
         .trim();
 }
 
-console.log('%c🚀 Barber World NYC - V2', 'color: #d4af37; font-size: 18px; font-weight: bold;');
-console.log('%c✨ New Filters & Modal Design', 'color: #666; font-size: 12px;');
+console.log('%c🚀 Barber World NYC - Premium Edition', 'color: #d4af37; font-size: 18px; font-weight: bold;');
+console.log('%c✨ Modern Design with Enhanced UX', 'color: #666; font-size: 12px;');
