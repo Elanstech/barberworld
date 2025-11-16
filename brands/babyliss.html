@@ -122,82 +122,27 @@
         </div>
     </div>
 
-    <!-- Luxury Hero Section -->
-    <div class="luxury-hero">
-        <div class="hero-particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-        
-        <div class="hero-gradient-orb orb-1"></div>
-        <div class="hero-gradient-orb orb-2"></div>
-        <div class="hero-gradient-orb orb-3"></div>
-        
-        <div class="hero-content-wrapper">
-            <div class="hero-text-section">
-                <div class="hero-badge-luxury">
-                    <span class="badge-shimmer"></span>
-                    <i class="fas fa-certificate"></i>
-                    Professional Grade Equipment
-                </div>
-                
-                <h1 class="hero-title-luxury">
-                    <span class="brand-name">BaBylissPRO</span>
-                    <span class="brand-tagline">Professional Tools</span>
-                </h1>
-                
-                <p class="hero-subtitle-luxury">
-                    Premium professional equipment trusted by barbers worldwide. 
-                    Experience the perfect blend of power, precision, and performance.
-                </p>
-                
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <div class="stat-number" id="product-count-hero">
-                            <span class="count-up">0</span>+
-                        </div>
-                        <div class="stat-label">Products</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <div class="stat-number">100%</div>
-                        <div class="stat-label">Authentic</div>
-                    </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <div class="stat-number">
-                            <i class="fas fa-star"></i> 4.9
-                        </div>
-                        <div class="stat-label">Rated</div>
-                    </div>
-                </div>
+    <!-- Clean Minimal Hero Section -->
+    <div class="minimal-hero">
+        <div class="hero-background-gradient"></div>
+        <div class="hero-minimal-content">
+            <div class="brand-typing-container">
+                <h1 class="brand-typing-text" id="typing-brand"></h1>
+                <span class="typing-cursor">|</span>
             </div>
-            
-            <div class="hero-visual-section">
-                <div class="floating-product-card">
-                    <div class="card-glow"></div>
-                    <div class="card-reflection"></div>
-                    <img src="https://babylisspro.com/dw/image/v2/ABAF_PRD/on/demandware.static/-/Sites-master-us-babylisspro/default/dw954e7779/images/1-4-24/fx787ng_s_slf.jpg?sw=1400&sh=1400&sm=fit" 
-                         alt="BaBylissPRO Product" 
-                         class="floating-product-img"
-                         id="hero-product-img">
+            <p class="hero-minimal-subtitle">Professional Grade Equipment</p>
+            <div class="hero-trust-badges">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-check"></i>
+                    <span>100% Authentic</span>
                 </div>
-                
-                <div class="floating-badge badge-1">
+                <div class="trust-badge">
                     <i class="fas fa-shipping-fast"></i>
-                    Free Shipping
+                    <span>Free Shipping</span>
                 </div>
-                <div class="floating-badge badge-2">
-                    <i class="fas fa-certificate"></i>
-                    Verified
-                </div>
-                <div class="floating-badge badge-3">
-                    <i class="fas fa-box-open"></i>
-                    In Stock
+                <div class="trust-badge">
+                    <i class="fas fa-star"></i>
+                    <span>Top Rated</span>
                 </div>
             </div>
         </div>
@@ -379,14 +324,14 @@
         </div>
     </div>
 
-    <!-- Product Modal -->
-    <div class="product-modal" id="product-modal" onclick="closeModal(event)">
-        <div class="modal-backdrop"></div>
+    <!-- Premium Product Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal()">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="modal-body" id="modal-body">
+            <div class="modal-content" id="modal-content">
                 <!-- Product details loaded here -->
             </div>
         </div>
