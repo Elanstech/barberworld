@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaBylissPRO Professional Barber Equipment | Clippers & Trimmers | Barber World NYC</title>
-    <meta name="description" content="Shop authentic BaBylissPRO professional barber equipment. Premium clippers, trimmers & shavers with full manufacturer warranty. Factory sealed, trusted by professionals. Free shipping over $99.">
-    <meta name="keywords" content="BaBylissPRO, BaByliss professional, BaBylissPRO clippers, BaBylissPRO trimmers, BaBylissPRO FX, professional barber clippers, authentic BaBylissPRO">
-    
-    <link rel="canonical" href="https://www.barberworldnyc.com/brands/babyliss.html">
+    <meta name="description" content="Shop authentic BaBylissPRO professional barber equipment. Premium clippers, trimmers & shavers with full manufacturer warranty.">
     
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17668713996"></script>
@@ -70,6 +67,7 @@
     </header>
 
     <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-header">
             <span>Menu</span>
@@ -126,7 +124,6 @@
 
     <!-- Luxury Hero Section -->
     <div class="luxury-hero">
-        <!-- Animated Particles -->
         <div class="hero-particles">
             <div class="particle"></div>
             <div class="particle"></div>
@@ -136,13 +133,11 @@
             <div class="particle"></div>
         </div>
         
-        <!-- Gradient Orbs -->
         <div class="hero-gradient-orb orb-1"></div>
         <div class="hero-gradient-orb orb-2"></div>
         <div class="hero-gradient-orb orb-3"></div>
         
         <div class="hero-content-wrapper">
-            <!-- Text Section -->
             <div class="hero-text-section">
                 <div class="hero-badge-luxury">
                     <span class="badge-shimmer"></span>
@@ -160,7 +155,6 @@
                     Experience the perfect blend of power, precision, and performance.
                 </p>
                 
-                <!-- Hero Stats -->
                 <div class="hero-stats">
                     <div class="stat-item">
                         <div class="stat-number" id="product-count-hero">
@@ -183,7 +177,6 @@
                 </div>
             </div>
             
-            <!-- Visual Section with Floating Product -->
             <div class="hero-visual-section">
                 <div class="floating-product-card">
                     <div class="card-glow"></div>
@@ -194,7 +187,6 @@
                          id="hero-product-img">
                 </div>
                 
-                <!-- Floating Badges -->
                 <div class="floating-badge badge-1">
                     <i class="fas fa-shipping-fast"></i>
                     Free Shipping
@@ -214,22 +206,92 @@
     <!-- Main Container -->
     <div class="page-container">
         
+        <!-- Desktop Horizontal Filters -->
+        <div class="filters-bar">
+            <div class="filters-row">
+                <!-- Search -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </label>
+                    <input type="text" id="search-input" class="search-input-modern" placeholder="Search products..." oninput="applyFilters()">
+                </div>
+                
+                <!-- Categories -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-layer-group"></i>
+                        Category
+                    </label>
+                    <div class="category-chips">
+                        <div class="category-chip" data-category="Clipper" onclick="toggleCategory('Clipper')">Clippers</div>
+                        <div class="category-chip" data-category="Trimmer" onclick="toggleCategory('Trimmer')">Trimmers</div>
+                        <div class="category-chip" data-category="Shaver" onclick="toggleCategory('Shaver')">Shavers</div>
+                    </div>
+                </div>
+                
+                <!-- Price Range -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-dollar-sign"></i>
+                        Price Range
+                    </label>
+                    <div class="price-range-inputs">
+                        <input type="number" id="price-min" placeholder="Min" oninput="applyFilters()">
+                        <span>to</span>
+                        <input type="number" id="price-max" placeholder="Max" oninput="applyFilters()">
+                    </div>
+                </div>
+                
+                <!-- Stock Toggle -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-check-circle"></i>
+                        Availability
+                    </label>
+                    <div class="stock-toggle" id="stock-toggle" onclick="toggleStockFilter()">
+                        <input type="checkbox" id="stock-toggle-input">
+                        <div class="toggle-switch"></div>
+                        <span class="toggle-label">In Stock</span>
+                    </div>
+                </div>
+                
+                <!-- Clear Button -->
+                <div class="filter-field">
+                    <label class="filter-label" style="opacity: 0;">Clear</label>
+                    <button class="clear-filters-btn" onclick="clearAllFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Filter Bar -->
+        <div class="mobile-filter-bar">
+            <div class="mobile-filter-buttons">
+                <button class="mobile-filter-btn" onclick="openMobileFilters()">
+                    <i class="fas fa-sliders-h"></i>
+                    Filters
+                </button>
+                <button class="mobile-filter-btn secondary" onclick="clearAllFilters()">
+                    <i class="fas fa-times"></i>
+                    Clear All
+                </button>
+            </div>
+        </div>
+
         <!-- Controls Bar -->
         <div class="controls-bar">
-            <div class="controls-left">
-                <button class="filter-toggle-btn" onclick="toggleFilters()">
-                    <i class="fas fa-sliders-h"></i>
-                    <span>Filters</span>
-                </button>
-                <div class="results-count" id="results-count">Loading products...</div>
-            </div>
+            <div class="results-count" id="results-count">Loading products...</div>
             
             <div class="controls-right">
                 <div class="view-switcher">
-                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')" title="Grid View">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
                         <i class="fas fa-th"></i>
                     </button>
-                    <button class="view-btn" data-view="list" onclick="changeView('list')" title="List View">
+                    <button class="view-btn" data-view="list" onclick="changeView('list')">
                         <i class="fas fa-list"></i>
                     </button>
                 </div>
@@ -246,132 +308,74 @@
             </div>
         </div>
 
-        <!-- Active Filters -->
-        <div class="active-filters" id="active-filters" style="display: none;">
-            <div class="active-filters-content">
-                <span class="filters-label">Active:</span>
-                <div class="filter-pills" id="filter-pills"></div>
-                <button class="clear-all-btn" onclick="clearAllFilters()">Clear All</button>
+        <!-- Products Grid -->
+        <main class="products-section">
+            <div class="products-grid" id="products-grid" data-view="grid">
+                <!-- Products loaded here -->
             </div>
-        </div>
-
-        <div class="content-wrapper">
             
-            <!-- Filters Sidebar -->
-            <aside class="filters-sidebar" id="filters-sidebar">
-                <div class="sidebar-header">
-                    <h3>Filters</h3>
-                    <button class="close-filters" onclick="toggleFilters()">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
+            <div class="loading-state" id="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading products...</p>
+            </div>
+            
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Products Found</h3>
+                <p>Try adjusting your filters or search terms</p>
+                <button class="btn-reset" onclick="clearAllFilters()">Clear Filters</button>
+            </div>
+        </main>
+    </div>
 
-                <div class="sidebar-content">
-                    <!-- Search Filter -->
-                    <div class="filter-group">
-                        <div class="filter-group-header">
-                            <div class="filter-title">
-                                <i class="fas fa-search"></i>
-                                <span>Search</span>
-                            </div>
-                        </div>
-                        <div class="filter-options">
-                            <div class="search-box">
-                                <input type="text" id="search-input" placeholder="Search products..." oninput="applyFilters()">
-                                <i class="fas fa-search"></i>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Category Filter -->
-                    <div class="filter-group">
-                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-                            <div class="filter-title">
-                                <i class="fas fa-layer-group"></i>
-                                <span>Category</span>
-                            </div>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </div>
-                        <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" value="Clipper" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Clippers</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" value="Trimmer" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Trimmers</span>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" value="Shaver" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>Shavers</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Price Filter -->
-                    <div class="filter-group">
-                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-                            <div class="filter-title">
-                                <i class="fas fa-dollar-sign"></i>
-                                <span>Price Range</span>
-                            </div>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </div>
-                        <div class="filter-options">
-                            <div class="price-inputs">
-                                <input type="number" id="price-min" placeholder="Min" oninput="applyFilters()">
-                                <span>to</span>
-                                <input type="number" id="price-max" placeholder="Max" oninput="applyFilters()">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Stock Filter -->
-                    <div class="filter-group">
-                        <div class="filter-group-header" onclick="toggleFilterGroup(this)">
-                            <div class="filter-title">
-                                <i class="fas fa-check-circle"></i>
-                                <span>Availability</span>
-                            </div>
-                            <i class="fas fa-chevron-down toggle-icon"></i>
-                        </div>
-                        <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" id="in-stock-only" onchange="applyFilters()">
-                                <span class="checkmark"></span>
-                                <span>In Stock Only</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mobile Apply Button -->
-                <div class="mobile-filter-actions">
-                    <button class="btn-apply-filters" onclick="toggleFilters()">Apply Filters</button>
-                </div>
-            </aside>
-
-            <!-- Products Grid -->
-            <main class="products-section">
-                <div class="products-grid" id="products-grid" data-view="grid">
-                    <!-- Products loaded here -->
+    <!-- Mobile Filter Modal -->
+    <div class="mobile-filter-modal" id="mobile-filter-modal">
+        <div class="mobile-filter-overlay" onclick="closeMobileFilters()"></div>
+        <div class="mobile-filter-content">
+            <div class="mobile-filter-header">
+                <h3>Filters</h3>
+                <button class="mobile-filter-close" onclick="closeMobileFilters()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="mobile-filter-body">
+                <div class="mobile-filter-group">
+                    <h4><i class="fas fa-search"></i> Search</h4>
+                    <input type="text" class="search-input-modern" placeholder="Search products..." oninput="applyFilters()">
                 </div>
                 
-                <div class="loading-state" id="loading-state">
-                    <div class="loading-spinner"></div>
-                    <p>Loading products...</p>
+                <div class="mobile-filter-group">
+                    <h4><i class="fas fa-layer-group"></i> Category</h4>
+                    <div class="category-chips">
+                        <div class="category-chip" data-category="Clipper" onclick="toggleCategory('Clipper')">Clippers</div>
+                        <div class="category-chip" data-category="Trimmer" onclick="toggleCategory('Trimmer')">Trimmers</div>
+                        <div class="category-chip" data-category="Shaver" onclick="toggleCategory('Shaver')">Shavers</div>
+                    </div>
                 </div>
                 
-                <div class="empty-state" id="empty-state" style="display: none;">
-                    <i class="fas fa-search"></i>
-                    <h3>No Products Found</h3>
-                    <p>Try adjusting your filters or search terms</p>
-                    <button class="btn-reset" onclick="clearAllFilters()">Clear Filters</button>
+                <div class="mobile-filter-group">
+                    <h4><i class="fas fa-dollar-sign"></i> Price Range</h4>
+                    <div class="price-range-inputs">
+                        <input type="number" placeholder="Min" oninput="applyFilters()">
+                        <span>to</span>
+                        <input type="number" placeholder="Max" oninput="applyFilters()">
+                    </div>
                 </div>
-            </main>
+                
+                <div class="mobile-filter-group">
+                    <h4><i class="fas fa-check-circle"></i> Availability</h4>
+                    <div class="stock-toggle" onclick="toggleStockFilter()">
+                        <div class="toggle-switch"></div>
+                        <span class="toggle-label">In Stock Only</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mobile-filter-footer">
+                <button class="mobile-clear-btn" onclick="clearAllFilters()">Clear All</button>
+                <button class="mobile-apply-btn" onclick="applyMobileFilters()">Apply Filters</button>
+            </div>
         </div>
     </div>
 
