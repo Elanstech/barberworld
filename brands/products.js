@@ -1,6 +1,6 @@
 // ==========================================
-// BARBER WORLD - MODERN PRODUCTS PAGE JS
-// Complete Redesign with Enhanced Features
+// BARBER WORLD - MODERN PRODUCTS PAGE V2
+// Updated for New Filter & Modal Design
 // ==========================================
 
 // Stripe Configuration
@@ -12,6 +12,7 @@ let allProducts = [];
 let filteredProducts = [];
 let cart = [];
 let currentView = 'grid';
+let currentModalTab = 'features';
 
 // Get brand from body data attribute
 const brandName = document.body.dataset.brand || 'Babyliss';
@@ -27,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeEventListeners();
     animateHeroStats();
     
-    console.log(`🚀 Modern ${brandName} Products Page Loaded`);
+    console.log(`🚀 Modern ${brandName} Products Page V2 Loaded`);
 });
 
 function initializeEventListeners() {
@@ -36,12 +37,12 @@ function initializeEventListeners() {
         if (e.key === 'Escape') {
             closeModal();
             closeMobileMenu();
-            closeFilters();
+            closeMobileFilters();
             closeCart();
         }
     });
     
-    // Storage sync across tabs
+    // Storage sync
     window.addEventListener('storage', (e) => {
         if (e.key === 'barber_cart') {
             loadCart();
@@ -64,7 +65,6 @@ async function loadProducts() {
         if (productsGrid) productsGrid.innerHTML = '';
         if (emptyState) emptyState.style.display = 'none';
         
-        // Map brand names to JSON file names
         const brandFiles = {
             'Babyliss': 'babyliss-products.json',
             'StyleCraft': 'stylecraft-products.json',
@@ -122,7 +122,7 @@ function renderProducts() {
     if (emptyState) emptyState.style.display = 'none';
     
     productsGrid.innerHTML = filteredProducts.map((product, index) => `
-        <div class="product-card" style="animation-delay: ${index * 0.05}s;" onclick="openProductModal(${product.id})">
+        <div class="product-card" onclick="openProductModal(${product.id})">
             <div class="product-image-wrapper">
                 <img src="${getProductImage(product)}" 
                      alt="${escapeHtml(product.name)}" 
@@ -157,37 +157,30 @@ function showEmptyState() {
 }
 
 // ==========================================
-// FILTERS
+// NEW FILTERS SYSTEM
 // ==========================================
 
 function applyFilters() {
     const searchQuery = document.getElementById('search-input')?.value.toLowerCase() || '';
     const priceMin = parseFloat(document.getElementById('price-min')?.value) || 0;
     const priceMax = parseFloat(document.getElementById('price-max')?.value) || Infinity;
-    const inStockOnly = document.getElementById('in-stock-only')?.checked || false;
+    const inStockOnly = document.getElementById('stock-toggle-input')?.checked || false;
     const sortBy = document.getElementById('sort-select')?.value || 'featured';
     
-    // Get selected categories
-    const categoryCheckboxes = document.querySelectorAll('.filter-option input[value="Clipper"], .filter-option input[value="Trimmer"], .filter-option input[value="Shaver"]');
-    const selectedCategories = Array.from(categoryCheckboxes)
-        .filter(cb => cb.checked)
-        .map(cb => cb.value);
+    // Get selected categories from chips
+    const selectedCategories = [];
+    document.querySelectorAll('.category-chip.active').forEach(chip => {
+        selectedCategories.push(chip.dataset.category);
+    });
     
     // Filter products
     filteredProducts = allProducts.filter(product => {
-        // Search filter
         const matchesSearch = !searchQuery || 
             product.name.toLowerCase().includes(searchQuery) ||
-            (product.description && product.description.toLowerCase().includes(searchQuery)) ||
-            (product.shortDescription && product.shortDescription.toLowerCase().includes(searchQuery));
+            (product.description && product.description.toLowerCase().includes(searchQuery));
         
-        // Price filter
         const matchesPrice = product.price >= priceMin && product.price <= priceMax;
-        
-        // Stock filter
         const matchesStock = !inStockOnly || product.inStock;
-        
-        // Category filter
         const matchesCategory = selectedCategories.length === 0 || 
             selectedCategories.includes(product.category);
         
@@ -200,7 +193,60 @@ function applyFilters() {
     // Update UI
     renderProducts();
     updateResultsCount();
-    updateActiveFilters();
+}
+
+function toggleCategory(category) {
+    const chip = event.target.closest('.category-chip');
+    if (chip) {
+        chip.classList.toggle('active');
+        applyFilters();
+    }
+}
+
+function toggleStockFilter() {
+    const toggle = document.getElementById('stock-toggle');
+    const input = document.getElementById('stock-toggle-input');
+    
+    if (toggle && input) {
+        input.checked = !input.checked;
+        toggle.classList.toggle('active', input.checked);
+        applyFilters();
+    }
+}
+
+function clearAllFilters() {
+    // Clear search
+    if (document.getElementById('search-input')) {
+        document.getElementById('search-input').value = '';
+    }
+    
+    // Clear price
+    if (document.getElementById('price-min')) {
+        document.getElementById('price-min').value = '';
+    }
+    if (document.getElementById('price-max')) {
+        document.getElementById('price-max').value = '';
+    }
+    
+    // Clear categories
+    document.querySelectorAll('.category-chip').forEach(chip => {
+        chip.classList.remove('active');
+    });
+    
+    // Clear stock
+    const stockToggle = document.getElementById('stock-toggle');
+    const stockInput = document.getElementById('stock-toggle-input');
+    if (stockToggle && stockInput) {
+        stockInput.checked = false;
+        stockToggle.classList.remove('active');
+    }
+    
+    // Reset sort
+    if (document.getElementById('sort-select')) {
+        document.getElementById('sort-select').value = 'featured';
+    }
+    
+    applyFilters();
 }
 
 function sortProducts(sortBy) {
@@ -215,7 +261,6 @@ function sortProducts(sortBy) {
             filteredProducts.sort((a, b) => a.name.localeCompare(b.name));
             break;
         default: // featured
-            // Keep original order
             break;
     }
 }
@@ -227,111 +272,32 @@ function updateResultsCount() {
         resultsCount.textContent = `${count} product${count !== 1 ? 's' : ''} found`;
     }
     
-    // Update hero stats
     const heroCount = document.getElementById('product-count-hero');
     if (heroCount) {
         animateNumber(heroCount.querySelector('.count-up'), allProducts.length);
     }
 }
 
-function updateActiveFilters() {
-    const activeFiltersDiv = document.getElementById('active-filters');
-    const filterPillsDiv = document.getElementById('filter-pills');
-    
-    if (!activeFiltersDiv || !filterPillsDiv) return;
-    
-    const filters = [];
-    
-    // Search filter
-    const searchQuery = document.getElementById('search-input')?.value;
-    if (searchQuery) {
-        filters.push({ type: 'search', label: `Search: ${searchQuery}`, clear: () => {
-            document.getElementById('search-input').value = '';
-            applyFilters();
-        }});
-    }
-    
-    // Category filters
-    const categoryCheckboxes = document.querySelectorAll('.filter-option input[value="Clipper"], .filter-option input[value="Trimmer"], .filter-option input[value="Shaver"]');
-    categoryCheckboxes.forEach(cb => {
-        if (cb.checked) {
-            filters.push({ type: 'category', label: cb.value + 's', clear: () => {
-                cb.checked = false;
-                applyFilters();
-            }});
-        }
-    });
-    
-    // Price filter
-    const priceMin = document.getElementById('price-min')?.value;
-    const priceMax = document.getElementById('price-max')?.value;
-    if (priceMin || priceMax) {
-        const label = `Price: $${priceMin || '0'} - $${priceMax || '∞'}`;
-        filters.push({ type: 'price', label, clear: () => {
-            if (document.getElementById('price-min')) document.getElementById('price-min').value = '';
-            if (document.getElementById('price-max')) document.getElementById('price-max').value = '';
-            applyFilters();
-        }});
-    }
-    
-    // Stock filter
-    if (document.getElementById('in-stock-only')?.checked) {
-        filters.push({ type: 'stock', label: 'In Stock Only', clear: () => {
-            document.getElementById('in-stock-only').checked = false;
-            applyFilters();
-        }});
-    }
-    
-    // Update display
-    if (filters.length > 0) {
-        activeFiltersDiv.style.display = 'block';
-        filterPillsDiv.innerHTML = filters.map(filter => `
-            <div class="filter-pill">
-                <span>${escapeHtml(filter.label)}</span>
-                <button onclick="event.stopPropagation(); (${filter.clear.toString()})()">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-        `).join('');
-    } else {
-        activeFiltersDiv.style.display = 'none';
+// Mobile Filters
+function openMobileFilters() {
+    const modal = document.getElementById('mobile-filter-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.classList.add('no-scroll');
     }
 }
 
-function clearAllFilters() {
-    // Clear all inputs
-    if (document.getElementById('search-input')) document.getElementById('search-input').value = '';
-    if (document.getElementById('price-min')) document.getElementById('price-min').value = '';
-    if (document.getElementById('price-max')) document.getElementById('price-max').value = '';
-    if (document.getElementById('in-stock-only')) document.getElementById('in-stock-only').checked = false;
-    
-    // Uncheck all category checkboxes
-    const categoryCheckboxes = document.querySelectorAll('.filter-option input[type="checkbox"]');
-    categoryCheckboxes.forEach(cb => cb.checked = false);
-    
-    // Reset sort
-    if (document.getElementById('sort-select')) document.getElementById('sort-select').value = 'featured';
-    
-    // Reapply filters
+function closeMobileFilters() {
+    const modal = document.getElementById('mobile-filter-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+    }
+}
+
+function applyMobileFilters() {
+    closeMobileFilters();
     applyFilters();
-}
-
-function toggleFilterGroup(header) {
-    header.classList.toggle('collapsed');
-}
-
-function toggleFilters() {
-    const sidebar = document.getElementById('filters-sidebar');
-    if (sidebar) {
-        sidebar.classList.toggle('active');
-    }
-}
-
-function closeFilters() {
-    const sidebar = document.getElementById('filters-sidebar');
-    if (sidebar) {
-        sidebar.classList.remove('active');
-    }
 }
 
 // ==========================================
@@ -353,7 +319,7 @@ function changeView(view) {
 }
 
 // ==========================================
-// PRODUCT MODAL
+// NEW SLIDE-UP MODAL
 // ==========================================
 
 function openProductModal(productId) {
@@ -365,17 +331,24 @@ function openProductModal(productId) {
     
     if (!modal || !modalBody) return;
     
-    // Get all product images
     const images = product.images && product.images.length > 0 
         ? [product.image, ...product.images] 
         : [product.image];
     
     modalBody.innerHTML = `
-        <div class="modal-grid">
-            <div class="modal-images">
-                <div class="modal-main-image-container">
-                    <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
+        <div class="modal-header-section">
+            <h2>${escapeHtml(product.name)}</h2>
+            <div class="modal-price-row">
+                <div class="modal-price">$${product.price.toFixed(2)}</div>
+                <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
+                    <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                    ${product.inStock ? 'In Stock' : 'Out of Stock'}
                 </div>
+            </div>
+        </div>
+        
+        <div class="modal-content-section">
+            <div class="modal-image-gallery">
                 ${images.length > 1 ? `
                     <div class="modal-thumbnails">
                         ${images.map((img, idx) => `
@@ -386,34 +359,43 @@ function openProductModal(productId) {
                         `).join('')}
                     </div>
                 ` : ''}
+                <div class="modal-main-image-container">
+                    <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
+                </div>
             </div>
             
-            <div class="modal-details">
-                <h2>${escapeHtml(product.name)}</h2>
-                <div class="modal-price">$${product.price.toFixed(2)}</div>
-                <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
-                    <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
-                    ${product.inStock ? 'In Stock' : 'Out of Stock'}
+            ${product.description ? `
+                <p class="modal-description">${escapeHtml(product.description)}</p>
+            ` : ''}
+            
+            ${(product.features && product.features.length > 0) || product.specifications ? `
+                <div class="modal-tabs">
+                    ${product.features && product.features.length > 0 ? `
+                        <button class="modal-tab active" onclick="switchModalTab('features')">
+                            <i class="fas fa-star"></i> Features
+                        </button>
+                    ` : ''}
+                    ${product.specifications ? `
+                        <button class="modal-tab ${!product.features ? 'active' : ''}" onclick="switchModalTab('specs')">
+                            <i class="fas fa-cog"></i> Specifications
+                        </button>
+                    ` : ''}
                 </div>
                 
-                ${product.description ? `
-                    <p class="modal-description">${escapeHtml(product.description)}</p>
-                ` : ''}
-                
                 ${product.features && product.features.length > 0 ? `
-                    <div class="modal-features">
-                        <h4><i class="fas fa-star"></i> Key Features</h4>
-                        <ul>
-                            ${product.features.map(feature => `
-                                <li>${escapeHtml(feature)}</li>
-                            `).join('')}
-                        </ul>
+                    <div class="modal-tab-content ${currentModalTab === 'features' ? 'active' : ''}" id="features-content">
+                        <div class="modal-features">
+                            <ul>
+                                ${product.features.map(feature => `
+                                    <li>${escapeHtml(feature)}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
                     </div>
                 ` : ''}
                 
                 ${product.specifications ? `
-                    <div class="modal-specs">
-                        <h4><i class="fas fa-cog"></i> Specifications</h4>
+                    <div class="modal-tab-content ${currentModalTab === 'specs' || !product.features ? 'active' : ''}" id="specs-content">
                         <div class="specs-grid">
                             ${Object.entries(product.specifications).map(([key, value]) => `
                                 <div class="spec-item">
@@ -424,17 +406,36 @@ function openProductModal(productId) {
                         </div>
                     </div>
                 ` : ''}
-                
-                <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span>Add to Cart - $${product.price.toFixed(2)}</span>
-                </button>
-            </div>
+            ` : ''}
+        </div>
+        
+        <div class="modal-actions">
+            <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Add to Cart - $${product.price.toFixed(2)}</span>
+            </button>
         </div>
     `;
     
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
+    currentModalTab = 'features';
+}
+
+function switchModalTab(tab) {
+    currentModalTab = tab;
+    
+    // Update tab buttons
+    document.querySelectorAll('.modal-tab').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    event.target.closest('.modal-tab').classList.add('active');
+    
+    // Update tab content
+    document.querySelectorAll('.modal-tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+    document.getElementById(`${tab}-content`)?.classList.add('active');
 }
 
 function changeModalImage(imageSrc, thumbnail) {
@@ -443,9 +444,9 @@ function changeModalImage(imageSrc, thumbnail) {
         mainImg.src = imageSrc;
     }
     
-    // Update active thumbnail
-    const thumbnails = document.querySelectorAll('.modal-thumbnail');
-    thumbnails.forEach(thumb => thumb.classList.remove('active'));
+    document.querySelectorAll('.modal-thumbnail').forEach(thumb => {
+        thumb.classList.remove('active');
+    });
     if (thumbnail) {
         thumbnail.classList.add('active');
     }
@@ -463,8 +464,6 @@ function closeModal(event) {
 
 function addToCartFromModal(productId) {
     quickAddToCart(productId);
-    // Optional: close modal after adding
-    // closeModal();
 }
 
 // ==========================================
@@ -531,7 +530,7 @@ function removeFromCart(productId) {
     saveCart();
     
     if (product) {
-        showToast(`${truncateText(product.name, 30)} removed from cart`);
+        showToast(`${truncateText(product.name, 30)} removed`);
     }
 }
 
@@ -636,18 +635,14 @@ function closeCart() {
     const cartPanel = document.getElementById('cart-panel');
     const cartOverlay = document.getElementById('cart-overlay');
     
-    if (cartPanel) {
-        cartPanel.classList.remove('active');
-    }
-    if (cartOverlay) {
-        cartOverlay.classList.remove('active');
-    }
+    if (cartPanel) cartPanel.classList.remove('active');
+    if (cartOverlay) cartOverlay.classList.remove('active');
     document.body.classList.remove('no-scroll');
 }
 
 async function proceedToCheckout() {
     if (cart.length === 0) {
-        showToast('Your cart is empty!', 'error');
+        showToast('Your cart is empty!');
         return;
     }
 
@@ -673,9 +668,7 @@ async function proceedToCheckout() {
 
         const response = await fetch('/api/checkout', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 lineItems: lineItems,
                 successUrl: `${window.location.origin}/success.html`,
@@ -683,24 +676,16 @@ async function proceedToCheckout() {
             })
         });
 
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.error || 'Failed to create checkout session');
-        }
+        if (!response.ok) throw new Error('Checkout failed');
 
         const { sessionId } = await response.json();
+        const { error } = await stripe.redirectToCheckout({ sessionId });
 
-        const { error } = await stripe.redirectToCheckout({
-            sessionId: sessionId
-        });
-
-        if (error) {
-            throw error;
-        }
+        if (error) throw error;
 
     } catch (error) {
         console.error('Checkout error:', error);
-        showToast(error.message || 'Checkout failed. Please try again.', 'error');
+        showToast(error.message || 'Checkout failed');
 
         if (checkoutBtn) {
             checkoutBtn.disabled = false;
@@ -715,16 +700,22 @@ async function proceedToCheckout() {
 
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('mobile-overlay');
+    
     if (menu) {
         menu.classList.toggle('active');
+    }
+    if (overlay) {
+        overlay.classList.toggle('active');
     }
 }
 
 function closeMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    if (menu) {
-        menu.classList.remove('active');
-    }
+    const overlay = document.getElementById('mobile-overlay');
+    
+    if (menu) menu.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
 }
 
 // ==========================================
@@ -768,28 +759,20 @@ function updateHeroProductImage() {
 // TOAST NOTIFICATIONS
 // ==========================================
 
-function showToast(message, type = 'success') {
+function showToast(message) {
     const toast = document.getElementById('toast-notification');
     const toastMessage = document.getElementById('toast-message');
     
     if (!toast || !toastMessage) return;
     
     toastMessage.textContent = message;
-    
-    // Remove any existing classes
     toast.classList.remove('show', 'hiding');
     
-    // Show toast
-    setTimeout(() => {
-        toast.classList.add('show');
-    }, 10);
+    setTimeout(() => toast.classList.add('show'), 10);
     
-    // Hide after 3 seconds
     setTimeout(() => {
         toast.classList.add('hiding');
-        setTimeout(() => {
-            toast.classList.remove('show', 'hiding');
-        }, 500);
+        setTimeout(() => toast.classList.remove('show', 'hiding'), 500);
     }, 3000);
 }
 
@@ -823,9 +806,5 @@ function formatSpecLabel(key) {
         .trim();
 }
 
-// ==========================================
-// CONSOLE STYLING
-// ==========================================
-
-console.log('%c🚀 Barber World NYC - Modern Products Page', 'color: #d4af37; font-size: 18px; font-weight: bold;');
-console.log('%c✨ Enhanced with Premium Features', 'color: #666; font-size: 12px;');
+console.log('%c🚀 Barber World NYC - V2', 'color: #d4af37; font-size: 18px; font-weight: bold;');
+console.log('%c✨ New Filters & Modal Design', 'color: #666; font-size: 12px;');
