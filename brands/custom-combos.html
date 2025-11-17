@@ -28,6 +28,347 @@
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="products.css">
+    
+    <style>
+        /* ==========================================
+           CUSTOM COMBO STYLES
+           ========================================== */
+        
+        /* Combo Badge on Product Cards */
+        .combo-badge {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 5;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.4);
+            animation: pulseBadge 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseBadge {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Combo Savings Badge */
+        .combo-savings-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+        }
+        
+        /* Combo Price Breakdown Section */
+        .combo-price-breakdown {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #fbbf24;
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .combo-breakdown-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #92400e;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .combo-products-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .combo-product-item {
+            display: grid;
+            grid-template-columns: 80px 1fr auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .combo-product-img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            background: #f9fafb;
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+        }
+        
+        .combo-product-info h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
+            line-height: 1.3;
+        }
+        
+        .combo-product-category {
+            font-size: 0.75rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .combo-product-price {
+            font-size: 1.2rem;
+            font-weight: 900;
+            color: #92400e;
+        }
+        
+        .combo-price-summary {
+            border-top: 2px solid #fbbf24;
+            padding-top: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .combo-price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+        }
+        
+        .combo-price-row.original {
+            color: #92400e;
+            font-size: 1.1rem;
+        }
+        
+        .combo-price-row.original .price {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .combo-price-row.savings {
+            color: #dc2626;
+            font-size: 1.2rem;
+        }
+        
+        .combo-price-row.final {
+            font-size: 1.5rem;
+            color: #15803d;
+            padding-top: 0.75rem;
+            border-top: 2px dashed #fbbf24;
+        }
+        
+        /* Color Selector for Shaver */
+        .combo-color-selector {
+            margin-bottom: 2rem;
+        }
+        
+        .combo-color-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .combo-color-options {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .combo-color-option {
+            position: relative;
+            cursor: pointer;
+            border: 3px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .combo-color-option:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.2);
+        }
+        
+        .combo-color-option.selected {
+            border-color: var(--gold);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+        
+        .combo-color-option input {
+            display: none;
+        }
+        
+        .combo-color-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .combo-color-image {
+            width: 100px;
+            height: 100px;
+            object-fit: contain;
+            background: #f9fafb;
+            border-radius: var(--radius);
+            padding: 0.75rem;
+        }
+        
+        .combo-color-label {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+        
+        .combo-color-check {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .combo-color-option.selected .combo-color-check {
+            display: flex;
+        }
+        
+        /* Combo Special Features */
+        .combo-features-highlight {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.05));
+            border: 2px solid rgba(16, 185, 129, 0.3);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .combo-features-highlight h3 {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: #065f46;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .combo-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .combo-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .combo-feature-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .combo-feature-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .combo-product-item {
+                grid-template-columns: 60px 1fr;
+                gap: 0.75rem;
+            }
+            
+            .combo-product-img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .combo-product-price {
+                grid-column: 2;
+                text-align: right;
+                font-size: 1rem;
+            }
+            
+            .combo-color-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .combo-features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .combo-price-breakdown {
+                padding: 1rem;
+            }
+            
+            .combo-breakdown-title {
+                font-size: 1rem;
+            }
+            
+            .combo-price-row.final {
+                font-size: 1.3rem;
+            }
+        }
+        
+        /* Combo Card Enhancement */
+        .product-card.combo-card {
+            border: 3px solid var(--gold);
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.2);
+        }
+        
+        .product-card.combo-card:hover {
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.3);
+            transform: translateY(-10px);
+        }
+    </style>
 </head>
 <body data-brand="CustomCombos">
     
@@ -295,7 +636,7 @@
                 <i class="fas fa-times"></i>
             </button>
             <div class="modal-content" id="modal-content">
-                <!-- Combo details loaded here -->
+                <!-- Combo details loaded here by JavaScript -->
             </div>
         </div>
     </div>
@@ -341,6 +682,503 @@
         </div>
     </div>
 
+    <!-- Load main products.js first -->
     <script src="products.js"></script>
+    
+    <!-- Custom Combo JavaScript - Overrides and Extensions -->
+    <script>
+        // ==========================================
+        // COMBO-SPECIFIC OVERRIDES & FUNCTIONS
+        // ==========================================
+        
+        // Global variable for selected shaver color
+        let selectedShaverColor = 'Black';
+        
+        // Store original functions
+        const originalRenderProducts = renderProducts;
+        const originalOpenProductModal = openProductModal;
+        const originalInitTypewriter = initTypewriter;
+        
+        // OVERRIDE: Enhanced renderProducts with combo support
+        renderProducts = function() {
+            const productsGrid = document.getElementById('products-grid');
+            const emptyState = document.getElementById('empty-state');
+            
+            if (!productsGrid) return;
+            
+            if (filteredProducts.length === 0) {
+                showEmptyState();
+                return;
+            }
+            
+            if (emptyState) emptyState.style.display = 'none';
+            
+            productsGrid.innerHTML = filteredProducts.map((product) => {
+                const monthlyPayment = (product.price / 4).toFixed(2);
+                const isCombo = product.category === 'Combo Set';
+                const comboClass = isCombo ? 'combo-card' : '';
+                
+                return `
+                <div class="product-card ${comboClass}" onclick="openProductModal(${product.id})">
+                    <div class="product-image-wrapper">
+                        ${isCombo ? '<div class="combo-badge"><i class="fas fa-gift"></i> COMBO DEAL</div>' : ''}
+                        <img src="${getProductImage(product)}" 
+                             alt="${escapeHtml(product.name)}" 
+                             class="product-image" 
+                             loading="lazy">
+                        <button class="add-quick-btn" 
+                                onclick="event.stopPropagation(); quickAddToCart(${product.id})" 
+                                title="Add to cart">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">${truncateText(product.name, 60)}</h3>
+                        <div class="product-footer">
+                            ${isCombo && product.comboDetails ? `
+                                <div class="combo-savings-badge" style="margin-bottom: 0.75rem;">
+                                    <i class="fas fa-fire"></i>
+                                    <span>SAVE $${product.comboDetails.savings.toFixed(2)}</span>
+                                </div>
+                            ` : ''}
+                            <div class="product-price">$${product.price.toFixed(2)}</div>
+                            ${isCombo && product.comboDetails ? `
+                                <div class="payment-options" style="text-decoration: line-through; opacity: 0.6;">
+                                    <span>Regular: $${product.comboDetails.originalPrice.toFixed(2)}</span>
+                                </div>
+                            ` : `
+                                <div class="payment-options">
+                                    <span>or 4 interest-free payments of $${monthlyPayment}</span>
+                                </div>
+                                <div class="payment-logos">
+                                    <span class="payment-logo">Klarna</span>
+                                    <span class="payment-logo">Afterpay</span>
+                                </div>
+                            `}
+                            <span class="stock-badge ${product.inStock ? '' : 'out-of-stock'}">
+                                <i class="fas ${product.inStock ? 'fa-check' : 'fa-times'}"></i>
+                                ${product.inStock ? 'In Stock' : 'Out of Stock'}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        };
+        
+        // OVERRIDE: Enhanced openProductModal with combo detection
+        openProductModal = function(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modal = document.getElementById('product-modal');
+            const modalContent = document.getElementById('modal-content');
+            
+            if (!modal || !modalContent) return;
+            
+            // Check if this is a combo product
+            const isCombo = product.category === 'Combo Set' && product.comboDetails;
+            
+            if (isCombo) {
+                renderComboModal(product, modalContent);
+            } else {
+                renderRegularProductModal(product, modalContent);
+            }
+            
+            modal.classList.add('active');
+            document.body.classList.add('no-scroll');
+        };
+        
+        // NEW: Render combo modal
+        function renderComboModal(product, modalContent) {
+            const comboDetails = product.comboDetails;
+            const shaverOptions = comboDetails.products.filter(p => p.category === 'Shaver');
+            
+            selectedShaverColor = shaverOptions[0]?.colorOption || 'Black';
+            
+            modalContent.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-left">
+                        <div class="modal-image-container">
+                            <img src="${product.image}" alt="${escapeHtml(product.name)}" class="modal-main-image">
+                        </div>
+                    </div>
+                    
+                    <div class="modal-right">
+                        <div class="modal-header">
+                            <div class="combo-savings-badge">
+                                <i class="fas fa-fire"></i>
+                                <span>SAVE $${comboDetails.savings.toFixed(2)}</span>
+                            </div>
+                            <h2>${escapeHtml(product.name)}</h2>
+                            <div class="modal-price-row">
+                                <div class="modal-price">$${product.price.toFixed(2)}</div>
+                                <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
+                                    <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                                    ${product.inStock ? 'In Stock' : 'Out of Stock'}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${product.description ? `
+                            <p class="modal-description">${escapeHtml(product.description)}</p>
+                        ` : ''}
+                        
+                        <div class="combo-price-breakdown">
+                            <div class="combo-breakdown-title">
+                                <i class="fas fa-calculator"></i>
+                                <span>What's Included</span>
+                            </div>
+                            <div class="combo-products-list">
+                                ${comboDetails.products.filter(p => p.category !== 'Shaver').map(item => `
+                                    <div class="combo-product-item">
+                                        <img src="${item.image}" alt="${escapeHtml(item.name)}" class="combo-product-img">
+                                        <div class="combo-product-info">
+                                            <h4>${truncateText(item.name, 50)}</h4>
+                                            <span class="combo-product-category">${item.category}</span>
+                                        </div>
+                                        <div class="combo-product-price">$${item.price.toFixed(2)}</div>
+                                    </div>
+                                `).join('')}
+                                <div class="combo-product-item">
+                                    <img src="${shaverOptions.find(s => s.colorOption === selectedShaverColor)?.image}" 
+                                         alt="Shaver" class="combo-product-img" id="combo-shaver-preview">
+                                    <div class="combo-product-info">
+                                        <h4>Metal Edition Shaver</h4>
+                                        <span class="combo-product-category">Shaver - <span id="selected-color-text">${selectedShaverColor}</span></span>
+                                    </div>
+                                    <div class="combo-product-price">$${shaverOptions[0]?.price.toFixed(2)}</div>
+                                </div>
+                            </div>
+                            <div class="combo-price-summary">
+                                <div class="combo-price-row original">
+                                    <span>Regular Price:</span>
+                                    <span class="price">$${comboDetails.originalPrice.toFixed(2)}</span>
+                                </div>
+                                <div class="combo-price-row savings">
+                                    <span>You Save:</span>
+                                    <span>-$${comboDetails.savings.toFixed(2)}</span>
+                                </div>
+                                <div class="combo-price-row final">
+                                    <span>Combo Price:</span>
+                                    <span>$${product.price.toFixed(2)}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${shaverOptions.length > 1 ? `
+                            <div class="combo-color-selector">
+                                <div class="combo-color-title">
+                                    <i class="fas fa-palette"></i>
+                                    <span>Choose Shaver Color</span>
+                                </div>
+                                <div class="combo-color-options">
+                                    ${shaverOptions.map(option => `
+                                        <label class="combo-color-option ${option.colorOption === selectedShaverColor ? 'selected' : ''}" 
+                                               data-color="${option.colorOption}">
+                                            <input type="radio" 
+                                                   name="shaver-color" 
+                                                   value="${option.colorOption}" 
+                                                   ${option.colorOption === selectedShaverColor ? 'checked' : ''}
+                                                   onchange="updateShaverColor('${option.colorOption}', '${option.image}')">
+                                            <div class="combo-color-content">
+                                                <img src="${option.image}" alt="${option.colorOption}" class="combo-color-image">
+                                                <span class="combo-color-label">${option.colorOption}</span>
+                                            </div>
+                                            <div class="combo-color-check">
+                                                <i class="fas fa-check"></i>
+                                            </div>
+                                        </label>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        ` : ''}
+                        
+                        <div class="combo-features-highlight">
+                            <h3>
+                                <i class="fas fa-star"></i>
+                                <span>Bundle Benefits</span>
+                            </h3>
+                            <div class="combo-features-grid">
+                                <div class="combo-feature-item">
+                                    <div class="combo-feature-icon">
+                                        <i class="fas fa-tags"></i>
+                                    </div>
+                                    <span class="combo-feature-text">Save Over $${comboDetails.savings.toFixed(0)}</span>
+                                </div>
+                                <div class="combo-feature-item">
+                                    <div class="combo-feature-icon">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                    <span class="combo-feature-text">Full Metal Construction</span>
+                                </div>
+                                <div class="combo-feature-item">
+                                    <div class="combo-feature-icon">
+                                        <i class="fas fa-battery-full"></i>
+                                    </div>
+                                    <span class="combo-feature-text">120+ Min Runtime</span>
+                                </div>
+                                <div class="combo-feature-item">
+                                    <div class="combo-feature-icon">
+                                        <i class="fas fa-tools"></i>
+                                    </div>
+                                    <span class="combo-feature-text">Complete Pro Kit</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button class="modal-add-to-cart" onclick="addComboToCart(${product.id})">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Add Complete Bundle - $${product.price.toFixed(2)}</span>
+                            </button>
+                            <div class="modal-trust-badges">
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-shield-check"></i>
+                                    <span>100% Authentic</span>
+                                </div>
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Free Shipping</span>
+                                </div>
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-undo"></i>
+                                    <span>Easy Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // NEW: Render regular product modal
+        function renderRegularProductModal(product, modalContent) {
+            const images = product.images && product.images.length > 0 
+                ? [product.image, ...product.images] 
+                : [product.image];
+            
+            const monthlyPayment = (product.price / 4).toFixed(2);
+            currentModalQuantity = 1;
+            
+            modalContent.innerHTML = `
+                <div class="modal-grid">
+                    <div class="modal-left">
+                        <div class="modal-image-container">
+                            <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
+                        </div>
+                        ${images.length > 1 ? `
+                            <div class="modal-thumbnails">
+                                ${images.map((img, idx) => `
+                                    <img src="${img}" 
+                                         alt="${escapeHtml(product.name)}" 
+                                         class="modal-thumbnail ${idx === 0 ? 'active' : ''}" 
+                                         onclick="changeModalImage('${img}', this)">
+                                `).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="modal-right">
+                        <div class="modal-header">
+                            <h2>${escapeHtml(product.name)}</h2>
+                            <div class="modal-price-row">
+                                <div class="modal-price">$${product.price.toFixed(2)}</div>
+                                <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
+                                    <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                                    ${product.inStock ? 'In Stock' : 'Out of Stock'}
+                                </div>
+                            </div>
+                            <div class="modal-payment-info">
+                                <i class="fas fa-credit-card"></i>
+                                <span>or 4 interest-free payments of $${monthlyPayment}</span>
+                                <div class="modal-payment-logos">
+                                    <span class="modal-payment-logo">Klarna</span>
+                                    <span class="modal-payment-logo">Afterpay</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${product.description ? `
+                            <p class="modal-description">${escapeHtml(product.description)}</p>
+                        ` : ''}
+                        
+                        ${(product.features && product.features.length > 0) || product.specifications ? `
+                            <div class="modal-tabs">
+                                ${product.features && product.features.length > 0 ? `
+                                    <button class="modal-tab active" onclick="switchModalTab('features')">
+                                        Features
+                                    </button>
+                                ` : ''}
+                                ${product.specifications ? `
+                                    <button class="modal-tab ${!product.features ? 'active' : ''}" onclick="switchModalTab('specs')">
+                                        Specifications
+                                    </button>
+                                ` : ''}
+                            </div>
+                            
+                            ${product.features && product.features.length > 0 ? `
+                                <div class="modal-tab-content active" id="features-content">
+                                    <div class="modal-features">
+                                        <ul>
+                                            ${product.features.map(feature => `
+                                                <li>${escapeHtml(feature)}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${product.specifications ? `
+                                <div class="modal-tab-content ${!product.features ? 'active' : ''}" id="specs-content">
+                                    <div class="specs-grid">
+                                        ${Object.entries(product.specifications).map(([key, value]) => `
+                                            <div class="spec-item">
+                                                <div class="spec-label">${formatSpecLabel(key)}</div>
+                                                <div class="spec-value">${escapeHtml(value)}</div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        ` : ''}
+                        
+                        <div class="modal-actions">
+                            <div class="modal-quantity">
+                                <label>Quantity:</label>
+                                <div class="quantity-selector">
+                                    <button class="qty-btn-modal" onclick="updateModalQuantity(-1)">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <span class="qty-display-modal" id="modal-qty-display">1</span>
+                                    <button class="qty-btn-modal" onclick="updateModalQuantity(1)">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>Add to Cart - $${product.price.toFixed(2)}</span>
+                            </button>
+                            <div class="modal-trust-badges">
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-shield-check"></i>
+                                    <span>100% Authentic</span>
+                                </div>
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-shipping-fast"></i>
+                                    <span>Free Shipping</span>
+                                </div>
+                                <div class="modal-trust-badge">
+                                    <i class="fas fa-undo"></i>
+                                    <span>Easy Returns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        
+        // NEW: Update shaver color selection
+        function updateShaverColor(color, imageUrl) {
+            selectedShaverColor = color;
+            
+            document.querySelectorAll('.combo-color-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            const selectedOption = document.querySelector(`.combo-color-option[data-color="${color}"]`);
+            if (selectedOption) {
+                selectedOption.classList.add('selected');
+            }
+            
+            const previewImg = document.getElementById('combo-shaver-preview');
+            if (previewImg) {
+                previewImg.src = imageUrl;
+            }
+            
+            const colorText = document.getElementById('selected-color-text');
+            if (colorText) {
+                colorText.textContent = color;
+            }
+        }
+        
+        // NEW: Add combo to cart with selected color
+        function addComboToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            if (!product) return;
+            
+            const comboName = `${product.name} (${selectedShaverColor} Shaver)`;
+            
+            const existingItem = cart.find(item => 
+                item.id === productId && 
+                item.brand === brandName && 
+                item.selectedColor === selectedShaverColor
+            );
+            
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: comboName,
+                    price: product.price,
+                    image: product.image,
+                    brand: brandName,
+                    quantity: 1,
+                    selectedColor: selectedShaverColor,
+                    isCombo: true
+                });
+            }
+            
+            saveCart();
+            closeModal();
+            showToast(`${comboName} added to cart!`);
+        }
+        
+        // OVERRIDE: Enhanced typewriter for CustomCombos
+        initTypewriter = function() {
+            const typingElement = document.getElementById('typing-brand');
+            if (!typingElement) return;
+            
+            let text = '';
+            
+            if (categoryFilter) {
+                if (categoryFilter === 'All') {
+                    text = 'All Products';
+                } else if (categoryFilter === 'Clipper') {
+                    text = 'Professional Clippers';
+                } else if (categoryFilter === 'Trimmer') {
+                    text = 'Professional Trimmers';
+                } else if (categoryFilter === 'Shaver') {
+                    text = 'Professional Shavers';
+                } else {
+                    text = categoryFilter;
+                }
+            } else {
+                if (brandName === 'CustomCombos') {
+                    text = 'Exclusive Combos';
+                } else if (brandName === 'Babyliss') {
+                    text = 'BaBylissPRO';
+                } else {
+                    text = brandName;
+                }
+            }
+            
+            let index = 0;
+            
+            function type() {
+                if (index < text.length) {
+                    typingElement.textContent = text.substring(0, index + 1);
+                    index++;
+                    setTimeout(type, 100);
+                }
+            }
+            
+            type();
+        };
+        
+        console.log('🎁 Custom Combos Enhancements Loaded');
+    </script>
 </body>
 </html>
