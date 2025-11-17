@@ -1,6 +1,6 @@
 // ==========================================
-// BARBER WORLD - MODERN PRODUCTS PAGE V2
-// Updated for New Filter & Modal Design
+// BARBER WORLD - PREMIUM PRODUCTS PAGE
+// Complete Redesign - Modern & Elegant
 // ==========================================
 
 // Stripe Configuration
@@ -12,7 +12,7 @@ let allProducts = [];
 let filteredProducts = [];
 let cart = [];
 let currentView = 'grid';
-let currentModalTab = 'features';
+let currentModalQuantity = 1;
 
 // Get brand from body data attribute
 const brandName = document.body.dataset.brand || 'Babyliss';
@@ -26,9 +26,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCartUI();
     loadProducts();
     initializeEventListeners();
-    animateHeroStats();
+    initTypewriter();
     
-    console.log(`🚀 Modern ${brandName} Products Page V2 Loaded`);
+    console.log(`🚀 Premium ${brandName} Products Page Loaded`);
 });
 
 function initializeEventListeners() {
@@ -49,6 +49,56 @@ function initializeEventListeners() {
             updateCartUI();
         }
     });
+    
+    // Sync mobile search with desktop
+    const mobileSearchInput = document.getElementById('mobile-search-input');
+    if (mobileSearchInput) {
+        mobileSearchInput.addEventListener('input', (e) => {
+            const desktopSearch = document.getElementById('search-input');
+            if (desktopSearch) {
+                desktopSearch.value = e.target.value;
+            }
+            applyFilters();
+        });
+    }
+    
+    // Sync mobile price with desktop
+    const mobilePriceMin = document.getElementById('mobile-price-min');
+    const mobilePriceMax = document.getElementById('mobile-price-max');
+    if (mobilePriceMin && mobilePriceMax) {
+        mobilePriceMin.addEventListener('input', (e) => {
+            const desktopMin = document.getElementById('price-min');
+            if (desktopMin) desktopMin.value = e.target.value;
+            applyFilters();
+        });
+        mobilePriceMax.addEventListener('input', (e) => {
+            const desktopMax = document.getElementById('price-max');
+            if (desktopMax) desktopMax.value = e.target.value;
+            applyFilters();
+        });
+    }
+}
+
+// ==========================================
+// TYPEWRITER EFFECT
+// ==========================================
+
+function initTypewriter() {
+    const typingElement = document.getElementById('typing-brand');
+    if (!typingElement) return;
+    
+    const text = brandName === 'Babyliss' ? 'BaBylissPRO' : brandName;
+    let index = 0;
+    
+    function type() {
+        if (index < text.length) {
+            typingElement.textContent = text.substring(0, index + 1);
+            index++;
+            setTimeout(type, 100);
+        }
+    }
+    
+    type();
 }
 
 // ==========================================
@@ -94,7 +144,6 @@ async function loadProducts() {
         
         renderProducts();
         updateResultsCount();
-        updateHeroProductImage();
         
     } catch (error) {
         console.error('Error loading products:', error);
@@ -105,7 +154,7 @@ async function loadProducts() {
 }
 
 // ==========================================
-// PRODUCT RENDERING
+// PRODUCT RENDERING WITH PAYMENT OPTIONS
 // ==========================================
 
 function renderProducts() {
@@ -121,7 +170,10 @@ function renderProducts() {
     
     if (emptyState) emptyState.style.display = 'none';
     
-    productsGrid.innerHTML = filteredProducts.map((product, index) => `
+    productsGrid.innerHTML = filteredProducts.map((product) => {
+        const monthlyPayment = (product.price / 4).toFixed(2);
+        
+        return `
         <div class="product-card" onclick="openProductModal(${product.id})">
             <div class="product-image-wrapper">
                 <img src="${getProductImage(product)}" 
@@ -138,6 +190,13 @@ function renderProducts() {
                 <h3 class="product-name">${truncateText(product.name, 60)}</h3>
                 <div class="product-footer">
                     <div class="product-price">$${product.price.toFixed(2)}</div>
+                    <div class="payment-options">
+                        <span>or 4 interest-free payments of $${monthlyPayment}</span>
+                    </div>
+                    <div class="payment-logos">
+                        <span class="payment-logo">Klarna</span>
+                        <span class="payment-logo">Afterpay</span>
+                    </div>
                     <span class="stock-badge ${product.inStock ? '' : 'out-of-stock'}">
                         <i class="fas ${product.inStock ? 'fa-check' : 'fa-times'}"></i>
                         ${product.inStock ? 'In Stock' : 'Out of Stock'}
@@ -145,7 +204,7 @@ function renderProducts() {
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 function showEmptyState() {
@@ -157,7 +216,7 @@ function showEmptyState() {
 }
 
 // ==========================================
-// NEW FILTERS SYSTEM
+// FILTERS SYSTEM
 // ==========================================
 
 function applyFilters() {
@@ -196,37 +255,52 @@ function applyFilters() {
 }
 
 function toggleCategory(category) {
-    const chip = event.target.closest('.category-chip');
-    if (chip) {
+    // Toggle on all category chips (desktop and mobile)
+    document.querySelectorAll(`.category-chip[data-category="${category}"]`).forEach(chip => {
         chip.classList.toggle('active');
-        applyFilters();
-    }
+    });
+    applyFilters();
 }
 
 function toggleStockFilter() {
     const toggle = document.getElementById('stock-toggle');
     const input = document.getElementById('stock-toggle-input');
+    const mobileToggle = document.getElementById('mobile-stock-toggle');
+    const mobileInput = document.getElementById('mobile-stock-toggle-input');
     
     if (toggle && input) {
         input.checked = !input.checked;
         toggle.classList.toggle('active', input.checked);
-        applyFilters();
     }
+    
+    if (mobileToggle && mobileInput) {
+        mobileInput.checked = input?.checked || false;
+        mobileToggle.classList.toggle('active', mobileInput.checked);
+    }
+    
+    applyFilters();
 }
 
 function clearAllFilters() {
     // Clear search
-    if (document.getElementById('search-input')) {
-        document.getElementById('search-input').value = '';
-    }
+    const searchInputs = [
+        document.getElementById('search-input'),
+        document.getElementById('mobile-search-input')
+    ];
+    searchInputs.forEach(input => {
+        if (input) input.value = '';
+    });
     
     // Clear price
-    if (document.getElementById('price-min')) {
-        document.getElementById('price-min').value = '';
-    }
-    if (document.getElementById('price-max')) {
-        document.getElementById('price-max').value = '';
-    }
+    const priceInputs = [
+        document.getElementById('price-min'),
+        document.getElementById('price-max'),
+        document.getElementById('mobile-price-min'),
+        document.getElementById('mobile-price-max')
+    ];
+    priceInputs.forEach(input => {
+        if (input) input.value = '';
+    });
     
     // Clear categories
     document.querySelectorAll('.category-chip').forEach(chip => {
@@ -234,17 +308,20 @@ function clearAllFilters() {
     });
     
     // Clear stock
-    const stockToggle = document.getElementById('stock-toggle');
-    const stockInput = document.getElementById('stock-toggle-input');
-    if (stockToggle && stockInput) {
-        stockInput.checked = false;
-        stockToggle.classList.remove('active');
-    }
+    const stockToggles = [
+        { toggle: document.getElementById('stock-toggle'), input: document.getElementById('stock-toggle-input') },
+        { toggle: document.getElementById('mobile-stock-toggle'), input: document.getElementById('mobile-stock-toggle-input') }
+    ];
+    stockToggles.forEach(({ toggle, input }) => {
+        if (toggle && input) {
+            input.checked = false;
+            toggle.classList.remove('active');
+        }
+    });
     
     // Reset sort
-    if (document.getElementById('sort-select')) {
-        document.getElementById('sort-select').value = 'featured';
-    }
+    const sortSelect = document.getElementById('sort-select');
+    if (sortSelect) sortSelect.value = 'featured';
     
     applyFilters();
 }
@@ -271,33 +348,23 @@ function updateResultsCount() {
         const count = filteredProducts.length;
         resultsCount.textContent = `${count} product${count !== 1 ? 's' : ''} found`;
     }
-    
-    const heroCount = document.getElementById('product-count-hero');
-    if (heroCount) {
-        animateNumber(heroCount.querySelector('.count-up'), allProducts.length);
-    }
 }
 
 // Mobile Filters
 function openMobileFilters() {
-    const modal = document.getElementById('mobile-filter-modal');
-    if (modal) {
-        modal.classList.add('active');
+    const drawer = document.getElementById('mobile-filter-drawer');
+    if (drawer) {
+        drawer.classList.add('active');
         document.body.classList.add('no-scroll');
     }
 }
 
 function closeMobileFilters() {
-    const modal = document.getElementById('mobile-filter-modal');
-    if (modal) {
-        modal.classList.remove('active');
+    const drawer = document.getElementById('mobile-filter-drawer');
+    if (drawer) {
+        drawer.classList.remove('active');
         document.body.classList.remove('no-scroll');
     }
-}
-
-function applyMobileFilters() {
-    closeMobileFilters();
-    applyFilters();
 }
 
 // ==========================================
@@ -319,7 +386,7 @@ function changeView(view) {
 }
 
 // ==========================================
-// NEW SLIDE-UP MODAL
+// PREMIUM PRODUCT MODAL
 // ==========================================
 
 function openProductModal(productId) {
@@ -327,28 +394,24 @@ function openProductModal(productId) {
     if (!product) return;
     
     const modal = document.getElementById('product-modal');
-    const modalBody = document.getElementById('modal-body');
+    const modalContent = document.getElementById('modal-content');
     
-    if (!modal || !modalBody) return;
+    if (!modal || !modalContent) return;
     
     const images = product.images && product.images.length > 0 
         ? [product.image, ...product.images] 
         : [product.image];
     
-    modalBody.innerHTML = `
-        <div class="modal-header-section">
-            <h2>${escapeHtml(product.name)}</h2>
-            <div class="modal-price-row">
-                <div class="modal-price">$${product.price.toFixed(2)}</div>
-                <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
-                    <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
-                    ${product.inStock ? 'In Stock' : 'Out of Stock'}
+    const monthlyPayment = (product.price / 4).toFixed(2);
+    
+    currentModalQuantity = 1;
+    
+    modalContent.innerHTML = `
+        <div class="modal-grid">
+            <div class="modal-left">
+                <div class="modal-image-container">
+                    <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
                 </div>
-            </div>
-        </div>
-        
-        <div class="modal-content-section">
-            <div class="modal-image-gallery">
                 ${images.length > 1 ? `
                     <div class="modal-thumbnails">
                         ${images.map((img, idx) => `
@@ -359,83 +422,135 @@ function openProductModal(productId) {
                         `).join('')}
                     </div>
                 ` : ''}
-                <div class="modal-main-image-container">
-                    <img src="${images[0]}" alt="${escapeHtml(product.name)}" class="modal-main-image" id="modal-main-img">
-                </div>
             </div>
             
-            ${product.description ? `
-                <p class="modal-description">${escapeHtml(product.description)}</p>
-            ` : ''}
-            
-            ${(product.features && product.features.length > 0) || product.specifications ? `
-                <div class="modal-tabs">
-                    ${product.features && product.features.length > 0 ? `
-                        <button class="modal-tab active" onclick="switchModalTab('features')">
-                            <i class="fas fa-star"></i> Features
-                        </button>
-                    ` : ''}
-                    ${product.specifications ? `
-                        <button class="modal-tab ${!product.features ? 'active' : ''}" onclick="switchModalTab('specs')">
-                            <i class="fas fa-cog"></i> Specifications
-                        </button>
-                    ` : ''}
+            <div class="modal-right">
+                <div class="modal-header">
+                    <h2>${escapeHtml(product.name)}</h2>
+                    <div class="modal-price-row">
+                        <div class="modal-price">$${product.price.toFixed(2)}</div>
+                        <div class="modal-stock ${product.inStock ? '' : 'out-of-stock'}">
+                            <i class="fas ${product.inStock ? 'fa-check-circle' : 'fa-times-circle'}"></i>
+                            ${product.inStock ? 'In Stock' : 'Out of Stock'}
+                        </div>
+                    </div>
+                    <div class="modal-payment-info">
+                        <i class="fas fa-credit-card"></i>
+                        <span>or 4 interest-free payments of $${monthlyPayment}</span>
+                        <div class="modal-payment-logos">
+                            <span class="modal-payment-logo">Klarna</span>
+                            <span class="modal-payment-logo">Afterpay</span>
+                        </div>
+                    </div>
                 </div>
                 
-                ${product.features && product.features.length > 0 ? `
-                    <div class="modal-tab-content ${currentModalTab === 'features' ? 'active' : ''}" id="features-content">
-                        <div class="modal-features">
-                            <ul>
-                                ${product.features.map(feature => `
-                                    <li>${escapeHtml(feature)}</li>
-                                `).join('')}
-                            </ul>
-                        </div>
-                    </div>
+                ${product.description ? `
+                    <p class="modal-description">${escapeHtml(product.description)}</p>
                 ` : ''}
                 
-                ${product.specifications ? `
-                    <div class="modal-tab-content ${currentModalTab === 'specs' || !product.features ? 'active' : ''}" id="specs-content">
-                        <div class="specs-grid">
-                            ${Object.entries(product.specifications).map(([key, value]) => `
-                                <div class="spec-item">
-                                    <div class="spec-label">${formatSpecLabel(key)}</div>
-                                    <div class="spec-value">${escapeHtml(value)}</div>
-                                </div>
-                            `).join('')}
+                ${(product.features && product.features.length > 0) || product.specifications ? `
+                    <div class="modal-tabs">
+                        ${product.features && product.features.length > 0 ? `
+                            <button class="modal-tab active" onclick="switchModalTab('features')">
+                                Features
+                            </button>
+                        ` : ''}
+                        ${product.specifications ? `
+                            <button class="modal-tab ${!product.features ? 'active' : ''}" onclick="switchModalTab('specs')">
+                                Specifications
+                            </button>
+                        ` : ''}
+                    </div>
+                    
+                    ${product.features && product.features.length > 0 ? `
+                        <div class="modal-tab-content active" id="features-content">
+                            <div class="modal-features">
+                                <ul>
+                                    ${product.features.map(feature => `
+                                        <li>${escapeHtml(feature)}</li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${product.specifications ? `
+                        <div class="modal-tab-content ${!product.features ? 'active' : ''}" id="specs-content">
+                            <div class="specs-grid">
+                                ${Object.entries(product.specifications).map(([key, value]) => `
+                                    <div class="spec-item">
+                                        <div class="spec-label">${formatSpecLabel(key)}</div>
+                                        <div class="spec-value">${escapeHtml(value)}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                ` : ''}
+                
+                <div class="modal-actions">
+                    <div class="modal-quantity">
+                        <label>Quantity:</label>
+                        <div class="quantity-selector">
+                            <button class="qty-btn-modal" onclick="updateModalQuantity(-1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="qty-display-modal" id="modal-qty-display">1</span>
+                            <button class="qty-btn-modal" onclick="updateModalQuantity(1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
                         </div>
                     </div>
-                ` : ''}
-            ` : ''}
-        </div>
-        
-        <div class="modal-actions">
-            <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
-                <i class="fas fa-shopping-bag"></i>
-                <span>Add to Cart - $${product.price.toFixed(2)}</span>
-            </button>
+                    <button class="modal-add-to-cart" onclick="addToCartFromModal(${product.id})">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Add to Cart - $${product.price.toFixed(2)}</span>
+                    </button>
+                    <div class="modal-trust-badges">
+                        <div class="modal-trust-badge">
+                            <i class="fas fa-shield-check"></i>
+                            <span>100% Authentic</span>
+                        </div>
+                        <div class="modal-trust-badge">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>Free Shipping</span>
+                        </div>
+                        <div class="modal-trust-badge">
+                            <i class="fas fa-undo"></i>
+                            <span>Easy Returns</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     `;
     
     modal.classList.add('active');
     document.body.classList.add('no-scroll');
-    currentModalTab = 'features';
+}
+
+function updateModalQuantity(change) {
+    currentModalQuantity = Math.max(1, currentModalQuantity + change);
+    const qtyDisplay = document.getElementById('modal-qty-display');
+    if (qtyDisplay) {
+        qtyDisplay.textContent = currentModalQuantity;
+    }
 }
 
 function switchModalTab(tab) {
-    currentModalTab = tab;
-    
     // Update tab buttons
     document.querySelectorAll('.modal-tab').forEach(btn => {
         btn.classList.remove('active');
     });
-    event.target.closest('.modal-tab').classList.add('active');
+    event.target.classList.add('active');
     
     // Update tab content
     document.querySelectorAll('.modal-tab-content').forEach(content => {
         content.classList.remove('active');
     });
-    document.getElementById(`${tab}-content`)?.classList.add('active');
+    const targetContent = document.getElementById(`${tab}-content`);
+    if (targetContent) {
+        targetContent.classList.add('active');
+    }
 }
 
 function changeModalImage(imageSrc, thumbnail) {
@@ -452,22 +567,41 @@ function changeModalImage(imageSrc, thumbnail) {
     }
 }
 
-function closeModal(event) {
-    if (event && event.target !== event.currentTarget) return;
-    
+function closeModal() {
     const modal = document.getElementById('product-modal');
     if (modal) {
         modal.classList.remove('active');
         document.body.classList.remove('no-scroll');
     }
+    currentModalQuantity = 1;
 }
 
 function addToCartFromModal(productId) {
-    quickAddToCart(productId);
+    const product = allProducts.find(p => p.id === productId);
+    if (!product) return;
+    
+    const existingItem = cart.find(item => item.id === productId && item.brand === brandName);
+    
+    if (existingItem) {
+        existingItem.quantity += currentModalQuantity;
+    } else {
+        cart.push({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: getProductImage(product),
+            brand: brandName,
+            quantity: currentModalQuantity
+        });
+    }
+    
+    saveCart();
+    closeModal();
+    showToast(`${currentModalQuantity}x ${truncateText(product.name, 30)} added to cart!`);
 }
 
 // ==========================================
-// CART FUNCTIONS
+// CART FUNCTIONS (UNCHANGED)
 // ==========================================
 
 function loadCart() {
@@ -719,43 +853,6 @@ function closeMobileMenu() {
 }
 
 // ==========================================
-// HERO ANIMATIONS
-// ==========================================
-
-function animateHeroStats() {
-    const heroCount = document.getElementById('product-count-hero');
-    if (heroCount) {
-        const countUp = heroCount.querySelector('.count-up');
-        if (countUp) {
-            animateNumber(countUp, allProducts.length || 15);
-        }
-    }
-}
-
-function animateNumber(element, target, duration = 2000) {
-    const start = 0;
-    const increment = target / (duration / 16);
-    let current = start;
-    
-    const timer = setInterval(() => {
-        current += increment;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        element.textContent = Math.floor(current);
-    }, 16);
-}
-
-function updateHeroProductImage() {
-    const heroImg = document.getElementById('hero-product-img');
-    if (heroImg && allProducts.length > 0) {
-        const randomProduct = allProducts[Math.floor(Math.random() * allProducts.length)];
-        heroImg.src = getProductImage(randomProduct);
-    }
-}
-
-// ==========================================
 // TOAST NOTIFICATIONS
 // ==========================================
 
@@ -806,5 +903,5 @@ function formatSpecLabel(key) {
         .trim();
 }
 
-console.log('%c🚀 Barber World NYC - V2', 'color: #d4af37; font-size: 18px; font-weight: bold;');
-console.log('%c✨ New Filters & Modal Design', 'color: #666; font-size: 12px;');
+console.log('%c🚀 Barber World NYC - Premium Redesign', 'color: #d4af37; font-size: 18px; font-weight: bold;');
+console.log('%c✨ Modern, Elegant & Conversion-Optimized', 'color: #666; font-size: 12px;');
