@@ -2,75 +2,78 @@
   {
     "id": 1,
     "name": "StyleCraft Professional Complete Bundle - Clipper, Trimmer & Shaver",
-    "comboPrice": 195.00,
-    "originalPrice": 514.97,
-    "savings": 319.97,
+    "price": 195.00,
     "brand": "StyleCraft",
     "slug": "stylecraft-professional-complete-bundle",
     "image": "https://alamobarber.com/cdn/shop/files/5312c254-Img_1-removebg-preview.png?v=1744269196&width=1346",
+    "images": [
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc410m_main.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy6.jpg",
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_15_.jpg"
+    ],
     "category": "Combo Set",
-    "shortDescription": "Complete professional styling bundle with clipper, trimmer, and your choice of black or pink shaver",
-    "description": "Get the ultimate StyleCraft professional bundle! This complete set includes the Metal Edition Instinct Clipper, Metal Edition Trimmer, and your choice of Metal Edition Shaver in Black or Pink. Save over $319 on this premium combo perfect for professional barbers and stylists.",
+    "shortDescription": "Complete professional styling bundle with clipper, trimmer, and your choice of black or pink shaver - SAVE $319.97!",
+    "description": "Get the ultimate StyleCraft professional bundle! This complete set includes the Metal Edition Instinct Clipper ($199.99), Metal Edition Trimmer ($164.99), and your choice of Metal Edition Shaver in Black or Pink ($149.99). Save over $319 on this premium combo perfect for professional barbers and stylists. All tools feature full metal construction, vector motor technology, and extended battery life.",
     "features": [
-      "Complete professional grooming set",
+      "Complete professional grooming set - 3 tools",
       "Full metal construction on all tools",
-      "Vector motor technology",
-      "Over $319 in savings",
+      "Vector motor technology in all devices",
+      "SAVE $319.97 - Original price $514.97",
       "Choice of Black or Pink shaver",
-      "Extended battery life on all tools",
+      "Extended battery life on all tools (120+ minutes)",
       "Professional-grade performance",
-      "Premium luxury finish"
+      "Premium luxury metal finish",
+      "Dual voltage capability",
+      "Perfect for professional barbers"
     ],
-    "products": [
-      {
-        "id": 16,
-        "name": "StyleCraft Metal Edition Instinct Professional Vector Motor Cordless Clipper",
-        "price": 199.99,
-        "image": "https://alamobarber.com/cdn/shop/files/5312c254-Img_1-removebg-preview.png?v=1744269196&width=1346",
-        "category": "Clipper",
-        "description": "Premium all-metal Instinct clipper with professional vector motor"
-      },
-      {
-        "id": 4,
-        "name": "StyleCraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
-        "price": 164.99,
-        "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc410m_main.jpg",
-        "category": "Trimmer",
-        "description": "Metal edition trimmer with full metal housing and vector motor"
-      },
-      {
-        "id": 5,
-        "name": "StyleCraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B",
-        "price": 149.99,
-        "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e560bd3e468/s/t/stylecraftw126221-66_copy6.jpg",
-        "category": "Shaver",
-        "description": "Metal edition professional shaver in sleek black finish",
-        "colorOption": "Black"
-      },
-      {
-        "id": 6,
-        "name": "StyleCraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807P",
-        "price": 149.99,
-        "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_15_.jpg",
-        "category": "Shaver",
-        "description": "Metal edition professional shaver in elegant pink finish",
-        "colorOption": "Pink"
-      }
-    ],
-    "shaverOptions": [
-      {
-        "color": "Black",
-        "productId": 5,
-        "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy6.jpg"
-      },
-      {
-        "color": "Pink",
-        "productId": 6,
-        "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_15_.jpg"
-      }
-    ],
+    "specifications": {
+      "setIncludes": "Metal Clipper + Metal Trimmer + Metal Shaver (Black or Pink)",
+      "originalPrice": "$514.97",
+      "comboPrice": "$195.00",
+      "savings": "$319.97",
+      "motors": "Vector motors (all tools)",
+      "batteries": "Lithium-ion (all tools)",
+      "housing": "Full metal construction (all tools)",
+      "voltage": "Dual voltage (all tools)"
+    },
+    "comboDetails": {
+      "originalPrice": 514.97,
+      "savings": 319.97,
+      "products": [
+        {
+          "id": 16,
+          "name": "StyleCraft Metal Edition Instinct Professional Vector Motor Cordless Clipper",
+          "price": 199.99,
+          "image": "https://alamobarber.com/cdn/shop/files/5312c254-Img_1-removebg-preview.png?v=1744269196&width=1346",
+          "category": "Clipper"
+        },
+        {
+          "id": 4,
+          "name": "StyleCraft Pro METAL EDITION Instinct Professional Vector Motor Trimmer #SC410M",
+          "price": 164.99,
+          "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/c/sc410m_main.jpg",
+          "category": "Trimmer"
+        },
+        {
+          "id": 5,
+          "name": "StyleCraft METAL EDITION Instinct Professional Vector Motor Shaver - Black #SC807B",
+          "price": 149.99,
+          "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/s/t/stylecraftw126221-66_copy6.jpg",
+          "category": "Shaver",
+          "colorOption": "Black"
+        },
+        {
+          "id": 6,
+          "name": "StyleCraft METAL EDITION Instinct Professional Vector Motor Shaver - Pink #SC807P",
+          "price": 149.99,
+          "image": "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_shaver_pink_15_.jpg",
+          "category": "Shaver",
+          "colorOption": "Pink"
+        }
+      ]
+    },
     "inStock": true,
-    "rating": 4.8,
+    "rating": 4.9,
     "reviewCount": 156,
     "sku": "SC-COMBO-001"
   }
