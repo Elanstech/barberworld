@@ -14,8 +14,9 @@ let cart = [];
 let currentView = 'grid';
 let currentModalQuantity = 1;
 
-// Get brand from body data attribute
+// Get brand and category from body data attribute
 const brandName = document.body.dataset.brand || 'Babyliss';
+const categoryFilter = document.body.dataset.category || null; // e.g., "Clipper", "Trimmer", "All"
 
 // ==========================================
 // INITIALIZATION
@@ -29,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initTypewriter();
     
     console.log(`🚀 Premium ${brandName} Products Page Loaded`);
+    if (categoryFilter) {
+        console.log(`📦 Category Filter: ${categoryFilter}`);
+    }
 });
 
 function initializeEventListeners() {
@@ -87,7 +91,27 @@ function initTypewriter() {
     const typingElement = document.getElementById('typing-brand');
     if (!typingElement) return;
     
-    const text = brandName === 'Babyliss' ? 'BaBylissPRO' : brandName;
+    let text = '';
+    
+    // Determine what text to display
+    if (categoryFilter) {
+        // Category pages
+        if (categoryFilter === 'All') {
+            text = 'All Products';
+        } else if (categoryFilter === 'Clipper') {
+            text = 'Professional Clippers';
+        } else if (categoryFilter === 'Trimmer') {
+            text = 'Professional Trimmers';
+        } else if (categoryFilter === 'Shaver') {
+            text = 'Professional Shavers';
+        } else {
+            text = categoryFilter;
+        }
+    } else {
+        // Brand pages
+        text = brandName === 'Babyliss' ? 'BaBylissPRO' : brandName;
+    }
+    
     let index = 0;
     
     function type() {
@@ -126,14 +150,48 @@ async function loadProducts() {
             'OurBrand': 'barberworld-products.json'
         };
         
-        const jsonFile = brandFiles[brandName] || 'babyliss-products.json';
-        const response = await fetch(`../json/${jsonFile}`);
+        let products = [];
         
-        if (!response.ok) {
-            throw new Error(`Failed to load products: ${response.statusText}`);
+        // Check if this is a category page (loads from ALL brands)
+        if (categoryFilter) {
+            console.log(`Loading all brands for category: ${categoryFilter}`);
+            
+            // Load products from ALL brand files
+            const brandPromises = Object.values(brandFiles).map(async (jsonFile) => {
+                try {
+                    const response = await fetch(`../json/${jsonFile}`);
+                    if (response.ok) {
+                        return await response.json();
+                    }
+                    return [];
+                } catch (error) {
+                    console.warn(`Failed to load ${jsonFile}:`, error);
+                    return [];
+                }
+            });
+            
+            const allBrandProducts = await Promise.all(brandPromises);
+            products = allBrandProducts.flat(); // Merge all products
+            
+            // Filter by category if not "All"
+            if (categoryFilter !== 'All') {
+                products = products.filter(p => p.category === categoryFilter);
+            }
+            
+            console.log(`Loaded ${products.length} products from all brands`);
+            
+        } else {
+            // Single brand page - load from specific JSON file
+            const jsonFile = brandFiles[brandName] || 'babyliss-products.json';
+            const response = await fetch(`../json/${jsonFile}`);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to load products: ${response.statusText}`);
+            }
+            
+            products = await response.json();
+            console.log(`Loaded ${products.length} products from ${brandName}`);
         }
-        
-        const products = await response.json();
         
         if (!Array.isArray(products) || products.length === 0) {
             throw new Error('No products found');
