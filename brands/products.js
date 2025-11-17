@@ -290,6 +290,12 @@ function applyFilters() {
         selectedCategories.push(chip.dataset.category);
     });
     
+    // Get selected brands from chips (for category pages)
+    const selectedBrands = [];
+    document.querySelectorAll('.brand-chip.active').forEach(chip => {
+        selectedBrands.push(chip.dataset.brand);
+    });
+    
     // Filter products
     filteredProducts = allProducts.filter(product => {
         const matchesSearch = !searchQuery || 
@@ -300,8 +306,10 @@ function applyFilters() {
         const matchesStock = !inStockOnly || product.inStock;
         const matchesCategory = selectedCategories.length === 0 || 
             selectedCategories.includes(product.category);
+        const matchesBrand = selectedBrands.length === 0 || 
+            selectedBrands.includes(product.brand);
         
-        return matchesSearch && matchesPrice && matchesStock && matchesCategory;
+        return matchesSearch && matchesPrice && matchesStock && matchesCategory && matchesBrand;
     });
     
     // Sort products
@@ -315,6 +323,14 @@ function applyFilters() {
 function toggleCategory(category) {
     // Toggle on all category chips (desktop and mobile)
     document.querySelectorAll(`.category-chip[data-category="${category}"]`).forEach(chip => {
+        chip.classList.toggle('active');
+    });
+    applyFilters();
+}
+
+function toggleBrand(brand) {
+    // Toggle on all brand chips (desktop and mobile)
+    document.querySelectorAll(`.brand-chip[data-brand="${brand}"]`).forEach(chip => {
         chip.classList.toggle('active');
     });
     applyFilters();
@@ -362,6 +378,11 @@ function clearAllFilters() {
     
     // Clear categories
     document.querySelectorAll('.category-chip').forEach(chip => {
+        chip.classList.remove('active');
+    });
+    
+    // Clear brands
+    document.querySelectorAll('.brand-chip').forEach(chip => {
         chip.classList.remove('active');
     });
     
