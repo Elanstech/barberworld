@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Combos - Professional Barber Equipment Bundles | Barber World NYC</title>
+    <meta name="description" content="Save big on custom professional barber equipment combo bundles. Premium clippers, trimmers & shavers with huge savings.">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17668713996"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-17668713996');
+    </script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="products.css">
+</head>
+<body data-brand="CustomCombos">
+    
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast-notification">
+        <div class="toast-content">
+            <div class="toast-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div class="toast-text">
+                <div class="toast-title">Added to Cart</div>
+                <div class="toast-message" id="toast-message">Product added successfully</div>
+            </div>
+        </div>
+        <div class="toast-progress"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="../logofooter.png" alt="Barber World" class="brand-logo" onclick="window.location.href='../index.html'">
+            </div>
+
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" onclick="openCart()" aria-label="Shopping Cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span class="cart-badge" id="cart-badge">0</span>
+                    </button>
+                    <button class="action-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>Menu</span>
+            <button class="close-mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="../index.html" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="../about.html" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <div class="mobile-nav-section">
+                <div class="mobile-nav-title">Shop by Brand</div>
+                <a href="ourbrand.html" class="mobile-nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>Our Brand</span>
+                </a>
+                <a href="babyliss.html" class="mobile-nav-link">
+                    <i class="fas fa-cut"></i>
+                    <span>BaBylissPRO</span>
+                </a>
+                <a href="stylecraft.html" class="mobile-nav-link">
+                    <i class="fas fa-star"></i>
+                    <span>StyleCraft Gamma</span>
+                </a>
+                <a href="jrl.html" class="mobile-nav-link">
+                    <i class="fas fa-crown"></i>
+                    <span>JRL</span>
+                </a>
+                <a href="wahl.html" class="mobile-nav-link">
+                    <i class="fas fa-trophy"></i>
+                    <span>Wahl</span>
+                </a>
+                <a href="wmark.html" class="mobile-nav-link">
+                    <i class="fas fa-gem"></i>
+                    <span>W-Mark</span>
+                </a>
+                <a href="customcombos.html" class="mobile-nav-link">
+                    <i class="fas fa-gift"></i>
+                    <span>Custom Combos</span>
+                </a>
+                <a href="allproducts.html" class="mobile-nav-link">
+                    <i class="fas fa-th"></i>
+                    <span>All Products</span>
+                </a>
+            </div>
+        </nav>
+        <div class="mobile-menu-footer">
+            <p>Need help?</p>
+            <a href="mailto:barberworldnyc@gmail.com">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Clean Minimal Hero Section -->
+    <div class="minimal-hero">
+        <div class="hero-background-gradient"></div>
+        <div class="hero-minimal-content">
+            <div class="brand-typing-container">
+                <h1 class="brand-typing-text" id="typing-brand"></h1>
+                <span class="typing-cursor">|</span>
+            </div>
+            <p class="hero-minimal-subtitle">Save Big on Premium Bundles</p>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="page-container">
+        
+        <!-- Desktop Filters -->
+        <div class="filters-bar">
+            <div class="filters-row">
+                <!-- Search -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-search"></i>
+                        Search
+                    </label>
+                    <input type="text" id="search-input" class="search-input-modern" placeholder="Search combos..." oninput="applyFilters()">
+                </div>
+                
+                <!-- Price Range -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-dollar-sign"></i>
+                        Price Range
+                    </label>
+                    <div class="price-range-inputs">
+                        <input type="number" id="price-min" placeholder="Min" oninput="applyFilters()">
+                        <span>to</span>
+                        <input type="number" id="price-max" placeholder="Max" oninput="applyFilters()">
+                    </div>
+                </div>
+                
+                <!-- Stock Toggle -->
+                <div class="filter-field">
+                    <label class="filter-label">
+                        <i class="fas fa-check-circle"></i>
+                        Availability
+                    </label>
+                    <div class="stock-toggle" id="stock-toggle" onclick="toggleStockFilter()">
+                        <input type="checkbox" id="stock-toggle-input">
+                        <div class="toggle-switch"></div>
+                        <span class="toggle-label">In Stock</span>
+                    </div>
+                </div>
+                
+                <!-- Clear Button -->
+                <div class="filter-field">
+                    <label class="filter-label" style="opacity: 0;">Clear</label>
+                    <button class="clear-filters-btn" onclick="clearAllFilters()">
+                        <i class="fas fa-times"></i>
+                        Clear
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Filter Button -->
+        <div class="mobile-filter-bar">
+            <button class="mobile-filter-trigger" onclick="openMobileFilters()">
+                <i class="fas fa-sliders-h"></i>
+                <span>Filters</span>
+            </button>
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="controls-bar">
+            <div class="results-count" id="results-count">Loading combos...</div>
+            
+            <div class="controls-right">
+                <div class="view-switcher">
+                    <button class="view-btn active" data-view="grid" onclick="changeView('grid')">
+                        <i class="fas fa-th"></i>
+                    </button>
+                    <button class="view-btn" data-view="list" onclick="changeView('list')">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+                
+                <div class="sort-dropdown">
+                    <select id="sort-select" onchange="applyFilters()">
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="savings">Best Savings</option>
+                    </select>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <main class="products-section">
+            <div class="products-grid" id="products-grid" data-view="grid">
+                <!-- Combo products loaded here -->
+            </div>
+            
+            <div class="loading-state" id="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading combos...</p>
+            </div>
+            
+            <div class="empty-state" id="empty-state" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No Combos Found</h3>
+                <p>Try adjusting your filters or search terms</p>
+                <button class="btn-reset" onclick="clearAllFilters()">Clear Filters</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- Mobile Filter Drawer -->
+    <div class="mobile-filter-drawer" id="mobile-filter-drawer">
+        <div class="filter-drawer-overlay" onclick="closeMobileFilters()"></div>
+        <div class="filter-drawer-panel">
+            <div class="filter-drawer-header">
+                <h3>Filters</h3>
+                <button class="filter-drawer-close" onclick="closeMobileFilters()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="filter-drawer-body">
+                <div class="filter-drawer-group">
+                    <h4><i class="fas fa-search"></i> Search</h4>
+                    <input type="text" id="mobile-search-input" class="search-input-modern" placeholder="Search combos..." oninput="applyFilters()">
+                </div>
+                
+                <div class="filter-drawer-group">
+                    <h4><i class="fas fa-dollar-sign"></i> Price Range</h4>
+                    <div class="price-range-inputs">
+                        <input type="number" id="mobile-price-min" placeholder="Min" oninput="applyFilters()">
+                        <span>to</span>
+                        <input type="number" id="mobile-price-max" placeholder="Max" oninput="applyFilters()">
+                    </div>
+                </div>
+                
+                <div class="filter-drawer-group">
+                    <h4><i class="fas fa-check-circle"></i> Availability</h4>
+                    <div class="stock-toggle" id="mobile-stock-toggle" onclick="toggleStockFilter()">
+                        <input type="checkbox" id="mobile-stock-toggle-input">
+                        <div class="toggle-switch"></div>
+                        <span class="toggle-label">In Stock Only</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-drawer-footer">
+                <button class="filter-clear-btn" onclick="clearAllFilters()">Clear All</button>
+                <button class="filter-apply-btn" onclick="closeMobileFilters()">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Premium Product Modal -->
+    <div class="product-modal" id="product-modal">
+        <div class="modal-backdrop" onclick="closeModal()"></div>
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modal-content">
+                <!-- Combo details loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Panel -->
+    <div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+    <div class="cart-panel" id="cart-panel">
+        <div class="cart-header">
+            <div>
+                <h3>Shopping Cart</h3>
+                <p class="cart-count" id="cart-count">0 items</p>
+            </div>
+            <button class="cart-close" onclick="closeCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <div class="cart-empty">
+                <div class="empty-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <p>Your cart is empty</p>
+                <span>Start shopping now!</span>
+            </div>
+        </div>
+        
+        <div class="cart-footer" id="cart-footer" style="display: none;">
+            <div class="cart-summary">
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                </div>
+            </div>
+            <button class="btn-checkout" onclick="proceedToCheckout()">
+                <i class="fas fa-lock"></i>
+                <span>Secure Checkout</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="combos.js"></script>
+</body>
+</html>
