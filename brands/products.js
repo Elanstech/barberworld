@@ -147,7 +147,7 @@ async function loadProducts() {
             'W-Mark': 'wmark-products.json',
             'VGR': 'vgr-products.json',
             'Monster': 'monster-products.json',
-            'OurBrand': 'barberworld-products.json'
+            'OurBrand': 'barberworld-products.json',
             'CustomCombos': 'custom-combos.json'
         };
         
