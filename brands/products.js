@@ -148,6 +148,7 @@ async function loadProducts() {
             'VGR': 'vgr-products.json',
             'Monster': 'monster-products.json',
             'OurBrand': 'barberworld-products.json'
+            'CustomCombos': 'custom-combos.json'
         };
         
         let products = [];
