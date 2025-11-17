@@ -463,6 +463,11 @@ body.no-scroll {
     align-items: end;
 }
 
+/* When brand filter is present (category pages) */
+.filters-row.with-brands {
+    grid-template-columns: 1.5fr 1.5fr 1.5fr 1.5fr 1fr auto;
+}
+
 .filter-field {
     display: flex;
     flex-direction: column;
@@ -503,13 +508,15 @@ body.no-scroll {
     box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
 }
 
-.category-chips {
+.category-chips,
+.brand-chips {
     display: flex;
     gap: 0.5rem;
     flex-wrap: wrap;
 }
 
-.category-chip {
+.category-chip,
+.brand-chip {
     padding: 0.65rem 1.25rem;
     background: var(--gray-50);
     border: 2px solid var(--border);
@@ -521,13 +528,15 @@ body.no-scroll {
     user-select: none;
 }
 
-.category-chip:hover {
+.category-chip:hover,
+.brand-chip:hover {
     border-color: var(--gold);
     background: rgba(212, 175, 55, 0.05);
     transform: translateY(-2px);
 }
 
-.category-chip.active {
+.category-chip.active,
+.brand-chip.active {
     background: linear-gradient(135deg, var(--gold), var(--gold-hover));
     border-color: var(--gold);
     color: var(--white);
@@ -1840,7 +1849,8 @@ body.no-scroll {
    ========================================== */
 
 @media (max-width: 1200px) {
-    .filters-row {
+    .filters-row,
+    .filters-row.with-brands {
         grid-template-columns: 1fr;
         gap: 1.5rem;
     }
