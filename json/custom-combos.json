@@ -2,7 +2,7 @@
   {
     "id": 1,
     "name": "StyleCraft Professional Complete Bundle - Clipper, Trimmer & Shaver",
-    "price": 195.00,
+    "price": 450.00,
     "brand": "StyleCraft",
     "slug": "stylecraft-professional-complete-bundle",
     "image": "https://alamobarber.com/cdn/shop/files/5312c254-Img_1-removebg-preview.png?v=1744269196&width=1346",
@@ -29,8 +29,8 @@
     "specifications": {
       "setIncludes": "Metal Clipper + Metal Trimmer + Metal Shaver (Black or Pink)",
       "originalPrice": "$514.97",
-      "comboPrice": "$195.00",
-      "savings": "$319.97",
+      "comboPrice": "$450.00",
+      "savings": "$65.00",
       "motors": "Vector motors (all tools)",
       "batteries": "Lithium-ion (all tools)",
       "housing": "Full metal construction (all tools)",
