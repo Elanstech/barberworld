@@ -1,1 +1,998 @@
-hello
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Contact Us | Professional Barber Equipment | Barber World</title>
+    <meta name="title" content="Contact Us | Professional Barber Equipment | Barber World">
+    <meta name="description" content="Get in touch with Barber World NYC. Contact us for questions about professional barber equipment, clippers, trimmers, and supplies. We're here to help!">
+    <meta name="author" content="Barber World NYC">
+    
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-TTB627T9');</script>
+    <!-- End Google Tag Manager -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logofooter.png">
+    <link rel="apple-touch-icon" href="logofooter.png">    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a0a0a;
+            --primary-light: #1a1a1a;
+            --primary-lighter: #2a2a2a;
+            --gold: #d4af37;
+            --gold-hover: #b8941f;
+            --white: #ffffff;
+            --gray-100: #f8f9fa;
+            --gray: #6c757d;
+            --border: #e9ecef;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius: 12px;
+            --radius-md: 16px;
+            --radius-lg: 20px;
+            --radius-xl: 24px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--primary);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .modern-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 35%, #2a2520 70%, #d4af37 100%);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            animation: headerGlow 3s ease-in-out infinite alternate;
+            transition: transform var(--transition);
+        }
+
+        @keyframes headerGlow {
+            0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); }
+            100% { box-shadow: 0 4px 30px rgba(212, 175, 55, 0.2); }
+        }
+
+        .header-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0;
+            height: 120px;
+        }
+
+        .logo-section {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 2.5rem;
+        }
+
+        .brand-logo {
+            height: 100px;
+            width: auto;
+            cursor: pointer;
+            transition: var(--transition);
+            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            border-radius: var(--radius-lg);
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05) translateY(-2px);
+            filter: drop-shadow(0 6px 20px rgba(212, 175, 55, 0.6));
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 2rem;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .action-btn {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-md);
+            color: white;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .action-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* SHIPPING BANNER */
+        .shipping-banner {
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #c9a961 100%);
+            background-size: 200% 200%;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 998;
+            overflow: hidden;
+            animation: bannerShine 3s ease-in-out infinite;
+        }
+
+        @keyframes bannerShine {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .shipping-banner::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .shipping-banner.hidden {
+            display: none;
+        }
+
+        .shipping-banner-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .shipping-icon {
+            font-size: 18px;
+            color: #c9a961;
+            animation: truck 2s ease-in-out infinite;
+        }
+
+        @keyframes truck {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .shipping-text {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .shipping-highlight {
+            color: #c9a961;
+            font-weight: 800;
+            font-size: 15px;
+        }
+
+        .close-banner {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            transition: var(--transition);
+            z-index: 2;
+        }
+
+        .close-banner:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        /* MOBILE MENU */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            z-index: 10000;
+            transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+            border-top-right-radius: var(--radius-xl);
+            border-bottom-right-radius: var(--radius-xl);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-header {
+            padding: 2rem 1.5rem;
+            background: linear-gradient(135deg, #2a2520, #d4af37);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .close-mobile-menu {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius);
+            color: white;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-mobile-menu:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .mobile-nav {
+            padding: 1.5rem 0;
+        }
+
+        .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.5rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            transition: var(--transition);
+            border-left: 3px solid transparent;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 0.25rem 0;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            background: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border-left-color: var(--gold);
+        }
+
+        .mobile-nav-link i {
+            font-size: 1.1rem;
+        }
+
+        .mobile-menu-footer {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .mobile-menu-footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* CONTACT SECTION */
+        .contact-section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .contact-hero {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .contact-badge {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: var(--gold);
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--radius-xl);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1.5rem;
+            border: 2px solid var(--gold);
+        }
+
+        .contact-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 3rem;
+            border-radius: var(--radius-xl);
+            color: var(--white);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+        }
+
+        .info-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(8px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--white);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+        }
+
+        .info-text {
+            flex: 1;
+        }
+
+        .info-text h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+
+        .info-text p,
+        .info-text a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        .info-text a:hover {
+            color: var(--gold);
+        }
+
+        /* CONTACT FORM */
+        .contact-form-container {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            border: 2px solid var(--border);
+        }
+
+        .form-group {
+            margin-bottom: 1.75rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group label span {
+            color: var(--gold);
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem 1.25rem;
+            border: 2px solid var(--border);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: var(--primary);
+            transition: var(--transition);
+            background: var(--gray-100);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-hover));
+            color: var(--white);
+            border: none;
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            box-shadow: 0 8px 24px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(212, 175, 55, 0.45);
+        }
+
+        .submit-btn:active {
+            transform: translateY(-1px);
+        }
+
+        /* NOTIFICATION */
+        .notification-toast {
+            position: fixed;
+            top: 140px;
+            right: -400px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1.25rem 1.75rem;
+            border-radius: var(--radius-lg);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 99999;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 350px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .notification-toast.show {
+            right: 30px;
+        }
+
+        .notification-toast::before {
+            content: '✓';
+            width: 28px;
+            height: 28px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            flex-shrink: 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: var(--radius);
+        }
+
+        .footer p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1rem;
+        }
+
+        .copyright {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header-container {
+                height: 80px;
+                padding: 0 1rem;
+            }
+
+            .logo-section {
+                padding: 0 1rem;
+            }
+
+            .brand-logo {
+                height: 60px;
+            }
+
+            .header-right {
+                padding: 0 1rem;
+            }
+
+            .action-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+            }
+
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+
+            .contact-title {
+                font-size: 2rem;
+            }
+
+            .contact-subtitle {
+                font-size: 1rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-info,
+            .contact-form-container {
+                padding: 2rem;
+            }
+
+            .notification-toast.show {
+                right: 20px;
+                left: 20px;
+                max-width: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .contact-title {
+                font-size: 1.75rem;
+            }
+
+            .contact-info,
+            .contact-form-container {
+                padding: 1.5rem;
+            }
+
+            .info-item {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Shipping Banner -->
+    <div class="shipping-banner">
+        <div class="shipping-banner-content">
+            <i class="fas fa-truck shipping-icon"></i>
+            <span class="shipping-text">
+                <span>Free Shipping on Orders Over</span>
+                <span class="shipping-highlight">$99</span>
+            </span>
+        </div>
+        <button class="close-banner" aria-label="Close banner">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <!-- MODERN REDESIGNED HEADER -->
+    <header class="modern-header">
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="logofooter.png" alt="Barber World" class="brand-logo" onclick="window.location.href='index.html'">
+            </div>
+
+            <div class="header-right">
+                <div class="header-actions">
+                    <button class="action-btn" onclick="window.location.href='index.html'" aria-label="Home">
+                        <i class="fas fa-home"></i>
+                    </button>
+                    <button class="action-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>Menu</span>
+            <button class="close-mobile-menu" onclick="toggleMobileMenu()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="index.html" class="mobile-nav-link">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="about.html" class="mobile-nav-link">
+                <i class="fas fa-info-circle"></i>
+                <span>About</span>
+            </a>
+            <a href="contact.html" class="mobile-nav-link active">
+                <i class="fas fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+        </nav>
+        <div class="mobile-menu-footer">
+            <p>Need help? Contact us</p>
+            <a href="mailto:barberworldnyc@gmail.com" class="contact-link">
+                barberworldnyc@gmail.com
+            </a>
+        </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div class="mobile-overlay" id="mobile-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-hero">
+            <span class="contact-badge">Get in Touch</span>
+            <h1 class="contact-title">Contact Barber World</h1>
+            <p class="contact-subtitle">Have questions about our products? We're here to help you find the perfect professional barber equipment.</p>
+        </div>
+
+        <div class="contact-content">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Let's Connect</h2>
+                <p>Reach out to us and we'll respond as soon as possible. We're committed to providing exceptional customer service.</p>
+                
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Email Us</h3>
+                        <p><a href="mailto:barberworldnyc@gmail.com">barberworldnyc@gmail.com</a></p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Location</h3>
+                        <p>565 Plandome Rd, PMB #102<br>Manhasset, NY 11030</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Business Hours</h3>
+                        <p>Monday - Friday: 9:00 AM - 6:00 PM EST<br>Saturday - Sunday: Closed</p>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Follow Us</h3>
+                        <p><a href="https://www.instagram.com/barberworldnyc/?igsh=OXNzYzBqaGtjemZi&utm_source=qr" target="_blank">@barberworldnyc</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-container">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Your Name <span>*</span></label>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="John Doe">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address <span>*</span></label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="john@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-input" placeholder="(555) 123-4567">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject <span>*</span></label>
+                        <input type="text" id="subject" name="subject" class="form-input" required placeholder="Product Inquiry">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message <span>*</span></label>
+                        <textarea id="message" name="message" class="form-textarea" required placeholder="Tell us how we can help you..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span>Send Message</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <img src="logofooter.png" alt="Barber World" class="footer-logo">
+            <h3>Barber World</h3>
+            <p>Your trusted source for professional barber equipment.</p>
+            <p class="copyright">&copy; 2025 Barber World. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div class="notification-toast" id="notification-toast">
+        <span id="notification-message"></span>
+    </div>
+
+    <script>
+        // Mobile Menu Functions
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            
+            if (menu) {
+                menu.classList.toggle('active');
+                
+                if (overlay) {
+                    overlay.classList.toggle('active');
+                }
+                
+                if (menu.classList.contains('active')) {
+                    document.body.classList.add('no-scroll');
+                } else {
+                    document.body.classList.remove('no-scroll');
+                }
+            }
+        }
+
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+            
+            if (menu) {
+                menu.classList.remove('active');
+                if (overlay) {
+                    overlay.classList.remove('active');
+                }
+                document.body.classList.remove('no-scroll');
+            }
+        }
+
+        // Shipping Banner
+        document.addEventListener('DOMContentLoaded', () => {
+            const closeBannerBtn = document.querySelector('.close-banner');
+            const shippingBanner = document.querySelector('.shipping-banner');
+            
+            if (closeBannerBtn && shippingBanner) {
+                const bannerClosed = localStorage.getItem('shippingBannerClosed');
+                if (bannerClosed === 'true') {
+                    shippingBanner.classList.add('hidden');
+                }
+                
+                closeBannerBtn.addEventListener('click', function() {
+                    shippingBanner.classList.add('hidden');
+                    localStorage.setItem('shippingBannerClosed', 'true');
+                });
+            }
+        });
+
+        // Notification Toast
+        function showNotification(message) {
+            const toast = document.getElementById('notification-toast');
+            const messageEl = document.getElementById('notification-message');
+            
+            if (toast && messageEl) {
+                messageEl.textContent = message;
+                toast.classList.add('show');
+                
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            }
+        }
+
+        // Contact Form Mailto Functionality
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Construct mailto URL
+            const mailtoSubject = encodeURIComponent(subject);
+            let mailtoBody = encodeURIComponent(
+                `Name: ${name}\n` +
+                `Email: ${email}\n` +
+                `Phone: ${phone || 'Not provided'}\n\n` +
+                `Message:\n${message}`
+            );
+            
+            const mailtoLink = `mailto:barberworldnyc@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+            
+            // Show notification
+            showNotification('Opening your email client...');
+            
+            // Reset form after a delay
+            setTimeout(() => {
+                document.getElementById('contactForm').reset();
+            }, 1000);
+        });
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+    </script>
+</body>
+</html>
