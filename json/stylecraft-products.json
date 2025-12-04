@@ -59,7 +59,7 @@
     "images": [
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__3_.jpg",
       "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/s/c/sc407m__4_.jpg",
-      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3e468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
+      "https://stylecraftus.com/media/catalog/product/cache/b50be48194f54833666bd3e560bd3468/i/n/instinct_trimmer_sc407m_infographic_v2.jpg"
     ],
     "category": "Trimmer",
     "shortDescription": "Intelligent vector motor trimmer with automatic torque adjustment and dual voltage capability",
@@ -613,6 +613,52 @@
     "rating": 4.9,
     "reviewCount": 756,
     "sku": "SC614B"
+  },
+  {
+    "id": 15,
+    "name": "StyleCraft Rebel Cordless Clipper King Saladeen Limited Edition #SC613M",
+    "price": 109.99,
+    "brand": "StyleCraft",
+    "slug": "stylecraft-rebel-king-saladeen-sc613m",
+    "image": "https://www.vipbarbersupply.com/cdn/shop/files/stylecraft-king-saladeen-rebel-clipper-sc613m_599x798.png?v=1762369152",
+    "images": [
+      "https://www.vipbarbersupply.com/cdn/shop/files/stylecraft-king-saladeen-rebel-clipper-sc613m-aspects_114x150_crop_center.png?v=1762369152",
+      "https://www.vipbarbersupply.com/cdn/shop/files/stylecraft-king-saladeen-rebel-clipper-sc613m-display_114x150_crop_center.png?v=1762369152",
+      "https://www.vipbarbersupply.com/cdn/shop/files/stylecraft-king-saladeen-rebel-clipper-sc613m-lid_114x150_crop_center.png?v=1762369152"
+    ],
+    "category": "Clipper",
+    "shortDescription": "Exclusive King Saladeen collaboration featuring the revolutionary Rebel clipper design",
+    "description": "The StyleCraft Rebel Cordless Clipper King Saladeen Limited Edition is an exclusive collaboration that brings together the innovative Rebel design with King Saladeen's legendary style. This limited edition clipper features advanced motor technology and distinctive aesthetics that make it a standout choice for professionals and collectors alike. The Rebel platform delivers exceptional cutting performance with unique ergonomics and premium construction that sets it apart from traditional clippers.",
+    "features": [
+      "Exclusive King Saladeen collaboration",
+      "Revolutionary Rebel clipper design",
+      "Limited edition collector's piece",
+      "Advanced professional motor technology",
+      "DLC precision fade blade",
+      "Distinctive ergonomic styling",
+      "Extended battery runtime",
+      "Cord/cordless operation",
+      "Premium build quality",
+      "Unique aesthetic design",
+      "Professional-grade performance",
+      "Collector's edition packaging"
+    ],
+    "specifications": {
+      "motor": "Advanced professional motor",
+      "blade": "DLC precision fade blade",
+      "battery": "High-capacity lithium-ion",
+      "runtime": "150 minutes",
+      "chargeTime": "2 hours",
+      "weight": "9.5 oz",
+      "voltage": "Dual voltage",
+      "housing": "Premium construction",
+      "model": "SC613M",
+      "edition": "King Saladeen Limited Edition"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 412,
+    "sku": "SC613M"
   },
   {
     "id": 16,
