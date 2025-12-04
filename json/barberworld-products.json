@@ -90,11 +90,11 @@
       "../brbwrldimages/sis4.png"
     ],
     "category": "Scissors",
-    "shortDescription": "Professional Japanese steel hair cutting scissors 6.0 inch",
-    "description": "The Barber World 6.0-inch Japanese steel scissors offer the perfect balance between precision and versatility. Ideal for both detailed work and general cutting, these professional-grade scissors feature ultra-sharp blades made from premium Japanese steel. The comfortable ergonomic design allows for hours of use without hand strain, making them perfect for busy barbers and stylists.",
+    "shortDescription": "Professional Japanese steel hair cutting scissors 6.5 inch",
+    "description": "The Barber World 6.5-inch Japanese steel scissors deliver exceptional performance for professional barbers who demand precision and comfort. These scissors feature premium Japanese steel construction with ultra-sharp convex edges that glide through hair effortlessly. The longer blade length provides excellent reach while maintaining precise control, perfect for versatile cutting techniques.",
     "features": [
       "Premium Japanese steel blades",
-      "6.0-inch blade length",
+      "6.5-inch blade length",
       "Ergonomic offset handle design",
       "Ultra-sharp convex edge",
       "Professional barber quality",
@@ -104,17 +104,17 @@
     ],
     "specifications": {
       "material": "Japanese Steel",
-      "bladeLength": "6.0 inches",
-      "totalLength": "6.0 inches",
+      "bladeLength": "6.5 inches",
+      "totalLength": "6.5 inches",
       "bladeType": "Convex edge",
       "finish": "Polished silver",
       "handleType": "Offset ergonomic",
-      "weight": "3.1 oz"
+      "weight": "3.3 oz"
     },
     "inStock": true,
     "rating": 4.8,
-    "reviewCount": 245,
-    "sku": "BW-SCISSORS-60"
+    "reviewCount": 221,
+    "sku": "BW-SCISSORS-65"
   },
   {
     "id": 4,
@@ -328,5 +328,175 @@
     "rating": 4.8,
     "reviewCount": 387,
     "sku": "BW-AIRDUSTER-MULTI"
+  },
+  {
+    "id": 9,
+    "name": "Barber World Professional Cutting Comb - 7 Inch",
+    "price": 8.99,
+    "brand": "Barber World",
+    "slug": "barber-world-professional-cutting-comb-7-inch",
+    "image": "../brbwrldimages/comb7.jpeg",
+    "images": [
+      "../brbwrldimages/comb7-2.jpeg",
+      "../brbwrldimages/comb7-3.jpeg",
+      "../brbwrldimages/comb7-4.jpeg"
+    ],
+    "category": "Combs",
+    "shortDescription": "Professional 7-inch carbon cutting comb with fine teeth",
+    "description": "The Barber World Professional Cutting Comb is an essential tool for precision cutting and styling. Crafted from durable carbon material, this 7-inch comb features fine, closely-spaced teeth that glide smoothly through hair for clean sectioning and precise cutting. Heat-resistant and anti-static properties make it ideal for use with blow dryers and styling tools. The sleek black finish and professional-grade construction ensure long-lasting performance in any barbershop or salon.",
+    "features": [
+      "Professional-grade carbon material",
+      "7-inch length for versatile use",
+      "Fine, closely-spaced teeth",
+      "Heat-resistant construction",
+      "Anti-static properties",
+      "Smooth rounded tips",
+      "Durable and flexible",
+      "Perfect for precision cutting",
+      "Chemical resistant",
+      "Professional black finish"
+    ],
+    "specifications": {
+      "material": "Carbon fiber composite",
+      "length": "7 inches",
+      "toothSpacing": "Fine (0.04 inch)",
+      "color": "Professional black",
+      "heatResistant": "Up to 450°F",
+      "weight": "0.5 oz",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.7,
+    "reviewCount": 156,
+    "sku": "BW-COMB-CUT7"
+  },
+  {
+    "id": 10,
+    "name": "Barber World Professional Styling Comb - 8.5 Inch",
+    "price": 8.99,
+    "brand": "Barber World",
+    "slug": "barber-world-professional-styling-comb-8-5-inch",
+    "image": "../brbwrldimages/comb8.5.jpeg",
+    "images": [
+      "../brbwrldimages/comb8.5-2.jpeg",
+      "../brbwrldimages/comb8.5-3.jpeg",
+      "../brbwrldimages/comb8.5-4.jpeg"
+    ],
+    "category": "Combs",
+    "shortDescription": "Professional 8.5-inch carbon styling comb with medium teeth",
+    "description": "The Barber World Professional Styling Comb offers the perfect balance of control and comfort for all styling needs. This 8.5-inch carbon comb features medium-spaced teeth that work effortlessly through all hair types and textures. The extended length provides excellent reach and control, while the durable carbon construction ensures heat resistance and anti-static performance. Ideal for styling, blow-drying, and general grooming applications.",
+    "features": [
+      "High-quality carbon construction",
+      "8.5-inch extended length",
+      "Medium-spaced teeth",
+      "Heat-resistant up to 450°F",
+      "Anti-static properties",
+      "Smooth rounded tips prevent scalp irritation",
+      "Flexible yet durable",
+      "Versatile for all hair types",
+      "Chemical and solvent resistant",
+      "Professional matte black finish"
+    ],
+    "specifications": {
+      "material": "Carbon fiber composite",
+      "length": "8.5 inches",
+      "toothSpacing": "Medium (0.08 inch)",
+      "color": "Professional black",
+      "heatResistant": "Up to 450°F",
+      "weight": "0.6 oz",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 203,
+    "sku": "BW-COMB-STYLE85"
+  },
+  {
+    "id": 11,
+    "name": "Barber World Professional Clipper Comb with Handle - 8 Inch",
+    "price": 9.99,
+    "brand": "Barber World",
+    "slug": "barber-world-professional-clipper-comb-handle-8-inch",
+    "image": "../brbwrldimages/comb8.jpeg",
+    "images": [
+      "../brbwrldimages/comb8-2.jpeg",
+      "../brbwrldimages/comb8-3.jpeg",
+      "../brbwrldimages/comb8-4.jpeg"
+    ],
+    "category": "Combs",
+    "shortDescription": "Professional clipper comb with ergonomic handle for precise cutting",
+    "description": "The Barber World Professional Clipper Comb with Handle is designed specifically for clipper-over-comb techniques and precision fading. Featuring an ergonomic contoured handle for superior grip and control, this 8-inch comb allows for comfortable extended use without hand fatigue. The fine to medium graduated teeth provide versatility for different cutting techniques, while the heat-resistant carbon construction withstands professional use. Perfect for creating clean fades, tapers, and detailed work.",
+    "features": [
+      "Ergonomic contoured handle",
+      "Premium carbon construction",
+      "8-inch total length",
+      "Graduated teeth (fine to medium)",
+      "Excellent grip and control",
+      "Heat-resistant to 450°F",
+      "Anti-static properties",
+      "Perfect for clipper work",
+      "Reduces hand fatigue",
+      "Chemical resistant",
+      "Professional-grade durability"
+    ],
+    "specifications": {
+      "material": "Carbon fiber composite",
+      "totalLength": "8 inches",
+      "combLength": "5.5 inches",
+      "handleLength": "2.5 inches",
+      "toothSpacing": "Graduated (0.04-0.08 inch)",
+      "color": "Professional black",
+      "heatResistant": "Up to 450°F",
+      "weight": "0.7 oz",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.9,
+    "reviewCount": 287,
+    "sku": "BW-COMB-CLIPPER8"
+  },
+  {
+    "id": 12,
+    "name": "Barber World Professional Styling Comb with Handle - 9 Inch",
+    "price": 9.99,
+    "brand": "Barber World",
+    "slug": "barber-world-professional-styling-comb-handle-9-inch",
+    "image": "../brbwrldimages/comb9.jpeg",
+    "images": [
+      "../brbwrldimages/comb9-2.jpeg",
+      "../brbwrldimages/comb9-3.jpeg",
+      "../brbwrldimages/comb9-4.jpeg"
+    ],
+    "category": "Combs",
+    "shortDescription": "Professional styling comb with ergonomic handle for ultimate control",
+    "description": "The Barber World Professional Styling Comb with Handle combines precision styling with ergonomic comfort. This 9-inch comb features a comfortable contoured handle that provides exceptional control during cutting, styling, and blow-drying. The fine teeth are perfect for detailed work, sectioning, and creating clean parts. Heat-resistant carbon construction ensures durability and performance with hot styling tools. The extended length offers maximum reach and versatility for all styling applications.",
+    "features": [
+      "Ergonomic contoured handle design",
+      "High-quality carbon construction",
+      "9-inch total length for maximum reach",
+      "Fine teeth for precision work",
+      "Superior grip and control",
+      "Heat-resistant to 450°F",
+      "Anti-static performance",
+      "Ideal for styling and sectioning",
+      "Comfortable for extended use",
+      "Chemical and heat resistant",
+      "Professional durability"
+    ],
+    "specifications": {
+      "material": "Carbon fiber composite",
+      "totalLength": "9 inches",
+      "combLength": "6 inches",
+      "handleLength": "3 inches",
+      "toothSpacing": "Fine (0.04 inch)",
+      "color": "Professional black",
+      "heatResistant": "Up to 450°F",
+      "weight": "0.8 oz",
+      "finish": "Matte black"
+    },
+    "inStock": true,
+    "rating": 4.8,
+    "reviewCount": 234,
+    "sku": "BW-COMB-STYLE9H"
   }
 ]
