@@ -332,7 +332,7 @@
   {
     "id": 9,
     "name": "Barber World Professional Cutting Comb - 7 Inch",
-    "price": 8.99,
+    "price": 9.99,
     "brand": "Barber World",
     "slug": "barber-world-professional-cutting-comb-7-inch",
     "image": "../brbwrldimages/comb7.jpeg",
@@ -371,7 +371,7 @@
   {
     "id": 10,
     "name": "Barber World Professional Styling Comb - 8.5 Inch",
-    "price": 8.99,
+    "price": 9.99,
     "brand": "Barber World",
     "slug": "barber-world-professional-styling-comb-8-5-inch",
     "image": "../brbwrldimages/comb8.5.jpeg",
