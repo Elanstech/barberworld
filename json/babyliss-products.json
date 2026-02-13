@@ -104,7 +104,7 @@
       "weight": "8.4 oz",
       "housing": "All-metal"
     },
-    "inStock": true,
+    "inStock": false,
     "sku": "FX673NS"
   },
   {
@@ -140,7 +140,7 @@
       "weight": "8.2 oz",
       "finish": "Limited edition grey"
     },
-    "inStock": true,
+    "inStock": false,
     "sku": "FX673NSGY"
   },
   {
@@ -537,7 +537,7 @@
       "voltage": "Dual voltage",
       "finish": "Matte black"
     },
-    "inStock": true,
+    "inStock": false,
     "sku": "FX1CTMBTO"
   }
 ]
